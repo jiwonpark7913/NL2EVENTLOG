@@ -55,8 +55,6 @@
 
 ## Schema and documentation
 
-![Schema](docs/schema.png)
-
 - [Table inventory and relationships](docs/schema_overview.md)
 - [English column dictionary](docs/data_dictionary.md)
 - [CSV dictionary](docs/data_dictionary.csv)
