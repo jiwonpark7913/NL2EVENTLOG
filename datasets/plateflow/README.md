@@ -50,7 +50,7 @@
 
 ## Questions and expected results
 
-- Eight English questions are supplied.
+- Sixteen English questions are supplied: eight original questions and eight added object/record-view questions.
 - V01/V02, V03/V04 and V05/V06 pair direct requests with paraphrases.
 - V07 selects cutting and subsequent piece-inspection events.
 - V08 is unsupported because upstream casting times are absent.
@@ -60,9 +60,17 @@
 - An operation-history material ID can identify either a mother material or a piece.
 - An insert trigger and a separate missing-reference check validate those two ID sets; there is no misleading single-table foreign key.
 - Expected logs are selected from simulated business history.
-- Expected extraction specifications generate SQL using `UNION ALL`; all seven answerable questions match their expected logs exactly.
+- Expected extraction specifications generate SQL using `UNION ALL`; the seven original and eight added answerable questions match their expected logs exactly.
 - Logs are ordinary CSV timelines, not OCEL files.
 - Cases with no selected events are listed by the separate case-population query and have no event row in the CSV.
+
+## Additional case choices
+
+- Added questions OPV01–OPV08 cover slabs, rolling plans, rolling instructions, mother materials, furnace tracking records, cutting instructions, cut pieces and operation records.
+- Slab timelines include recorded events of their derived mother material and pieces; this does not create missing casting events.
+- Piece timelines include operations recorded on that piece and dimensional inspection; upstream mother events are not copied to every piece.
+- Instruction timelines include actual release events, and plan timelines include their linked instruction releases; planned reheating times remain schedules.
+- The operation-code table defines activity meanings and is not a population of business objects.
 
 ## Rebuild and evaluation
 
@@ -84,3 +92,4 @@
 - [English column dictionary](docs/data_dictionary.md)
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
+- [Object-based Gold logs and coverage](docs/object_event_logs.md)

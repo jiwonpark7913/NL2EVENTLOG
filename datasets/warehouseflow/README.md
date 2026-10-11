@@ -25,19 +25,19 @@
 - `loader_transaction` records which workers participate in each task.
 - Each task is one event, even when multiple goods and workers are involved.
 - The dataset has 4 warehouses and 80 business events: 45 goods-received events and 35 goods-dispatched events.
-- A warehouse defines the case: its recorded tasks form one timeline.
+- The original questions use warehouses as cases; added questions also use goods, workers, transaction records and keyed detail/assignment records.
 - The source does not link receiving and dispatching tasks into individual shipment histories.
 - Joining both goods and worker details to a task produces 289 rows for 80 tasks in this example; those rows must not be counted as 289 events.
 
 ## Questions and expected results
 
-- Seven English questions are supplied.
+- Thirteen English questions are supplied: seven original warehouse questions and six object/record-view questions.
 - R01/R02 select receiving, R03/R04 select dispatching, and R05/R06 select the complete recorded warehouse timeline.
 - Each pair uses direct wording and a paraphrase of the same request.
 - R07 asks for task start and completion events; it is unsupported because only completion times are recorded.
 - Expected logs are selected from the simulated task history.
 - Expected extraction specifications identify the corresponding database tables and columns.
-- All six answerable questions produce SQL results identical to the expected logs.
+- The six original answerable questions and six new object-view questions produce SQL results identical to their expected logs.
 - SQL checks confirm dataset consistency; they do not measure model accuracy.
 
 ## Rebuild and evaluation
@@ -66,3 +66,4 @@
 - [English column dictionary](docs/data_dictionary.md)
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
+- [Object-based Gold logs and coverage](docs/object_event_logs.md)

@@ -13,3 +13,14 @@
 {"question_id": "U13", "text": "Extract Thesis Submitted events for each student.", "pair_of": null}
 {"question_id": "U14", "text": "Show when each student handed in their course-design thesis.", "pair_of": "U13"}
 {"question_id": "U15", "text": "Extract assignment-submission events for each student.", "pair_of": null}
+{"question_id": "OU01", "text": "Extract an event log for each student. Include all five recorded academic activity types linked to this student.", "pair_of": null}
+{"question_id": "OU02", "text": "Extract an event log for each course. Include successful registrations for this course offering. Course schedules and text-only instructor labels do not add events.", "pair_of": null}
+{"question_id": "OU03", "text": "Extract an event log for each student-course registration. Include the successful registration event represented by this student-course pair.", "pair_of": null}
+{"question_id": "OU04", "text": "Extract an event log for each examination result record. Include the examination occurrence represented by this result ID; score publication is not timestamped.", "pair_of": null}
+{"question_id": "OU05", "text": "Extract an event log for each simulation module. Include every recorded student experiment completion using this module, including repeat runs.", "pair_of": null}
+{"question_id": "OU06", "text": "Extract an event log for each thesis. Include the actual submission event for this thesis; no review events are recorded.", "pair_of": null}
+{"question_id": "OU07", "text": "Extract an event log for each simulation experiment result record. Include the experiment-completion occurrence identified by student, module and simulation time.", "pair_of": null}
+{"question_id": "OU08", "text": "Extract an event log for each assignment. Include all recorded grading and regrading actions for this assignment; no submission timestamp is inferred.", "pair_of": null}
+{"question_id": "OU09", "text": "Extract an event log for each instructor. Include grading and regrading actions performed by this instructor, without inferring links from course-name strings.", "pair_of": null}
+{"question_id": "OU10", "text": "Extract an event log for each assignment grading record. Include the single grading action represented by the assignment-instructor-time key.", "pair_of": null}
+{"question_id": "OU11", "text": "Extract actual task-execution events for each course-design task.", "pair_of": null}

@@ -61,6 +61,46 @@
     {
       "question_id": "V08",
       "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "OPV01",
+      "status": "pass",
+      "event_count": 324
+    },
+    {
+      "question_id": "OPV02",
+      "status": "pass",
+      "event_count": 36
+    },
+    {
+      "question_id": "OPV03",
+      "status": "pass",
+      "event_count": 36
+    },
+    {
+      "question_id": "OPV04",
+      "status": "pass",
+      "event_count": 324
+    },
+    {
+      "question_id": "OPV05",
+      "status": "pass",
+      "event_count": 30
+    },
+    {
+      "question_id": "OPV06",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OPV07",
+      "status": "pass",
+      "event_count": 114
+    },
+    {
+      "question_id": "OPV08",
+      "status": "pass",
+      "event_count": 153
     }
   ],
   "checks": {
@@ -78,5 +118,182 @@
     "Classic mother-case log, not OCEL.",
     "Dataset-specific ES; existing NL2EventLog compatibility untested.",
     "No extraction-model accuracy measured."
-  ]
+  ],
+  "object_view_checks": {
+    "sql_equals_canonical_events": "pass",
+    "unique_event_per_case": "pass",
+    "case_population_coverage": "pass"
+  },
+  "object_view_coverage": [
+    {
+      "question_id": "OPV01",
+      "case_table": "slab_material",
+      "case_concept": "Slab",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "All recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.",
+      "case_count": 36,
+      "cases_with_events": 36,
+      "cases_without_events": 0,
+      "event_rows": 324,
+      "activities": [
+        "Cooling Completed",
+        "Crop Shear Passed",
+        "Cutting Instruction Released",
+        "Dimensional Inspection Completed",
+        "Heat Treatment Completed",
+        "Inspection Failed",
+        "Inspection Passed",
+        "Leveling Completed",
+        "Reheating Started",
+        "Rolling Completed",
+        "Rolling Instruction Released",
+        "Split Cutting Completed",
+        "Yard Instruction Received"
+      ],
+      "log_path": "private/gold_logs/OPV01.csv"
+    },
+    {
+      "question_id": "OPV02",
+      "case_table": "planned_rolling_instruction",
+      "case_concept": "Rolling plan",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "The actual release of the rolling instruction linked to this plan; planned reheating times are not execution events.",
+      "case_count": 36,
+      "cases_with_events": 36,
+      "cases_without_events": 0,
+      "event_rows": 36,
+      "activities": [
+        "Rolling Instruction Released"
+      ],
+      "log_path": "private/gold_logs/OPV02.csv"
+    },
+    {
+      "question_id": "OPV03",
+      "case_table": "rolling_instruction",
+      "case_concept": "Rolling instruction",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "The actual release event for this rolling instruction.",
+      "case_count": 36,
+      "cases_with_events": 36,
+      "cases_without_events": 0,
+      "event_rows": 36,
+      "activities": [
+        "Rolling Instruction Released"
+      ],
+      "log_path": "private/gold_logs/OPV03.csv"
+    },
+    {
+      "question_id": "OPV04",
+      "case_table": "as_rolled_material",
+      "case_concept": "Mother material",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "All recorded mother-material events and its descendant-piece events, each occurrence once.",
+      "case_count": 36,
+      "cases_with_events": 36,
+      "cases_without_events": 0,
+      "event_rows": 324,
+      "activities": [
+        "Cooling Completed",
+        "Crop Shear Passed",
+        "Cutting Instruction Released",
+        "Dimensional Inspection Completed",
+        "Heat Treatment Completed",
+        "Inspection Failed",
+        "Inspection Passed",
+        "Leveling Completed",
+        "Reheating Started",
+        "Rolling Completed",
+        "Rolling Instruction Released",
+        "Split Cutting Completed",
+        "Yard Instruction Received"
+      ],
+      "log_path": "private/gold_logs/OPV04.csv"
+    },
+    {
+      "question_id": "OPV05",
+      "case_table": "furnace_charge_tracking",
+      "case_concept": "Furnace tracking record",
+      "kind": "tracking_record",
+      "status": "answerable",
+      "scope_rule": "The recorded yard-instruction receipt for this tracking record; lot-level charging events remain outside the material-event set.",
+      "case_count": 30,
+      "cases_with_events": 30,
+      "cases_without_events": 0,
+      "event_rows": 30,
+      "activities": [
+        "Yard Instruction Received"
+      ],
+      "log_path": "private/gold_logs/OPV05.csv"
+    },
+    {
+      "question_id": "OPV06",
+      "case_table": "cutting_finishing_instruction",
+      "case_concept": "Cutting instruction",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "The actual release event for this cutting/finishing instruction.",
+      "case_count": 18,
+      "cases_with_events": 18,
+      "cases_without_events": 0,
+      "event_rows": 18,
+      "activities": [
+        "Cutting Instruction Released"
+      ],
+      "log_path": "private/gold_logs/OPV06.csv"
+    },
+    {
+      "question_id": "OPV07",
+      "case_table": "plate_material",
+      "case_concept": "Cut plate piece",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Only operations recorded on this piece and its dimensional inspection. Upstream mother events are not copied to each piece.",
+      "case_count": 39,
+      "cases_with_events": 39,
+      "cases_without_events": 0,
+      "event_rows": 114,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Heat Treatment Completed",
+        "Inspection Failed",
+        "Inspection Passed"
+      ],
+      "log_path": "private/gold_logs/OPV07.csv"
+    },
+    {
+      "question_id": "OPV08",
+      "case_table": "material_operation_history",
+      "case_concept": "Material operation record",
+      "kind": "event_record",
+      "status": "answerable",
+      "scope_rule": "The operation-completion event represented by this transaction ID, preserving its process-code meaning.",
+      "case_count": 153,
+      "cases_with_events": 153,
+      "cases_without_events": 0,
+      "event_rows": 153,
+      "activities": [
+        "Cooling Completed",
+        "Heat Treatment Completed",
+        "Inspection Failed",
+        "Inspection Passed",
+        "Leveling Completed",
+        "Rolling Completed",
+        "Split Cutting Completed"
+      ],
+      "log_path": "private/gold_logs/OPV08.csv"
+    }
+  ],
+  "unavailable_object_views": [
+    {
+      "case_table": "operation_code",
+      "status": "reference_table",
+      "reason": "Operation codes define activity meanings. They are not business-object instances or cases."
+    }
+  ],
+  "total_questions": 16,
+  "answerable_questions": 15
 }

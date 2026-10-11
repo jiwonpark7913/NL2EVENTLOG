@@ -4,7 +4,7 @@
 - The examples cover course registration, course design with experiments and theses, and online assignment grading.
 - Shared Student IDs connect the three examples into one student timeline.
 - This integration is authored for the benchmark; RSchema does not provide these examples as one integrated database.
-- The combined database has **11 tables, 55 columns, 40 students, 148 events and 15 questions**.
+- The combined database has **11 tables, 55 columns, 40 students, 148 events and 26 questions**.
 
 ## Recorded activities
 
@@ -81,9 +81,17 @@
 - U07 asks for notifications, U08 for withdrawals, and U15 for assignment submissions.
 - These three questions are unsupported because their event times are absent.
 - Stored assignment content proves that a record exists but does not supply the submission time; grading time cannot substitute for it.
-- All 12 answerable questions produce SQL results identical to expected logs selected from simulated business history.
+- The 12 original answerable questions and 10 added object/record-view questions produce SQL results identical to expected logs selected from simulated business history.
 - Grading extraction uses the declared assignment-to-student join, and event sources are combined with `UNION ALL`.
 - Current extraction specifications use a dataset-specific format; compatibility with the existing NL2EventLog implementation remains untested.
+
+## Additional case choices
+
+- Object-view questions OU01–OU10 cover students, courses, registrations, examination results, simulation modules, theses, experiment results, assignments, instructors and grading records.
+- OU11 asks for actual task execution and is unsupported: task periods are schedules, and the source has no timestamped task execution or assignment link.
+- Course timelines include registrations, assignment timelines include grading, and instructor timelines include the grading they performed.
+- These scopes do not infer joins from course-name strings or copy every student event into every course.
+- The original full student-timeline scope is retained.
 
 ## Rebuild and evaluation
 
@@ -104,3 +112,4 @@
 - [English column dictionary](docs/data_dictionary.md)
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
+- [Object-based Gold logs and coverage](docs/object_event_logs.md)

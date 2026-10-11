@@ -6,12 +6,30 @@
 
 | Dataset | Source used | Tables | Cases | Business events | Questions |
 |---|---|---:|---|---:|---:|
-| [WarehouseFlow](datasets/warehouseflow/README.md) | Actual RSchema requirement and logical schema | 6 | 4 warehouses | 80 | 7 |
-| [UniversityFlow](datasets/universityflow/README.md) | Three actual RSchema university requirements and logical schemas, combined through student identity | 11 | 40 students | 148 | 15 |
-| [PlateFlow](datasets/plateflow/README.md) | Selected table and column definitions from a Korean manufacturing company | 9 | 36 mother materials, linked to 39 cut pieces | 324 | 8 |
+| [WarehouseFlow](datasets/warehouseflow/README.md) | Actual RSchema requirement and logical schema | 6 | Warehouses, goods, workers and transaction records | 80 | 13 |
+| [UniversityFlow](datasets/universityflow/README.md) | Three actual RSchema university requirements and logical schemas, combined through student identity | 11 | Students, courses, assignments, instructors, modules, theses and records | 148 | 26 |
+| [PlateFlow](datasets/plateflow/README.md) | Selected table and column definitions from a Korean manufacturing company | 9 | Slabs, mother materials, cut pieces, instructions and records | 324 | 16 |
 
 - SQL results match the expected logs for all answerable questions.
 - This verifies internal consistency of the datasets; it does not measure NL2EventLog model accuracy or performance on unseen databases.
+
+## Case choices and Gold event logs
+
+- Case notion means the object or keyed record used to group events into timelines.
+- Each dataset now includes at least one explicitly scoped log for every table that can be linked to recorded business events.
+- Business-object timelines and single-event or association-record timelines are labelled separately.
+- There are 24 additional case-view questions and CSVs, plus one unsupported task-execution question.
+- Including the existing questions, there are 55 questions and 49 answerable Gold CSV files.
+- Six unsupported questions have reasons in `private/gold.jsonl` and no fabricated event CSV.
+- Each answerable question has one Gold CSV. Two questions may have the same CSV content when they request the same case and activities in different wording.
+- For example, the original six warehouse questions select receiving, dispatching or both, with a direct/paraphrased pair for each scope.
+- A new goods-level view can include the same transaction under several goods cases; a worker-level view can include it under several worker cases.
+- Each event appears only once within a given case.
+- Case population includes objects without selected events. Those objects do not produce event rows in a CSV.
+- These are case-based event logs, not OCEL files.
+- [WarehouseFlow case choices and Gold links](datasets/warehouseflow/docs/object_event_logs.md)
+- [UniversityFlow case choices and Gold links](datasets/universityflow/docs/object_event_logs.md)
+- [PlateFlow case choices and Gold links](datasets/plateflow/docs/object_event_logs.md)
 
 ## Terms used in this repository
 
@@ -57,7 +75,7 @@
 - Use Python 3.10 or later.
 - Dataset builders use only Python's standard library.
 - Run the commands below from the repository root.
-- Each command recreates its generated files and runs the dataset's validation checks.
+- Each command recreates its generated files, including object-based Gold logs, and runs validation checks.
 
 ```bash
 python datasets/warehouseflow/build.py
@@ -83,6 +101,7 @@ python make_docs.py
 - Each `design/`: design decisions, source mappings and added assumptions.
 - Each `docs/`: table lists, data definitions and schema diagrams.
 - Each `validation_report.json`: the checks actually run and their results.
+- `object_views.py`: adds alternative case notions, questions, Gold logs and event-to-case checks; dataset builders call it automatically.
 - `private/` is a folder name, not an access-control setting.
 - During evaluation, give the model only `input/`; keep generation code, source answers, design files and expected results outside its context.
 - The supplied task scope catalog makes this an evaluation with a predefined scope catalog.

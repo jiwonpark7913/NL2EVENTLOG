@@ -154,7 +154,7 @@
 
 ## Business rules
 
-- Use each student as a case (one timeline).
+- The original default questions use students as cases. Object-view questions use the alternative case tables and scope rules listed in the task catalog.
 - An examination-result row records one Degree Examination Taken event at examination_date, not score publication.
 - A registration row records one Course Registered event at registration_time.
 - The default student timeline includes all recorded examinations, registrations, assignment grading, simulation-experiment completions and thesis submissions linked to that student.

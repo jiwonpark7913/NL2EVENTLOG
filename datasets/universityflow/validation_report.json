@@ -112,6 +112,60 @@
     {
       "question_id": "U15",
       "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "OU01",
+      "status": "pass",
+      "event_count": 148
+    },
+    {
+      "question_id": "OU02",
+      "status": "pass",
+      "event_count": 47
+    },
+    {
+      "question_id": "OU03",
+      "status": "pass",
+      "event_count": 47
+    },
+    {
+      "question_id": "OU04",
+      "status": "pass",
+      "event_count": 40
+    },
+    {
+      "question_id": "OU05",
+      "status": "pass",
+      "event_count": 27
+    },
+    {
+      "question_id": "OU06",
+      "status": "pass",
+      "event_count": 16
+    },
+    {
+      "question_id": "OU07",
+      "status": "pass",
+      "event_count": 27
+    },
+    {
+      "question_id": "OU08",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OU09",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OU10",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OU11",
+      "status": "unsupported_by_design"
     }
   ],
   "checks": {
@@ -130,5 +184,187 @@
     "Task schedules and instructor course labels do not create missing source relationships.",
     "No assignment-submission, notification, withdrawal or score-publication times.",
     "Dataset-specific extraction specification; no model accuracy or generalization result."
-  ]
+  ],
+  "object_view_checks": {
+    "sql_equals_canonical_events": "pass",
+    "unique_event_per_case": "pass",
+    "case_population_coverage": "pass"
+  },
+  "object_view_coverage": [
+    {
+      "question_id": "OU01",
+      "case_table": "student",
+      "case_concept": "Student",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "All five recorded academic activity types linked to this student.",
+      "case_count": 40,
+      "cases_with_events": 30,
+      "cases_without_events": 10,
+      "event_rows": 148,
+      "activities": [
+        "Assignment Graded",
+        "Course Registered",
+        "Degree Examination Taken",
+        "Simulation Experiment Completed",
+        "Thesis Submitted"
+      ],
+      "log_path": "private/gold_logs/OU01.csv"
+    },
+    {
+      "question_id": "OU02",
+      "case_table": "course",
+      "case_concept": "Course",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Successful registrations for this course offering. Course schedules and text-only instructor labels do not add events.",
+      "case_count": 6,
+      "cases_with_events": 6,
+      "cases_without_events": 0,
+      "event_rows": 47,
+      "activities": [
+        "Course Registered"
+      ],
+      "log_path": "private/gold_logs/OU02.csv"
+    },
+    {
+      "question_id": "OU03",
+      "case_table": "registration",
+      "case_concept": "Student-course registration",
+      "kind": "association_record",
+      "status": "answerable",
+      "scope_rule": "The successful registration event represented by this student-course pair.",
+      "case_count": 47,
+      "cases_with_events": 47,
+      "cases_without_events": 0,
+      "event_rows": 47,
+      "activities": [
+        "Course Registered"
+      ],
+      "log_path": "private/gold_logs/OU03.csv"
+    },
+    {
+      "question_id": "OU04",
+      "case_table": "degree_examination_result",
+      "case_concept": "Examination result record",
+      "kind": "event_record",
+      "status": "answerable",
+      "scope_rule": "The examination occurrence represented by this result ID; score publication is not timestamped.",
+      "case_count": 40,
+      "cases_with_events": 40,
+      "cases_without_events": 0,
+      "event_rows": 40,
+      "activities": [
+        "Degree Examination Taken"
+      ],
+      "log_path": "private/gold_logs/OU04.csv"
+    },
+    {
+      "question_id": "OU05",
+      "case_table": "simulation_module",
+      "case_concept": "Simulation module",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Every recorded student experiment completion using this module, including repeat runs.",
+      "case_count": 3,
+      "cases_with_events": 3,
+      "cases_without_events": 0,
+      "event_rows": 27,
+      "activities": [
+        "Simulation Experiment Completed"
+      ],
+      "log_path": "private/gold_logs/OU05.csv"
+    },
+    {
+      "question_id": "OU06",
+      "case_table": "thesis",
+      "case_concept": "Thesis",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "The actual submission event for this thesis; no review events are recorded.",
+      "case_count": 16,
+      "cases_with_events": 16,
+      "cases_without_events": 0,
+      "event_rows": 16,
+      "activities": [
+        "Thesis Submitted"
+      ],
+      "log_path": "private/gold_logs/OU06.csv"
+    },
+    {
+      "question_id": "OU07",
+      "case_table": "student_simulation_experiment_result",
+      "case_concept": "Simulation experiment result record",
+      "kind": "event_record",
+      "status": "answerable",
+      "scope_rule": "The experiment-completion occurrence identified by student, module and simulation time.",
+      "case_count": 27,
+      "cases_with_events": 27,
+      "cases_without_events": 0,
+      "event_rows": 27,
+      "activities": [
+        "Simulation Experiment Completed"
+      ],
+      "log_path": "private/gold_logs/OU07.csv"
+    },
+    {
+      "question_id": "OU08",
+      "case_table": "assignment",
+      "case_concept": "Assignment",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "All recorded grading and regrading actions for this assignment; no submission timestamp is inferred.",
+      "case_count": 20,
+      "cases_with_events": 16,
+      "cases_without_events": 4,
+      "event_rows": 18,
+      "activities": [
+        "Assignment Graded"
+      ],
+      "log_path": "private/gold_logs/OU08.csv"
+    },
+    {
+      "question_id": "OU09",
+      "case_table": "instructor",
+      "case_concept": "Instructor",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Grading and regrading actions performed by this instructor, without inferring links from course-name strings.",
+      "case_count": 3,
+      "cases_with_events": 3,
+      "cases_without_events": 0,
+      "event_rows": 18,
+      "activities": [
+        "Assignment Graded"
+      ],
+      "log_path": "private/gold_logs/OU09.csv"
+    },
+    {
+      "question_id": "OU10",
+      "case_table": "assignment_grading",
+      "case_concept": "Assignment grading record",
+      "kind": "event_record",
+      "status": "answerable",
+      "scope_rule": "The single grading action represented by the assignment-instructor-time key.",
+      "case_count": 18,
+      "cases_with_events": 18,
+      "cases_without_events": 0,
+      "event_rows": 18,
+      "activities": [
+        "Assignment Graded"
+      ],
+      "log_path": "private/gold_logs/OU10.csv"
+    }
+  ],
+  "unavailable_object_views": [
+    {
+      "case_table": "task",
+      "case_concept": "Course-design task",
+      "status": "unsupported",
+      "reason": "Task dates are scheduled periods, not actual student actions. No declared task-to-student, task-to-experiment or timestamped task-assignment relationship exists.",
+      "question_id": "OU11"
+    }
+  ],
+  "total_questions": 26,
+  "answerable_questions": 22
 }

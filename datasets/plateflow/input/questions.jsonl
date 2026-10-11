@@ -6,3 +6,11 @@
 {"question_id": "V06", "text": "Build a mother-material log covering all recorded actual production steps and downstream operations on its cut pieces.", "pair_of": "V05"}
 {"question_id": "V07", "text": "Extract Cutting Instruction Released, Split Cutting Completed and Dimensional Inspection Completed for each mother material and its cut pieces.", "pair_of": null}
 {"question_id": "V08", "text": "Extract continuous-casting start and completion for each slab.", "pair_of": null}
+{"question_id": "OPV01", "text": "Extract an event log for each slab. Include all recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.", "pair_of": null}
+{"question_id": "OPV02", "text": "Extract an event log for each rolling plan. Include the actual release of the rolling instruction linked to this plan; planned reheating times are not execution events.", "pair_of": null}
+{"question_id": "OPV03", "text": "Extract an event log for each rolling instruction. Include the actual release event for this rolling instruction.", "pair_of": null}
+{"question_id": "OPV04", "text": "Extract an event log for each mother material. Include all recorded mother-material events and its descendant-piece events, each occurrence once.", "pair_of": null}
+{"question_id": "OPV05", "text": "Extract an event log for each furnace tracking record. Include the recorded yard-instruction receipt for this tracking record; lot-level charging events remain outside the material-event set.", "pair_of": null}
+{"question_id": "OPV06", "text": "Extract an event log for each cutting instruction. Include the actual release event for this cutting/finishing instruction.", "pair_of": null}
+{"question_id": "OPV07", "text": "Extract an event log for each cut plate piece. Include only operations recorded on this piece and its dimensional inspection. Upstream mother events are not copied to each piece.", "pair_of": null}
+{"question_id": "OPV08", "text": "Extract an event log for each material operation record. Include the operation-completion event represented by this transaction ID, preserving its process-code meaning.", "pair_of": null}

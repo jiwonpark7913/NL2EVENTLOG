@@ -71,3 +71,15 @@
 - An unsupported question is different from a valid question with no observed events.
 - Evaluation inputs include a task scope catalog containing business labels and the default scope rule.
 - Extraction specifications currently use dataset-specific formats; integration with the existing NL2EventLog implementation remains to be tested.
+
+## Alternative case notions
+
+- Each usable keyed table has a question with an explicit case and event-scope rule.
+- Object timelines, association-record timelines and single-event record timelines are identified separately.
+- Candidate scope is not all graph-reachable events: it follows the documented business association for that view.
+- Expected events come from the simulated history and explicit event-to-case links reconstructed from object identities and declared associations.
+- SQL uses an event-source query and an event-to-case mapping, rather than an uncontrolled join across every detail table.
+- A shared event can belong to several cases; uniqueness is checked for each `(case_id, event_id)` pair.
+- Case-population queries include objects with no selected events.
+- Unsupported task-execution and reference-code cases are documented instead of inventing timestamps.
+- This expands case selection tests while retaining the existing task catalog and dataset-specific extraction-specification limitation.

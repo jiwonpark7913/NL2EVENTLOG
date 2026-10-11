@@ -60,6 +60,36 @@
     {
       "question_id": "R07",
       "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "OW01",
+      "status": "pass",
+      "event_count": 80
+    },
+    {
+      "question_id": "OW02",
+      "status": "pass",
+      "event_count": 138
+    },
+    {
+      "question_id": "OW03",
+      "status": "pass",
+      "event_count": 167
+    },
+    {
+      "question_id": "OW04",
+      "status": "pass",
+      "event_count": 80
+    },
+    {
+      "question_id": "OW05",
+      "status": "pass",
+      "event_count": 138
+    },
+    {
+      "question_id": "OW06",
+      "status": "pass",
+      "event_count": 167
     }
   ],
   "checks": {
@@ -75,5 +105,117 @@
     "Codes, SQL types and timestamp convention are adaptations.",
     "Dataset-specific ES; no model accuracy measured.",
     "No held-out generalization claim."
-  ]
+  ],
+  "object_view_checks": {
+    "sql_equals_canonical_events": "pass",
+    "unique_event_per_case": "pass",
+    "case_population_coverage": "pass"
+  },
+  "object_view_coverage": [
+    {
+      "question_id": "OW01",
+      "case_table": "warehouse",
+      "case_concept": "Warehouse",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "All receiving and dispatching tasks recorded for this warehouse.",
+      "case_count": 4,
+      "cases_with_events": 4,
+      "cases_without_events": 0,
+      "event_rows": 80,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "log_path": "private/gold_logs/OW01.csv"
+    },
+    {
+      "question_id": "OW02",
+      "case_table": "goods",
+      "case_concept": "Goods",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Receiving and dispatching tasks that contain this goods type; one event per goods type and transaction.",
+      "case_count": 6,
+      "cases_with_events": 6,
+      "cases_without_events": 0,
+      "event_rows": 138,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "log_path": "private/gold_logs/OW02.csv"
+    },
+    {
+      "question_id": "OW03",
+      "case_table": "loader",
+      "case_concept": "Worker",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Receiving and dispatching tasks assigned to this worker; one event per worker and transaction.",
+      "case_count": 5,
+      "cases_with_events": 5,
+      "cases_without_events": 0,
+      "event_rows": 167,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "log_path": "private/gold_logs/OW03.csv"
+    },
+    {
+      "question_id": "OW04",
+      "case_table": "transaction_record",
+      "case_concept": "Warehouse transaction",
+      "kind": "event_record",
+      "status": "answerable",
+      "scope_rule": "The single receiving or dispatching event represented by this transaction.",
+      "case_count": 80,
+      "cases_with_events": 80,
+      "cases_without_events": 0,
+      "event_rows": 80,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "log_path": "private/gold_logs/OW04.csv"
+    },
+    {
+      "question_id": "OW05",
+      "case_table": "goods_transaction_detail",
+      "case_concept": "Goods transaction line",
+      "kind": "association_record",
+      "status": "answerable",
+      "scope_rule": "The transaction event linked to this composite-key goods line.",
+      "case_count": 138,
+      "cases_with_events": 138,
+      "cases_without_events": 0,
+      "event_rows": 138,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "log_path": "private/gold_logs/OW05.csv"
+    },
+    {
+      "question_id": "OW06",
+      "case_table": "loader_transaction",
+      "case_concept": "Worker transaction assignment",
+      "kind": "association_record",
+      "status": "answerable",
+      "scope_rule": "The transaction event linked to this composite-key worker assignment.",
+      "case_count": 167,
+      "cases_with_events": 167,
+      "cases_without_events": 0,
+      "event_rows": 167,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "log_path": "private/gold_logs/OW06.csv"
+    }
+  ],
+  "unavailable_object_views": [],
+  "total_questions": 13,
+  "answerable_questions": 12
 }
