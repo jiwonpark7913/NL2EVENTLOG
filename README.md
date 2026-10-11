@@ -94,7 +94,7 @@ python make_docs.py
 - Table boxes, columns and relationships are editable.
 - Solid arrows show declared foreign keys.
 - Dashed arrows in PlateFlow show material IDs that can refer to either a mother material or a cut piece.
-- PNG and SVG files provide previews; the data-definition tables specify the exact keys and relationships.
+- PNG files provide previews; the data-definition tables specify the exact keys and relationships.
 
 ## Sources and construction method
 
@@ -108,4 +108,3 @@ python make_docs.py
 - Data types, keys, process codes and manufacturing rules added for PlateFlow are documented as simulation assumptions.
 - SchemaAgent reference: Wang et al., *SchemaAgent: A Multi-Agents Framework for Generating Relational Database Schema*, arXiv:2503.23886v1 (2025).
 - [Construction method](DESIGN_METHODOLOGY.md) explains the design stages and validation boundaries.
-- [Presentation review](PPT_REVIEW.md) lists corrections to the supplied construction-plan slides.

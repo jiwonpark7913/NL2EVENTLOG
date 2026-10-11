@@ -2,7 +2,7 @@
 
 ![Entity relationship diagram](schema.png)
 
-- [Editable draw.io diagram](schema.drawio) · [SVG](schema.svg) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
+- [Editable draw.io diagram](schema.drawio) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
 
 | Table | Rows | Columns | Primary key | Role |
 |---|---:|---:|---|---|

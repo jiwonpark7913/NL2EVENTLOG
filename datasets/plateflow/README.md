@@ -84,4 +84,3 @@
 - [English column dictionary](docs/data_dictionary.md)
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
-- [SVG diagram](docs/schema.svg)
