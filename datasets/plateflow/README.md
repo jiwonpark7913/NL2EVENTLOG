@@ -9,9 +9,9 @@
 
 ## Dataset counts
 
-| Dataset | Tables | Activity types | Object / case types | Distinct events | Questions | Gold CSVs |
+| Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|
-| PlateFlow | 16 | 37 | 8 | 1036 | 16 | 15 |
+| PlateFlow | 16 | 8 | 37 | 1036 | 16 | 15 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.

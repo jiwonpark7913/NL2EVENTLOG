@@ -10,7 +10,6 @@
 | [UniversityFlow](datasets/universityflow/README.md) | 20 | 11 | 41 | 808 | 26 | 24 |
 | [PlateFlow](datasets/plateflow/README.md) | 16 | 8 | 37 | 1036 | 16 | 15 |
 
-
 - **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. Activity-history tables, extraction indexes and reference tables are excluded.
 - **Case:** the object used to group a timeline, such as a transaction, student or plate piece.
