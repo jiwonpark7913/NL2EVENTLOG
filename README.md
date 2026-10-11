@@ -4,11 +4,12 @@
 - Original source definitions are retained; typed business-action histories extend the domains with explicitly authored lifecycles.
 - Each dataset includes an executable DB, requirements, data dictionary, square-table draw.io/PNG ERDs, questions, ES, SQL and Gold CSVs.
 
-| Dataset | Tables | Activity types | Object / case types | Distinct events | Questions | Gold CSVs |
+| Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|
-| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 10 | 6 | 394 | 13 | 12 |
-| [UniversityFlow](datasets/universityflow/README.md) | 20 | 41 | 11 | 808 | 26 | 24 |
-| [PlateFlow](datasets/plateflow/README.md) | 16 | 37 | 8 | 1036 | 16 | 15 |
+| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 394 | 13 | 12 |
+| [UniversityFlow](datasets/universityflow/README.md) | 20 | 11 | 41 | 808 | 26 | 24 |
+| [PlateFlow](datasets/plateflow/README.md) | 16 | 8 | 37 | 1036 | 16 | 15 |
+
 
 - **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. Activity-history tables, extraction indexes and reference tables are excluded.
