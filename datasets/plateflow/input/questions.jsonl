@@ -2,15 +2,15 @@
 {"question_id": "V02", "text": "For each mother material, show actual furnace entry, rolling completion and crop-shear passage.", "pair_of": "V01"}
 {"question_id": "V03", "text": "Extract Inspection Failed, Heat Treatment Completed and Inspection Passed for each mother material, including all its descendant Plate materials.", "pair_of": null}
 {"question_id": "V04", "text": "Trace every failed inspection, thermal treatment and passing inspection of pieces originating from each mother material.", "pair_of": "V03"}
-{"question_id": "V05", "text": "Extract the complete recorded manufacturing lifecycle for each as-rolled mother material, including its descendant Plate materials.", "pair_of": null}
-{"question_id": "V06", "text": "Build a mother-material log covering all recorded actual production steps and downstream operations on its cut pieces.", "pair_of": "V05"}
+{"question_id": "V05", "text": "Extract all recorded source and lifecycle activities for each as rolled material. Use the explicit case links and actual action times.", "pair_of": null}
+{"question_id": "V06", "text": "Extract all recorded source and lifecycle activities for each as rolled material. Use the explicit case links and actual action times.", "pair_of": "V05"}
 {"question_id": "V07", "text": "Extract Cutting Instruction Released, Split Cutting Completed and Dimensional Inspection Completed for each mother material and its cut pieces.", "pair_of": null}
 {"question_id": "V08", "text": "Extract continuous-casting start and completion for each slab.", "pair_of": null}
-{"question_id": "OPV01", "text": "Extract an event log for each slab. Include all recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.", "pair_of": null}
-{"question_id": "OPV02", "text": "Extract an event log for each rolling plan. Include the actual release of the rolling instruction linked to this plan; planned reheating times are not execution events.", "pair_of": null}
-{"question_id": "OPV03", "text": "Extract an event log for each rolling instruction. Include the actual release event for this rolling instruction.", "pair_of": null}
-{"question_id": "OPV04", "text": "Extract an event log for each mother material. Include all recorded mother-material events and its descendant-piece events, each occurrence once.", "pair_of": null}
-{"question_id": "OPV05", "text": "Extract an event log for each furnace tracking record. Include the recorded yard-instruction receipt for this tracking record; lot-level charging events remain outside the material-event set.", "pair_of": null}
-{"question_id": "OPV06", "text": "Extract an event log for each cutting instruction. Include the actual release event for this cutting/finishing instruction.", "pair_of": null}
-{"question_id": "OPV07", "text": "Extract an event log for each cut plate piece. Include only operations recorded on this piece and its dimensional inspection. Upstream mother events are not copied to each piece.", "pair_of": null}
+{"question_id": "OPV01", "text": "Extract an event log for each slab. Include original recorded actions and authored lifecycle actions explicitly linked to this slab.", "pair_of": null}
+{"question_id": "OPV02", "text": "Extract an event log for each rolling plan. Include original recorded actions and authored lifecycle actions explicitly linked to this rolling plan.", "pair_of": null}
+{"question_id": "OPV03", "text": "Extract an event log for each rolling instruction. Include original recorded actions and authored lifecycle actions explicitly linked to this rolling instruction.", "pair_of": null}
+{"question_id": "OPV04", "text": "Extract an event log for each mother material. Include original recorded actions and authored lifecycle actions explicitly linked to this mother material.", "pair_of": null}
+{"question_id": "OPV05", "text": "Extract an event log for each furnace tracking record. Include original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record.", "pair_of": null}
+{"question_id": "OPV06", "text": "Extract an event log for each cutting instruction. Include original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction.", "pair_of": null}
+{"question_id": "OPV07", "text": "Extract an event log for each cut plate piece. Include original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece.", "pair_of": null}
 {"question_id": "OPV08", "text": "Extract an event log for each material operation record. Include the operation-completion event represented by this transaction ID, preserving its process-code meaning.", "pair_of": null}

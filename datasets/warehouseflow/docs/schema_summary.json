@@ -1,5 +1,5 @@
 {
-  "table_count": 6,
+  "table_count": 8,
   "tables": {
     "warehouse": {
       "row_count": 4,
@@ -44,6 +44,22 @@
         "loader_id",
         "transaction_id"
       ]
+    },
+    "transaction_record_activity": {
+      "row_count": 314,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "lifecycle_case_link": {
+      "row_count": 3022,
+      "column_count": 3,
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ]
     }
   },
   "relationships": [
@@ -86,6 +102,14 @@
       "logical": false,
       "from_col": "loader_id",
       "to_col": "loader_id"
+    },
+    {
+      "parent": "transaction_record",
+      "child": "transaction_record_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "transaction_id",
+      "to_col": "transaction_id"
     }
   ]
 }

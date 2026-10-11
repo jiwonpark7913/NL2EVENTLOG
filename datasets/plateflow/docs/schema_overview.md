@@ -15,6 +15,13 @@
 | plate_material | 39 | 5 | plate_material_id | Individual cut Plate material, distinct from mother as-rolled material |
 | operation_code | 7 | 2 | code | Synthetic operation process-code meanings; codes are newly authored |
 | material_operation_history | 153 | 6 | transaction_id | Immutable operation history for mother and piece material identities |
+| slab_material_activity | 138 | 5 | event_id | Authored actual-action history for slab_material |
+| planned_rolling_instruction_activity | 138 | 5 | event_id | Authored actual-action history for planned_rolling_instruction |
+| rolling_instruction_activity | 114 | 5 | event_id | Authored actual-action history for rolling_instruction |
+| furnace_charge_tracking_activity | 103 | 5 | event_id | Authored actual-action history for furnace_charge_tracking |
+| cutting_finishing_instruction_activity | 69 | 5 | event_id | Authored actual-action history for cutting_finishing_instruction |
+| plate_material_activity | 150 | 5 | event_id | Authored actual-action history for plate_material |
+| lifecycle_case_link | 1998 | 3 | event_id, case_table, case_id | Explicit case attribution across typed action histories; auxiliary extraction index, not a business case |
 
 
 ## Relationships
@@ -29,5 +36,11 @@
 | as_rolled_material | cutting_finishing_instruction | material_id | material_id | 1 : 0..1 | declared |
 | as_rolled_material | plate_material | parent_as_rolled_plate_no | as_rolled_plate_no | 1 : 0..N | declared |
 | operation_code | material_operation_history | operation_code | code | 1 : 0..N | declared |
+| slab_material | slab_material_activity | slab_id | slab_id | 1 : 0..N | declared |
+| planned_rolling_instruction | planned_rolling_instruction_activity | plan_id | plan_id | 1 : 0..N | declared |
+| rolling_instruction | rolling_instruction_activity | instruction_id | instruction_id | 1 : 0..N | declared |
+| furnace_charge_tracking | furnace_charge_tracking_activity | tracking_id | tracking_id | 1 : 0..N | declared |
+| cutting_finishing_instruction | cutting_finishing_instruction_activity | instruction_id | instruction_id | 1 : 0..N | declared |
+| plate_material | plate_material_activity | plate_material_id | plate_material_id | 1 : 0..N | declared |
 | as_rolled_material | material_operation_history | material_id | material_id | logical 1 : 0..N | logical |
 | plate_material | material_operation_history | material_id | plate_material_id | logical 1 : 0..N | logical |

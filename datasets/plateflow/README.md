@@ -1,88 +1,46 @@
-# PlateFlow — plate manufacturing
+# PlateFlow
 
-- This independent synthetic dataset reflects selected table and column definitions from a Korean manufacturing company.
-- Requirements, data definitions and questions are authored in English.
-- Original table and column identifiers are retained only as source references.
-- Real production records and the full enterprise metadata CSV are excluded.
+- **Situation:** Slabs are checked and released, rolling plans and instructions progress through approval and execution, furnace tracking records heating stages, and cut pieces progress through inspection, quality release and packing.
+- **Source:** Selected metadata from a Korean manufacturing company. Original source columns and keys are preserved.
+- **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
+- **Database:** 16 tables; 1036 distinct recorded business events.
+- **Gold:** 15 answerable question-specific CSV logs out of 16 questions. Paraphrase pairs can share the same expected content.
+- **Execution:** Run `python datasets/plateflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
-## Tables and source references
+## Objects, activities and situations
 
-| English table | Original table reference | What it records |
-|---|---|---|
-| slab_material | TB_M2EA08_C_MTL060 | Slab material and furnace-charge information |
-| planned_rolling_instruction | TB_M2LB01_D_PLANINST010 | Planned rolling instructions |
-| rolling_instruction | TB_M2LM01_D_INST010 | Released rolling instructions |
-| furnace_charge_tracking | TB_M2EA05_E_RF_IN060 | Actual furnace charging |
-| as_rolled_material | TB_M2LM01_E_MTRL010 | Mother material and its latest recorded state |
-| cutting_finishing_instruction | TB_M2LM01_D_INST020 | Cutting and finishing instructions |
-| plate_material | TB_M2LM01_E_MTRL020 | Individual cut plate pieces |
-| material_operation_history | TB_M2LM01_T_OPERHIST | Each recorded operation, including repeats |
-| operation_code | Newly added | Meanings of the simulated process codes |
+| Object / case | Activity types in its log | Situation / scope | Gold CSV |
+|---|---|---|---|
+| slab_material | Cooling Completed; Crop Shear Passed; Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started; Dimensional Inspection Completed; Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heat Treatment Completed; Heating Completed; Inspection Failed; Inspection Passed; Leveling Completed; Plate Packed; Plate Piece Identified; Plate Quality Released; Plate Surface Checked; Reheating Started; Rolling Completed; Rolling Instruction Acknowledged; Rolling Instruction Closed; Rolling Instruction Released; Rolling Plan Approved; Rolling Plan Created; Rolling Plan Released; Rolling Plan Reviewed; Rolling Setup Verified; Rolling Work Started; Slab Identity Verified; Slab Quality Checked; Slab Received; Slab Released for Rolling; Split Cutting Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this slab. | [CSV](private/gold_logs/OPV01.csv) |
+| planned_rolling_instruction | Rolling Instruction Released; Rolling Plan Approved; Rolling Plan Created; Rolling Plan Released; Rolling Plan Reviewed | Original recorded actions and authored lifecycle actions explicitly linked to this rolling plan. | [CSV](private/gold_logs/OPV02.csv) |
+| rolling_instruction | Rolling Instruction Acknowledged; Rolling Instruction Closed; Rolling Instruction Released; Rolling Setup Verified; Rolling Work Started | Original recorded actions and authored lifecycle actions explicitly linked to this rolling instruction. | [CSV](private/gold_logs/OPV03.csv) |
+| as_rolled_material | Cooling Completed; Crop Shear Passed; Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started; Dimensional Inspection Completed; Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heat Treatment Completed; Heating Completed; Inspection Failed; Inspection Passed; Leveling Completed; Plate Packed; Plate Piece Identified; Plate Quality Released; Plate Surface Checked; Reheating Started; Rolling Completed; Rolling Instruction Acknowledged; Rolling Instruction Closed; Rolling Instruction Released; Rolling Plan Approved; Rolling Plan Created; Rolling Plan Released; Rolling Plan Reviewed; Rolling Setup Verified; Rolling Work Started; Slab Identity Verified; Slab Quality Checked; Slab Received; Slab Released for Rolling; Split Cutting Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this mother material. | [CSV](private/gold_logs/OPV04.csv) |
+| furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heating Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record. | [CSV](private/gold_logs/OPV05.csv) |
+| cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started | Original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction. | [CSV](private/gold_logs/OPV06.csv) |
+| plate_material | Dimensional Inspection Completed; Heat Treatment Completed; Inspection Failed; Inspection Passed; Plate Packed; Plate Piece Identified; Plate Quality Released; Plate Surface Checked | Original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece. | [CSV](private/gold_logs/OPV07.csv) |
+| material_operation_history | Cooling Completed; Heat Treatment Completed; Inspection Failed; Inspection Passed; Leveling Completed; Rolling Completed; Split Cutting Completed | The operation-completion event represented by this transaction ID, preserving its process-code meaning. | [CSV](private/gold_logs/OPV08.csv) |
 
-- The database contains 9 tables, 36 mother materials, 39 cut pieces and 324 business events.
-- The supplied metadata has 20 table names and 6,616 definition rows, including repeated table-column definitions.
-- It provides table and column names and descriptions.
-- It does not provide SQL types, declared keys or process-code meanings.
-- This dataset uses eight source table roles and adds one process-code table.
-- Source mappings identify the original column for each retained definition; newly added columns have no source column.
+- Atomic grading and operation records are auxiliary cases; a single occurrence is not expanded into an invented lifecycle.
+- Master cases can aggregate unrelated jobs. Multiple activity types do not imply one causal process across all rows.
+- Conditional revision branches and incomplete histories are intentional. Repeated activity occurrences keep distinct event IDs.
+- Actual activity times are separate from plans, schedules and technical creation/update times.
+- Case population includes objects with no selected events; those cases have no CSV rows.
+- These are case-based CSV logs, not OCEL.
 
-## How manufacturing records are separated
+## Database, extraction and validation
 
-- Planned instructions and released work instructions are stored separately.
-- Furnace tracking is separate from material records.
-- A mother material is the plate before cutting; individual plate materials are its cut pieces.
-- In the simulated process, a completed mother material produces one to three pieces.
-- Cutting and finishing instructions have their own table.
-- Operation history stores event IDs, material IDs, process codes, start times and completion times.
-- Repeated inspections and heat treatments remain separate history rows.
-- Rolling completion comes from the RL operation in history.
-- The material's latest-operation-completed time continues to update after rolling, so it cannot be used as a general rolling-completion time.
-- This distinction follows the source description of `PLT_AC_OP_END_OP_DT` as the final actual process work time.
-- Lot charging and individual material charging have separate times; the default material timeline excludes lot-level events.
+- Typed `<object>_activity` tables store `event_id`, parent PK/FK, `activity`, actual `occurred_at` and `outcome`.
+- `lifecycle_case_link` is an explicitly validated auxiliary index relating a recorded event to each permitted case. It is not a business object.
+- Full ES queries union original milestone sources and new action histories. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
+- Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
+- [Detailed activity design](docs/object_activity_design.md)
+- [Event-log case scopes and counts](docs/object_event_logs.md)
+- [Data dictionary](docs/data_dictionary.md)
+- [Schema overview](docs/schema_overview.md)
+- [Editable draw.io](docs/schema.drawio)
+- [Validation report](validation_report.json)
 
-## Assumptions added for simulation
-
-- Process codes RL/CO/LE/SC/HT/IF/IP and their meanings are specified for this dataset.
-- Mother-to-piece relationships, declared keys, link columns, durations and operation order are simulation assumptions.
-- These assumptions are not presented as verified rules of the source company.
-- The data dictionary uses a custom practical format; ISO/IEC 11179 compliance is not claimed.
-- SchemaAgent's design stages informed the documentation, but PlateFlow does not reuse an RSchema requirement record.
-
-## Questions and expected results
-
-- Sixteen English questions are supplied: eight original questions and eight added object/record-view questions.
-- V01/V02, V03/V04 and V05/V06 pair direct requests with paraphrases.
-- V07 selects cutting and subsequent piece-inspection events.
-- V08 is unsupported because upstream casting times are absent.
-- Actual event logs exclude planned schedules and technical database timestamps.
-- Each mother-material timeline includes its own events and its cut pieces' events, each exactly once.
-- Joining all mother events directly to all pieces would duplicate upstream events.
-- An operation-history material ID can identify either a mother material or a piece.
-- An insert trigger and a separate missing-reference check validate those two ID sets; there is no misleading single-table foreign key.
-- Expected logs are selected from simulated business history.
-- Expected extraction specifications generate SQL using `UNION ALL`; the seven original and eight added answerable questions match their expected logs exactly.
-- Logs are ordinary CSV timelines, not OCEL files.
-- Cases with no selected events are listed by the separate case-population query and have no event row in the CSV.
-
-## Additional case choices
-
-- Added questions OPV01–OPV08 cover slabs, rolling plans, rolling instructions, mother materials, furnace tracking records, cutting instructions, cut pieces and operation records.
-- Slab timelines include recorded events of their derived mother material and pieces; this does not create missing casting events.
-- Piece timelines include operations recorded on that piece and dimensional inspection; upstream mother events are not copied to every piece.
-- Instruction timelines include actual release events, and plan timelines include their linked instruction releases; planned reheating times remain schedules.
-- The operation-code table defines activity meanings and is not a population of business objects.
-
-## Rebuild and evaluation
-
-- Run `python build.py` using Python 3.10 or later; no external package is needed.
-- Rebuilding replaces generated DB and expected-result files.
-- Provide only `input/` to the model.
-- The task scope catalog defines mother-material cases, activity names and the default timeline scope.
-- Keep generation code, design files, expected answers in `private/`, and validation reports outside the model's context.
-- No real production rows or distributions fitted to production data are included.
-- The dataset is a selected synthetic example, not a replica of the complete enterprise database.
-- The extraction specification uses a dataset-specific format; compatibility with the existing NL2EventLog implementation has not been tested.
-- Consistency checks do not measure model accuracy.
+![Schema](docs/schema.png)
 
 ## Schema and documentation
 

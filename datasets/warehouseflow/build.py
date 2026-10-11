@@ -17,11 +17,13 @@ DESC={"warehouse_number":"Warehouse identity","address":"Warehouse postal addres
 TD={"warehouse":"Warehouse master","goods":"Goods master","loader":"Loading/unloading worker master","transaction_record":"Inbound/outbound task header, one business occurrence per row","goods_transaction_detail":"Goods lines per transaction; composite key prevents repeated goods within one task","loader_transaction":"Worker assignment bridge; multiple workers may share one task"}
 def canonical(n):return NAMES[n.casefold()]
 def compile_es(es):
+ if es.get("compiled_sql"):return es["compiled_sql"]
  parts=[]
  for s in es["sources"]:
   parts.append("SELECT 'TX:' || t.transaction_id event_id, t.warehouse_number case_id, '"+s["activity"]+"' activity, t.occurred_at timestamp FROM transaction_record t WHERE t.transaction_type='"+s["value"]+"'")
  return "SELECT * FROM ("+" UNION ALL ".join(parts)+") ORDER BY case_id,timestamp,event_id;"
 def main():
+ (P/"private/lifecycle_links.json").unlink(missing_ok=True)
  original=json.loads((P/"source/rschema_original.json").read_text())
  tables=[];changes=[]
  for name,t in original["answer"].items():
@@ -116,5 +118,5 @@ def main():
  assert con.execute("SELECT COUNT(*) FROM transaction_record t WHERE NOT EXISTS(SELECT 1 FROM goods_transaction_detail d WHERE d.transaction_id=t.transaction_id) OR NOT EXISTS(SELECT 1 FROM loader_transaction l WHERE l.transaction_id=t.transaction_id)").fetchone()[0]==0
  fanout=con.execute("SELECT COUNT(*) FROM transaction_record t JOIN goods_transaction_detail d USING(transaction_id) JOIN loader_transaction l USING(transaction_id)").fetchone()[0]
  report=dict(seed=20261014,source_record_id=original["id"],original_tables_retained="6/6",original_attributes_retained=str(sum(len(t["Attributes"]) for t in original["answer"].values()))+"/"+str(sum(len(t["columns"]) for t in tables)),original_fk_relationships_retained="5/5",warehouses=4,events=len(history),activity_counts=dict(Counter(e["activity"] for e in history)),table_rows={t["table"]:con.execute("SELECT COUNT(*) FROM "+t["table"]).fetchone()[0] for t in tables},naive_detail_worker_join_rows=fanout,correct_event_rows=80,peak_inventory_units=dict(peak),questions=results,checks=dict(gold_sql_exact_equality="pass",foreign_keys="pass",source_pk_fk_structure="pass",stock_capacity="pass",task_detail_worker_coverage="pass"),limitations=["Original schema records two instant task types; no approval or order lifecycle.","Warehouse cases group independent tasks, not one shipment lifecycle.","Codes, SQL types and timestamp convention are adaptations.","Dataset-specific ES; no model accuracy measured.","No held-out generalization claim."])
- js("validation_report.json",report);con.close();from object_views import extend_dataset;extend_dataset(P);report=json.loads((P/"validation_report.json").read_text());print(json.dumps(report,indent=2))
+ js("validation_report.json",report);con.close();from object_views import extend_dataset;extend_dataset(P);from lifecycle import extend;extend(P);extend_dataset(P);report=json.loads((P/"validation_report.json").read_text());print(json.dumps(report,indent=2))
 if __name__=="__main__":main()

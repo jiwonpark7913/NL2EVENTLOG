@@ -1,62 +1,45 @@
-# WarehouseFlow — warehouse receiving and dispatching
+# WarehouseFlow
 
-- This English-language synthetic dataset uses an actual SchemaAgent/RSchema requirement and relational schema.
-- It records goods arriving at and leaving warehouses.
-- All six source tables, 17 columns, primary keys and five foreign-key relationships are retained.
-- The dataset adds no tables or columns.
+- **Situation:** Goods enter a warehouse and complete inspection and putaway, or leave through approval, picking, packing and dispatch. Goods and workers are linked to each transaction.
+- **Source:** One preserved RSchema warehouse requirement and logical schema. Original source columns and keys are preserved.
+- **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
+- **Database:** 8 tables; 394 distinct recorded business events.
+- **Gold:** 12 answerable question-specific CSV logs out of 13 questions. Paraphrase pairs can share the same expected content.
+- **Execution:** Run `python datasets/warehouseflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
-## Source and changes
+## Objects, activities and situations
 
-- Source repository: [hnuGraph/LLM4DBdesign](https://github.com/hnuGraph/LLM4DBdesign).
-- Source record: `67552f0a13602ec03b41a78e`, line 3 of `datasets/RSchema/annotation.jsonl`.
-- The exact source commit and record hash are listed in `source/provenance.json`.
-- `source/rschema_original.json` preserves the original requirement and schema.
-- English table and column names are normalized to snake_case.
-- Inconsistent capital letters in the original key names are resolved without changing their relationships.
-- SQLite types, required values, IN/OUT code meanings, UTC completion times and stock rules are added simulation assumptions.
-- The conceptual model is derived locally from the source schema; no original conceptual diagram was provided.
-- The SchemaAgent implementation is not run to generate this database.
+| Object / case | Activity types in its log | Situation / scope | Gold CSV |
+|---|---|---|---|
+| warehouse | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this warehouse. | [CSV](private/gold_logs/OW01.csv) |
+| goods | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this goods. | [CSV](private/gold_logs/OW02.csv) |
+| loader | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this worker. | [CSV](private/gold_logs/OW03.csv) |
+| transaction_record | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this warehouse transaction. | [CSV](private/gold_logs/OW04.csv) |
+| goods_transaction_detail | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this goods transaction line. | [CSV](private/gold_logs/OW05.csv) |
+| loader_transaction | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this worker transaction assignment. | [CSV](private/gold_logs/OW06.csv) |
 
-## Tables and events
+- Transaction/detail cases group the same warehouse job through its receiving or dispatch stages.
+- Atomic grading and operation records are auxiliary cases; a single occurrence is not expanded into an invented lifecycle.
+- Master cases can aggregate unrelated jobs. Multiple activity types do not imply one causal process across all rows.
+- Conditional revision branches and incomplete histories are intentional. Repeated activity occurrences keep distinct event IDs.
+- Actual activity times are separate from plans, schedules and technical creation/update times.
+- Case population includes objects with no selected events; those cases have no CSV rows.
+- These are case-based CSV logs, not OCEL.
 
-- `warehouse`, `goods` and `loader` store basic information about warehouses, goods and workers.
-- `transaction_record` stores one receiving or dispatching task per row.
-- `goods_transaction_detail` records which goods and quantities belong to each task.
-- `loader_transaction` records which workers participate in each task.
-- Each task is one event, even when multiple goods and workers are involved.
-- The dataset has 4 warehouses and 80 business events: 45 goods-received events and 35 goods-dispatched events.
-- The original questions use warehouses as cases; added questions also use goods, workers, transaction records and keyed detail/assignment records.
-- The source does not link receiving and dispatching tasks into individual shipment histories.
-- Joining both goods and worker details to a task produces 289 rows for 80 tasks in this example; those rows must not be counted as 289 events.
+## Database, extraction and validation
 
-## Questions and expected results
+- Typed `<object>_activity` tables store `event_id`, parent PK/FK, `activity`, actual `occurred_at` and `outcome`.
+- `lifecycle_case_link` is an explicitly validated auxiliary index relating a recorded event to each permitted case. It is not a business object.
+- Full ES queries union original milestone sources and new action histories. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
+- Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
+- [Detailed activity design](docs/object_activity_design.md)
+- [Event-log case scopes and counts](docs/object_event_logs.md)
+- [Data dictionary](docs/data_dictionary.md)
+- [Schema overview](docs/schema_overview.md)
+- [Editable draw.io](docs/schema.drawio)
+- [Validation report](validation_report.json)
 
-- Thirteen English questions are supplied: seven original warehouse questions and six object/record-view questions.
-- R01/R02 select receiving, R03/R04 select dispatching, and R05/R06 select the complete recorded warehouse timeline.
-- Each pair uses direct wording and a paraphrase of the same request.
-- R07 asks for task start and completion events; it is unsupported because only completion times are recorded.
-- Expected logs are selected from the simulated task history.
-- Expected extraction specifications identify the corresponding database tables and columns.
-- The six original answerable questions and six new object-view questions produce SQL results identical to their expected logs.
-- SQL checks confirm dataset consistency; they do not measure model accuracy.
-
-## Rebuild and evaluation
-
-- Run `python build.py` using Python 3.10 or later; no external package is needed.
-- Rebuilding replaces generated DB and expected-result files.
-- The included source record is enough to rebuild; downloading the full RSchema dataset is unnecessary.
-- Provide only `input/` to the model.
-- The task scope catalog supplies warehouse cases, activity names and a default rule for full-timeline requests.
-- Keep source answers, design files, generation code, expected answers in `private/`, and the validation report outside the model's context.
-- Event logs are ordinary CSV timelines; they are not OCEL files.
-- The extraction specification uses a dataset-specific format; compatibility with the existing NL2EventLog implementation has not been tested.
-
-## Limits
-
-- The rows are simulated; they are not real warehouse records.
-- Added code meanings apply to this dataset and do not establish meanings for other RSchema examples.
-- The data dictionary uses a custom practical format; ISO/IEC 11179 compliance is not claimed.
-- Task starts, durations, approvals and purchase orders are not recorded or invented.
+![Schema](docs/schema.png)
 
 ## Schema and documentation
 

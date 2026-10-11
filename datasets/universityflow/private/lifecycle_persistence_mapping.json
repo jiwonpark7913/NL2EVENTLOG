@@ -1,0 +1,101 @@
+[
+  {
+    "table": "registration_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "registration",
+    "object_key": [
+      "student_id",
+      "course_id"
+    ]
+  },
+  {
+    "table": "degree_examination_result_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "degree_examination_result",
+    "object_key": [
+      "result_id"
+    ]
+  },
+  {
+    "table": "assignment_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "assignment",
+    "object_key": [
+      "assignment_id"
+    ]
+  },
+  {
+    "table": "simulation_module_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "simulation_module",
+    "object_key": [
+      "module_id"
+    ]
+  },
+  {
+    "table": "student_simulation_experiment_result_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "student_simulation_experiment_result",
+    "object_key": [
+      "student_id",
+      "module_id",
+      "simulation_date"
+    ]
+  },
+  {
+    "table": "thesis_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "thesis",
+    "object_key": [
+      "thesis_id"
+    ]
+  },
+  {
+    "table": "course_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "course",
+    "object_key": [
+      "course_id"
+    ]
+  },
+  {
+    "table": "task_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "task",
+    "object_key": [
+      "task_id"
+    ]
+  }
+]

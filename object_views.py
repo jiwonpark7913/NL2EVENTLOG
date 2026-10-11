@@ -17,7 +17,9 @@ def extend_dataset(p):
  # Reuse each dataset's SQL compiler without running its generation entry point.
  import importlib.util
  spec=importlib.util.spec_from_file_location(name+'_builder',p/'build.py');builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
- base_sql=builder.compile_es(base).strip().rstrip(';').split(' ORDER BY case_id,timestamp,event_id')[0]
+ base_sql=(base['compiled_sql'] if 'compiled_sql' in base else builder.compile_es(base)).strip().rstrip(';').split(' ORDER BY case_id,timestamp,event_id')[0]
+ original_hist=[e for e in hist if not e['event_id'].startswith('LC:')]
+ if 'original_event_specification' in base:base_sql=builder.compile_es(base['original_event_specification']).strip().rstrip(';').split(' ORDER BY case_id,timestamp,event_id')[0]
  views=[]
  def add(table,concept,scope,mapping_sql,links,kind='business_object'):
   mapping=defaultdict(set)
@@ -35,7 +37,7 @@ def extend_dataset(p):
   add('goods_transaction_detail','Goods transaction line','The transaction event linked to this composite-key goods line.',"SELECT 'TX:' || transaction_id event_id, goods_id || ':' || transaction_id case_id FROM goods_transaction_detail",[('TX:'+r['transaction_id'],r['goods_id']+':'+r['transaction_id']) for r in rows['goods_transaction_detail']],'association_record')
   add('loader_transaction','Worker transaction assignment','The transaction event linked to this composite-key worker assignment.',"SELECT 'TX:' || transaction_id event_id, loader_id || ':' || transaction_id case_id FROM loader_transaction",[('TX:'+r['transaction_id'],r['loader_id']+':'+r['transaction_id']) for r in rows['loader_transaction']],'association_record')
  elif name=='universityflow':
-  add('student','Student','All five recorded academic activity types linked to this student.',"SELECT event_id, case_id FROM ("+base_sql+")",[(e['event_id'],e['case_id']) for e in hist])
+  add('student','Student','All five recorded academic activity types linked to this student.',"SELECT event_id, case_id FROM ("+base_sql+")",[(e['event_id'],e['case_id']) for e in original_hist])
   regs=rows['registration'];exams=rows['degree_examination_result'];grades=rows['assignment_grading'];sims=rows['student_simulation_experiment_result'];theses=rows['thesis']
   regid=lambda r:'REG:'+r['student_id']+':'+r['course_id'];gradeid=lambda r:'GRADE:'+r['assignment_id']+':'+r['instructor_id']+':'+r['grading_time'];simid=lambda r:'SIM:'+r['student_id']+':'+r['module_id']+':'+r['simulation_date']
   add('course','Course','Successful registrations for this course offering. Course schedules and text-only instructor labels do not add events.',"SELECT 'REG:' || student_id || ':' || course_id event_id, course_id case_id FROM registration",[(regid(r),r['course_id']) for r in regs])
@@ -50,10 +52,10 @@ def extend_dataset(p):
  elif name=='plateflow':
   materials=rows['as_rolled_material'];plans={r['plan_id']:r for r in rows['planned_rolling_instruction']};instructions={r['instruction_id']:r for r in rows['rolling_instruction']}
   by_m={r['material_id']:r for r in materials}
-  add('slab_material','Slab','All recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.',"SELECT e.event_id, m.slab_id case_id FROM ("+base_sql+") e JOIN as_rolled_material m ON m.material_id=e.case_id",[(e['event_id'],by_m[e['case_id']]['slab_id']) for e in hist])
+  add('slab_material','Slab','All recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.',"SELECT e.event_id, m.slab_id case_id FROM ("+base_sql+") e JOIN as_rolled_material m ON m.material_id=e.case_id",[(e['event_id'],by_m[e['case_id']]['slab_id']) for e in original_hist])
   add('planned_rolling_instruction','Rolling plan','The actual release of the rolling instruction linked to this plan; planned reheating times are not execution events.',"SELECT 'RI:' || instruction_id event_id, plan_id case_id FROM rolling_instruction",[('RI:'+r['instruction_id'],r['plan_id']) for r in instructions.values()])
   add('rolling_instruction','Rolling instruction','The actual release event for this rolling instruction.',"SELECT 'RI:' || instruction_id event_id, instruction_id case_id FROM rolling_instruction",[('RI:'+r['instruction_id'],r['instruction_id']) for r in instructions.values()])
-  add('as_rolled_material','Mother material','All recorded mother-material events and its descendant-piece events, each occurrence once.',"SELECT event_id, case_id FROM ("+base_sql+")",[(e['event_id'],e['case_id']) for e in hist])
+  add('as_rolled_material','Mother material','All recorded mother-material events and its descendant-piece events, each occurrence once.',"SELECT event_id, case_id FROM ("+base_sql+")",[(e['event_id'],e['case_id']) for e in original_hist])
   add('furnace_charge_tracking','Furnace tracking record','The recorded yard-instruction receipt for this tracking record; lot-level charging events remain outside the material-event set.',"SELECT 'YD:' || tracking_id event_id, tracking_id case_id FROM furnace_charge_tracking",[('YD:'+r['tracking_id'],r['tracking_id']) for r in rows['furnace_charge_tracking']],'tracking_record')
   add('cutting_finishing_instruction','Cutting instruction','The actual release event for this cutting/finishing instruction.',"SELECT 'CI:' || instruction_id event_id, instruction_id case_id FROM cutting_finishing_instruction",[('CI:'+r['instruction_id'],r['instruction_id']) for r in rows['cutting_finishing_instruction']])
   pieces={r['plate_material_id']:r for r in rows['plate_material']};ops=rows['material_operation_history']
@@ -61,6 +63,20 @@ def extend_dataset(p):
   links=[('OP:'+r['transaction_id'],r['material_id']) for r in ops if r['material_id'] in pieces]+[('DIM:'+r['plate_material_id'],r['plate_material_id']) for r in pieces.values() if r['dimension_inspected_at']]
   add('plate_material','Cut plate piece','Only operations recorded on this piece and its dimensional inspection. Upstream mother events are not copied to each piece.',piece_sql,links)
   add('material_operation_history','Material operation record','The operation-completion event represented by this transaction ID, preserving its process-code meaning.',"SELECT 'OP:' || transaction_id event_id, transaction_id case_id FROM material_operation_history",[('OP:'+r['transaction_id'],r['transaction_id']) for r in ops],'event_record')
+ if (p/'private/lifecycle_links.json').exists():
+  original=base['original_event_specification'];base_sql=builder.compile_es(original).strip().rstrip(';').split(' ORDER BY case_id,timestamp,event_id')[0]
+  extra=' UNION ALL '.join('SELECT event_id, NULL case_id, activity, occurred_at timestamp FROM '+x['table'] for x in base['activity_sources'])
+  base_sql += ' UNION ALL '+extra
+ if (p/'private/lifecycle_links.json').exists():
+  added=json.loads((p/'private/lifecycle_links.json').read_text())
+  for v in views:
+   links=added.get(v['table'],{})
+   for eid,ids in links.items():v['mapping'][eid].update(ids)
+   if links:
+    v['mapping_sql'] += " UNION ALL SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='"+v['table']+"'"
+    v['scope_rule']='Original recorded actions and authored lifecycle actions explicitly linked to this '+v['case_concept'].lower()+'.'
+  if name=='universityflow':
+   add('task','Course-design task','Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.',"SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='task'",[(eid,oid) for eid,ids in added.get('task',{}).items() for oid in ids])
  catalog=json.loads((p/'input/task_scope_catalog.json').read_text());report=json.loads((p/'validation_report.json').read_text());report['questions']=[q for q in report['questions'] if not q['question_id'].startswith(prefix)];results=[];coverage=[]
  for k,v in enumerate(views,1):
   qid=prefix+f'{k:02}';sql='SELECT e.event_id, m.case_id, e.activity, e.timestamp FROM ('+base_sql+') e JOIN ('+v['mapping_sql']+') m ON m.event_id=e.event_id ORDER BY m.case_id,e.timestamp,e.event_id;'
@@ -75,10 +91,12 @@ def extend_dataset(p):
   active={e['case_id'] for e in expected};entry=dict(question_id=qid,case_table=v['table'],case_concept=v['case_concept'],kind=v['kind'],status='answerable',scope_rule=v['scope_rule'],case_count=len(v['case_ids']),cases_with_events=len(active),cases_without_events=len(set(v['case_ids'])-active),event_rows=len(expected),activities=acts,log_path=f'private/gold_logs/{qid}.csv')
   coverage.append(entry);results.append(dict(question_id=qid,status='pass',event_count=len(expected)));report['questions'].append(results[-1])
  unavailable=[]
- if name=='universityflow':
+ if name=='universityflow' and not (p/'private/lifecycle_links.json').exists():
   qid='OU11';reason='Task dates are scheduled periods, not actual student actions. No declared task-to-student, task-to-experiment or timestamped task-assignment relationship exists.'
   questions.append(dict(question_id=qid,text='Extract actual task-execution events for each course-design task.',pair_of=None));gold.append(dict(question_id=qid,category='object_view',answerability='unsupported',reason=reason,process_view=dict(case_concept='Course-design task',case_table='task'),es=None));report['questions'].append(dict(question_id=qid,status='unsupported_by_design'));unavailable.append(dict(case_table='task',case_concept='Course-design task',status='unsupported',reason=reason,question_id=qid))
  if name=='plateflow':unavailable.append(dict(case_table='operation_code',status='reference_table',reason='Operation codes define activity meanings. They are not business-object instances or cases.'))
+ for table in rows:
+  if table.endswith('_activity') or table=='lifecycle_case_link':unavailable.append(dict(case_table=table,status='supporting_history',reason='Activity storage/index for its parent-object log; not an independent business case.'))
  catalog['object_views']=[{k:v for k,v in c.items() if k not in ['event_rows','log_path','cases_with_events','cases_without_events']} for c in coverage];catalog['unavailable_object_views']=unavailable
  report['object_view_checks']=dict(sql_equals_canonical_events='pass',unique_event_per_case='pass',case_population_coverage='pass');report['object_view_coverage']=coverage;report['unavailable_object_views']=unavailable;report['total_questions']=len(questions);report['answerable_questions']=sum(g['answerability']=='answerable' for g in gold)
  writejl(p/'input/questions.jsonl',questions);writejl(p/'private/gold.jsonl',gold);writejson(p/'input/task_scope_catalog.json',catalog);writejson(p/'validation_report.json',report);writejson(p/'private/object_event_links.json',{v['table']:{eid:sorted(ids) for eid,ids in v['mapping'].items()} for v in views})

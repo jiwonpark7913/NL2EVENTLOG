@@ -1,14 +1,115 @@
 {
-  "entities": [
-    "Warehouse",
-    "Goods",
-    "Loader",
-    "Transaction"
+  "original_source_design": {
+    "entities": [
+      "Warehouse",
+      "Goods",
+      "Loader",
+      "Transaction"
+    ],
+    "relations": [
+      "Warehouse 1:N Transaction",
+      "Transaction M:N Goods through composite-key details",
+      "Transaction M:N Loader through composite-key assignments"
+    ],
+    "status": "Derived from original logical schema; not supplied as an original conceptual artifact"
+  },
+  "authored_lifecycle_extensions": [
+    {
+      "object_table": "transaction_record",
+      "activity_table": "transaction_record_activity",
+      "activities": [
+        "Receiving Requested",
+        "Receiving Scheduled",
+        "Receiving Inspection Completed",
+        "Goods Put Away",
+        "Dispatch Requested",
+        "Dispatch Approved",
+        "Goods Picked",
+        "Goods Packed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
   ],
-  "relations": [
-    "Warehouse 1:N Transaction",
-    "Transaction M:N Goods through composite-key details",
-    "Transaction M:N Loader through composite-key assignments"
+  "added_tables": [
+    {
+      "table": "transaction_record_activity",
+      "definition": "Authored actual-action history for transaction_record",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to transaction_record.transaction_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    }
   ],
-  "status": "Derived from original logical schema; not supplied as an original conceptual artifact"
+  "final_table_count": 8
 }

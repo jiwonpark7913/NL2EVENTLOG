@@ -1,81 +1,395 @@
 event_id,case_id,activity,timestamp
+LC:transaction_record:T001:1,T001,Receiving Requested,2026-03-31T21:00:00Z
+LC:transaction_record:T001:2,T001,Receiving Scheduled,2026-03-31T22:00:00Z
 TX:T001,T001,Goods Received,2026-04-01T01:00:00Z
+LC:transaction_record:T001:3,T001,Receiving Inspection Completed,2026-04-01T01:30:00Z
+LC:transaction_record:T002:1,T002,Receiving Requested,2026-03-31T22:00:00Z
+LC:transaction_record:T002:2,T002,Receiving Scheduled,2026-03-31T23:00:00Z
 TX:T002,T002,Goods Received,2026-04-01T02:00:00Z
+LC:transaction_record:T002:3,T002,Receiving Inspection Completed,2026-04-01T02:30:00Z
+LC:transaction_record:T002:4,T002,Goods Put Away,2026-04-01T03:00:00Z
+LC:transaction_record:T003:1,T003,Receiving Requested,2026-03-31T23:00:00Z
+LC:transaction_record:T003:2,T003,Receiving Scheduled,2026-04-01T00:00:00Z
 TX:T003,T003,Goods Received,2026-04-01T03:00:00Z
+LC:transaction_record:T003:3,T003,Receiving Inspection Completed,2026-04-01T03:30:00Z
+LC:transaction_record:T003:4,T003,Goods Put Away,2026-04-01T04:00:00Z
+LC:transaction_record:T004:1,T004,Receiving Requested,2026-04-01T00:00:00Z
+LC:transaction_record:T004:2,T004,Receiving Scheduled,2026-04-01T01:00:00Z
 TX:T004,T004,Goods Received,2026-04-01T04:00:00Z
+LC:transaction_record:T004:3,T004,Receiving Inspection Completed,2026-04-01T04:30:00Z
+LC:transaction_record:T004:4,T004,Goods Put Away,2026-04-01T05:00:00Z
+LC:transaction_record:T005:1,T005,Receiving Requested,2026-04-01T01:00:00Z
+LC:transaction_record:T005:2,T005,Receiving Scheduled,2026-04-01T02:00:00Z
 TX:T005,T005,Goods Received,2026-04-01T05:00:00Z
+LC:transaction_record:T005:3,T005,Receiving Inspection Completed,2026-04-01T05:30:00Z
+LC:transaction_record:T005:4,T005,Goods Put Away,2026-04-01T06:00:00Z
+LC:transaction_record:T006:1,T006,Dispatch Requested,2026-04-01T02:00:00Z
+LC:transaction_record:T006:2,T006,Dispatch Approved,2026-04-01T03:00:00Z
+LC:transaction_record:T006:3,T006,Goods Picked,2026-04-01T04:00:00Z
+LC:transaction_record:T006:4,T006,Goods Packed,2026-04-01T05:00:00Z
 TX:T006,T006,Goods Dispatched,2026-04-01T06:00:00Z
+LC:transaction_record:T007:1,T007,Dispatch Requested,2026-04-01T03:00:00Z
+LC:transaction_record:T007:2,T007,Dispatch Approved,2026-04-01T04:00:00Z
+LC:transaction_record:T007:3,T007,Goods Picked,2026-04-01T05:00:00Z
+LC:transaction_record:T007:4,T007,Goods Packed,2026-04-01T06:00:00Z
 TX:T007,T007,Goods Dispatched,2026-04-01T07:00:00Z
+LC:transaction_record:T008:1,T008,Receiving Requested,2026-04-01T04:00:00Z
+LC:transaction_record:T008:2,T008,Receiving Scheduled,2026-04-01T05:00:00Z
 TX:T008,T008,Goods Received,2026-04-01T08:00:00Z
+LC:transaction_record:T008:3,T008,Receiving Inspection Completed,2026-04-01T08:30:00Z
+LC:transaction_record:T009:1,T009,Receiving Requested,2026-04-01T05:00:00Z
+LC:transaction_record:T009:2,T009,Receiving Scheduled,2026-04-01T06:00:00Z
 TX:T009,T009,Goods Received,2026-04-01T09:00:00Z
+LC:transaction_record:T009:3,T009,Receiving Inspection Completed,2026-04-01T09:30:00Z
+LC:transaction_record:T009:4,T009,Goods Put Away,2026-04-01T10:00:00Z
+LC:transaction_record:T010:1,T010,Receiving Requested,2026-04-01T06:00:00Z
+LC:transaction_record:T010:2,T010,Receiving Scheduled,2026-04-01T07:00:00Z
 TX:T010,T010,Goods Received,2026-04-01T10:00:00Z
+LC:transaction_record:T010:3,T010,Receiving Inspection Completed,2026-04-01T10:30:00Z
+LC:transaction_record:T010:4,T010,Goods Put Away,2026-04-01T11:00:00Z
+LC:transaction_record:T011:1,T011,Receiving Requested,2026-04-01T07:00:00Z
+LC:transaction_record:T011:2,T011,Receiving Scheduled,2026-04-01T08:00:00Z
 TX:T011,T011,Goods Received,2026-04-01T11:00:00Z
+LC:transaction_record:T011:3,T011,Receiving Inspection Completed,2026-04-01T11:30:00Z
+LC:transaction_record:T011:4,T011,Goods Put Away,2026-04-01T12:00:00Z
+LC:transaction_record:T012:1,T012,Receiving Requested,2026-04-01T08:00:00Z
+LC:transaction_record:T012:2,T012,Receiving Scheduled,2026-04-01T09:00:00Z
 TX:T012,T012,Goods Received,2026-04-01T12:00:00Z
+LC:transaction_record:T012:3,T012,Receiving Inspection Completed,2026-04-01T12:30:00Z
+LC:transaction_record:T012:4,T012,Goods Put Away,2026-04-01T13:00:00Z
+LC:transaction_record:T013:1,T013,Dispatch Requested,2026-04-01T09:00:00Z
+LC:transaction_record:T013:2,T013,Dispatch Approved,2026-04-01T10:00:00Z
+LC:transaction_record:T013:3,T013,Goods Picked,2026-04-01T11:00:00Z
+LC:transaction_record:T013:4,T013,Goods Packed,2026-04-01T12:00:00Z
 TX:T013,T013,Goods Dispatched,2026-04-01T13:00:00Z
+LC:transaction_record:T014:1,T014,Dispatch Requested,2026-04-01T10:00:00Z
+LC:transaction_record:T014:2,T014,Dispatch Approved,2026-04-01T11:00:00Z
+LC:transaction_record:T014:3,T014,Goods Picked,2026-04-01T12:00:00Z
+LC:transaction_record:T014:4,T014,Goods Packed,2026-04-01T13:00:00Z
 TX:T014,T014,Goods Dispatched,2026-04-01T14:00:00Z
+LC:transaction_record:T015:1,T015,Dispatch Requested,2026-04-01T11:00:00Z
+LC:transaction_record:T015:2,T015,Dispatch Approved,2026-04-01T12:00:00Z
+LC:transaction_record:T015:3,T015,Goods Picked,2026-04-01T13:00:00Z
+LC:transaction_record:T015:4,T015,Goods Packed,2026-04-01T14:00:00Z
 TX:T015,T015,Goods Dispatched,2026-04-01T15:00:00Z
+LC:transaction_record:T016:1,T016,Dispatch Requested,2026-04-01T12:00:00Z
+LC:transaction_record:T016:2,T016,Dispatch Approved,2026-04-01T13:00:00Z
+LC:transaction_record:T016:3,T016,Goods Picked,2026-04-01T14:00:00Z
+LC:transaction_record:T016:4,T016,Goods Packed,2026-04-01T15:00:00Z
 TX:T016,T016,Goods Dispatched,2026-04-01T16:00:00Z
+LC:transaction_record:T017:1,T017,Receiving Requested,2026-04-01T13:00:00Z
+LC:transaction_record:T017:2,T017,Receiving Scheduled,2026-04-01T14:00:00Z
 TX:T017,T017,Goods Received,2026-04-01T17:00:00Z
+LC:transaction_record:T017:3,T017,Receiving Inspection Completed,2026-04-01T17:30:00Z
+LC:transaction_record:T017:4,T017,Goods Put Away,2026-04-01T18:00:00Z
+LC:transaction_record:T018:1,T018,Receiving Requested,2026-04-01T14:00:00Z
+LC:transaction_record:T018:2,T018,Receiving Scheduled,2026-04-01T15:00:00Z
 TX:T018,T018,Goods Received,2026-04-01T18:00:00Z
+LC:transaction_record:T018:3,T018,Receiving Inspection Completed,2026-04-01T18:30:00Z
+LC:transaction_record:T018:4,T018,Goods Put Away,2026-04-01T19:00:00Z
+LC:transaction_record:T019:1,T019,Receiving Requested,2026-04-01T15:00:00Z
+LC:transaction_record:T019:2,T019,Receiving Scheduled,2026-04-01T16:00:00Z
 TX:T019,T019,Goods Received,2026-04-01T19:00:00Z
+LC:transaction_record:T019:3,T019,Receiving Inspection Completed,2026-04-01T19:30:00Z
+LC:transaction_record:T019:4,T019,Goods Put Away,2026-04-01T20:00:00Z
+LC:transaction_record:T020:1,T020,Receiving Requested,2026-04-01T16:00:00Z
+LC:transaction_record:T020:2,T020,Receiving Scheduled,2026-04-01T17:00:00Z
 TX:T020,T020,Goods Received,2026-04-01T20:00:00Z
+LC:transaction_record:T020:3,T020,Receiving Inspection Completed,2026-04-01T20:30:00Z
+LC:transaction_record:T020:4,T020,Goods Put Away,2026-04-01T21:00:00Z
+LC:transaction_record:T021:1,T021,Dispatch Requested,2026-04-01T17:00:00Z
+LC:transaction_record:T021:2,T021,Dispatch Approved,2026-04-01T18:00:00Z
+LC:transaction_record:T021:3,T021,Goods Picked,2026-04-01T19:00:00Z
+LC:transaction_record:T021:4,T021,Goods Packed,2026-04-01T20:00:00Z
 TX:T021,T021,Goods Dispatched,2026-04-01T21:00:00Z
+LC:transaction_record:T022:1,T022,Dispatch Requested,2026-04-01T18:00:00Z
+LC:transaction_record:T022:2,T022,Dispatch Approved,2026-04-01T19:00:00Z
+LC:transaction_record:T022:3,T022,Goods Picked,2026-04-01T20:00:00Z
+LC:transaction_record:T022:4,T022,Goods Packed,2026-04-01T21:00:00Z
 TX:T022,T022,Goods Dispatched,2026-04-01T22:00:00Z
+LC:transaction_record:T023:1,T023,Dispatch Requested,2026-04-01T19:00:00Z
+LC:transaction_record:T023:2,T023,Dispatch Approved,2026-04-01T20:00:00Z
+LC:transaction_record:T023:3,T023,Goods Picked,2026-04-01T21:00:00Z
+LC:transaction_record:T023:4,T023,Goods Packed,2026-04-01T22:00:00Z
 TX:T023,T023,Goods Dispatched,2026-04-01T23:00:00Z
+LC:transaction_record:T024:1,T024,Dispatch Requested,2026-04-01T20:00:00Z
+LC:transaction_record:T024:2,T024,Dispatch Approved,2026-04-01T21:00:00Z
+LC:transaction_record:T024:3,T024,Goods Picked,2026-04-01T22:00:00Z
+LC:transaction_record:T024:4,T024,Goods Packed,2026-04-01T23:00:00Z
 TX:T024,T024,Goods Dispatched,2026-04-02T00:00:00Z
+LC:transaction_record:T025:1,T025,Receiving Requested,2026-04-01T21:00:00Z
+LC:transaction_record:T025:2,T025,Receiving Scheduled,2026-04-01T22:00:00Z
 TX:T025,T025,Goods Received,2026-04-02T01:00:00Z
+LC:transaction_record:T025:3,T025,Receiving Inspection Completed,2026-04-02T01:30:00Z
+LC:transaction_record:T025:4,T025,Goods Put Away,2026-04-02T02:00:00Z
+LC:transaction_record:T026:1,T026,Receiving Requested,2026-04-01T22:00:00Z
+LC:transaction_record:T026:2,T026,Receiving Scheduled,2026-04-01T23:00:00Z
 TX:T026,T026,Goods Received,2026-04-02T02:00:00Z
+LC:transaction_record:T026:3,T026,Receiving Inspection Completed,2026-04-02T02:30:00Z
+LC:transaction_record:T026:4,T026,Goods Put Away,2026-04-02T03:00:00Z
+LC:transaction_record:T027:1,T027,Receiving Requested,2026-04-01T23:00:00Z
+LC:transaction_record:T027:2,T027,Receiving Scheduled,2026-04-02T00:00:00Z
 TX:T027,T027,Goods Received,2026-04-02T03:00:00Z
+LC:transaction_record:T027:3,T027,Receiving Inspection Completed,2026-04-02T03:30:00Z
+LC:transaction_record:T027:4,T027,Goods Put Away,2026-04-02T04:00:00Z
+LC:transaction_record:T028:1,T028,Receiving Requested,2026-04-02T00:00:00Z
+LC:transaction_record:T028:2,T028,Receiving Scheduled,2026-04-02T01:00:00Z
 TX:T028,T028,Goods Received,2026-04-02T04:00:00Z
+LC:transaction_record:T028:3,T028,Receiving Inspection Completed,2026-04-02T04:30:00Z
+LC:transaction_record:T028:4,T028,Goods Put Away,2026-04-02T05:00:00Z
+LC:transaction_record:T029:1,T029,Dispatch Requested,2026-04-02T01:00:00Z
+LC:transaction_record:T029:2,T029,Dispatch Approved,2026-04-02T02:00:00Z
+LC:transaction_record:T029:3,T029,Goods Picked,2026-04-02T03:00:00Z
+LC:transaction_record:T029:4,T029,Goods Packed,2026-04-02T04:00:00Z
 TX:T029,T029,Goods Dispatched,2026-04-02T05:00:00Z
+LC:transaction_record:T030:1,T030,Dispatch Requested,2026-04-02T02:00:00Z
+LC:transaction_record:T030:2,T030,Dispatch Approved,2026-04-02T03:00:00Z
+LC:transaction_record:T030:3,T030,Goods Picked,2026-04-02T04:00:00Z
+LC:transaction_record:T030:4,T030,Goods Packed,2026-04-02T05:00:00Z
 TX:T030,T030,Goods Dispatched,2026-04-02T06:00:00Z
+LC:transaction_record:T031:1,T031,Dispatch Requested,2026-04-02T03:00:00Z
+LC:transaction_record:T031:2,T031,Dispatch Approved,2026-04-02T04:00:00Z
+LC:transaction_record:T031:3,T031,Goods Picked,2026-04-02T05:00:00Z
+LC:transaction_record:T031:4,T031,Goods Packed,2026-04-02T06:00:00Z
 TX:T031,T031,Goods Dispatched,2026-04-02T07:00:00Z
+LC:transaction_record:T032:1,T032,Dispatch Requested,2026-04-02T04:00:00Z
+LC:transaction_record:T032:2,T032,Dispatch Approved,2026-04-02T05:00:00Z
+LC:transaction_record:T032:3,T032,Goods Picked,2026-04-02T06:00:00Z
+LC:transaction_record:T032:4,T032,Goods Packed,2026-04-02T07:00:00Z
 TX:T032,T032,Goods Dispatched,2026-04-02T08:00:00Z
+LC:transaction_record:T033:1,T033,Receiving Requested,2026-04-02T05:00:00Z
+LC:transaction_record:T033:2,T033,Receiving Scheduled,2026-04-02T06:00:00Z
 TX:T033,T033,Goods Received,2026-04-02T09:00:00Z
+LC:transaction_record:T033:3,T033,Receiving Inspection Completed,2026-04-02T09:30:00Z
+LC:transaction_record:T033:4,T033,Goods Put Away,2026-04-02T10:00:00Z
+LC:transaction_record:T034:1,T034,Receiving Requested,2026-04-02T06:00:00Z
+LC:transaction_record:T034:2,T034,Receiving Scheduled,2026-04-02T07:00:00Z
 TX:T034,T034,Goods Received,2026-04-02T10:00:00Z
+LC:transaction_record:T034:3,T034,Receiving Inspection Completed,2026-04-02T10:30:00Z
+LC:transaction_record:T034:4,T034,Goods Put Away,2026-04-02T11:00:00Z
+LC:transaction_record:T035:1,T035,Receiving Requested,2026-04-02T07:00:00Z
+LC:transaction_record:T035:2,T035,Receiving Scheduled,2026-04-02T08:00:00Z
 TX:T035,T035,Goods Received,2026-04-02T11:00:00Z
+LC:transaction_record:T035:3,T035,Receiving Inspection Completed,2026-04-02T11:30:00Z
+LC:transaction_record:T035:4,T035,Goods Put Away,2026-04-02T12:00:00Z
+LC:transaction_record:T036:1,T036,Receiving Requested,2026-04-02T08:00:00Z
+LC:transaction_record:T036:2,T036,Receiving Scheduled,2026-04-02T09:00:00Z
 TX:T036,T036,Goods Received,2026-04-02T12:00:00Z
+LC:transaction_record:T036:3,T036,Receiving Inspection Completed,2026-04-02T12:30:00Z
+LC:transaction_record:T037:1,T037,Dispatch Requested,2026-04-02T09:00:00Z
+LC:transaction_record:T037:2,T037,Dispatch Approved,2026-04-02T10:00:00Z
+LC:transaction_record:T037:3,T037,Goods Picked,2026-04-02T11:00:00Z
+LC:transaction_record:T037:4,T037,Goods Packed,2026-04-02T12:00:00Z
 TX:T037,T037,Goods Dispatched,2026-04-02T13:00:00Z
+LC:transaction_record:T038:1,T038,Receiving Requested,2026-04-02T10:00:00Z
+LC:transaction_record:T038:2,T038,Receiving Scheduled,2026-04-02T11:00:00Z
 TX:T038,T038,Goods Received,2026-04-02T14:00:00Z
+LC:transaction_record:T038:3,T038,Receiving Inspection Completed,2026-04-02T14:30:00Z
+LC:transaction_record:T038:4,T038,Goods Put Away,2026-04-02T15:00:00Z
+LC:transaction_record:T039:1,T039,Dispatch Requested,2026-04-02T11:00:00Z
+LC:transaction_record:T039:2,T039,Dispatch Approved,2026-04-02T12:00:00Z
+LC:transaction_record:T039:3,T039,Goods Picked,2026-04-02T13:00:00Z
+LC:transaction_record:T039:4,T039,Goods Packed,2026-04-02T14:00:00Z
 TX:T039,T039,Goods Dispatched,2026-04-02T15:00:00Z
+LC:transaction_record:T040:1,T040,Dispatch Requested,2026-04-02T12:00:00Z
+LC:transaction_record:T040:2,T040,Dispatch Approved,2026-04-02T13:00:00Z
+LC:transaction_record:T040:3,T040,Goods Picked,2026-04-02T14:00:00Z
+LC:transaction_record:T040:4,T040,Goods Packed,2026-04-02T15:00:00Z
 TX:T040,T040,Goods Dispatched,2026-04-02T16:00:00Z
+LC:transaction_record:T041:1,T041,Receiving Requested,2026-04-02T13:00:00Z
+LC:transaction_record:T041:2,T041,Receiving Scheduled,2026-04-02T14:00:00Z
 TX:T041,T041,Goods Received,2026-04-02T17:00:00Z
+LC:transaction_record:T041:3,T041,Receiving Inspection Completed,2026-04-02T17:30:00Z
+LC:transaction_record:T041:4,T041,Goods Put Away,2026-04-02T18:00:00Z
+LC:transaction_record:T042:1,T042,Receiving Requested,2026-04-02T14:00:00Z
+LC:transaction_record:T042:2,T042,Receiving Scheduled,2026-04-02T15:00:00Z
 TX:T042,T042,Goods Received,2026-04-02T18:00:00Z
+LC:transaction_record:T042:3,T042,Receiving Inspection Completed,2026-04-02T18:30:00Z
+LC:transaction_record:T042:4,T042,Goods Put Away,2026-04-02T19:00:00Z
+LC:transaction_record:T043:1,T043,Receiving Requested,2026-04-02T15:00:00Z
+LC:transaction_record:T043:2,T043,Receiving Scheduled,2026-04-02T16:00:00Z
 TX:T043,T043,Goods Received,2026-04-02T19:00:00Z
+LC:transaction_record:T043:3,T043,Receiving Inspection Completed,2026-04-02T19:30:00Z
+LC:transaction_record:T044:1,T044,Receiving Requested,2026-04-02T16:00:00Z
+LC:transaction_record:T044:2,T044,Receiving Scheduled,2026-04-02T17:00:00Z
 TX:T044,T044,Goods Received,2026-04-02T20:00:00Z
+LC:transaction_record:T044:3,T044,Receiving Inspection Completed,2026-04-02T20:30:00Z
+LC:transaction_record:T044:4,T044,Goods Put Away,2026-04-02T21:00:00Z
+LC:transaction_record:T045:1,T045,Dispatch Requested,2026-04-02T17:00:00Z
+LC:transaction_record:T045:2,T045,Dispatch Approved,2026-04-02T18:00:00Z
+LC:transaction_record:T045:3,T045,Goods Picked,2026-04-02T19:00:00Z
+LC:transaction_record:T045:4,T045,Goods Packed,2026-04-02T20:00:00Z
 TX:T045,T045,Goods Dispatched,2026-04-02T21:00:00Z
+LC:transaction_record:T046:1,T046,Dispatch Requested,2026-04-02T18:00:00Z
+LC:transaction_record:T046:2,T046,Dispatch Approved,2026-04-02T19:00:00Z
+LC:transaction_record:T046:3,T046,Goods Picked,2026-04-02T20:00:00Z
+LC:transaction_record:T046:4,T046,Goods Packed,2026-04-02T21:00:00Z
 TX:T046,T046,Goods Dispatched,2026-04-02T22:00:00Z
+LC:transaction_record:T047:1,T047,Dispatch Requested,2026-04-02T19:00:00Z
+LC:transaction_record:T047:2,T047,Dispatch Approved,2026-04-02T20:00:00Z
+LC:transaction_record:T047:3,T047,Goods Picked,2026-04-02T21:00:00Z
+LC:transaction_record:T047:4,T047,Goods Packed,2026-04-02T22:00:00Z
 TX:T047,T047,Goods Dispatched,2026-04-02T23:00:00Z
+LC:transaction_record:T048:1,T048,Dispatch Requested,2026-04-02T20:00:00Z
+LC:transaction_record:T048:2,T048,Dispatch Approved,2026-04-02T21:00:00Z
+LC:transaction_record:T048:3,T048,Goods Picked,2026-04-02T22:00:00Z
+LC:transaction_record:T048:4,T048,Goods Packed,2026-04-02T23:00:00Z
 TX:T048,T048,Goods Dispatched,2026-04-03T00:00:00Z
+LC:transaction_record:T049:1,T049,Receiving Requested,2026-04-02T21:00:00Z
+LC:transaction_record:T049:2,T049,Receiving Scheduled,2026-04-02T22:00:00Z
 TX:T049,T049,Goods Received,2026-04-03T01:00:00Z
+LC:transaction_record:T049:3,T049,Receiving Inspection Completed,2026-04-03T01:30:00Z
+LC:transaction_record:T049:4,T049,Goods Put Away,2026-04-03T02:00:00Z
+LC:transaction_record:T050:1,T050,Receiving Requested,2026-04-02T22:00:00Z
+LC:transaction_record:T050:2,T050,Receiving Scheduled,2026-04-02T23:00:00Z
 TX:T050,T050,Goods Received,2026-04-03T02:00:00Z
+LC:transaction_record:T050:3,T050,Receiving Inspection Completed,2026-04-03T02:30:00Z
+LC:transaction_record:T051:1,T051,Receiving Requested,2026-04-02T23:00:00Z
+LC:transaction_record:T051:2,T051,Receiving Scheduled,2026-04-03T00:00:00Z
 TX:T051,T051,Goods Received,2026-04-03T03:00:00Z
+LC:transaction_record:T051:3,T051,Receiving Inspection Completed,2026-04-03T03:30:00Z
+LC:transaction_record:T051:4,T051,Goods Put Away,2026-04-03T04:00:00Z
+LC:transaction_record:T052:1,T052,Receiving Requested,2026-04-03T00:00:00Z
+LC:transaction_record:T052:2,T052,Receiving Scheduled,2026-04-03T01:00:00Z
 TX:T052,T052,Goods Received,2026-04-03T04:00:00Z
+LC:transaction_record:T052:3,T052,Receiving Inspection Completed,2026-04-03T04:30:00Z
+LC:transaction_record:T052:4,T052,Goods Put Away,2026-04-03T05:00:00Z
+LC:transaction_record:T053:1,T053,Receiving Requested,2026-04-03T01:00:00Z
+LC:transaction_record:T053:2,T053,Receiving Scheduled,2026-04-03T02:00:00Z
 TX:T053,T053,Goods Received,2026-04-03T05:00:00Z
+LC:transaction_record:T053:3,T053,Receiving Inspection Completed,2026-04-03T05:30:00Z
+LC:transaction_record:T053:4,T053,Goods Put Away,2026-04-03T06:00:00Z
+LC:transaction_record:T054:1,T054,Dispatch Requested,2026-04-03T02:00:00Z
+LC:transaction_record:T054:2,T054,Dispatch Approved,2026-04-03T03:00:00Z
+LC:transaction_record:T054:3,T054,Goods Picked,2026-04-03T04:00:00Z
+LC:transaction_record:T054:4,T054,Goods Packed,2026-04-03T05:00:00Z
 TX:T054,T054,Goods Dispatched,2026-04-03T06:00:00Z
+LC:transaction_record:T055:1,T055,Dispatch Requested,2026-04-03T03:00:00Z
+LC:transaction_record:T055:2,T055,Dispatch Approved,2026-04-03T04:00:00Z
+LC:transaction_record:T055:3,T055,Goods Picked,2026-04-03T05:00:00Z
+LC:transaction_record:T055:4,T055,Goods Packed,2026-04-03T06:00:00Z
 TX:T055,T055,Goods Dispatched,2026-04-03T07:00:00Z
+LC:transaction_record:T056:1,T056,Receiving Requested,2026-04-03T04:00:00Z
+LC:transaction_record:T056:2,T056,Receiving Scheduled,2026-04-03T05:00:00Z
 TX:T056,T056,Goods Received,2026-04-03T08:00:00Z
+LC:transaction_record:T056:3,T056,Receiving Inspection Completed,2026-04-03T08:30:00Z
+LC:transaction_record:T056:4,T056,Goods Put Away,2026-04-03T09:00:00Z
+LC:transaction_record:T057:1,T057,Receiving Requested,2026-04-03T05:00:00Z
+LC:transaction_record:T057:2,T057,Receiving Scheduled,2026-04-03T06:00:00Z
 TX:T057,T057,Goods Received,2026-04-03T09:00:00Z
+LC:transaction_record:T057:3,T057,Receiving Inspection Completed,2026-04-03T09:30:00Z
+LC:transaction_record:T058:1,T058,Receiving Requested,2026-04-03T06:00:00Z
+LC:transaction_record:T058:2,T058,Receiving Scheduled,2026-04-03T07:00:00Z
 TX:T058,T058,Goods Received,2026-04-03T10:00:00Z
+LC:transaction_record:T058:3,T058,Receiving Inspection Completed,2026-04-03T10:30:00Z
+LC:transaction_record:T058:4,T058,Goods Put Away,2026-04-03T11:00:00Z
+LC:transaction_record:T059:1,T059,Receiving Requested,2026-04-03T07:00:00Z
+LC:transaction_record:T059:2,T059,Receiving Scheduled,2026-04-03T08:00:00Z
 TX:T059,T059,Goods Received,2026-04-03T11:00:00Z
+LC:transaction_record:T059:3,T059,Receiving Inspection Completed,2026-04-03T11:30:00Z
+LC:transaction_record:T059:4,T059,Goods Put Away,2026-04-03T12:00:00Z
+LC:transaction_record:T060:1,T060,Receiving Requested,2026-04-03T08:00:00Z
+LC:transaction_record:T060:2,T060,Receiving Scheduled,2026-04-03T09:00:00Z
 TX:T060,T060,Goods Received,2026-04-03T12:00:00Z
+LC:transaction_record:T060:3,T060,Receiving Inspection Completed,2026-04-03T12:30:00Z
+LC:transaction_record:T060:4,T060,Goods Put Away,2026-04-03T13:00:00Z
+LC:transaction_record:T061:1,T061,Dispatch Requested,2026-04-03T09:00:00Z
+LC:transaction_record:T061:2,T061,Dispatch Approved,2026-04-03T10:00:00Z
+LC:transaction_record:T061:3,T061,Goods Picked,2026-04-03T11:00:00Z
+LC:transaction_record:T061:4,T061,Goods Packed,2026-04-03T12:00:00Z
 TX:T061,T061,Goods Dispatched,2026-04-03T13:00:00Z
+LC:transaction_record:T062:1,T062,Dispatch Requested,2026-04-03T10:00:00Z
+LC:transaction_record:T062:2,T062,Dispatch Approved,2026-04-03T11:00:00Z
+LC:transaction_record:T062:3,T062,Goods Picked,2026-04-03T12:00:00Z
+LC:transaction_record:T062:4,T062,Goods Packed,2026-04-03T13:00:00Z
 TX:T062,T062,Goods Dispatched,2026-04-03T14:00:00Z
+LC:transaction_record:T063:1,T063,Dispatch Requested,2026-04-03T11:00:00Z
+LC:transaction_record:T063:2,T063,Dispatch Approved,2026-04-03T12:00:00Z
+LC:transaction_record:T063:3,T063,Goods Picked,2026-04-03T13:00:00Z
+LC:transaction_record:T063:4,T063,Goods Packed,2026-04-03T14:00:00Z
 TX:T063,T063,Goods Dispatched,2026-04-03T15:00:00Z
+LC:transaction_record:T064:1,T064,Dispatch Requested,2026-04-03T12:00:00Z
+LC:transaction_record:T064:2,T064,Dispatch Approved,2026-04-03T13:00:00Z
+LC:transaction_record:T064:3,T064,Goods Picked,2026-04-03T14:00:00Z
+LC:transaction_record:T064:4,T064,Goods Packed,2026-04-03T15:00:00Z
 TX:T064,T064,Goods Dispatched,2026-04-03T16:00:00Z
+LC:transaction_record:T065:1,T065,Receiving Requested,2026-04-03T13:00:00Z
+LC:transaction_record:T065:2,T065,Receiving Scheduled,2026-04-03T14:00:00Z
 TX:T065,T065,Goods Received,2026-04-03T17:00:00Z
+LC:transaction_record:T065:3,T065,Receiving Inspection Completed,2026-04-03T17:30:00Z
+LC:transaction_record:T065:4,T065,Goods Put Away,2026-04-03T18:00:00Z
+LC:transaction_record:T066:1,T066,Receiving Requested,2026-04-03T14:00:00Z
+LC:transaction_record:T066:2,T066,Receiving Scheduled,2026-04-03T15:00:00Z
 TX:T066,T066,Goods Received,2026-04-03T18:00:00Z
+LC:transaction_record:T066:3,T066,Receiving Inspection Completed,2026-04-03T18:30:00Z
+LC:transaction_record:T066:4,T066,Goods Put Away,2026-04-03T19:00:00Z
+LC:transaction_record:T067:1,T067,Receiving Requested,2026-04-03T15:00:00Z
+LC:transaction_record:T067:2,T067,Receiving Scheduled,2026-04-03T16:00:00Z
 TX:T067,T067,Goods Received,2026-04-03T19:00:00Z
+LC:transaction_record:T067:3,T067,Receiving Inspection Completed,2026-04-03T19:30:00Z
+LC:transaction_record:T067:4,T067,Goods Put Away,2026-04-03T20:00:00Z
+LC:transaction_record:T068:1,T068,Receiving Requested,2026-04-03T16:00:00Z
+LC:transaction_record:T068:2,T068,Receiving Scheduled,2026-04-03T17:00:00Z
 TX:T068,T068,Goods Received,2026-04-03T20:00:00Z
+LC:transaction_record:T068:3,T068,Receiving Inspection Completed,2026-04-03T20:30:00Z
+LC:transaction_record:T068:4,T068,Goods Put Away,2026-04-03T21:00:00Z
+LC:transaction_record:T069:1,T069,Dispatch Requested,2026-04-03T17:00:00Z
+LC:transaction_record:T069:2,T069,Dispatch Approved,2026-04-03T18:00:00Z
+LC:transaction_record:T069:3,T069,Goods Picked,2026-04-03T19:00:00Z
+LC:transaction_record:T069:4,T069,Goods Packed,2026-04-03T20:00:00Z
 TX:T069,T069,Goods Dispatched,2026-04-03T21:00:00Z
+LC:transaction_record:T070:1,T070,Dispatch Requested,2026-04-03T18:00:00Z
+LC:transaction_record:T070:2,T070,Dispatch Approved,2026-04-03T19:00:00Z
+LC:transaction_record:T070:3,T070,Goods Picked,2026-04-03T20:00:00Z
+LC:transaction_record:T070:4,T070,Goods Packed,2026-04-03T21:00:00Z
 TX:T070,T070,Goods Dispatched,2026-04-03T22:00:00Z
+LC:transaction_record:T071:1,T071,Dispatch Requested,2026-04-03T19:00:00Z
+LC:transaction_record:T071:2,T071,Dispatch Approved,2026-04-03T20:00:00Z
+LC:transaction_record:T071:3,T071,Goods Picked,2026-04-03T21:00:00Z
+LC:transaction_record:T071:4,T071,Goods Packed,2026-04-03T22:00:00Z
 TX:T071,T071,Goods Dispatched,2026-04-03T23:00:00Z
+LC:transaction_record:T072:1,T072,Dispatch Requested,2026-04-03T20:00:00Z
+LC:transaction_record:T072:2,T072,Dispatch Approved,2026-04-03T21:00:00Z
+LC:transaction_record:T072:3,T072,Goods Picked,2026-04-03T22:00:00Z
+LC:transaction_record:T072:4,T072,Goods Packed,2026-04-03T23:00:00Z
 TX:T072,T072,Goods Dispatched,2026-04-04T00:00:00Z
+LC:transaction_record:T073:1,T073,Receiving Requested,2026-04-03T21:00:00Z
+LC:transaction_record:T073:2,T073,Receiving Scheduled,2026-04-03T22:00:00Z
 TX:T073,T073,Goods Received,2026-04-04T01:00:00Z
+LC:transaction_record:T073:3,T073,Receiving Inspection Completed,2026-04-04T01:30:00Z
+LC:transaction_record:T073:4,T073,Goods Put Away,2026-04-04T02:00:00Z
+LC:transaction_record:T074:1,T074,Receiving Requested,2026-04-03T22:00:00Z
+LC:transaction_record:T074:2,T074,Receiving Scheduled,2026-04-03T23:00:00Z
 TX:T074,T074,Goods Received,2026-04-04T02:00:00Z
+LC:transaction_record:T074:3,T074,Receiving Inspection Completed,2026-04-04T02:30:00Z
+LC:transaction_record:T074:4,T074,Goods Put Away,2026-04-04T03:00:00Z
+LC:transaction_record:T075:1,T075,Receiving Requested,2026-04-03T23:00:00Z
+LC:transaction_record:T075:2,T075,Receiving Scheduled,2026-04-04T00:00:00Z
 TX:T075,T075,Goods Received,2026-04-04T03:00:00Z
+LC:transaction_record:T075:3,T075,Receiving Inspection Completed,2026-04-04T03:30:00Z
+LC:transaction_record:T075:4,T075,Goods Put Away,2026-04-04T04:00:00Z
+LC:transaction_record:T076:1,T076,Receiving Requested,2026-04-04T00:00:00Z
+LC:transaction_record:T076:2,T076,Receiving Scheduled,2026-04-04T01:00:00Z
 TX:T076,T076,Goods Received,2026-04-04T04:00:00Z
+LC:transaction_record:T076:3,T076,Receiving Inspection Completed,2026-04-04T04:30:00Z
+LC:transaction_record:T076:4,T076,Goods Put Away,2026-04-04T05:00:00Z
+LC:transaction_record:T077:1,T077,Dispatch Requested,2026-04-04T01:00:00Z
+LC:transaction_record:T077:2,T077,Dispatch Approved,2026-04-04T02:00:00Z
+LC:transaction_record:T077:3,T077,Goods Picked,2026-04-04T03:00:00Z
+LC:transaction_record:T077:4,T077,Goods Packed,2026-04-04T04:00:00Z
 TX:T077,T077,Goods Dispatched,2026-04-04T05:00:00Z
+LC:transaction_record:T078:1,T078,Dispatch Requested,2026-04-04T02:00:00Z
+LC:transaction_record:T078:2,T078,Dispatch Approved,2026-04-04T03:00:00Z
+LC:transaction_record:T078:3,T078,Goods Picked,2026-04-04T04:00:00Z
+LC:transaction_record:T078:4,T078,Goods Packed,2026-04-04T05:00:00Z
 TX:T078,T078,Goods Dispatched,2026-04-04T06:00:00Z
+LC:transaction_record:T079:1,T079,Dispatch Requested,2026-04-04T03:00:00Z
+LC:transaction_record:T079:2,T079,Dispatch Approved,2026-04-04T04:00:00Z
+LC:transaction_record:T079:3,T079,Goods Picked,2026-04-04T05:00:00Z
+LC:transaction_record:T079:4,T079,Goods Packed,2026-04-04T06:00:00Z
 TX:T079,T079,Goods Dispatched,2026-04-04T07:00:00Z
+LC:transaction_record:T080:1,T080,Dispatch Requested,2026-04-04T04:00:00Z
+LC:transaction_record:T080:2,T080,Dispatch Approved,2026-04-04T05:00:00Z
+LC:transaction_record:T080:3,T080,Goods Picked,2026-04-04T06:00:00Z
+LC:transaction_record:T080:4,T080,Goods Packed,2026-04-04T07:00:00Z
 TX:T080,T080,Goods Dispatched,2026-04-04T08:00:00Z

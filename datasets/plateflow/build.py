@@ -74,9 +74,11 @@ RESOLVE="(SELECT material_id AS recorded_id, material_id AS case_id FROM as_roll
 S += [source(a,"material_operation_history h JOIN "+RESOLVE+" r ON h.material_id=r.recorded_id","r.case_id","h.completed_at","'OP:' || h.transaction_id","h.operation_code='"+co+"'") for co,a in CODES.items()]
 S += [source("Dimensional Inspection Completed","plate_material p JOIN as_rolled_material m ON p.parent_as_rolled_plate_no=m.as_rolled_plate_no","m.material_id","p.dimension_inspected_at","'DIM:' || p.plate_material_id","p.dimension_inspected_at IS NOT NULL")]
 def compile_es(es):
+ if es.get("compiled_sql"):return es["compiled_sql"]
  parts=["SELECT "+s["event_id_expression"]+" event_id, "+s["case_id_expression"]+" case_id, '"+s["activity"]+"' activity, "+s["timestamp_expression"]+" timestamp FROM "+s["from_expression"]+(" WHERE "+s["predicate"] if s["predicate"] else "") for s in es["sources"]]
  return "SELECT * FROM ("+" UNION ALL ".join(parts)+") ORDER BY case_id,timestamp,event_id;"
 def main():
+ (P/"private/lifecycle_links.json").unlink(missing_ok=True)
  rng=random.Random(20261013)
  ddl="PRAGMA foreign_keys=ON;\n"+"\n".join("CREATE TABLE "+t+" ("+", ".join(c["name"]+" "+c["type"]+" "+c["constraints"] for c in d["columns"])+");" for t,d in T.items())
  # Two-domain material reference is a synthetic policy, not a declared source FK.
@@ -191,5 +193,5 @@ def main():
   assert [(r["name"],r["type"]) for r in rows]==[(c["name"],c["type"]) for c in d["columns"]]
  assert con.execute("SELECT COUNT(*) FROM material_operation_history WHERE completed_at<=started_at").fetchone()[0]==0
  report=dict(seed=20261013,mother_materials=36,plate_materials=con.execute("SELECT COUNT(*) FROM plate_material").fetchone()[0],events=len(history),tables={t:con.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] for t in T},scenario_counts=dict(Counter(r[5] for r in payload)),questions=results,checks=dict(gold_sql_exact_equality="pass",foreign_keys="pass",sqlite_integrity="pass",metadata_columns_types="pass",event_id_uniqueness="pass",history_start_before_completion="pass"),limitations=["Selected English schema-informed subset, not complete Korean manufacturer schema.","Original CSV supplies names/descriptions only; types, keys, process-code meanings and relationship counts are authored.","No real production rows or fitted process distributions.","Classic mother-case log, not OCEL.","Dataset-specific ES; existing NL2EventLog compatibility untested.","No extraction-model accuracy measured."])
- js("validation_report.json",report);con.close();from object_views import extend_dataset;extend_dataset(P);report=json.loads((P/"validation_report.json").read_text());print(json.dumps(report,indent=2))
+ js("validation_report.json",report);con.close();from object_views import extend_dataset;extend_dataset(P);from lifecycle import extend;extend(P);extend_dataset(P);report=json.loads((P/"validation_report.json").read_text());print(json.dumps(report,indent=2))
 if __name__=="__main__":main()

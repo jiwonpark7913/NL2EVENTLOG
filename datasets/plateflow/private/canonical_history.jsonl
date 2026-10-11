@@ -322,3 +322,715 @@
 {"event_id": "DIM:P036-2", "case_id": "M036", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-06T13:42:00Z"}
 {"event_id": "OP:P036-3-IP", "case_id": "M036", "activity": "Inspection Passed", "timestamp": "2026-04-06T13:18:00Z"}
 {"event_id": "DIM:P036-3", "case_id": "M036", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-06T13:48:00Z"}
+{"event_id": "LC:slab_material:SL001:1", "case_id": "M001", "activity": "Slab Received", "timestamp": "2026-03-01T14:00:00Z"}
+{"event_id": "LC:slab_material:SL001:2", "case_id": "M001", "activity": "Slab Identity Verified", "timestamp": "2026-03-01T15:00:00Z"}
+{"event_id": "LC:slab_material:SL001:3", "case_id": "M001", "activity": "Slab Quality Checked", "timestamp": "2026-03-01T16:00:00Z"}
+{"event_id": "LC:slab_material:SL002:1", "case_id": "M002", "activity": "Slab Received", "timestamp": "2026-03-02T14:00:00Z"}
+{"event_id": "LC:slab_material:SL002:2", "case_id": "M002", "activity": "Slab Identity Verified", "timestamp": "2026-03-02T15:00:00Z"}
+{"event_id": "LC:slab_material:SL002:3", "case_id": "M002", "activity": "Slab Quality Checked", "timestamp": "2026-03-02T16:00:00Z"}
+{"event_id": "LC:slab_material:SL002:4", "case_id": "M002", "activity": "Slab Released for Rolling", "timestamp": "2026-03-02T17:00:00Z"}
+{"event_id": "LC:slab_material:SL003:1", "case_id": "M003", "activity": "Slab Received", "timestamp": "2026-03-03T14:00:00Z"}
+{"event_id": "LC:slab_material:SL003:2", "case_id": "M003", "activity": "Slab Identity Verified", "timestamp": "2026-03-03T15:00:00Z"}
+{"event_id": "LC:slab_material:SL003:3", "case_id": "M003", "activity": "Slab Quality Checked", "timestamp": "2026-03-03T16:00:00Z"}
+{"event_id": "LC:slab_material:SL003:4", "case_id": "M003", "activity": "Slab Released for Rolling", "timestamp": "2026-03-03T17:00:00Z"}
+{"event_id": "LC:slab_material:SL004:1", "case_id": "M004", "activity": "Slab Received", "timestamp": "2026-03-04T14:00:00Z"}
+{"event_id": "LC:slab_material:SL004:2", "case_id": "M004", "activity": "Slab Identity Verified", "timestamp": "2026-03-04T15:00:00Z"}
+{"event_id": "LC:slab_material:SL004:3", "case_id": "M004", "activity": "Slab Quality Checked", "timestamp": "2026-03-04T16:00:00Z"}
+{"event_id": "LC:slab_material:SL004:4", "case_id": "M004", "activity": "Slab Released for Rolling", "timestamp": "2026-03-04T17:00:00Z"}
+{"event_id": "LC:slab_material:SL005:1", "case_id": "M005", "activity": "Slab Received", "timestamp": "2026-03-05T14:00:00Z"}
+{"event_id": "LC:slab_material:SL005:2", "case_id": "M005", "activity": "Slab Identity Verified", "timestamp": "2026-03-05T15:00:00Z"}
+{"event_id": "LC:slab_material:SL005:3", "case_id": "M005", "activity": "Slab Quality Checked", "timestamp": "2026-03-05T16:00:00Z"}
+{"event_id": "LC:slab_material:SL005:4", "case_id": "M005", "activity": "Slab Released for Rolling", "timestamp": "2026-03-05T17:00:00Z"}
+{"event_id": "LC:slab_material:SL006:1", "case_id": "M006", "activity": "Slab Received", "timestamp": "2026-03-06T14:00:00Z"}
+{"event_id": "LC:slab_material:SL006:2", "case_id": "M006", "activity": "Slab Identity Verified", "timestamp": "2026-03-06T15:00:00Z"}
+{"event_id": "LC:slab_material:SL006:3", "case_id": "M006", "activity": "Slab Quality Checked", "timestamp": "2026-03-06T16:00:00Z"}
+{"event_id": "LC:slab_material:SL006:4", "case_id": "M006", "activity": "Slab Released for Rolling", "timestamp": "2026-03-06T17:00:00Z"}
+{"event_id": "LC:slab_material:SL007:1", "case_id": "M007", "activity": "Slab Received", "timestamp": "2026-03-07T14:00:00Z"}
+{"event_id": "LC:slab_material:SL007:2", "case_id": "M007", "activity": "Slab Identity Verified", "timestamp": "2026-03-07T15:00:00Z"}
+{"event_id": "LC:slab_material:SL007:3", "case_id": "M007", "activity": "Slab Quality Checked", "timestamp": "2026-03-07T16:00:00Z"}
+{"event_id": "LC:slab_material:SL007:4", "case_id": "M007", "activity": "Slab Released for Rolling", "timestamp": "2026-03-07T17:00:00Z"}
+{"event_id": "LC:slab_material:SL008:1", "case_id": "M008", "activity": "Slab Received", "timestamp": "2026-03-08T14:00:00Z"}
+{"event_id": "LC:slab_material:SL008:2", "case_id": "M008", "activity": "Slab Identity Verified", "timestamp": "2026-03-08T15:00:00Z"}
+{"event_id": "LC:slab_material:SL008:3", "case_id": "M008", "activity": "Slab Quality Checked", "timestamp": "2026-03-08T16:00:00Z"}
+{"event_id": "LC:slab_material:SL009:1", "case_id": "M009", "activity": "Slab Received", "timestamp": "2026-03-09T14:00:00Z"}
+{"event_id": "LC:slab_material:SL009:2", "case_id": "M009", "activity": "Slab Identity Verified", "timestamp": "2026-03-09T15:00:00Z"}
+{"event_id": "LC:slab_material:SL009:3", "case_id": "M009", "activity": "Slab Quality Checked", "timestamp": "2026-03-09T16:00:00Z"}
+{"event_id": "LC:slab_material:SL009:4", "case_id": "M009", "activity": "Slab Released for Rolling", "timestamp": "2026-03-09T17:00:00Z"}
+{"event_id": "LC:slab_material:SL010:1", "case_id": "M010", "activity": "Slab Received", "timestamp": "2026-03-10T14:00:00Z"}
+{"event_id": "LC:slab_material:SL010:2", "case_id": "M010", "activity": "Slab Identity Verified", "timestamp": "2026-03-10T15:00:00Z"}
+{"event_id": "LC:slab_material:SL010:3", "case_id": "M010", "activity": "Slab Quality Checked", "timestamp": "2026-03-10T16:00:00Z"}
+{"event_id": "LC:slab_material:SL010:4", "case_id": "M010", "activity": "Slab Released for Rolling", "timestamp": "2026-03-10T17:00:00Z"}
+{"event_id": "LC:slab_material:SL011:1", "case_id": "M011", "activity": "Slab Received", "timestamp": "2026-03-11T14:00:00Z"}
+{"event_id": "LC:slab_material:SL011:2", "case_id": "M011", "activity": "Slab Identity Verified", "timestamp": "2026-03-11T15:00:00Z"}
+{"event_id": "LC:slab_material:SL011:3", "case_id": "M011", "activity": "Slab Quality Checked", "timestamp": "2026-03-11T16:00:00Z"}
+{"event_id": "LC:slab_material:SL011:4", "case_id": "M011", "activity": "Slab Released for Rolling", "timestamp": "2026-03-11T17:00:00Z"}
+{"event_id": "LC:slab_material:SL012:1", "case_id": "M012", "activity": "Slab Received", "timestamp": "2026-03-12T14:00:00Z"}
+{"event_id": "LC:slab_material:SL012:2", "case_id": "M012", "activity": "Slab Identity Verified", "timestamp": "2026-03-12T15:00:00Z"}
+{"event_id": "LC:slab_material:SL012:3", "case_id": "M012", "activity": "Slab Quality Checked", "timestamp": "2026-03-12T16:00:00Z"}
+{"event_id": "LC:slab_material:SL012:4", "case_id": "M012", "activity": "Slab Released for Rolling", "timestamp": "2026-03-12T17:00:00Z"}
+{"event_id": "LC:slab_material:SL013:1", "case_id": "M013", "activity": "Slab Received", "timestamp": "2026-03-13T14:00:00Z"}
+{"event_id": "LC:slab_material:SL013:2", "case_id": "M013", "activity": "Slab Identity Verified", "timestamp": "2026-03-13T15:00:00Z"}
+{"event_id": "LC:slab_material:SL013:3", "case_id": "M013", "activity": "Slab Quality Checked", "timestamp": "2026-03-13T16:00:00Z"}
+{"event_id": "LC:slab_material:SL013:4", "case_id": "M013", "activity": "Slab Released for Rolling", "timestamp": "2026-03-13T17:00:00Z"}
+{"event_id": "LC:slab_material:SL014:1", "case_id": "M014", "activity": "Slab Received", "timestamp": "2026-03-14T14:00:00Z"}
+{"event_id": "LC:slab_material:SL014:2", "case_id": "M014", "activity": "Slab Identity Verified", "timestamp": "2026-03-14T15:00:00Z"}
+{"event_id": "LC:slab_material:SL014:3", "case_id": "M014", "activity": "Slab Quality Checked", "timestamp": "2026-03-14T16:00:00Z"}
+{"event_id": "LC:slab_material:SL014:4", "case_id": "M014", "activity": "Slab Released for Rolling", "timestamp": "2026-03-14T17:00:00Z"}
+{"event_id": "LC:slab_material:SL015:1", "case_id": "M015", "activity": "Slab Received", "timestamp": "2026-03-15T14:00:00Z"}
+{"event_id": "LC:slab_material:SL015:2", "case_id": "M015", "activity": "Slab Identity Verified", "timestamp": "2026-03-15T15:00:00Z"}
+{"event_id": "LC:slab_material:SL015:3", "case_id": "M015", "activity": "Slab Quality Checked", "timestamp": "2026-03-15T16:00:00Z"}
+{"event_id": "LC:slab_material:SL016:1", "case_id": "M016", "activity": "Slab Received", "timestamp": "2026-03-16T14:00:00Z"}
+{"event_id": "LC:slab_material:SL016:2", "case_id": "M016", "activity": "Slab Identity Verified", "timestamp": "2026-03-16T15:00:00Z"}
+{"event_id": "LC:slab_material:SL016:3", "case_id": "M016", "activity": "Slab Quality Checked", "timestamp": "2026-03-16T16:00:00Z"}
+{"event_id": "LC:slab_material:SL016:4", "case_id": "M016", "activity": "Slab Released for Rolling", "timestamp": "2026-03-16T17:00:00Z"}
+{"event_id": "LC:slab_material:SL017:1", "case_id": "M017", "activity": "Slab Received", "timestamp": "2026-03-17T14:00:00Z"}
+{"event_id": "LC:slab_material:SL017:2", "case_id": "M017", "activity": "Slab Identity Verified", "timestamp": "2026-03-17T15:00:00Z"}
+{"event_id": "LC:slab_material:SL017:3", "case_id": "M017", "activity": "Slab Quality Checked", "timestamp": "2026-03-17T16:00:00Z"}
+{"event_id": "LC:slab_material:SL017:4", "case_id": "M017", "activity": "Slab Released for Rolling", "timestamp": "2026-03-17T17:00:00Z"}
+{"event_id": "LC:slab_material:SL018:1", "case_id": "M018", "activity": "Slab Received", "timestamp": "2026-03-18T14:00:00Z"}
+{"event_id": "LC:slab_material:SL018:2", "case_id": "M018", "activity": "Slab Identity Verified", "timestamp": "2026-03-18T15:00:00Z"}
+{"event_id": "LC:slab_material:SL018:3", "case_id": "M018", "activity": "Slab Quality Checked", "timestamp": "2026-03-18T16:00:00Z"}
+{"event_id": "LC:slab_material:SL018:4", "case_id": "M018", "activity": "Slab Released for Rolling", "timestamp": "2026-03-18T17:00:00Z"}
+{"event_id": "LC:slab_material:SL019:1", "case_id": "M019", "activity": "Slab Received", "timestamp": "2026-03-19T14:00:00Z"}
+{"event_id": "LC:slab_material:SL019:2", "case_id": "M019", "activity": "Slab Identity Verified", "timestamp": "2026-03-19T15:00:00Z"}
+{"event_id": "LC:slab_material:SL019:3", "case_id": "M019", "activity": "Slab Quality Checked", "timestamp": "2026-03-19T16:00:00Z"}
+{"event_id": "LC:slab_material:SL019:4", "case_id": "M019", "activity": "Slab Released for Rolling", "timestamp": "2026-03-19T17:00:00Z"}
+{"event_id": "LC:slab_material:SL020:1", "case_id": "M020", "activity": "Slab Received", "timestamp": "2026-03-20T14:00:00Z"}
+{"event_id": "LC:slab_material:SL020:2", "case_id": "M020", "activity": "Slab Identity Verified", "timestamp": "2026-03-20T15:00:00Z"}
+{"event_id": "LC:slab_material:SL020:3", "case_id": "M020", "activity": "Slab Quality Checked", "timestamp": "2026-03-20T16:00:00Z"}
+{"event_id": "LC:slab_material:SL020:4", "case_id": "M020", "activity": "Slab Released for Rolling", "timestamp": "2026-03-20T17:00:00Z"}
+{"event_id": "LC:slab_material:SL021:1", "case_id": "M021", "activity": "Slab Received", "timestamp": "2026-03-21T14:00:00Z"}
+{"event_id": "LC:slab_material:SL021:2", "case_id": "M021", "activity": "Slab Identity Verified", "timestamp": "2026-03-21T15:00:00Z"}
+{"event_id": "LC:slab_material:SL021:3", "case_id": "M021", "activity": "Slab Quality Checked", "timestamp": "2026-03-21T16:00:00Z"}
+{"event_id": "LC:slab_material:SL021:4", "case_id": "M021", "activity": "Slab Released for Rolling", "timestamp": "2026-03-21T17:00:00Z"}
+{"event_id": "LC:slab_material:SL022:1", "case_id": "M022", "activity": "Slab Received", "timestamp": "2026-03-22T14:00:00Z"}
+{"event_id": "LC:slab_material:SL022:2", "case_id": "M022", "activity": "Slab Identity Verified", "timestamp": "2026-03-22T15:00:00Z"}
+{"event_id": "LC:slab_material:SL022:3", "case_id": "M022", "activity": "Slab Quality Checked", "timestamp": "2026-03-22T16:00:00Z"}
+{"event_id": "LC:slab_material:SL023:1", "case_id": "M023", "activity": "Slab Received", "timestamp": "2026-03-23T14:00:00Z"}
+{"event_id": "LC:slab_material:SL023:2", "case_id": "M023", "activity": "Slab Identity Verified", "timestamp": "2026-03-23T15:00:00Z"}
+{"event_id": "LC:slab_material:SL023:3", "case_id": "M023", "activity": "Slab Quality Checked", "timestamp": "2026-03-23T16:00:00Z"}
+{"event_id": "LC:slab_material:SL023:4", "case_id": "M023", "activity": "Slab Released for Rolling", "timestamp": "2026-03-23T17:00:00Z"}
+{"event_id": "LC:slab_material:SL024:1", "case_id": "M024", "activity": "Slab Received", "timestamp": "2026-03-24T14:00:00Z"}
+{"event_id": "LC:slab_material:SL024:2", "case_id": "M024", "activity": "Slab Identity Verified", "timestamp": "2026-03-24T15:00:00Z"}
+{"event_id": "LC:slab_material:SL024:3", "case_id": "M024", "activity": "Slab Quality Checked", "timestamp": "2026-03-24T16:00:00Z"}
+{"event_id": "LC:slab_material:SL024:4", "case_id": "M024", "activity": "Slab Released for Rolling", "timestamp": "2026-03-24T17:00:00Z"}
+{"event_id": "LC:slab_material:SL025:1", "case_id": "M025", "activity": "Slab Received", "timestamp": "2026-03-25T14:00:00Z"}
+{"event_id": "LC:slab_material:SL025:2", "case_id": "M025", "activity": "Slab Identity Verified", "timestamp": "2026-03-25T15:00:00Z"}
+{"event_id": "LC:slab_material:SL025:3", "case_id": "M025", "activity": "Slab Quality Checked", "timestamp": "2026-03-25T16:00:00Z"}
+{"event_id": "LC:slab_material:SL025:4", "case_id": "M025", "activity": "Slab Released for Rolling", "timestamp": "2026-03-25T17:00:00Z"}
+{"event_id": "LC:slab_material:SL026:1", "case_id": "M026", "activity": "Slab Received", "timestamp": "2026-03-26T14:00:00Z"}
+{"event_id": "LC:slab_material:SL026:2", "case_id": "M026", "activity": "Slab Identity Verified", "timestamp": "2026-03-26T15:00:00Z"}
+{"event_id": "LC:slab_material:SL026:3", "case_id": "M026", "activity": "Slab Quality Checked", "timestamp": "2026-03-26T16:00:00Z"}
+{"event_id": "LC:slab_material:SL026:4", "case_id": "M026", "activity": "Slab Released for Rolling", "timestamp": "2026-03-26T17:00:00Z"}
+{"event_id": "LC:slab_material:SL027:1", "case_id": "M027", "activity": "Slab Received", "timestamp": "2026-03-27T14:00:00Z"}
+{"event_id": "LC:slab_material:SL027:2", "case_id": "M027", "activity": "Slab Identity Verified", "timestamp": "2026-03-27T15:00:00Z"}
+{"event_id": "LC:slab_material:SL027:3", "case_id": "M027", "activity": "Slab Quality Checked", "timestamp": "2026-03-27T16:00:00Z"}
+{"event_id": "LC:slab_material:SL027:4", "case_id": "M027", "activity": "Slab Released for Rolling", "timestamp": "2026-03-27T17:00:00Z"}
+{"event_id": "LC:slab_material:SL028:1", "case_id": "M028", "activity": "Slab Received", "timestamp": "2026-03-28T14:00:00Z"}
+{"event_id": "LC:slab_material:SL028:2", "case_id": "M028", "activity": "Slab Identity Verified", "timestamp": "2026-03-28T15:00:00Z"}
+{"event_id": "LC:slab_material:SL028:3", "case_id": "M028", "activity": "Slab Quality Checked", "timestamp": "2026-03-28T16:00:00Z"}
+{"event_id": "LC:slab_material:SL028:4", "case_id": "M028", "activity": "Slab Released for Rolling", "timestamp": "2026-03-28T17:00:00Z"}
+{"event_id": "LC:slab_material:SL029:1", "case_id": "M029", "activity": "Slab Received", "timestamp": "2026-03-29T14:00:00Z"}
+{"event_id": "LC:slab_material:SL029:2", "case_id": "M029", "activity": "Slab Identity Verified", "timestamp": "2026-03-29T15:00:00Z"}
+{"event_id": "LC:slab_material:SL029:3", "case_id": "M029", "activity": "Slab Quality Checked", "timestamp": "2026-03-29T16:00:00Z"}
+{"event_id": "LC:slab_material:SL030:1", "case_id": "M030", "activity": "Slab Received", "timestamp": "2026-03-30T14:00:00Z"}
+{"event_id": "LC:slab_material:SL030:2", "case_id": "M030", "activity": "Slab Identity Verified", "timestamp": "2026-03-30T15:00:00Z"}
+{"event_id": "LC:slab_material:SL030:3", "case_id": "M030", "activity": "Slab Quality Checked", "timestamp": "2026-03-30T16:00:00Z"}
+{"event_id": "LC:slab_material:SL030:4", "case_id": "M030", "activity": "Slab Released for Rolling", "timestamp": "2026-03-30T17:00:00Z"}
+{"event_id": "LC:slab_material:SL031:1", "case_id": "M031", "activity": "Slab Received", "timestamp": "2026-03-31T14:00:00Z"}
+{"event_id": "LC:slab_material:SL031:2", "case_id": "M031", "activity": "Slab Identity Verified", "timestamp": "2026-03-31T15:00:00Z"}
+{"event_id": "LC:slab_material:SL031:3", "case_id": "M031", "activity": "Slab Quality Checked", "timestamp": "2026-03-31T16:00:00Z"}
+{"event_id": "LC:slab_material:SL031:4", "case_id": "M031", "activity": "Slab Released for Rolling", "timestamp": "2026-03-31T17:00:00Z"}
+{"event_id": "LC:slab_material:SL032:1", "case_id": "M032", "activity": "Slab Received", "timestamp": "2026-04-01T14:00:00Z"}
+{"event_id": "LC:slab_material:SL032:2", "case_id": "M032", "activity": "Slab Identity Verified", "timestamp": "2026-04-01T15:00:00Z"}
+{"event_id": "LC:slab_material:SL032:3", "case_id": "M032", "activity": "Slab Quality Checked", "timestamp": "2026-04-01T16:00:00Z"}
+{"event_id": "LC:slab_material:SL032:4", "case_id": "M032", "activity": "Slab Released for Rolling", "timestamp": "2026-04-01T17:00:00Z"}
+{"event_id": "LC:slab_material:SL033:1", "case_id": "M033", "activity": "Slab Received", "timestamp": "2026-04-02T14:00:00Z"}
+{"event_id": "LC:slab_material:SL033:2", "case_id": "M033", "activity": "Slab Identity Verified", "timestamp": "2026-04-02T15:00:00Z"}
+{"event_id": "LC:slab_material:SL033:3", "case_id": "M033", "activity": "Slab Quality Checked", "timestamp": "2026-04-02T16:00:00Z"}
+{"event_id": "LC:slab_material:SL033:4", "case_id": "M033", "activity": "Slab Released for Rolling", "timestamp": "2026-04-02T17:00:00Z"}
+{"event_id": "LC:slab_material:SL034:1", "case_id": "M034", "activity": "Slab Received", "timestamp": "2026-04-03T14:00:00Z"}
+{"event_id": "LC:slab_material:SL034:2", "case_id": "M034", "activity": "Slab Identity Verified", "timestamp": "2026-04-03T15:00:00Z"}
+{"event_id": "LC:slab_material:SL034:3", "case_id": "M034", "activity": "Slab Quality Checked", "timestamp": "2026-04-03T16:00:00Z"}
+{"event_id": "LC:slab_material:SL034:4", "case_id": "M034", "activity": "Slab Released for Rolling", "timestamp": "2026-04-03T17:00:00Z"}
+{"event_id": "LC:slab_material:SL035:1", "case_id": "M035", "activity": "Slab Received", "timestamp": "2026-04-04T14:00:00Z"}
+{"event_id": "LC:slab_material:SL035:2", "case_id": "M035", "activity": "Slab Identity Verified", "timestamp": "2026-04-04T15:00:00Z"}
+{"event_id": "LC:slab_material:SL035:3", "case_id": "M035", "activity": "Slab Quality Checked", "timestamp": "2026-04-04T16:00:00Z"}
+{"event_id": "LC:slab_material:SL035:4", "case_id": "M035", "activity": "Slab Released for Rolling", "timestamp": "2026-04-04T17:00:00Z"}
+{"event_id": "LC:slab_material:SL036:1", "case_id": "M036", "activity": "Slab Received", "timestamp": "2026-04-05T14:00:00Z"}
+{"event_id": "LC:slab_material:SL036:2", "case_id": "M036", "activity": "Slab Identity Verified", "timestamp": "2026-04-05T15:00:00Z"}
+{"event_id": "LC:slab_material:SL036:3", "case_id": "M036", "activity": "Slab Quality Checked", "timestamp": "2026-04-05T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN001:1", "case_id": "M001", "activity": "Rolling Plan Created", "timestamp": "2026-03-01T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN001:2", "case_id": "M001", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-01T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN001:3", "case_id": "M001", "activity": "Rolling Plan Approved", "timestamp": "2026-03-01T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN002:1", "case_id": "M002", "activity": "Rolling Plan Created", "timestamp": "2026-03-02T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN002:2", "case_id": "M002", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-02T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN002:3", "case_id": "M002", "activity": "Rolling Plan Approved", "timestamp": "2026-03-02T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN002:4", "case_id": "M002", "activity": "Rolling Plan Released", "timestamp": "2026-03-02T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN003:1", "case_id": "M003", "activity": "Rolling Plan Created", "timestamp": "2026-03-03T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN003:2", "case_id": "M003", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-03T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN003:3", "case_id": "M003", "activity": "Rolling Plan Approved", "timestamp": "2026-03-03T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN003:4", "case_id": "M003", "activity": "Rolling Plan Released", "timestamp": "2026-03-03T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN004:1", "case_id": "M004", "activity": "Rolling Plan Created", "timestamp": "2026-03-04T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN004:2", "case_id": "M004", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-04T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN004:3", "case_id": "M004", "activity": "Rolling Plan Approved", "timestamp": "2026-03-04T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN004:4", "case_id": "M004", "activity": "Rolling Plan Released", "timestamp": "2026-03-04T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN005:1", "case_id": "M005", "activity": "Rolling Plan Created", "timestamp": "2026-03-05T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN005:2", "case_id": "M005", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-05T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN005:3", "case_id": "M005", "activity": "Rolling Plan Approved", "timestamp": "2026-03-05T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN005:4", "case_id": "M005", "activity": "Rolling Plan Released", "timestamp": "2026-03-05T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN006:1", "case_id": "M006", "activity": "Rolling Plan Created", "timestamp": "2026-03-06T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN006:2", "case_id": "M006", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-06T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN006:3", "case_id": "M006", "activity": "Rolling Plan Approved", "timestamp": "2026-03-06T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN006:4", "case_id": "M006", "activity": "Rolling Plan Released", "timestamp": "2026-03-06T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN007:1", "case_id": "M007", "activity": "Rolling Plan Created", "timestamp": "2026-03-07T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN007:2", "case_id": "M007", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-07T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN007:3", "case_id": "M007", "activity": "Rolling Plan Approved", "timestamp": "2026-03-07T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN007:4", "case_id": "M007", "activity": "Rolling Plan Released", "timestamp": "2026-03-07T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN008:1", "case_id": "M008", "activity": "Rolling Plan Created", "timestamp": "2026-03-08T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN008:2", "case_id": "M008", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-08T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN008:3", "case_id": "M008", "activity": "Rolling Plan Approved", "timestamp": "2026-03-08T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN009:1", "case_id": "M009", "activity": "Rolling Plan Created", "timestamp": "2026-03-09T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN009:2", "case_id": "M009", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-09T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN009:3", "case_id": "M009", "activity": "Rolling Plan Approved", "timestamp": "2026-03-09T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN009:4", "case_id": "M009", "activity": "Rolling Plan Released", "timestamp": "2026-03-09T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN010:1", "case_id": "M010", "activity": "Rolling Plan Created", "timestamp": "2026-03-10T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN010:2", "case_id": "M010", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-10T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN010:3", "case_id": "M010", "activity": "Rolling Plan Approved", "timestamp": "2026-03-10T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN010:4", "case_id": "M010", "activity": "Rolling Plan Released", "timestamp": "2026-03-10T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN011:1", "case_id": "M011", "activity": "Rolling Plan Created", "timestamp": "2026-03-11T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN011:2", "case_id": "M011", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-11T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN011:3", "case_id": "M011", "activity": "Rolling Plan Approved", "timestamp": "2026-03-11T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN011:4", "case_id": "M011", "activity": "Rolling Plan Released", "timestamp": "2026-03-11T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN012:1", "case_id": "M012", "activity": "Rolling Plan Created", "timestamp": "2026-03-12T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN012:2", "case_id": "M012", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-12T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN012:3", "case_id": "M012", "activity": "Rolling Plan Approved", "timestamp": "2026-03-12T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN012:4", "case_id": "M012", "activity": "Rolling Plan Released", "timestamp": "2026-03-12T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN013:1", "case_id": "M013", "activity": "Rolling Plan Created", "timestamp": "2026-03-13T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN013:2", "case_id": "M013", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-13T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN013:3", "case_id": "M013", "activity": "Rolling Plan Approved", "timestamp": "2026-03-13T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN013:4", "case_id": "M013", "activity": "Rolling Plan Released", "timestamp": "2026-03-13T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN014:1", "case_id": "M014", "activity": "Rolling Plan Created", "timestamp": "2026-03-14T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN014:2", "case_id": "M014", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-14T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN014:3", "case_id": "M014", "activity": "Rolling Plan Approved", "timestamp": "2026-03-14T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN014:4", "case_id": "M014", "activity": "Rolling Plan Released", "timestamp": "2026-03-14T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN015:1", "case_id": "M015", "activity": "Rolling Plan Created", "timestamp": "2026-03-15T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN015:2", "case_id": "M015", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-15T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN015:3", "case_id": "M015", "activity": "Rolling Plan Approved", "timestamp": "2026-03-15T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN016:1", "case_id": "M016", "activity": "Rolling Plan Created", "timestamp": "2026-03-16T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN016:2", "case_id": "M016", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-16T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN016:3", "case_id": "M016", "activity": "Rolling Plan Approved", "timestamp": "2026-03-16T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN016:4", "case_id": "M016", "activity": "Rolling Plan Released", "timestamp": "2026-03-16T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN017:1", "case_id": "M017", "activity": "Rolling Plan Created", "timestamp": "2026-03-17T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN017:2", "case_id": "M017", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-17T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN017:3", "case_id": "M017", "activity": "Rolling Plan Approved", "timestamp": "2026-03-17T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN017:4", "case_id": "M017", "activity": "Rolling Plan Released", "timestamp": "2026-03-17T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN018:1", "case_id": "M018", "activity": "Rolling Plan Created", "timestamp": "2026-03-18T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN018:2", "case_id": "M018", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-18T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN018:3", "case_id": "M018", "activity": "Rolling Plan Approved", "timestamp": "2026-03-18T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN018:4", "case_id": "M018", "activity": "Rolling Plan Released", "timestamp": "2026-03-18T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN019:1", "case_id": "M019", "activity": "Rolling Plan Created", "timestamp": "2026-03-19T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN019:2", "case_id": "M019", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-19T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN019:3", "case_id": "M019", "activity": "Rolling Plan Approved", "timestamp": "2026-03-19T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN019:4", "case_id": "M019", "activity": "Rolling Plan Released", "timestamp": "2026-03-19T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN020:1", "case_id": "M020", "activity": "Rolling Plan Created", "timestamp": "2026-03-20T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN020:2", "case_id": "M020", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-20T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN020:3", "case_id": "M020", "activity": "Rolling Plan Approved", "timestamp": "2026-03-20T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN020:4", "case_id": "M020", "activity": "Rolling Plan Released", "timestamp": "2026-03-20T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN021:1", "case_id": "M021", "activity": "Rolling Plan Created", "timestamp": "2026-03-21T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN021:2", "case_id": "M021", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-21T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN021:3", "case_id": "M021", "activity": "Rolling Plan Approved", "timestamp": "2026-03-21T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN021:4", "case_id": "M021", "activity": "Rolling Plan Released", "timestamp": "2026-03-21T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN022:1", "case_id": "M022", "activity": "Rolling Plan Created", "timestamp": "2026-03-22T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN022:2", "case_id": "M022", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-22T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN022:3", "case_id": "M022", "activity": "Rolling Plan Approved", "timestamp": "2026-03-22T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN023:1", "case_id": "M023", "activity": "Rolling Plan Created", "timestamp": "2026-03-23T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN023:2", "case_id": "M023", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-23T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN023:3", "case_id": "M023", "activity": "Rolling Plan Approved", "timestamp": "2026-03-23T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN023:4", "case_id": "M023", "activity": "Rolling Plan Released", "timestamp": "2026-03-23T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN024:1", "case_id": "M024", "activity": "Rolling Plan Created", "timestamp": "2026-03-24T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN024:2", "case_id": "M024", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-24T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN024:3", "case_id": "M024", "activity": "Rolling Plan Approved", "timestamp": "2026-03-24T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN024:4", "case_id": "M024", "activity": "Rolling Plan Released", "timestamp": "2026-03-24T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN025:1", "case_id": "M025", "activity": "Rolling Plan Created", "timestamp": "2026-03-25T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN025:2", "case_id": "M025", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-25T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN025:3", "case_id": "M025", "activity": "Rolling Plan Approved", "timestamp": "2026-03-25T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN025:4", "case_id": "M025", "activity": "Rolling Plan Released", "timestamp": "2026-03-25T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN026:1", "case_id": "M026", "activity": "Rolling Plan Created", "timestamp": "2026-03-26T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN026:2", "case_id": "M026", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-26T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN026:3", "case_id": "M026", "activity": "Rolling Plan Approved", "timestamp": "2026-03-26T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN026:4", "case_id": "M026", "activity": "Rolling Plan Released", "timestamp": "2026-03-26T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN027:1", "case_id": "M027", "activity": "Rolling Plan Created", "timestamp": "2026-03-27T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN027:2", "case_id": "M027", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-27T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN027:3", "case_id": "M027", "activity": "Rolling Plan Approved", "timestamp": "2026-03-27T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN027:4", "case_id": "M027", "activity": "Rolling Plan Released", "timestamp": "2026-03-27T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN028:1", "case_id": "M028", "activity": "Rolling Plan Created", "timestamp": "2026-03-28T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN028:2", "case_id": "M028", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-28T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN028:3", "case_id": "M028", "activity": "Rolling Plan Approved", "timestamp": "2026-03-28T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN028:4", "case_id": "M028", "activity": "Rolling Plan Released", "timestamp": "2026-03-28T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN029:1", "case_id": "M029", "activity": "Rolling Plan Created", "timestamp": "2026-03-29T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN029:2", "case_id": "M029", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-29T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN029:3", "case_id": "M029", "activity": "Rolling Plan Approved", "timestamp": "2026-03-29T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN030:1", "case_id": "M030", "activity": "Rolling Plan Created", "timestamp": "2026-03-30T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN030:2", "case_id": "M030", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-30T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN030:3", "case_id": "M030", "activity": "Rolling Plan Approved", "timestamp": "2026-03-30T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN030:4", "case_id": "M030", "activity": "Rolling Plan Released", "timestamp": "2026-03-30T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN031:1", "case_id": "M031", "activity": "Rolling Plan Created", "timestamp": "2026-03-31T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN031:2", "case_id": "M031", "activity": "Rolling Plan Reviewed", "timestamp": "2026-03-31T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN031:3", "case_id": "M031", "activity": "Rolling Plan Approved", "timestamp": "2026-03-31T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN031:4", "case_id": "M031", "activity": "Rolling Plan Released", "timestamp": "2026-03-31T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN032:1", "case_id": "M032", "activity": "Rolling Plan Created", "timestamp": "2026-04-01T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN032:2", "case_id": "M032", "activity": "Rolling Plan Reviewed", "timestamp": "2026-04-01T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN032:3", "case_id": "M032", "activity": "Rolling Plan Approved", "timestamp": "2026-04-01T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN032:4", "case_id": "M032", "activity": "Rolling Plan Released", "timestamp": "2026-04-01T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN033:1", "case_id": "M033", "activity": "Rolling Plan Created", "timestamp": "2026-04-02T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN033:2", "case_id": "M033", "activity": "Rolling Plan Reviewed", "timestamp": "2026-04-02T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN033:3", "case_id": "M033", "activity": "Rolling Plan Approved", "timestamp": "2026-04-02T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN033:4", "case_id": "M033", "activity": "Rolling Plan Released", "timestamp": "2026-04-02T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN034:1", "case_id": "M034", "activity": "Rolling Plan Created", "timestamp": "2026-04-03T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN034:2", "case_id": "M034", "activity": "Rolling Plan Reviewed", "timestamp": "2026-04-03T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN034:3", "case_id": "M034", "activity": "Rolling Plan Approved", "timestamp": "2026-04-03T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN034:4", "case_id": "M034", "activity": "Rolling Plan Released", "timestamp": "2026-04-03T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN035:1", "case_id": "M035", "activity": "Rolling Plan Created", "timestamp": "2026-04-04T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN035:2", "case_id": "M035", "activity": "Rolling Plan Reviewed", "timestamp": "2026-04-04T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN035:3", "case_id": "M035", "activity": "Rolling Plan Approved", "timestamp": "2026-04-04T16:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN035:4", "case_id": "M035", "activity": "Rolling Plan Released", "timestamp": "2026-04-04T17:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN036:1", "case_id": "M036", "activity": "Rolling Plan Created", "timestamp": "2026-04-05T14:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN036:2", "case_id": "M036", "activity": "Rolling Plan Reviewed", "timestamp": "2026-04-05T15:00:00Z"}
+{"event_id": "LC:planned_rolling_instruction:PLAN036:3", "case_id": "M036", "activity": "Rolling Plan Approved", "timestamp": "2026-04-05T16:00:00Z"}
+{"event_id": "LC:rolling_instruction:RI001:1", "case_id": "M001", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-02T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI002:1", "case_id": "M002", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-03T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI002:2", "case_id": "M002", "activity": "Rolling Setup Verified", "timestamp": "2026-03-03T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI003:1", "case_id": "M003", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-04T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI003:2", "case_id": "M003", "activity": "Rolling Setup Verified", "timestamp": "2026-03-04T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI003:3", "case_id": "M003", "activity": "Rolling Work Started", "timestamp": "2026-03-04T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI003:4", "case_id": "M003", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-04T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI004:1", "case_id": "M004", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-05T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI004:2", "case_id": "M004", "activity": "Rolling Setup Verified", "timestamp": "2026-03-05T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI004:3", "case_id": "M004", "activity": "Rolling Work Started", "timestamp": "2026-03-05T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI004:4", "case_id": "M004", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-05T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI005:1", "case_id": "M005", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-06T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI005:2", "case_id": "M005", "activity": "Rolling Setup Verified", "timestamp": "2026-03-06T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI005:3", "case_id": "M005", "activity": "Rolling Work Started", "timestamp": "2026-03-06T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI005:4", "case_id": "M005", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-06T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI006:1", "case_id": "M006", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-07T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI006:2", "case_id": "M006", "activity": "Rolling Setup Verified", "timestamp": "2026-03-07T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI006:3", "case_id": "M006", "activity": "Rolling Work Started", "timestamp": "2026-03-07T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI006:4", "case_id": "M006", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-07T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI007:1", "case_id": "M007", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-08T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI007:2", "case_id": "M007", "activity": "Rolling Setup Verified", "timestamp": "2026-03-08T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI008:1", "case_id": "M008", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-09T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI009:1", "case_id": "M009", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-10T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI009:2", "case_id": "M009", "activity": "Rolling Setup Verified", "timestamp": "2026-03-10T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI009:3", "case_id": "M009", "activity": "Rolling Work Started", "timestamp": "2026-03-10T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI009:4", "case_id": "M009", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-10T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI010:1", "case_id": "M010", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-11T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI010:2", "case_id": "M010", "activity": "Rolling Setup Verified", "timestamp": "2026-03-11T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI010:3", "case_id": "M010", "activity": "Rolling Work Started", "timestamp": "2026-03-11T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI010:4", "case_id": "M010", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-11T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI011:1", "case_id": "M011", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-12T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI011:2", "case_id": "M011", "activity": "Rolling Setup Verified", "timestamp": "2026-03-12T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI011:3", "case_id": "M011", "activity": "Rolling Work Started", "timestamp": "2026-03-12T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI011:4", "case_id": "M011", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-12T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI012:1", "case_id": "M012", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-13T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI012:2", "case_id": "M012", "activity": "Rolling Setup Verified", "timestamp": "2026-03-13T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI012:3", "case_id": "M012", "activity": "Rolling Work Started", "timestamp": "2026-03-13T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI012:4", "case_id": "M012", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-13T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI013:1", "case_id": "M013", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-14T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI013:2", "case_id": "M013", "activity": "Rolling Setup Verified", "timestamp": "2026-03-14T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI014:1", "case_id": "M014", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-15T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI014:2", "case_id": "M014", "activity": "Rolling Setup Verified", "timestamp": "2026-03-15T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI015:1", "case_id": "M015", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-16T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI015:2", "case_id": "M015", "activity": "Rolling Setup Verified", "timestamp": "2026-03-16T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI015:3", "case_id": "M015", "activity": "Rolling Work Started", "timestamp": "2026-03-16T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI016:1", "case_id": "M016", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-17T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI016:2", "case_id": "M016", "activity": "Rolling Setup Verified", "timestamp": "2026-03-17T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI016:3", "case_id": "M016", "activity": "Rolling Work Started", "timestamp": "2026-03-17T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI016:4", "case_id": "M016", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-17T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI017:1", "case_id": "M017", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-18T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI017:2", "case_id": "M017", "activity": "Rolling Setup Verified", "timestamp": "2026-03-18T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI017:3", "case_id": "M017", "activity": "Rolling Work Started", "timestamp": "2026-03-18T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI017:4", "case_id": "M017", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-18T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI018:1", "case_id": "M018", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-19T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI018:2", "case_id": "M018", "activity": "Rolling Setup Verified", "timestamp": "2026-03-19T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI018:3", "case_id": "M018", "activity": "Rolling Work Started", "timestamp": "2026-03-19T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI018:4", "case_id": "M018", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-19T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI019:1", "case_id": "M019", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-20T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI019:2", "case_id": "M019", "activity": "Rolling Setup Verified", "timestamp": "2026-03-20T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI020:1", "case_id": "M020", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-21T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI020:2", "case_id": "M020", "activity": "Rolling Setup Verified", "timestamp": "2026-03-21T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI021:1", "case_id": "M021", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-22T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI021:2", "case_id": "M021", "activity": "Rolling Setup Verified", "timestamp": "2026-03-22T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI021:3", "case_id": "M021", "activity": "Rolling Work Started", "timestamp": "2026-03-22T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI021:4", "case_id": "M021", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-22T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI022:1", "case_id": "M022", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-23T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI022:2", "case_id": "M022", "activity": "Rolling Setup Verified", "timestamp": "2026-03-23T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI022:3", "case_id": "M022", "activity": "Rolling Work Started", "timestamp": "2026-03-23T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI023:1", "case_id": "M023", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-24T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI023:2", "case_id": "M023", "activity": "Rolling Setup Verified", "timestamp": "2026-03-24T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI023:3", "case_id": "M023", "activity": "Rolling Work Started", "timestamp": "2026-03-24T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI023:4", "case_id": "M023", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-24T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI024:1", "case_id": "M024", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-25T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI024:2", "case_id": "M024", "activity": "Rolling Setup Verified", "timestamp": "2026-03-25T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI024:3", "case_id": "M024", "activity": "Rolling Work Started", "timestamp": "2026-03-25T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI024:4", "case_id": "M024", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-25T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI025:1", "case_id": "M025", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-26T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI025:2", "case_id": "M025", "activity": "Rolling Setup Verified", "timestamp": "2026-03-26T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI026:1", "case_id": "M026", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-27T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI026:2", "case_id": "M026", "activity": "Rolling Setup Verified", "timestamp": "2026-03-27T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI027:1", "case_id": "M027", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-28T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI027:2", "case_id": "M027", "activity": "Rolling Setup Verified", "timestamp": "2026-03-28T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI027:3", "case_id": "M027", "activity": "Rolling Work Started", "timestamp": "2026-03-28T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI027:4", "case_id": "M027", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-28T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI028:1", "case_id": "M028", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-29T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI028:2", "case_id": "M028", "activity": "Rolling Setup Verified", "timestamp": "2026-03-29T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI028:3", "case_id": "M028", "activity": "Rolling Work Started", "timestamp": "2026-03-29T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI028:4", "case_id": "M028", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-29T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI029:1", "case_id": "M029", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-30T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI029:2", "case_id": "M029", "activity": "Rolling Setup Verified", "timestamp": "2026-03-30T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI029:3", "case_id": "M029", "activity": "Rolling Work Started", "timestamp": "2026-03-30T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI030:1", "case_id": "M030", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-03-31T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI030:2", "case_id": "M030", "activity": "Rolling Setup Verified", "timestamp": "2026-03-31T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI030:3", "case_id": "M030", "activity": "Rolling Work Started", "timestamp": "2026-03-31T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI030:4", "case_id": "M030", "activity": "Rolling Instruction Closed", "timestamp": "2026-03-31T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI031:1", "case_id": "M031", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-04-01T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI031:2", "case_id": "M031", "activity": "Rolling Setup Verified", "timestamp": "2026-04-01T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI032:1", "case_id": "M032", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-04-02T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI032:2", "case_id": "M032", "activity": "Rolling Setup Verified", "timestamp": "2026-04-02T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI033:1", "case_id": "M033", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-04-03T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI033:2", "case_id": "M033", "activity": "Rolling Setup Verified", "timestamp": "2026-04-03T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI033:3", "case_id": "M033", "activity": "Rolling Work Started", "timestamp": "2026-04-03T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI033:4", "case_id": "M033", "activity": "Rolling Instruction Closed", "timestamp": "2026-04-03T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI034:1", "case_id": "M034", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-04-04T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI034:2", "case_id": "M034", "activity": "Rolling Setup Verified", "timestamp": "2026-04-04T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI034:3", "case_id": "M034", "activity": "Rolling Work Started", "timestamp": "2026-04-04T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI034:4", "case_id": "M034", "activity": "Rolling Instruction Closed", "timestamp": "2026-04-04T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI035:1", "case_id": "M035", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-04-05T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI035:2", "case_id": "M035", "activity": "Rolling Setup Verified", "timestamp": "2026-04-05T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI035:3", "case_id": "M035", "activity": "Rolling Work Started", "timestamp": "2026-04-05T05:55:00Z"}
+{"event_id": "LC:rolling_instruction:RI035:4", "case_id": "M035", "activity": "Rolling Instruction Closed", "timestamp": "2026-04-05T06:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI036:1", "case_id": "M036", "activity": "Rolling Instruction Acknowledged", "timestamp": "2026-04-06T00:05:00Z"}
+{"event_id": "LC:rolling_instruction:RI036:2", "case_id": "M036", "activity": "Rolling Setup Verified", "timestamp": "2026-04-06T00:10:00Z"}
+{"event_id": "LC:rolling_instruction:RI036:3", "case_id": "M036", "activity": "Rolling Work Started", "timestamp": "2026-04-06T05:55:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM002:1", "case_id": "M002", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-03T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM003:1", "case_id": "M003", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-04T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM003:2", "case_id": "M003", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-04T03:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM003:3", "case_id": "M003", "activity": "Heating Completed", "timestamp": "2026-03-04T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM003:4", "case_id": "M003", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-04T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM004:1", "case_id": "M004", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-05T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM004:2", "case_id": "M004", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-05T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM004:3", "case_id": "M004", "activity": "Heating Completed", "timestamp": "2026-03-05T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM004:4", "case_id": "M004", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-05T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM005:1", "case_id": "M005", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-06T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM005:2", "case_id": "M005", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-06T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM005:3", "case_id": "M005", "activity": "Heating Completed", "timestamp": "2026-03-06T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM005:4", "case_id": "M005", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-06T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM006:1", "case_id": "M006", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-07T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM006:2", "case_id": "M006", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-07T03:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM006:3", "case_id": "M006", "activity": "Heating Completed", "timestamp": "2026-03-07T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM006:4", "case_id": "M006", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-07T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM008:1", "case_id": "M008", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-09T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM008:2", "case_id": "M008", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-09T01:10:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM009:1", "case_id": "M009", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-10T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM009:2", "case_id": "M009", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-10T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM009:3", "case_id": "M009", "activity": "Heating Completed", "timestamp": "2026-03-10T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM009:4", "case_id": "M009", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-10T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM010:1", "case_id": "M010", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-11T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM010:2", "case_id": "M010", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-11T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM010:3", "case_id": "M010", "activity": "Heating Completed", "timestamp": "2026-03-11T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM011:1", "case_id": "M011", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-12T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM011:2", "case_id": "M011", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-12T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM011:3", "case_id": "M011", "activity": "Heating Completed", "timestamp": "2026-03-12T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM011:4", "case_id": "M011", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-12T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM012:1", "case_id": "M012", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-13T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM012:2", "case_id": "M012", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-13T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM012:3", "case_id": "M012", "activity": "Heating Completed", "timestamp": "2026-03-13T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM012:4", "case_id": "M012", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-13T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM014:1", "case_id": "M014", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-15T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM014:2", "case_id": "M014", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-15T01:10:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM015:1", "case_id": "M015", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-16T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM015:2", "case_id": "M015", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-16T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM015:3", "case_id": "M015", "activity": "Heating Completed", "timestamp": "2026-03-16T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM015:4", "case_id": "M015", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-16T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM016:1", "case_id": "M016", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-17T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM016:2", "case_id": "M016", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-17T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM016:3", "case_id": "M016", "activity": "Heating Completed", "timestamp": "2026-03-17T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM016:4", "case_id": "M016", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-17T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM017:1", "case_id": "M017", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-18T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM017:2", "case_id": "M017", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-18T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM017:3", "case_id": "M017", "activity": "Heating Completed", "timestamp": "2026-03-18T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM017:4", "case_id": "M017", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-18T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM018:1", "case_id": "M018", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-19T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM018:2", "case_id": "M018", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-19T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM018:3", "case_id": "M018", "activity": "Heating Completed", "timestamp": "2026-03-19T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM020:1", "case_id": "M020", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-21T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM020:2", "case_id": "M020", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-21T01:10:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM021:1", "case_id": "M021", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-22T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM021:2", "case_id": "M021", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-22T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM021:3", "case_id": "M021", "activity": "Heating Completed", "timestamp": "2026-03-22T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM021:4", "case_id": "M021", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-22T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM022:1", "case_id": "M022", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-23T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM022:2", "case_id": "M022", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-23T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM022:3", "case_id": "M022", "activity": "Heating Completed", "timestamp": "2026-03-23T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM022:4", "case_id": "M022", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-23T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM023:1", "case_id": "M023", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-24T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM023:2", "case_id": "M023", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-24T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM023:3", "case_id": "M023", "activity": "Heating Completed", "timestamp": "2026-03-24T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM023:4", "case_id": "M023", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-24T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM024:1", "case_id": "M024", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-25T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM024:2", "case_id": "M024", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-25T03:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM024:3", "case_id": "M024", "activity": "Heating Completed", "timestamp": "2026-03-25T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM024:4", "case_id": "M024", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-25T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM026:1", "case_id": "M026", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-27T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM026:2", "case_id": "M026", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-27T01:10:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM027:1", "case_id": "M027", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-28T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM027:2", "case_id": "M027", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-28T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM027:3", "case_id": "M027", "activity": "Heating Completed", "timestamp": "2026-03-28T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM028:1", "case_id": "M028", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-29T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM028:2", "case_id": "M028", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-29T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM028:3", "case_id": "M028", "activity": "Heating Completed", "timestamp": "2026-03-29T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM028:4", "case_id": "M028", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-29T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM029:1", "case_id": "M029", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-30T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM029:2", "case_id": "M029", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-30T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM029:3", "case_id": "M029", "activity": "Heating Completed", "timestamp": "2026-03-30T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM029:4", "case_id": "M029", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-30T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM030:1", "case_id": "M030", "activity": "Furnace Charge Assigned", "timestamp": "2026-03-31T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM030:2", "case_id": "M030", "activity": "Furnace Charge Confirmed", "timestamp": "2026-03-31T02:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM030:3", "case_id": "M030", "activity": "Heating Completed", "timestamp": "2026-03-31T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM030:4", "case_id": "M030", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-03-31T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM032:1", "case_id": "M032", "activity": "Furnace Charge Assigned", "timestamp": "2026-04-02T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM032:2", "case_id": "M032", "activity": "Furnace Charge Confirmed", "timestamp": "2026-04-02T01:10:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM033:1", "case_id": "M033", "activity": "Furnace Charge Assigned", "timestamp": "2026-04-03T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM033:2", "case_id": "M033", "activity": "Furnace Charge Confirmed", "timestamp": "2026-04-03T04:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM033:3", "case_id": "M033", "activity": "Heating Completed", "timestamp": "2026-04-03T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM033:4", "case_id": "M033", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-04-03T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM034:1", "case_id": "M034", "activity": "Furnace Charge Assigned", "timestamp": "2026-04-04T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM034:2", "case_id": "M034", "activity": "Furnace Charge Confirmed", "timestamp": "2026-04-04T03:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM034:3", "case_id": "M034", "activity": "Heating Completed", "timestamp": "2026-04-04T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM034:4", "case_id": "M034", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-04-04T05:50:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM035:1", "case_id": "M035", "activity": "Furnace Charge Assigned", "timestamp": "2026-04-05T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM035:2", "case_id": "M035", "activity": "Furnace Charge Confirmed", "timestamp": "2026-04-05T03:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM035:3", "case_id": "M035", "activity": "Heating Completed", "timestamp": "2026-04-05T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM036:1", "case_id": "M036", "activity": "Furnace Charge Assigned", "timestamp": "2026-04-06T01:05:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM036:2", "case_id": "M036", "activity": "Furnace Charge Confirmed", "timestamp": "2026-04-06T03:01:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM036:3", "case_id": "M036", "activity": "Heating Completed", "timestamp": "2026-04-06T05:40:00Z"}
+{"event_id": "LC:furnace_charge_tracking:TRM036:4", "case_id": "M036", "activity": "Furnace Discharge Confirmed", "timestamp": "2026-04-06T05:50:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM004:1", "case_id": "M004", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-05T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM004:2", "case_id": "M004", "activity": "Cutting Setup Verified", "timestamp": "2026-03-05T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM004:3", "case_id": "M004", "activity": "Cutting Work Started", "timestamp": "2026-03-05T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM005:1", "case_id": "M005", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-06T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM005:2", "case_id": "M005", "activity": "Cutting Setup Verified", "timestamp": "2026-03-06T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM005:3", "case_id": "M005", "activity": "Cutting Work Started", "timestamp": "2026-03-06T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM005:4", "case_id": "M005", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-06T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM006:1", "case_id": "M006", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-07T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM006:2", "case_id": "M006", "activity": "Cutting Setup Verified", "timestamp": "2026-03-07T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM006:3", "case_id": "M006", "activity": "Cutting Work Started", "timestamp": "2026-03-07T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM006:4", "case_id": "M006", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-07T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM010:1", "case_id": "M010", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-11T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM010:2", "case_id": "M010", "activity": "Cutting Setup Verified", "timestamp": "2026-03-11T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM010:3", "case_id": "M010", "activity": "Cutting Work Started", "timestamp": "2026-03-11T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM010:4", "case_id": "M010", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-11T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM011:1", "case_id": "M011", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-12T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM011:2", "case_id": "M011", "activity": "Cutting Setup Verified", "timestamp": "2026-03-12T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM011:3", "case_id": "M011", "activity": "Cutting Work Started", "timestamp": "2026-03-12T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM011:4", "case_id": "M011", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-12T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM012:1", "case_id": "M012", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-13T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM012:2", "case_id": "M012", "activity": "Cutting Setup Verified", "timestamp": "2026-03-13T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM012:3", "case_id": "M012", "activity": "Cutting Work Started", "timestamp": "2026-03-13T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM012:4", "case_id": "M012", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-13T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM016:1", "case_id": "M016", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-17T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM016:2", "case_id": "M016", "activity": "Cutting Setup Verified", "timestamp": "2026-03-17T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM016:3", "case_id": "M016", "activity": "Cutting Work Started", "timestamp": "2026-03-17T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM016:4", "case_id": "M016", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-17T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM017:1", "case_id": "M017", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-18T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM017:2", "case_id": "M017", "activity": "Cutting Setup Verified", "timestamp": "2026-03-18T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM017:3", "case_id": "M017", "activity": "Cutting Work Started", "timestamp": "2026-03-18T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM018:1", "case_id": "M018", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-19T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM018:2", "case_id": "M018", "activity": "Cutting Setup Verified", "timestamp": "2026-03-19T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM018:3", "case_id": "M018", "activity": "Cutting Work Started", "timestamp": "2026-03-19T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM018:4", "case_id": "M018", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-19T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM022:1", "case_id": "M022", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-23T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM022:2", "case_id": "M022", "activity": "Cutting Setup Verified", "timestamp": "2026-03-23T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM022:3", "case_id": "M022", "activity": "Cutting Work Started", "timestamp": "2026-03-23T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM022:4", "case_id": "M022", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-23T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM023:1", "case_id": "M023", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-24T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM023:2", "case_id": "M023", "activity": "Cutting Setup Verified", "timestamp": "2026-03-24T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM023:3", "case_id": "M023", "activity": "Cutting Work Started", "timestamp": "2026-03-24T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM023:4", "case_id": "M023", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-24T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM024:1", "case_id": "M024", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-25T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM024:2", "case_id": "M024", "activity": "Cutting Setup Verified", "timestamp": "2026-03-25T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM024:3", "case_id": "M024", "activity": "Cutting Work Started", "timestamp": "2026-03-25T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM024:4", "case_id": "M024", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-25T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM028:1", "case_id": "M028", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-29T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM028:2", "case_id": "M028", "activity": "Cutting Setup Verified", "timestamp": "2026-03-29T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM028:3", "case_id": "M028", "activity": "Cutting Work Started", "timestamp": "2026-03-29T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM028:4", "case_id": "M028", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-29T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM029:1", "case_id": "M029", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-30T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM029:2", "case_id": "M029", "activity": "Cutting Setup Verified", "timestamp": "2026-03-30T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM029:3", "case_id": "M029", "activity": "Cutting Work Started", "timestamp": "2026-03-30T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM029:4", "case_id": "M029", "activity": "Cutting Instruction Closed", "timestamp": "2026-03-30T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM030:1", "case_id": "M030", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-03-31T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM030:2", "case_id": "M030", "activity": "Cutting Setup Verified", "timestamp": "2026-03-31T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM030:3", "case_id": "M030", "activity": "Cutting Work Started", "timestamp": "2026-03-31T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM034:1", "case_id": "M034", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-04-04T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM034:2", "case_id": "M034", "activity": "Cutting Setup Verified", "timestamp": "2026-04-04T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM034:3", "case_id": "M034", "activity": "Cutting Work Started", "timestamp": "2026-04-04T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM034:4", "case_id": "M034", "activity": "Cutting Instruction Closed", "timestamp": "2026-04-04T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM035:1", "case_id": "M035", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-04-05T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM035:2", "case_id": "M035", "activity": "Cutting Setup Verified", "timestamp": "2026-04-05T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM035:3", "case_id": "M035", "activity": "Cutting Work Started", "timestamp": "2026-04-05T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM035:4", "case_id": "M035", "activity": "Cutting Instruction Closed", "timestamp": "2026-04-05T11:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM036:1", "case_id": "M036", "activity": "Cutting Instruction Acknowledged", "timestamp": "2026-04-06T10:05:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM036:2", "case_id": "M036", "activity": "Cutting Setup Verified", "timestamp": "2026-04-06T10:10:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM036:3", "case_id": "M036", "activity": "Cutting Work Started", "timestamp": "2026-04-06T10:55:00Z"}
+{"event_id": "LC:cutting_finishing_instruction:CIM036:4", "case_id": "M036", "activity": "Cutting Instruction Closed", "timestamp": "2026-04-06T11:05:00Z"}
+{"event_id": "LC:plate_material:P004-1:1", "case_id": "M004", "activity": "Plate Piece Identified", "timestamp": "2026-03-05T12:36:00Z"}
+{"event_id": "LC:plate_material:P004-1:2", "case_id": "M004", "activity": "Plate Surface Checked", "timestamp": "2026-03-05T14:06:00Z"}
+{"event_id": "LC:plate_material:P004-1:3", "case_id": "M004", "activity": "Plate Quality Released", "timestamp": "2026-03-05T14:36:00Z"}
+{"event_id": "LC:plate_material:P004-2:1", "case_id": "M004", "activity": "Plate Piece Identified", "timestamp": "2026-03-05T12:42:00Z"}
+{"event_id": "LC:plate_material:P004-2:2", "case_id": "M004", "activity": "Plate Surface Checked", "timestamp": "2026-03-05T14:12:00Z"}
+{"event_id": "LC:plate_material:P004-2:3", "case_id": "M004", "activity": "Plate Quality Released", "timestamp": "2026-03-05T14:42:00Z"}
+{"event_id": "LC:plate_material:P004-2:4", "case_id": "M004", "activity": "Plate Packed", "timestamp": "2026-03-05T15:42:00Z"}
+{"event_id": "LC:plate_material:P004-3:1", "case_id": "M004", "activity": "Plate Piece Identified", "timestamp": "2026-03-05T12:48:00Z"}
+{"event_id": "LC:plate_material:P004-3:2", "case_id": "M004", "activity": "Plate Surface Checked", "timestamp": "2026-03-05T14:18:00Z"}
+{"event_id": "LC:plate_material:P004-3:3", "case_id": "M004", "activity": "Plate Quality Released", "timestamp": "2026-03-05T14:48:00Z"}
+{"event_id": "LC:plate_material:P004-3:4", "case_id": "M004", "activity": "Plate Packed", "timestamp": "2026-03-05T15:48:00Z"}
+{"event_id": "LC:plate_material:P005-1:1", "case_id": "M005", "activity": "Plate Piece Identified", "timestamp": "2026-03-06T11:30:00Z"}
+{"event_id": "LC:plate_material:P005-1:2", "case_id": "M005", "activity": "Plate Surface Checked", "timestamp": "2026-03-06T14:06:00Z"}
+{"event_id": "LC:plate_material:P005-1:3", "case_id": "M005", "activity": "Plate Quality Released", "timestamp": "2026-03-06T14:36:00Z"}
+{"event_id": "LC:plate_material:P005-1:4", "case_id": "M005", "activity": "Plate Packed", "timestamp": "2026-03-06T15:36:00Z"}
+{"event_id": "LC:plate_material:P005-2:1", "case_id": "M005", "activity": "Plate Piece Identified", "timestamp": "2026-03-06T11:30:00Z"}
+{"event_id": "LC:plate_material:P005-2:2", "case_id": "M005", "activity": "Plate Surface Checked", "timestamp": "2026-03-06T14:12:00Z"}
+{"event_id": "LC:plate_material:P005-2:3", "case_id": "M005", "activity": "Plate Quality Released", "timestamp": "2026-03-06T14:42:00Z"}
+{"event_id": "LC:plate_material:P005-2:4", "case_id": "M005", "activity": "Plate Packed", "timestamp": "2026-03-06T15:42:00Z"}
+{"event_id": "LC:plate_material:P006-1:1", "case_id": "M006", "activity": "Plate Piece Identified", "timestamp": "2026-03-07T11:30:00Z"}
+{"event_id": "LC:plate_material:P006-1:2", "case_id": "M006", "activity": "Plate Surface Checked", "timestamp": "2026-03-07T19:00:00Z"}
+{"event_id": "LC:plate_material:P006-1:3", "case_id": "M006", "activity": "Plate Quality Released", "timestamp": "2026-03-07T19:30:00Z"}
+{"event_id": "LC:plate_material:P006-1:4", "case_id": "M006", "activity": "Plate Packed", "timestamp": "2026-03-07T20:30:00Z"}
+{"event_id": "LC:plate_material:P010-1:1", "case_id": "M010", "activity": "Plate Piece Identified", "timestamp": "2026-03-11T12:36:00Z"}
+{"event_id": "LC:plate_material:P010-1:2", "case_id": "M010", "activity": "Plate Surface Checked", "timestamp": "2026-03-11T14:06:00Z"}
+{"event_id": "LC:plate_material:P010-1:3", "case_id": "M010", "activity": "Plate Quality Released", "timestamp": "2026-03-11T14:36:00Z"}
+{"event_id": "LC:plate_material:P010-1:4", "case_id": "M010", "activity": "Plate Packed", "timestamp": "2026-03-11T15:36:00Z"}
+{"event_id": "LC:plate_material:P010-2:1", "case_id": "M010", "activity": "Plate Piece Identified", "timestamp": "2026-03-11T12:42:00Z"}
+{"event_id": "LC:plate_material:P010-2:2", "case_id": "M010", "activity": "Plate Surface Checked", "timestamp": "2026-03-11T14:12:00Z"}
+{"event_id": "LC:plate_material:P010-2:3", "case_id": "M010", "activity": "Plate Quality Released", "timestamp": "2026-03-11T14:42:00Z"}
+{"event_id": "LC:plate_material:P010-3:1", "case_id": "M010", "activity": "Plate Piece Identified", "timestamp": "2026-03-11T12:48:00Z"}
+{"event_id": "LC:plate_material:P010-3:2", "case_id": "M010", "activity": "Plate Surface Checked", "timestamp": "2026-03-11T14:18:00Z"}
+{"event_id": "LC:plate_material:P010-3:3", "case_id": "M010", "activity": "Plate Quality Released", "timestamp": "2026-03-11T14:48:00Z"}
+{"event_id": "LC:plate_material:P010-3:4", "case_id": "M010", "activity": "Plate Packed", "timestamp": "2026-03-11T15:48:00Z"}
+{"event_id": "LC:plate_material:P011-1:1", "case_id": "M011", "activity": "Plate Piece Identified", "timestamp": "2026-03-12T11:30:00Z"}
+{"event_id": "LC:plate_material:P011-1:2", "case_id": "M011", "activity": "Plate Surface Checked", "timestamp": "2026-03-12T14:06:00Z"}
+{"event_id": "LC:plate_material:P011-1:3", "case_id": "M011", "activity": "Plate Quality Released", "timestamp": "2026-03-12T14:36:00Z"}
+{"event_id": "LC:plate_material:P011-1:4", "case_id": "M011", "activity": "Plate Packed", "timestamp": "2026-03-12T15:36:00Z"}
+{"event_id": "LC:plate_material:P012-1:1", "case_id": "M012", "activity": "Plate Piece Identified", "timestamp": "2026-03-13T11:30:00Z"}
+{"event_id": "LC:plate_material:P012-1:2", "case_id": "M012", "activity": "Plate Surface Checked", "timestamp": "2026-03-13T19:00:00Z"}
+{"event_id": "LC:plate_material:P012-1:3", "case_id": "M012", "activity": "Plate Quality Released", "timestamp": "2026-03-13T19:30:00Z"}
+{"event_id": "LC:plate_material:P012-1:4", "case_id": "M012", "activity": "Plate Packed", "timestamp": "2026-03-13T20:30:00Z"}
+{"event_id": "LC:plate_material:P016-1:1", "case_id": "M016", "activity": "Plate Piece Identified", "timestamp": "2026-03-17T12:36:00Z"}
+{"event_id": "LC:plate_material:P016-1:2", "case_id": "M016", "activity": "Plate Surface Checked", "timestamp": "2026-03-17T14:06:00Z"}
+{"event_id": "LC:plate_material:P016-1:3", "case_id": "M016", "activity": "Plate Quality Released", "timestamp": "2026-03-17T14:36:00Z"}
+{"event_id": "LC:plate_material:P016-1:4", "case_id": "M016", "activity": "Plate Packed", "timestamp": "2026-03-17T15:36:00Z"}
+{"event_id": "LC:plate_material:P017-1:1", "case_id": "M017", "activity": "Plate Piece Identified", "timestamp": "2026-03-18T11:30:00Z"}
+{"event_id": "LC:plate_material:P017-1:2", "case_id": "M017", "activity": "Plate Surface Checked", "timestamp": "2026-03-18T14:06:00Z"}
+{"event_id": "LC:plate_material:P017-1:3", "case_id": "M017", "activity": "Plate Quality Released", "timestamp": "2026-03-18T14:36:00Z"}
+{"event_id": "LC:plate_material:P017-1:4", "case_id": "M017", "activity": "Plate Packed", "timestamp": "2026-03-18T15:36:00Z"}
+{"event_id": "LC:plate_material:P017-2:1", "case_id": "M017", "activity": "Plate Piece Identified", "timestamp": "2026-03-18T11:30:00Z"}
+{"event_id": "LC:plate_material:P017-2:2", "case_id": "M017", "activity": "Plate Surface Checked", "timestamp": "2026-03-18T14:12:00Z"}
+{"event_id": "LC:plate_material:P017-2:3", "case_id": "M017", "activity": "Plate Quality Released", "timestamp": "2026-03-18T14:42:00Z"}
+{"event_id": "LC:plate_material:P017-2:4", "case_id": "M017", "activity": "Plate Packed", "timestamp": "2026-03-18T15:42:00Z"}
+{"event_id": "LC:plate_material:P017-3:1", "case_id": "M017", "activity": "Plate Piece Identified", "timestamp": "2026-03-18T11:30:00Z"}
+{"event_id": "LC:plate_material:P017-3:2", "case_id": "M017", "activity": "Plate Surface Checked", "timestamp": "2026-03-18T14:18:00Z"}
+{"event_id": "LC:plate_material:P017-3:3", "case_id": "M017", "activity": "Plate Quality Released", "timestamp": "2026-03-18T14:48:00Z"}
+{"event_id": "LC:plate_material:P018-1:1", "case_id": "M018", "activity": "Plate Piece Identified", "timestamp": "2026-03-19T11:30:00Z"}
+{"event_id": "LC:plate_material:P018-1:2", "case_id": "M018", "activity": "Plate Surface Checked", "timestamp": "2026-03-19T19:00:00Z"}
+{"event_id": "LC:plate_material:P018-1:3", "case_id": "M018", "activity": "Plate Quality Released", "timestamp": "2026-03-19T19:30:00Z"}
+{"event_id": "LC:plate_material:P018-1:4", "case_id": "M018", "activity": "Plate Packed", "timestamp": "2026-03-19T20:30:00Z"}
+{"event_id": "LC:plate_material:P018-2:1", "case_id": "M018", "activity": "Plate Piece Identified", "timestamp": "2026-03-19T12:42:00Z"}
+{"event_id": "LC:plate_material:P018-2:2", "case_id": "M018", "activity": "Plate Surface Checked", "timestamp": "2026-03-19T14:12:00Z"}
+{"event_id": "LC:plate_material:P018-2:3", "case_id": "M018", "activity": "Plate Quality Released", "timestamp": "2026-03-19T14:42:00Z"}
+{"event_id": "LC:plate_material:P018-2:4", "case_id": "M018", "activity": "Plate Packed", "timestamp": "2026-03-19T15:42:00Z"}
+{"event_id": "LC:plate_material:P018-3:1", "case_id": "M018", "activity": "Plate Piece Identified", "timestamp": "2026-03-19T12:48:00Z"}
+{"event_id": "LC:plate_material:P018-3:2", "case_id": "M018", "activity": "Plate Surface Checked", "timestamp": "2026-03-19T14:18:00Z"}
+{"event_id": "LC:plate_material:P018-3:3", "case_id": "M018", "activity": "Plate Quality Released", "timestamp": "2026-03-19T14:48:00Z"}
+{"event_id": "LC:plate_material:P018-3:4", "case_id": "M018", "activity": "Plate Packed", "timestamp": "2026-03-19T15:48:00Z"}
+{"event_id": "LC:plate_material:P022-1:1", "case_id": "M022", "activity": "Plate Piece Identified", "timestamp": "2026-03-23T12:36:00Z"}
+{"event_id": "LC:plate_material:P022-1:2", "case_id": "M022", "activity": "Plate Surface Checked", "timestamp": "2026-03-23T14:06:00Z"}
+{"event_id": "LC:plate_material:P022-1:3", "case_id": "M022", "activity": "Plate Quality Released", "timestamp": "2026-03-23T14:36:00Z"}
+{"event_id": "LC:plate_material:P022-1:4", "case_id": "M022", "activity": "Plate Packed", "timestamp": "2026-03-23T15:36:00Z"}
+{"event_id": "LC:plate_material:P023-1:1", "case_id": "M023", "activity": "Plate Piece Identified", "timestamp": "2026-03-24T11:30:00Z"}
+{"event_id": "LC:plate_material:P023-1:2", "case_id": "M023", "activity": "Plate Surface Checked", "timestamp": "2026-03-24T14:06:00Z"}
+{"event_id": "LC:plate_material:P023-1:3", "case_id": "M023", "activity": "Plate Quality Released", "timestamp": "2026-03-24T14:36:00Z"}
+{"event_id": "LC:plate_material:P023-1:4", "case_id": "M023", "activity": "Plate Packed", "timestamp": "2026-03-24T15:36:00Z"}
+{"event_id": "LC:plate_material:P023-2:1", "case_id": "M023", "activity": "Plate Piece Identified", "timestamp": "2026-03-24T11:30:00Z"}
+{"event_id": "LC:plate_material:P023-2:2", "case_id": "M023", "activity": "Plate Surface Checked", "timestamp": "2026-03-24T14:12:00Z"}
+{"event_id": "LC:plate_material:P023-2:3", "case_id": "M023", "activity": "Plate Quality Released", "timestamp": "2026-03-24T14:42:00Z"}
+{"event_id": "LC:plate_material:P023-2:4", "case_id": "M023", "activity": "Plate Packed", "timestamp": "2026-03-24T15:42:00Z"}
+{"event_id": "LC:plate_material:P024-1:1", "case_id": "M024", "activity": "Plate Piece Identified", "timestamp": "2026-03-25T11:30:00Z"}
+{"event_id": "LC:plate_material:P024-1:2", "case_id": "M024", "activity": "Plate Surface Checked", "timestamp": "2026-03-25T19:00:00Z"}
+{"event_id": "LC:plate_material:P024-1:3", "case_id": "M024", "activity": "Plate Quality Released", "timestamp": "2026-03-25T19:30:00Z"}
+{"event_id": "LC:plate_material:P024-2:1", "case_id": "M024", "activity": "Plate Piece Identified", "timestamp": "2026-03-25T12:42:00Z"}
+{"event_id": "LC:plate_material:P024-2:2", "case_id": "M024", "activity": "Plate Surface Checked", "timestamp": "2026-03-25T14:12:00Z"}
+{"event_id": "LC:plate_material:P024-2:3", "case_id": "M024", "activity": "Plate Quality Released", "timestamp": "2026-03-25T14:42:00Z"}
+{"event_id": "LC:plate_material:P024-2:4", "case_id": "M024", "activity": "Plate Packed", "timestamp": "2026-03-25T15:42:00Z"}
+{"event_id": "LC:plate_material:P024-3:1", "case_id": "M024", "activity": "Plate Piece Identified", "timestamp": "2026-03-25T12:48:00Z"}
+{"event_id": "LC:plate_material:P024-3:2", "case_id": "M024", "activity": "Plate Surface Checked", "timestamp": "2026-03-25T14:18:00Z"}
+{"event_id": "LC:plate_material:P024-3:3", "case_id": "M024", "activity": "Plate Quality Released", "timestamp": "2026-03-25T14:48:00Z"}
+{"event_id": "LC:plate_material:P024-3:4", "case_id": "M024", "activity": "Plate Packed", "timestamp": "2026-03-25T15:48:00Z"}
+{"event_id": "LC:plate_material:P028-1:1", "case_id": "M028", "activity": "Plate Piece Identified", "timestamp": "2026-03-29T12:36:00Z"}
+{"event_id": "LC:plate_material:P028-1:2", "case_id": "M028", "activity": "Plate Surface Checked", "timestamp": "2026-03-29T14:06:00Z"}
+{"event_id": "LC:plate_material:P028-1:3", "case_id": "M028", "activity": "Plate Quality Released", "timestamp": "2026-03-29T14:36:00Z"}
+{"event_id": "LC:plate_material:P028-1:4", "case_id": "M028", "activity": "Plate Packed", "timestamp": "2026-03-29T15:36:00Z"}
+{"event_id": "LC:plate_material:P028-2:1", "case_id": "M028", "activity": "Plate Piece Identified", "timestamp": "2026-03-29T12:42:00Z"}
+{"event_id": "LC:plate_material:P028-2:2", "case_id": "M028", "activity": "Plate Surface Checked", "timestamp": "2026-03-29T14:12:00Z"}
+{"event_id": "LC:plate_material:P028-2:3", "case_id": "M028", "activity": "Plate Quality Released", "timestamp": "2026-03-29T14:42:00Z"}
+{"event_id": "LC:plate_material:P028-2:4", "case_id": "M028", "activity": "Plate Packed", "timestamp": "2026-03-29T15:42:00Z"}
+{"event_id": "LC:plate_material:P028-3:1", "case_id": "M028", "activity": "Plate Piece Identified", "timestamp": "2026-03-29T12:48:00Z"}
+{"event_id": "LC:plate_material:P028-3:2", "case_id": "M028", "activity": "Plate Surface Checked", "timestamp": "2026-03-29T14:18:00Z"}
+{"event_id": "LC:plate_material:P028-3:3", "case_id": "M028", "activity": "Plate Quality Released", "timestamp": "2026-03-29T14:48:00Z"}
+{"event_id": "LC:plate_material:P028-3:4", "case_id": "M028", "activity": "Plate Packed", "timestamp": "2026-03-29T15:48:00Z"}
+{"event_id": "LC:plate_material:P029-1:1", "case_id": "M029", "activity": "Plate Piece Identified", "timestamp": "2026-03-30T11:30:00Z"}
+{"event_id": "LC:plate_material:P029-1:2", "case_id": "M029", "activity": "Plate Surface Checked", "timestamp": "2026-03-30T14:06:00Z"}
+{"event_id": "LC:plate_material:P029-1:3", "case_id": "M029", "activity": "Plate Quality Released", "timestamp": "2026-03-30T14:36:00Z"}
+{"event_id": "LC:plate_material:P029-1:4", "case_id": "M029", "activity": "Plate Packed", "timestamp": "2026-03-30T15:36:00Z"}
+{"event_id": "LC:plate_material:P030-1:1", "case_id": "M030", "activity": "Plate Piece Identified", "timestamp": "2026-03-31T11:30:00Z"}
+{"event_id": "LC:plate_material:P030-1:2", "case_id": "M030", "activity": "Plate Surface Checked", "timestamp": "2026-03-31T19:00:00Z"}
+{"event_id": "LC:plate_material:P030-1:3", "case_id": "M030", "activity": "Plate Quality Released", "timestamp": "2026-03-31T19:30:00Z"}
+{"event_id": "LC:plate_material:P030-2:1", "case_id": "M030", "activity": "Plate Piece Identified", "timestamp": "2026-03-31T12:42:00Z"}
+{"event_id": "LC:plate_material:P030-2:2", "case_id": "M030", "activity": "Plate Surface Checked", "timestamp": "2026-03-31T14:12:00Z"}
+{"event_id": "LC:plate_material:P030-2:3", "case_id": "M030", "activity": "Plate Quality Released", "timestamp": "2026-03-31T14:42:00Z"}
+{"event_id": "LC:plate_material:P030-2:4", "case_id": "M030", "activity": "Plate Packed", "timestamp": "2026-03-31T15:42:00Z"}
+{"event_id": "LC:plate_material:P030-3:1", "case_id": "M030", "activity": "Plate Piece Identified", "timestamp": "2026-03-31T12:48:00Z"}
+{"event_id": "LC:plate_material:P030-3:2", "case_id": "M030", "activity": "Plate Surface Checked", "timestamp": "2026-03-31T14:18:00Z"}
+{"event_id": "LC:plate_material:P030-3:3", "case_id": "M030", "activity": "Plate Quality Released", "timestamp": "2026-03-31T14:48:00Z"}
+{"event_id": "LC:plate_material:P030-3:4", "case_id": "M030", "activity": "Plate Packed", "timestamp": "2026-03-31T15:48:00Z"}
+{"event_id": "LC:plate_material:P034-1:1", "case_id": "M034", "activity": "Plate Piece Identified", "timestamp": "2026-04-04T12:36:00Z"}
+{"event_id": "LC:plate_material:P034-1:2", "case_id": "M034", "activity": "Plate Surface Checked", "timestamp": "2026-04-04T14:06:00Z"}
+{"event_id": "LC:plate_material:P034-1:3", "case_id": "M034", "activity": "Plate Quality Released", "timestamp": "2026-04-04T14:36:00Z"}
+{"event_id": "LC:plate_material:P034-1:4", "case_id": "M034", "activity": "Plate Packed", "timestamp": "2026-04-04T15:36:00Z"}
+{"event_id": "LC:plate_material:P034-2:1", "case_id": "M034", "activity": "Plate Piece Identified", "timestamp": "2026-04-04T12:42:00Z"}
+{"event_id": "LC:plate_material:P034-2:2", "case_id": "M034", "activity": "Plate Surface Checked", "timestamp": "2026-04-04T14:12:00Z"}
+{"event_id": "LC:plate_material:P034-2:3", "case_id": "M034", "activity": "Plate Quality Released", "timestamp": "2026-04-04T14:42:00Z"}
+{"event_id": "LC:plate_material:P034-2:4", "case_id": "M034", "activity": "Plate Packed", "timestamp": "2026-04-04T15:42:00Z"}
+{"event_id": "LC:plate_material:P035-1:1", "case_id": "M035", "activity": "Plate Piece Identified", "timestamp": "2026-04-05T11:30:00Z"}
+{"event_id": "LC:plate_material:P035-1:2", "case_id": "M035", "activity": "Plate Surface Checked", "timestamp": "2026-04-05T14:06:00Z"}
+{"event_id": "LC:plate_material:P035-1:3", "case_id": "M035", "activity": "Plate Quality Released", "timestamp": "2026-04-05T14:36:00Z"}
+{"event_id": "LC:plate_material:P035-1:4", "case_id": "M035", "activity": "Plate Packed", "timestamp": "2026-04-05T15:36:00Z"}
+{"event_id": "LC:plate_material:P035-2:1", "case_id": "M035", "activity": "Plate Piece Identified", "timestamp": "2026-04-05T11:30:00Z"}
+{"event_id": "LC:plate_material:P035-2:2", "case_id": "M035", "activity": "Plate Surface Checked", "timestamp": "2026-04-05T14:12:00Z"}
+{"event_id": "LC:plate_material:P035-2:3", "case_id": "M035", "activity": "Plate Quality Released", "timestamp": "2026-04-05T14:42:00Z"}
+{"event_id": "LC:plate_material:P035-2:4", "case_id": "M035", "activity": "Plate Packed", "timestamp": "2026-04-05T15:42:00Z"}
+{"event_id": "LC:plate_material:P035-3:1", "case_id": "M035", "activity": "Plate Piece Identified", "timestamp": "2026-04-05T11:30:00Z"}
+{"event_id": "LC:plate_material:P035-3:2", "case_id": "M035", "activity": "Plate Surface Checked", "timestamp": "2026-04-05T14:18:00Z"}
+{"event_id": "LC:plate_material:P035-3:3", "case_id": "M035", "activity": "Plate Quality Released", "timestamp": "2026-04-05T14:48:00Z"}
+{"event_id": "LC:plate_material:P036-1:1", "case_id": "M036", "activity": "Plate Piece Identified", "timestamp": "2026-04-06T11:30:00Z"}
+{"event_id": "LC:plate_material:P036-1:2", "case_id": "M036", "activity": "Plate Surface Checked", "timestamp": "2026-04-06T19:00:00Z"}
+{"event_id": "LC:plate_material:P036-1:3", "case_id": "M036", "activity": "Plate Quality Released", "timestamp": "2026-04-06T19:30:00Z"}
+{"event_id": "LC:plate_material:P036-1:4", "case_id": "M036", "activity": "Plate Packed", "timestamp": "2026-04-06T20:30:00Z"}
+{"event_id": "LC:plate_material:P036-2:1", "case_id": "M036", "activity": "Plate Piece Identified", "timestamp": "2026-04-06T12:42:00Z"}
+{"event_id": "LC:plate_material:P036-2:2", "case_id": "M036", "activity": "Plate Surface Checked", "timestamp": "2026-04-06T14:12:00Z"}
+{"event_id": "LC:plate_material:P036-2:3", "case_id": "M036", "activity": "Plate Quality Released", "timestamp": "2026-04-06T14:42:00Z"}
+{"event_id": "LC:plate_material:P036-2:4", "case_id": "M036", "activity": "Plate Packed", "timestamp": "2026-04-06T15:42:00Z"}
+{"event_id": "LC:plate_material:P036-3:1", "case_id": "M036", "activity": "Plate Piece Identified", "timestamp": "2026-04-06T12:48:00Z"}
+{"event_id": "LC:plate_material:P036-3:2", "case_id": "M036", "activity": "Plate Surface Checked", "timestamp": "2026-04-06T14:18:00Z"}
+{"event_id": "LC:plate_material:P036-3:3", "case_id": "M036", "activity": "Plate Quality Released", "timestamp": "2026-04-06T14:48:00Z"}
+{"event_id": "LC:plate_material:P036-3:4", "case_id": "M036", "activity": "Plate Packed", "timestamp": "2026-04-06T15:48:00Z"}

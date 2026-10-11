@@ -37,3 +37,36 @@ material_operation_history,operation_code,TEXT,yes,FK → operation_code.code,Sy
 material_operation_history,started_at,TEXT,yes,,Actual operation start time
 material_operation_history,completed_at,TEXT,yes,,Actual operation completion time
 material_operation_history,created_at,TEXT,yes,,Technical record insertion time
+slab_material_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+slab_material_activity,slab_id,TEXT,yes,FK → slab_material.slab_id,Explicit parent object key; FK to slab_material.slab_id
+slab_material_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+slab_material_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+slab_material_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+planned_rolling_instruction_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+planned_rolling_instruction_activity,plan_id,TEXT,yes,FK → planned_rolling_instruction.plan_id,Explicit parent object key; FK to planned_rolling_instruction.plan_id
+planned_rolling_instruction_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+planned_rolling_instruction_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+planned_rolling_instruction_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+rolling_instruction_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+rolling_instruction_activity,instruction_id,TEXT,yes,FK → rolling_instruction.instruction_id,Explicit parent object key; FK to rolling_instruction.instruction_id
+rolling_instruction_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+rolling_instruction_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+rolling_instruction_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+furnace_charge_tracking_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+furnace_charge_tracking_activity,tracking_id,TEXT,yes,FK → furnace_charge_tracking.tracking_id,Explicit parent object key; FK to furnace_charge_tracking.tracking_id
+furnace_charge_tracking_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+furnace_charge_tracking_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+furnace_charge_tracking_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+cutting_finishing_instruction_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+cutting_finishing_instruction_activity,instruction_id,TEXT,yes,FK → cutting_finishing_instruction.instruction_id,Explicit parent object key; FK to cutting_finishing_instruction.instruction_id
+cutting_finishing_instruction_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+cutting_finishing_instruction_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+cutting_finishing_instruction_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+plate_material_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+plate_material_activity,plate_material_id,TEXT,yes,FK → plate_material.plate_material_id,Explicit parent object key; FK to plate_material.plate_material_id
+plate_material_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+plate_material_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+plate_material_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+lifecycle_case_link,event_id,TEXT,yes,PK,Validated identity in a typed activity table; polymorphic reference
+lifecycle_case_link,case_table,TEXT,yes,PK,Controlled existing business table name
+lifecycle_case_link,case_id,TEXT,yes,PK,Serialized primary key of the declared case table; composite parts separated by colon

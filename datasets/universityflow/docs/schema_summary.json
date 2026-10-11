@@ -1,5 +1,5 @@
 {
-  "table_count": 11,
+  "table_count": 20,
   "tables": {
     "student": {
       "row_count": 40,
@@ -82,6 +82,71 @@
         "instructor_id",
         "grading_time"
       ]
+    },
+    "registration_activity": {
+      "row_count": 228,
+      "column_count": 6,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "degree_examination_result_activity": {
+      "row_count": 154,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "assignment_activity": {
+      "row_count": 72,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "simulation_module_activity": {
+      "row_count": 11,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "student_simulation_experiment_result_activity": {
+      "row_count": 104,
+      "column_count": 7,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "thesis_activity": {
+      "row_count": 57,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "course_activity": {
+      "row_count": 23,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "task_activity": {
+      "row_count": 11,
+      "column_count": 5,
+      "primary_key": [
+        "event_id"
+      ]
+    },
+    "lifecycle_case_link": {
+      "row_count": 1675,
+      "column_count": 3,
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ]
     }
   },
   "relationships": [
@@ -156,6 +221,94 @@
       "logical": false,
       "from_col": "assignment_id",
       "to_col": "assignment_id"
+    },
+    {
+      "parent": "registration",
+      "child": "registration_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    },
+    {
+      "parent": "registration",
+      "child": "registration_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "course_id",
+      "to_col": "course_id"
+    },
+    {
+      "parent": "degree_examination_result",
+      "child": "degree_examination_result_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "result_id",
+      "to_col": "result_id"
+    },
+    {
+      "parent": "assignment",
+      "child": "assignment_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "assignment_id",
+      "to_col": "assignment_id"
+    },
+    {
+      "parent": "simulation_module",
+      "child": "simulation_module_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "module_id",
+      "to_col": "module_id"
+    },
+    {
+      "parent": "student_simulation_experiment_result",
+      "child": "student_simulation_experiment_result_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    },
+    {
+      "parent": "student_simulation_experiment_result",
+      "child": "student_simulation_experiment_result_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "module_id",
+      "to_col": "module_id"
+    },
+    {
+      "parent": "student_simulation_experiment_result",
+      "child": "student_simulation_experiment_result_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "simulation_date",
+      "to_col": "simulation_date"
+    },
+    {
+      "parent": "thesis",
+      "child": "thesis_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "thesis_id",
+      "to_col": "thesis_id"
+    },
+    {
+      "parent": "course",
+      "child": "course_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "course_id",
+      "to_col": "course_id"
+    },
+    {
+      "parent": "task",
+      "child": "task_activity",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "task_id",
+      "to_col": "task_id"
     }
   ]
 }

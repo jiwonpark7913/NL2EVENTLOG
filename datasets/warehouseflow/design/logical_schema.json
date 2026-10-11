@@ -1,217 +1,318 @@
-[
-  {
-    "table": "warehouse",
-    "source_table": "Warehouse",
-    "definition": "Warehouse master",
-    "columns": [
-      {
-        "name": "warehouse_number",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Warehouse identity",
-        "source_attribute": "Warehouse number"
-      },
-      {
-        "name": "address",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Warehouse postal address",
-        "source_attribute": "Address"
-      },
-      {
-        "name": "capacity",
-        "type": "INTEGER",
-        "constraints": "NOT NULL CHECK(capacity > 0)",
-        "definition": "Maximum total stock units; synthetic unit convention",
-        "source_attribute": "Capacity"
-      }
-    ],
-    "primary_key": [
-      "warehouse_number"
-    ],
-    "foreign_keys": []
-  },
-  {
-    "table": "goods",
-    "source_table": "Goods",
-    "definition": "Goods master",
-    "columns": [
-      {
-        "name": "goods_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Goods identity",
-        "source_attribute": "Goods ID"
-      },
-      {
-        "name": "goods_name",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Goods business name",
-        "source_attribute": "Goods name"
-      }
-    ],
-    "primary_key": [
-      "goods_id"
-    ],
-    "foreign_keys": []
-  },
-  {
-    "table": "loader",
-    "source_table": "Loader",
-    "definition": "Loading/unloading worker master",
-    "columns": [
-      {
-        "name": "name",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Worker name",
-        "source_attribute": "Name"
-      },
-      {
-        "name": "phone",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Worker contact phone",
-        "source_attribute": "Phone"
-      },
-      {
-        "name": "loader_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Worker identity",
-        "source_attribute": "Loader ID"
-      }
-    ],
-    "primary_key": [
-      "loader_id"
-    ],
-    "foreign_keys": []
-  },
-  {
-    "table": "transaction_record",
-    "source_table": "transaction record",
-    "definition": "Inbound/outbound task header, one business occurrence per row",
-    "columns": [
-      {
-        "name": "transaction_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Inbound/outbound transaction identity",
-        "source_attribute": "transaction ID"
-      },
-      {
-        "name": "occurred_at",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Actual UTC completion time of recorded task; instant-event convention",
-        "source_attribute": "time"
-      },
-      {
-        "name": "warehouse_number",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Warehouse identity",
-        "source_attribute": "warehouse number"
-      },
-      {
-        "name": "transaction_type",
-        "type": "TEXT",
-        "constraints": "NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
-        "definition": "IN = Goods Received; OUT = Goods Dispatched",
-        "source_attribute": "transaction type"
-      }
-    ],
-    "primary_key": [
-      "transaction_id"
-    ],
-    "foreign_keys": [
-      {
-        "column": "warehouse_number",
-        "parent_table": "warehouse",
-        "parent_column": "warehouse_number"
-      }
-    ]
-  },
-  {
-    "table": "goods_transaction_detail",
-    "source_table": "good transaction record details",
-    "definition": "Goods lines per transaction; composite key prevents repeated goods within one task",
-    "columns": [
-      {
-        "name": "goods_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Goods identity",
-        "source_attribute": "goods ID"
-      },
-      {
-        "name": "transaction_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Inbound/outbound transaction identity",
-        "source_attribute": "transaction ID"
-      },
-      {
-        "name": "quantity",
-        "type": "INTEGER",
-        "constraints": "NOT NULL CHECK(quantity > 0)",
-        "definition": "Positive number of units of this goods type moved by the transaction",
-        "source_attribute": "quantity"
-      }
-    ],
-    "primary_key": [
-      "goods_id",
-      "transaction_id"
-    ],
-    "foreign_keys": [
-      {
-        "column": "goods_id",
-        "parent_table": "goods",
-        "parent_column": "goods_id"
-      },
-      {
-        "column": "transaction_id",
-        "parent_table": "transaction_record",
-        "parent_column": "transaction_id"
-      }
-    ]
-  },
-  {
-    "table": "loader_transaction",
-    "source_table": "stevedore-transaction record",
-    "definition": "Worker assignment bridge; multiple workers may share one task",
-    "columns": [
-      {
-        "name": "loader_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Worker identity",
-        "source_attribute": "Loader ID"
-      },
-      {
-        "name": "transaction_id",
-        "type": "TEXT",
-        "constraints": "NOT NULL",
-        "definition": "Inbound/outbound transaction identity",
-        "source_attribute": "transaction ID"
-      }
-    ],
-    "primary_key": [
-      "loader_id",
-      "transaction_id"
-    ],
-    "foreign_keys": [
-      {
-        "column": "loader_id",
-        "parent_table": "loader",
-        "parent_column": "loader_id"
-      },
-      {
-        "column": "transaction_id",
-        "parent_table": "transaction_record",
-        "parent_column": "transaction_id"
-      }
-    ]
-  }
-]
+{
+  "original_source_design": [
+    {
+      "table": "warehouse",
+      "source_table": "Warehouse",
+      "definition": "Warehouse master",
+      "columns": [
+        {
+          "name": "warehouse_number",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Warehouse identity",
+          "source_attribute": "Warehouse number"
+        },
+        {
+          "name": "address",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Warehouse postal address",
+          "source_attribute": "Address"
+        },
+        {
+          "name": "capacity",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(capacity > 0)",
+          "definition": "Maximum total stock units; synthetic unit convention",
+          "source_attribute": "Capacity"
+        }
+      ],
+      "primary_key": [
+        "warehouse_number"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "goods",
+      "source_table": "Goods",
+      "definition": "Goods master",
+      "columns": [
+        {
+          "name": "goods_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Goods identity",
+          "source_attribute": "Goods ID"
+        },
+        {
+          "name": "goods_name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Goods business name",
+          "source_attribute": "Goods name"
+        }
+      ],
+      "primary_key": [
+        "goods_id"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "loader",
+      "source_table": "Loader",
+      "definition": "Loading/unloading worker master",
+      "columns": [
+        {
+          "name": "name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker name",
+          "source_attribute": "Name"
+        },
+        {
+          "name": "phone",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker contact phone",
+          "source_attribute": "Phone"
+        },
+        {
+          "name": "loader_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker identity",
+          "source_attribute": "Loader ID"
+        }
+      ],
+      "primary_key": [
+        "loader_id"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "transaction_record",
+      "source_table": "transaction record",
+      "definition": "Inbound/outbound task header, one business occurrence per row",
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Inbound/outbound transaction identity",
+          "source_attribute": "transaction ID"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual UTC completion time of recorded task; instant-event convention",
+          "source_attribute": "time"
+        },
+        {
+          "name": "warehouse_number",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Warehouse identity",
+          "source_attribute": "warehouse number"
+        },
+        {
+          "name": "transaction_type",
+          "type": "TEXT",
+          "constraints": "NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
+          "definition": "IN = Goods Received; OUT = Goods Dispatched",
+          "source_attribute": "transaction type"
+        }
+      ],
+      "primary_key": [
+        "transaction_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "warehouse_number",
+          "parent_table": "warehouse",
+          "parent_column": "warehouse_number"
+        }
+      ]
+    },
+    {
+      "table": "goods_transaction_detail",
+      "source_table": "good transaction record details",
+      "definition": "Goods lines per transaction; composite key prevents repeated goods within one task",
+      "columns": [
+        {
+          "name": "goods_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Goods identity",
+          "source_attribute": "goods ID"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Inbound/outbound transaction identity",
+          "source_attribute": "transaction ID"
+        },
+        {
+          "name": "quantity",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(quantity > 0)",
+          "definition": "Positive number of units of this goods type moved by the transaction",
+          "source_attribute": "quantity"
+        }
+      ],
+      "primary_key": [
+        "goods_id",
+        "transaction_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "goods_id",
+          "parent_table": "goods",
+          "parent_column": "goods_id"
+        },
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ]
+    },
+    {
+      "table": "loader_transaction",
+      "source_table": "stevedore-transaction record",
+      "definition": "Worker assignment bridge; multiple workers may share one task",
+      "columns": [
+        {
+          "name": "loader_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker identity",
+          "source_attribute": "Loader ID"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Inbound/outbound transaction identity",
+          "source_attribute": "transaction ID"
+        }
+      ],
+      "primary_key": [
+        "loader_id",
+        "transaction_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "loader_id",
+          "parent_table": "loader",
+          "parent_column": "loader_id"
+        },
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ]
+    }
+  ],
+  "authored_lifecycle_extensions": [
+    {
+      "object_table": "transaction_record",
+      "activity_table": "transaction_record_activity",
+      "activities": [
+        "Receiving Requested",
+        "Receiving Scheduled",
+        "Receiving Inspection Completed",
+        "Goods Put Away",
+        "Dispatch Requested",
+        "Dispatch Approved",
+        "Goods Picked",
+        "Goods Packed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
+  ],
+  "added_tables": [
+    {
+      "table": "transaction_record_activity",
+      "definition": "Authored actual-action history for transaction_record",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to transaction_record.transaction_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    }
+  ],
+  "final_table_count": 8
+}

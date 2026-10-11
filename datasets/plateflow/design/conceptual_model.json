@@ -1,20 +1,412 @@
 {
-  "entities": [
-    "slab_material",
-    "planned_rolling_instruction",
-    "rolling_instruction",
-    "as_rolled_material",
-    "furnace_charge_tracking",
-    "cutting_finishing_instruction",
-    "plate_material",
-    "operation_code",
-    "material_operation_history"
+  "original_source_design": {
+    "entities": [
+      "slab_material",
+      "planned_rolling_instruction",
+      "rolling_instruction",
+      "as_rolled_material",
+      "furnace_charge_tracking",
+      "cutting_finishing_instruction",
+      "plate_material",
+      "operation_code",
+      "material_operation_history"
+    ],
+    "relations": [
+      "Slab \u2192 Plan \u2192 Released rolling instruction \u2192 Mother material",
+      "Mother material \u2192 furnace tracking",
+      "Mother material \u2192 cutting instruction",
+      "Mother as-rolled plate number \u2192 many Plate materials",
+      "Mother/Plate material identity \u2192 many operation-history rows"
+    ]
+  },
+  "authored_lifecycle_extensions": [
+    {
+      "object_table": "slab_material",
+      "activity_table": "slab_material_activity",
+      "activities": [
+        "Slab Received",
+        "Slab Identity Verified",
+        "Slab Quality Checked",
+        "Slab Released for Rolling"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "planned_rolling_instruction",
+      "activity_table": "planned_rolling_instruction_activity",
+      "activities": [
+        "Rolling Plan Created",
+        "Rolling Plan Reviewed",
+        "Rolling Plan Approved",
+        "Rolling Plan Released"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "rolling_instruction",
+      "activity_table": "rolling_instruction_activity",
+      "activities": [
+        "Rolling Instruction Acknowledged",
+        "Rolling Setup Verified",
+        "Rolling Work Started",
+        "Rolling Instruction Closed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "furnace_charge_tracking",
+      "activity_table": "furnace_charge_tracking_activity",
+      "activities": [
+        "Furnace Charge Assigned",
+        "Furnace Charge Confirmed",
+        "Heating Completed",
+        "Furnace Discharge Confirmed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "cutting_finishing_instruction",
+      "activity_table": "cutting_finishing_instruction_activity",
+      "activities": [
+        "Cutting Instruction Acknowledged",
+        "Cutting Setup Verified",
+        "Cutting Work Started",
+        "Cutting Instruction Closed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "plate_material",
+      "activity_table": "plate_material_activity",
+      "activities": [
+        "Plate Piece Identified",
+        "Plate Surface Checked",
+        "Plate Quality Released",
+        "Plate Packed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
   ],
-  "relations": [
-    "Slab \u2192 Plan \u2192 Released rolling instruction \u2192 Mother material",
-    "Mother material \u2192 furnace tracking",
-    "Mother material \u2192 cutting instruction",
-    "Mother as-rolled plate number \u2192 many Plate materials",
-    "Mother/Plate material identity \u2192 many operation-history rows"
-  ]
+  "added_tables": [
+    {
+      "table": "slab_material_activity",
+      "definition": "Authored actual-action history for slab_material",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "slab_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to slab_material.slab_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "slab_id",
+          "parent_table": "slab_material",
+          "parent_column": "slab_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "planned_rolling_instruction_activity",
+      "definition": "Authored actual-action history for planned_rolling_instruction",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "plan_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to planned_rolling_instruction.plan_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "plan_id",
+          "parent_table": "planned_rolling_instruction",
+          "parent_column": "plan_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "rolling_instruction_activity",
+      "definition": "Authored actual-action history for rolling_instruction",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "instruction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to rolling_instruction.instruction_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "instruction_id",
+          "parent_table": "rolling_instruction",
+          "parent_column": "instruction_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "furnace_charge_tracking_activity",
+      "definition": "Authored actual-action history for furnace_charge_tracking",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "tracking_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to furnace_charge_tracking.tracking_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "tracking_id",
+          "parent_table": "furnace_charge_tracking",
+          "parent_column": "tracking_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "cutting_finishing_instruction_activity",
+      "definition": "Authored actual-action history for cutting_finishing_instruction",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "instruction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to cutting_finishing_instruction.instruction_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "instruction_id",
+          "parent_table": "cutting_finishing_instruction",
+          "parent_column": "instruction_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "plate_material_activity",
+      "definition": "Authored actual-action history for plate_material",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "plate_material_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to plate_material.plate_material_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "plate_material_id",
+          "parent_table": "plate_material",
+          "parent_column": "plate_material_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    }
+  ],
+  "final_table_count": 16
 }

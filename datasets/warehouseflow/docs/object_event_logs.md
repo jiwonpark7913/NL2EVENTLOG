@@ -10,22 +10,23 @@
 
 | Case table | Case concept | Kind | Question | Cases | Event rows | Gold CSV |
 |---|---|---|---|---:|---:|---|
-| warehouse | Warehouse | business object | OW01 | 4 | 80 | [CSV](../private/gold_logs/OW01.csv) |
-| goods | Goods | business object | OW02 | 6 | 138 | [CSV](../private/gold_logs/OW02.csv) |
-| loader | Worker | business object | OW03 | 5 | 167 | [CSV](../private/gold_logs/OW03.csv) |
-| transaction_record | Warehouse transaction | event record | OW04 | 80 | 80 | [CSV](../private/gold_logs/OW04.csv) |
-| goods_transaction_detail | Goods transaction line | association record | OW05 | 138 | 138 | [CSV](../private/gold_logs/OW05.csv) |
-| loader_transaction | Worker transaction assignment | association record | OW06 | 167 | 167 | [CSV](../private/gold_logs/OW06.csv) |
+| warehouse | Warehouse | business object | OW01 | 4 | 394 | [CSV](../private/gold_logs/OW01.csv) |
+| goods | Goods | business object | OW02 | 6 | 679 | [CSV](../private/gold_logs/OW02.csv) |
+| loader | Worker | business object | OW03 | 5 | 823 | [CSV](../private/gold_logs/OW03.csv) |
+| transaction_record | Warehouse transaction | event record | OW04 | 80 | 394 | [CSV](../private/gold_logs/OW04.csv) |
+| goods_transaction_detail | Goods transaction line | association record | OW05 | 138 | 679 | [CSV](../private/gold_logs/OW05.csv) |
+| loader_transaction | Worker transaction assignment | association record | OW06 | 167 | 823 | [CSV](../private/gold_logs/OW06.csv) |
 
 ## Scope of each view
 
-- **OW01 — Warehouse:** All receiving and dispatching tasks recorded for this warehouse.
-- **OW02 — Goods:** Receiving and dispatching tasks that contain this goods type; one event per goods type and transaction.
-- **OW03 — Worker:** Receiving and dispatching tasks assigned to this worker; one event per worker and transaction.
-- **OW04 — Warehouse transaction:** The single receiving or dispatching event represented by this transaction.
-- **OW05 — Goods transaction line:** The transaction event linked to this composite-key goods line.
-- **OW06 — Worker transaction assignment:** The transaction event linked to this composite-key worker assignment.
+- **OW01 — Warehouse:** Original recorded actions and authored lifecycle actions explicitly linked to this warehouse.
+- **OW02 — Goods:** Original recorded actions and authored lifecycle actions explicitly linked to this goods.
+- **OW03 — Worker:** Original recorded actions and authored lifecycle actions explicitly linked to this worker.
+- **OW04 — Warehouse transaction:** Original recorded actions and authored lifecycle actions explicitly linked to this warehouse transaction.
+- **OW05 — Goods transaction line:** Original recorded actions and authored lifecycle actions explicitly linked to this goods transaction line.
+- **OW06 — Worker transaction assignment:** Original recorded actions and authored lifecycle actions explicitly linked to this worker transaction assignment.
 
 ## Tables without an actual event-log view
 
-- Every keyed table in this database has an actual recorded-event view.
+- **transaction_record_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **lifecycle_case_link:** Activity storage/index for its parent-object log; not an independent business case.

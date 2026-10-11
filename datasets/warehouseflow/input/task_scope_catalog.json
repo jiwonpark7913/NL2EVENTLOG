@@ -1,10 +1,18 @@
 {
   "case_concept": "Warehouse",
   "activities": [
+    "Dispatch Approved",
+    "Dispatch Requested",
+    "Goods Dispatched",
+    "Goods Packed",
+    "Goods Picked",
+    "Goods Put Away",
     "Goods Received",
-    "Goods Dispatched"
+    "Receiving Inspection Completed",
+    "Receiving Requested",
+    "Receiving Scheduled"
   ],
-  "default_scope": "The default warehouse view contains all recorded IN/OUT transactions for that warehouse.",
+  "default_scope": "All actual events explicitly attributed to warehouse",
   "case_population": "all warehouse rows",
   "setting": "Catalog-assisted",
   "object_views": [
@@ -14,11 +22,19 @@
       "case_concept": "Warehouse",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "All receiving and dispatching tasks recorded for this warehouse.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this warehouse.",
       "case_count": 4,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ]
     },
     {
@@ -27,11 +43,19 @@
       "case_concept": "Goods",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Receiving and dispatching tasks that contain this goods type; one event per goods type and transaction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this goods.",
       "case_count": 6,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ]
     },
     {
@@ -40,11 +64,19 @@
       "case_concept": "Worker",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Receiving and dispatching tasks assigned to this worker; one event per worker and transaction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this worker.",
       "case_count": 5,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ]
     },
     {
@@ -53,11 +85,19 @@
       "case_concept": "Warehouse transaction",
       "kind": "event_record",
       "status": "answerable",
-      "scope_rule": "The single receiving or dispatching event represented by this transaction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this warehouse transaction.",
       "case_count": 80,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ]
     },
     {
@@ -66,11 +106,19 @@
       "case_concept": "Goods transaction line",
       "kind": "association_record",
       "status": "answerable",
-      "scope_rule": "The transaction event linked to this composite-key goods line.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this goods transaction line.",
       "case_count": 138,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ]
     },
     {
@@ -79,13 +127,50 @@
       "case_concept": "Worker transaction assignment",
       "kind": "association_record",
       "status": "answerable",
-      "scope_rule": "The transaction event linked to this composite-key worker assignment.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this worker transaction assignment.",
       "case_count": 167,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ]
     }
   ],
-  "unavailable_object_views": []
+  "unavailable_object_views": [
+    {
+      "case_table": "transaction_record_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "lifecycle_case_link",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    }
+  ],
+  "object_activity_design": [
+    {
+      "object_table": "transaction_record",
+      "activity_table": "transaction_record_activity",
+      "activities": [
+        "Receiving Requested",
+        "Receiving Scheduled",
+        "Receiving Inspection Completed",
+        "Goods Put Away",
+        "Dispatch Requested",
+        "Dispatch Approved",
+        "Goods Picked",
+        "Goods Packed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
+  ]
 }

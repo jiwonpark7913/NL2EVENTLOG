@@ -1,0 +1,18 @@
+[
+  {
+    "object_table": "transaction_record",
+    "activity_table": "transaction_record_activity",
+    "activities": [
+      "Receiving Requested",
+      "Receiving Scheduled",
+      "Receiving Inspection Completed",
+      "Goods Put Away",
+      "Dispatch Requested",
+      "Dispatch Approved",
+      "Goods Picked",
+      "Goods Packed"
+    ],
+    "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+  }
+]

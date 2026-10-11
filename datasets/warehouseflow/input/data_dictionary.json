@@ -217,6 +217,84 @@
           "parent_column": "transaction_id"
         }
       ]
+    },
+    {
+      "table": "transaction_record_activity",
+      "definition": "Authored actual-action history for transaction_record",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to transaction_record.transaction_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
     }
   ],
   "value_domain": {
@@ -224,13 +302,35 @@
     "OUT": "Goods Dispatched"
   },
   "business_rules": [
-    "One transaction header is one warehouse business event, regardless of goods-line or worker counts.",
-    "IN adds quantity; OUT removes quantity. Stock is never negative, and total stock stays within warehouse capacity.",
-    "Transactions have at least one goods line and one worker assignment.",
-    "Goods details and worker assignments enrich events; joining them must not multiply header events.",
-    "A transaction ID does not link an inbound task to a later outbound task as a shipment lifecycle.",
-    "The default warehouse view contains all recorded IN/OUT transactions for that warehouse.",
-    "Only completion instants are recorded. Task start times and durations cannot be inferred.",
-    "Master records and worker assignments are not additional business events."
+    "Original source layer: One transaction header is one warehouse business event, regardless of goods-line or worker counts.",
+    "Original source layer: IN adds quantity; OUT removes quantity. Stock is never negative, and total stock stays within warehouse capacity.",
+    "Original source layer: Transactions have at least one goods line and one worker assignment.",
+    "Original source layer: Goods details and worker assignments enrich events; joining them must not multiply header events.",
+    "Original source layer: A transaction ID does not link an inbound task to a later outbound task as a shipment lifecycle.",
+    "Original source layer: The default warehouse view contains all recorded IN/OUT transactions for that warehouse.",
+    "Original source layer: Only completion instants are recorded. Task start times and durations cannot be inferred.",
+    "Original source layer: Master records and worker assignments are not additional business events.",
+    "Original source rows are preserved. Added typed activity histories are authored synthetic domain extensions, not claimed source fields.",
+    "Only actual occurred_at times generate lifecycle events. Planned dates and technical timestamps remain excluded.",
+    "Lifecycle case links use exact typed object identity. Related cases may share an event; uniqueness is (case_id,event_id).",
+    "Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case."
+  ],
+  "object_activity_design": [
+    {
+      "object_table": "transaction_record",
+      "activity_table": "transaction_record_activity",
+      "activities": [
+        "Receiving Requested",
+        "Receiving Scheduled",
+        "Receiving Inspection Completed",
+        "Goods Put Away",
+        "Dispatch Requested",
+        "Dispatch Approved",
+        "Goods Picked",
+        "Goods Packed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
   ]
 }

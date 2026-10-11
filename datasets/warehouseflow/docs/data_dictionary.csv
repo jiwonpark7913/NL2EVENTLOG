@@ -16,3 +16,11 @@ goods_transaction_detail,transaction_id,TEXT,yes,PK; FK → transaction_record.t
 goods_transaction_detail,quantity,INTEGER,yes,,Positive number of units of this goods type moved by the transaction
 loader_transaction,loader_id,TEXT,yes,PK; FK → loader.loader_id,Worker identity
 loader_transaction,transaction_id,TEXT,yes,PK; FK → transaction_record.transaction_id,Inbound/outbound transaction identity
+transaction_record_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+transaction_record_activity,transaction_id,TEXT,yes,FK → transaction_record.transaction_id,Explicit parent object key; FK to transaction_record.transaction_id
+transaction_record_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+transaction_record_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+transaction_record_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+lifecycle_case_link,event_id,TEXT,yes,PK,Validated identity in a typed activity table; polymorphic reference
+lifecycle_case_link,case_table,TEXT,yes,PK,Controlled existing business table name
+lifecycle_case_link,case_id,TEXT,yes,PK,Serialized primary key of the declared case table; composite parts separated by colon

@@ -1,0 +1,14 @@
+[
+  {
+    "table": "transaction_record_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "transaction_record",
+    "object_key": [
+      "transaction_id"
+    ]
+  }
+]

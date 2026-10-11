@@ -15,6 +15,15 @@
 | assignment | 20 | 3 | assignment_id | Student assignment content; submission time is not recorded |
 | instructor | 3 | 3 | instructor_id | Instructor information from the assignment-management example |
 | assignment_grading | 18 | 5 | assignment_id, instructor_id, grading_time | Every recorded grading action, including regrading |
+| registration_activity | 228 | 6 | event_id | Authored actual-action history for registration |
+| degree_examination_result_activity | 154 | 5 | event_id | Authored actual-action history for degree_examination_result |
+| assignment_activity | 72 | 5 | event_id | Authored actual-action history for assignment |
+| simulation_module_activity | 11 | 5 | event_id | Authored actual-action history for simulation_module |
+| student_simulation_experiment_result_activity | 104 | 7 | event_id | Authored actual-action history for student_simulation_experiment_result |
+| thesis_activity | 57 | 5 | event_id | Authored actual-action history for thesis |
+| course_activity | 23 | 5 | event_id | Authored actual-action history for course |
+| task_activity | 11 | 5 | event_id | Authored actual-action history for task |
+| lifecycle_case_link | 1675 | 3 | event_id, case_table, case_id | Explicit case attribution across typed action histories; auxiliary extraction index, not a business case |
 
 ## Columns
 
@@ -150,23 +159,159 @@
 | score | INTEGER | yes |  | Assignment grade, 0 to 100 |
 | evaluation | TEXT | yes |  | Instructor feedback |
 
+### registration_activity
+
+- Authored actual-action history for registration
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| student_id | TEXT | yes | FK → registration.student_id | Explicit parent object key; FK to registration.student_id |
+| course_id | TEXT | yes | FK → registration.course_id | Explicit parent object key; FK to registration.course_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### degree_examination_result_activity
+
+- Authored actual-action history for degree_examination_result
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| result_id | TEXT | yes | FK → degree_examination_result.result_id | Explicit parent object key; FK to degree_examination_result.result_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### assignment_activity
+
+- Authored actual-action history for assignment
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| assignment_id | TEXT | yes | FK → assignment.assignment_id | Explicit parent object key; FK to assignment.assignment_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### simulation_module_activity
+
+- Authored actual-action history for simulation_module
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| module_id | TEXT | yes | FK → simulation_module.module_id | Explicit parent object key; FK to simulation_module.module_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### student_simulation_experiment_result_activity
+
+- Authored actual-action history for student_simulation_experiment_result
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| student_id | TEXT | yes | FK → student_simulation_experiment_result.student_id | Explicit parent object key; FK to student_simulation_experiment_result.student_id |
+| module_id | TEXT | yes | FK → student_simulation_experiment_result.module_id | Explicit parent object key; FK to student_simulation_experiment_result.module_id |
+| simulation_date | TEXT | yes | FK → student_simulation_experiment_result.simulation_date | Explicit parent object key; FK to student_simulation_experiment_result.simulation_date |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### thesis_activity
+
+- Authored actual-action history for thesis
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| thesis_id | TEXT | yes | FK → thesis.thesis_id | Explicit parent object key; FK to thesis.thesis_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### course_activity
+
+- Authored actual-action history for course
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| course_id | TEXT | yes | FK → course.course_id | Explicit parent object key; FK to course.course_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### task_activity
+
+- Authored actual-action history for task
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Stable identity of this actual business action; authored extension |
+| task_id | TEXT | yes | FK → task.task_id | Explicit parent object key; FK to task.task_id |
+| activity | TEXT | yes |  | Controlled business activity label; not a technical database update |
+| occurred_at | TEXT | yes |  | Actual occurrence time in UTC, distinct from planned dates |
+| outcome | TEXT | yes |  | Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED |
+
+### lifecycle_case_link
+
+- Explicit case attribution across typed action histories; auxiliary extraction index, not a business case
+
+| Column | Type | Required | Key / relationship | Definition |
+|---|---|---|---|---|
+| event_id | TEXT | yes | PK | Validated identity in a typed activity table; polymorphic reference |
+| case_table | TEXT | yes | PK | Controlled existing business table name |
+| case_id | TEXT | yes | PK | Serialized primary key of the declared case table; composite parts separated by colon |
+
 ## Value domains and business rules
 
 - ELIGIBLE: Student may register after passing the simulated examination
 - INELIGIBLE: Student has no passing examination
 - REGISTERED: Successful registration
 
-- The original default questions use students as cases. Object-view questions use the alternative case tables and scope rules listed in the task catalog.
-- An examination-result row records one Degree Examination Taken event at examination_date, not score publication.
-- A registration row records one Course Registered event at registration_time.
-- The default student timeline includes all recorded examinations, registrations, assignment grading, simulation-experiment completions and thesis submissions linked to that student.
-- A grading event belongs to the student through assignment_grading.assignment_id → assignment.assignment_id → assignment.student_id. Do not join its instructor course label to every student registration.
-- Simulation-result and grading composite keys retain repeated actions at different times. Each occurrence appears once.
-- A passing examination score of at least 60 enables subsequent registration in the simulation; the source does not define this threshold.
-- Student ID and Name denote shared student information across the three sources. Class is merged between two sources; Major is retained from the course-design source. This shared identity is an integration assumption.
-- The student-course registration key is preserved; withdrawals and repeat registrations are not invented.
-- Task start/end dates and course schedules are plans, not observed student actions. The source has no task-to-student or task-to-experiment link; none is invented.
-- Instructor course labels and course.instructor are text fields retained from different sources. No unprovided FK is inferred between them.
-- Actual event times use UTC. simulation_date is interpreted as experiment completion, and submission_date as thesis submission. These meanings are documented adaptations.
-- Assignment content does not timestamp assignment submission. Notifications, withdrawals, result publication and eligibility changes cannot be reconstructed.
-- Students with no selected events remain in the separately declared case population. The full timeline groups academic actions without asserting they belong to one course or one causal chain.
+- Original source layer: The original default questions use students as cases. Object-view questions use the alternative case tables and scope rules listed in the task catalog.
+- Original source layer: An examination-result row records one Degree Examination Taken event at examination_date, not score publication.
+- Original source layer: A registration row records one Course Registered event at registration_time.
+- Original source layer: The default student timeline includes all recorded examinations, registrations, assignment grading, simulation-experiment completions and thesis submissions linked to that student.
+- Original source layer: A grading event belongs to the student through assignment_grading.assignment_id → assignment.assignment_id → assignment.student_id. Do not join its instructor course label to every student registration.
+- Original source layer: Simulation-result and grading composite keys retain repeated actions at different times. Each occurrence appears once.
+- Original source layer: A passing examination score of at least 60 enables subsequent registration in the simulation; the source does not define this threshold.
+- Original source layer: Student ID and Name denote shared student information across the three sources. Class is merged between two sources; Major is retained from the course-design source. This shared identity is an integration assumption.
+- Original source layer: The student-course registration key is preserved; withdrawals and repeat registrations are not invented.
+- Original source layer: Task start/end dates and course schedules are plans, not observed student actions. The source has no task-to-student or task-to-experiment link; none is invented.
+- Original source layer: Instructor course labels and course.instructor are text fields retained from different sources. No unprovided FK is inferred between them.
+- Original source layer: Actual event times use UTC. simulation_date is interpreted as experiment completion, and submission_date as thesis submission. These meanings are documented adaptations.
+- Original source layer: Assignment content does not timestamp assignment submission. Notifications, withdrawals, result publication and eligibility changes cannot be reconstructed.
+- Original source layer: Students with no selected events remain in the separately declared case population. The full timeline groups academic actions without asserting they belong to one course or one causal chain.
+- Original source rows are preserved. Added typed activity histories are authored synthetic domain extensions, not claimed source fields.
+- Only actual occurred_at times generate lifecycle events. Planned dates and technical timestamps remain excluded.
+- Lifecycle case links use exact typed object identity. Related cases may share an event; uniqueness is (case_id,event_id).
+- Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case.
+
+# Universityflow object activities and scenarios
+
+- Original source requirements, columns and keys remain preserved.
+- Every action below is an explicitly authored domain extension; these stages were not present in the source schemas.
+- Each added history row records an actual activity, occurrence time, outcome and a declared FK to its object.
+- Conditional revision branches and incomplete cases are intentional. Atomic grading/operation records remain auxiliary logs.
+- Master-object views aggregate linked work; they do not assert one chronological causal process across unrelated jobs.
+
+| Object | Added activities | Situation | Storage |
+|---|---|---|---|
+| registration | Registration Requested → Registration Approved → Course Started → Course Assessment Completed → Course Grade Finalized | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | registration_activity |
+| degree_examination_result | Examination Scheduled → Examination Checked In → Examination Score Published → Examination Result Reviewed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | degree_examination_result_activity |
+| assignment | Assignment Assigned → Assignment Submitted → Assignment Revision Requested → Assignment Resubmitted → Assignment Grade Finalized → Assignment Regraded | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | assignment_activity |
+| simulation_module | Simulation Module Published → Simulation Module Validated → Simulation Module Released → Simulation Module Retired | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | simulation_module_activity |
+| student_simulation_experiment_result | Simulation Run Scheduled → Simulation Run Started → Simulation Output Reviewed → Simulation Result Accepted | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | student_simulation_experiment_result_activity |
+| thesis | Thesis Draft Registered → Thesis Review Started → Thesis Revision Requested → Thesis Resubmitted → Thesis Accepted | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | thesis_activity |
+| course | Course Offering Proposed → Course Offering Approved → Course Offering Published → Course Offering Closed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | course_activity |
+| task | Design Task Created → Design Task Approved → Design Task Published → Design Task Closed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | task_activity |
+
+- The full ES unions the original milestone sources and the new typed activity histories, then applies explicit event-to-case links.
+- Related goods/workers, students/instructors and parent materials receive an event only through a documented business relationship.
+- `lifecycle_case_link` is a generated extraction index with validated object identities; it is not an additional business object.

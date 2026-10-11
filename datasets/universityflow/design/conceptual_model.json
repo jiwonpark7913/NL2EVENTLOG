@@ -1,27 +1,574 @@
 {
-  "entities": [
-    "student",
-    "course",
-    "registration",
-    "degree_examination_result",
-    "task",
-    "simulation_module",
-    "thesis",
-    "student_simulation_experiment_result",
-    "assignment",
-    "instructor",
-    "assignment_grading"
+  "original_source_design": {
+    "entities": [
+      "student",
+      "course",
+      "registration",
+      "degree_examination_result",
+      "task",
+      "simulation_module",
+      "thesis",
+      "student_simulation_experiment_result",
+      "assignment",
+      "instructor",
+      "assignment_grading"
+    ],
+    "relations": [
+      "student 1:N registration",
+      "course 1:N registration",
+      "student 1:N degree_examination_result",
+      "student 1:N thesis",
+      "student 1:N student_simulation_experiment_result",
+      "simulation_module 1:N student_simulation_experiment_result",
+      "student 1:N assignment",
+      "assignment 1:N assignment_grading",
+      "instructor 1:N assignment_grading"
+    ],
+    "status": "Integrated locally from three original logical schemas; shared student identity is an authored assumption"
+  },
+  "authored_lifecycle_extensions": [
+    {
+      "object_table": "registration",
+      "activity_table": "registration_activity",
+      "activities": [
+        "Registration Requested",
+        "Registration Approved",
+        "Course Started",
+        "Course Assessment Completed",
+        "Course Grade Finalized"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "degree_examination_result",
+      "activity_table": "degree_examination_result_activity",
+      "activities": [
+        "Examination Scheduled",
+        "Examination Checked In",
+        "Examination Score Published",
+        "Examination Result Reviewed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "assignment",
+      "activity_table": "assignment_activity",
+      "activities": [
+        "Assignment Assigned",
+        "Assignment Submitted",
+        "Assignment Revision Requested",
+        "Assignment Resubmitted",
+        "Assignment Grade Finalized",
+        "Assignment Regraded"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "simulation_module",
+      "activity_table": "simulation_module_activity",
+      "activities": [
+        "Simulation Module Published",
+        "Simulation Module Validated",
+        "Simulation Module Released",
+        "Simulation Module Retired"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "student_simulation_experiment_result",
+      "activity_table": "student_simulation_experiment_result_activity",
+      "activities": [
+        "Simulation Run Scheduled",
+        "Simulation Run Started",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "thesis",
+      "activity_table": "thesis_activity",
+      "activities": [
+        "Thesis Draft Registered",
+        "Thesis Review Started",
+        "Thesis Revision Requested",
+        "Thesis Resubmitted",
+        "Thesis Accepted"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "course",
+      "activity_table": "course_activity",
+      "activities": [
+        "Course Offering Proposed",
+        "Course Offering Approved",
+        "Course Offering Published",
+        "Course Offering Closed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "task",
+      "activity_table": "task_activity",
+      "activities": [
+        "Design Task Created",
+        "Design Task Approved",
+        "Design Task Published",
+        "Design Task Closed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
   ],
-  "relations": [
-    "student 1:N registration",
-    "course 1:N registration",
-    "student 1:N degree_examination_result",
-    "student 1:N thesis",
-    "student 1:N student_simulation_experiment_result",
-    "simulation_module 1:N student_simulation_experiment_result",
-    "student 1:N assignment",
-    "assignment 1:N assignment_grading",
-    "instructor 1:N assignment_grading"
+  "added_tables": [
+    {
+      "table": "registration_activity",
+      "definition": "Authored actual-action history for registration",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to registration.student_id"
+        },
+        {
+          "name": "course_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to registration.course_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "registration",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "course_id",
+          "parent_table": "registration",
+          "parent_column": "course_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "degree_examination_result_activity",
+      "definition": "Authored actual-action history for degree_examination_result",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "result_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to degree_examination_result.result_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "result_id",
+          "parent_table": "degree_examination_result",
+          "parent_column": "result_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "assignment_activity",
+      "definition": "Authored actual-action history for assignment",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "assignment_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to assignment.assignment_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "assignment_id",
+          "parent_table": "assignment",
+          "parent_column": "assignment_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "simulation_module_activity",
+      "definition": "Authored actual-action history for simulation_module",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "module_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to simulation_module.module_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "module_id",
+          "parent_table": "simulation_module",
+          "parent_column": "module_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "student_simulation_experiment_result_activity",
+      "definition": "Authored actual-action history for student_simulation_experiment_result",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.student_id"
+        },
+        {
+          "name": "module_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.module_id"
+        },
+        {
+          "name": "simulation_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.simulation_date"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student_simulation_experiment_result",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "module_id",
+          "parent_table": "student_simulation_experiment_result",
+          "parent_column": "module_id"
+        },
+        {
+          "column": "simulation_date",
+          "parent_table": "student_simulation_experiment_result",
+          "parent_column": "simulation_date"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "thesis_activity",
+      "definition": "Authored actual-action history for thesis",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "thesis_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to thesis.thesis_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "thesis_id",
+          "parent_table": "thesis",
+          "parent_column": "thesis_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "course_activity",
+      "definition": "Authored actual-action history for course",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "course_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to course.course_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "course_id",
+          "parent_table": "course",
+          "parent_column": "course_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "task_activity",
+      "definition": "Authored actual-action history for task",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "task_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to task.task_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "task_id",
+          "parent_table": "task",
+          "parent_column": "task_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    }
   ],
-  "status": "Integrated locally from three original logical schemas; shared student identity is an authored assumption"
+  "final_table_count": 20
 }

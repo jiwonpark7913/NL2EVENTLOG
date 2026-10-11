@@ -54,3 +54,49 @@ assignment_grading,instructor_id,TEXT,yes,PK; FK → instructor.instructor_id,In
 assignment_grading,grading_time,TEXT,yes,PK,Actual grading time in UTC; regrading creates another composite-key row
 assignment_grading,score,INTEGER,yes,,"Assignment grade, 0 to 100"
 assignment_grading,evaluation,TEXT,yes,,Instructor feedback
+registration_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+registration_activity,student_id,TEXT,yes,FK → registration.student_id,Explicit parent object key; FK to registration.student_id
+registration_activity,course_id,TEXT,yes,FK → registration.course_id,Explicit parent object key; FK to registration.course_id
+registration_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+registration_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+registration_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+degree_examination_result_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+degree_examination_result_activity,result_id,TEXT,yes,FK → degree_examination_result.result_id,Explicit parent object key; FK to degree_examination_result.result_id
+degree_examination_result_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+degree_examination_result_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+degree_examination_result_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+assignment_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+assignment_activity,assignment_id,TEXT,yes,FK → assignment.assignment_id,Explicit parent object key; FK to assignment.assignment_id
+assignment_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+assignment_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+assignment_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+simulation_module_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+simulation_module_activity,module_id,TEXT,yes,FK → simulation_module.module_id,Explicit parent object key; FK to simulation_module.module_id
+simulation_module_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+simulation_module_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+simulation_module_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+student_simulation_experiment_result_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+student_simulation_experiment_result_activity,student_id,TEXT,yes,FK → student_simulation_experiment_result.student_id,Explicit parent object key; FK to student_simulation_experiment_result.student_id
+student_simulation_experiment_result_activity,module_id,TEXT,yes,FK → student_simulation_experiment_result.module_id,Explicit parent object key; FK to student_simulation_experiment_result.module_id
+student_simulation_experiment_result_activity,simulation_date,TEXT,yes,FK → student_simulation_experiment_result.simulation_date,Explicit parent object key; FK to student_simulation_experiment_result.simulation_date
+student_simulation_experiment_result_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+student_simulation_experiment_result_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+student_simulation_experiment_result_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+thesis_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+thesis_activity,thesis_id,TEXT,yes,FK → thesis.thesis_id,Explicit parent object key; FK to thesis.thesis_id
+thesis_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+thesis_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+thesis_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+course_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+course_activity,course_id,TEXT,yes,FK → course.course_id,Explicit parent object key; FK to course.course_id
+course_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+course_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+course_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+task_activity,event_id,TEXT,yes,PK,Stable identity of this actual business action; authored extension
+task_activity,task_id,TEXT,yes,FK → task.task_id,Explicit parent object key; FK to task.task_id
+task_activity,activity,TEXT,yes,,Controlled business activity label; not a technical database update
+task_activity,occurred_at,TEXT,yes,,"Actual occurrence time in UTC, distinct from planned dates"
+task_activity,outcome,TEXT,yes,,"Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+lifecycle_case_link,event_id,TEXT,yes,PK,Validated identity in a typed activity table; polymorphic reference
+lifecycle_case_link,case_table,TEXT,yes,PK,Controlled existing business table name
+lifecycle_case_link,case_id,TEXT,yes,PK,Serialized primary key of the declared case table; composite parts separated by colon

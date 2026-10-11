@@ -10,26 +10,33 @@
 
 | Case table | Case concept | Kind | Question | Cases | Event rows | Gold CSV |
 |---|---|---|---|---:|---:|---|
-| slab_material | Slab | business object | OPV01 | 36 | 324 | [CSV](../private/gold_logs/OPV01.csv) |
-| planned_rolling_instruction | Rolling plan | business object | OPV02 | 36 | 36 | [CSV](../private/gold_logs/OPV02.csv) |
-| rolling_instruction | Rolling instruction | business object | OPV03 | 36 | 36 | [CSV](../private/gold_logs/OPV03.csv) |
-| as_rolled_material | Mother material | business object | OPV04 | 36 | 324 | [CSV](../private/gold_logs/OPV04.csv) |
-| furnace_charge_tracking | Furnace tracking record | tracking record | OPV05 | 30 | 30 | [CSV](../private/gold_logs/OPV05.csv) |
-| cutting_finishing_instruction | Cutting instruction | business object | OPV06 | 18 | 18 | [CSV](../private/gold_logs/OPV06.csv) |
-| plate_material | Cut plate piece | business object | OPV07 | 39 | 114 | [CSV](../private/gold_logs/OPV07.csv) |
+| slab_material | Slab | business object | OPV01 | 36 | 1036 | [CSV](../private/gold_logs/OPV01.csv) |
+| planned_rolling_instruction | Rolling plan | business object | OPV02 | 36 | 174 | [CSV](../private/gold_logs/OPV02.csv) |
+| rolling_instruction | Rolling instruction | business object | OPV03 | 36 | 150 | [CSV](../private/gold_logs/OPV03.csv) |
+| as_rolled_material | Mother material | business object | OPV04 | 36 | 1036 | [CSV](../private/gold_logs/OPV04.csv) |
+| furnace_charge_tracking | Furnace tracking record | tracking record | OPV05 | 30 | 133 | [CSV](../private/gold_logs/OPV05.csv) |
+| cutting_finishing_instruction | Cutting instruction | business object | OPV06 | 18 | 87 | [CSV](../private/gold_logs/OPV06.csv) |
+| plate_material | Cut plate piece | business object | OPV07 | 39 | 264 | [CSV](../private/gold_logs/OPV07.csv) |
 | material_operation_history | Material operation record | event record | OPV08 | 153 | 153 | [CSV](../private/gold_logs/OPV08.csv) |
 
 ## Scope of each view
 
-- **OPV01 — Slab:** All recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.
-- **OPV02 — Rolling plan:** The actual release of the rolling instruction linked to this plan; planned reheating times are not execution events.
-- **OPV03 — Rolling instruction:** The actual release event for this rolling instruction.
-- **OPV04 — Mother material:** All recorded mother-material events and its descendant-piece events, each occurrence once.
-- **OPV05 — Furnace tracking record:** The recorded yard-instruction receipt for this tracking record; lot-level charging events remain outside the material-event set.
-- **OPV06 — Cutting instruction:** The actual release event for this cutting/finishing instruction.
-- **OPV07 — Cut plate piece:** Only operations recorded on this piece and its dimensional inspection. Upstream mother events are not copied to each piece.
+- **OPV01 — Slab:** Original recorded actions and authored lifecycle actions explicitly linked to this slab.
+- **OPV02 — Rolling plan:** Original recorded actions and authored lifecycle actions explicitly linked to this rolling plan.
+- **OPV03 — Rolling instruction:** Original recorded actions and authored lifecycle actions explicitly linked to this rolling instruction.
+- **OPV04 — Mother material:** Original recorded actions and authored lifecycle actions explicitly linked to this mother material.
+- **OPV05 — Furnace tracking record:** Original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record.
+- **OPV06 — Cutting instruction:** Original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction.
+- **OPV07 — Cut plate piece:** Original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece.
 - **OPV08 — Material operation record:** The operation-completion event represented by this transaction ID, preserving its process-code meaning.
 
 ## Tables without an actual event-log view
 
 - **operation_code:** Operation codes define activity meanings. They are not business-object instances or cases.
+- **slab_material_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **planned_rolling_instruction_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **rolling_instruction_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **furnace_charge_tracking_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **cutting_finishing_instruction_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **plate_material_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **lifecycle_case_link:** Activity storage/index for its parent-object log; not an independent business case.

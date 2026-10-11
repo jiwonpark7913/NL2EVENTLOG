@@ -5,10 +5,18 @@
   "original_attributes_retained": "17/17",
   "original_fk_relationships_retained": "5/5",
   "warehouses": 4,
-  "events": 80,
+  "events": 394,
   "activity_counts": {
     "Goods Received": 45,
-    "Goods Dispatched": 35
+    "Goods Dispatched": 35,
+    "Receiving Requested": 45,
+    "Receiving Scheduled": 45,
+    "Receiving Inspection Completed": 45,
+    "Goods Put Away": 39,
+    "Dispatch Requested": 35,
+    "Dispatch Approved": 35,
+    "Goods Picked": 35,
+    "Goods Packed": 35
   },
   "table_rows": {
     "warehouse": 4,
@@ -16,7 +24,9 @@
     "loader": 5,
     "transaction_record": 80,
     "goods_transaction_detail": 138,
-    "loader_transaction": 167
+    "loader_transaction": 167,
+    "transaction_record_activity": 314,
+    "lifecycle_case_link": 3022
   },
   "naive_detail_worker_join_rows": 289,
   "correct_event_rows": 80,
@@ -50,12 +60,12 @@
     {
       "question_id": "R05",
       "status": "pass",
-      "event_count": 80
+      "event_count": 394
     },
     {
       "question_id": "R06",
       "status": "pass",
-      "event_count": 80
+      "event_count": 394
     },
     {
       "question_id": "R07",
@@ -64,32 +74,32 @@
     {
       "question_id": "OW01",
       "status": "pass",
-      "event_count": 80
+      "event_count": 394
     },
     {
       "question_id": "OW02",
       "status": "pass",
-      "event_count": 138
+      "event_count": 679
     },
     {
       "question_id": "OW03",
       "status": "pass",
-      "event_count": 167
+      "event_count": 823
     },
     {
       "question_id": "OW04",
       "status": "pass",
-      "event_count": 80
+      "event_count": 394
     },
     {
       "question_id": "OW05",
       "status": "pass",
-      "event_count": 138
+      "event_count": 679
     },
     {
       "question_id": "OW06",
       "status": "pass",
-      "event_count": 167
+      "event_count": 823
     }
   ],
   "checks": {
@@ -104,7 +114,8 @@
     "Warehouse cases group independent tasks, not one shipment lifecycle.",
     "Codes, SQL types and timestamp convention are adaptations.",
     "Dataset-specific ES; no model accuracy measured.",
-    "No held-out generalization claim."
+    "No held-out generalization claim.",
+    "Atomic operation/grading records remain auxiliary single-occurrence cases. New actions are synthetic domain design, not real production observations."
   ],
   "object_view_checks": {
     "sql_equals_canonical_events": "pass",
@@ -118,14 +129,22 @@
       "case_concept": "Warehouse",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "All receiving and dispatching tasks recorded for this warehouse.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this warehouse.",
       "case_count": 4,
       "cases_with_events": 4,
       "cases_without_events": 0,
-      "event_rows": 80,
+      "event_rows": 394,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ],
       "log_path": "private/gold_logs/OW01.csv"
     },
@@ -135,14 +154,22 @@
       "case_concept": "Goods",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Receiving and dispatching tasks that contain this goods type; one event per goods type and transaction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this goods.",
       "case_count": 6,
       "cases_with_events": 6,
       "cases_without_events": 0,
-      "event_rows": 138,
+      "event_rows": 679,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ],
       "log_path": "private/gold_logs/OW02.csv"
     },
@@ -152,14 +179,22 @@
       "case_concept": "Worker",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Receiving and dispatching tasks assigned to this worker; one event per worker and transaction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this worker.",
       "case_count": 5,
       "cases_with_events": 5,
       "cases_without_events": 0,
-      "event_rows": 167,
+      "event_rows": 823,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ],
       "log_path": "private/gold_logs/OW03.csv"
     },
@@ -169,14 +204,22 @@
       "case_concept": "Warehouse transaction",
       "kind": "event_record",
       "status": "answerable",
-      "scope_rule": "The single receiving or dispatching event represented by this transaction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this warehouse transaction.",
       "case_count": 80,
       "cases_with_events": 80,
       "cases_without_events": 0,
-      "event_rows": 80,
+      "event_rows": 394,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ],
       "log_path": "private/gold_logs/OW04.csv"
     },
@@ -186,14 +229,22 @@
       "case_concept": "Goods transaction line",
       "kind": "association_record",
       "status": "answerable",
-      "scope_rule": "The transaction event linked to this composite-key goods line.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this goods transaction line.",
       "case_count": 138,
       "cases_with_events": 138,
       "cases_without_events": 0,
-      "event_rows": 138,
+      "event_rows": 679,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ],
       "log_path": "private/gold_logs/OW05.csv"
     },
@@ -203,19 +254,48 @@
       "case_concept": "Worker transaction assignment",
       "kind": "association_record",
       "status": "answerable",
-      "scope_rule": "The transaction event linked to this composite-key worker assignment.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this worker transaction assignment.",
       "case_count": 167,
       "cases_with_events": 167,
       "cases_without_events": 0,
-      "event_rows": 167,
+      "event_rows": 823,
       "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Received"
+        "Goods Packed",
+        "Goods Picked",
+        "Goods Put Away",
+        "Goods Received",
+        "Receiving Inspection Completed",
+        "Receiving Requested",
+        "Receiving Scheduled"
       ],
       "log_path": "private/gold_logs/OW06.csv"
     }
   ],
-  "unavailable_object_views": [],
+  "unavailable_object_views": [
+    {
+      "case_table": "transaction_record_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "lifecycle_case_link",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    }
+  ],
   "total_questions": 13,
-  "answerable_questions": 12
+  "answerable_questions": 12,
+  "lifecycle_extensions": {
+    "added_tables": 2,
+    "added_events": 314,
+    "source_origin": "authored",
+    "checks": {
+      "typed_foreign_keys": "pass",
+      "actual_action_order": "pass",
+      "full_sql_equals_history": "pass"
+    }
+  }
 }

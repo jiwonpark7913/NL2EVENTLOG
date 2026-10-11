@@ -12,6 +12,8 @@
 | transaction_record | 80 | 4 | transaction_id | Inbound/outbound task header, one business occurrence per row |
 | goods_transaction_detail | 138 | 3 | goods_id, transaction_id | Goods lines per transaction; composite key prevents repeated goods within one task |
 | loader_transaction | 167 | 2 | loader_id, transaction_id | Worker assignment bridge; multiple workers may share one task |
+| transaction_record_activity | 314 | 5 | event_id | Authored actual-action history for transaction_record |
+| lifecycle_case_link | 3022 | 3 | event_id, case_table, case_id | Explicit case attribution across typed action histories; auxiliary extraction index, not a business case |
 
 
 ## Relationships
@@ -23,3 +25,4 @@
 | goods | goods_transaction_detail | goods_id | goods_id | 1 : 0..N | declared |
 | transaction_record | loader_transaction | transaction_id | transaction_id | 1 : 0..N | declared |
 | loader | loader_transaction | loader_id | loader_id | 1 : 0..N | declared |
+| transaction_record | transaction_record_activity | transaction_id | transaction_id | 1 : 0..N | declared |

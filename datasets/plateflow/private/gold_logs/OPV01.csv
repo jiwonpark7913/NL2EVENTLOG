@@ -1,135 +1,445 @@
 event_id,case_id,activity,timestamp
+LC:planned_rolling_instruction:PLAN001:1,SL001,Rolling Plan Created,2026-03-01T14:00:00Z
+LC:slab_material:SL001:1,SL001,Slab Received,2026-03-01T14:00:00Z
+LC:planned_rolling_instruction:PLAN001:2,SL001,Rolling Plan Reviewed,2026-03-01T15:00:00Z
+LC:slab_material:SL001:2,SL001,Slab Identity Verified,2026-03-01T15:00:00Z
+LC:planned_rolling_instruction:PLAN001:3,SL001,Rolling Plan Approved,2026-03-01T16:00:00Z
+LC:slab_material:SL001:3,SL001,Slab Quality Checked,2026-03-01T16:00:00Z
 RI:RI001,SL001,Rolling Instruction Released,2026-03-02T00:00:00Z
+LC:rolling_instruction:RI001:1,SL001,Rolling Instruction Acknowledged,2026-03-02T00:05:00Z
+LC:planned_rolling_instruction:PLAN002:1,SL002,Rolling Plan Created,2026-03-02T14:00:00Z
+LC:slab_material:SL002:1,SL002,Slab Received,2026-03-02T14:00:00Z
+LC:planned_rolling_instruction:PLAN002:2,SL002,Rolling Plan Reviewed,2026-03-02T15:00:00Z
+LC:slab_material:SL002:2,SL002,Slab Identity Verified,2026-03-02T15:00:00Z
+LC:planned_rolling_instruction:PLAN002:3,SL002,Rolling Plan Approved,2026-03-02T16:00:00Z
+LC:slab_material:SL002:3,SL002,Slab Quality Checked,2026-03-02T16:00:00Z
+LC:planned_rolling_instruction:PLAN002:4,SL002,Rolling Plan Released,2026-03-02T17:00:00Z
+LC:slab_material:SL002:4,SL002,Slab Released for Rolling,2026-03-02T17:00:00Z
 RI:RI002,SL002,Rolling Instruction Released,2026-03-03T00:00:00Z
+LC:rolling_instruction:RI002:1,SL002,Rolling Instruction Acknowledged,2026-03-03T00:05:00Z
+LC:rolling_instruction:RI002:2,SL002,Rolling Setup Verified,2026-03-03T00:10:00Z
 YD:TRM002,SL002,Yard Instruction Received,2026-03-03T01:00:00Z
+LC:furnace_charge_tracking:TRM002:1,SL002,Furnace Charge Assigned,2026-03-03T01:05:00Z
 RH:M002,SL002,Reheating Started,2026-03-03T04:00:00Z
+LC:planned_rolling_instruction:PLAN003:1,SL003,Rolling Plan Created,2026-03-03T14:00:00Z
+LC:slab_material:SL003:1,SL003,Slab Received,2026-03-03T14:00:00Z
+LC:planned_rolling_instruction:PLAN003:2,SL003,Rolling Plan Reviewed,2026-03-03T15:00:00Z
+LC:slab_material:SL003:2,SL003,Slab Identity Verified,2026-03-03T15:00:00Z
+LC:planned_rolling_instruction:PLAN003:3,SL003,Rolling Plan Approved,2026-03-03T16:00:00Z
+LC:slab_material:SL003:3,SL003,Slab Quality Checked,2026-03-03T16:00:00Z
+LC:planned_rolling_instruction:PLAN003:4,SL003,Rolling Plan Released,2026-03-03T17:00:00Z
+LC:slab_material:SL003:4,SL003,Slab Released for Rolling,2026-03-03T17:00:00Z
 RI:RI003,SL003,Rolling Instruction Released,2026-03-04T00:00:00Z
+LC:rolling_instruction:RI003:1,SL003,Rolling Instruction Acknowledged,2026-03-04T00:05:00Z
+LC:rolling_instruction:RI003:2,SL003,Rolling Setup Verified,2026-03-04T00:10:00Z
 YD:TRM003,SL003,Yard Instruction Received,2026-03-04T01:00:00Z
+LC:furnace_charge_tracking:TRM003:1,SL003,Furnace Charge Assigned,2026-03-04T01:05:00Z
 RH:M003,SL003,Reheating Started,2026-03-04T03:00:00Z
+LC:furnace_charge_tracking:TRM003:2,SL003,Furnace Charge Confirmed,2026-03-04T03:01:00Z
+LC:furnace_charge_tracking:TRM003:3,SL003,Heating Completed,2026-03-04T05:40:00Z
+LC:furnace_charge_tracking:TRM003:4,SL003,Furnace Discharge Confirmed,2026-03-04T05:50:00Z
+LC:rolling_instruction:RI003:3,SL003,Rolling Work Started,2026-03-04T05:55:00Z
 OP:M003-RL,SL003,Rolling Completed,2026-03-04T06:00:00Z
+LC:rolling_instruction:RI003:4,SL003,Rolling Instruction Closed,2026-03-04T06:05:00Z
+LC:planned_rolling_instruction:PLAN004:1,SL004,Rolling Plan Created,2026-03-04T14:00:00Z
+LC:slab_material:SL004:1,SL004,Slab Received,2026-03-04T14:00:00Z
+LC:planned_rolling_instruction:PLAN004:2,SL004,Rolling Plan Reviewed,2026-03-04T15:00:00Z
+LC:slab_material:SL004:2,SL004,Slab Identity Verified,2026-03-04T15:00:00Z
+LC:planned_rolling_instruction:PLAN004:3,SL004,Rolling Plan Approved,2026-03-04T16:00:00Z
+LC:slab_material:SL004:3,SL004,Slab Quality Checked,2026-03-04T16:00:00Z
+LC:planned_rolling_instruction:PLAN004:4,SL004,Rolling Plan Released,2026-03-04T17:00:00Z
+LC:slab_material:SL004:4,SL004,Slab Released for Rolling,2026-03-04T17:00:00Z
 RI:RI004,SL004,Rolling Instruction Released,2026-03-05T00:00:00Z
+LC:rolling_instruction:RI004:1,SL004,Rolling Instruction Acknowledged,2026-03-05T00:05:00Z
+LC:rolling_instruction:RI004:2,SL004,Rolling Setup Verified,2026-03-05T00:10:00Z
 YD:TRM004,SL004,Yard Instruction Received,2026-03-05T01:00:00Z
+LC:furnace_charge_tracking:TRM004:1,SL004,Furnace Charge Assigned,2026-03-05T01:05:00Z
 RH:M004,SL004,Reheating Started,2026-03-05T02:00:00Z
+LC:furnace_charge_tracking:TRM004:2,SL004,Furnace Charge Confirmed,2026-03-05T02:01:00Z
+LC:furnace_charge_tracking:TRM004:3,SL004,Heating Completed,2026-03-05T05:40:00Z
+LC:furnace_charge_tracking:TRM004:4,SL004,Furnace Discharge Confirmed,2026-03-05T05:50:00Z
+LC:rolling_instruction:RI004:3,SL004,Rolling Work Started,2026-03-05T05:55:00Z
 OP:M004-RL,SL004,Rolling Completed,2026-03-05T06:00:00Z
+LC:rolling_instruction:RI004:4,SL004,Rolling Instruction Closed,2026-03-05T06:05:00Z
 OP:M004-CO,SL004,Cooling Completed,2026-03-05T07:00:00Z
 OP:M004-LE,SL004,Leveling Completed,2026-03-05T08:00:00Z
 CS:M004,SL004,Crop Shear Passed,2026-03-05T09:00:00Z
 CI:CIM004,SL004,Cutting Instruction Released,2026-03-05T10:00:00Z
+LC:cutting_finishing_instruction:CIM004:1,SL004,Cutting Instruction Acknowledged,2026-03-05T10:05:00Z
+LC:cutting_finishing_instruction:CIM004:2,SL004,Cutting Setup Verified,2026-03-05T10:10:00Z
+LC:cutting_finishing_instruction:CIM004:3,SL004,Cutting Work Started,2026-03-05T10:55:00Z
 OP:M004-SC,SL004,Split Cutting Completed,2026-03-05T11:00:00Z
+LC:plate_material:P004-1:1,SL004,Plate Piece Identified,2026-03-05T12:36:00Z
+LC:plate_material:P004-2:1,SL004,Plate Piece Identified,2026-03-05T12:42:00Z
+LC:plate_material:P004-3:1,SL004,Plate Piece Identified,2026-03-05T12:48:00Z
 OP:P004-1-IP,SL004,Inspection Passed,2026-03-05T13:06:00Z
 OP:P004-2-IP,SL004,Inspection Passed,2026-03-05T13:12:00Z
 OP:P004-3-IP,SL004,Inspection Passed,2026-03-05T13:18:00Z
 DIM:P004-1,SL004,Dimensional Inspection Completed,2026-03-05T13:36:00Z
 DIM:P004-2,SL004,Dimensional Inspection Completed,2026-03-05T13:42:00Z
 DIM:P004-3,SL004,Dimensional Inspection Completed,2026-03-05T13:48:00Z
+LC:plate_material:P004-1:2,SL004,Plate Surface Checked,2026-03-05T14:06:00Z
+LC:plate_material:P004-2:2,SL004,Plate Surface Checked,2026-03-05T14:12:00Z
+LC:plate_material:P004-3:2,SL004,Plate Surface Checked,2026-03-05T14:18:00Z
+LC:plate_material:P004-1:3,SL004,Plate Quality Released,2026-03-05T14:36:00Z
+LC:plate_material:P004-2:3,SL004,Plate Quality Released,2026-03-05T14:42:00Z
+LC:plate_material:P004-3:3,SL004,Plate Quality Released,2026-03-05T14:48:00Z
+LC:plate_material:P004-2:4,SL004,Plate Packed,2026-03-05T15:42:00Z
+LC:plate_material:P004-3:4,SL004,Plate Packed,2026-03-05T15:48:00Z
+LC:planned_rolling_instruction:PLAN005:1,SL005,Rolling Plan Created,2026-03-05T14:00:00Z
+LC:slab_material:SL005:1,SL005,Slab Received,2026-03-05T14:00:00Z
+LC:planned_rolling_instruction:PLAN005:2,SL005,Rolling Plan Reviewed,2026-03-05T15:00:00Z
+LC:slab_material:SL005:2,SL005,Slab Identity Verified,2026-03-05T15:00:00Z
+LC:planned_rolling_instruction:PLAN005:3,SL005,Rolling Plan Approved,2026-03-05T16:00:00Z
+LC:slab_material:SL005:3,SL005,Slab Quality Checked,2026-03-05T16:00:00Z
+LC:planned_rolling_instruction:PLAN005:4,SL005,Rolling Plan Released,2026-03-05T17:00:00Z
+LC:slab_material:SL005:4,SL005,Slab Released for Rolling,2026-03-05T17:00:00Z
 RI:RI005,SL005,Rolling Instruction Released,2026-03-06T00:00:00Z
+LC:rolling_instruction:RI005:1,SL005,Rolling Instruction Acknowledged,2026-03-06T00:05:00Z
+LC:rolling_instruction:RI005:2,SL005,Rolling Setup Verified,2026-03-06T00:10:00Z
 YD:TRM005,SL005,Yard Instruction Received,2026-03-06T01:00:00Z
+LC:furnace_charge_tracking:TRM005:1,SL005,Furnace Charge Assigned,2026-03-06T01:05:00Z
 RH:M005,SL005,Reheating Started,2026-03-06T04:00:00Z
+LC:furnace_charge_tracking:TRM005:2,SL005,Furnace Charge Confirmed,2026-03-06T04:01:00Z
+LC:furnace_charge_tracking:TRM005:3,SL005,Heating Completed,2026-03-06T05:40:00Z
+LC:furnace_charge_tracking:TRM005:4,SL005,Furnace Discharge Confirmed,2026-03-06T05:50:00Z
+LC:rolling_instruction:RI005:3,SL005,Rolling Work Started,2026-03-06T05:55:00Z
 OP:M005-RL,SL005,Rolling Completed,2026-03-06T06:00:00Z
+LC:rolling_instruction:RI005:4,SL005,Rolling Instruction Closed,2026-03-06T06:05:00Z
 OP:M005-CO,SL005,Cooling Completed,2026-03-06T07:00:00Z
 OP:M005-LE,SL005,Leveling Completed,2026-03-06T08:00:00Z
 CS:M005,SL005,Crop Shear Passed,2026-03-06T09:00:00Z
 CI:CIM005,SL005,Cutting Instruction Released,2026-03-06T10:00:00Z
+LC:cutting_finishing_instruction:CIM005:1,SL005,Cutting Instruction Acknowledged,2026-03-06T10:05:00Z
+LC:cutting_finishing_instruction:CIM005:2,SL005,Cutting Setup Verified,2026-03-06T10:10:00Z
+LC:cutting_finishing_instruction:CIM005:3,SL005,Cutting Work Started,2026-03-06T10:55:00Z
 OP:M005-SC,SL005,Split Cutting Completed,2026-03-06T11:00:00Z
+LC:cutting_finishing_instruction:CIM005:4,SL005,Cutting Instruction Closed,2026-03-06T11:05:00Z
+LC:plate_material:P005-1:1,SL005,Plate Piece Identified,2026-03-06T11:30:00Z
+LC:plate_material:P005-2:1,SL005,Plate Piece Identified,2026-03-06T11:30:00Z
 OP:P005-1-HT1,SL005,Heat Treatment Completed,2026-03-06T12:00:00Z
 OP:P005-2-HT1,SL005,Heat Treatment Completed,2026-03-06T12:00:00Z
 OP:P005-1-IP,SL005,Inspection Passed,2026-03-06T13:06:00Z
 OP:P005-2-IP,SL005,Inspection Passed,2026-03-06T13:12:00Z
 DIM:P005-1,SL005,Dimensional Inspection Completed,2026-03-06T13:36:00Z
 DIM:P005-2,SL005,Dimensional Inspection Completed,2026-03-06T13:42:00Z
+LC:plate_material:P005-1:2,SL005,Plate Surface Checked,2026-03-06T14:06:00Z
+LC:plate_material:P005-2:2,SL005,Plate Surface Checked,2026-03-06T14:12:00Z
+LC:plate_material:P005-1:3,SL005,Plate Quality Released,2026-03-06T14:36:00Z
+LC:plate_material:P005-2:3,SL005,Plate Quality Released,2026-03-06T14:42:00Z
+LC:plate_material:P005-1:4,SL005,Plate Packed,2026-03-06T15:36:00Z
+LC:plate_material:P005-2:4,SL005,Plate Packed,2026-03-06T15:42:00Z
+LC:planned_rolling_instruction:PLAN006:1,SL006,Rolling Plan Created,2026-03-06T14:00:00Z
+LC:slab_material:SL006:1,SL006,Slab Received,2026-03-06T14:00:00Z
+LC:planned_rolling_instruction:PLAN006:2,SL006,Rolling Plan Reviewed,2026-03-06T15:00:00Z
+LC:slab_material:SL006:2,SL006,Slab Identity Verified,2026-03-06T15:00:00Z
+LC:planned_rolling_instruction:PLAN006:3,SL006,Rolling Plan Approved,2026-03-06T16:00:00Z
+LC:slab_material:SL006:3,SL006,Slab Quality Checked,2026-03-06T16:00:00Z
+LC:planned_rolling_instruction:PLAN006:4,SL006,Rolling Plan Released,2026-03-06T17:00:00Z
+LC:slab_material:SL006:4,SL006,Slab Released for Rolling,2026-03-06T17:00:00Z
 RI:RI006,SL006,Rolling Instruction Released,2026-03-07T00:00:00Z
+LC:rolling_instruction:RI006:1,SL006,Rolling Instruction Acknowledged,2026-03-07T00:05:00Z
+LC:rolling_instruction:RI006:2,SL006,Rolling Setup Verified,2026-03-07T00:10:00Z
 YD:TRM006,SL006,Yard Instruction Received,2026-03-07T01:00:00Z
+LC:furnace_charge_tracking:TRM006:1,SL006,Furnace Charge Assigned,2026-03-07T01:05:00Z
 RH:M006,SL006,Reheating Started,2026-03-07T03:00:00Z
+LC:furnace_charge_tracking:TRM006:2,SL006,Furnace Charge Confirmed,2026-03-07T03:01:00Z
+LC:furnace_charge_tracking:TRM006:3,SL006,Heating Completed,2026-03-07T05:40:00Z
+LC:furnace_charge_tracking:TRM006:4,SL006,Furnace Discharge Confirmed,2026-03-07T05:50:00Z
+LC:rolling_instruction:RI006:3,SL006,Rolling Work Started,2026-03-07T05:55:00Z
 OP:M006-RL,SL006,Rolling Completed,2026-03-07T06:00:00Z
+LC:rolling_instruction:RI006:4,SL006,Rolling Instruction Closed,2026-03-07T06:05:00Z
 OP:M006-CO,SL006,Cooling Completed,2026-03-07T07:00:00Z
 OP:M006-LE,SL006,Leveling Completed,2026-03-07T08:00:00Z
 CS:M006,SL006,Crop Shear Passed,2026-03-07T09:00:00Z
 CI:CIM006,SL006,Cutting Instruction Released,2026-03-07T10:00:00Z
+LC:cutting_finishing_instruction:CIM006:1,SL006,Cutting Instruction Acknowledged,2026-03-07T10:05:00Z
+LC:cutting_finishing_instruction:CIM006:2,SL006,Cutting Setup Verified,2026-03-07T10:10:00Z
+LC:cutting_finishing_instruction:CIM006:3,SL006,Cutting Work Started,2026-03-07T10:55:00Z
 OP:M006-SC,SL006,Split Cutting Completed,2026-03-07T11:00:00Z
+LC:cutting_finishing_instruction:CIM006:4,SL006,Cutting Instruction Closed,2026-03-07T11:05:00Z
+LC:plate_material:P006-1:1,SL006,Plate Piece Identified,2026-03-07T11:30:00Z
 OP:P006-1-IF1,SL006,Inspection Failed,2026-03-07T12:00:00Z
 OP:P006-1-HT1,SL006,Heat Treatment Completed,2026-03-07T14:00:00Z
 OP:P006-1-IF2,SL006,Inspection Failed,2026-03-07T15:00:00Z
 OP:P006-1-HT2,SL006,Heat Treatment Completed,2026-03-07T17:00:00Z
 OP:P006-1-IP,SL006,Inspection Passed,2026-03-07T18:00:00Z
 DIM:P006-1,SL006,Dimensional Inspection Completed,2026-03-07T18:30:00Z
+LC:plate_material:P006-1:2,SL006,Plate Surface Checked,2026-03-07T19:00:00Z
+LC:plate_material:P006-1:3,SL006,Plate Quality Released,2026-03-07T19:30:00Z
+LC:plate_material:P006-1:4,SL006,Plate Packed,2026-03-07T20:30:00Z
+LC:planned_rolling_instruction:PLAN007:1,SL007,Rolling Plan Created,2026-03-07T14:00:00Z
+LC:slab_material:SL007:1,SL007,Slab Received,2026-03-07T14:00:00Z
+LC:planned_rolling_instruction:PLAN007:2,SL007,Rolling Plan Reviewed,2026-03-07T15:00:00Z
+LC:slab_material:SL007:2,SL007,Slab Identity Verified,2026-03-07T15:00:00Z
+LC:planned_rolling_instruction:PLAN007:3,SL007,Rolling Plan Approved,2026-03-07T16:00:00Z
+LC:slab_material:SL007:3,SL007,Slab Quality Checked,2026-03-07T16:00:00Z
+LC:planned_rolling_instruction:PLAN007:4,SL007,Rolling Plan Released,2026-03-07T17:00:00Z
+LC:slab_material:SL007:4,SL007,Slab Released for Rolling,2026-03-07T17:00:00Z
 RI:RI007,SL007,Rolling Instruction Released,2026-03-08T00:00:00Z
+LC:rolling_instruction:RI007:1,SL007,Rolling Instruction Acknowledged,2026-03-08T00:05:00Z
+LC:rolling_instruction:RI007:2,SL007,Rolling Setup Verified,2026-03-08T00:10:00Z
+LC:planned_rolling_instruction:PLAN008:1,SL008,Rolling Plan Created,2026-03-08T14:00:00Z
+LC:slab_material:SL008:1,SL008,Slab Received,2026-03-08T14:00:00Z
+LC:planned_rolling_instruction:PLAN008:2,SL008,Rolling Plan Reviewed,2026-03-08T15:00:00Z
+LC:slab_material:SL008:2,SL008,Slab Identity Verified,2026-03-08T15:00:00Z
+LC:planned_rolling_instruction:PLAN008:3,SL008,Rolling Plan Approved,2026-03-08T16:00:00Z
+LC:slab_material:SL008:3,SL008,Slab Quality Checked,2026-03-08T16:00:00Z
 RI:RI008,SL008,Rolling Instruction Released,2026-03-09T00:00:00Z
+LC:rolling_instruction:RI008:1,SL008,Rolling Instruction Acknowledged,2026-03-09T00:05:00Z
 YD:TRM008,SL008,Yard Instruction Received,2026-03-09T01:00:00Z
+LC:furnace_charge_tracking:TRM008:1,SL008,Furnace Charge Assigned,2026-03-09T01:05:00Z
+LC:furnace_charge_tracking:TRM008:2,SL008,Furnace Charge Confirmed,2026-03-09T01:10:00Z
 RH:M008,SL008,Reheating Started,2026-03-09T03:00:00Z
+LC:planned_rolling_instruction:PLAN009:1,SL009,Rolling Plan Created,2026-03-09T14:00:00Z
+LC:slab_material:SL009:1,SL009,Slab Received,2026-03-09T14:00:00Z
+LC:planned_rolling_instruction:PLAN009:2,SL009,Rolling Plan Reviewed,2026-03-09T15:00:00Z
+LC:slab_material:SL009:2,SL009,Slab Identity Verified,2026-03-09T15:00:00Z
+LC:planned_rolling_instruction:PLAN009:3,SL009,Rolling Plan Approved,2026-03-09T16:00:00Z
+LC:slab_material:SL009:3,SL009,Slab Quality Checked,2026-03-09T16:00:00Z
+LC:planned_rolling_instruction:PLAN009:4,SL009,Rolling Plan Released,2026-03-09T17:00:00Z
+LC:slab_material:SL009:4,SL009,Slab Released for Rolling,2026-03-09T17:00:00Z
 RI:RI009,SL009,Rolling Instruction Released,2026-03-10T00:00:00Z
+LC:rolling_instruction:RI009:1,SL009,Rolling Instruction Acknowledged,2026-03-10T00:05:00Z
+LC:rolling_instruction:RI009:2,SL009,Rolling Setup Verified,2026-03-10T00:10:00Z
 YD:TRM009,SL009,Yard Instruction Received,2026-03-10T01:00:00Z
+LC:furnace_charge_tracking:TRM009:1,SL009,Furnace Charge Assigned,2026-03-10T01:05:00Z
 RH:M009,SL009,Reheating Started,2026-03-10T04:00:00Z
+LC:furnace_charge_tracking:TRM009:2,SL009,Furnace Charge Confirmed,2026-03-10T04:01:00Z
+LC:furnace_charge_tracking:TRM009:3,SL009,Heating Completed,2026-03-10T05:40:00Z
+LC:furnace_charge_tracking:TRM009:4,SL009,Furnace Discharge Confirmed,2026-03-10T05:50:00Z
+LC:rolling_instruction:RI009:3,SL009,Rolling Work Started,2026-03-10T05:55:00Z
 OP:M009-RL,SL009,Rolling Completed,2026-03-10T06:00:00Z
+LC:rolling_instruction:RI009:4,SL009,Rolling Instruction Closed,2026-03-10T06:05:00Z
+LC:planned_rolling_instruction:PLAN010:1,SL010,Rolling Plan Created,2026-03-10T14:00:00Z
+LC:slab_material:SL010:1,SL010,Slab Received,2026-03-10T14:00:00Z
+LC:planned_rolling_instruction:PLAN010:2,SL010,Rolling Plan Reviewed,2026-03-10T15:00:00Z
+LC:slab_material:SL010:2,SL010,Slab Identity Verified,2026-03-10T15:00:00Z
+LC:planned_rolling_instruction:PLAN010:3,SL010,Rolling Plan Approved,2026-03-10T16:00:00Z
+LC:slab_material:SL010:3,SL010,Slab Quality Checked,2026-03-10T16:00:00Z
+LC:planned_rolling_instruction:PLAN010:4,SL010,Rolling Plan Released,2026-03-10T17:00:00Z
+LC:slab_material:SL010:4,SL010,Slab Released for Rolling,2026-03-10T17:00:00Z
 RI:RI010,SL010,Rolling Instruction Released,2026-03-11T00:00:00Z
+LC:rolling_instruction:RI010:1,SL010,Rolling Instruction Acknowledged,2026-03-11T00:05:00Z
+LC:rolling_instruction:RI010:2,SL010,Rolling Setup Verified,2026-03-11T00:10:00Z
 YD:TRM010,SL010,Yard Instruction Received,2026-03-11T01:00:00Z
+LC:furnace_charge_tracking:TRM010:1,SL010,Furnace Charge Assigned,2026-03-11T01:05:00Z
 RH:M010,SL010,Reheating Started,2026-03-11T04:00:00Z
+LC:furnace_charge_tracking:TRM010:2,SL010,Furnace Charge Confirmed,2026-03-11T04:01:00Z
+LC:furnace_charge_tracking:TRM010:3,SL010,Heating Completed,2026-03-11T05:40:00Z
+LC:rolling_instruction:RI010:3,SL010,Rolling Work Started,2026-03-11T05:55:00Z
 OP:M010-RL,SL010,Rolling Completed,2026-03-11T06:00:00Z
+LC:rolling_instruction:RI010:4,SL010,Rolling Instruction Closed,2026-03-11T06:05:00Z
 OP:M010-CO,SL010,Cooling Completed,2026-03-11T07:00:00Z
 OP:M010-LE,SL010,Leveling Completed,2026-03-11T08:00:00Z
 CS:M010,SL010,Crop Shear Passed,2026-03-11T09:00:00Z
 CI:CIM010,SL010,Cutting Instruction Released,2026-03-11T10:00:00Z
+LC:cutting_finishing_instruction:CIM010:1,SL010,Cutting Instruction Acknowledged,2026-03-11T10:05:00Z
+LC:cutting_finishing_instruction:CIM010:2,SL010,Cutting Setup Verified,2026-03-11T10:10:00Z
+LC:cutting_finishing_instruction:CIM010:3,SL010,Cutting Work Started,2026-03-11T10:55:00Z
 OP:M010-SC,SL010,Split Cutting Completed,2026-03-11T11:00:00Z
+LC:cutting_finishing_instruction:CIM010:4,SL010,Cutting Instruction Closed,2026-03-11T11:05:00Z
+LC:plate_material:P010-1:1,SL010,Plate Piece Identified,2026-03-11T12:36:00Z
+LC:plate_material:P010-2:1,SL010,Plate Piece Identified,2026-03-11T12:42:00Z
+LC:plate_material:P010-3:1,SL010,Plate Piece Identified,2026-03-11T12:48:00Z
 OP:P010-1-IP,SL010,Inspection Passed,2026-03-11T13:06:00Z
 OP:P010-2-IP,SL010,Inspection Passed,2026-03-11T13:12:00Z
 OP:P010-3-IP,SL010,Inspection Passed,2026-03-11T13:18:00Z
 DIM:P010-1,SL010,Dimensional Inspection Completed,2026-03-11T13:36:00Z
 DIM:P010-2,SL010,Dimensional Inspection Completed,2026-03-11T13:42:00Z
 DIM:P010-3,SL010,Dimensional Inspection Completed,2026-03-11T13:48:00Z
+LC:plate_material:P010-1:2,SL010,Plate Surface Checked,2026-03-11T14:06:00Z
+LC:plate_material:P010-2:2,SL010,Plate Surface Checked,2026-03-11T14:12:00Z
+LC:plate_material:P010-3:2,SL010,Plate Surface Checked,2026-03-11T14:18:00Z
+LC:plate_material:P010-1:3,SL010,Plate Quality Released,2026-03-11T14:36:00Z
+LC:plate_material:P010-2:3,SL010,Plate Quality Released,2026-03-11T14:42:00Z
+LC:plate_material:P010-3:3,SL010,Plate Quality Released,2026-03-11T14:48:00Z
+LC:plate_material:P010-1:4,SL010,Plate Packed,2026-03-11T15:36:00Z
+LC:plate_material:P010-3:4,SL010,Plate Packed,2026-03-11T15:48:00Z
+LC:planned_rolling_instruction:PLAN011:1,SL011,Rolling Plan Created,2026-03-11T14:00:00Z
+LC:slab_material:SL011:1,SL011,Slab Received,2026-03-11T14:00:00Z
+LC:planned_rolling_instruction:PLAN011:2,SL011,Rolling Plan Reviewed,2026-03-11T15:00:00Z
+LC:slab_material:SL011:2,SL011,Slab Identity Verified,2026-03-11T15:00:00Z
+LC:planned_rolling_instruction:PLAN011:3,SL011,Rolling Plan Approved,2026-03-11T16:00:00Z
+LC:slab_material:SL011:3,SL011,Slab Quality Checked,2026-03-11T16:00:00Z
+LC:planned_rolling_instruction:PLAN011:4,SL011,Rolling Plan Released,2026-03-11T17:00:00Z
+LC:slab_material:SL011:4,SL011,Slab Released for Rolling,2026-03-11T17:00:00Z
 RI:RI011,SL011,Rolling Instruction Released,2026-03-12T00:00:00Z
+LC:rolling_instruction:RI011:1,SL011,Rolling Instruction Acknowledged,2026-03-12T00:05:00Z
+LC:rolling_instruction:RI011:2,SL011,Rolling Setup Verified,2026-03-12T00:10:00Z
 YD:TRM011,SL011,Yard Instruction Received,2026-03-12T01:00:00Z
+LC:furnace_charge_tracking:TRM011:1,SL011,Furnace Charge Assigned,2026-03-12T01:05:00Z
 RH:M011,SL011,Reheating Started,2026-03-12T04:00:00Z
+LC:furnace_charge_tracking:TRM011:2,SL011,Furnace Charge Confirmed,2026-03-12T04:01:00Z
+LC:furnace_charge_tracking:TRM011:3,SL011,Heating Completed,2026-03-12T05:40:00Z
+LC:furnace_charge_tracking:TRM011:4,SL011,Furnace Discharge Confirmed,2026-03-12T05:50:00Z
+LC:rolling_instruction:RI011:3,SL011,Rolling Work Started,2026-03-12T05:55:00Z
 OP:M011-RL,SL011,Rolling Completed,2026-03-12T06:00:00Z
+LC:rolling_instruction:RI011:4,SL011,Rolling Instruction Closed,2026-03-12T06:05:00Z
 OP:M011-CO,SL011,Cooling Completed,2026-03-12T07:00:00Z
 OP:M011-LE,SL011,Leveling Completed,2026-03-12T08:00:00Z
 CS:M011,SL011,Crop Shear Passed,2026-03-12T09:00:00Z
 CI:CIM011,SL011,Cutting Instruction Released,2026-03-12T10:00:00Z
+LC:cutting_finishing_instruction:CIM011:1,SL011,Cutting Instruction Acknowledged,2026-03-12T10:05:00Z
+LC:cutting_finishing_instruction:CIM011:2,SL011,Cutting Setup Verified,2026-03-12T10:10:00Z
+LC:cutting_finishing_instruction:CIM011:3,SL011,Cutting Work Started,2026-03-12T10:55:00Z
 OP:M011-SC,SL011,Split Cutting Completed,2026-03-12T11:00:00Z
+LC:cutting_finishing_instruction:CIM011:4,SL011,Cutting Instruction Closed,2026-03-12T11:05:00Z
+LC:plate_material:P011-1:1,SL011,Plate Piece Identified,2026-03-12T11:30:00Z
 OP:P011-1-HT1,SL011,Heat Treatment Completed,2026-03-12T12:00:00Z
 OP:P011-1-IP,SL011,Inspection Passed,2026-03-12T13:06:00Z
 DIM:P011-1,SL011,Dimensional Inspection Completed,2026-03-12T13:36:00Z
+LC:plate_material:P011-1:2,SL011,Plate Surface Checked,2026-03-12T14:06:00Z
+LC:plate_material:P011-1:3,SL011,Plate Quality Released,2026-03-12T14:36:00Z
+LC:plate_material:P011-1:4,SL011,Plate Packed,2026-03-12T15:36:00Z
+LC:planned_rolling_instruction:PLAN012:1,SL012,Rolling Plan Created,2026-03-12T14:00:00Z
+LC:slab_material:SL012:1,SL012,Slab Received,2026-03-12T14:00:00Z
+LC:planned_rolling_instruction:PLAN012:2,SL012,Rolling Plan Reviewed,2026-03-12T15:00:00Z
+LC:slab_material:SL012:2,SL012,Slab Identity Verified,2026-03-12T15:00:00Z
+LC:planned_rolling_instruction:PLAN012:3,SL012,Rolling Plan Approved,2026-03-12T16:00:00Z
+LC:slab_material:SL012:3,SL012,Slab Quality Checked,2026-03-12T16:00:00Z
+LC:planned_rolling_instruction:PLAN012:4,SL012,Rolling Plan Released,2026-03-12T17:00:00Z
+LC:slab_material:SL012:4,SL012,Slab Released for Rolling,2026-03-12T17:00:00Z
 RI:RI012,SL012,Rolling Instruction Released,2026-03-13T00:00:00Z
+LC:rolling_instruction:RI012:1,SL012,Rolling Instruction Acknowledged,2026-03-13T00:05:00Z
+LC:rolling_instruction:RI012:2,SL012,Rolling Setup Verified,2026-03-13T00:10:00Z
 YD:TRM012,SL012,Yard Instruction Received,2026-03-13T01:00:00Z
+LC:furnace_charge_tracking:TRM012:1,SL012,Furnace Charge Assigned,2026-03-13T01:05:00Z
 RH:M012,SL012,Reheating Started,2026-03-13T04:00:00Z
+LC:furnace_charge_tracking:TRM012:2,SL012,Furnace Charge Confirmed,2026-03-13T04:01:00Z
+LC:furnace_charge_tracking:TRM012:3,SL012,Heating Completed,2026-03-13T05:40:00Z
+LC:furnace_charge_tracking:TRM012:4,SL012,Furnace Discharge Confirmed,2026-03-13T05:50:00Z
+LC:rolling_instruction:RI012:3,SL012,Rolling Work Started,2026-03-13T05:55:00Z
 OP:M012-RL,SL012,Rolling Completed,2026-03-13T06:00:00Z
+LC:rolling_instruction:RI012:4,SL012,Rolling Instruction Closed,2026-03-13T06:05:00Z
 OP:M012-CO,SL012,Cooling Completed,2026-03-13T07:00:00Z
 OP:M012-LE,SL012,Leveling Completed,2026-03-13T08:00:00Z
 CS:M012,SL012,Crop Shear Passed,2026-03-13T09:00:00Z
 CI:CIM012,SL012,Cutting Instruction Released,2026-03-13T10:00:00Z
+LC:cutting_finishing_instruction:CIM012:1,SL012,Cutting Instruction Acknowledged,2026-03-13T10:05:00Z
+LC:cutting_finishing_instruction:CIM012:2,SL012,Cutting Setup Verified,2026-03-13T10:10:00Z
+LC:cutting_finishing_instruction:CIM012:3,SL012,Cutting Work Started,2026-03-13T10:55:00Z
 OP:M012-SC,SL012,Split Cutting Completed,2026-03-13T11:00:00Z
+LC:cutting_finishing_instruction:CIM012:4,SL012,Cutting Instruction Closed,2026-03-13T11:05:00Z
+LC:plate_material:P012-1:1,SL012,Plate Piece Identified,2026-03-13T11:30:00Z
 OP:P012-1-IF1,SL012,Inspection Failed,2026-03-13T12:00:00Z
 OP:P012-1-HT1,SL012,Heat Treatment Completed,2026-03-13T14:00:00Z
 OP:P012-1-IF2,SL012,Inspection Failed,2026-03-13T15:00:00Z
 OP:P012-1-HT2,SL012,Heat Treatment Completed,2026-03-13T17:00:00Z
 OP:P012-1-IP,SL012,Inspection Passed,2026-03-13T18:00:00Z
 DIM:P012-1,SL012,Dimensional Inspection Completed,2026-03-13T18:30:00Z
+LC:plate_material:P012-1:2,SL012,Plate Surface Checked,2026-03-13T19:00:00Z
+LC:plate_material:P012-1:3,SL012,Plate Quality Released,2026-03-13T19:30:00Z
+LC:plate_material:P012-1:4,SL012,Plate Packed,2026-03-13T20:30:00Z
+LC:planned_rolling_instruction:PLAN013:1,SL013,Rolling Plan Created,2026-03-13T14:00:00Z
+LC:slab_material:SL013:1,SL013,Slab Received,2026-03-13T14:00:00Z
+LC:planned_rolling_instruction:PLAN013:2,SL013,Rolling Plan Reviewed,2026-03-13T15:00:00Z
+LC:slab_material:SL013:2,SL013,Slab Identity Verified,2026-03-13T15:00:00Z
+LC:planned_rolling_instruction:PLAN013:3,SL013,Rolling Plan Approved,2026-03-13T16:00:00Z
+LC:slab_material:SL013:3,SL013,Slab Quality Checked,2026-03-13T16:00:00Z
+LC:planned_rolling_instruction:PLAN013:4,SL013,Rolling Plan Released,2026-03-13T17:00:00Z
+LC:slab_material:SL013:4,SL013,Slab Released for Rolling,2026-03-13T17:00:00Z
 RI:RI013,SL013,Rolling Instruction Released,2026-03-14T00:00:00Z
+LC:rolling_instruction:RI013:1,SL013,Rolling Instruction Acknowledged,2026-03-14T00:05:00Z
+LC:rolling_instruction:RI013:2,SL013,Rolling Setup Verified,2026-03-14T00:10:00Z
+LC:planned_rolling_instruction:PLAN014:1,SL014,Rolling Plan Created,2026-03-14T14:00:00Z
+LC:slab_material:SL014:1,SL014,Slab Received,2026-03-14T14:00:00Z
+LC:planned_rolling_instruction:PLAN014:2,SL014,Rolling Plan Reviewed,2026-03-14T15:00:00Z
+LC:slab_material:SL014:2,SL014,Slab Identity Verified,2026-03-14T15:00:00Z
+LC:planned_rolling_instruction:PLAN014:3,SL014,Rolling Plan Approved,2026-03-14T16:00:00Z
+LC:slab_material:SL014:3,SL014,Slab Quality Checked,2026-03-14T16:00:00Z
+LC:planned_rolling_instruction:PLAN014:4,SL014,Rolling Plan Released,2026-03-14T17:00:00Z
+LC:slab_material:SL014:4,SL014,Slab Released for Rolling,2026-03-14T17:00:00Z
 RI:RI014,SL014,Rolling Instruction Released,2026-03-15T00:00:00Z
+LC:rolling_instruction:RI014:1,SL014,Rolling Instruction Acknowledged,2026-03-15T00:05:00Z
+LC:rolling_instruction:RI014:2,SL014,Rolling Setup Verified,2026-03-15T00:10:00Z
 YD:TRM014,SL014,Yard Instruction Received,2026-03-15T01:00:00Z
+LC:furnace_charge_tracking:TRM014:1,SL014,Furnace Charge Assigned,2026-03-15T01:05:00Z
+LC:furnace_charge_tracking:TRM014:2,SL014,Furnace Charge Confirmed,2026-03-15T01:10:00Z
 RH:M014,SL014,Reheating Started,2026-03-15T04:00:00Z
+LC:planned_rolling_instruction:PLAN015:1,SL015,Rolling Plan Created,2026-03-15T14:00:00Z
+LC:slab_material:SL015:1,SL015,Slab Received,2026-03-15T14:00:00Z
+LC:planned_rolling_instruction:PLAN015:2,SL015,Rolling Plan Reviewed,2026-03-15T15:00:00Z
+LC:slab_material:SL015:2,SL015,Slab Identity Verified,2026-03-15T15:00:00Z
+LC:planned_rolling_instruction:PLAN015:3,SL015,Rolling Plan Approved,2026-03-15T16:00:00Z
+LC:slab_material:SL015:3,SL015,Slab Quality Checked,2026-03-15T16:00:00Z
 RI:RI015,SL015,Rolling Instruction Released,2026-03-16T00:00:00Z
+LC:rolling_instruction:RI015:1,SL015,Rolling Instruction Acknowledged,2026-03-16T00:05:00Z
+LC:rolling_instruction:RI015:2,SL015,Rolling Setup Verified,2026-03-16T00:10:00Z
 YD:TRM015,SL015,Yard Instruction Received,2026-03-16T01:00:00Z
+LC:furnace_charge_tracking:TRM015:1,SL015,Furnace Charge Assigned,2026-03-16T01:05:00Z
 RH:M015,SL015,Reheating Started,2026-03-16T02:00:00Z
+LC:furnace_charge_tracking:TRM015:2,SL015,Furnace Charge Confirmed,2026-03-16T02:01:00Z
+LC:furnace_charge_tracking:TRM015:3,SL015,Heating Completed,2026-03-16T05:40:00Z
+LC:furnace_charge_tracking:TRM015:4,SL015,Furnace Discharge Confirmed,2026-03-16T05:50:00Z
+LC:rolling_instruction:RI015:3,SL015,Rolling Work Started,2026-03-16T05:55:00Z
 OP:M015-RL,SL015,Rolling Completed,2026-03-16T06:00:00Z
+LC:planned_rolling_instruction:PLAN016:1,SL016,Rolling Plan Created,2026-03-16T14:00:00Z
+LC:slab_material:SL016:1,SL016,Slab Received,2026-03-16T14:00:00Z
+LC:planned_rolling_instruction:PLAN016:2,SL016,Rolling Plan Reviewed,2026-03-16T15:00:00Z
+LC:slab_material:SL016:2,SL016,Slab Identity Verified,2026-03-16T15:00:00Z
+LC:planned_rolling_instruction:PLAN016:3,SL016,Rolling Plan Approved,2026-03-16T16:00:00Z
+LC:slab_material:SL016:3,SL016,Slab Quality Checked,2026-03-16T16:00:00Z
+LC:planned_rolling_instruction:PLAN016:4,SL016,Rolling Plan Released,2026-03-16T17:00:00Z
+LC:slab_material:SL016:4,SL016,Slab Released for Rolling,2026-03-16T17:00:00Z
 RI:RI016,SL016,Rolling Instruction Released,2026-03-17T00:00:00Z
+LC:rolling_instruction:RI016:1,SL016,Rolling Instruction Acknowledged,2026-03-17T00:05:00Z
+LC:rolling_instruction:RI016:2,SL016,Rolling Setup Verified,2026-03-17T00:10:00Z
 YD:TRM016,SL016,Yard Instruction Received,2026-03-17T01:00:00Z
+LC:furnace_charge_tracking:TRM016:1,SL016,Furnace Charge Assigned,2026-03-17T01:05:00Z
 RH:M016,SL016,Reheating Started,2026-03-17T02:00:00Z
+LC:furnace_charge_tracking:TRM016:2,SL016,Furnace Charge Confirmed,2026-03-17T02:01:00Z
+LC:furnace_charge_tracking:TRM016:3,SL016,Heating Completed,2026-03-17T05:40:00Z
+LC:furnace_charge_tracking:TRM016:4,SL016,Furnace Discharge Confirmed,2026-03-17T05:50:00Z
+LC:rolling_instruction:RI016:3,SL016,Rolling Work Started,2026-03-17T05:55:00Z
 OP:M016-RL,SL016,Rolling Completed,2026-03-17T06:00:00Z
+LC:rolling_instruction:RI016:4,SL016,Rolling Instruction Closed,2026-03-17T06:05:00Z
 OP:M016-CO,SL016,Cooling Completed,2026-03-17T07:00:00Z
 OP:M016-LE,SL016,Leveling Completed,2026-03-17T08:00:00Z
 CS:M016,SL016,Crop Shear Passed,2026-03-17T09:00:00Z
 CI:CIM016,SL016,Cutting Instruction Released,2026-03-17T10:00:00Z
+LC:cutting_finishing_instruction:CIM016:1,SL016,Cutting Instruction Acknowledged,2026-03-17T10:05:00Z
+LC:cutting_finishing_instruction:CIM016:2,SL016,Cutting Setup Verified,2026-03-17T10:10:00Z
+LC:cutting_finishing_instruction:CIM016:3,SL016,Cutting Work Started,2026-03-17T10:55:00Z
 OP:M016-SC,SL016,Split Cutting Completed,2026-03-17T11:00:00Z
+LC:cutting_finishing_instruction:CIM016:4,SL016,Cutting Instruction Closed,2026-03-17T11:05:00Z
+LC:plate_material:P016-1:1,SL016,Plate Piece Identified,2026-03-17T12:36:00Z
 OP:P016-1-IP,SL016,Inspection Passed,2026-03-17T13:06:00Z
 DIM:P016-1,SL016,Dimensional Inspection Completed,2026-03-17T13:36:00Z
+LC:plate_material:P016-1:2,SL016,Plate Surface Checked,2026-03-17T14:06:00Z
+LC:plate_material:P016-1:3,SL016,Plate Quality Released,2026-03-17T14:36:00Z
+LC:plate_material:P016-1:4,SL016,Plate Packed,2026-03-17T15:36:00Z
+LC:planned_rolling_instruction:PLAN017:1,SL017,Rolling Plan Created,2026-03-17T14:00:00Z
+LC:slab_material:SL017:1,SL017,Slab Received,2026-03-17T14:00:00Z
+LC:planned_rolling_instruction:PLAN017:2,SL017,Rolling Plan Reviewed,2026-03-17T15:00:00Z
+LC:slab_material:SL017:2,SL017,Slab Identity Verified,2026-03-17T15:00:00Z
+LC:planned_rolling_instruction:PLAN017:3,SL017,Rolling Plan Approved,2026-03-17T16:00:00Z
+LC:slab_material:SL017:3,SL017,Slab Quality Checked,2026-03-17T16:00:00Z
+LC:planned_rolling_instruction:PLAN017:4,SL017,Rolling Plan Released,2026-03-17T17:00:00Z
+LC:slab_material:SL017:4,SL017,Slab Released for Rolling,2026-03-17T17:00:00Z
 RI:RI017,SL017,Rolling Instruction Released,2026-03-18T00:00:00Z
+LC:rolling_instruction:RI017:1,SL017,Rolling Instruction Acknowledged,2026-03-18T00:05:00Z
+LC:rolling_instruction:RI017:2,SL017,Rolling Setup Verified,2026-03-18T00:10:00Z
 YD:TRM017,SL017,Yard Instruction Received,2026-03-18T01:00:00Z
+LC:furnace_charge_tracking:TRM017:1,SL017,Furnace Charge Assigned,2026-03-18T01:05:00Z
 RH:M017,SL017,Reheating Started,2026-03-18T04:00:00Z
+LC:furnace_charge_tracking:TRM017:2,SL017,Furnace Charge Confirmed,2026-03-18T04:01:00Z
+LC:furnace_charge_tracking:TRM017:3,SL017,Heating Completed,2026-03-18T05:40:00Z
+LC:furnace_charge_tracking:TRM017:4,SL017,Furnace Discharge Confirmed,2026-03-18T05:50:00Z
+LC:rolling_instruction:RI017:3,SL017,Rolling Work Started,2026-03-18T05:55:00Z
 OP:M017-RL,SL017,Rolling Completed,2026-03-18T06:00:00Z
+LC:rolling_instruction:RI017:4,SL017,Rolling Instruction Closed,2026-03-18T06:05:00Z
 OP:M017-CO,SL017,Cooling Completed,2026-03-18T07:00:00Z
 OP:M017-LE,SL017,Leveling Completed,2026-03-18T08:00:00Z
 CS:M017,SL017,Crop Shear Passed,2026-03-18T09:00:00Z
 CI:CIM017,SL017,Cutting Instruction Released,2026-03-18T10:00:00Z
+LC:cutting_finishing_instruction:CIM017:1,SL017,Cutting Instruction Acknowledged,2026-03-18T10:05:00Z
+LC:cutting_finishing_instruction:CIM017:2,SL017,Cutting Setup Verified,2026-03-18T10:10:00Z
+LC:cutting_finishing_instruction:CIM017:3,SL017,Cutting Work Started,2026-03-18T10:55:00Z
 OP:M017-SC,SL017,Split Cutting Completed,2026-03-18T11:00:00Z
+LC:plate_material:P017-1:1,SL017,Plate Piece Identified,2026-03-18T11:30:00Z
+LC:plate_material:P017-2:1,SL017,Plate Piece Identified,2026-03-18T11:30:00Z
+LC:plate_material:P017-3:1,SL017,Plate Piece Identified,2026-03-18T11:30:00Z
 OP:P017-1-HT1,SL017,Heat Treatment Completed,2026-03-18T12:00:00Z
 OP:P017-2-HT1,SL017,Heat Treatment Completed,2026-03-18T12:00:00Z
 OP:P017-3-HT1,SL017,Heat Treatment Completed,2026-03-18T12:00:00Z
@@ -139,162 +449,527 @@ OP:P017-3-IP,SL017,Inspection Passed,2026-03-18T13:18:00Z
 DIM:P017-1,SL017,Dimensional Inspection Completed,2026-03-18T13:36:00Z
 DIM:P017-2,SL017,Dimensional Inspection Completed,2026-03-18T13:42:00Z
 DIM:P017-3,SL017,Dimensional Inspection Completed,2026-03-18T13:48:00Z
+LC:plate_material:P017-1:2,SL017,Plate Surface Checked,2026-03-18T14:06:00Z
+LC:plate_material:P017-2:2,SL017,Plate Surface Checked,2026-03-18T14:12:00Z
+LC:plate_material:P017-3:2,SL017,Plate Surface Checked,2026-03-18T14:18:00Z
+LC:plate_material:P017-1:3,SL017,Plate Quality Released,2026-03-18T14:36:00Z
+LC:plate_material:P017-2:3,SL017,Plate Quality Released,2026-03-18T14:42:00Z
+LC:plate_material:P017-3:3,SL017,Plate Quality Released,2026-03-18T14:48:00Z
+LC:plate_material:P017-1:4,SL017,Plate Packed,2026-03-18T15:36:00Z
+LC:plate_material:P017-2:4,SL017,Plate Packed,2026-03-18T15:42:00Z
+LC:planned_rolling_instruction:PLAN018:1,SL018,Rolling Plan Created,2026-03-18T14:00:00Z
+LC:slab_material:SL018:1,SL018,Slab Received,2026-03-18T14:00:00Z
+LC:planned_rolling_instruction:PLAN018:2,SL018,Rolling Plan Reviewed,2026-03-18T15:00:00Z
+LC:slab_material:SL018:2,SL018,Slab Identity Verified,2026-03-18T15:00:00Z
+LC:planned_rolling_instruction:PLAN018:3,SL018,Rolling Plan Approved,2026-03-18T16:00:00Z
+LC:slab_material:SL018:3,SL018,Slab Quality Checked,2026-03-18T16:00:00Z
+LC:planned_rolling_instruction:PLAN018:4,SL018,Rolling Plan Released,2026-03-18T17:00:00Z
+LC:slab_material:SL018:4,SL018,Slab Released for Rolling,2026-03-18T17:00:00Z
 RI:RI018,SL018,Rolling Instruction Released,2026-03-19T00:00:00Z
+LC:rolling_instruction:RI018:1,SL018,Rolling Instruction Acknowledged,2026-03-19T00:05:00Z
+LC:rolling_instruction:RI018:2,SL018,Rolling Setup Verified,2026-03-19T00:10:00Z
 YD:TRM018,SL018,Yard Instruction Received,2026-03-19T01:00:00Z
+LC:furnace_charge_tracking:TRM018:1,SL018,Furnace Charge Assigned,2026-03-19T01:05:00Z
 RH:M018,SL018,Reheating Started,2026-03-19T04:00:00Z
+LC:furnace_charge_tracking:TRM018:2,SL018,Furnace Charge Confirmed,2026-03-19T04:01:00Z
+LC:furnace_charge_tracking:TRM018:3,SL018,Heating Completed,2026-03-19T05:40:00Z
+LC:rolling_instruction:RI018:3,SL018,Rolling Work Started,2026-03-19T05:55:00Z
 OP:M018-RL,SL018,Rolling Completed,2026-03-19T06:00:00Z
+LC:rolling_instruction:RI018:4,SL018,Rolling Instruction Closed,2026-03-19T06:05:00Z
 OP:M018-CO,SL018,Cooling Completed,2026-03-19T07:00:00Z
 OP:M018-LE,SL018,Leveling Completed,2026-03-19T08:00:00Z
 CS:M018,SL018,Crop Shear Passed,2026-03-19T09:00:00Z
 CI:CIM018,SL018,Cutting Instruction Released,2026-03-19T10:00:00Z
+LC:cutting_finishing_instruction:CIM018:1,SL018,Cutting Instruction Acknowledged,2026-03-19T10:05:00Z
+LC:cutting_finishing_instruction:CIM018:2,SL018,Cutting Setup Verified,2026-03-19T10:10:00Z
+LC:cutting_finishing_instruction:CIM018:3,SL018,Cutting Work Started,2026-03-19T10:55:00Z
 OP:M018-SC,SL018,Split Cutting Completed,2026-03-19T11:00:00Z
+LC:cutting_finishing_instruction:CIM018:4,SL018,Cutting Instruction Closed,2026-03-19T11:05:00Z
+LC:plate_material:P018-1:1,SL018,Plate Piece Identified,2026-03-19T11:30:00Z
 OP:P018-1-IF1,SL018,Inspection Failed,2026-03-19T12:00:00Z
+LC:plate_material:P018-2:1,SL018,Plate Piece Identified,2026-03-19T12:42:00Z
+LC:plate_material:P018-3:1,SL018,Plate Piece Identified,2026-03-19T12:48:00Z
 OP:P018-2-IP,SL018,Inspection Passed,2026-03-19T13:12:00Z
 OP:P018-3-IP,SL018,Inspection Passed,2026-03-19T13:18:00Z
 DIM:P018-2,SL018,Dimensional Inspection Completed,2026-03-19T13:42:00Z
 DIM:P018-3,SL018,Dimensional Inspection Completed,2026-03-19T13:48:00Z
 OP:P018-1-HT1,SL018,Heat Treatment Completed,2026-03-19T14:00:00Z
+LC:plate_material:P018-2:2,SL018,Plate Surface Checked,2026-03-19T14:12:00Z
+LC:plate_material:P018-3:2,SL018,Plate Surface Checked,2026-03-19T14:18:00Z
+LC:plate_material:P018-2:3,SL018,Plate Quality Released,2026-03-19T14:42:00Z
+LC:plate_material:P018-3:3,SL018,Plate Quality Released,2026-03-19T14:48:00Z
 OP:P018-1-IF2,SL018,Inspection Failed,2026-03-19T15:00:00Z
+LC:plate_material:P018-2:4,SL018,Plate Packed,2026-03-19T15:42:00Z
+LC:plate_material:P018-3:4,SL018,Plate Packed,2026-03-19T15:48:00Z
 OP:P018-1-HT2,SL018,Heat Treatment Completed,2026-03-19T17:00:00Z
 OP:P018-1-IP,SL018,Inspection Passed,2026-03-19T18:00:00Z
 DIM:P018-1,SL018,Dimensional Inspection Completed,2026-03-19T18:30:00Z
+LC:plate_material:P018-1:2,SL018,Plate Surface Checked,2026-03-19T19:00:00Z
+LC:plate_material:P018-1:3,SL018,Plate Quality Released,2026-03-19T19:30:00Z
+LC:plate_material:P018-1:4,SL018,Plate Packed,2026-03-19T20:30:00Z
+LC:planned_rolling_instruction:PLAN019:1,SL019,Rolling Plan Created,2026-03-19T14:00:00Z
+LC:slab_material:SL019:1,SL019,Slab Received,2026-03-19T14:00:00Z
+LC:planned_rolling_instruction:PLAN019:2,SL019,Rolling Plan Reviewed,2026-03-19T15:00:00Z
+LC:slab_material:SL019:2,SL019,Slab Identity Verified,2026-03-19T15:00:00Z
+LC:planned_rolling_instruction:PLAN019:3,SL019,Rolling Plan Approved,2026-03-19T16:00:00Z
+LC:slab_material:SL019:3,SL019,Slab Quality Checked,2026-03-19T16:00:00Z
+LC:planned_rolling_instruction:PLAN019:4,SL019,Rolling Plan Released,2026-03-19T17:00:00Z
+LC:slab_material:SL019:4,SL019,Slab Released for Rolling,2026-03-19T17:00:00Z
 RI:RI019,SL019,Rolling Instruction Released,2026-03-20T00:00:00Z
+LC:rolling_instruction:RI019:1,SL019,Rolling Instruction Acknowledged,2026-03-20T00:05:00Z
+LC:rolling_instruction:RI019:2,SL019,Rolling Setup Verified,2026-03-20T00:10:00Z
+LC:planned_rolling_instruction:PLAN020:1,SL020,Rolling Plan Created,2026-03-20T14:00:00Z
+LC:slab_material:SL020:1,SL020,Slab Received,2026-03-20T14:00:00Z
+LC:planned_rolling_instruction:PLAN020:2,SL020,Rolling Plan Reviewed,2026-03-20T15:00:00Z
+LC:slab_material:SL020:2,SL020,Slab Identity Verified,2026-03-20T15:00:00Z
+LC:planned_rolling_instruction:PLAN020:3,SL020,Rolling Plan Approved,2026-03-20T16:00:00Z
+LC:slab_material:SL020:3,SL020,Slab Quality Checked,2026-03-20T16:00:00Z
+LC:planned_rolling_instruction:PLAN020:4,SL020,Rolling Plan Released,2026-03-20T17:00:00Z
+LC:slab_material:SL020:4,SL020,Slab Released for Rolling,2026-03-20T17:00:00Z
 RI:RI020,SL020,Rolling Instruction Released,2026-03-21T00:00:00Z
+LC:rolling_instruction:RI020:1,SL020,Rolling Instruction Acknowledged,2026-03-21T00:05:00Z
+LC:rolling_instruction:RI020:2,SL020,Rolling Setup Verified,2026-03-21T00:10:00Z
 YD:TRM020,SL020,Yard Instruction Received,2026-03-21T01:00:00Z
+LC:furnace_charge_tracking:TRM020:1,SL020,Furnace Charge Assigned,2026-03-21T01:05:00Z
+LC:furnace_charge_tracking:TRM020:2,SL020,Furnace Charge Confirmed,2026-03-21T01:10:00Z
 RH:M020,SL020,Reheating Started,2026-03-21T02:00:00Z
+LC:planned_rolling_instruction:PLAN021:1,SL021,Rolling Plan Created,2026-03-21T14:00:00Z
+LC:slab_material:SL021:1,SL021,Slab Received,2026-03-21T14:00:00Z
+LC:planned_rolling_instruction:PLAN021:2,SL021,Rolling Plan Reviewed,2026-03-21T15:00:00Z
+LC:slab_material:SL021:2,SL021,Slab Identity Verified,2026-03-21T15:00:00Z
+LC:planned_rolling_instruction:PLAN021:3,SL021,Rolling Plan Approved,2026-03-21T16:00:00Z
+LC:slab_material:SL021:3,SL021,Slab Quality Checked,2026-03-21T16:00:00Z
+LC:planned_rolling_instruction:PLAN021:4,SL021,Rolling Plan Released,2026-03-21T17:00:00Z
+LC:slab_material:SL021:4,SL021,Slab Released for Rolling,2026-03-21T17:00:00Z
 RI:RI021,SL021,Rolling Instruction Released,2026-03-22T00:00:00Z
+LC:rolling_instruction:RI021:1,SL021,Rolling Instruction Acknowledged,2026-03-22T00:05:00Z
+LC:rolling_instruction:RI021:2,SL021,Rolling Setup Verified,2026-03-22T00:10:00Z
 YD:TRM021,SL021,Yard Instruction Received,2026-03-22T01:00:00Z
+LC:furnace_charge_tracking:TRM021:1,SL021,Furnace Charge Assigned,2026-03-22T01:05:00Z
 RH:M021,SL021,Reheating Started,2026-03-22T02:00:00Z
+LC:furnace_charge_tracking:TRM021:2,SL021,Furnace Charge Confirmed,2026-03-22T02:01:00Z
+LC:furnace_charge_tracking:TRM021:3,SL021,Heating Completed,2026-03-22T05:40:00Z
+LC:furnace_charge_tracking:TRM021:4,SL021,Furnace Discharge Confirmed,2026-03-22T05:50:00Z
+LC:rolling_instruction:RI021:3,SL021,Rolling Work Started,2026-03-22T05:55:00Z
 OP:M021-RL,SL021,Rolling Completed,2026-03-22T06:00:00Z
+LC:rolling_instruction:RI021:4,SL021,Rolling Instruction Closed,2026-03-22T06:05:00Z
+LC:planned_rolling_instruction:PLAN022:1,SL022,Rolling Plan Created,2026-03-22T14:00:00Z
+LC:slab_material:SL022:1,SL022,Slab Received,2026-03-22T14:00:00Z
+LC:planned_rolling_instruction:PLAN022:2,SL022,Rolling Plan Reviewed,2026-03-22T15:00:00Z
+LC:slab_material:SL022:2,SL022,Slab Identity Verified,2026-03-22T15:00:00Z
+LC:planned_rolling_instruction:PLAN022:3,SL022,Rolling Plan Approved,2026-03-22T16:00:00Z
+LC:slab_material:SL022:3,SL022,Slab Quality Checked,2026-03-22T16:00:00Z
 RI:RI022,SL022,Rolling Instruction Released,2026-03-23T00:00:00Z
+LC:rolling_instruction:RI022:1,SL022,Rolling Instruction Acknowledged,2026-03-23T00:05:00Z
+LC:rolling_instruction:RI022:2,SL022,Rolling Setup Verified,2026-03-23T00:10:00Z
 YD:TRM022,SL022,Yard Instruction Received,2026-03-23T01:00:00Z
+LC:furnace_charge_tracking:TRM022:1,SL022,Furnace Charge Assigned,2026-03-23T01:05:00Z
 RH:M022,SL022,Reheating Started,2026-03-23T04:00:00Z
+LC:furnace_charge_tracking:TRM022:2,SL022,Furnace Charge Confirmed,2026-03-23T04:01:00Z
+LC:furnace_charge_tracking:TRM022:3,SL022,Heating Completed,2026-03-23T05:40:00Z
+LC:furnace_charge_tracking:TRM022:4,SL022,Furnace Discharge Confirmed,2026-03-23T05:50:00Z
+LC:rolling_instruction:RI022:3,SL022,Rolling Work Started,2026-03-23T05:55:00Z
 OP:M022-RL,SL022,Rolling Completed,2026-03-23T06:00:00Z
 OP:M022-CO,SL022,Cooling Completed,2026-03-23T07:00:00Z
 OP:M022-LE,SL022,Leveling Completed,2026-03-23T08:00:00Z
 CS:M022,SL022,Crop Shear Passed,2026-03-23T09:00:00Z
 CI:CIM022,SL022,Cutting Instruction Released,2026-03-23T10:00:00Z
+LC:cutting_finishing_instruction:CIM022:1,SL022,Cutting Instruction Acknowledged,2026-03-23T10:05:00Z
+LC:cutting_finishing_instruction:CIM022:2,SL022,Cutting Setup Verified,2026-03-23T10:10:00Z
+LC:cutting_finishing_instruction:CIM022:3,SL022,Cutting Work Started,2026-03-23T10:55:00Z
 OP:M022-SC,SL022,Split Cutting Completed,2026-03-23T11:00:00Z
+LC:cutting_finishing_instruction:CIM022:4,SL022,Cutting Instruction Closed,2026-03-23T11:05:00Z
+LC:plate_material:P022-1:1,SL022,Plate Piece Identified,2026-03-23T12:36:00Z
 OP:P022-1-IP,SL022,Inspection Passed,2026-03-23T13:06:00Z
 DIM:P022-1,SL022,Dimensional Inspection Completed,2026-03-23T13:36:00Z
+LC:plate_material:P022-1:2,SL022,Plate Surface Checked,2026-03-23T14:06:00Z
+LC:plate_material:P022-1:3,SL022,Plate Quality Released,2026-03-23T14:36:00Z
+LC:plate_material:P022-1:4,SL022,Plate Packed,2026-03-23T15:36:00Z
+LC:planned_rolling_instruction:PLAN023:1,SL023,Rolling Plan Created,2026-03-23T14:00:00Z
+LC:slab_material:SL023:1,SL023,Slab Received,2026-03-23T14:00:00Z
+LC:planned_rolling_instruction:PLAN023:2,SL023,Rolling Plan Reviewed,2026-03-23T15:00:00Z
+LC:slab_material:SL023:2,SL023,Slab Identity Verified,2026-03-23T15:00:00Z
+LC:planned_rolling_instruction:PLAN023:3,SL023,Rolling Plan Approved,2026-03-23T16:00:00Z
+LC:slab_material:SL023:3,SL023,Slab Quality Checked,2026-03-23T16:00:00Z
+LC:planned_rolling_instruction:PLAN023:4,SL023,Rolling Plan Released,2026-03-23T17:00:00Z
+LC:slab_material:SL023:4,SL023,Slab Released for Rolling,2026-03-23T17:00:00Z
 RI:RI023,SL023,Rolling Instruction Released,2026-03-24T00:00:00Z
+LC:rolling_instruction:RI023:1,SL023,Rolling Instruction Acknowledged,2026-03-24T00:05:00Z
+LC:rolling_instruction:RI023:2,SL023,Rolling Setup Verified,2026-03-24T00:10:00Z
 YD:TRM023,SL023,Yard Instruction Received,2026-03-24T01:00:00Z
+LC:furnace_charge_tracking:TRM023:1,SL023,Furnace Charge Assigned,2026-03-24T01:05:00Z
 RH:M023,SL023,Reheating Started,2026-03-24T02:00:00Z
+LC:furnace_charge_tracking:TRM023:2,SL023,Furnace Charge Confirmed,2026-03-24T02:01:00Z
+LC:furnace_charge_tracking:TRM023:3,SL023,Heating Completed,2026-03-24T05:40:00Z
+LC:furnace_charge_tracking:TRM023:4,SL023,Furnace Discharge Confirmed,2026-03-24T05:50:00Z
+LC:rolling_instruction:RI023:3,SL023,Rolling Work Started,2026-03-24T05:55:00Z
 OP:M023-RL,SL023,Rolling Completed,2026-03-24T06:00:00Z
+LC:rolling_instruction:RI023:4,SL023,Rolling Instruction Closed,2026-03-24T06:05:00Z
 OP:M023-CO,SL023,Cooling Completed,2026-03-24T07:00:00Z
 OP:M023-LE,SL023,Leveling Completed,2026-03-24T08:00:00Z
 CS:M023,SL023,Crop Shear Passed,2026-03-24T09:00:00Z
 CI:CIM023,SL023,Cutting Instruction Released,2026-03-24T10:00:00Z
+LC:cutting_finishing_instruction:CIM023:1,SL023,Cutting Instruction Acknowledged,2026-03-24T10:05:00Z
+LC:cutting_finishing_instruction:CIM023:2,SL023,Cutting Setup Verified,2026-03-24T10:10:00Z
+LC:cutting_finishing_instruction:CIM023:3,SL023,Cutting Work Started,2026-03-24T10:55:00Z
 OP:M023-SC,SL023,Split Cutting Completed,2026-03-24T11:00:00Z
+LC:cutting_finishing_instruction:CIM023:4,SL023,Cutting Instruction Closed,2026-03-24T11:05:00Z
+LC:plate_material:P023-1:1,SL023,Plate Piece Identified,2026-03-24T11:30:00Z
+LC:plate_material:P023-2:1,SL023,Plate Piece Identified,2026-03-24T11:30:00Z
 OP:P023-1-HT1,SL023,Heat Treatment Completed,2026-03-24T12:00:00Z
 OP:P023-2-HT1,SL023,Heat Treatment Completed,2026-03-24T12:00:00Z
 OP:P023-1-IP,SL023,Inspection Passed,2026-03-24T13:06:00Z
 OP:P023-2-IP,SL023,Inspection Passed,2026-03-24T13:12:00Z
 DIM:P023-1,SL023,Dimensional Inspection Completed,2026-03-24T13:36:00Z
 DIM:P023-2,SL023,Dimensional Inspection Completed,2026-03-24T13:42:00Z
+LC:plate_material:P023-1:2,SL023,Plate Surface Checked,2026-03-24T14:06:00Z
+LC:plate_material:P023-2:2,SL023,Plate Surface Checked,2026-03-24T14:12:00Z
+LC:plate_material:P023-1:3,SL023,Plate Quality Released,2026-03-24T14:36:00Z
+LC:plate_material:P023-2:3,SL023,Plate Quality Released,2026-03-24T14:42:00Z
+LC:plate_material:P023-1:4,SL023,Plate Packed,2026-03-24T15:36:00Z
+LC:plate_material:P023-2:4,SL023,Plate Packed,2026-03-24T15:42:00Z
+LC:planned_rolling_instruction:PLAN024:1,SL024,Rolling Plan Created,2026-03-24T14:00:00Z
+LC:slab_material:SL024:1,SL024,Slab Received,2026-03-24T14:00:00Z
+LC:planned_rolling_instruction:PLAN024:2,SL024,Rolling Plan Reviewed,2026-03-24T15:00:00Z
+LC:slab_material:SL024:2,SL024,Slab Identity Verified,2026-03-24T15:00:00Z
+LC:planned_rolling_instruction:PLAN024:3,SL024,Rolling Plan Approved,2026-03-24T16:00:00Z
+LC:slab_material:SL024:3,SL024,Slab Quality Checked,2026-03-24T16:00:00Z
+LC:planned_rolling_instruction:PLAN024:4,SL024,Rolling Plan Released,2026-03-24T17:00:00Z
+LC:slab_material:SL024:4,SL024,Slab Released for Rolling,2026-03-24T17:00:00Z
 RI:RI024,SL024,Rolling Instruction Released,2026-03-25T00:00:00Z
+LC:rolling_instruction:RI024:1,SL024,Rolling Instruction Acknowledged,2026-03-25T00:05:00Z
+LC:rolling_instruction:RI024:2,SL024,Rolling Setup Verified,2026-03-25T00:10:00Z
 YD:TRM024,SL024,Yard Instruction Received,2026-03-25T01:00:00Z
+LC:furnace_charge_tracking:TRM024:1,SL024,Furnace Charge Assigned,2026-03-25T01:05:00Z
 RH:M024,SL024,Reheating Started,2026-03-25T03:00:00Z
+LC:furnace_charge_tracking:TRM024:2,SL024,Furnace Charge Confirmed,2026-03-25T03:01:00Z
+LC:furnace_charge_tracking:TRM024:3,SL024,Heating Completed,2026-03-25T05:40:00Z
+LC:furnace_charge_tracking:TRM024:4,SL024,Furnace Discharge Confirmed,2026-03-25T05:50:00Z
+LC:rolling_instruction:RI024:3,SL024,Rolling Work Started,2026-03-25T05:55:00Z
 OP:M024-RL,SL024,Rolling Completed,2026-03-25T06:00:00Z
+LC:rolling_instruction:RI024:4,SL024,Rolling Instruction Closed,2026-03-25T06:05:00Z
 OP:M024-CO,SL024,Cooling Completed,2026-03-25T07:00:00Z
 OP:M024-LE,SL024,Leveling Completed,2026-03-25T08:00:00Z
 CS:M024,SL024,Crop Shear Passed,2026-03-25T09:00:00Z
 CI:CIM024,SL024,Cutting Instruction Released,2026-03-25T10:00:00Z
+LC:cutting_finishing_instruction:CIM024:1,SL024,Cutting Instruction Acknowledged,2026-03-25T10:05:00Z
+LC:cutting_finishing_instruction:CIM024:2,SL024,Cutting Setup Verified,2026-03-25T10:10:00Z
+LC:cutting_finishing_instruction:CIM024:3,SL024,Cutting Work Started,2026-03-25T10:55:00Z
 OP:M024-SC,SL024,Split Cutting Completed,2026-03-25T11:00:00Z
+LC:cutting_finishing_instruction:CIM024:4,SL024,Cutting Instruction Closed,2026-03-25T11:05:00Z
+LC:plate_material:P024-1:1,SL024,Plate Piece Identified,2026-03-25T11:30:00Z
 OP:P024-1-IF1,SL024,Inspection Failed,2026-03-25T12:00:00Z
+LC:plate_material:P024-2:1,SL024,Plate Piece Identified,2026-03-25T12:42:00Z
+LC:plate_material:P024-3:1,SL024,Plate Piece Identified,2026-03-25T12:48:00Z
 OP:P024-2-IP,SL024,Inspection Passed,2026-03-25T13:12:00Z
 OP:P024-3-IP,SL024,Inspection Passed,2026-03-25T13:18:00Z
 DIM:P024-2,SL024,Dimensional Inspection Completed,2026-03-25T13:42:00Z
 DIM:P024-3,SL024,Dimensional Inspection Completed,2026-03-25T13:48:00Z
 OP:P024-1-HT1,SL024,Heat Treatment Completed,2026-03-25T14:00:00Z
+LC:plate_material:P024-2:2,SL024,Plate Surface Checked,2026-03-25T14:12:00Z
+LC:plate_material:P024-3:2,SL024,Plate Surface Checked,2026-03-25T14:18:00Z
+LC:plate_material:P024-2:3,SL024,Plate Quality Released,2026-03-25T14:42:00Z
+LC:plate_material:P024-3:3,SL024,Plate Quality Released,2026-03-25T14:48:00Z
 OP:P024-1-IF2,SL024,Inspection Failed,2026-03-25T15:00:00Z
+LC:plate_material:P024-2:4,SL024,Plate Packed,2026-03-25T15:42:00Z
+LC:plate_material:P024-3:4,SL024,Plate Packed,2026-03-25T15:48:00Z
 OP:P024-1-HT2,SL024,Heat Treatment Completed,2026-03-25T17:00:00Z
 OP:P024-1-IP,SL024,Inspection Passed,2026-03-25T18:00:00Z
 DIM:P024-1,SL024,Dimensional Inspection Completed,2026-03-25T18:30:00Z
+LC:plate_material:P024-1:2,SL024,Plate Surface Checked,2026-03-25T19:00:00Z
+LC:plate_material:P024-1:3,SL024,Plate Quality Released,2026-03-25T19:30:00Z
+LC:planned_rolling_instruction:PLAN025:1,SL025,Rolling Plan Created,2026-03-25T14:00:00Z
+LC:slab_material:SL025:1,SL025,Slab Received,2026-03-25T14:00:00Z
+LC:planned_rolling_instruction:PLAN025:2,SL025,Rolling Plan Reviewed,2026-03-25T15:00:00Z
+LC:slab_material:SL025:2,SL025,Slab Identity Verified,2026-03-25T15:00:00Z
+LC:planned_rolling_instruction:PLAN025:3,SL025,Rolling Plan Approved,2026-03-25T16:00:00Z
+LC:slab_material:SL025:3,SL025,Slab Quality Checked,2026-03-25T16:00:00Z
+LC:planned_rolling_instruction:PLAN025:4,SL025,Rolling Plan Released,2026-03-25T17:00:00Z
+LC:slab_material:SL025:4,SL025,Slab Released for Rolling,2026-03-25T17:00:00Z
 RI:RI025,SL025,Rolling Instruction Released,2026-03-26T00:00:00Z
+LC:rolling_instruction:RI025:1,SL025,Rolling Instruction Acknowledged,2026-03-26T00:05:00Z
+LC:rolling_instruction:RI025:2,SL025,Rolling Setup Verified,2026-03-26T00:10:00Z
+LC:planned_rolling_instruction:PLAN026:1,SL026,Rolling Plan Created,2026-03-26T14:00:00Z
+LC:slab_material:SL026:1,SL026,Slab Received,2026-03-26T14:00:00Z
+LC:planned_rolling_instruction:PLAN026:2,SL026,Rolling Plan Reviewed,2026-03-26T15:00:00Z
+LC:slab_material:SL026:2,SL026,Slab Identity Verified,2026-03-26T15:00:00Z
+LC:planned_rolling_instruction:PLAN026:3,SL026,Rolling Plan Approved,2026-03-26T16:00:00Z
+LC:slab_material:SL026:3,SL026,Slab Quality Checked,2026-03-26T16:00:00Z
+LC:planned_rolling_instruction:PLAN026:4,SL026,Rolling Plan Released,2026-03-26T17:00:00Z
+LC:slab_material:SL026:4,SL026,Slab Released for Rolling,2026-03-26T17:00:00Z
 RI:RI026,SL026,Rolling Instruction Released,2026-03-27T00:00:00Z
+LC:rolling_instruction:RI026:1,SL026,Rolling Instruction Acknowledged,2026-03-27T00:05:00Z
+LC:rolling_instruction:RI026:2,SL026,Rolling Setup Verified,2026-03-27T00:10:00Z
 YD:TRM026,SL026,Yard Instruction Received,2026-03-27T01:00:00Z
+LC:furnace_charge_tracking:TRM026:1,SL026,Furnace Charge Assigned,2026-03-27T01:05:00Z
+LC:furnace_charge_tracking:TRM026:2,SL026,Furnace Charge Confirmed,2026-03-27T01:10:00Z
 RH:M026,SL026,Reheating Started,2026-03-27T02:00:00Z
+LC:planned_rolling_instruction:PLAN027:1,SL027,Rolling Plan Created,2026-03-27T14:00:00Z
+LC:slab_material:SL027:1,SL027,Slab Received,2026-03-27T14:00:00Z
+LC:planned_rolling_instruction:PLAN027:2,SL027,Rolling Plan Reviewed,2026-03-27T15:00:00Z
+LC:slab_material:SL027:2,SL027,Slab Identity Verified,2026-03-27T15:00:00Z
+LC:planned_rolling_instruction:PLAN027:3,SL027,Rolling Plan Approved,2026-03-27T16:00:00Z
+LC:slab_material:SL027:3,SL027,Slab Quality Checked,2026-03-27T16:00:00Z
+LC:planned_rolling_instruction:PLAN027:4,SL027,Rolling Plan Released,2026-03-27T17:00:00Z
+LC:slab_material:SL027:4,SL027,Slab Released for Rolling,2026-03-27T17:00:00Z
 RI:RI027,SL027,Rolling Instruction Released,2026-03-28T00:00:00Z
+LC:rolling_instruction:RI027:1,SL027,Rolling Instruction Acknowledged,2026-03-28T00:05:00Z
+LC:rolling_instruction:RI027:2,SL027,Rolling Setup Verified,2026-03-28T00:10:00Z
 YD:TRM027,SL027,Yard Instruction Received,2026-03-28T01:00:00Z
+LC:furnace_charge_tracking:TRM027:1,SL027,Furnace Charge Assigned,2026-03-28T01:05:00Z
 RH:M027,SL027,Reheating Started,2026-03-28T02:00:00Z
+LC:furnace_charge_tracking:TRM027:2,SL027,Furnace Charge Confirmed,2026-03-28T02:01:00Z
+LC:furnace_charge_tracking:TRM027:3,SL027,Heating Completed,2026-03-28T05:40:00Z
+LC:rolling_instruction:RI027:3,SL027,Rolling Work Started,2026-03-28T05:55:00Z
 OP:M027-RL,SL027,Rolling Completed,2026-03-28T06:00:00Z
+LC:rolling_instruction:RI027:4,SL027,Rolling Instruction Closed,2026-03-28T06:05:00Z
+LC:planned_rolling_instruction:PLAN028:1,SL028,Rolling Plan Created,2026-03-28T14:00:00Z
+LC:slab_material:SL028:1,SL028,Slab Received,2026-03-28T14:00:00Z
+LC:planned_rolling_instruction:PLAN028:2,SL028,Rolling Plan Reviewed,2026-03-28T15:00:00Z
+LC:slab_material:SL028:2,SL028,Slab Identity Verified,2026-03-28T15:00:00Z
+LC:planned_rolling_instruction:PLAN028:3,SL028,Rolling Plan Approved,2026-03-28T16:00:00Z
+LC:slab_material:SL028:3,SL028,Slab Quality Checked,2026-03-28T16:00:00Z
+LC:planned_rolling_instruction:PLAN028:4,SL028,Rolling Plan Released,2026-03-28T17:00:00Z
+LC:slab_material:SL028:4,SL028,Slab Released for Rolling,2026-03-28T17:00:00Z
 RI:RI028,SL028,Rolling Instruction Released,2026-03-29T00:00:00Z
+LC:rolling_instruction:RI028:1,SL028,Rolling Instruction Acknowledged,2026-03-29T00:05:00Z
+LC:rolling_instruction:RI028:2,SL028,Rolling Setup Verified,2026-03-29T00:10:00Z
 YD:TRM028,SL028,Yard Instruction Received,2026-03-29T01:00:00Z
+LC:furnace_charge_tracking:TRM028:1,SL028,Furnace Charge Assigned,2026-03-29T01:05:00Z
 RH:M028,SL028,Reheating Started,2026-03-29T02:00:00Z
+LC:furnace_charge_tracking:TRM028:2,SL028,Furnace Charge Confirmed,2026-03-29T02:01:00Z
+LC:furnace_charge_tracking:TRM028:3,SL028,Heating Completed,2026-03-29T05:40:00Z
+LC:furnace_charge_tracking:TRM028:4,SL028,Furnace Discharge Confirmed,2026-03-29T05:50:00Z
+LC:rolling_instruction:RI028:3,SL028,Rolling Work Started,2026-03-29T05:55:00Z
 OP:M028-RL,SL028,Rolling Completed,2026-03-29T06:00:00Z
+LC:rolling_instruction:RI028:4,SL028,Rolling Instruction Closed,2026-03-29T06:05:00Z
 OP:M028-CO,SL028,Cooling Completed,2026-03-29T07:00:00Z
 OP:M028-LE,SL028,Leveling Completed,2026-03-29T08:00:00Z
 CS:M028,SL028,Crop Shear Passed,2026-03-29T09:00:00Z
 CI:CIM028,SL028,Cutting Instruction Released,2026-03-29T10:00:00Z
+LC:cutting_finishing_instruction:CIM028:1,SL028,Cutting Instruction Acknowledged,2026-03-29T10:05:00Z
+LC:cutting_finishing_instruction:CIM028:2,SL028,Cutting Setup Verified,2026-03-29T10:10:00Z
+LC:cutting_finishing_instruction:CIM028:3,SL028,Cutting Work Started,2026-03-29T10:55:00Z
 OP:M028-SC,SL028,Split Cutting Completed,2026-03-29T11:00:00Z
+LC:cutting_finishing_instruction:CIM028:4,SL028,Cutting Instruction Closed,2026-03-29T11:05:00Z
+LC:plate_material:P028-1:1,SL028,Plate Piece Identified,2026-03-29T12:36:00Z
+LC:plate_material:P028-2:1,SL028,Plate Piece Identified,2026-03-29T12:42:00Z
+LC:plate_material:P028-3:1,SL028,Plate Piece Identified,2026-03-29T12:48:00Z
 OP:P028-1-IP,SL028,Inspection Passed,2026-03-29T13:06:00Z
 OP:P028-2-IP,SL028,Inspection Passed,2026-03-29T13:12:00Z
 OP:P028-3-IP,SL028,Inspection Passed,2026-03-29T13:18:00Z
 DIM:P028-1,SL028,Dimensional Inspection Completed,2026-03-29T13:36:00Z
 DIM:P028-2,SL028,Dimensional Inspection Completed,2026-03-29T13:42:00Z
 DIM:P028-3,SL028,Dimensional Inspection Completed,2026-03-29T13:48:00Z
+LC:plate_material:P028-1:2,SL028,Plate Surface Checked,2026-03-29T14:06:00Z
+LC:plate_material:P028-2:2,SL028,Plate Surface Checked,2026-03-29T14:12:00Z
+LC:plate_material:P028-3:2,SL028,Plate Surface Checked,2026-03-29T14:18:00Z
+LC:plate_material:P028-1:3,SL028,Plate Quality Released,2026-03-29T14:36:00Z
+LC:plate_material:P028-2:3,SL028,Plate Quality Released,2026-03-29T14:42:00Z
+LC:plate_material:P028-3:3,SL028,Plate Quality Released,2026-03-29T14:48:00Z
+LC:plate_material:P028-1:4,SL028,Plate Packed,2026-03-29T15:36:00Z
+LC:plate_material:P028-2:4,SL028,Plate Packed,2026-03-29T15:42:00Z
+LC:plate_material:P028-3:4,SL028,Plate Packed,2026-03-29T15:48:00Z
+LC:planned_rolling_instruction:PLAN029:1,SL029,Rolling Plan Created,2026-03-29T14:00:00Z
+LC:slab_material:SL029:1,SL029,Slab Received,2026-03-29T14:00:00Z
+LC:planned_rolling_instruction:PLAN029:2,SL029,Rolling Plan Reviewed,2026-03-29T15:00:00Z
+LC:slab_material:SL029:2,SL029,Slab Identity Verified,2026-03-29T15:00:00Z
+LC:planned_rolling_instruction:PLAN029:3,SL029,Rolling Plan Approved,2026-03-29T16:00:00Z
+LC:slab_material:SL029:3,SL029,Slab Quality Checked,2026-03-29T16:00:00Z
 RI:RI029,SL029,Rolling Instruction Released,2026-03-30T00:00:00Z
+LC:rolling_instruction:RI029:1,SL029,Rolling Instruction Acknowledged,2026-03-30T00:05:00Z
+LC:rolling_instruction:RI029:2,SL029,Rolling Setup Verified,2026-03-30T00:10:00Z
 YD:TRM029,SL029,Yard Instruction Received,2026-03-30T01:00:00Z
+LC:furnace_charge_tracking:TRM029:1,SL029,Furnace Charge Assigned,2026-03-30T01:05:00Z
 RH:M029,SL029,Reheating Started,2026-03-30T04:00:00Z
+LC:furnace_charge_tracking:TRM029:2,SL029,Furnace Charge Confirmed,2026-03-30T04:01:00Z
+LC:furnace_charge_tracking:TRM029:3,SL029,Heating Completed,2026-03-30T05:40:00Z
+LC:furnace_charge_tracking:TRM029:4,SL029,Furnace Discharge Confirmed,2026-03-30T05:50:00Z
+LC:rolling_instruction:RI029:3,SL029,Rolling Work Started,2026-03-30T05:55:00Z
 OP:M029-RL,SL029,Rolling Completed,2026-03-30T06:00:00Z
 OP:M029-CO,SL029,Cooling Completed,2026-03-30T07:00:00Z
 OP:M029-LE,SL029,Leveling Completed,2026-03-30T08:00:00Z
 CS:M029,SL029,Crop Shear Passed,2026-03-30T09:00:00Z
 CI:CIM029,SL029,Cutting Instruction Released,2026-03-30T10:00:00Z
+LC:cutting_finishing_instruction:CIM029:1,SL029,Cutting Instruction Acknowledged,2026-03-30T10:05:00Z
+LC:cutting_finishing_instruction:CIM029:2,SL029,Cutting Setup Verified,2026-03-30T10:10:00Z
+LC:cutting_finishing_instruction:CIM029:3,SL029,Cutting Work Started,2026-03-30T10:55:00Z
 OP:M029-SC,SL029,Split Cutting Completed,2026-03-30T11:00:00Z
+LC:cutting_finishing_instruction:CIM029:4,SL029,Cutting Instruction Closed,2026-03-30T11:05:00Z
+LC:plate_material:P029-1:1,SL029,Plate Piece Identified,2026-03-30T11:30:00Z
 OP:P029-1-HT1,SL029,Heat Treatment Completed,2026-03-30T12:00:00Z
 OP:P029-1-IP,SL029,Inspection Passed,2026-03-30T13:06:00Z
 DIM:P029-1,SL029,Dimensional Inspection Completed,2026-03-30T13:36:00Z
+LC:plate_material:P029-1:2,SL029,Plate Surface Checked,2026-03-30T14:06:00Z
+LC:plate_material:P029-1:3,SL029,Plate Quality Released,2026-03-30T14:36:00Z
+LC:plate_material:P029-1:4,SL029,Plate Packed,2026-03-30T15:36:00Z
+LC:planned_rolling_instruction:PLAN030:1,SL030,Rolling Plan Created,2026-03-30T14:00:00Z
+LC:slab_material:SL030:1,SL030,Slab Received,2026-03-30T14:00:00Z
+LC:planned_rolling_instruction:PLAN030:2,SL030,Rolling Plan Reviewed,2026-03-30T15:00:00Z
+LC:slab_material:SL030:2,SL030,Slab Identity Verified,2026-03-30T15:00:00Z
+LC:planned_rolling_instruction:PLAN030:3,SL030,Rolling Plan Approved,2026-03-30T16:00:00Z
+LC:slab_material:SL030:3,SL030,Slab Quality Checked,2026-03-30T16:00:00Z
+LC:planned_rolling_instruction:PLAN030:4,SL030,Rolling Plan Released,2026-03-30T17:00:00Z
+LC:slab_material:SL030:4,SL030,Slab Released for Rolling,2026-03-30T17:00:00Z
 RI:RI030,SL030,Rolling Instruction Released,2026-03-31T00:00:00Z
+LC:rolling_instruction:RI030:1,SL030,Rolling Instruction Acknowledged,2026-03-31T00:05:00Z
+LC:rolling_instruction:RI030:2,SL030,Rolling Setup Verified,2026-03-31T00:10:00Z
 YD:TRM030,SL030,Yard Instruction Received,2026-03-31T01:00:00Z
+LC:furnace_charge_tracking:TRM030:1,SL030,Furnace Charge Assigned,2026-03-31T01:05:00Z
 RH:M030,SL030,Reheating Started,2026-03-31T02:00:00Z
+LC:furnace_charge_tracking:TRM030:2,SL030,Furnace Charge Confirmed,2026-03-31T02:01:00Z
+LC:furnace_charge_tracking:TRM030:3,SL030,Heating Completed,2026-03-31T05:40:00Z
+LC:furnace_charge_tracking:TRM030:4,SL030,Furnace Discharge Confirmed,2026-03-31T05:50:00Z
+LC:rolling_instruction:RI030:3,SL030,Rolling Work Started,2026-03-31T05:55:00Z
 OP:M030-RL,SL030,Rolling Completed,2026-03-31T06:00:00Z
+LC:rolling_instruction:RI030:4,SL030,Rolling Instruction Closed,2026-03-31T06:05:00Z
 OP:M030-CO,SL030,Cooling Completed,2026-03-31T07:00:00Z
 OP:M030-LE,SL030,Leveling Completed,2026-03-31T08:00:00Z
 CS:M030,SL030,Crop Shear Passed,2026-03-31T09:00:00Z
 CI:CIM030,SL030,Cutting Instruction Released,2026-03-31T10:00:00Z
+LC:cutting_finishing_instruction:CIM030:1,SL030,Cutting Instruction Acknowledged,2026-03-31T10:05:00Z
+LC:cutting_finishing_instruction:CIM030:2,SL030,Cutting Setup Verified,2026-03-31T10:10:00Z
+LC:cutting_finishing_instruction:CIM030:3,SL030,Cutting Work Started,2026-03-31T10:55:00Z
 OP:M030-SC,SL030,Split Cutting Completed,2026-03-31T11:00:00Z
+LC:plate_material:P030-1:1,SL030,Plate Piece Identified,2026-03-31T11:30:00Z
 OP:P030-1-IF1,SL030,Inspection Failed,2026-03-31T12:00:00Z
+LC:plate_material:P030-2:1,SL030,Plate Piece Identified,2026-03-31T12:42:00Z
+LC:plate_material:P030-3:1,SL030,Plate Piece Identified,2026-03-31T12:48:00Z
 OP:P030-2-IP,SL030,Inspection Passed,2026-03-31T13:12:00Z
 OP:P030-3-IP,SL030,Inspection Passed,2026-03-31T13:18:00Z
 DIM:P030-2,SL030,Dimensional Inspection Completed,2026-03-31T13:42:00Z
 DIM:P030-3,SL030,Dimensional Inspection Completed,2026-03-31T13:48:00Z
 OP:P030-1-HT1,SL030,Heat Treatment Completed,2026-03-31T14:00:00Z
+LC:plate_material:P030-2:2,SL030,Plate Surface Checked,2026-03-31T14:12:00Z
+LC:plate_material:P030-3:2,SL030,Plate Surface Checked,2026-03-31T14:18:00Z
+LC:plate_material:P030-2:3,SL030,Plate Quality Released,2026-03-31T14:42:00Z
+LC:plate_material:P030-3:3,SL030,Plate Quality Released,2026-03-31T14:48:00Z
 OP:P030-1-IF2,SL030,Inspection Failed,2026-03-31T15:00:00Z
+LC:plate_material:P030-2:4,SL030,Plate Packed,2026-03-31T15:42:00Z
+LC:plate_material:P030-3:4,SL030,Plate Packed,2026-03-31T15:48:00Z
 OP:P030-1-HT2,SL030,Heat Treatment Completed,2026-03-31T17:00:00Z
 OP:P030-1-IP,SL030,Inspection Passed,2026-03-31T18:00:00Z
 DIM:P030-1,SL030,Dimensional Inspection Completed,2026-03-31T18:30:00Z
+LC:plate_material:P030-1:2,SL030,Plate Surface Checked,2026-03-31T19:00:00Z
+LC:plate_material:P030-1:3,SL030,Plate Quality Released,2026-03-31T19:30:00Z
+LC:planned_rolling_instruction:PLAN031:1,SL031,Rolling Plan Created,2026-03-31T14:00:00Z
+LC:slab_material:SL031:1,SL031,Slab Received,2026-03-31T14:00:00Z
+LC:planned_rolling_instruction:PLAN031:2,SL031,Rolling Plan Reviewed,2026-03-31T15:00:00Z
+LC:slab_material:SL031:2,SL031,Slab Identity Verified,2026-03-31T15:00:00Z
+LC:planned_rolling_instruction:PLAN031:3,SL031,Rolling Plan Approved,2026-03-31T16:00:00Z
+LC:slab_material:SL031:3,SL031,Slab Quality Checked,2026-03-31T16:00:00Z
+LC:planned_rolling_instruction:PLAN031:4,SL031,Rolling Plan Released,2026-03-31T17:00:00Z
+LC:slab_material:SL031:4,SL031,Slab Released for Rolling,2026-03-31T17:00:00Z
 RI:RI031,SL031,Rolling Instruction Released,2026-04-01T00:00:00Z
+LC:rolling_instruction:RI031:1,SL031,Rolling Instruction Acknowledged,2026-04-01T00:05:00Z
+LC:rolling_instruction:RI031:2,SL031,Rolling Setup Verified,2026-04-01T00:10:00Z
+LC:planned_rolling_instruction:PLAN032:1,SL032,Rolling Plan Created,2026-04-01T14:00:00Z
+LC:slab_material:SL032:1,SL032,Slab Received,2026-04-01T14:00:00Z
+LC:planned_rolling_instruction:PLAN032:2,SL032,Rolling Plan Reviewed,2026-04-01T15:00:00Z
+LC:slab_material:SL032:2,SL032,Slab Identity Verified,2026-04-01T15:00:00Z
+LC:planned_rolling_instruction:PLAN032:3,SL032,Rolling Plan Approved,2026-04-01T16:00:00Z
+LC:slab_material:SL032:3,SL032,Slab Quality Checked,2026-04-01T16:00:00Z
+LC:planned_rolling_instruction:PLAN032:4,SL032,Rolling Plan Released,2026-04-01T17:00:00Z
+LC:slab_material:SL032:4,SL032,Slab Released for Rolling,2026-04-01T17:00:00Z
 RI:RI032,SL032,Rolling Instruction Released,2026-04-02T00:00:00Z
+LC:rolling_instruction:RI032:1,SL032,Rolling Instruction Acknowledged,2026-04-02T00:05:00Z
+LC:rolling_instruction:RI032:2,SL032,Rolling Setup Verified,2026-04-02T00:10:00Z
 YD:TRM032,SL032,Yard Instruction Received,2026-04-02T01:00:00Z
+LC:furnace_charge_tracking:TRM032:1,SL032,Furnace Charge Assigned,2026-04-02T01:05:00Z
+LC:furnace_charge_tracking:TRM032:2,SL032,Furnace Charge Confirmed,2026-04-02T01:10:00Z
 RH:M032,SL032,Reheating Started,2026-04-02T04:00:00Z
+LC:planned_rolling_instruction:PLAN033:1,SL033,Rolling Plan Created,2026-04-02T14:00:00Z
+LC:slab_material:SL033:1,SL033,Slab Received,2026-04-02T14:00:00Z
+LC:planned_rolling_instruction:PLAN033:2,SL033,Rolling Plan Reviewed,2026-04-02T15:00:00Z
+LC:slab_material:SL033:2,SL033,Slab Identity Verified,2026-04-02T15:00:00Z
+LC:planned_rolling_instruction:PLAN033:3,SL033,Rolling Plan Approved,2026-04-02T16:00:00Z
+LC:slab_material:SL033:3,SL033,Slab Quality Checked,2026-04-02T16:00:00Z
+LC:planned_rolling_instruction:PLAN033:4,SL033,Rolling Plan Released,2026-04-02T17:00:00Z
+LC:slab_material:SL033:4,SL033,Slab Released for Rolling,2026-04-02T17:00:00Z
 RI:RI033,SL033,Rolling Instruction Released,2026-04-03T00:00:00Z
+LC:rolling_instruction:RI033:1,SL033,Rolling Instruction Acknowledged,2026-04-03T00:05:00Z
+LC:rolling_instruction:RI033:2,SL033,Rolling Setup Verified,2026-04-03T00:10:00Z
 YD:TRM033,SL033,Yard Instruction Received,2026-04-03T01:00:00Z
+LC:furnace_charge_tracking:TRM033:1,SL033,Furnace Charge Assigned,2026-04-03T01:05:00Z
 RH:M033,SL033,Reheating Started,2026-04-03T04:00:00Z
+LC:furnace_charge_tracking:TRM033:2,SL033,Furnace Charge Confirmed,2026-04-03T04:01:00Z
+LC:furnace_charge_tracking:TRM033:3,SL033,Heating Completed,2026-04-03T05:40:00Z
+LC:furnace_charge_tracking:TRM033:4,SL033,Furnace Discharge Confirmed,2026-04-03T05:50:00Z
+LC:rolling_instruction:RI033:3,SL033,Rolling Work Started,2026-04-03T05:55:00Z
 OP:M033-RL,SL033,Rolling Completed,2026-04-03T06:00:00Z
+LC:rolling_instruction:RI033:4,SL033,Rolling Instruction Closed,2026-04-03T06:05:00Z
+LC:planned_rolling_instruction:PLAN034:1,SL034,Rolling Plan Created,2026-04-03T14:00:00Z
+LC:slab_material:SL034:1,SL034,Slab Received,2026-04-03T14:00:00Z
+LC:planned_rolling_instruction:PLAN034:2,SL034,Rolling Plan Reviewed,2026-04-03T15:00:00Z
+LC:slab_material:SL034:2,SL034,Slab Identity Verified,2026-04-03T15:00:00Z
+LC:planned_rolling_instruction:PLAN034:3,SL034,Rolling Plan Approved,2026-04-03T16:00:00Z
+LC:slab_material:SL034:3,SL034,Slab Quality Checked,2026-04-03T16:00:00Z
+LC:planned_rolling_instruction:PLAN034:4,SL034,Rolling Plan Released,2026-04-03T17:00:00Z
+LC:slab_material:SL034:4,SL034,Slab Released for Rolling,2026-04-03T17:00:00Z
 RI:RI034,SL034,Rolling Instruction Released,2026-04-04T00:00:00Z
+LC:rolling_instruction:RI034:1,SL034,Rolling Instruction Acknowledged,2026-04-04T00:05:00Z
+LC:rolling_instruction:RI034:2,SL034,Rolling Setup Verified,2026-04-04T00:10:00Z
 YD:TRM034,SL034,Yard Instruction Received,2026-04-04T01:00:00Z
+LC:furnace_charge_tracking:TRM034:1,SL034,Furnace Charge Assigned,2026-04-04T01:05:00Z
 RH:M034,SL034,Reheating Started,2026-04-04T03:00:00Z
+LC:furnace_charge_tracking:TRM034:2,SL034,Furnace Charge Confirmed,2026-04-04T03:01:00Z
+LC:furnace_charge_tracking:TRM034:3,SL034,Heating Completed,2026-04-04T05:40:00Z
+LC:furnace_charge_tracking:TRM034:4,SL034,Furnace Discharge Confirmed,2026-04-04T05:50:00Z
+LC:rolling_instruction:RI034:3,SL034,Rolling Work Started,2026-04-04T05:55:00Z
 OP:M034-RL,SL034,Rolling Completed,2026-04-04T06:00:00Z
+LC:rolling_instruction:RI034:4,SL034,Rolling Instruction Closed,2026-04-04T06:05:00Z
 OP:M034-CO,SL034,Cooling Completed,2026-04-04T07:00:00Z
 OP:M034-LE,SL034,Leveling Completed,2026-04-04T08:00:00Z
 CS:M034,SL034,Crop Shear Passed,2026-04-04T09:00:00Z
 CI:CIM034,SL034,Cutting Instruction Released,2026-04-04T10:00:00Z
+LC:cutting_finishing_instruction:CIM034:1,SL034,Cutting Instruction Acknowledged,2026-04-04T10:05:00Z
+LC:cutting_finishing_instruction:CIM034:2,SL034,Cutting Setup Verified,2026-04-04T10:10:00Z
+LC:cutting_finishing_instruction:CIM034:3,SL034,Cutting Work Started,2026-04-04T10:55:00Z
 OP:M034-SC,SL034,Split Cutting Completed,2026-04-04T11:00:00Z
+LC:cutting_finishing_instruction:CIM034:4,SL034,Cutting Instruction Closed,2026-04-04T11:05:00Z
+LC:plate_material:P034-1:1,SL034,Plate Piece Identified,2026-04-04T12:36:00Z
+LC:plate_material:P034-2:1,SL034,Plate Piece Identified,2026-04-04T12:42:00Z
 OP:P034-1-IP,SL034,Inspection Passed,2026-04-04T13:06:00Z
 OP:P034-2-IP,SL034,Inspection Passed,2026-04-04T13:12:00Z
 DIM:P034-1,SL034,Dimensional Inspection Completed,2026-04-04T13:36:00Z
 DIM:P034-2,SL034,Dimensional Inspection Completed,2026-04-04T13:42:00Z
+LC:plate_material:P034-1:2,SL034,Plate Surface Checked,2026-04-04T14:06:00Z
+LC:plate_material:P034-2:2,SL034,Plate Surface Checked,2026-04-04T14:12:00Z
+LC:plate_material:P034-1:3,SL034,Plate Quality Released,2026-04-04T14:36:00Z
+LC:plate_material:P034-2:3,SL034,Plate Quality Released,2026-04-04T14:42:00Z
+LC:plate_material:P034-1:4,SL034,Plate Packed,2026-04-04T15:36:00Z
+LC:plate_material:P034-2:4,SL034,Plate Packed,2026-04-04T15:42:00Z
+LC:planned_rolling_instruction:PLAN035:1,SL035,Rolling Plan Created,2026-04-04T14:00:00Z
+LC:slab_material:SL035:1,SL035,Slab Received,2026-04-04T14:00:00Z
+LC:planned_rolling_instruction:PLAN035:2,SL035,Rolling Plan Reviewed,2026-04-04T15:00:00Z
+LC:slab_material:SL035:2,SL035,Slab Identity Verified,2026-04-04T15:00:00Z
+LC:planned_rolling_instruction:PLAN035:3,SL035,Rolling Plan Approved,2026-04-04T16:00:00Z
+LC:slab_material:SL035:3,SL035,Slab Quality Checked,2026-04-04T16:00:00Z
+LC:planned_rolling_instruction:PLAN035:4,SL035,Rolling Plan Released,2026-04-04T17:00:00Z
+LC:slab_material:SL035:4,SL035,Slab Released for Rolling,2026-04-04T17:00:00Z
 RI:RI035,SL035,Rolling Instruction Released,2026-04-05T00:00:00Z
+LC:rolling_instruction:RI035:1,SL035,Rolling Instruction Acknowledged,2026-04-05T00:05:00Z
+LC:rolling_instruction:RI035:2,SL035,Rolling Setup Verified,2026-04-05T00:10:00Z
 YD:TRM035,SL035,Yard Instruction Received,2026-04-05T01:00:00Z
+LC:furnace_charge_tracking:TRM035:1,SL035,Furnace Charge Assigned,2026-04-05T01:05:00Z
 RH:M035,SL035,Reheating Started,2026-04-05T03:00:00Z
+LC:furnace_charge_tracking:TRM035:2,SL035,Furnace Charge Confirmed,2026-04-05T03:01:00Z
+LC:furnace_charge_tracking:TRM035:3,SL035,Heating Completed,2026-04-05T05:40:00Z
+LC:rolling_instruction:RI035:3,SL035,Rolling Work Started,2026-04-05T05:55:00Z
 OP:M035-RL,SL035,Rolling Completed,2026-04-05T06:00:00Z
+LC:rolling_instruction:RI035:4,SL035,Rolling Instruction Closed,2026-04-05T06:05:00Z
 OP:M035-CO,SL035,Cooling Completed,2026-04-05T07:00:00Z
 OP:M035-LE,SL035,Leveling Completed,2026-04-05T08:00:00Z
 CS:M035,SL035,Crop Shear Passed,2026-04-05T09:00:00Z
 CI:CIM035,SL035,Cutting Instruction Released,2026-04-05T10:00:00Z
+LC:cutting_finishing_instruction:CIM035:1,SL035,Cutting Instruction Acknowledged,2026-04-05T10:05:00Z
+LC:cutting_finishing_instruction:CIM035:2,SL035,Cutting Setup Verified,2026-04-05T10:10:00Z
+LC:cutting_finishing_instruction:CIM035:3,SL035,Cutting Work Started,2026-04-05T10:55:00Z
 OP:M035-SC,SL035,Split Cutting Completed,2026-04-05T11:00:00Z
+LC:cutting_finishing_instruction:CIM035:4,SL035,Cutting Instruction Closed,2026-04-05T11:05:00Z
+LC:plate_material:P035-1:1,SL035,Plate Piece Identified,2026-04-05T11:30:00Z
+LC:plate_material:P035-2:1,SL035,Plate Piece Identified,2026-04-05T11:30:00Z
+LC:plate_material:P035-3:1,SL035,Plate Piece Identified,2026-04-05T11:30:00Z
 OP:P035-1-HT1,SL035,Heat Treatment Completed,2026-04-05T12:00:00Z
 OP:P035-2-HT1,SL035,Heat Treatment Completed,2026-04-05T12:00:00Z
 OP:P035-3-HT1,SL035,Heat Treatment Completed,2026-04-05T12:00:00Z
@@ -304,22 +979,59 @@ OP:P035-3-IP,SL035,Inspection Passed,2026-04-05T13:18:00Z
 DIM:P035-1,SL035,Dimensional Inspection Completed,2026-04-05T13:36:00Z
 DIM:P035-2,SL035,Dimensional Inspection Completed,2026-04-05T13:42:00Z
 DIM:P035-3,SL035,Dimensional Inspection Completed,2026-04-05T13:48:00Z
+LC:plate_material:P035-1:2,SL035,Plate Surface Checked,2026-04-05T14:06:00Z
+LC:plate_material:P035-2:2,SL035,Plate Surface Checked,2026-04-05T14:12:00Z
+LC:plate_material:P035-3:2,SL035,Plate Surface Checked,2026-04-05T14:18:00Z
+LC:plate_material:P035-1:3,SL035,Plate Quality Released,2026-04-05T14:36:00Z
+LC:plate_material:P035-2:3,SL035,Plate Quality Released,2026-04-05T14:42:00Z
+LC:plate_material:P035-3:3,SL035,Plate Quality Released,2026-04-05T14:48:00Z
+LC:plate_material:P035-1:4,SL035,Plate Packed,2026-04-05T15:36:00Z
+LC:plate_material:P035-2:4,SL035,Plate Packed,2026-04-05T15:42:00Z
+LC:planned_rolling_instruction:PLAN036:1,SL036,Rolling Plan Created,2026-04-05T14:00:00Z
+LC:slab_material:SL036:1,SL036,Slab Received,2026-04-05T14:00:00Z
+LC:planned_rolling_instruction:PLAN036:2,SL036,Rolling Plan Reviewed,2026-04-05T15:00:00Z
+LC:slab_material:SL036:2,SL036,Slab Identity Verified,2026-04-05T15:00:00Z
+LC:planned_rolling_instruction:PLAN036:3,SL036,Rolling Plan Approved,2026-04-05T16:00:00Z
+LC:slab_material:SL036:3,SL036,Slab Quality Checked,2026-04-05T16:00:00Z
 RI:RI036,SL036,Rolling Instruction Released,2026-04-06T00:00:00Z
+LC:rolling_instruction:RI036:1,SL036,Rolling Instruction Acknowledged,2026-04-06T00:05:00Z
+LC:rolling_instruction:RI036:2,SL036,Rolling Setup Verified,2026-04-06T00:10:00Z
 YD:TRM036,SL036,Yard Instruction Received,2026-04-06T01:00:00Z
+LC:furnace_charge_tracking:TRM036:1,SL036,Furnace Charge Assigned,2026-04-06T01:05:00Z
 RH:M036,SL036,Reheating Started,2026-04-06T03:00:00Z
+LC:furnace_charge_tracking:TRM036:2,SL036,Furnace Charge Confirmed,2026-04-06T03:01:00Z
+LC:furnace_charge_tracking:TRM036:3,SL036,Heating Completed,2026-04-06T05:40:00Z
+LC:furnace_charge_tracking:TRM036:4,SL036,Furnace Discharge Confirmed,2026-04-06T05:50:00Z
+LC:rolling_instruction:RI036:3,SL036,Rolling Work Started,2026-04-06T05:55:00Z
 OP:M036-RL,SL036,Rolling Completed,2026-04-06T06:00:00Z
 OP:M036-CO,SL036,Cooling Completed,2026-04-06T07:00:00Z
 OP:M036-LE,SL036,Leveling Completed,2026-04-06T08:00:00Z
 CS:M036,SL036,Crop Shear Passed,2026-04-06T09:00:00Z
 CI:CIM036,SL036,Cutting Instruction Released,2026-04-06T10:00:00Z
+LC:cutting_finishing_instruction:CIM036:1,SL036,Cutting Instruction Acknowledged,2026-04-06T10:05:00Z
+LC:cutting_finishing_instruction:CIM036:2,SL036,Cutting Setup Verified,2026-04-06T10:10:00Z
+LC:cutting_finishing_instruction:CIM036:3,SL036,Cutting Work Started,2026-04-06T10:55:00Z
 OP:M036-SC,SL036,Split Cutting Completed,2026-04-06T11:00:00Z
+LC:cutting_finishing_instruction:CIM036:4,SL036,Cutting Instruction Closed,2026-04-06T11:05:00Z
+LC:plate_material:P036-1:1,SL036,Plate Piece Identified,2026-04-06T11:30:00Z
 OP:P036-1-IF1,SL036,Inspection Failed,2026-04-06T12:00:00Z
+LC:plate_material:P036-2:1,SL036,Plate Piece Identified,2026-04-06T12:42:00Z
+LC:plate_material:P036-3:1,SL036,Plate Piece Identified,2026-04-06T12:48:00Z
 OP:P036-2-IP,SL036,Inspection Passed,2026-04-06T13:12:00Z
 OP:P036-3-IP,SL036,Inspection Passed,2026-04-06T13:18:00Z
 DIM:P036-2,SL036,Dimensional Inspection Completed,2026-04-06T13:42:00Z
 DIM:P036-3,SL036,Dimensional Inspection Completed,2026-04-06T13:48:00Z
 OP:P036-1-HT1,SL036,Heat Treatment Completed,2026-04-06T14:00:00Z
+LC:plate_material:P036-2:2,SL036,Plate Surface Checked,2026-04-06T14:12:00Z
+LC:plate_material:P036-3:2,SL036,Plate Surface Checked,2026-04-06T14:18:00Z
+LC:plate_material:P036-2:3,SL036,Plate Quality Released,2026-04-06T14:42:00Z
+LC:plate_material:P036-3:3,SL036,Plate Quality Released,2026-04-06T14:48:00Z
 OP:P036-1-IF2,SL036,Inspection Failed,2026-04-06T15:00:00Z
+LC:plate_material:P036-2:4,SL036,Plate Packed,2026-04-06T15:42:00Z
+LC:plate_material:P036-3:4,SL036,Plate Packed,2026-04-06T15:48:00Z
 OP:P036-1-HT2,SL036,Heat Treatment Completed,2026-04-06T17:00:00Z
 OP:P036-1-IP,SL036,Inspection Passed,2026-04-06T18:00:00Z
 DIM:P036-1,SL036,Dimensional Inspection Completed,2026-04-06T18:30:00Z
+LC:plate_material:P036-1:2,SL036,Plate Surface Checked,2026-04-06T19:00:00Z
+LC:plate_material:P036-1:3,SL036,Plate Quality Released,2026-04-06T19:30:00Z
+LC:plate_material:P036-1:4,SL036,Plate Packed,2026-04-06T20:30:00Z

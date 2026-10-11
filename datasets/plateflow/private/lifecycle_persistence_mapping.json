@@ -1,0 +1,74 @@
+[
+  {
+    "table": "slab_material_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "slab_material",
+    "object_key": [
+      "slab_id"
+    ]
+  },
+  {
+    "table": "planned_rolling_instruction_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "planned_rolling_instruction",
+    "object_key": [
+      "plan_id"
+    ]
+  },
+  {
+    "table": "rolling_instruction_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "rolling_instruction",
+    "object_key": [
+      "instruction_id"
+    ]
+  },
+  {
+    "table": "furnace_charge_tracking_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "furnace_charge_tracking",
+    "object_key": [
+      "tracking_id"
+    ]
+  },
+  {
+    "table": "cutting_finishing_instruction_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "cutting_finishing_instruction",
+    "object_key": [
+      "instruction_id"
+    ]
+  },
+  {
+    "table": "plate_material_activity",
+    "event_key": [
+      "event_id"
+    ],
+    "timestamp_column": "occurred_at",
+    "activity_column": "activity",
+    "object_table": "plate_material",
+    "object_key": [
+      "plate_material_id"
+    ]
+  }
+]

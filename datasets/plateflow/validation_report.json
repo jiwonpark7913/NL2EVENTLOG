@@ -2,7 +2,7 @@
   "seed": 20261013,
   "mother_materials": 36,
   "plate_materials": 39,
-  "events": 324,
+  "events": 1036,
   "tables": {
     "slab_material": 36,
     "planned_rolling_instruction": 36,
@@ -46,12 +46,12 @@
     {
       "question_id": "V05",
       "status": "pass",
-      "event_count": 324
+      "event_count": 1036
     },
     {
       "question_id": "V06",
       "status": "pass",
-      "event_count": 324
+      "event_count": 1036
     },
     {
       "question_id": "V07",
@@ -65,37 +65,37 @@
     {
       "question_id": "OPV01",
       "status": "pass",
-      "event_count": 324
+      "event_count": 1036
     },
     {
       "question_id": "OPV02",
       "status": "pass",
-      "event_count": 36
+      "event_count": 174
     },
     {
       "question_id": "OPV03",
       "status": "pass",
-      "event_count": 36
+      "event_count": 150
     },
     {
       "question_id": "OPV04",
       "status": "pass",
-      "event_count": 324
+      "event_count": 1036
     },
     {
       "question_id": "OPV05",
       "status": "pass",
-      "event_count": 30
+      "event_count": 133
     },
     {
       "question_id": "OPV06",
       "status": "pass",
-      "event_count": 18
+      "event_count": 87
     },
     {
       "question_id": "OPV07",
       "status": "pass",
-      "event_count": 114
+      "event_count": 264
     },
     {
       "question_id": "OPV08",
@@ -117,7 +117,8 @@
     "No real production rows or fitted process distributions.",
     "Classic mother-case log, not OCEL.",
     "Dataset-specific ES; existing NL2EventLog compatibility untested.",
-    "No extraction-model accuracy measured."
+    "No extraction-model accuracy measured.",
+    "Atomic operation/grading records remain auxiliary single-occurrence cases. New actions are synthetic domain design, not real production observations."
   ],
   "object_view_checks": {
     "sql_equals_canonical_events": "pass",
@@ -131,23 +132,47 @@
       "case_concept": "Slab",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "All recorded manufacturing events of the mother material and cut pieces derived from this slab; no upstream casting events are inferred.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this slab.",
       "case_count": 36,
       "cases_with_events": 36,
       "cases_without_events": 0,
-      "event_rows": 324,
+      "event_rows": 1036,
       "activities": [
         "Cooling Completed",
         "Crop Shear Passed",
+        "Cutting Instruction Acknowledged",
+        "Cutting Instruction Closed",
         "Cutting Instruction Released",
+        "Cutting Setup Verified",
+        "Cutting Work Started",
         "Dimensional Inspection Completed",
+        "Furnace Charge Assigned",
+        "Furnace Charge Confirmed",
+        "Furnace Discharge Confirmed",
         "Heat Treatment Completed",
+        "Heating Completed",
         "Inspection Failed",
         "Inspection Passed",
         "Leveling Completed",
+        "Plate Packed",
+        "Plate Piece Identified",
+        "Plate Quality Released",
+        "Plate Surface Checked",
         "Reheating Started",
         "Rolling Completed",
+        "Rolling Instruction Acknowledged",
+        "Rolling Instruction Closed",
         "Rolling Instruction Released",
+        "Rolling Plan Approved",
+        "Rolling Plan Created",
+        "Rolling Plan Released",
+        "Rolling Plan Reviewed",
+        "Rolling Setup Verified",
+        "Rolling Work Started",
+        "Slab Identity Verified",
+        "Slab Quality Checked",
+        "Slab Received",
+        "Slab Released for Rolling",
         "Split Cutting Completed",
         "Yard Instruction Received"
       ],
@@ -159,13 +184,17 @@
       "case_concept": "Rolling plan",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "The actual release of the rolling instruction linked to this plan; planned reheating times are not execution events.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this rolling plan.",
       "case_count": 36,
       "cases_with_events": 36,
       "cases_without_events": 0,
-      "event_rows": 36,
+      "event_rows": 174,
       "activities": [
-        "Rolling Instruction Released"
+        "Rolling Instruction Released",
+        "Rolling Plan Approved",
+        "Rolling Plan Created",
+        "Rolling Plan Released",
+        "Rolling Plan Reviewed"
       ],
       "log_path": "private/gold_logs/OPV02.csv"
     },
@@ -175,13 +204,17 @@
       "case_concept": "Rolling instruction",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "The actual release event for this rolling instruction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this rolling instruction.",
       "case_count": 36,
       "cases_with_events": 36,
       "cases_without_events": 0,
-      "event_rows": 36,
+      "event_rows": 150,
       "activities": [
-        "Rolling Instruction Released"
+        "Rolling Instruction Acknowledged",
+        "Rolling Instruction Closed",
+        "Rolling Instruction Released",
+        "Rolling Setup Verified",
+        "Rolling Work Started"
       ],
       "log_path": "private/gold_logs/OPV03.csv"
     },
@@ -191,23 +224,47 @@
       "case_concept": "Mother material",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "All recorded mother-material events and its descendant-piece events, each occurrence once.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this mother material.",
       "case_count": 36,
       "cases_with_events": 36,
       "cases_without_events": 0,
-      "event_rows": 324,
+      "event_rows": 1036,
       "activities": [
         "Cooling Completed",
         "Crop Shear Passed",
+        "Cutting Instruction Acknowledged",
+        "Cutting Instruction Closed",
         "Cutting Instruction Released",
+        "Cutting Setup Verified",
+        "Cutting Work Started",
         "Dimensional Inspection Completed",
+        "Furnace Charge Assigned",
+        "Furnace Charge Confirmed",
+        "Furnace Discharge Confirmed",
         "Heat Treatment Completed",
+        "Heating Completed",
         "Inspection Failed",
         "Inspection Passed",
         "Leveling Completed",
+        "Plate Packed",
+        "Plate Piece Identified",
+        "Plate Quality Released",
+        "Plate Surface Checked",
         "Reheating Started",
         "Rolling Completed",
+        "Rolling Instruction Acknowledged",
+        "Rolling Instruction Closed",
         "Rolling Instruction Released",
+        "Rolling Plan Approved",
+        "Rolling Plan Created",
+        "Rolling Plan Released",
+        "Rolling Plan Reviewed",
+        "Rolling Setup Verified",
+        "Rolling Work Started",
+        "Slab Identity Verified",
+        "Slab Quality Checked",
+        "Slab Received",
+        "Slab Released for Rolling",
         "Split Cutting Completed",
         "Yard Instruction Received"
       ],
@@ -219,12 +276,16 @@
       "case_concept": "Furnace tracking record",
       "kind": "tracking_record",
       "status": "answerable",
-      "scope_rule": "The recorded yard-instruction receipt for this tracking record; lot-level charging events remain outside the material-event set.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record.",
       "case_count": 30,
       "cases_with_events": 30,
       "cases_without_events": 0,
-      "event_rows": 30,
+      "event_rows": 133,
       "activities": [
+        "Furnace Charge Assigned",
+        "Furnace Charge Confirmed",
+        "Furnace Discharge Confirmed",
+        "Heating Completed",
         "Yard Instruction Received"
       ],
       "log_path": "private/gold_logs/OPV05.csv"
@@ -235,13 +296,17 @@
       "case_concept": "Cutting instruction",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "The actual release event for this cutting/finishing instruction.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction.",
       "case_count": 18,
       "cases_with_events": 18,
       "cases_without_events": 0,
-      "event_rows": 18,
+      "event_rows": 87,
       "activities": [
-        "Cutting Instruction Released"
+        "Cutting Instruction Acknowledged",
+        "Cutting Instruction Closed",
+        "Cutting Instruction Released",
+        "Cutting Setup Verified",
+        "Cutting Work Started"
       ],
       "log_path": "private/gold_logs/OPV06.csv"
     },
@@ -251,16 +316,20 @@
       "case_concept": "Cut plate piece",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Only operations recorded on this piece and its dimensional inspection. Upstream mother events are not copied to each piece.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece.",
       "case_count": 39,
       "cases_with_events": 39,
       "cases_without_events": 0,
-      "event_rows": 114,
+      "event_rows": 264,
       "activities": [
         "Dimensional Inspection Completed",
         "Heat Treatment Completed",
         "Inspection Failed",
-        "Inspection Passed"
+        "Inspection Passed",
+        "Plate Packed",
+        "Plate Piece Identified",
+        "Plate Quality Released",
+        "Plate Surface Checked"
       ],
       "log_path": "private/gold_logs/OPV07.csv"
     },
@@ -292,8 +361,110 @@
       "case_table": "operation_code",
       "status": "reference_table",
       "reason": "Operation codes define activity meanings. They are not business-object instances or cases."
+    },
+    {
+      "case_table": "slab_material_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "planned_rolling_instruction_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "rolling_instruction_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "furnace_charge_tracking_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "cutting_finishing_instruction_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "plate_material_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "lifecycle_case_link",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
     }
   ],
   "total_questions": 16,
-  "answerable_questions": 15
+  "answerable_questions": 15,
+  "activity_counts": {
+    "Rolling Instruction Released": 36,
+    "Yard Instruction Received": 30,
+    "Reheating Started": 30,
+    "Rolling Completed": 24,
+    "Cooling Completed": 18,
+    "Leveling Completed": 18,
+    "Crop Shear Passed": 18,
+    "Cutting Instruction Released": 18,
+    "Split Cutting Completed": 18,
+    "Inspection Passed": 39,
+    "Dimensional Inspection Completed": 39,
+    "Heat Treatment Completed": 24,
+    "Inspection Failed": 12,
+    "Slab Received": 36,
+    "Slab Identity Verified": 36,
+    "Slab Quality Checked": 36,
+    "Slab Released for Rolling": 30,
+    "Rolling Plan Created": 36,
+    "Rolling Plan Reviewed": 36,
+    "Rolling Plan Approved": 36,
+    "Rolling Plan Released": 30,
+    "Rolling Instruction Acknowledged": 36,
+    "Rolling Setup Verified": 34,
+    "Rolling Work Started": 24,
+    "Rolling Instruction Closed": 20,
+    "Furnace Charge Assigned": 30,
+    "Furnace Charge Confirmed": 29,
+    "Heating Completed": 24,
+    "Furnace Discharge Confirmed": 20,
+    "Cutting Instruction Acknowledged": 18,
+    "Cutting Setup Verified": 18,
+    "Cutting Work Started": 18,
+    "Cutting Instruction Closed": 15,
+    "Plate Piece Identified": 39,
+    "Plate Surface Checked": 39,
+    "Plate Quality Released": 39,
+    "Plate Packed": 33
+  },
+  "table_rows": {
+    "slab_material": 36,
+    "planned_rolling_instruction": 36,
+    "rolling_instruction": 36,
+    "as_rolled_material": 36,
+    "furnace_charge_tracking": 30,
+    "cutting_finishing_instruction": 18,
+    "plate_material": 39,
+    "operation_code": 7,
+    "material_operation_history": 153,
+    "slab_material_activity": 138,
+    "planned_rolling_instruction_activity": 138,
+    "rolling_instruction_activity": 114,
+    "furnace_charge_tracking_activity": 103,
+    "cutting_finishing_instruction_activity": 69,
+    "plate_material_activity": 150,
+    "lifecycle_case_link": 1998
+  },
+  "lifecycle_extensions": {
+    "added_tables": 7,
+    "added_events": 712,
+    "source_origin": "authored",
+    "checks": {
+      "typed_foreign_keys": "pass",
+      "actual_action_order": "pass",
+      "full_sql_equals_history": "pass"
+    }
+  }
 }

@@ -1,13 +1,37 @@
 {
   "case_concept": "Student",
   "activities": [
-    "Degree Examination Taken",
-    "Course Registered",
+    "Assignment Assigned",
+    "Assignment Grade Finalized",
     "Assignment Graded",
+    "Assignment Regraded",
+    "Assignment Resubmitted",
+    "Assignment Revision Requested",
+    "Assignment Submitted",
+    "Course Assessment Completed",
+    "Course Grade Finalized",
+    "Course Registered",
+    "Course Started",
+    "Degree Examination Taken",
+    "Examination Checked In",
+    "Examination Result Reviewed",
+    "Examination Scheduled",
+    "Examination Score Published",
+    "Registration Approved",
+    "Registration Requested",
     "Simulation Experiment Completed",
+    "Simulation Output Reviewed",
+    "Simulation Result Accepted",
+    "Simulation Run Scheduled",
+    "Simulation Run Started",
+    "Thesis Accepted",
+    "Thesis Draft Registered",
+    "Thesis Resubmitted",
+    "Thesis Review Started",
+    "Thesis Revision Requested",
     "Thesis Submitted"
   ],
-  "default_scope": "The default student timeline includes all recorded examinations, registrations, assignment grading, simulation-experiment completions and thesis submissions linked to that student.",
+  "default_scope": "All actual events explicitly attributed to student",
   "case_population": "all student rows",
   "setting": "Catalog-assisted",
   "object_views": [
@@ -17,13 +41,37 @@
       "case_concept": "Student",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "All five recorded academic activity types linked to this student.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this student.",
       "case_count": 40,
       "activities": [
+        "Assignment Assigned",
+        "Assignment Grade Finalized",
         "Assignment Graded",
+        "Assignment Regraded",
+        "Assignment Resubmitted",
+        "Assignment Revision Requested",
+        "Assignment Submitted",
+        "Course Assessment Completed",
+        "Course Grade Finalized",
         "Course Registered",
+        "Course Started",
         "Degree Examination Taken",
+        "Examination Checked In",
+        "Examination Result Reviewed",
+        "Examination Scheduled",
+        "Examination Score Published",
+        "Registration Approved",
+        "Registration Requested",
         "Simulation Experiment Completed",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted",
+        "Simulation Run Scheduled",
+        "Simulation Run Started",
+        "Thesis Accepted",
+        "Thesis Draft Registered",
+        "Thesis Resubmitted",
+        "Thesis Review Started",
+        "Thesis Revision Requested",
         "Thesis Submitted"
       ]
     },
@@ -33,10 +81,19 @@
       "case_concept": "Course",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Successful registrations for this course offering. Course schedules and text-only instructor labels do not add events.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this course.",
       "case_count": 6,
       "activities": [
-        "Course Registered"
+        "Course Assessment Completed",
+        "Course Grade Finalized",
+        "Course Offering Approved",
+        "Course Offering Closed",
+        "Course Offering Proposed",
+        "Course Offering Published",
+        "Course Registered",
+        "Course Started",
+        "Registration Approved",
+        "Registration Requested"
       ]
     },
     {
@@ -45,10 +102,15 @@
       "case_concept": "Student-course registration",
       "kind": "association_record",
       "status": "answerable",
-      "scope_rule": "The successful registration event represented by this student-course pair.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this student-course registration.",
       "case_count": 47,
       "activities": [
-        "Course Registered"
+        "Course Assessment Completed",
+        "Course Grade Finalized",
+        "Course Registered",
+        "Course Started",
+        "Registration Approved",
+        "Registration Requested"
       ]
     },
     {
@@ -57,10 +119,14 @@
       "case_concept": "Examination result record",
       "kind": "event_record",
       "status": "answerable",
-      "scope_rule": "The examination occurrence represented by this result ID; score publication is not timestamped.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this examination result record.",
       "case_count": 40,
       "activities": [
-        "Degree Examination Taken"
+        "Degree Examination Taken",
+        "Examination Checked In",
+        "Examination Result Reviewed",
+        "Examination Scheduled",
+        "Examination Score Published"
       ]
     },
     {
@@ -69,10 +135,18 @@
       "case_concept": "Simulation module",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Every recorded student experiment completion using this module, including repeat runs.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this simulation module.",
       "case_count": 3,
       "activities": [
-        "Simulation Experiment Completed"
+        "Simulation Experiment Completed",
+        "Simulation Module Published",
+        "Simulation Module Released",
+        "Simulation Module Retired",
+        "Simulation Module Validated",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted",
+        "Simulation Run Scheduled",
+        "Simulation Run Started"
       ]
     },
     {
@@ -81,9 +155,14 @@
       "case_concept": "Thesis",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "The actual submission event for this thesis; no review events are recorded.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this thesis.",
       "case_count": 16,
       "activities": [
+        "Thesis Accepted",
+        "Thesis Draft Registered",
+        "Thesis Resubmitted",
+        "Thesis Review Started",
+        "Thesis Revision Requested",
         "Thesis Submitted"
       ]
     },
@@ -93,10 +172,14 @@
       "case_concept": "Simulation experiment result record",
       "kind": "event_record",
       "status": "answerable",
-      "scope_rule": "The experiment-completion occurrence identified by student, module and simulation time.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this simulation experiment result record.",
       "case_count": 27,
       "activities": [
-        "Simulation Experiment Completed"
+        "Simulation Experiment Completed",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted",
+        "Simulation Run Scheduled",
+        "Simulation Run Started"
       ]
     },
     {
@@ -105,10 +188,16 @@
       "case_concept": "Assignment",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "All recorded grading and regrading actions for this assignment; no submission timestamp is inferred.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this assignment.",
       "case_count": 20,
       "activities": [
-        "Assignment Graded"
+        "Assignment Assigned",
+        "Assignment Grade Finalized",
+        "Assignment Graded",
+        "Assignment Regraded",
+        "Assignment Resubmitted",
+        "Assignment Revision Requested",
+        "Assignment Submitted"
       ]
     },
     {
@@ -117,10 +206,16 @@
       "case_concept": "Instructor",
       "kind": "business_object",
       "status": "answerable",
-      "scope_rule": "Grading and regrading actions performed by this instructor, without inferring links from course-name strings.",
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this instructor.",
       "case_count": 3,
       "activities": [
-        "Assignment Graded"
+        "Assignment Assigned",
+        "Assignment Grade Finalized",
+        "Assignment Graded",
+        "Assignment Regraded",
+        "Assignment Resubmitted",
+        "Assignment Revision Requested",
+        "Assignment Submitted"
       ]
     },
     {
@@ -134,15 +229,170 @@
       "activities": [
         "Assignment Graded"
       ]
+    },
+    {
+      "question_id": "OU11",
+      "case_table": "task",
+      "case_concept": "Course-design task",
+      "kind": "business_object",
+      "status": "answerable",
+      "scope_rule": "Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.",
+      "case_count": 3,
+      "activities": [
+        "Design Task Approved",
+        "Design Task Closed",
+        "Design Task Created",
+        "Design Task Published"
+      ]
     }
   ],
   "unavailable_object_views": [
     {
-      "case_table": "task",
-      "case_concept": "Course-design task",
-      "status": "unsupported",
-      "reason": "Task dates are scheduled periods, not actual student actions. No declared task-to-student, task-to-experiment or timestamped task-assignment relationship exists.",
-      "question_id": "OU11"
+      "case_table": "registration_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "degree_examination_result_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "assignment_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "simulation_module_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "student_simulation_experiment_result_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "thesis_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "course_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "task_activity",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    },
+    {
+      "case_table": "lifecycle_case_link",
+      "status": "supporting_history",
+      "reason": "Activity storage/index for its parent-object log; not an independent business case."
+    }
+  ],
+  "object_activity_design": [
+    {
+      "object_table": "registration",
+      "activity_table": "registration_activity",
+      "activities": [
+        "Registration Requested",
+        "Registration Approved",
+        "Course Started",
+        "Course Assessment Completed",
+        "Course Grade Finalized"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "degree_examination_result",
+      "activity_table": "degree_examination_result_activity",
+      "activities": [
+        "Examination Scheduled",
+        "Examination Checked In",
+        "Examination Score Published",
+        "Examination Result Reviewed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "assignment",
+      "activity_table": "assignment_activity",
+      "activities": [
+        "Assignment Assigned",
+        "Assignment Submitted",
+        "Assignment Revision Requested",
+        "Assignment Resubmitted",
+        "Assignment Grade Finalized",
+        "Assignment Regraded"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "simulation_module",
+      "activity_table": "simulation_module_activity",
+      "activities": [
+        "Simulation Module Published",
+        "Simulation Module Validated",
+        "Simulation Module Released",
+        "Simulation Module Retired"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "student_simulation_experiment_result",
+      "activity_table": "student_simulation_experiment_result_activity",
+      "activities": [
+        "Simulation Run Scheduled",
+        "Simulation Run Started",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "thesis",
+      "activity_table": "thesis_activity",
+      "activities": [
+        "Thesis Draft Registered",
+        "Thesis Review Started",
+        "Thesis Revision Requested",
+        "Thesis Resubmitted",
+        "Thesis Accepted"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "course",
+      "activity_table": "course_activity",
+      "activities": [
+        "Course Offering Proposed",
+        "Course Offering Approved",
+        "Course Offering Published",
+        "Course Offering Closed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    },
+    {
+      "object_table": "task",
+      "activity_table": "task_activity",
+      "activities": [
+        "Design Task Created",
+        "Design Task Approved",
+        "Design Task Published",
+        "Design Task Closed"
+      ],
+      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
     }
   ]
 }

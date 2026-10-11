@@ -10,30 +10,40 @@
 
 | Case table | Case concept | Kind | Question | Cases | Event rows | Gold CSV |
 |---|---|---|---|---:|---:|---|
-| student | Student | business object | OU01 | 40 | 148 | [CSV](../private/gold_logs/OU01.csv) |
-| course | Course | business object | OU02 | 6 | 47 | [CSV](../private/gold_logs/OU02.csv) |
-| registration | Student-course registration | association record | OU03 | 47 | 47 | [CSV](../private/gold_logs/OU03.csv) |
-| degree_examination_result | Examination result record | event record | OU04 | 40 | 40 | [CSV](../private/gold_logs/OU04.csv) |
-| simulation_module | Simulation module | business object | OU05 | 3 | 27 | [CSV](../private/gold_logs/OU05.csv) |
-| thesis | Thesis | business object | OU06 | 16 | 16 | [CSV](../private/gold_logs/OU06.csv) |
-| student_simulation_experiment_result | Simulation experiment result record | event record | OU07 | 27 | 27 | [CSV](../private/gold_logs/OU07.csv) |
-| assignment | Assignment | business object | OU08 | 20 | 18 | [CSV](../private/gold_logs/OU08.csv) |
-| instructor | Instructor | business object | OU09 | 3 | 18 | [CSV](../private/gold_logs/OU09.csv) |
+| student | Student | business object | OU01 | 40 | 763 | [CSV](../private/gold_logs/OU01.csv) |
+| course | Course | business object | OU02 | 6 | 298 | [CSV](../private/gold_logs/OU02.csv) |
+| registration | Student-course registration | association record | OU03 | 47 | 275 | [CSV](../private/gold_logs/OU03.csv) |
+| degree_examination_result | Examination result record | event record | OU04 | 40 | 194 | [CSV](../private/gold_logs/OU04.csv) |
+| simulation_module | Simulation module | business object | OU05 | 3 | 142 | [CSV](../private/gold_logs/OU05.csv) |
+| thesis | Thesis | business object | OU06 | 16 | 73 | [CSV](../private/gold_logs/OU06.csv) |
+| student_simulation_experiment_result | Simulation experiment result record | event record | OU07 | 27 | 131 | [CSV](../private/gold_logs/OU07.csv) |
+| assignment | Assignment | business object | OU08 | 20 | 90 | [CSV](../private/gold_logs/OU08.csv) |
+| instructor | Instructor | business object | OU09 | 3 | 86 | [CSV](../private/gold_logs/OU09.csv) |
 | assignment_grading | Assignment grading record | event record | OU10 | 18 | 18 | [CSV](../private/gold_logs/OU10.csv) |
+| task | Course-design task | business object | OU11 | 3 | 11 | [CSV](../private/gold_logs/OU11.csv) |
 
 ## Scope of each view
 
-- **OU01 — Student:** All five recorded academic activity types linked to this student.
-- **OU02 — Course:** Successful registrations for this course offering. Course schedules and text-only instructor labels do not add events.
-- **OU03 — Student-course registration:** The successful registration event represented by this student-course pair.
-- **OU04 — Examination result record:** The examination occurrence represented by this result ID; score publication is not timestamped.
-- **OU05 — Simulation module:** Every recorded student experiment completion using this module, including repeat runs.
-- **OU06 — Thesis:** The actual submission event for this thesis; no review events are recorded.
-- **OU07 — Simulation experiment result record:** The experiment-completion occurrence identified by student, module and simulation time.
-- **OU08 — Assignment:** All recorded grading and regrading actions for this assignment; no submission timestamp is inferred.
-- **OU09 — Instructor:** Grading and regrading actions performed by this instructor, without inferring links from course-name strings.
+- **OU01 — Student:** Original recorded actions and authored lifecycle actions explicitly linked to this student.
+- **OU02 — Course:** Original recorded actions and authored lifecycle actions explicitly linked to this course.
+- **OU03 — Student-course registration:** Original recorded actions and authored lifecycle actions explicitly linked to this student-course registration.
+- **OU04 — Examination result record:** Original recorded actions and authored lifecycle actions explicitly linked to this examination result record.
+- **OU05 — Simulation module:** Original recorded actions and authored lifecycle actions explicitly linked to this simulation module.
+- **OU06 — Thesis:** Original recorded actions and authored lifecycle actions explicitly linked to this thesis.
+- **OU07 — Simulation experiment result record:** Original recorded actions and authored lifecycle actions explicitly linked to this simulation experiment result record.
+- **OU08 — Assignment:** Original recorded actions and authored lifecycle actions explicitly linked to this assignment.
+- **OU09 — Instructor:** Original recorded actions and authored lifecycle actions explicitly linked to this instructor.
 - **OU10 — Assignment grading record:** The single grading action represented by the assignment-instructor-time key.
+- **OU11 — Course-design task:** Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.
 
 ## Tables without an actual event-log view
 
-- **task:** Task dates are scheduled periods, not actual student actions. No declared task-to-student, task-to-experiment or timestamped task-assignment relationship exists.
+- **registration_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **degree_examination_result_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **assignment_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **simulation_module_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **student_simulation_experiment_result_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **thesis_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **course_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **task_activity:** Activity storage/index for its parent-object log; not an independent business case.
+- **lifecycle_case_link:** Activity storage/index for its parent-object log; not an independent business case.

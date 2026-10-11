@@ -28,6 +28,8 @@ def build(name,positions,title):
  docs+="\n## Value domains and business rules\n\n"
  domain=d.get("value_domain",d.get("code_domain",{}))
  docs+="\n".join("- "+k+": "+v for k,v in domain.items())+"\n\n"+"\n".join("- "+r for r in d["business_rules"])+"\n"
+ if (out/"object_activity_design.md").exists():docs+="\n"+(out/"object_activity_design.md").read_text()
+ (p/"input/data_dictionary.md").write_text(docs)
  (out/"data_dictionary.md").write_text(docs)
  import csv
  with (out/"data_dictionary.csv").open("w",newline="") as f:
@@ -47,6 +49,8 @@ def build(name,positions,title):
  width,bw,key_width=1980,600,90
  heights={n:116+32*len(i["cols"]) for n,i in info.items()}
  grid={n:(round((x-65)/510),round((y-130)/350)) for n,(x,y) in positions.items()}
+ next_row=1+max(r for _,r in grid.values())
+ for i,n in enumerate(n for n in info if n not in grid):grid[n]=(i%3,next_row+i//3)
  row_y={};cursor=140
  for row in sorted({r for _,r in grid.values()}):
   row_y[row]=cursor
