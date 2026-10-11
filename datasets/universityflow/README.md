@@ -3,9 +3,20 @@
 - **Situation:** Students take examinations, request course registration, complete course assessment, submit assignments and simulation results, and revise theses. Courses, instructors and modules aggregate their explicitly linked actions.
 - **Source:** Three preserved RSchema university requirements and logical schemas. Original source columns and keys are preserved.
 - **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 20 tables; 808 distinct recorded business events.
+- **Database:** 20 tables; 41 activity types; 11 object / case types; 808 distinct recorded business events.
 - **Gold:** 24 answerable question-specific CSV logs out of 26 questions. Paraphrase pairs can share the same expected content.
 - **Execution:** Run `python datasets/universityflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
+
+## Dataset counts
+
+| Dataset | Tables | Activity types | Object / case types | Distinct events | Questions | Gold CSVs |
+|---|---:|---:|---:|---:|---:|---:|
+| UniversityFlow | 20 | 41 | 11 | 808 | 26 | 24 |
+
+- **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
+- **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
+- Activity-history tables, the case-link index and code reference tables do not add object types.
+- Individual cases may contain fewer activities because of incomplete work or conditional branches.
 
 ## Objects, activities and situations
 
