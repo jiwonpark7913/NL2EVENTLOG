@@ -1,0 +1,20 @@
+{
+  "entities": [
+    "slab_material",
+    "planned_rolling_instruction",
+    "rolling_instruction",
+    "as_rolled_material",
+    "furnace_charge_tracking",
+    "cutting_finishing_instruction",
+    "plate_material",
+    "operation_code",
+    "material_operation_history"
+  ],
+  "relations": [
+    "Slab \u2192 Plan \u2192 Released rolling instruction \u2192 Mother material",
+    "Mother material \u2192 furnace tracking",
+    "Mother material \u2192 cutting instruction",
+    "Mother as-rolled plate number \u2192 many Plate materials",
+    "Mother/Plate material identity \u2192 many operation-history rows"
+  ]
+}

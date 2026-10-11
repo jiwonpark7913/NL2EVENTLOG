@@ -1,0 +1,18 @@
+table,column,sql_type,required,key_relationship,definition
+warehouse,warehouse_number,TEXT,yes,PK,Warehouse identity
+warehouse,address,TEXT,yes,,Warehouse postal address
+warehouse,capacity,INTEGER,yes,,Maximum total stock units; synthetic unit convention
+goods,goods_id,TEXT,yes,PK,Goods identity
+goods,goods_name,TEXT,yes,,Goods business name
+loader,name,TEXT,yes,,Worker name
+loader,phone,TEXT,yes,,Worker contact phone
+loader,loader_id,TEXT,yes,PK,Worker identity
+transaction_record,transaction_id,TEXT,yes,PK,Inbound/outbound transaction identity
+transaction_record,occurred_at,TEXT,yes,,Actual UTC completion time of recorded task; instant-event convention
+transaction_record,warehouse_number,TEXT,yes,FK → warehouse.warehouse_number,Warehouse identity
+transaction_record,transaction_type,TEXT,yes,,IN = Goods Received; OUT = Goods Dispatched
+goods_transaction_detail,goods_id,TEXT,yes,PK; FK → goods.goods_id,Goods identity
+goods_transaction_detail,transaction_id,TEXT,yes,PK; FK → transaction_record.transaction_id,Inbound/outbound transaction identity
+goods_transaction_detail,quantity,INTEGER,yes,,Positive number of units of this goods type moved by the transaction
+loader_transaction,loader_id,TEXT,yes,PK; FK → loader.loader_id,Worker identity
+loader_transaction,transaction_id,TEXT,yes,PK; FK → transaction_record.transaction_id,Inbound/outbound transaction identity

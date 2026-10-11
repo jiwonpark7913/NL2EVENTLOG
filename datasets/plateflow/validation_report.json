@@ -1,0 +1,82 @@
+{
+  "seed": 20261013,
+  "mother_materials": 36,
+  "plate_materials": 39,
+  "events": 324,
+  "tables": {
+    "slab_material": 36,
+    "planned_rolling_instruction": 36,
+    "rolling_instruction": 36,
+    "as_rolled_material": 36,
+    "furnace_charge_tracking": 30,
+    "cutting_finishing_instruction": 18,
+    "plate_material": 39,
+    "operation_code": 7,
+    "material_operation_history": 153
+  },
+  "scenario_counts": {
+    "planned": 6,
+    "reheating": 6,
+    "rolled": 6,
+    "normal": 6,
+    "treated": 6,
+    "rework": 6
+  },
+  "questions": [
+    {
+      "question_id": "V01",
+      "status": "pass",
+      "event_count": 72
+    },
+    {
+      "question_id": "V02",
+      "status": "pass",
+      "event_count": 72
+    },
+    {
+      "question_id": "V03",
+      "status": "pass",
+      "event_count": 75
+    },
+    {
+      "question_id": "V04",
+      "status": "pass",
+      "event_count": 75
+    },
+    {
+      "question_id": "V05",
+      "status": "pass",
+      "event_count": 324
+    },
+    {
+      "question_id": "V06",
+      "status": "pass",
+      "event_count": 324
+    },
+    {
+      "question_id": "V07",
+      "status": "pass",
+      "event_count": 75
+    },
+    {
+      "question_id": "V08",
+      "status": "unsupported_by_design"
+    }
+  ],
+  "checks": {
+    "gold_sql_exact_equality": "pass",
+    "foreign_keys": "pass",
+    "sqlite_integrity": "pass",
+    "metadata_columns_types": "pass",
+    "event_id_uniqueness": "pass",
+    "history_start_before_completion": "pass"
+  },
+  "limitations": [
+    "Selected English schema-informed subset, not complete POSCO schema.",
+    "Original CSV supplies names/descriptions only; types, keys, code domain and cardinalities are authored.",
+    "No real production rows or fitted process distributions.",
+    "Classic mother-case log, not OCEL.",
+    "Fixture-local ES; existing NL2EventLog compatibility untested.",
+    "No extraction-model accuracy measured."
+  ]
+}

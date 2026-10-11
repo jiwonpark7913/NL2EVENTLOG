@@ -1,0 +1,224 @@
+{
+  "source": "Uploaded data schema MAS CSV",
+  "profile": "English schema-informed subset, not full POSCO database replica",
+  "tables": [
+    {
+      "synthetic_table": "slab_material",
+      "source_table": "TB_M2EA08_C_MTL060",
+      "columns": [
+        {
+          "synthetic": "slab_id",
+          "source": "MTL_NO"
+        },
+        {
+          "synthetic": "charge_id",
+          "source": "CHARGE_NO"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "planned_rolling_instruction",
+      "source_table": "TB_M2LB01_D_PLANINST010",
+      "columns": [
+        {
+          "synthetic": "plan_id",
+          "source": "PLATE_HR_WORK_DIR_ID"
+        },
+        {
+          "synthetic": "slab_id",
+          "source": "SLAB_NO"
+        },
+        {
+          "synthetic": "planned_reheat_at",
+          "source": "PLT_RF_CH_SCHE_DT"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "rolling_instruction",
+      "source_table": "TB_M2LM01_D_INST010",
+      "columns": [
+        {
+          "synthetic": "instruction_id",
+          "source": "WIP_ENTITY_ID"
+        },
+        {
+          "synthetic": "plan_id",
+          "source": null
+        },
+        {
+          "synthetic": "released_at",
+          "source": "OP_INDI_RELEASE_DT"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "as_rolled_material",
+      "source_table": "TB_M2LM01_E_MTRL010",
+      "columns": [
+        {
+          "synthetic": "material_id",
+          "source": "MTL_NO"
+        },
+        {
+          "synthetic": "as_rolled_plate_no",
+          "source": "AS_ROLLED_PLATE_NO"
+        },
+        {
+          "synthetic": "slab_id",
+          "source": "SLAB_NO"
+        },
+        {
+          "synthetic": "instruction_id",
+          "source": null
+        },
+        {
+          "synthetic": "furnace_charged_at",
+          "source": "RF_CH_DT"
+        },
+        {
+          "synthetic": "crop_shear_passed_at",
+          "source": "PLT_CS_PPLT_DT"
+        },
+        {
+          "synthetic": "latest_operation_completed_at",
+          "source": "PLT_AC_OP_END_OP_DT"
+        },
+        {
+          "synthetic": "created_at",
+          "source": "CREATION_TIMESTAMP"
+        },
+        {
+          "synthetic": "updated_at",
+          "source": "LAST_UPDATE_TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "furnace_charge_tracking",
+      "source_table": "TB_M2EA05_E_RF_IN060",
+      "columns": [
+        {
+          "synthetic": "tracking_id",
+          "source": "TRACKING_CODE"
+        },
+        {
+          "synthetic": "material_id",
+          "source": "MTL_NO"
+        },
+        {
+          "synthetic": "yard_instruction_received_at",
+          "source": "YD_INDI_RCP_DT"
+        },
+        {
+          "synthetic": "lot_charging_started_at",
+          "source": "HT_FCE_CH_LOT_CH_SAT_DT"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "cutting_finishing_instruction",
+      "source_table": "TB_M2LM01_D_INST020",
+      "columns": [
+        {
+          "synthetic": "instruction_id",
+          "source": "WIP_ENTITY_ID"
+        },
+        {
+          "synthetic": "material_id",
+          "source": "MTL_NO"
+        },
+        {
+          "synthetic": "released_at",
+          "source": "OP_INDI_RELEASE_DT"
+        },
+        {
+          "synthetic": "cut_method",
+          "source": "PL_CUT_METH"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "plate_material",
+      "source_table": "TB_M2LM01_E_MTRL020",
+      "columns": [
+        {
+          "synthetic": "plate_material_id",
+          "source": "MTL_NO"
+        },
+        {
+          "synthetic": "plate_no",
+          "source": "PLATE_NO"
+        },
+        {
+          "synthetic": "parent_as_rolled_plate_no",
+          "source": "AS_ROLLED_PLATE_NO"
+        },
+        {
+          "synthetic": "dimension_inspected_at",
+          "source": "SIZE_INSP_DATE"
+        },
+        {
+          "synthetic": "latest_operation_completed_at",
+          "source": "PLT_AC_OP_END_OP_DT"
+        }
+      ]
+    },
+    {
+      "synthetic_table": "operation_code",
+      "source_table": null,
+      "columns": [
+        {
+          "synthetic": "code",
+          "source": null
+        },
+        {
+          "synthetic": "meaning",
+          "source": null
+        }
+      ]
+    },
+    {
+      "synthetic_table": "material_operation_history",
+      "source_table": "TB_M2LM01_T_OPERHIST",
+      "columns": [
+        {
+          "synthetic": "transaction_id",
+          "source": "TRANSACTION_ID"
+        },
+        {
+          "synthetic": "material_id",
+          "source": "MTL_NO"
+        },
+        {
+          "synthetic": "operation_code",
+          "source": "FAC_OP_CD_N"
+        },
+        {
+          "synthetic": "started_at",
+          "source": "OP_SAT_DT"
+        },
+        {
+          "synthetic": "completed_at",
+          "source": "OP_DN_DT"
+        },
+        {
+          "synthetic": "created_at",
+          "source": "CREATION_TIMESTAMP"
+        }
+      ]
+    }
+  ],
+  "assumptions": [
+    "Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.",
+    "One slab supplies one mother material in this fixture. A completed mother material yields one to three individual Plate materials.",
+    "Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.",
+    "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this fixture.",
+    "Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.",
+    "Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.",
+    "Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.",
+    "Factory codes and cardinalities are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
+    "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number resolves lineage.",
+    "No upstream casting or shipping timestamps are recorded."
+  ]
+}

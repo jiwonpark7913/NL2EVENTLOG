@@ -1,0 +1,14 @@
+{
+  "entities": [
+    "Warehouse",
+    "Goods",
+    "Loader",
+    "Transaction"
+  ],
+  "relations": [
+    "Warehouse 1:N Transaction",
+    "Transaction M:N Goods through composite-key details",
+    "Transaction M:N Loader through composite-key assignments"
+  ],
+  "status": "Derived from original logical schema; not supplied as an original conceptual artifact"
+}

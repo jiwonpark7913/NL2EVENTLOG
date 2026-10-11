@@ -1,0 +1,91 @@
+{
+  "table_count": 6,
+  "tables": {
+    "warehouse": {
+      "row_count": 4,
+      "column_count": 3,
+      "primary_key": [
+        "warehouse_number"
+      ]
+    },
+    "goods": {
+      "row_count": 6,
+      "column_count": 2,
+      "primary_key": [
+        "goods_id"
+      ]
+    },
+    "loader": {
+      "row_count": 5,
+      "column_count": 3,
+      "primary_key": [
+        "loader_id"
+      ]
+    },
+    "transaction_record": {
+      "row_count": 80,
+      "column_count": 4,
+      "primary_key": [
+        "transaction_id"
+      ]
+    },
+    "goods_transaction_detail": {
+      "row_count": 138,
+      "column_count": 3,
+      "primary_key": [
+        "goods_id",
+        "transaction_id"
+      ]
+    },
+    "loader_transaction": {
+      "row_count": 167,
+      "column_count": 2,
+      "primary_key": [
+        "loader_id",
+        "transaction_id"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "parent": "warehouse",
+      "child": "transaction_record",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "warehouse_number",
+      "to_col": "warehouse_number"
+    },
+    {
+      "parent": "transaction_record",
+      "child": "goods_transaction_detail",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "transaction_id",
+      "to_col": "transaction_id"
+    },
+    {
+      "parent": "goods",
+      "child": "goods_transaction_detail",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "goods_id",
+      "to_col": "goods_id"
+    },
+    {
+      "parent": "transaction_record",
+      "child": "loader_transaction",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "transaction_id",
+      "to_col": "transaction_id"
+    },
+    {
+      "parent": "loader",
+      "child": "loader_transaction",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "loader_id",
+      "to_col": "loader_id"
+    }
+  ]
+}

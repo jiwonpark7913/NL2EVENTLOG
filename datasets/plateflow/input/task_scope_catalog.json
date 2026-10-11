@@ -1,0 +1,21 @@
+{
+  "case_concept": "As-rolled mother material",
+  "default_scope": "Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.",
+  "activities": [
+    "Rolling Instruction Released",
+    "Yard Instruction Received",
+    "Reheating Started",
+    "Crop Shear Passed",
+    "Cutting Instruction Released",
+    "Rolling Completed",
+    "Cooling Completed",
+    "Leveling Completed",
+    "Split Cutting Completed",
+    "Heat Treatment Completed",
+    "Inspection Failed",
+    "Inspection Passed",
+    "Dimensional Inspection Completed"
+  ],
+  "case_population": "all as_rolled_material rows",
+  "setting": "Catalog-assisted; source bindings withheld"
+}

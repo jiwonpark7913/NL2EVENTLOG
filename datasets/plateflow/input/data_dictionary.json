@@ -1,0 +1,357 @@
+{
+  "name": "PlateFlow v2",
+  "language": "en",
+  "timezone": "UTC",
+  "tables": [
+    {
+      "table": "slab_material",
+      "source_table": "TB_M2EA08_C_MTL060",
+      "definition": "Slab material and charge genealogy; no upstream operation timestamps in this subset",
+      "columns": [
+        {
+          "name": "slab_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Synthetic slab identity",
+          "source_column": "MTL_NO"
+        },
+        {
+          "name": "charge_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Upstream charge identity, contextual attribute",
+          "source_column": "CHARGE_NO"
+        }
+      ]
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "source_table": "TB_M2LB01_D_PLANINST010",
+      "definition": "Scheduled rolling instruction; plan times do not prove execution",
+      "columns": [
+        {
+          "name": "plan_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Plan identity",
+          "source_column": "PLATE_HR_WORK_DIR_ID"
+        },
+        {
+          "name": "slab_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL REFERENCES slab_material(slab_id)",
+          "definition": "Planned input slab",
+          "source_column": "SLAB_NO"
+        },
+        {
+          "name": "planned_reheat_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Scheduled furnace charging time",
+          "source_column": "PLT_RF_CH_SCHE_DT"
+        }
+      ]
+    },
+    {
+      "table": "rolling_instruction",
+      "source_table": "TB_M2LM01_D_INST010",
+      "definition": "Released rolling work instruction, separate from planning",
+      "columns": [
+        {
+          "name": "instruction_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Synthetic row identity",
+          "source_column": "WIP_ENTITY_ID"
+        },
+        {
+          "name": "plan_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id)",
+          "definition": "Synthetic explicit link to plan",
+          "source_column": null
+        },
+        {
+          "name": "released_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual instruction release time",
+          "source_column": "OP_INDI_RELEASE_DT"
+        }
+      ]
+    },
+    {
+      "table": "as_rolled_material",
+      "source_table": "TB_M2LM01_E_MTRL010",
+      "definition": "As-rolled mother material with milestone columns and latest-operation snapshot",
+      "columns": [
+        {
+          "name": "material_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Mother material identity",
+          "source_column": "MTL_NO"
+        },
+        {
+          "name": "as_rolled_plate_no",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE",
+          "definition": "Mother as-rolled plate number",
+          "source_column": "AS_ROLLED_PLATE_NO"
+        },
+        {
+          "name": "slab_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE REFERENCES slab_material(slab_id)",
+          "definition": "Source slab",
+          "source_column": "SLAB_NO"
+        },
+        {
+          "name": "instruction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id)",
+          "definition": "Synthetic explicit link to released instruction",
+          "source_column": null
+        },
+        {
+          "name": "furnace_charged_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Actual furnace material charging",
+          "source_column": "RF_CH_DT"
+        },
+        {
+          "name": "crop_shear_passed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Actual crop-shear passage",
+          "source_column": "PLT_CS_PPLT_DT"
+        },
+        {
+          "name": "latest_operation_completed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Snapshot of latest mother-material operation, not always rolling completion",
+          "source_column": "PLT_AC_OP_END_OP_DT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Technical database creation timestamp",
+          "source_column": "CREATION_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Technical database update timestamp",
+          "source_column": "LAST_UPDATE_TIMESTAMP"
+        }
+      ]
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "source_table": "TB_M2EA05_E_RF_IN060",
+      "definition": "Furnace charge tracking record separated from material lifecycle snapshot",
+      "columns": [
+        {
+          "name": "tracking_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Tracking occurrence ID",
+          "source_column": "TRACKING_CODE"
+        },
+        {
+          "name": "material_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)",
+          "definition": "Tracked material",
+          "source_column": "MTL_NO"
+        },
+        {
+          "name": "yard_instruction_received_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual yard instruction receipt",
+          "source_column": "YD_INDI_RCP_DT"
+        },
+        {
+          "name": "lot_charging_started_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Furnace lot charging start; different event granularity from material entry",
+          "source_column": "HT_FCE_CH_LOT_CH_SAT_DT"
+        }
+      ]
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "source_table": "TB_M2LM01_D_INST020",
+      "definition": "Cutting/finishing work instruction for mother material",
+      "columns": [
+        {
+          "name": "instruction_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Synthetic instruction ID",
+          "source_column": "WIP_ENTITY_ID"
+        },
+        {
+          "name": "material_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)",
+          "definition": "Directed mother material",
+          "source_column": "MTL_NO"
+        },
+        {
+          "name": "released_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual cutting/finishing instruction release",
+          "source_column": "OP_INDI_RELEASE_DT"
+        },
+        {
+          "name": "cut_method",
+          "type": "TEXT",
+          "constraints": "NOT NULL CHECK(cut_method='SPLIT')",
+          "definition": "Synthetic split-cut method code",
+          "source_column": "PL_CUT_METH"
+        }
+      ]
+    },
+    {
+      "table": "plate_material",
+      "source_table": "TB_M2LM01_E_MTRL020",
+      "definition": "Individual cut Plate material, distinct from mother as-rolled material",
+      "columns": [
+        {
+          "name": "plate_material_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Finished-piece material identity",
+          "source_column": "MTL_NO"
+        },
+        {
+          "name": "plate_no",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE",
+          "definition": "Individual Plate number",
+          "source_column": "PLATE_NO"
+        },
+        {
+          "name": "parent_as_rolled_plate_no",
+          "type": "TEXT",
+          "constraints": "NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no)",
+          "definition": "Mother as-rolled plate number; synthetic FK policy",
+          "source_column": "AS_ROLLED_PLATE_NO"
+        },
+        {
+          "name": "dimension_inspected_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Actual dimensional inspection timestamp",
+          "source_column": "SIZE_INSP_DATE"
+        },
+        {
+          "name": "latest_operation_completed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Latest piece operation snapshot",
+          "source_column": "PLT_AC_OP_END_OP_DT"
+        }
+      ]
+    },
+    {
+      "table": "operation_code",
+      "source_table": null,
+      "definition": "Synthetic operation code domain; codes are newly authored",
+      "columns": [
+        {
+          "name": "code",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Synthetic process code",
+          "source_column": null
+        },
+        {
+          "name": "meaning",
+          "type": "TEXT",
+          "constraints": "NOT NULL UNIQUE",
+          "definition": "English operation meaning",
+          "source_column": null
+        }
+      ]
+    },
+    {
+      "table": "material_operation_history",
+      "source_table": "TB_M2LM01_T_OPERHIST",
+      "definition": "Immutable operation history for mother and piece material identities",
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Operation occurrence ID",
+          "source_column": "TRANSACTION_ID"
+        },
+        {
+          "name": "material_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Mother or piece material identity; validated against both material tables",
+          "source_column": "MTL_NO"
+        },
+        {
+          "name": "operation_code",
+          "type": "TEXT",
+          "constraints": "NOT NULL REFERENCES operation_code(code)",
+          "definition": "Synthetic factory/process code",
+          "source_column": "FAC_OP_CD_N"
+        },
+        {
+          "name": "started_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual operation start time",
+          "source_column": "OP_SAT_DT"
+        },
+        {
+          "name": "completed_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL CHECK(completed_at > started_at)",
+          "definition": "Actual operation completion time",
+          "source_column": "OP_DN_DT"
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Technical record insertion time",
+          "source_column": "CREATION_TIMESTAMP"
+        }
+      ]
+    }
+  ],
+  "code_domain": {
+    "RL": "Rolling Completed",
+    "CO": "Cooling Completed",
+    "LE": "Leveling Completed",
+    "SC": "Split Cutting Completed",
+    "HT": "Heat Treatment Completed",
+    "IF": "Inspection Failed",
+    "IP": "Inspection Passed"
+  },
+  "business_rules": [
+    "Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.",
+    "One slab supplies one mother material in this fixture. A completed mother material yields one to three individual Plate materials.",
+    "Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.",
+    "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this fixture.",
+    "Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.",
+    "Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.",
+    "Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.",
+    "Factory codes and cardinalities are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
+    "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number resolves lineage.",
+    "No upstream casting or shipping timestamps are recorded."
+  ]
+}

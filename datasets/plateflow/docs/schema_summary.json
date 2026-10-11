@@ -1,0 +1,150 @@
+{
+  "table_count": 9,
+  "tables": {
+    "slab_material": {
+      "row_count": 36,
+      "column_count": 2,
+      "primary_key": [
+        "slab_id"
+      ]
+    },
+    "planned_rolling_instruction": {
+      "row_count": 36,
+      "column_count": 3,
+      "primary_key": [
+        "plan_id"
+      ]
+    },
+    "rolling_instruction": {
+      "row_count": 36,
+      "column_count": 3,
+      "primary_key": [
+        "instruction_id"
+      ]
+    },
+    "as_rolled_material": {
+      "row_count": 36,
+      "column_count": 9,
+      "primary_key": [
+        "material_id"
+      ]
+    },
+    "furnace_charge_tracking": {
+      "row_count": 30,
+      "column_count": 4,
+      "primary_key": [
+        "tracking_id"
+      ]
+    },
+    "cutting_finishing_instruction": {
+      "row_count": 18,
+      "column_count": 4,
+      "primary_key": [
+        "instruction_id"
+      ]
+    },
+    "plate_material": {
+      "row_count": 39,
+      "column_count": 5,
+      "primary_key": [
+        "plate_material_id"
+      ]
+    },
+    "operation_code": {
+      "row_count": 7,
+      "column_count": 2,
+      "primary_key": [
+        "code"
+      ]
+    },
+    "material_operation_history": {
+      "row_count": 153,
+      "column_count": 6,
+      "primary_key": [
+        "transaction_id"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "parent": "slab_material",
+      "child": "planned_rolling_instruction",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "slab_id",
+      "to_col": "slab_id"
+    },
+    {
+      "parent": "planned_rolling_instruction",
+      "child": "rolling_instruction",
+      "label": "1 : 0..1",
+      "logical": false,
+      "from_col": "plan_id",
+      "to_col": "plan_id"
+    },
+    {
+      "parent": "rolling_instruction",
+      "child": "as_rolled_material",
+      "label": "1 : 0..1",
+      "logical": false,
+      "from_col": "instruction_id",
+      "to_col": "instruction_id"
+    },
+    {
+      "parent": "slab_material",
+      "child": "as_rolled_material",
+      "label": "1 : 0..1",
+      "logical": false,
+      "from_col": "slab_id",
+      "to_col": "slab_id"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "furnace_charge_tracking",
+      "label": "1 : 0..1",
+      "logical": false,
+      "from_col": "material_id",
+      "to_col": "material_id"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "cutting_finishing_instruction",
+      "label": "1 : 0..1",
+      "logical": false,
+      "from_col": "material_id",
+      "to_col": "material_id"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "plate_material",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "parent_as_rolled_plate_no",
+      "to_col": "as_rolled_plate_no"
+    },
+    {
+      "parent": "operation_code",
+      "child": "material_operation_history",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "operation_code",
+      "to_col": "code"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "material_operation_history",
+      "label": "logical 1 : 0..N",
+      "logical": true,
+      "from_col": "material_id",
+      "to_col": "material_id"
+    },
+    {
+      "parent": "plate_material",
+      "child": "material_operation_history",
+      "label": "logical 1 : 0..N",
+      "logical": true,
+      "from_col": "material_id",
+      "to_col": "plate_material_id"
+    }
+  ]
+}

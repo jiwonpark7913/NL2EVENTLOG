@@ -1,0 +1,18 @@
+[
+  {
+    "activity": "Goods Received",
+    "value": "IN",
+    "table": "transaction_record",
+    "case_column": "warehouse_number",
+    "timestamp_column": "occurred_at",
+    "event_key": "transaction_id"
+  },
+  {
+    "activity": "Goods Dispatched",
+    "value": "OUT",
+    "table": "transaction_record",
+    "case_column": "warehouse_number",
+    "timestamp_column": "occurred_at",
+    "event_key": "transaction_id"
+  }
+]

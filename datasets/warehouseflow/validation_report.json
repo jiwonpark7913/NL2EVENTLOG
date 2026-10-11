@@ -1,0 +1,79 @@
+{
+  "seed": 20261014,
+  "source_record_id": "67552f0a13602ec03b41a78e",
+  "original_tables_retained": "6/6",
+  "original_attributes_retained": "17/17",
+  "original_fk_relationships_retained": "5/5",
+  "warehouses": 4,
+  "events": 80,
+  "activity_counts": {
+    "Goods Received": 45,
+    "Goods Dispatched": 35
+  },
+  "table_rows": {
+    "warehouse": 4,
+    "goods": 6,
+    "loader": 5,
+    "transaction_record": 80,
+    "goods_transaction_detail": 138,
+    "loader_transaction": 167
+  },
+  "naive_detail_worker_join_rows": 289,
+  "correct_event_rows": 80,
+  "peak_inventory_units": {
+    "W1": 67,
+    "W2": 68,
+    "W3": 53,
+    "W4": 38
+  },
+  "questions": [
+    {
+      "question_id": "R01",
+      "status": "pass",
+      "event_count": 45
+    },
+    {
+      "question_id": "R02",
+      "status": "pass",
+      "event_count": 45
+    },
+    {
+      "question_id": "R03",
+      "status": "pass",
+      "event_count": 35
+    },
+    {
+      "question_id": "R04",
+      "status": "pass",
+      "event_count": 35
+    },
+    {
+      "question_id": "R05",
+      "status": "pass",
+      "event_count": 80
+    },
+    {
+      "question_id": "R06",
+      "status": "pass",
+      "event_count": 80
+    },
+    {
+      "question_id": "R07",
+      "status": "unsupported_by_design"
+    }
+  ],
+  "checks": {
+    "gold_sql_exact_equality": "pass",
+    "foreign_keys": "pass",
+    "source_pk_fk_structure": "pass",
+    "stock_capacity": "pass",
+    "task_detail_worker_coverage": "pass"
+  },
+  "limitations": [
+    "Original schema records two instant task types; no approval or order lifecycle.",
+    "Warehouse cases group independent tasks, not one shipment lifecycle.",
+    "Codes, SQL types and timestamp convention are adaptations.",
+    "Fixture-local ES; no model accuracy measured.",
+    "No held-out generalization claim."
+  ]
+}

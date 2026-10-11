@@ -1,0 +1,324 @@
+{"event_id": "RI:RI001", "case_id": "M001", "activity": "Rolling Instruction Released", "timestamp": "2026-03-02T00:00:00Z"}
+{"event_id": "RI:RI002", "case_id": "M002", "activity": "Rolling Instruction Released", "timestamp": "2026-03-03T00:00:00Z"}
+{"event_id": "YD:TRM002", "case_id": "M002", "activity": "Yard Instruction Received", "timestamp": "2026-03-03T01:00:00Z"}
+{"event_id": "RH:M002", "case_id": "M002", "activity": "Reheating Started", "timestamp": "2026-03-03T04:00:00Z"}
+{"event_id": "RI:RI003", "case_id": "M003", "activity": "Rolling Instruction Released", "timestamp": "2026-03-04T00:00:00Z"}
+{"event_id": "YD:TRM003", "case_id": "M003", "activity": "Yard Instruction Received", "timestamp": "2026-03-04T01:00:00Z"}
+{"event_id": "RH:M003", "case_id": "M003", "activity": "Reheating Started", "timestamp": "2026-03-04T03:00:00Z"}
+{"event_id": "OP:M003-RL", "case_id": "M003", "activity": "Rolling Completed", "timestamp": "2026-03-04T06:00:00Z"}
+{"event_id": "RI:RI004", "case_id": "M004", "activity": "Rolling Instruction Released", "timestamp": "2026-03-05T00:00:00Z"}
+{"event_id": "YD:TRM004", "case_id": "M004", "activity": "Yard Instruction Received", "timestamp": "2026-03-05T01:00:00Z"}
+{"event_id": "RH:M004", "case_id": "M004", "activity": "Reheating Started", "timestamp": "2026-03-05T02:00:00Z"}
+{"event_id": "OP:M004-RL", "case_id": "M004", "activity": "Rolling Completed", "timestamp": "2026-03-05T06:00:00Z"}
+{"event_id": "OP:M004-CO", "case_id": "M004", "activity": "Cooling Completed", "timestamp": "2026-03-05T07:00:00Z"}
+{"event_id": "OP:M004-LE", "case_id": "M004", "activity": "Leveling Completed", "timestamp": "2026-03-05T08:00:00Z"}
+{"event_id": "CS:M004", "case_id": "M004", "activity": "Crop Shear Passed", "timestamp": "2026-03-05T09:00:00Z"}
+{"event_id": "CI:CIM004", "case_id": "M004", "activity": "Cutting Instruction Released", "timestamp": "2026-03-05T10:00:00Z"}
+{"event_id": "OP:M004-SC", "case_id": "M004", "activity": "Split Cutting Completed", "timestamp": "2026-03-05T11:00:00Z"}
+{"event_id": "OP:P004-1-IP", "case_id": "M004", "activity": "Inspection Passed", "timestamp": "2026-03-05T13:06:00Z"}
+{"event_id": "DIM:P004-1", "case_id": "M004", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-05T13:36:00Z"}
+{"event_id": "OP:P004-2-IP", "case_id": "M004", "activity": "Inspection Passed", "timestamp": "2026-03-05T13:12:00Z"}
+{"event_id": "DIM:P004-2", "case_id": "M004", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-05T13:42:00Z"}
+{"event_id": "OP:P004-3-IP", "case_id": "M004", "activity": "Inspection Passed", "timestamp": "2026-03-05T13:18:00Z"}
+{"event_id": "DIM:P004-3", "case_id": "M004", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-05T13:48:00Z"}
+{"event_id": "RI:RI005", "case_id": "M005", "activity": "Rolling Instruction Released", "timestamp": "2026-03-06T00:00:00Z"}
+{"event_id": "YD:TRM005", "case_id": "M005", "activity": "Yard Instruction Received", "timestamp": "2026-03-06T01:00:00Z"}
+{"event_id": "RH:M005", "case_id": "M005", "activity": "Reheating Started", "timestamp": "2026-03-06T04:00:00Z"}
+{"event_id": "OP:M005-RL", "case_id": "M005", "activity": "Rolling Completed", "timestamp": "2026-03-06T06:00:00Z"}
+{"event_id": "OP:M005-CO", "case_id": "M005", "activity": "Cooling Completed", "timestamp": "2026-03-06T07:00:00Z"}
+{"event_id": "OP:M005-LE", "case_id": "M005", "activity": "Leveling Completed", "timestamp": "2026-03-06T08:00:00Z"}
+{"event_id": "CS:M005", "case_id": "M005", "activity": "Crop Shear Passed", "timestamp": "2026-03-06T09:00:00Z"}
+{"event_id": "CI:CIM005", "case_id": "M005", "activity": "Cutting Instruction Released", "timestamp": "2026-03-06T10:00:00Z"}
+{"event_id": "OP:M005-SC", "case_id": "M005", "activity": "Split Cutting Completed", "timestamp": "2026-03-06T11:00:00Z"}
+{"event_id": "OP:P005-1-HT1", "case_id": "M005", "activity": "Heat Treatment Completed", "timestamp": "2026-03-06T12:00:00Z"}
+{"event_id": "OP:P005-1-IP", "case_id": "M005", "activity": "Inspection Passed", "timestamp": "2026-03-06T13:06:00Z"}
+{"event_id": "DIM:P005-1", "case_id": "M005", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-06T13:36:00Z"}
+{"event_id": "OP:P005-2-HT1", "case_id": "M005", "activity": "Heat Treatment Completed", "timestamp": "2026-03-06T12:00:00Z"}
+{"event_id": "OP:P005-2-IP", "case_id": "M005", "activity": "Inspection Passed", "timestamp": "2026-03-06T13:12:00Z"}
+{"event_id": "DIM:P005-2", "case_id": "M005", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-06T13:42:00Z"}
+{"event_id": "RI:RI006", "case_id": "M006", "activity": "Rolling Instruction Released", "timestamp": "2026-03-07T00:00:00Z"}
+{"event_id": "YD:TRM006", "case_id": "M006", "activity": "Yard Instruction Received", "timestamp": "2026-03-07T01:00:00Z"}
+{"event_id": "RH:M006", "case_id": "M006", "activity": "Reheating Started", "timestamp": "2026-03-07T03:00:00Z"}
+{"event_id": "OP:M006-RL", "case_id": "M006", "activity": "Rolling Completed", "timestamp": "2026-03-07T06:00:00Z"}
+{"event_id": "OP:M006-CO", "case_id": "M006", "activity": "Cooling Completed", "timestamp": "2026-03-07T07:00:00Z"}
+{"event_id": "OP:M006-LE", "case_id": "M006", "activity": "Leveling Completed", "timestamp": "2026-03-07T08:00:00Z"}
+{"event_id": "CS:M006", "case_id": "M006", "activity": "Crop Shear Passed", "timestamp": "2026-03-07T09:00:00Z"}
+{"event_id": "CI:CIM006", "case_id": "M006", "activity": "Cutting Instruction Released", "timestamp": "2026-03-07T10:00:00Z"}
+{"event_id": "OP:M006-SC", "case_id": "M006", "activity": "Split Cutting Completed", "timestamp": "2026-03-07T11:00:00Z"}
+{"event_id": "OP:P006-1-IF1", "case_id": "M006", "activity": "Inspection Failed", "timestamp": "2026-03-07T12:00:00Z"}
+{"event_id": "OP:P006-1-HT1", "case_id": "M006", "activity": "Heat Treatment Completed", "timestamp": "2026-03-07T14:00:00Z"}
+{"event_id": "OP:P006-1-IF2", "case_id": "M006", "activity": "Inspection Failed", "timestamp": "2026-03-07T15:00:00Z"}
+{"event_id": "OP:P006-1-HT2", "case_id": "M006", "activity": "Heat Treatment Completed", "timestamp": "2026-03-07T17:00:00Z"}
+{"event_id": "OP:P006-1-IP", "case_id": "M006", "activity": "Inspection Passed", "timestamp": "2026-03-07T18:00:00Z"}
+{"event_id": "DIM:P006-1", "case_id": "M006", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-07T18:30:00Z"}
+{"event_id": "RI:RI007", "case_id": "M007", "activity": "Rolling Instruction Released", "timestamp": "2026-03-08T00:00:00Z"}
+{"event_id": "RI:RI008", "case_id": "M008", "activity": "Rolling Instruction Released", "timestamp": "2026-03-09T00:00:00Z"}
+{"event_id": "YD:TRM008", "case_id": "M008", "activity": "Yard Instruction Received", "timestamp": "2026-03-09T01:00:00Z"}
+{"event_id": "RH:M008", "case_id": "M008", "activity": "Reheating Started", "timestamp": "2026-03-09T03:00:00Z"}
+{"event_id": "RI:RI009", "case_id": "M009", "activity": "Rolling Instruction Released", "timestamp": "2026-03-10T00:00:00Z"}
+{"event_id": "YD:TRM009", "case_id": "M009", "activity": "Yard Instruction Received", "timestamp": "2026-03-10T01:00:00Z"}
+{"event_id": "RH:M009", "case_id": "M009", "activity": "Reheating Started", "timestamp": "2026-03-10T04:00:00Z"}
+{"event_id": "OP:M009-RL", "case_id": "M009", "activity": "Rolling Completed", "timestamp": "2026-03-10T06:00:00Z"}
+{"event_id": "RI:RI010", "case_id": "M010", "activity": "Rolling Instruction Released", "timestamp": "2026-03-11T00:00:00Z"}
+{"event_id": "YD:TRM010", "case_id": "M010", "activity": "Yard Instruction Received", "timestamp": "2026-03-11T01:00:00Z"}
+{"event_id": "RH:M010", "case_id": "M010", "activity": "Reheating Started", "timestamp": "2026-03-11T04:00:00Z"}
+{"event_id": "OP:M010-RL", "case_id": "M010", "activity": "Rolling Completed", "timestamp": "2026-03-11T06:00:00Z"}
+{"event_id": "OP:M010-CO", "case_id": "M010", "activity": "Cooling Completed", "timestamp": "2026-03-11T07:00:00Z"}
+{"event_id": "OP:M010-LE", "case_id": "M010", "activity": "Leveling Completed", "timestamp": "2026-03-11T08:00:00Z"}
+{"event_id": "CS:M010", "case_id": "M010", "activity": "Crop Shear Passed", "timestamp": "2026-03-11T09:00:00Z"}
+{"event_id": "CI:CIM010", "case_id": "M010", "activity": "Cutting Instruction Released", "timestamp": "2026-03-11T10:00:00Z"}
+{"event_id": "OP:M010-SC", "case_id": "M010", "activity": "Split Cutting Completed", "timestamp": "2026-03-11T11:00:00Z"}
+{"event_id": "OP:P010-1-IP", "case_id": "M010", "activity": "Inspection Passed", "timestamp": "2026-03-11T13:06:00Z"}
+{"event_id": "DIM:P010-1", "case_id": "M010", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-11T13:36:00Z"}
+{"event_id": "OP:P010-2-IP", "case_id": "M010", "activity": "Inspection Passed", "timestamp": "2026-03-11T13:12:00Z"}
+{"event_id": "DIM:P010-2", "case_id": "M010", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-11T13:42:00Z"}
+{"event_id": "OP:P010-3-IP", "case_id": "M010", "activity": "Inspection Passed", "timestamp": "2026-03-11T13:18:00Z"}
+{"event_id": "DIM:P010-3", "case_id": "M010", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-11T13:48:00Z"}
+{"event_id": "RI:RI011", "case_id": "M011", "activity": "Rolling Instruction Released", "timestamp": "2026-03-12T00:00:00Z"}
+{"event_id": "YD:TRM011", "case_id": "M011", "activity": "Yard Instruction Received", "timestamp": "2026-03-12T01:00:00Z"}
+{"event_id": "RH:M011", "case_id": "M011", "activity": "Reheating Started", "timestamp": "2026-03-12T04:00:00Z"}
+{"event_id": "OP:M011-RL", "case_id": "M011", "activity": "Rolling Completed", "timestamp": "2026-03-12T06:00:00Z"}
+{"event_id": "OP:M011-CO", "case_id": "M011", "activity": "Cooling Completed", "timestamp": "2026-03-12T07:00:00Z"}
+{"event_id": "OP:M011-LE", "case_id": "M011", "activity": "Leveling Completed", "timestamp": "2026-03-12T08:00:00Z"}
+{"event_id": "CS:M011", "case_id": "M011", "activity": "Crop Shear Passed", "timestamp": "2026-03-12T09:00:00Z"}
+{"event_id": "CI:CIM011", "case_id": "M011", "activity": "Cutting Instruction Released", "timestamp": "2026-03-12T10:00:00Z"}
+{"event_id": "OP:M011-SC", "case_id": "M011", "activity": "Split Cutting Completed", "timestamp": "2026-03-12T11:00:00Z"}
+{"event_id": "OP:P011-1-HT1", "case_id": "M011", "activity": "Heat Treatment Completed", "timestamp": "2026-03-12T12:00:00Z"}
+{"event_id": "OP:P011-1-IP", "case_id": "M011", "activity": "Inspection Passed", "timestamp": "2026-03-12T13:06:00Z"}
+{"event_id": "DIM:P011-1", "case_id": "M011", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-12T13:36:00Z"}
+{"event_id": "RI:RI012", "case_id": "M012", "activity": "Rolling Instruction Released", "timestamp": "2026-03-13T00:00:00Z"}
+{"event_id": "YD:TRM012", "case_id": "M012", "activity": "Yard Instruction Received", "timestamp": "2026-03-13T01:00:00Z"}
+{"event_id": "RH:M012", "case_id": "M012", "activity": "Reheating Started", "timestamp": "2026-03-13T04:00:00Z"}
+{"event_id": "OP:M012-RL", "case_id": "M012", "activity": "Rolling Completed", "timestamp": "2026-03-13T06:00:00Z"}
+{"event_id": "OP:M012-CO", "case_id": "M012", "activity": "Cooling Completed", "timestamp": "2026-03-13T07:00:00Z"}
+{"event_id": "OP:M012-LE", "case_id": "M012", "activity": "Leveling Completed", "timestamp": "2026-03-13T08:00:00Z"}
+{"event_id": "CS:M012", "case_id": "M012", "activity": "Crop Shear Passed", "timestamp": "2026-03-13T09:00:00Z"}
+{"event_id": "CI:CIM012", "case_id": "M012", "activity": "Cutting Instruction Released", "timestamp": "2026-03-13T10:00:00Z"}
+{"event_id": "OP:M012-SC", "case_id": "M012", "activity": "Split Cutting Completed", "timestamp": "2026-03-13T11:00:00Z"}
+{"event_id": "OP:P012-1-IF1", "case_id": "M012", "activity": "Inspection Failed", "timestamp": "2026-03-13T12:00:00Z"}
+{"event_id": "OP:P012-1-HT1", "case_id": "M012", "activity": "Heat Treatment Completed", "timestamp": "2026-03-13T14:00:00Z"}
+{"event_id": "OP:P012-1-IF2", "case_id": "M012", "activity": "Inspection Failed", "timestamp": "2026-03-13T15:00:00Z"}
+{"event_id": "OP:P012-1-HT2", "case_id": "M012", "activity": "Heat Treatment Completed", "timestamp": "2026-03-13T17:00:00Z"}
+{"event_id": "OP:P012-1-IP", "case_id": "M012", "activity": "Inspection Passed", "timestamp": "2026-03-13T18:00:00Z"}
+{"event_id": "DIM:P012-1", "case_id": "M012", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-13T18:30:00Z"}
+{"event_id": "RI:RI013", "case_id": "M013", "activity": "Rolling Instruction Released", "timestamp": "2026-03-14T00:00:00Z"}
+{"event_id": "RI:RI014", "case_id": "M014", "activity": "Rolling Instruction Released", "timestamp": "2026-03-15T00:00:00Z"}
+{"event_id": "YD:TRM014", "case_id": "M014", "activity": "Yard Instruction Received", "timestamp": "2026-03-15T01:00:00Z"}
+{"event_id": "RH:M014", "case_id": "M014", "activity": "Reheating Started", "timestamp": "2026-03-15T04:00:00Z"}
+{"event_id": "RI:RI015", "case_id": "M015", "activity": "Rolling Instruction Released", "timestamp": "2026-03-16T00:00:00Z"}
+{"event_id": "YD:TRM015", "case_id": "M015", "activity": "Yard Instruction Received", "timestamp": "2026-03-16T01:00:00Z"}
+{"event_id": "RH:M015", "case_id": "M015", "activity": "Reheating Started", "timestamp": "2026-03-16T02:00:00Z"}
+{"event_id": "OP:M015-RL", "case_id": "M015", "activity": "Rolling Completed", "timestamp": "2026-03-16T06:00:00Z"}
+{"event_id": "RI:RI016", "case_id": "M016", "activity": "Rolling Instruction Released", "timestamp": "2026-03-17T00:00:00Z"}
+{"event_id": "YD:TRM016", "case_id": "M016", "activity": "Yard Instruction Received", "timestamp": "2026-03-17T01:00:00Z"}
+{"event_id": "RH:M016", "case_id": "M016", "activity": "Reheating Started", "timestamp": "2026-03-17T02:00:00Z"}
+{"event_id": "OP:M016-RL", "case_id": "M016", "activity": "Rolling Completed", "timestamp": "2026-03-17T06:00:00Z"}
+{"event_id": "OP:M016-CO", "case_id": "M016", "activity": "Cooling Completed", "timestamp": "2026-03-17T07:00:00Z"}
+{"event_id": "OP:M016-LE", "case_id": "M016", "activity": "Leveling Completed", "timestamp": "2026-03-17T08:00:00Z"}
+{"event_id": "CS:M016", "case_id": "M016", "activity": "Crop Shear Passed", "timestamp": "2026-03-17T09:00:00Z"}
+{"event_id": "CI:CIM016", "case_id": "M016", "activity": "Cutting Instruction Released", "timestamp": "2026-03-17T10:00:00Z"}
+{"event_id": "OP:M016-SC", "case_id": "M016", "activity": "Split Cutting Completed", "timestamp": "2026-03-17T11:00:00Z"}
+{"event_id": "OP:P016-1-IP", "case_id": "M016", "activity": "Inspection Passed", "timestamp": "2026-03-17T13:06:00Z"}
+{"event_id": "DIM:P016-1", "case_id": "M016", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-17T13:36:00Z"}
+{"event_id": "RI:RI017", "case_id": "M017", "activity": "Rolling Instruction Released", "timestamp": "2026-03-18T00:00:00Z"}
+{"event_id": "YD:TRM017", "case_id": "M017", "activity": "Yard Instruction Received", "timestamp": "2026-03-18T01:00:00Z"}
+{"event_id": "RH:M017", "case_id": "M017", "activity": "Reheating Started", "timestamp": "2026-03-18T04:00:00Z"}
+{"event_id": "OP:M017-RL", "case_id": "M017", "activity": "Rolling Completed", "timestamp": "2026-03-18T06:00:00Z"}
+{"event_id": "OP:M017-CO", "case_id": "M017", "activity": "Cooling Completed", "timestamp": "2026-03-18T07:00:00Z"}
+{"event_id": "OP:M017-LE", "case_id": "M017", "activity": "Leveling Completed", "timestamp": "2026-03-18T08:00:00Z"}
+{"event_id": "CS:M017", "case_id": "M017", "activity": "Crop Shear Passed", "timestamp": "2026-03-18T09:00:00Z"}
+{"event_id": "CI:CIM017", "case_id": "M017", "activity": "Cutting Instruction Released", "timestamp": "2026-03-18T10:00:00Z"}
+{"event_id": "OP:M017-SC", "case_id": "M017", "activity": "Split Cutting Completed", "timestamp": "2026-03-18T11:00:00Z"}
+{"event_id": "OP:P017-1-HT1", "case_id": "M017", "activity": "Heat Treatment Completed", "timestamp": "2026-03-18T12:00:00Z"}
+{"event_id": "OP:P017-1-IP", "case_id": "M017", "activity": "Inspection Passed", "timestamp": "2026-03-18T13:06:00Z"}
+{"event_id": "DIM:P017-1", "case_id": "M017", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-18T13:36:00Z"}
+{"event_id": "OP:P017-2-HT1", "case_id": "M017", "activity": "Heat Treatment Completed", "timestamp": "2026-03-18T12:00:00Z"}
+{"event_id": "OP:P017-2-IP", "case_id": "M017", "activity": "Inspection Passed", "timestamp": "2026-03-18T13:12:00Z"}
+{"event_id": "DIM:P017-2", "case_id": "M017", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-18T13:42:00Z"}
+{"event_id": "OP:P017-3-HT1", "case_id": "M017", "activity": "Heat Treatment Completed", "timestamp": "2026-03-18T12:00:00Z"}
+{"event_id": "OP:P017-3-IP", "case_id": "M017", "activity": "Inspection Passed", "timestamp": "2026-03-18T13:18:00Z"}
+{"event_id": "DIM:P017-3", "case_id": "M017", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-18T13:48:00Z"}
+{"event_id": "RI:RI018", "case_id": "M018", "activity": "Rolling Instruction Released", "timestamp": "2026-03-19T00:00:00Z"}
+{"event_id": "YD:TRM018", "case_id": "M018", "activity": "Yard Instruction Received", "timestamp": "2026-03-19T01:00:00Z"}
+{"event_id": "RH:M018", "case_id": "M018", "activity": "Reheating Started", "timestamp": "2026-03-19T04:00:00Z"}
+{"event_id": "OP:M018-RL", "case_id": "M018", "activity": "Rolling Completed", "timestamp": "2026-03-19T06:00:00Z"}
+{"event_id": "OP:M018-CO", "case_id": "M018", "activity": "Cooling Completed", "timestamp": "2026-03-19T07:00:00Z"}
+{"event_id": "OP:M018-LE", "case_id": "M018", "activity": "Leveling Completed", "timestamp": "2026-03-19T08:00:00Z"}
+{"event_id": "CS:M018", "case_id": "M018", "activity": "Crop Shear Passed", "timestamp": "2026-03-19T09:00:00Z"}
+{"event_id": "CI:CIM018", "case_id": "M018", "activity": "Cutting Instruction Released", "timestamp": "2026-03-19T10:00:00Z"}
+{"event_id": "OP:M018-SC", "case_id": "M018", "activity": "Split Cutting Completed", "timestamp": "2026-03-19T11:00:00Z"}
+{"event_id": "OP:P018-1-IF1", "case_id": "M018", "activity": "Inspection Failed", "timestamp": "2026-03-19T12:00:00Z"}
+{"event_id": "OP:P018-1-HT1", "case_id": "M018", "activity": "Heat Treatment Completed", "timestamp": "2026-03-19T14:00:00Z"}
+{"event_id": "OP:P018-1-IF2", "case_id": "M018", "activity": "Inspection Failed", "timestamp": "2026-03-19T15:00:00Z"}
+{"event_id": "OP:P018-1-HT2", "case_id": "M018", "activity": "Heat Treatment Completed", "timestamp": "2026-03-19T17:00:00Z"}
+{"event_id": "OP:P018-1-IP", "case_id": "M018", "activity": "Inspection Passed", "timestamp": "2026-03-19T18:00:00Z"}
+{"event_id": "DIM:P018-1", "case_id": "M018", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-19T18:30:00Z"}
+{"event_id": "OP:P018-2-IP", "case_id": "M018", "activity": "Inspection Passed", "timestamp": "2026-03-19T13:12:00Z"}
+{"event_id": "DIM:P018-2", "case_id": "M018", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-19T13:42:00Z"}
+{"event_id": "OP:P018-3-IP", "case_id": "M018", "activity": "Inspection Passed", "timestamp": "2026-03-19T13:18:00Z"}
+{"event_id": "DIM:P018-3", "case_id": "M018", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-19T13:48:00Z"}
+{"event_id": "RI:RI019", "case_id": "M019", "activity": "Rolling Instruction Released", "timestamp": "2026-03-20T00:00:00Z"}
+{"event_id": "RI:RI020", "case_id": "M020", "activity": "Rolling Instruction Released", "timestamp": "2026-03-21T00:00:00Z"}
+{"event_id": "YD:TRM020", "case_id": "M020", "activity": "Yard Instruction Received", "timestamp": "2026-03-21T01:00:00Z"}
+{"event_id": "RH:M020", "case_id": "M020", "activity": "Reheating Started", "timestamp": "2026-03-21T02:00:00Z"}
+{"event_id": "RI:RI021", "case_id": "M021", "activity": "Rolling Instruction Released", "timestamp": "2026-03-22T00:00:00Z"}
+{"event_id": "YD:TRM021", "case_id": "M021", "activity": "Yard Instruction Received", "timestamp": "2026-03-22T01:00:00Z"}
+{"event_id": "RH:M021", "case_id": "M021", "activity": "Reheating Started", "timestamp": "2026-03-22T02:00:00Z"}
+{"event_id": "OP:M021-RL", "case_id": "M021", "activity": "Rolling Completed", "timestamp": "2026-03-22T06:00:00Z"}
+{"event_id": "RI:RI022", "case_id": "M022", "activity": "Rolling Instruction Released", "timestamp": "2026-03-23T00:00:00Z"}
+{"event_id": "YD:TRM022", "case_id": "M022", "activity": "Yard Instruction Received", "timestamp": "2026-03-23T01:00:00Z"}
+{"event_id": "RH:M022", "case_id": "M022", "activity": "Reheating Started", "timestamp": "2026-03-23T04:00:00Z"}
+{"event_id": "OP:M022-RL", "case_id": "M022", "activity": "Rolling Completed", "timestamp": "2026-03-23T06:00:00Z"}
+{"event_id": "OP:M022-CO", "case_id": "M022", "activity": "Cooling Completed", "timestamp": "2026-03-23T07:00:00Z"}
+{"event_id": "OP:M022-LE", "case_id": "M022", "activity": "Leveling Completed", "timestamp": "2026-03-23T08:00:00Z"}
+{"event_id": "CS:M022", "case_id": "M022", "activity": "Crop Shear Passed", "timestamp": "2026-03-23T09:00:00Z"}
+{"event_id": "CI:CIM022", "case_id": "M022", "activity": "Cutting Instruction Released", "timestamp": "2026-03-23T10:00:00Z"}
+{"event_id": "OP:M022-SC", "case_id": "M022", "activity": "Split Cutting Completed", "timestamp": "2026-03-23T11:00:00Z"}
+{"event_id": "OP:P022-1-IP", "case_id": "M022", "activity": "Inspection Passed", "timestamp": "2026-03-23T13:06:00Z"}
+{"event_id": "DIM:P022-1", "case_id": "M022", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-23T13:36:00Z"}
+{"event_id": "RI:RI023", "case_id": "M023", "activity": "Rolling Instruction Released", "timestamp": "2026-03-24T00:00:00Z"}
+{"event_id": "YD:TRM023", "case_id": "M023", "activity": "Yard Instruction Received", "timestamp": "2026-03-24T01:00:00Z"}
+{"event_id": "RH:M023", "case_id": "M023", "activity": "Reheating Started", "timestamp": "2026-03-24T02:00:00Z"}
+{"event_id": "OP:M023-RL", "case_id": "M023", "activity": "Rolling Completed", "timestamp": "2026-03-24T06:00:00Z"}
+{"event_id": "OP:M023-CO", "case_id": "M023", "activity": "Cooling Completed", "timestamp": "2026-03-24T07:00:00Z"}
+{"event_id": "OP:M023-LE", "case_id": "M023", "activity": "Leveling Completed", "timestamp": "2026-03-24T08:00:00Z"}
+{"event_id": "CS:M023", "case_id": "M023", "activity": "Crop Shear Passed", "timestamp": "2026-03-24T09:00:00Z"}
+{"event_id": "CI:CIM023", "case_id": "M023", "activity": "Cutting Instruction Released", "timestamp": "2026-03-24T10:00:00Z"}
+{"event_id": "OP:M023-SC", "case_id": "M023", "activity": "Split Cutting Completed", "timestamp": "2026-03-24T11:00:00Z"}
+{"event_id": "OP:P023-1-HT1", "case_id": "M023", "activity": "Heat Treatment Completed", "timestamp": "2026-03-24T12:00:00Z"}
+{"event_id": "OP:P023-1-IP", "case_id": "M023", "activity": "Inspection Passed", "timestamp": "2026-03-24T13:06:00Z"}
+{"event_id": "DIM:P023-1", "case_id": "M023", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-24T13:36:00Z"}
+{"event_id": "OP:P023-2-HT1", "case_id": "M023", "activity": "Heat Treatment Completed", "timestamp": "2026-03-24T12:00:00Z"}
+{"event_id": "OP:P023-2-IP", "case_id": "M023", "activity": "Inspection Passed", "timestamp": "2026-03-24T13:12:00Z"}
+{"event_id": "DIM:P023-2", "case_id": "M023", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-24T13:42:00Z"}
+{"event_id": "RI:RI024", "case_id": "M024", "activity": "Rolling Instruction Released", "timestamp": "2026-03-25T00:00:00Z"}
+{"event_id": "YD:TRM024", "case_id": "M024", "activity": "Yard Instruction Received", "timestamp": "2026-03-25T01:00:00Z"}
+{"event_id": "RH:M024", "case_id": "M024", "activity": "Reheating Started", "timestamp": "2026-03-25T03:00:00Z"}
+{"event_id": "OP:M024-RL", "case_id": "M024", "activity": "Rolling Completed", "timestamp": "2026-03-25T06:00:00Z"}
+{"event_id": "OP:M024-CO", "case_id": "M024", "activity": "Cooling Completed", "timestamp": "2026-03-25T07:00:00Z"}
+{"event_id": "OP:M024-LE", "case_id": "M024", "activity": "Leveling Completed", "timestamp": "2026-03-25T08:00:00Z"}
+{"event_id": "CS:M024", "case_id": "M024", "activity": "Crop Shear Passed", "timestamp": "2026-03-25T09:00:00Z"}
+{"event_id": "CI:CIM024", "case_id": "M024", "activity": "Cutting Instruction Released", "timestamp": "2026-03-25T10:00:00Z"}
+{"event_id": "OP:M024-SC", "case_id": "M024", "activity": "Split Cutting Completed", "timestamp": "2026-03-25T11:00:00Z"}
+{"event_id": "OP:P024-1-IF1", "case_id": "M024", "activity": "Inspection Failed", "timestamp": "2026-03-25T12:00:00Z"}
+{"event_id": "OP:P024-1-HT1", "case_id": "M024", "activity": "Heat Treatment Completed", "timestamp": "2026-03-25T14:00:00Z"}
+{"event_id": "OP:P024-1-IF2", "case_id": "M024", "activity": "Inspection Failed", "timestamp": "2026-03-25T15:00:00Z"}
+{"event_id": "OP:P024-1-HT2", "case_id": "M024", "activity": "Heat Treatment Completed", "timestamp": "2026-03-25T17:00:00Z"}
+{"event_id": "OP:P024-1-IP", "case_id": "M024", "activity": "Inspection Passed", "timestamp": "2026-03-25T18:00:00Z"}
+{"event_id": "DIM:P024-1", "case_id": "M024", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-25T18:30:00Z"}
+{"event_id": "OP:P024-2-IP", "case_id": "M024", "activity": "Inspection Passed", "timestamp": "2026-03-25T13:12:00Z"}
+{"event_id": "DIM:P024-2", "case_id": "M024", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-25T13:42:00Z"}
+{"event_id": "OP:P024-3-IP", "case_id": "M024", "activity": "Inspection Passed", "timestamp": "2026-03-25T13:18:00Z"}
+{"event_id": "DIM:P024-3", "case_id": "M024", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-25T13:48:00Z"}
+{"event_id": "RI:RI025", "case_id": "M025", "activity": "Rolling Instruction Released", "timestamp": "2026-03-26T00:00:00Z"}
+{"event_id": "RI:RI026", "case_id": "M026", "activity": "Rolling Instruction Released", "timestamp": "2026-03-27T00:00:00Z"}
+{"event_id": "YD:TRM026", "case_id": "M026", "activity": "Yard Instruction Received", "timestamp": "2026-03-27T01:00:00Z"}
+{"event_id": "RH:M026", "case_id": "M026", "activity": "Reheating Started", "timestamp": "2026-03-27T02:00:00Z"}
+{"event_id": "RI:RI027", "case_id": "M027", "activity": "Rolling Instruction Released", "timestamp": "2026-03-28T00:00:00Z"}
+{"event_id": "YD:TRM027", "case_id": "M027", "activity": "Yard Instruction Received", "timestamp": "2026-03-28T01:00:00Z"}
+{"event_id": "RH:M027", "case_id": "M027", "activity": "Reheating Started", "timestamp": "2026-03-28T02:00:00Z"}
+{"event_id": "OP:M027-RL", "case_id": "M027", "activity": "Rolling Completed", "timestamp": "2026-03-28T06:00:00Z"}
+{"event_id": "RI:RI028", "case_id": "M028", "activity": "Rolling Instruction Released", "timestamp": "2026-03-29T00:00:00Z"}
+{"event_id": "YD:TRM028", "case_id": "M028", "activity": "Yard Instruction Received", "timestamp": "2026-03-29T01:00:00Z"}
+{"event_id": "RH:M028", "case_id": "M028", "activity": "Reheating Started", "timestamp": "2026-03-29T02:00:00Z"}
+{"event_id": "OP:M028-RL", "case_id": "M028", "activity": "Rolling Completed", "timestamp": "2026-03-29T06:00:00Z"}
+{"event_id": "OP:M028-CO", "case_id": "M028", "activity": "Cooling Completed", "timestamp": "2026-03-29T07:00:00Z"}
+{"event_id": "OP:M028-LE", "case_id": "M028", "activity": "Leveling Completed", "timestamp": "2026-03-29T08:00:00Z"}
+{"event_id": "CS:M028", "case_id": "M028", "activity": "Crop Shear Passed", "timestamp": "2026-03-29T09:00:00Z"}
+{"event_id": "CI:CIM028", "case_id": "M028", "activity": "Cutting Instruction Released", "timestamp": "2026-03-29T10:00:00Z"}
+{"event_id": "OP:M028-SC", "case_id": "M028", "activity": "Split Cutting Completed", "timestamp": "2026-03-29T11:00:00Z"}
+{"event_id": "OP:P028-1-IP", "case_id": "M028", "activity": "Inspection Passed", "timestamp": "2026-03-29T13:06:00Z"}
+{"event_id": "DIM:P028-1", "case_id": "M028", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-29T13:36:00Z"}
+{"event_id": "OP:P028-2-IP", "case_id": "M028", "activity": "Inspection Passed", "timestamp": "2026-03-29T13:12:00Z"}
+{"event_id": "DIM:P028-2", "case_id": "M028", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-29T13:42:00Z"}
+{"event_id": "OP:P028-3-IP", "case_id": "M028", "activity": "Inspection Passed", "timestamp": "2026-03-29T13:18:00Z"}
+{"event_id": "DIM:P028-3", "case_id": "M028", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-29T13:48:00Z"}
+{"event_id": "RI:RI029", "case_id": "M029", "activity": "Rolling Instruction Released", "timestamp": "2026-03-30T00:00:00Z"}
+{"event_id": "YD:TRM029", "case_id": "M029", "activity": "Yard Instruction Received", "timestamp": "2026-03-30T01:00:00Z"}
+{"event_id": "RH:M029", "case_id": "M029", "activity": "Reheating Started", "timestamp": "2026-03-30T04:00:00Z"}
+{"event_id": "OP:M029-RL", "case_id": "M029", "activity": "Rolling Completed", "timestamp": "2026-03-30T06:00:00Z"}
+{"event_id": "OP:M029-CO", "case_id": "M029", "activity": "Cooling Completed", "timestamp": "2026-03-30T07:00:00Z"}
+{"event_id": "OP:M029-LE", "case_id": "M029", "activity": "Leveling Completed", "timestamp": "2026-03-30T08:00:00Z"}
+{"event_id": "CS:M029", "case_id": "M029", "activity": "Crop Shear Passed", "timestamp": "2026-03-30T09:00:00Z"}
+{"event_id": "CI:CIM029", "case_id": "M029", "activity": "Cutting Instruction Released", "timestamp": "2026-03-30T10:00:00Z"}
+{"event_id": "OP:M029-SC", "case_id": "M029", "activity": "Split Cutting Completed", "timestamp": "2026-03-30T11:00:00Z"}
+{"event_id": "OP:P029-1-HT1", "case_id": "M029", "activity": "Heat Treatment Completed", "timestamp": "2026-03-30T12:00:00Z"}
+{"event_id": "OP:P029-1-IP", "case_id": "M029", "activity": "Inspection Passed", "timestamp": "2026-03-30T13:06:00Z"}
+{"event_id": "DIM:P029-1", "case_id": "M029", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-30T13:36:00Z"}
+{"event_id": "RI:RI030", "case_id": "M030", "activity": "Rolling Instruction Released", "timestamp": "2026-03-31T00:00:00Z"}
+{"event_id": "YD:TRM030", "case_id": "M030", "activity": "Yard Instruction Received", "timestamp": "2026-03-31T01:00:00Z"}
+{"event_id": "RH:M030", "case_id": "M030", "activity": "Reheating Started", "timestamp": "2026-03-31T02:00:00Z"}
+{"event_id": "OP:M030-RL", "case_id": "M030", "activity": "Rolling Completed", "timestamp": "2026-03-31T06:00:00Z"}
+{"event_id": "OP:M030-CO", "case_id": "M030", "activity": "Cooling Completed", "timestamp": "2026-03-31T07:00:00Z"}
+{"event_id": "OP:M030-LE", "case_id": "M030", "activity": "Leveling Completed", "timestamp": "2026-03-31T08:00:00Z"}
+{"event_id": "CS:M030", "case_id": "M030", "activity": "Crop Shear Passed", "timestamp": "2026-03-31T09:00:00Z"}
+{"event_id": "CI:CIM030", "case_id": "M030", "activity": "Cutting Instruction Released", "timestamp": "2026-03-31T10:00:00Z"}
+{"event_id": "OP:M030-SC", "case_id": "M030", "activity": "Split Cutting Completed", "timestamp": "2026-03-31T11:00:00Z"}
+{"event_id": "OP:P030-1-IF1", "case_id": "M030", "activity": "Inspection Failed", "timestamp": "2026-03-31T12:00:00Z"}
+{"event_id": "OP:P030-1-HT1", "case_id": "M030", "activity": "Heat Treatment Completed", "timestamp": "2026-03-31T14:00:00Z"}
+{"event_id": "OP:P030-1-IF2", "case_id": "M030", "activity": "Inspection Failed", "timestamp": "2026-03-31T15:00:00Z"}
+{"event_id": "OP:P030-1-HT2", "case_id": "M030", "activity": "Heat Treatment Completed", "timestamp": "2026-03-31T17:00:00Z"}
+{"event_id": "OP:P030-1-IP", "case_id": "M030", "activity": "Inspection Passed", "timestamp": "2026-03-31T18:00:00Z"}
+{"event_id": "DIM:P030-1", "case_id": "M030", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-31T18:30:00Z"}
+{"event_id": "OP:P030-2-IP", "case_id": "M030", "activity": "Inspection Passed", "timestamp": "2026-03-31T13:12:00Z"}
+{"event_id": "DIM:P030-2", "case_id": "M030", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-31T13:42:00Z"}
+{"event_id": "OP:P030-3-IP", "case_id": "M030", "activity": "Inspection Passed", "timestamp": "2026-03-31T13:18:00Z"}
+{"event_id": "DIM:P030-3", "case_id": "M030", "activity": "Dimensional Inspection Completed", "timestamp": "2026-03-31T13:48:00Z"}
+{"event_id": "RI:RI031", "case_id": "M031", "activity": "Rolling Instruction Released", "timestamp": "2026-04-01T00:00:00Z"}
+{"event_id": "RI:RI032", "case_id": "M032", "activity": "Rolling Instruction Released", "timestamp": "2026-04-02T00:00:00Z"}
+{"event_id": "YD:TRM032", "case_id": "M032", "activity": "Yard Instruction Received", "timestamp": "2026-04-02T01:00:00Z"}
+{"event_id": "RH:M032", "case_id": "M032", "activity": "Reheating Started", "timestamp": "2026-04-02T04:00:00Z"}
+{"event_id": "RI:RI033", "case_id": "M033", "activity": "Rolling Instruction Released", "timestamp": "2026-04-03T00:00:00Z"}
+{"event_id": "YD:TRM033", "case_id": "M033", "activity": "Yard Instruction Received", "timestamp": "2026-04-03T01:00:00Z"}
+{"event_id": "RH:M033", "case_id": "M033", "activity": "Reheating Started", "timestamp": "2026-04-03T04:00:00Z"}
+{"event_id": "OP:M033-RL", "case_id": "M033", "activity": "Rolling Completed", "timestamp": "2026-04-03T06:00:00Z"}
+{"event_id": "RI:RI034", "case_id": "M034", "activity": "Rolling Instruction Released", "timestamp": "2026-04-04T00:00:00Z"}
+{"event_id": "YD:TRM034", "case_id": "M034", "activity": "Yard Instruction Received", "timestamp": "2026-04-04T01:00:00Z"}
+{"event_id": "RH:M034", "case_id": "M034", "activity": "Reheating Started", "timestamp": "2026-04-04T03:00:00Z"}
+{"event_id": "OP:M034-RL", "case_id": "M034", "activity": "Rolling Completed", "timestamp": "2026-04-04T06:00:00Z"}
+{"event_id": "OP:M034-CO", "case_id": "M034", "activity": "Cooling Completed", "timestamp": "2026-04-04T07:00:00Z"}
+{"event_id": "OP:M034-LE", "case_id": "M034", "activity": "Leveling Completed", "timestamp": "2026-04-04T08:00:00Z"}
+{"event_id": "CS:M034", "case_id": "M034", "activity": "Crop Shear Passed", "timestamp": "2026-04-04T09:00:00Z"}
+{"event_id": "CI:CIM034", "case_id": "M034", "activity": "Cutting Instruction Released", "timestamp": "2026-04-04T10:00:00Z"}
+{"event_id": "OP:M034-SC", "case_id": "M034", "activity": "Split Cutting Completed", "timestamp": "2026-04-04T11:00:00Z"}
+{"event_id": "OP:P034-1-IP", "case_id": "M034", "activity": "Inspection Passed", "timestamp": "2026-04-04T13:06:00Z"}
+{"event_id": "DIM:P034-1", "case_id": "M034", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-04T13:36:00Z"}
+{"event_id": "OP:P034-2-IP", "case_id": "M034", "activity": "Inspection Passed", "timestamp": "2026-04-04T13:12:00Z"}
+{"event_id": "DIM:P034-2", "case_id": "M034", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-04T13:42:00Z"}
+{"event_id": "RI:RI035", "case_id": "M035", "activity": "Rolling Instruction Released", "timestamp": "2026-04-05T00:00:00Z"}
+{"event_id": "YD:TRM035", "case_id": "M035", "activity": "Yard Instruction Received", "timestamp": "2026-04-05T01:00:00Z"}
+{"event_id": "RH:M035", "case_id": "M035", "activity": "Reheating Started", "timestamp": "2026-04-05T03:00:00Z"}
+{"event_id": "OP:M035-RL", "case_id": "M035", "activity": "Rolling Completed", "timestamp": "2026-04-05T06:00:00Z"}
+{"event_id": "OP:M035-CO", "case_id": "M035", "activity": "Cooling Completed", "timestamp": "2026-04-05T07:00:00Z"}
+{"event_id": "OP:M035-LE", "case_id": "M035", "activity": "Leveling Completed", "timestamp": "2026-04-05T08:00:00Z"}
+{"event_id": "CS:M035", "case_id": "M035", "activity": "Crop Shear Passed", "timestamp": "2026-04-05T09:00:00Z"}
+{"event_id": "CI:CIM035", "case_id": "M035", "activity": "Cutting Instruction Released", "timestamp": "2026-04-05T10:00:00Z"}
+{"event_id": "OP:M035-SC", "case_id": "M035", "activity": "Split Cutting Completed", "timestamp": "2026-04-05T11:00:00Z"}
+{"event_id": "OP:P035-1-HT1", "case_id": "M035", "activity": "Heat Treatment Completed", "timestamp": "2026-04-05T12:00:00Z"}
+{"event_id": "OP:P035-1-IP", "case_id": "M035", "activity": "Inspection Passed", "timestamp": "2026-04-05T13:06:00Z"}
+{"event_id": "DIM:P035-1", "case_id": "M035", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-05T13:36:00Z"}
+{"event_id": "OP:P035-2-HT1", "case_id": "M035", "activity": "Heat Treatment Completed", "timestamp": "2026-04-05T12:00:00Z"}
+{"event_id": "OP:P035-2-IP", "case_id": "M035", "activity": "Inspection Passed", "timestamp": "2026-04-05T13:12:00Z"}
+{"event_id": "DIM:P035-2", "case_id": "M035", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-05T13:42:00Z"}
+{"event_id": "OP:P035-3-HT1", "case_id": "M035", "activity": "Heat Treatment Completed", "timestamp": "2026-04-05T12:00:00Z"}
+{"event_id": "OP:P035-3-IP", "case_id": "M035", "activity": "Inspection Passed", "timestamp": "2026-04-05T13:18:00Z"}
+{"event_id": "DIM:P035-3", "case_id": "M035", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-05T13:48:00Z"}
+{"event_id": "RI:RI036", "case_id": "M036", "activity": "Rolling Instruction Released", "timestamp": "2026-04-06T00:00:00Z"}
+{"event_id": "YD:TRM036", "case_id": "M036", "activity": "Yard Instruction Received", "timestamp": "2026-04-06T01:00:00Z"}
+{"event_id": "RH:M036", "case_id": "M036", "activity": "Reheating Started", "timestamp": "2026-04-06T03:00:00Z"}
+{"event_id": "OP:M036-RL", "case_id": "M036", "activity": "Rolling Completed", "timestamp": "2026-04-06T06:00:00Z"}
+{"event_id": "OP:M036-CO", "case_id": "M036", "activity": "Cooling Completed", "timestamp": "2026-04-06T07:00:00Z"}
+{"event_id": "OP:M036-LE", "case_id": "M036", "activity": "Leveling Completed", "timestamp": "2026-04-06T08:00:00Z"}
+{"event_id": "CS:M036", "case_id": "M036", "activity": "Crop Shear Passed", "timestamp": "2026-04-06T09:00:00Z"}
+{"event_id": "CI:CIM036", "case_id": "M036", "activity": "Cutting Instruction Released", "timestamp": "2026-04-06T10:00:00Z"}
+{"event_id": "OP:M036-SC", "case_id": "M036", "activity": "Split Cutting Completed", "timestamp": "2026-04-06T11:00:00Z"}
+{"event_id": "OP:P036-1-IF1", "case_id": "M036", "activity": "Inspection Failed", "timestamp": "2026-04-06T12:00:00Z"}
+{"event_id": "OP:P036-1-HT1", "case_id": "M036", "activity": "Heat Treatment Completed", "timestamp": "2026-04-06T14:00:00Z"}
+{"event_id": "OP:P036-1-IF2", "case_id": "M036", "activity": "Inspection Failed", "timestamp": "2026-04-06T15:00:00Z"}
+{"event_id": "OP:P036-1-HT2", "case_id": "M036", "activity": "Heat Treatment Completed", "timestamp": "2026-04-06T17:00:00Z"}
+{"event_id": "OP:P036-1-IP", "case_id": "M036", "activity": "Inspection Passed", "timestamp": "2026-04-06T18:00:00Z"}
+{"event_id": "DIM:P036-1", "case_id": "M036", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-06T18:30:00Z"}
+{"event_id": "OP:P036-2-IP", "case_id": "M036", "activity": "Inspection Passed", "timestamp": "2026-04-06T13:12:00Z"}
+{"event_id": "DIM:P036-2", "case_id": "M036", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-06T13:42:00Z"}
+{"event_id": "OP:P036-3-IP", "case_id": "M036", "activity": "Inspection Passed", "timestamp": "2026-04-06T13:18:00Z"}
+{"event_id": "DIM:P036-3", "case_id": "M036", "activity": "Dimensional Inspection Completed", "timestamp": "2026-04-06T13:48:00Z"}

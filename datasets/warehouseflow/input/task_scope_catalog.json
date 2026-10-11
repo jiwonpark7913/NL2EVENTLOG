@@ -1,0 +1,10 @@
+{
+  "case_concept": "Warehouse",
+  "activities": [
+    "Goods Received",
+    "Goods Dispatched"
+  ],
+  "default_scope": "The default warehouse view contains all recorded IN/OUT transactions for that warehouse.",
+  "case_population": "all warehouse rows",
+  "setting": "Catalog-assisted"
+}

@@ -1,0 +1,8 @@
+{"question_id": "V01", "text": "Extract Reheating Started, Rolling Completed and Crop Shear Passed for each as-rolled mother material.", "pair_of": null}
+{"question_id": "V02", "text": "For each mother material, show actual furnace entry, rolling completion and crop-shear passage.", "pair_of": "V01"}
+{"question_id": "V03", "text": "Extract Inspection Failed, Heat Treatment Completed and Inspection Passed for each mother material, including all its descendant Plate materials.", "pair_of": null}
+{"question_id": "V04", "text": "Trace every failed inspection, thermal treatment and passing inspection of pieces originating from each mother material.", "pair_of": "V03"}
+{"question_id": "V05", "text": "Extract the complete recorded manufacturing lifecycle for each as-rolled mother material, including its descendant Plate materials.", "pair_of": null}
+{"question_id": "V06", "text": "Build a mother-material log covering all recorded actual production steps and downstream operations on its cut pieces.", "pair_of": "V05"}
+{"question_id": "V07", "text": "Extract Cutting Instruction Released, Split Cutting Completed and Dimensional Inspection Completed for each mother material and its cut pieces.", "pair_of": null}
+{"question_id": "V08", "text": "Extract continuous-casting start and completion for each slab.", "pair_of": null}

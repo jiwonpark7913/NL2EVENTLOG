@@ -1,0 +1,91 @@
+{
+  "id": "67552f0a13602ec03b41a78e",
+  "question": "The business requirements for a warehouse management system are described as follows: a warehousing company manages multiple warehouses, each with a warehouse number, address, and capacity. There are multiple loaders and unloaders in the company, each with a number, name, and phone number. Each inbound and outbound task requires recording of warehouse number, loading and unloading worker information, goods name, quantity, and time. The system needs to support real-time monitoring and performance evaluation of warehouses and loading and unloading tasks.",
+  "answer": {
+    "Warehouse": {
+      "Attributes": [
+        "Warehouse number",
+        "Address",
+        "Capacity"
+      ],
+      "Primary key": [
+        "Warehouse number"
+      ],
+      "Foreign key": {}
+    },
+    "Goods": {
+      "Attributes": [
+        "Goods ID",
+        "Goods name"
+      ],
+      "Primary key": [
+        "Goods ID"
+      ],
+      "Foreign key": {}
+    },
+    "Loader": {
+      "Attributes": [
+        "Name",
+        "Phone",
+        "Loader ID"
+      ],
+      "Primary key": [
+        "Loader ID"
+      ],
+      "Foreign key": {}
+    },
+    "transaction record": {
+      "Attributes": [
+        "transaction ID",
+        "time",
+        "warehouse number",
+        "transaction type"
+      ],
+      "Primary key": [
+        "Transaction ID"
+      ],
+      "Foreign key": {
+        "Warehouse number": {
+          "Warehouse": "Warehouse number"
+        }
+      }
+    },
+    "good transaction record details": {
+      "Attributes": [
+        "goods ID",
+        "transaction ID",
+        "quantity"
+      ],
+      "Primary key": [
+        "goods ID",
+        "transaction ID"
+      ],
+      "Foreign key": {
+        "goods ID": {
+          "Goods": "goods ID"
+        },
+        "transaction ID": {
+          "transaction record": "transaction ID"
+        }
+      }
+    },
+    "stevedore-transaction record": {
+      "Attributes": [
+        "Loader ID",
+        "transaction ID"
+      ],
+      "Primary key": [
+        "Loader ID",
+        "transaction ID"
+      ],
+      "Foreign key": {
+        "Loader ID": {
+          "Loader": "Loader ID"
+        },
+        "transaction ID": {
+          "transaction record": "transaction ID"
+        }
+      }
+    }
+  }
+}

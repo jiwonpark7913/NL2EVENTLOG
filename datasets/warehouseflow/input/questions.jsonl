@@ -1,0 +1,7 @@
+{"question_id": "R01", "text": "Extract Goods Received events for each warehouse.", "pair_of": null}
+{"question_id": "R02", "text": "For every warehouse, show all recorded inbound goods-handling tasks.", "pair_of": "R01"}
+{"question_id": "R03", "text": "Extract Goods Dispatched events for each warehouse.", "pair_of": null}
+{"question_id": "R04", "text": "Build a warehouse-level timeline of recorded outbound goods-handling tasks.", "pair_of": "R03"}
+{"question_id": "R05", "text": "Extract all recorded inbound and outbound business events for each warehouse.", "pair_of": null}
+{"question_id": "R06", "text": "Show the complete recorded goods-movement history of every warehouse.", "pair_of": "R05"}
+{"question_id": "R07", "text": "Extract task start and completion events for each warehouse.", "pair_of": null}

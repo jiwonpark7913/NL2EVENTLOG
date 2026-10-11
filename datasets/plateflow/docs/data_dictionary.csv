@@ -1,0 +1,39 @@
+table,column,sql_type,required,key_relationship,definition
+slab_material,slab_id,TEXT,yes,PK,Synthetic slab identity
+slab_material,charge_id,TEXT,yes,,"Upstream charge identity, contextual attribute"
+planned_rolling_instruction,plan_id,TEXT,yes,PK,Plan identity
+planned_rolling_instruction,slab_id,TEXT,yes,FK → slab_material.slab_id,Planned input slab
+planned_rolling_instruction,planned_reheat_at,TEXT,yes,,Scheduled furnace charging time
+rolling_instruction,instruction_id,TEXT,yes,PK,Synthetic row identity
+rolling_instruction,plan_id,TEXT,yes,FK → planned_rolling_instruction.plan_id,Synthetic explicit link to plan
+rolling_instruction,released_at,TEXT,yes,,Actual instruction release time
+as_rolled_material,material_id,TEXT,yes,PK,Mother material identity
+as_rolled_material,as_rolled_plate_no,TEXT,yes,,Mother as-rolled plate number
+as_rolled_material,slab_id,TEXT,yes,FK → slab_material.slab_id,Source slab
+as_rolled_material,instruction_id,TEXT,yes,FK → rolling_instruction.instruction_id,Synthetic explicit link to released instruction
+as_rolled_material,furnace_charged_at,TEXT,no,,Actual furnace material charging
+as_rolled_material,crop_shear_passed_at,TEXT,no,,Actual crop-shear passage
+as_rolled_material,latest_operation_completed_at,TEXT,no,,"Snapshot of latest mother-material operation, not always rolling completion"
+as_rolled_material,created_at,TEXT,yes,,Technical database creation timestamp
+as_rolled_material,updated_at,TEXT,yes,,Technical database update timestamp
+furnace_charge_tracking,tracking_id,TEXT,yes,PK,Tracking occurrence ID
+furnace_charge_tracking,material_id,TEXT,yes,FK → as_rolled_material.material_id,Tracked material
+furnace_charge_tracking,yard_instruction_received_at,TEXT,yes,,Actual yard instruction receipt
+furnace_charge_tracking,lot_charging_started_at,TEXT,yes,,Furnace lot charging start; different event granularity from material entry
+cutting_finishing_instruction,instruction_id,TEXT,yes,PK,Synthetic instruction ID
+cutting_finishing_instruction,material_id,TEXT,yes,FK → as_rolled_material.material_id,Directed mother material
+cutting_finishing_instruction,released_at,TEXT,yes,,Actual cutting/finishing instruction release
+cutting_finishing_instruction,cut_method,TEXT,yes,,Synthetic split-cut method code
+plate_material,plate_material_id,TEXT,yes,PK,Finished-piece material identity
+plate_material,plate_no,TEXT,yes,,Individual Plate number
+plate_material,parent_as_rolled_plate_no,TEXT,yes,FK → as_rolled_material.as_rolled_plate_no,Mother as-rolled plate number; synthetic FK policy
+plate_material,dimension_inspected_at,TEXT,no,,Actual dimensional inspection timestamp
+plate_material,latest_operation_completed_at,TEXT,no,,Latest piece operation snapshot
+operation_code,code,TEXT,yes,PK,Synthetic process code
+operation_code,meaning,TEXT,yes,,English operation meaning
+material_operation_history,transaction_id,TEXT,yes,PK,Operation occurrence ID
+material_operation_history,material_id,TEXT,yes,,Mother or piece material identity; validated against both material tables
+material_operation_history,operation_code,TEXT,yes,FK → operation_code.code,Synthetic factory/process code
+material_operation_history,started_at,TEXT,yes,,Actual operation start time
+material_operation_history,completed_at,TEXT,yes,,Actual operation completion time
+material_operation_history,created_at,TEXT,yes,,Technical record insertion time

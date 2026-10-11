@@ -1,0 +1,11 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE slab_material (slab_id TEXT PRIMARY KEY, charge_id TEXT NOT NULL);
+CREATE TABLE planned_rolling_instruction (plan_id TEXT PRIMARY KEY, slab_id TEXT NOT NULL REFERENCES slab_material(slab_id), planned_reheat_at TEXT NOT NULL);
+CREATE TABLE rolling_instruction (instruction_id TEXT PRIMARY KEY, plan_id TEXT NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id), released_at TEXT NOT NULL);
+CREATE TABLE as_rolled_material (material_id TEXT PRIMARY KEY, as_rolled_plate_no TEXT NOT NULL UNIQUE, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), instruction_id TEXT NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id), furnace_charged_at TEXT , crop_shear_passed_at TEXT , latest_operation_completed_at TEXT , created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE furnace_charge_tracking (tracking_id TEXT PRIMARY KEY, material_id TEXT NOT NULL UNIQUE REFERENCES as_rolled_material(material_id), yard_instruction_received_at TEXT NOT NULL, lot_charging_started_at TEXT NOT NULL);
+CREATE TABLE cutting_finishing_instruction (instruction_id TEXT PRIMARY KEY, material_id TEXT NOT NULL UNIQUE REFERENCES as_rolled_material(material_id), released_at TEXT NOT NULL, cut_method TEXT NOT NULL CHECK(cut_method='SPLIT'));
+CREATE TABLE plate_material (plate_material_id TEXT PRIMARY KEY, plate_no TEXT NOT NULL UNIQUE, parent_as_rolled_plate_no TEXT NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no), dimension_inspected_at TEXT , latest_operation_completed_at TEXT );
+CREATE TABLE operation_code (code TEXT PRIMARY KEY, meaning TEXT NOT NULL UNIQUE);
+CREATE TABLE material_operation_history (transaction_id TEXT PRIMARY KEY, material_id TEXT NOT NULL, operation_code TEXT NOT NULL REFERENCES operation_code(code), started_at TEXT NOT NULL, completed_at TEXT NOT NULL CHECK(completed_at > started_at), created_at TEXT NOT NULL);
+CREATE TRIGGER validate_history_material BEFORE INSERT ON material_operation_history WHEN NOT EXISTS(SELECT 1 FROM as_rolled_material WHERE material_id=NEW.material_id) AND NOT EXISTS(SELECT 1 FROM plate_material WHERE plate_material_id=NEW.material_id) BEGIN SELECT RAISE(ABORT,'Unknown material'); END;

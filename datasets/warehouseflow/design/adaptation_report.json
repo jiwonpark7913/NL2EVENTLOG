@@ -1,0 +1,64 @@
+{
+  "source_record_id": "67552f0a13602ec03b41a78e",
+  "original_tables": 6,
+  "retained_tables": 6,
+  "original_attribute_count": 17,
+  "retained_attribute_count": 17,
+  "new_tables": 0,
+  "new_columns": 0,
+  "renamed_tables": {
+    "Warehouse": "warehouse",
+    "Goods": "goods",
+    "Loader": "loader",
+    "transaction record": "transaction_record",
+    "good transaction record details": "goods_transaction_detail",
+    "stevedore-transaction record": "loader_transaction"
+  },
+  "renamed_columns": {
+    "warehouse number": "warehouse_number",
+    "address": "address",
+    "capacity": "capacity",
+    "goods id": "goods_id",
+    "goods name": "goods_name",
+    "name": "name",
+    "phone": "phone",
+    "loader id": "loader_id",
+    "transaction id": "transaction_id",
+    "time": "occurred_at",
+    "transaction type": "transaction_type",
+    "quantity": "quantity"
+  },
+  "repairs": [
+    {
+      "table": "transaction record",
+      "issue": "Key label does not exactly match attribute spelling",
+      "label": "Transaction ID",
+      "repair": "Case-insensitive resolution to declared attribute"
+    },
+    {
+      "table": "transaction record",
+      "issue": "FK label casing mismatch",
+      "label": "Warehouse number",
+      "repair": "Case-insensitive normalization"
+    },
+    {
+      "table": "good transaction record details",
+      "issue": "Referenced attribute casing mismatch",
+      "label": "Goods.goods ID",
+      "repair": "Case-insensitive normalization"
+    }
+  ],
+  "additions": [
+    "SQLite types and CHECK constraints",
+    "UTC timestamp and task-completion convention",
+    "IN/OUT value-domain meanings",
+    "Stock and capacity simulation rules",
+    "Questions, case scope, Gold ES and logs"
+  ],
+  "not_claimed": [
+    "Original source SQL types or value-domain codes",
+    "Source-defined approval, purchase-order or shipment lifecycle",
+    "SchemaAgent code execution",
+    "ISO compliance"
+  ]
+}
