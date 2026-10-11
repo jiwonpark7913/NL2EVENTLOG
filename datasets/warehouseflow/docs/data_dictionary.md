@@ -1,6 +1,6 @@
 # WarehouseFlow · RSchema — table and column dictionary
 
-Generated from the executable SQLite schema and English metadata.
+- Generated from the executable SQLite schema and English metadata.
 
 | Table | Rows | Columns | Primary key | Role |
 |---|---:|---:|---|---|
@@ -15,7 +15,7 @@ Generated from the executable SQLite schema and English metadata.
 
 ### warehouse
 
-Warehouse master
+- Warehouse master
 
 | Column | Type | Required | Key / relationship | Definition |
 |---|---|---|---|---|
@@ -25,7 +25,7 @@ Warehouse master
 
 ### goods
 
-Goods master
+- Goods master
 
 | Column | Type | Required | Key / relationship | Definition |
 |---|---|---|---|---|
@@ -34,7 +34,7 @@ Goods master
 
 ### loader
 
-Loading/unloading worker master
+- Loading/unloading worker master
 
 | Column | Type | Required | Key / relationship | Definition |
 |---|---|---|---|---|
@@ -44,7 +44,7 @@ Loading/unloading worker master
 
 ### transaction_record
 
-Inbound/outbound task header, one business occurrence per row
+- Inbound/outbound task header, one business occurrence per row
 
 | Column | Type | Required | Key / relationship | Definition |
 |---|---|---|---|---|
@@ -55,7 +55,7 @@ Inbound/outbound task header, one business occurrence per row
 
 ### goods_transaction_detail
 
-Goods lines per transaction; composite key prevents repeated goods within one task
+- Goods lines per transaction; composite key prevents repeated goods within one task
 
 | Column | Type | Required | Key / relationship | Definition |
 |---|---|---|---|---|
@@ -65,7 +65,7 @@ Goods lines per transaction; composite key prevents repeated goods within one ta
 
 ### loader_transaction
 
-Worker assignment bridge; multiple workers may share one task
+- Worker assignment bridge; multiple workers may share one task
 
 | Column | Type | Required | Key / relationship | Definition |
 |---|---|---|---|---|

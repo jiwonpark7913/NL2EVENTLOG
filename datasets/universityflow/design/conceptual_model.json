@@ -1,0 +1,13 @@
+{
+  "entities": [
+    "Student",
+    "Course",
+    "Registration",
+    "Degree Examination Result"
+  ],
+  "relations": [
+    "Student 1:N Degree Examination Result",
+    "Student M:N Course through Registration"
+  ],
+  "status": "Derived locally from the original RSchema logical schema"
+}

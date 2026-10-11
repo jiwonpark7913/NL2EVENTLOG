@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT 'REG:' || student_id || ':' || course_id event_id, student_id case_id, 'Course Registered' activity, registration_time timestamp FROM registration) ORDER BY case_id,timestamp,event_id;

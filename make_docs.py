@@ -2,6 +2,7 @@
 from pathlib import Path
 import sqlite3,json,html,xml.etree.ElementTree as ET
 import fitz
+from readability import format_documents
 ROOT=Path(__file__).resolve().parent
 def esc(s):return html.escape(str(s))
 def build(name,positions,title):
@@ -83,15 +84,18 @@ def build(name,positions,title):
   node=ET.SubElement(root,"mxCell",id=n,value="<b>"+n+"</b><br>"+"<br>".join(labels),style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#ffffff;strokeColor=#193b63;fontSize=14;",vertex="1",parent="1")
   ET.SubElement(node,"mxGeometry",x=str(x),y=str(y),width=str(bw),height=str(bh),attrib={"as":"geometry"})
  svg.extend(edge_svg)
- svg.append('<text x="45" y="1170" font-family="sans-serif" font-size="16" fill="#53647c">Editable relationships and cardinality labels: schema.drawio. Exact FK endpoints: data_dictionary.md.</text></svg>')
+ svg.append('<text x="45" y="1170" font-family="sans-serif" font-size="16" fill="#53647c">Editable relationships and relationship-count labels: schema.drawio. Exact FK endpoints: data_dictionary.md.</text></svg>')
  (out/"schema.svg").write_text("".join(svg));ET.ElementTree(mx).write(out/"schema.drawio",encoding="utf-8",xml_declaration=True)
  doc=fitz.open(stream=(out/"schema.svg").read_bytes(),filetype="svg");pix=doc[0].get_pixmap(matrix=fitz.Matrix(1,1));pix.save(out/"schema.png")
  overview="# "+title+" — Schema overview\n\n![Entity relationship diagram](schema.png)\n\n[Editable draw.io diagram](schema.drawio) · [SVG](schema.svg) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)\n\n"
  overview+=docs.split("## Columns")[0].split("Generated from the executable SQLite schema and English metadata.\n\n")[1]
- overview+="\n## Relationships\n\n| Parent | Child | Child FK | Parent key | Parent-to-child cardinality | Kind |\n|---|---|---|---|---|---|\n"
+ overview+="\n## Relationships\n\n| Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |\n|---|---|---|---|---|---|\n"
  for r in relationships:overview+="| "+r["parent"]+" | "+r["child"]+" | "+r["from_col"]+" | "+r["to_col"]+" | "+r["label"]+" | "+("logical" if r["logical"] else "declared")+" |\n"
  (out/"schema_overview.md").write_text(overview)
  readme=p/"README.md";s=readme.read_text().split("\n## Schema and documentation")[0];s+="\n## Schema and documentation\n\n![Schema](docs/schema.png)\n\n- [Table inventory and relationships](docs/schema_overview.md)\n- [English column dictionary](docs/data_dictionary.md)\n- [CSV dictionary](docs/data_dictionary.csv)\n- [Editable draw.io diagram](docs/schema.drawio)\n- [SVG diagram](docs/schema.svg)\n";readme.write_text(s)
  con.close()
 build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130),"transaction_record":(575,480),"goods_transaction_detail":(65,830),"loader_transaction":(1085,830)},"WarehouseFlow · RSchema")
-build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow v2 · POSCO-informed")
+build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
+
+build("universityflow",{"student":(65,130),"course":(1085,130),"degree_examination_result":(65,480),"registration":(1085,480)},"UniversityFlow · RSchema")
+format_documents(ROOT)

@@ -1,10 +1,10 @@
-# PlateFlow v2 English Data Dictionary
+# PlateFlow English Data Dictionary
 
-Schema-informed synthetic subset; custom metadata profile.
+- Schema-informed synthetic subset; custom metadata profile.
 
 ## slab_material
 
-Slab material and charge genealogy; no upstream operation timestamps in this subset
+- Slab material and charge genealogy; no upstream operation timestamps in this subset
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -13,7 +13,7 @@ Slab material and charge genealogy; no upstream operation timestamps in this sub
 
 ## planned_rolling_instruction
 
-Scheduled rolling instruction; plan times do not prove execution
+- Scheduled rolling instruction; plan times do not prove execution
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -23,7 +23,7 @@ Scheduled rolling instruction; plan times do not prove execution
 
 ## rolling_instruction
 
-Released rolling work instruction, separate from planning
+- Released rolling work instruction, separate from planning
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -33,7 +33,7 @@ Released rolling work instruction, separate from planning
 
 ## as_rolled_material
 
-As-rolled mother material with milestone columns and latest-operation snapshot
+- As-rolled mother material with milestone columns and latest-operation snapshot
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -49,7 +49,7 @@ As-rolled mother material with milestone columns and latest-operation snapshot
 
 ## furnace_charge_tracking
 
-Furnace charge tracking record separated from material lifecycle snapshot
+- Furnace charge tracking record separated from material lifecycle snapshot
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -60,7 +60,7 @@ Furnace charge tracking record separated from material lifecycle snapshot
 
 ## cutting_finishing_instruction
 
-Cutting/finishing work instruction for mother material
+- Cutting/finishing work instruction for mother material
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -71,7 +71,7 @@ Cutting/finishing work instruction for mother material
 
 ## plate_material
 
-Individual cut Plate material, distinct from mother as-rolled material
+- Individual cut Plate material, distinct from mother as-rolled material
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -83,7 +83,7 @@ Individual cut Plate material, distinct from mother as-rolled material
 
 ## operation_code
 
-Synthetic operation code domain; codes are newly authored
+- Synthetic operation process-code meanings; codes are newly authored
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -92,7 +92,7 @@ Synthetic operation code domain; codes are newly authored
 
 ## material_operation_history
 
-Immutable operation history for mother and piece material identities
+- Immutable operation history for mother and piece material identities
 
 | Column | Type | Constraints | Definition |
 |---|---|---|---|
@@ -103,7 +103,7 @@ Immutable operation history for mother and piece material identities
 | completed_at | TEXT | NOT NULL CHECK(completed_at > started_at) | Actual operation completion time |
 | created_at | TEXT | NOT NULL | Technical record insertion time |
 
-## Synthetic code domain
+## Synthetic process-code meanings
 
 - RL: Rolling Completed
 - CO: Cooling Completed
@@ -116,12 +116,12 @@ Immutable operation history for mother and piece material identities
 ## Business rules
 
 - Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.
-- One slab supplies one mother material in this fixture. A completed mother material yields one to three individual Plate materials.
+- One slab supplies one mother material in this dataset. A completed mother material yields one to three individual Plate materials.
 - Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.
-- Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this fixture.
+- Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this dataset.
 - Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.
 - Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.
 - Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.
-- Factory codes and cardinalities are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.
-- A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number resolves lineage.
+- Factory codes and relationship counts are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.
+- A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number identifies the mother-to-piece relationship.
 - No upstream casting or shipping timestamps are recorded.

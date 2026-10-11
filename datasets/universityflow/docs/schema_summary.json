@@ -1,0 +1,60 @@
+{
+  "table_count": 4,
+  "tables": {
+    "student": {
+      "row_count": 40,
+      "column_count": 6,
+      "primary_key": [
+        "student_id"
+      ]
+    },
+    "course": {
+      "row_count": 6,
+      "column_count": 6,
+      "primary_key": [
+        "course_id"
+      ]
+    },
+    "registration": {
+      "row_count": 47,
+      "column_count": 4,
+      "primary_key": [
+        "student_id",
+        "course_id"
+      ]
+    },
+    "degree_examination_result": {
+      "row_count": 40,
+      "column_count": 5,
+      "primary_key": [
+        "result_id"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "parent": "course",
+      "child": "registration",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "course_id",
+      "to_col": "course_id"
+    },
+    {
+      "parent": "student",
+      "child": "registration",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    },
+    {
+      "parent": "student",
+      "child": "degree_examination_result",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    }
+  ]
+}

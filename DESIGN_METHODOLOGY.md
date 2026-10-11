@@ -1,66 +1,68 @@
-# Database design and benchmark construction
+# How the datasets are constructed
 
-## Design stages
+## Database design stages
 
-The supplied SchemaAgent related-work passage distinguishes conceptual modeling
-from logical relational mapping. We use this staged separation as documentation
-and validation structure. We do not claim to implement LIDA, APSARA, CABSYDD,
-OMDDE, HBT, Textodata, or any of the cited algorithms.
+- SchemaAgent Section 2.1 distinguishes conceptual modeling from the design of relational tables.
+- We use these design stages to document our decisions and validation checks.
+- We do not implement the related-work algorithms listed in that section.
 
-| Stage | Decision | Artifact |
+| Stage | Main decision | Files |
 |---|---|---|
-| Requirements analysis | Business entities, recorded operations and scope | requirements.md, preserved source requirement |
-| Conceptual modeling | Entity roles, relationships, event granularity and lineage | conceptual_model.json |
-| Logical modeling | Tables, attributes, PK/FK and cardinality | logical_schema.json |
-| Physical design | SQLite types, nullability, checks and execution constraints | schema.sql |
-| Metadata documentation | English definitions, code domains and business rules | data_dictionary.json/md and docs/ |
-| Process simulation | Branches, business consistency and stable occurrence identities | canonical_history.jsonl |
-| Persistence | Store history using the designed relational structures | database.sqlite |
-| Benchmark derivation | Query scope, Gold Process View/ES and canonical log selection | questions and private gold artifacts |
-| Validation | Compile ES, execute SQL, compare with independently selected canonical logs | validation_report.json |
+| Requirements | Which entities and actions the system needs to record | requirements.md and original source requirement |
+| Conceptual model | Entity roles, relationships and what counts as one event | conceptual_model.json |
+| Relational schema | Tables, columns, primary keys and foreign keys | logical_schema.json |
+| Executable schema | SQLite types, required values and constraints | schema.sql |
+| Data definitions | English meanings of columns, codes and business rules | data_dictionary.json/md and docs/ |
+| Simulation | Generate consistent business actions with stable event IDs | canonical_history.jsonl |
+| Database generation | Write the simulated information into relational tables | database.sqlite |
+| Expected answers | Select the requested events and define their extraction rules | questions and private/ |
+| Validation | Execute extraction SQL and compare with expected logs | validation_report.json |
 
-The actual source availability determines the authoring order. WarehouseFlow
-starts from an existing requirement/logical-schema pair and derives its
-conceptual model for documentation; it does not claim the original conceptual
-diagram was supplied. PlateFlow starts from physical metadata descriptions,
-infers a scoped conceptual design and authors explicit logical/physical
-constraints. Neither fixture invents source artifacts that were not available.
+## What is reused and what is added
+
+- WarehouseFlow and UniversityFlow each start from an actual RSchema requirement and logical schema.
+- Both retain every original table, column, primary key and foreign-key relationship in the selected record.
+- Their conceptual models are documented locally; upstream conceptual diagrams are not assumed to exist.
+- PlateFlow starts from selected table and column definitions supplied by a Korean manufacturing company.
+- Those manufacturing definitions do not declare SQL types, primary keys, foreign keys, process-code meanings or relationship counts.
+- PlateFlow therefore specifies those details as simulation assumptions.
+- All datasets document added timestamp meanings, data types, checks, code meanings and process rules.
+- No ISO compliance claim is made.
 
 ## WarehouseFlow
 
-Retain all six source tables, all 17 attributes and all PK/FK relationships.
-Normalize casing inconsistencies and identifiers. Add no tables or columns.
-Warehouse and transaction identities have different roles: warehouse is the
-chosen case concept; a transaction is one inbound/outbound occurrence.
-Goods and worker bridges enrich each transaction and are not separate events.
-In this instance their naive cross-join expansion yields 289 rows for 80
-business events; the gold extraction preserves the 80 header occurrences.
+- Six original tables and 17 columns are retained.
+- Warehouses define cases; receiving and dispatching tasks define events.
+- Goods details and worker assignments describe a task and are not additional events.
+- Joining both detail tables produces 289 rows for 80 tasks in this example.
+- Expected extraction keeps one event per task.
+
+## UniversityFlow
+
+- Four original tables, 21 columns and three foreign-key relationships are retained.
+- Students define cases; examinations and course registrations define events.
+- Examination results use unique result IDs so retakes remain separate records.
+- Registrations use the original student-course composite key, which retains one registration per pair.
+- Students with no events remain in the case population.
+- Notification and withdrawal questions are unsupported because their event times are absent.
+- UTC times and a passing score of 60 are documented simulation assumptions.
 
 ## PlateFlow
 
-Retain separation of planned instructions, released instructions, furnace
-tracking, mother materials, cutting/finishing instructions, individual Plate
-materials and immutable operation history. Add a synthetic code-domain table.
-Use distinct mother/piece identity sets and a one-to-many lineage.
-The mother-case scope includes descendant-piece events once, without multiplying
-mother events by its number of pieces. Latest-operation snapshot timestamps
-do not substitute for rolling-completion occurrences in history.
+- Planned instructions, released instructions, furnace tracking, mother materials, cutting instructions, cut pieces and operation history remain separate records.
+- A new process-code table explains the synthetic operation codes.
+- Each mother material can produce several cut pieces.
+- A mother's timeline includes its own events and the events of its cut pieces, each once.
+- Joining every mother event to every cut piece would duplicate the mother events.
+- Rolling completion comes from the rolling-operation history, not from the material's latest-operation time.
 
-## Explicit adaptations
+## What validation establishes
 
-Source metadata is not sufficient to determine every physical and process
-constraint. English definitions describe synthetic assumptions openly:
-code meanings, timestamp conventions, data types, checks, cardinalities and
-simulation routes are additions. No ISO conformity is claimed.
-Source mappings and adaptation reports permit inspection of each boundary.
-
-## Evaluation interpretation
-
-These datasets provide task catalogs with business labels and a fixed default
-scope. Report results as catalog-assisted extraction. Canonical history and
-Gold ES use different transformation paths but share authored semantics.
-Gold SQL consistency is not model accuracy, gold annotation independence,
-or held-out generalization. Question paraphrases are paired tests.
-Unsupported questions are distinguished from empty observations.
-The ES contracts are fixture-local and still require adaptation to the
-existing NL2EventLog implementation.
+- Each answerable question has an expected log selected from simulated business history.
+- A separate extraction path uses the expected specification to generate and execute SQL.
+- Both paths share authored business assumptions; their agreement establishes internal consistency.
+- It does not establish independently verified real-world correctness, model accuracy or performance on unseen databases.
+- Paraphrase pairs test different wording for the same requested process scope.
+- An unsupported question is different from a valid question with no observed events.
+- Evaluation inputs include a task scope catalog containing business labels and the default scope rule.
+- Extraction specifications currently use dataset-specific formats; integration with the existing NL2EventLog implementation remains to be tested.

@@ -72,11 +72,11 @@
     "history_start_before_completion": "pass"
   },
   "limitations": [
-    "Selected English schema-informed subset, not complete POSCO schema.",
-    "Original CSV supplies names/descriptions only; types, keys, code domain and cardinalities are authored.",
+    "Selected English schema-informed subset, not complete Korean manufacturer schema.",
+    "Original CSV supplies names/descriptions only; types, keys, process-code meanings and relationship counts are authored.",
     "No real production rows or fitted process distributions.",
     "Classic mother-case log, not OCEL.",
-    "Fixture-local ES; existing NL2EventLog compatibility untested.",
+    "Dataset-specific ES; existing NL2EventLog compatibility untested.",
     "No extraction-model accuracy measured."
   ]
 }

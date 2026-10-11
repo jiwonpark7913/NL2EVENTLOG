@@ -2,7 +2,7 @@
 
 ## warehouse
 
-Warehouse master
+- Warehouse master
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -10,22 +10,22 @@ Warehouse master
 | address | TEXT | Warehouse postal address |
 | capacity | INTEGER | Maximum total stock units; synthetic unit convention |
 
-Primary key: warehouse_number.
+- Primary key: warehouse_number.
 
 ## goods
 
-Goods master
+- Goods master
 
 | Column | Type | Meaning |
 |---|---|---|
 | goods_id | TEXT | Goods identity |
 | goods_name | TEXT | Goods business name |
 
-Primary key: goods_id.
+- Primary key: goods_id.
 
 ## loader
 
-Loading/unloading worker master
+- Loading/unloading worker master
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -33,11 +33,11 @@ Loading/unloading worker master
 | phone | TEXT | Worker contact phone |
 | loader_id | TEXT | Worker identity |
 
-Primary key: loader_id.
+- Primary key: loader_id.
 
 ## transaction_record
 
-Inbound/outbound task header, one business occurrence per row
+- Inbound/outbound task header, one business occurrence per row
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -46,13 +46,13 @@ Inbound/outbound task header, one business occurrence per row
 | warehouse_number | TEXT | Warehouse identity |
 | transaction_type | TEXT | IN = Goods Received; OUT = Goods Dispatched |
 
-Primary key: transaction_id.
+- Primary key: transaction_id.
 
-Foreign key: warehouse_number → warehouse.warehouse_number.
+- Foreign key: warehouse_number → warehouse.warehouse_number.
 
 ## goods_transaction_detail
 
-Goods lines per transaction; composite key prevents repeated goods within one task
+- Goods lines per transaction; composite key prevents repeated goods within one task
 
 | Column | Type | Meaning |
 |---|---|---|
@@ -60,30 +60,30 @@ Goods lines per transaction; composite key prevents repeated goods within one ta
 | transaction_id | TEXT | Inbound/outbound transaction identity |
 | quantity | INTEGER | Positive number of units of this goods type moved by the transaction |
 
-Primary key: goods_id, transaction_id.
+- Primary key: goods_id, transaction_id.
 
-Foreign key: goods_id → goods.goods_id.
+- Foreign key: goods_id → goods.goods_id.
 
-Foreign key: transaction_id → transaction_record.transaction_id.
+- Foreign key: transaction_id → transaction_record.transaction_id.
 
 ## loader_transaction
 
-Worker assignment bridge; multiple workers may share one task
+- Worker assignment bridge; multiple workers may share one task
 
 | Column | Type | Meaning |
 |---|---|---|
 | loader_id | TEXT | Worker identity |
 | transaction_id | TEXT | Inbound/outbound transaction identity |
 
-Primary key: loader_id, transaction_id.
+- Primary key: loader_id, transaction_id.
 
-Foreign key: loader_id → loader.loader_id.
+- Foreign key: loader_id → loader.loader_id.
 
-Foreign key: transaction_id → transaction_record.transaction_id.
+- Foreign key: transaction_id → transaction_record.transaction_id.
 
 ## Code domain
 
-IN = Goods Received; OUT = Goods Dispatched.
+- IN = Goods Received; OUT = Goods Dispatched.
 
 ## Business rules
 

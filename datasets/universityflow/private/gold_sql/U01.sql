@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT 'EX:' || result_id event_id, student_id case_id, 'Degree Examination Taken' activity, examination_date timestamp FROM degree_examination_result) ORDER BY case_id,timestamp,event_id;

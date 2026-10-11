@@ -1,0 +1,8 @@
+{"question_id": "U01", "text": "Extract Degree Examination Taken events for each student.", "pair_of": null}
+{"question_id": "U02", "text": "Show when each student sat their degree examinations, including retakes.", "pair_of": "U01"}
+{"question_id": "U03", "text": "Extract Course Registered events for each student.", "pair_of": null}
+{"question_id": "U04", "text": "Build a student-level timeline of successful course sign-ups.", "pair_of": "U03"}
+{"question_id": "U05", "text": "Extract all recorded examination and course-registration events for each student.", "pair_of": null}
+{"question_id": "U06", "text": "Show every recorded step from sitting examinations to signing up for classes for each student.", "pair_of": "U05"}
+{"question_id": "U07", "text": "Extract registration-success notification events for each student.", "pair_of": null}
+{"question_id": "U08", "text": "Extract course-withdrawal events for each student.", "pair_of": null}

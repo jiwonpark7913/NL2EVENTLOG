@@ -1,0 +1,82 @@
+{
+  "seed": 20261015,
+  "source_record_id": "67552f0b13602ec03b41aaec",
+  "original_tables_retained": "4/4",
+  "original_attributes_retained": "21/21",
+  "original_fk_relationships_retained": "3/3",
+  "students": 40,
+  "events": 87,
+  "activity_counts": {
+    "Degree Examination Taken": 40,
+    "Course Registered": 47
+  },
+  "table_rows": {
+    "student": 40,
+    "course": 6,
+    "registration": 47,
+    "degree_examination_result": 40
+  },
+  "scenario_counts": {
+    "failed": 10,
+    "retake_pass": 10,
+    "passed": 10,
+    "no_exam": 10
+  },
+  "students_without_events": 10,
+  "naive_exam_registration_join_rows": 70,
+  "questions": [
+    {
+      "question_id": "U01",
+      "status": "pass",
+      "event_count": 40
+    },
+    {
+      "question_id": "U02",
+      "status": "pass",
+      "event_count": 40
+    },
+    {
+      "question_id": "U03",
+      "status": "pass",
+      "event_count": 47
+    },
+    {
+      "question_id": "U04",
+      "status": "pass",
+      "event_count": 47
+    },
+    {
+      "question_id": "U05",
+      "status": "pass",
+      "event_count": 87
+    },
+    {
+      "question_id": "U06",
+      "status": "pass",
+      "event_count": 87
+    },
+    {
+      "question_id": "U07",
+      "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "U08",
+      "status": "unsupported_by_design"
+    }
+  ],
+  "checks": {
+    "gold_sql_exact_equality": "pass",
+    "foreign_keys": "pass",
+    "sqlite_integrity": "pass",
+    "source_pk_fk_structure": "pass",
+    "registration_eligibility_and_time": "pass",
+    "event_id_uniqueness": "pass"
+  },
+  "limitations": [
+    "UTC timestamp meanings and eligibility rules are authored assumptions.",
+    "No notification, withdrawal or result-publication event times.",
+    "Student timelines do not infer causality between arbitrary exams and registrations.",
+    "Dataset-specific extraction specification; existing NL2EventLog compatibility untested.",
+    "No model accuracy or generalization result."
+  ]
+}

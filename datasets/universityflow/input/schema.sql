@@ -1,0 +1,5 @@
+PRAGMA foreign_keys=ON;
+CREATE TABLE student (student_id TEXT NOT NULL, name TEXT NOT NULL, date_of_birth TEXT NOT NULL, phone_number TEXT NOT NULL, home_address TEXT NOT NULL, registration_eligibility TEXT NOT NULL CHECK(registration_eligibility IN ('ELIGIBLE','INELIGIBLE')), PRIMARY KEY (student_id));
+CREATE TABLE course (course_id TEXT NOT NULL, course_name TEXT NOT NULL, credits INTEGER NOT NULL CHECK(credits > 0), instructor TEXT NOT NULL, class_time TEXT NOT NULL, class_location TEXT NOT NULL, PRIMARY KEY (course_id));
+CREATE TABLE registration (student_id TEXT NOT NULL, course_id TEXT NOT NULL, registration_time TEXT NOT NULL, status TEXT NOT NULL CHECK(status='REGISTERED'), PRIMARY KEY (student_id,course_id), FOREIGN KEY (student_id) REFERENCES student(student_id), FOREIGN KEY (course_id) REFERENCES course(course_id));
+CREATE TABLE degree_examination_result (result_id TEXT NOT NULL, student_id TEXT NOT NULL, examination_name TEXT NOT NULL, grade INTEGER NOT NULL CHECK(grade BETWEEN 0 AND 100), examination_date TEXT NOT NULL, PRIMARY KEY (result_id), FOREIGN KEY (student_id) REFERENCES student(student_id));

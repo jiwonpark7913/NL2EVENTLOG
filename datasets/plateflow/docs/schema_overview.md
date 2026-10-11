@@ -1,8 +1,8 @@
-# PlateFlow v2 · POSCO-informed — Schema overview
+# PlateFlow · Korean manufacturer — Schema overview
 
 ![Entity relationship diagram](schema.png)
 
-[Editable draw.io diagram](schema.drawio) · [SVG](schema.svg) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
+- [Editable draw.io diagram](schema.drawio) · [SVG](schema.svg) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
 
 | Table | Rows | Columns | Primary key | Role |
 |---|---:|---:|---|---|
@@ -13,13 +13,13 @@
 | furnace_charge_tracking | 30 | 4 | tracking_id | Furnace charge tracking record separated from material lifecycle snapshot |
 | cutting_finishing_instruction | 18 | 4 | instruction_id | Cutting/finishing work instruction for mother material |
 | plate_material | 39 | 5 | plate_material_id | Individual cut Plate material, distinct from mother as-rolled material |
-| operation_code | 7 | 2 | code | Synthetic operation code domain; codes are newly authored |
+| operation_code | 7 | 2 | code | Synthetic operation process-code meanings; codes are newly authored |
 | material_operation_history | 153 | 6 | transaction_id | Immutable operation history for mother and piece material identities |
 
 
 ## Relationships
 
-| Parent | Child | Child FK | Parent key | Parent-to-child cardinality | Kind |
+| Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |
 |---|---|---|---|---|---|
 | slab_material | planned_rolling_instruction | slab_id | slab_id | 1 : 0..N | declared |
 | planned_rolling_instruction | rolling_instruction | plan_id | plan_id | 1 : 0..1 | declared |

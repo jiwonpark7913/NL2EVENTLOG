@@ -1,11 +1,14 @@
-"""English, schema-informed PlateFlow v2. Python 3.10+, standard library."""
+"""English, schema-informed PlateFlow. Python 3.10+, standard library."""
 import json,csv,sqlite3,random
 from pathlib import Path
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
+from readability import bullet_prose
 from datetime import datetime,timedelta,timezone
 from collections import Counter
 P=Path(__file__).resolve().parent
 def write(n,s):
- p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(s,encoding="utf-8")
+ p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(bullet_prose(s) if p.suffix=='.md' else s,encoding="utf-8")
 def js(n,o):write(n,json.dumps(o,indent=2)+"\n")
 def jl(n,o):write(n,"".join(json.dumps(r)+"\n" for r in o))
 def c(n,ty,co,d,orig=None):return dict(name=n,type=ty,constraints=co,definition=d,source_column=orig)
@@ -48,7 +51,7 @@ table("plate_material","TB_M2LM01_E_MTRL020","Individual cut Plate material, dis
  c("parent_as_rolled_plate_no","TEXT","NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no)","Mother as-rolled plate number; synthetic FK policy","AS_ROLLED_PLATE_NO"),
  c("dimension_inspected_at","TEXT","","Actual dimensional inspection timestamp","SIZE_INSP_DATE"),
  c("latest_operation_completed_at","TEXT","","Latest piece operation snapshot","PLT_AC_OP_END_OP_DT")])
-table("operation_code",None,"Synthetic operation code domain; codes are newly authored",[
+table("operation_code",None,"Synthetic operation process-code meanings; codes are newly authored",[
  c("code","TEXT","PRIMARY KEY","Synthetic process code"),
  c("meaning","TEXT","NOT NULL UNIQUE","English operation meaning")])
 table("material_operation_history","TB_M2LM01_T_OPERHIST","Immutable operation history for mother and piece material identities",[
@@ -81,27 +84,27 @@ def main():
  write("input/schema.sql",ddl+"\n")
  rules=[
  "Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.",
- "One slab supplies one mother material in this fixture. A completed mother material yields one to three individual Plate materials.",
+ "One slab supplies one mother material in this dataset. A completed mother material yields one to three individual Plate materials.",
  "Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.",
- "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this fixture.",
+ "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this dataset.",
  "Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.",
  "Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.",
  "Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.",
- "Factory codes and cardinalities are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
- "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number resolves lineage.",
+ "Factory codes and relationship counts are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
+ "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number identifies the mother-to-piece relationship.",
  "No upstream casting or shipping timestamps are recorded."]
- d=dict(name="PlateFlow v2",language="en",timezone="UTC",tables=list(T.values()),code_domain=CODES,business_rules=rules)
+ d=dict(name="PlateFlow",language="en",timezone="UTC",tables=list(T.values()),code_domain=CODES,business_rules=rules)
  js("input/data_dictionary.json",d)
- md="# PlateFlow v2 English Data Dictionary\n\nSchema-informed synthetic subset; custom metadata profile.\n"
+ md="# PlateFlow English Data Dictionary\n\nSchema-informed synthetic subset; custom metadata profile.\n"
  for t in T.values():
   md+="\n## "+t["table"]+"\n\n"+t["definition"]+"\n\n| Column | Type | Constraints | Definition |\n|---|---|---|---|\n"
   md+="".join("| "+c["name"]+" | "+c["type"]+" | "+c["constraints"]+" | "+c["definition"]+" |\n" for c in t["columns"])
- md+="\n## Synthetic code domain\n\n"+"\n".join("- "+k+": "+v for k,v in CODES.items())
+ md+="\n## Synthetic process-code meanings\n\n"+"\n".join("- "+k+": "+v for k,v in CODES.items())
  md+="\n\n## Business rules\n\n"+"\n".join("- "+r for r in rules)+"\n";write("input/data_dictionary.md",md)
  js("design/logical_schema.json",list(T.values()))
  js("design/conceptual_model.json",dict(entities=list(T),relations=["Slab → Plan → Released rolling instruction → Mother material","Mother material → furnace tracking","Mother material → cutting instruction","Mother as-rolled plate number → many Plate materials","Mother/Plate material identity → many operation-history rows"]))
- write("design/requirements.md","# PlateFlow v2 Requirements\n\nA fictional steelworks maintains distinct records for slab materials, planned rolling instructions, released rolling instructions, furnace-charge tracking, as-rolled mother materials, cutting/finishing instructions, individual cut Plate materials and operation history. Preserve milestone timestamps on material records and repeated operation occurrences with start/completion times in history. Separate planned, actual and technical times. Model one-to-many mother-to-piece lineage. Extract mother-material lifecycle logs including descendant-piece operations exactly once. Use a synthetic code domain for operation meanings.\n\nThe physical separation follows selected tables in the supplied POSCO metadata. Cardinalities, keys, types, code values and execution rules are newly specified assumptions.\n")
- js("design/source_mapping.json",dict(source="Uploaded data schema MAS CSV",profile="English schema-informed subset, not full POSCO database replica",tables=[dict(synthetic_table=t,source_table=v["source_table"],columns=[dict(synthetic=c["name"],source=c["source_column"]) for c in v["columns"]]) for t,v in T.items()],assumptions=rules))
+ write("design/requirements.md","# PlateFlow Requirements\n\nA fictional steelworks maintains distinct records for slab materials, planned rolling instructions, released rolling instructions, furnace-charge tracking, as-rolled mother materials, cutting/finishing instructions, individual cut Plate materials and operation history. Preserve milestone timestamps on material records and repeated operation occurrences with start/completion times in history. Separate planned, actual and technical times. Model one-to-many mother-to-piece relationships. Extract mother-material lifecycle logs including descendant-piece operations exactly once. Use a table that defines the synthetic process-code meanings.\n\nThe physical separation follows selected tables in the supplied Korean manufacturer metadata. Relationship counts, keys, types, code values and execution rules are newly specified assumptions.\n")
+ js("design/source_mapping.json",dict(source="Uploaded data schema MAS CSV",profile="English schema-informed subset, not full Korean manufacturer database replica",tables=[dict(synthetic_table=t,source_table=v["source_table"],columns=[dict(synthetic=c["name"],source=c["source_column"]) for c in v["columns"]]) for t,v in T.items()],assumptions=rules))
  path=P/"input/database.sqlite";path.unlink(missing_ok=True);con=sqlite3.connect(path);con.row_factory=sqlite3.Row;con.executescript(ddl)
  con.executemany("INSERT INTO operation_code VALUES (?,?)",CODES.items())
  history=[];ops=[];payload=[];modes=["planned","reheating","rolled","normal","treated","rework"]
@@ -187,6 +190,6 @@ def main():
   rows=list(con.execute("PRAGMA table_info("+t+")"))
   assert [(r["name"],r["type"]) for r in rows]==[(c["name"],c["type"]) for c in d["columns"]]
  assert con.execute("SELECT COUNT(*) FROM material_operation_history WHERE completed_at<=started_at").fetchone()[0]==0
- report=dict(seed=20261013,mother_materials=36,plate_materials=con.execute("SELECT COUNT(*) FROM plate_material").fetchone()[0],events=len(history),tables={t:con.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] for t in T},scenario_counts=dict(Counter(r[5] for r in payload)),questions=results,checks=dict(gold_sql_exact_equality="pass",foreign_keys="pass",sqlite_integrity="pass",metadata_columns_types="pass",event_id_uniqueness="pass",history_start_before_completion="pass"),limitations=["Selected English schema-informed subset, not complete POSCO schema.","Original CSV supplies names/descriptions only; types, keys, code domain and cardinalities are authored.","No real production rows or fitted process distributions.","Classic mother-case log, not OCEL.","Fixture-local ES; existing NL2EventLog compatibility untested.","No extraction-model accuracy measured."])
+ report=dict(seed=20261013,mother_materials=36,plate_materials=con.execute("SELECT COUNT(*) FROM plate_material").fetchone()[0],events=len(history),tables={t:con.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] for t in T},scenario_counts=dict(Counter(r[5] for r in payload)),questions=results,checks=dict(gold_sql_exact_equality="pass",foreign_keys="pass",sqlite_integrity="pass",metadata_columns_types="pass",event_id_uniqueness="pass",history_start_before_completion="pass"),limitations=["Selected English schema-informed subset, not complete Korean manufacturer schema.","Original CSV supplies names/descriptions only; types, keys, process-code meanings and relationship counts are authored.","No real production rows or fitted process distributions.","Classic mother-case log, not OCEL.","Dataset-specific ES; existing NL2EventLog compatibility untested.","No extraction-model accuracy measured."])
  js("validation_report.json",report);con.close();print(json.dumps(report,indent=2))
 if __name__=="__main__":main()

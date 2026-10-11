@@ -2,7 +2,7 @@
 
 ![Entity relationship diagram](schema.png)
 
-[Editable draw.io diagram](schema.drawio) · [SVG](schema.svg) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
+- [Editable draw.io diagram](schema.drawio) · [SVG](schema.svg) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
 
 | Table | Rows | Columns | Primary key | Role |
 |---|---:|---:|---|---|
@@ -16,7 +16,7 @@
 
 ## Relationships
 
-| Parent | Child | Child FK | Parent key | Parent-to-child cardinality | Kind |
+| Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |
 |---|---|---|---|---|---|
 | warehouse | transaction_record | warehouse_number | warehouse_number | 1 : 0..N | declared |
 | transaction_record | goods_transaction_detail | transaction_id | transaction_id | 1 : 0..N | declared |

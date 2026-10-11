@@ -1,0 +1,71 @@
+{
+  "id": "67552f0b13602ec03b41aaec",
+  "question": "The course registration system of a university is designed as follows:\nA student has information such as Student ID, Name, Date of Birth, Phone Number, Home Address, and Registration Eligibility.\nThe university offers multiple courses, each with a Course ID, Course Name, Credits, Instructor, Class Time, and Location.\nWhen a student registers for a course, the system first verifies the legality of the provided information and checks the student's degree examination results to confirm registration eligibility.\nThe degree examination result information includes Result ID, Student ID, Examination Name, Grade, and Examination Date.\nIf a student is eligible for registration, the student can select courses and proceed with registration. The registration information includes Student ID, Course ID, Registration Time, and Status.\nThe system stores the registration information in the database and associates the enrolled students with the corresponding courses.\nAfter registration is completed, the system sends a notification of successful registration to the student and sends the registered courses and student information to the academic staff for subsequent management.",
+  "answer": {
+    "Student": {
+      "Attributes": [
+        "Student ID",
+        "Name",
+        "Date of Birth",
+        "Phone Number",
+        "Home Address",
+        "Registration Eligibility"
+      ],
+      "Primary key": [
+        "Student ID"
+      ],
+      "Foreign key": {}
+    },
+    "Course": {
+      "Attributes": [
+        "Course ID",
+        "Course Name",
+        "Credits",
+        "Instructor",
+        "Class Time",
+        "Class Location"
+      ],
+      "Primary key": [
+        "Course ID"
+      ],
+      "Foreign key": {}
+    },
+    "Registration": {
+      "Attributes": [
+        "Student ID",
+        "Course ID",
+        "Registration Time",
+        "Status"
+      ],
+      "Primary key": [
+        "Student ID",
+        "Course ID"
+      ],
+      "Foreign key": {
+        "Student ID": {
+          "Student": "Student ID"
+        },
+        "Course ID": {
+          "Course": "Course ID"
+        }
+      }
+    },
+    "Degree Examination Result": {
+      "Attributes": [
+        "Result ID",
+        "Student ID",
+        "Examination Name",
+        "Grade",
+        "Examination Date"
+      ],
+      "Primary key": [
+        "Result ID"
+      ],
+      "Foreign key": {
+        "Student ID": {
+          "Student": "Student ID"
+        }
+      }
+    }
+  }
+}

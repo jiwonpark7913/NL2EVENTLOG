@@ -1,5 +1,5 @@
 {
-  "name": "PlateFlow v2",
+  "name": "PlateFlow",
   "language": "en",
   "timezone": "UTC",
   "tables": [
@@ -265,7 +265,7 @@
     {
       "table": "operation_code",
       "source_table": null,
-      "definition": "Synthetic operation code domain; codes are newly authored",
+      "definition": "Synthetic operation process-code meanings; codes are newly authored",
       "columns": [
         {
           "name": "code",
@@ -344,14 +344,14 @@
   },
   "business_rules": [
     "Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.",
-    "One slab supplies one mother material in this fixture. A completed mother material yields one to three individual Plate materials.",
+    "One slab supplies one mother material in this dataset. A completed mother material yields one to three individual Plate materials.",
     "Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.",
-    "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this fixture.",
+    "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this dataset.",
     "Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.",
     "Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.",
     "Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.",
-    "Factory codes and cardinalities are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
-    "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number resolves lineage.",
+    "Factory codes and relationship counts are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
+    "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number identifies the mother-to-piece relationship.",
     "No upstream casting or shipping timestamps are recorded."
   ]
 }

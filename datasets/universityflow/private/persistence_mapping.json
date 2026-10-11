@@ -1,0 +1,21 @@
+[
+  {
+    "activity": "Degree Examination Taken",
+    "table": "degree_examination_result",
+    "timestamp_column": "examination_date",
+    "case_column": "student_id",
+    "event_key": [
+      "result_id"
+    ]
+  },
+  {
+    "activity": "Course Registered",
+    "table": "registration",
+    "timestamp_column": "registration_time",
+    "case_column": "student_id",
+    "event_key": [
+      "student_id",
+      "course_id"
+    ]
+  }
+]

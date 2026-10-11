@@ -1,94 +1,80 @@
-# PlateFlow v2 — English schema-informed synthetic benchmark
+# PlateFlow — plate manufacturing
 
-This independent dataset revises PlateFlow v1 to reflect the table separation
-in the supplied POSCO metadata CSV. It does not depend on ProcureFlow or v1.
-All user-facing requirements, dictionary definitions and questions are English.
-Original table/column identifiers remain only as provenance references.
+- This independent synthetic dataset reflects selected table and column definitions from a Korean manufacturing company.
+- Requirements, data definitions and questions are authored in English.
+- Original table and column identifiers are retained only as source references.
+- Real production records and the full enterprise metadata CSV are excluded.
 
-## Reproduce
+## Tables and source references
 
-Python 3.10+, standard library only:
-
-    python build.py
-
-Run in a writable copy. Generated artifacts are overwritten.
-
-## Structure retained from the source
-
-| English table | Referenced original table | Role |
+| English table | Original table reference | What it records |
 |---|---|---|
-| slab_material | TB_M2EA08_C_MTL060 | Slab material and charge context |
-| planned_rolling_instruction | TB_M2LB01_D_PLANINST010 | Planned rolling instruction |
-| rolling_instruction | TB_M2LM01_D_INST010 | Released rolling instruction |
-| furnace_charge_tracking | TB_M2EA05_E_RF_IN060 | Furnace charging tracking |
-| as_rolled_material | TB_M2LM01_E_MTRL010 | Mother material lifecycle snapshot |
-| cutting_finishing_instruction | TB_M2LM01_D_INST020 | Cutting/finishing instruction |
-| plate_material | TB_M2LM01_E_MTRL020 | Individual Plate material |
-| material_operation_history | TB_M2LM01_T_OPERHIST | Repeated operation history |
-| operation_code | Newly authored | Synthetic operation value domain |
+| slab_material | TB_M2EA08_C_MTL060 | Slab material and furnace-charge information |
+| planned_rolling_instruction | TB_M2LB01_D_PLANINST010 | Planned rolling instructions |
+| rolling_instruction | TB_M2LM01_D_INST010 | Released rolling instructions |
+| furnace_charge_tracking | TB_M2EA05_E_RF_IN060 | Actual furnace charging |
+| as_rolled_material | TB_M2LM01_E_MTRL010 | Mother material and its latest recorded state |
+| cutting_finishing_instruction | TB_M2LM01_D_INST020 | Cutting and finishing instructions |
+| plate_material | TB_M2LM01_E_MTRL020 | Individual cut plate pieces |
+| material_operation_history | TB_M2LM01_T_OPERHIST | Each recorded operation, including repeats |
+| operation_code | Newly added | Meanings of the simulated process codes |
 
-The supplied CSV has 20 table names and 6,616 metadata rows, with some repeated
-table/column definitions. It supplies owner, table name/description and column
-name/description. It does not supply SQL types, declared keys or value-domain
-code meanings. V2 selects eight source table roles, rather than recreating the
-entire enterprise schema. Each retained column has an explicit source reference;
-new columns have a null source reference.
+- The database contains 9 tables, 36 mother materials, 39 cut pieces and 324 business events.
+- The supplied metadata has 20 table names and 6,616 definition rows, including repeated table-column definitions.
+- It provides table and column names and descriptions.
+- It does not provide SQL types, declared keys or process-code meanings.
+- This dataset uses eight source table roles and adds one process-code table.
+- Source mappings identify the original column for each retained definition; newly added columns have no source column.
 
-## Changes from v1
+## How manufacturing records are separated
 
-Plans and released work instructions are separate. Furnace tracking is separate
-from the material snapshot. Mother as-rolled materials and individual Plate
-materials are distinct; one completed mother yields one to three pieces.
-Cutting/finishing instructions have their own table. Actual operation history
-uses occurrence IDs, material identities, process codes, start and completion
-times, with repeated inspection and heat-treatment rows.
+- Planned instructions and released work instructions are stored separately.
+- Furnace tracking is separate from material records.
+- A mother material is the plate before cutting; individual plate materials are its cut pieces.
+- In the simulated process, a completed mother material produces one to three pieces.
+- Cutting and finishing instructions have their own table.
+- Operation history stores event IDs, material IDs, process codes, start times and completion times.
+- Repeated inspections and heat treatments remain separate history rows.
+- Rolling completion comes from the RL operation in history.
+- The material's latest-operation-completed time continues to update after rolling, so it cannot be used as a general rolling-completion time.
+- This distinction follows the source description of `PLT_AC_OP_END_OP_DT` as the final actual process work time.
+- Lot charging and individual material charging have separate times; the default material timeline excludes lot-level events.
 
-Rolling completion comes from the RL operation-history occurrence. The
-latest-operation-completed snapshot updates through subsequent operations,
-so it is deliberately unsuitable as a generic rolling-completion timestamp.
-This preserves the source description of PLT_AC_OP_END_OP_DT as the final
-actual process work timestamp.
+## Assumptions added for simulation
 
-Factory/process code values RL/CO/LE/SC/HT/IF/IP are invented for this fixture.
-One-to-many mother/piece lineage, explicit keys, link columns, durations and
-route ordering are synthetic design assumptions, not established POSCO rules.
-Lot charging start and material charging are stored separately; the default
-material view excludes lot-level events rather than equating both timestamps.
+- Process codes RL/CO/LE/SC/HT/IF/IP and their meanings are specified for this dataset.
+- Mother-to-piece relationships, declared keys, link columns, durations and operation order are simulation assumptions.
+- These assumptions are not presented as verified rules of the source company.
+- The data dictionary uses a custom practical format; ISO/IEC 11179 compliance is not claimed.
+- SchemaAgent's design stages informed the documentation, but PlateFlow does not reuse an RSchema requirement record.
 
-## Model inputs and evaluation
+## Questions and expected results
 
-Provide only input/ to the model. Keep build.py, design/, private/ and the
-validation report outside model context because they contain oracle mappings.
-The task catalog specifies the mother-material case concept and default scope;
-this is a catalog-assisted evaluation setting.
+- Eight English questions are supplied.
+- V01/V02, V03/V04 and V05/V06 pair direct requests with paraphrases.
+- V07 selects cutting and subsequent piece-inspection events.
+- V08 is unsupported because upstream casting times are absent.
+- Actual event logs exclude planned schedules and technical database timestamps.
+- Each mother-material timeline includes its own events and its cut pieces' events, each exactly once.
+- Joining all mother events directly to all pieces would duplicate upstream events.
+- An operation-history material ID can identify either a mother material or a piece.
+- An insert trigger and a separate missing-reference check validate those two ID sets; there is no misleading single-table foreign key.
+- Expected logs are selected from simulated business history.
+- Expected extraction specifications generate SQL using `UNION ALL`; all seven answerable questions match their expected logs exactly.
+- Logs are ordinary CSV timelines, not OCEL files.
+- Cases with no selected events are listed by the separate case-population query and have no event row in the CSV.
 
-V01/V02, V03/V04 and V05/V06 are paired explicit/paraphrase tests.
-V07 tests the cutting-to-piece-inspection lifecycle. V08 is unsupported because
-upstream casting timestamps are absent. Planned times and database timestamps
-are excluded from actual execution logs.
+## Rebuild and evaluation
 
-For mother cases, include each mother occurrence once and each descendant-piece
-occurrence once. Do not join all mother events directly to all pieces: that
-would multiply the upstream log. History identity resolution uses two disjoint
-identity sets to map each operation to its mother case. The history material ID
-references either a mother or a piece, with an insert trigger and separate
-orphan check rather than a false single-table FK declaration.
-
-Gold logs are filtered from canonical semantic events. Gold ES is built from
-separate persistence mappings, compiled with UNION ALL, and executed on SQLite.
-Exact equality verifies occurrence preservation, including repeated activities.
-They share authored process assumptions and are development fixtures.
-Classic CSV event logs, not OCEL. Case population is separately declared in ES;
-cases with no selected events have no event CSV row.
-
-## Limits
-
-No real production rows, identifiers or fitted empirical distributions are
-included. This is not a full original-schema replica. Metadata is a practical
-English custom profile, without an ISO/IEC 11179 conformity claim.
-SchemaAgent design stages are inspiration only; no RSchema requirement sample
-is used. The ES remains fixture-local and has not been adapted to the existing
-NL2EventLog contract. Consistency checks do not measure extraction-model accuracy.
+- Run `python build.py` using Python 3.10 or later; no external package is needed.
+- Rebuilding replaces generated DB and expected-result files.
+- Provide only `input/` to the model.
+- The task scope catalog defines mother-material cases, activity names and the default timeline scope.
+- Keep generation code, design files, expected answers in `private/`, and validation reports outside the model's context.
+- No real production rows or distributions fitted to production data are included.
+- The dataset is a selected synthetic example, not a replica of the complete enterprise database.
+- The extraction specification uses a dataset-specific format; compatibility with the existing NL2EventLog implementation has not been tested.
+- Consistency checks do not measure model accuracy.
 
 ## Schema and documentation
 
