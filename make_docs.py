@@ -70,15 +70,26 @@ def build(name,positions,title):
   elif x2>x1:sx,sy,tx,ty=x1+bw,y1+min(h1,h2)/2,x2,y2+min(h1,h2)/2
   else:sx,sy,tx,ty=x1,y1+min(h1,h2)/2,x2+bw,y2+min(h1,h2)/2
   mid=(sy+ty)/2
+  waypoints=[];port_style=""
+  if name=="universityflow" and abs(grid[r["child"]][1]-grid[r["parent"]][1])>1 and y2>y1:
+   left=grid[r["parent"]][0]==0
+   sx=x1 if left else x1+bw;sy=y1+h1/2;tx=x2+bw/2;ty=y2
+   gutter=20 if left else width-20;mid=ty-35
+   waypoints=[(gutter,sy),(gutter,mid),(tx,mid)]
+   port_style=f"exitX={0 if left else 1};exitY=0.5;entryX=0.5;entryY=0;"
+  path=f"M {sx} {sy} "+(" ".join(f"L {px} {py}" for px,py in waypoints) if waypoints else f"L {sx} {mid} L {tx} {mid}")+f" L {tx} {ty}"
   dash=' stroke-dasharray="7 5"' if r["logical"] else ""
-  edge_svg.append(f'<path d="M {sx} {sy} L {sx} {mid} L {tx} {mid} L {tx} {ty}" fill="none" stroke="#69788e" stroke-width="2"{dash}/>')
+  edge_svg.append(f'<path d="{path}" fill="none" stroke="#69788e" stroke-width="2"{dash}/>')
   if ty>mid:points=f"{tx},{ty} {tx-5},{ty-10} {tx+5},{ty-10}"
   elif ty<mid:points=f"{tx},{ty} {tx-5},{ty+10} {tx+5},{ty+10}"
   elif tx>sx:points=f"{tx},{ty} {tx-10},{ty-5} {tx-10},{ty+5}"
   else:points=f"{tx},{ty} {tx+10},{ty-5} {tx+10},{ty+5}"
   edge_svg.append(f'<polygon points="{points}" fill="#69788e"/>')
-  edge=ET.SubElement(root,"mxCell",id="e"+str(j),value=r["from_col"]+"; "+r["label"],style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;"+("dashed=1;" if r["logical"] else ""),edge="1",parent="1",source=r["parent"],target=r["child"])
-  ET.SubElement(edge,"mxGeometry",relative="1",attrib={"as":"geometry"})
+  edge=ET.SubElement(root,"mxCell",id="e"+str(j),value=r["from_col"]+"; "+r["label"],style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;"+port_style+("dashed=1;" if r["logical"] else ""),edge="1",parent="1",source=r["parent"],target=r["child"])
+  geometry=ET.SubElement(edge,"mxGeometry",relative="1",attrib={"as":"geometry"})
+  if waypoints:
+   points=ET.SubElement(geometry,"Array",attrib={"as":"points"})
+   for px,py in waypoints:ET.SubElement(points,"mxPoint",x=str(px),y=str(py))
  for t in tables:
   n=t["table"];i=info[n];x,y=positions[n];bh=heights[n];pk={r["name"] for r in i["cols"] if r["pk"]};fk={r["from"] for r in i["fk"]}
   svg.append(f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" fill="white" stroke="#9a9a9a" stroke-width="1.5"/>')
@@ -122,5 +133,5 @@ def build(name,positions,title):
 build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130),"transaction_record":(575,480),"goods_transaction_detail":(65,830),"loader_transaction":(1085,830)},"WarehouseFlow · RSchema")
 build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
 
-build("universityflow",{"student":(65,130),"course":(1085,130),"degree_examination_result":(65,480),"registration":(1085,480)},"UniversityFlow · RSchema")
+build("universityflow",{"student":(65,130),"course":(575,130),"instructor":(1085,130),"degree_examination_result":(65,480),"registration":(575,480),"assignment":(1085,480),"task":(65,830),"simulation_module":(575,830),"assignment_grading":(1085,830),"thesis":(65,1180),"student_simulation_experiment_result":(575,1180)},"UniversityFlow · combined RSchema examples")
 format_documents(ROOT)

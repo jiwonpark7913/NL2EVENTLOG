@@ -1,142 +1,306 @@
 [
   {
     "table": "student",
-    "source_table": "Student",
-    "definition": "Basic student information and current registration eligibility",
+    "definition": "Unified student information from the three university examples",
     "columns": [
       {
         "name": "student_id",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Student identifier",
-        "source_attribute": "Student ID"
+        "definition": "Student identifier shared across the three combined examples",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Student",
+            "source_attribute": "Student ID"
+          },
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student",
+            "source_attribute": "Student ID"
+          },
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Student",
+            "source_attribute": "Student ID"
+          }
+        ]
       },
       {
         "name": "name",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Student name",
-        "source_attribute": "Name"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Student",
+            "source_attribute": "Name"
+          },
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student",
+            "source_attribute": "Name"
+          },
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Student",
+            "source_attribute": "Name"
+          }
+        ]
       },
       {
         "name": "date_of_birth",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Birth date; not an academic event",
-        "source_attribute": "Date of Birth"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Student",
+            "source_attribute": "Date of Birth"
+          }
+        ]
       },
       {
         "name": "phone_number",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Student contact number",
-        "source_attribute": "Phone Number"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Student",
+            "source_attribute": "Phone Number"
+          }
+        ]
       },
       {
         "name": "home_address",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Student postal address",
-        "source_attribute": "Home Address"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Student",
+            "source_attribute": "Home Address"
+          }
+        ]
       },
       {
         "name": "registration_eligibility",
         "type": "TEXT",
         "constraints": "NOT NULL CHECK(registration_eligibility IN ('ELIGIBLE','INELIGIBLE'))",
-        "definition": "Current eligibility: ELIGIBLE or INELIGIBLE; does not store when eligibility changed",
-        "source_attribute": "Registration Eligibility"
+        "definition": "Current eligibility, ELIGIBLE or INELIGIBLE; changes are not timestamped",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Student",
+            "source_attribute": "Registration Eligibility"
+          }
+        ]
+      },
+      {
+        "name": "class",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Student class or cohort",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student",
+            "source_attribute": "Class"
+          },
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Student",
+            "source_attribute": "Class"
+          }
+        ]
+      },
+      {
+        "name": "major",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Student major",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student",
+            "source_attribute": "Major"
+          }
+        ]
       }
     ],
     "primary_key": [
       "student_id"
     ],
-    "foreign_keys": []
+    "foreign_keys": [],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aaec",
+        "source_table": "Student"
+      },
+      {
+        "record_id": "67552f0b13602ec03b41aa43",
+        "source_table": "Student"
+      },
+      {
+        "record_id": "67552f0b13602ec03b41ab04",
+        "source_table": "Student"
+      }
+    ]
   },
   {
     "table": "course",
-    "source_table": "Course",
-    "definition": "Course offerings and teaching schedules",
+    "definition": "Course offerings and planned teaching schedules",
     "columns": [
       {
         "name": "course_id",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Course identifier; one course offering in this dataset",
-        "source_attribute": "Course ID"
+        "definition": "Course-offering identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Course",
+            "source_attribute": "Course ID"
+          }
+        ]
       },
       {
         "name": "course_name",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Course title",
-        "source_attribute": "Course Name"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Course",
+            "source_attribute": "Course Name"
+          }
+        ]
       },
       {
         "name": "credits",
         "type": "INTEGER",
         "constraints": "NOT NULL CHECK(credits > 0)",
         "definition": "Academic credit units",
-        "source_attribute": "Credits"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Course",
+            "source_attribute": "Credits"
+          }
+        ]
       },
       {
         "name": "instructor",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Instructor name; the original schema has no separate instructor table",
-        "source_attribute": "Instructor"
+        "definition": "Instructor name as stored in the registration source; no FK to instructor is assumed",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Course",
+            "source_attribute": "Instructor"
+          }
+        ]
       },
       {
         "name": "class_time",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Scheduled teaching time; not proof that a class took place",
-        "source_attribute": "Class Time"
+        "definition": "Planned teaching time; not proof that a class occurred",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Course",
+            "source_attribute": "Class Time"
+          }
+        ]
       },
       {
         "name": "class_location",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Scheduled teaching location",
-        "source_attribute": "Class Location"
+        "definition": "Planned teaching location",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Course",
+            "source_attribute": "Class Location"
+          }
+        ]
       }
     ],
     "primary_key": [
       "course_id"
     ],
-    "foreign_keys": []
+    "foreign_keys": [],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aaec",
+        "source_table": "Course"
+      }
+    ]
   },
   {
     "table": "registration",
-    "source_table": "Registration",
-    "definition": "Successful student-course registrations; one row per student and course",
+    "definition": "Successful registrations; one retained row per student and course",
     "columns": [
       {
         "name": "student_id",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Student identifier",
-        "source_attribute": "Student ID"
+        "definition": "Student identifier shared across the three combined examples",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Registration",
+            "source_attribute": "Student ID"
+          }
+        ]
       },
       {
         "name": "course_id",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Course identifier; one course offering in this dataset",
-        "source_attribute": "Course ID"
+        "definition": "Course-offering identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Registration",
+            "source_attribute": "Course ID"
+          }
+        ]
       },
       {
         "name": "registration_time",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Actual successful course-registration time in UTC",
-        "source_attribute": "Registration Time"
+        "definition": "Actual successful registration time in UTC",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Registration",
+            "source_attribute": "Registration Time"
+          }
+        ]
       },
       {
         "name": "status",
         "type": "TEXT",
         "constraints": "NOT NULL CHECK(status='REGISTERED')",
-        "definition": "Current registration status; REGISTERED in this dataset; no status-change history is stored",
-        "source_attribute": "Status"
+        "definition": "Current registration status; REGISTERED in the simulated rows; no change history",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Registration",
+            "source_attribute": "Status"
+          }
+        ]
       }
     ],
     "primary_key": [
@@ -154,47 +318,82 @@
         "parent_table": "course",
         "parent_column": "course_id"
       }
+    ],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aaec",
+        "source_table": "Registration"
+      }
     ]
   },
   {
     "table": "degree_examination_result",
-    "source_table": "Degree Examination Result",
-    "definition": "Degree examination results; repeated examinations use separate result IDs",
+    "definition": "Examination results including retakes",
     "columns": [
       {
         "name": "result_id",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Unique examination-result identifier",
-        "source_attribute": "Result ID"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Degree Examination Result",
+            "source_attribute": "Result ID"
+          }
+        ]
       },
       {
         "name": "student_id",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Student identifier",
-        "source_attribute": "Student ID"
+        "definition": "Student identifier shared across the three combined examples",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Degree Examination Result",
+            "source_attribute": "Student ID"
+          }
+        ]
       },
       {
         "name": "examination_name",
         "type": "TEXT",
         "constraints": "NOT NULL",
         "definition": "Degree examination name",
-        "source_attribute": "Examination Name"
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Degree Examination Result",
+            "source_attribute": "Examination Name"
+          }
+        ]
       },
       {
         "name": "grade",
         "type": "INTEGER",
         "constraints": "NOT NULL CHECK(grade BETWEEN 0 AND 100)",
-        "definition": "Examination score from 0 to 100; 60 is the synthetic eligibility threshold",
-        "source_attribute": "Grade"
+        "definition": "Examination score, 0 to 100; 60 is the simulated passing threshold",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Degree Examination Result",
+            "source_attribute": "Grade"
+          }
+        ]
       },
       {
         "name": "examination_date",
         "type": "TEXT",
         "constraints": "NOT NULL",
-        "definition": "Actual examination time in UTC; not the time its result was published",
-        "source_attribute": "Examination Date"
+        "definition": "Actual examination time in UTC; not score-publication time",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aaec",
+            "source_table": "Degree Examination Result",
+            "source_attribute": "Examination Date"
+          }
+        ]
       }
     ],
     "primary_key": [
@@ -205,6 +404,578 @@
         "column": "student_id",
         "parent_table": "student",
         "parent_column": "student_id"
+      }
+    ],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aaec",
+        "source_table": "Degree Examination Result"
+      }
+    ]
+  },
+  {
+    "table": "task",
+    "definition": "Course-design task descriptions and scheduled task periods",
+    "columns": [
+      {
+        "name": "task_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Course-design task identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Task",
+            "source_attribute": "Task ID"
+          }
+        ]
+      },
+      {
+        "name": "task_title",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Task title",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Task",
+            "source_attribute": "Task Title"
+          }
+        ]
+      },
+      {
+        "name": "task_description",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Task description",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Task",
+            "source_attribute": "Task Description"
+          }
+        ]
+      },
+      {
+        "name": "task_start_date",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Scheduled task-period start; not an observed student action",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Task",
+            "source_attribute": "Task Start Date"
+          }
+        ]
+      },
+      {
+        "name": "task_end_date",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Scheduled task deadline; not proof of completion",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Task",
+            "source_attribute": "Task End Date"
+          }
+        ]
+      },
+      {
+        "name": "task_location",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Task location",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Task",
+            "source_attribute": "Task Location"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "task_id"
+    ],
+    "foreign_keys": [],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aa43",
+        "source_table": "Task"
+      }
+    ]
+  },
+  {
+    "table": "simulation_module",
+    "definition": "Simulation module descriptions and example code",
+    "columns": [
+      {
+        "name": "module_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Simulation module identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Simulation Module",
+            "source_attribute": "Module ID"
+          }
+        ]
+      },
+      {
+        "name": "module_name",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Module name",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Simulation Module",
+            "source_attribute": "Module Name"
+          }
+        ]
+      },
+      {
+        "name": "module_type",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Simulation method, such as PCM or DPCM",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Simulation Module",
+            "source_attribute": "Module Type"
+          }
+        ]
+      },
+      {
+        "name": "module_description",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Module description",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Simulation Module",
+            "source_attribute": "Module Description"
+          }
+        ]
+      },
+      {
+        "name": "module_code",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Example module code; not an event code",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Simulation Module",
+            "source_attribute": "Module Code"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "module_id"
+    ],
+    "foreign_keys": [],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aa43",
+        "source_table": "Simulation Module"
+      }
+    ]
+  },
+  {
+    "table": "thesis",
+    "definition": "Student theses with actual submission times",
+    "columns": [
+      {
+        "name": "thesis_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Thesis identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Thesis",
+            "source_attribute": "Thesis ID"
+          }
+        ]
+      },
+      {
+        "name": "student_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Student identifier shared across the three combined examples",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Thesis",
+            "source_attribute": "Student ID"
+          }
+        ]
+      },
+      {
+        "name": "thesis_title",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Thesis title",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Thesis",
+            "source_attribute": "Thesis Title"
+          }
+        ]
+      },
+      {
+        "name": "thesis_content",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Submitted thesis content",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Thesis",
+            "source_attribute": "Thesis Content"
+          }
+        ]
+      },
+      {
+        "name": "submission_date",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Actual thesis-submission time in UTC",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Thesis",
+            "source_attribute": "Submission Date"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "thesis_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      }
+    ],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aa43",
+        "source_table": "Thesis"
+      }
+    ]
+  },
+  {
+    "table": "student_simulation_experiment_result",
+    "definition": "Student simulation results with actual experiment-completion times",
+    "columns": [
+      {
+        "name": "student_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Student identifier shared across the three combined examples",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student Simulation Experiment Result",
+            "source_attribute": "Student ID"
+          }
+        ]
+      },
+      {
+        "name": "module_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Simulation module identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student Simulation Experiment Result",
+            "source_attribute": "Module ID"
+          }
+        ]
+      },
+      {
+        "name": "simulation_date",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Actual experiment-completion time in UTC; this interpretation is an added simulation assumption",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student Simulation Experiment Result",
+            "source_attribute": "Simulation Date"
+          }
+        ]
+      },
+      {
+        "name": "simulation_result_data",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Stored experiment output; not a timestamp",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student Simulation Experiment Result",
+            "source_attribute": "Simulation Result Data"
+          }
+        ]
+      },
+      {
+        "name": "result_analysis",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Student analysis of the experiment result",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41aa43",
+            "source_table": "Student Simulation Experiment Result",
+            "source_attribute": "Result Analysis"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "student_id",
+      "module_id",
+      "simulation_date"
+    ],
+    "foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      },
+      {
+        "column": "module_id",
+        "parent_table": "simulation_module",
+        "parent_column": "module_id"
+      }
+    ],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41aa43",
+        "source_table": "Student Simulation Experiment Result"
+      }
+    ]
+  },
+  {
+    "table": "assignment",
+    "definition": "Student assignment content; submission time is not recorded",
+    "columns": [
+      {
+        "name": "assignment_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Assignment identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment",
+            "source_attribute": "Assignment ID"
+          }
+        ]
+      },
+      {
+        "name": "student_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Student identifier shared across the three combined examples",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment",
+            "source_attribute": "Student ID"
+          }
+        ]
+      },
+      {
+        "name": "assignment_content",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Submitted assignment content; actual submission time is absent",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment",
+            "source_attribute": "Assignment Content"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "assignment_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      }
+    ],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41ab04",
+        "source_table": "Assignment"
+      }
+    ]
+  },
+  {
+    "table": "instructor",
+    "definition": "Instructor information from the assignment-management example",
+    "columns": [
+      {
+        "name": "instructor_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Instructor identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Instructor",
+            "source_attribute": "Instructor ID"
+          }
+        ]
+      },
+      {
+        "name": "instructor_name",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Instructor name",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Instructor",
+            "source_attribute": "Name"
+          }
+        ]
+      },
+      {
+        "name": "course",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Instructor course label from the assignment source; no declared FK to course",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Instructor",
+            "source_attribute": "Course"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "instructor_id"
+    ],
+    "foreign_keys": [],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41ab04",
+        "source_table": "Instructor"
+      }
+    ]
+  },
+  {
+    "table": "assignment_grading",
+    "definition": "Every recorded grading action, including regrading",
+    "columns": [
+      {
+        "name": "assignment_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Assignment identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment Grading",
+            "source_attribute": "Assignment ID"
+          }
+        ]
+      },
+      {
+        "name": "instructor_id",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Instructor identifier",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment Grading",
+            "source_attribute": "Instructor ID"
+          }
+        ]
+      },
+      {
+        "name": "grading_time",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Actual grading time in UTC; regrading creates another composite-key row",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment Grading",
+            "source_attribute": "Grading Time"
+          }
+        ]
+      },
+      {
+        "name": "score",
+        "type": "INTEGER",
+        "constraints": "NOT NULL CHECK(score BETWEEN 0 AND 100)",
+        "definition": "Assignment grade, 0 to 100",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment Grading",
+            "source_attribute": "Score"
+          }
+        ]
+      },
+      {
+        "name": "evaluation",
+        "type": "TEXT",
+        "constraints": "NOT NULL",
+        "definition": "Instructor feedback",
+        "source_references": [
+          {
+            "record_id": "67552f0b13602ec03b41ab04",
+            "source_table": "Assignment Grading",
+            "source_attribute": "Evaluation"
+          }
+        ]
+      }
+    ],
+    "primary_key": [
+      "assignment_id",
+      "instructor_id",
+      "grading_time"
+    ],
+    "foreign_keys": [
+      {
+        "column": "assignment_id",
+        "parent_table": "assignment",
+        "parent_column": "assignment_id"
+      },
+      {
+        "column": "instructor_id",
+        "parent_table": "instructor",
+        "parent_column": "instructor_id"
+      }
+    ],
+    "source_records": [
+      {
+        "record_id": "67552f0b13602ec03b41ab04",
+        "source_table": "Assignment Grading"
       }
     ]
   }

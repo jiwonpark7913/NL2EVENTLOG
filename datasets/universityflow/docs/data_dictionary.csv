@@ -1,22 +1,56 @@
 table,column,sql_type,required,key_relationship,definition
-student,student_id,TEXT,yes,PK,Student identifier
+student,student_id,TEXT,yes,PK,Student identifier shared across the three combined examples
 student,name,TEXT,yes,,Student name
 student,date_of_birth,TEXT,yes,,Birth date; not an academic event
 student,phone_number,TEXT,yes,,Student contact number
 student,home_address,TEXT,yes,,Student postal address
-student,registration_eligibility,TEXT,yes,,Current eligibility: ELIGIBLE or INELIGIBLE; does not store when eligibility changed
-course,course_id,TEXT,yes,PK,Course identifier; one course offering in this dataset
+student,registration_eligibility,TEXT,yes,,"Current eligibility, ELIGIBLE or INELIGIBLE; changes are not timestamped"
+student,class,TEXT,yes,,Student class or cohort
+student,major,TEXT,yes,,Student major
+course,course_id,TEXT,yes,PK,Course-offering identifier
 course,course_name,TEXT,yes,,Course title
 course,credits,INTEGER,yes,,Academic credit units
-course,instructor,TEXT,yes,,Instructor name; the original schema has no separate instructor table
-course,class_time,TEXT,yes,,Scheduled teaching time; not proof that a class took place
-course,class_location,TEXT,yes,,Scheduled teaching location
-registration,student_id,TEXT,yes,PK; FK → student.student_id,Student identifier
-registration,course_id,TEXT,yes,PK; FK → course.course_id,Course identifier; one course offering in this dataset
-registration,registration_time,TEXT,yes,,Actual successful course-registration time in UTC
-registration,status,TEXT,yes,,Current registration status; REGISTERED in this dataset; no status-change history is stored
+course,instructor,TEXT,yes,,Instructor name as stored in the registration source; no FK to instructor is assumed
+course,class_time,TEXT,yes,,Planned teaching time; not proof that a class occurred
+course,class_location,TEXT,yes,,Planned teaching location
+registration,student_id,TEXT,yes,PK; FK → student.student_id,Student identifier shared across the three combined examples
+registration,course_id,TEXT,yes,PK; FK → course.course_id,Course-offering identifier
+registration,registration_time,TEXT,yes,,Actual successful registration time in UTC
+registration,status,TEXT,yes,,Current registration status; REGISTERED in the simulated rows; no change history
 degree_examination_result,result_id,TEXT,yes,PK,Unique examination-result identifier
-degree_examination_result,student_id,TEXT,yes,FK → student.student_id,Student identifier
+degree_examination_result,student_id,TEXT,yes,FK → student.student_id,Student identifier shared across the three combined examples
 degree_examination_result,examination_name,TEXT,yes,,Degree examination name
-degree_examination_result,grade,INTEGER,yes,,Examination score from 0 to 100; 60 is the synthetic eligibility threshold
-degree_examination_result,examination_date,TEXT,yes,,Actual examination time in UTC; not the time its result was published
+degree_examination_result,grade,INTEGER,yes,,"Examination score, 0 to 100; 60 is the simulated passing threshold"
+degree_examination_result,examination_date,TEXT,yes,,Actual examination time in UTC; not score-publication time
+task,task_id,TEXT,yes,PK,Course-design task identifier
+task,task_title,TEXT,yes,,Task title
+task,task_description,TEXT,yes,,Task description
+task,task_start_date,TEXT,yes,,Scheduled task-period start; not an observed student action
+task,task_end_date,TEXT,yes,,Scheduled task deadline; not proof of completion
+task,task_location,TEXT,yes,,Task location
+simulation_module,module_id,TEXT,yes,PK,Simulation module identifier
+simulation_module,module_name,TEXT,yes,,Module name
+simulation_module,module_type,TEXT,yes,,"Simulation method, such as PCM or DPCM"
+simulation_module,module_description,TEXT,yes,,Module description
+simulation_module,module_code,TEXT,yes,,Example module code; not an event code
+thesis,thesis_id,TEXT,yes,PK,Thesis identifier
+thesis,student_id,TEXT,yes,FK → student.student_id,Student identifier shared across the three combined examples
+thesis,thesis_title,TEXT,yes,,Thesis title
+thesis,thesis_content,TEXT,yes,,Submitted thesis content
+thesis,submission_date,TEXT,yes,,Actual thesis-submission time in UTC
+student_simulation_experiment_result,student_id,TEXT,yes,PK; FK → student.student_id,Student identifier shared across the three combined examples
+student_simulation_experiment_result,module_id,TEXT,yes,PK; FK → simulation_module.module_id,Simulation module identifier
+student_simulation_experiment_result,simulation_date,TEXT,yes,PK,Actual experiment-completion time in UTC; this interpretation is an added simulation assumption
+student_simulation_experiment_result,simulation_result_data,TEXT,yes,,Stored experiment output; not a timestamp
+student_simulation_experiment_result,result_analysis,TEXT,yes,,Student analysis of the experiment result
+assignment,assignment_id,TEXT,yes,PK,Assignment identifier
+assignment,student_id,TEXT,yes,FK → student.student_id,Student identifier shared across the three combined examples
+assignment,assignment_content,TEXT,yes,,Submitted assignment content; actual submission time is absent
+instructor,instructor_id,TEXT,yes,PK,Instructor identifier
+instructor,instructor_name,TEXT,yes,,Instructor name
+instructor,course,TEXT,yes,,Instructor course label from the assignment source; no declared FK to course
+assignment_grading,assignment_id,TEXT,yes,PK; FK → assignment.assignment_id,Assignment identifier
+assignment_grading,instructor_id,TEXT,yes,PK; FK → instructor.instructor_id,Instructor identifier
+assignment_grading,grading_time,TEXT,yes,PK,Actual grading time in UTC; regrading creates another composite-key row
+assignment_grading,score,INTEGER,yes,,"Assignment grade, 0 to 100"
+assignment_grading,evaluation,TEXT,yes,,Instructor feedback

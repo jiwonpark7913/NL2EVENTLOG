@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT 'GRADE:' || g.assignment_id || ':' || g.instructor_id || ':' || g.grading_time event_id, a.student_id case_id, 'Assignment Graded' activity, g.grading_time timestamp FROM assignment_grading g JOIN assignment a ON a.assignment_id=g.assignment_id) ORDER BY case_id,timestamp,event_id;

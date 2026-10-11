@@ -1,9 +1,9 @@
 {
-  "table_count": 4,
+  "table_count": 11,
   "tables": {
     "student": {
       "row_count": 40,
-      "column_count": 6,
+      "column_count": 8,
       "primary_key": [
         "student_id"
       ]
@@ -28,6 +28,59 @@
       "column_count": 5,
       "primary_key": [
         "result_id"
+      ]
+    },
+    "task": {
+      "row_count": 3,
+      "column_count": 6,
+      "primary_key": [
+        "task_id"
+      ]
+    },
+    "simulation_module": {
+      "row_count": 3,
+      "column_count": 5,
+      "primary_key": [
+        "module_id"
+      ]
+    },
+    "thesis": {
+      "row_count": 16,
+      "column_count": 5,
+      "primary_key": [
+        "thesis_id"
+      ]
+    },
+    "student_simulation_experiment_result": {
+      "row_count": 27,
+      "column_count": 5,
+      "primary_key": [
+        "student_id",
+        "module_id",
+        "simulation_date"
+      ]
+    },
+    "assignment": {
+      "row_count": 20,
+      "column_count": 3,
+      "primary_key": [
+        "assignment_id"
+      ]
+    },
+    "instructor": {
+      "row_count": 3,
+      "column_count": 3,
+      "primary_key": [
+        "instructor_id"
+      ]
+    },
+    "assignment_grading": {
+      "row_count": 18,
+      "column_count": 5,
+      "primary_key": [
+        "assignment_id",
+        "instructor_id",
+        "grading_time"
       ]
     }
   },
@@ -55,6 +108,54 @@
       "logical": false,
       "from_col": "student_id",
       "to_col": "student_id"
+    },
+    {
+      "parent": "student",
+      "child": "thesis",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    },
+    {
+      "parent": "simulation_module",
+      "child": "student_simulation_experiment_result",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "module_id",
+      "to_col": "module_id"
+    },
+    {
+      "parent": "student",
+      "child": "student_simulation_experiment_result",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    },
+    {
+      "parent": "student",
+      "child": "assignment",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "student_id",
+      "to_col": "student_id"
+    },
+    {
+      "parent": "instructor",
+      "child": "assignment_grading",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "instructor_id",
+      "to_col": "instructor_id"
+    },
+    {
+      "parent": "assignment",
+      "child": "assignment_grading",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "assignment_id",
+      "to_col": "assignment_id"
     }
   ]
 }

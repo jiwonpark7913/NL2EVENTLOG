@@ -1,20 +1,36 @@
 {
   "seed": 20261015,
-  "source_record_id": "67552f0b13602ec03b41aaec",
-  "original_tables_retained": "4/4",
-  "original_attributes_retained": "21/21",
-  "original_fk_relationships_retained": "3/3",
+  "source_record_ids": [
+    "67552f0b13602ec03b41aaec",
+    "67552f0b13602ec03b41aa43",
+    "67552f0b13602ec03b41ab04"
+  ],
+  "source_table_definitions": 13,
+  "combined_tables": 11,
+  "source_attribute_definitions": 60,
+  "combined_columns": 55,
+  "retained_fk_relationships": 9,
   "students": 40,
-  "events": 87,
+  "events": 148,
   "activity_counts": {
     "Degree Examination Taken": 40,
-    "Course Registered": 47
+    "Course Registered": 47,
+    "Assignment Graded": 18,
+    "Simulation Experiment Completed": 27,
+    "Thesis Submitted": 16
   },
   "table_rows": {
     "student": 40,
     "course": 6,
     "registration": 47,
-    "degree_examination_result": 40
+    "degree_examination_result": 40,
+    "task": 3,
+    "simulation_module": 3,
+    "thesis": 16,
+    "student_simulation_experiment_result": 27,
+    "assignment": 20,
+    "instructor": 3,
+    "assignment_grading": 18
   },
   "scenario_counts": {
     "failed": 10,
@@ -23,7 +39,7 @@
     "no_exam": 10
   },
   "students_without_events": 10,
-  "naive_exam_registration_join_rows": 70,
+  "regrading_events": 2,
   "questions": [
     {
       "question_id": "U01",
@@ -48,12 +64,12 @@
     {
       "question_id": "U05",
       "status": "pass",
-      "event_count": 87
+      "event_count": 148
     },
     {
       "question_id": "U06",
       "status": "pass",
-      "event_count": 87
+      "event_count": 148
     },
     {
       "question_id": "U07",
@@ -62,21 +78,57 @@
     {
       "question_id": "U08",
       "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "U09",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "U10",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "U11",
+      "status": "pass",
+      "event_count": 27
+    },
+    {
+      "question_id": "U12",
+      "status": "pass",
+      "event_count": 27
+    },
+    {
+      "question_id": "U13",
+      "status": "pass",
+      "event_count": 16
+    },
+    {
+      "question_id": "U14",
+      "status": "pass",
+      "event_count": 16
+    },
+    {
+      "question_id": "U15",
+      "status": "unsupported_by_design"
     }
   ],
   "checks": {
     "gold_sql_exact_equality": "pass",
     "foreign_keys": "pass",
     "sqlite_integrity": "pass",
-    "source_pk_fk_structure": "pass",
+    "source_columns_and_keys": "pass",
     "registration_eligibility_and_time": "pass",
+    "academic_action_order": "pass",
+    "five_activity_types": "pass",
     "event_id_uniqueness": "pass"
   },
   "limitations": [
-    "UTC timestamp meanings and eligibility rules are authored assumptions.",
-    "No notification, withdrawal or result-publication event times.",
-    "Student timelines do not infer causality between arbitrary exams and registrations.",
-    "Dataset-specific extraction specification; existing NL2EventLog compatibility untested.",
-    "No model accuracy or generalization result."
+    "Three separate examples are integrated by an authored shared student identity.",
+    "UTC meanings, score threshold and scenario order are simulation assumptions.",
+    "Task schedules and instructor course labels do not create missing source relationships.",
+    "No assignment-submission, notification, withdrawal or score-publication times.",
+    "Dataset-specific extraction specification; no model accuracy or generalization result."
   ]
 }

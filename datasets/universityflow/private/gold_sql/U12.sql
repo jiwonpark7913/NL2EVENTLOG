@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT 'SIM:' || student_id || ':' || module_id || ':' || simulation_date event_id, student_id case_id, 'Simulation Experiment Completed' activity, simulation_date timestamp FROM student_simulation_experiment_result) ORDER BY case_id,timestamp,event_id;

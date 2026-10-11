@@ -1,0 +1,305 @@
+[
+  {
+    "record_id": "67552f0b13602ec03b41aaec",
+    "source_table": "Student",
+    "target_table": "student",
+    "columns": {
+      "Student ID": "student_id",
+      "Name": "name",
+      "Date of Birth": "date_of_birth",
+      "Phone Number": "phone_number",
+      "Home Address": "home_address",
+      "Registration Eligibility": "registration_eligibility"
+    },
+    "source_primary_key": [
+      "Student ID"
+    ],
+    "mapped_primary_key": [
+      "student_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aaec",
+    "source_table": "Course",
+    "target_table": "course",
+    "columns": {
+      "Course ID": "course_id",
+      "Course Name": "course_name",
+      "Credits": "credits",
+      "Instructor": "instructor",
+      "Class Time": "class_time",
+      "Class Location": "class_location"
+    },
+    "source_primary_key": [
+      "Course ID"
+    ],
+    "mapped_primary_key": [
+      "course_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aaec",
+    "source_table": "Registration",
+    "target_table": "registration",
+    "columns": {
+      "Student ID": "student_id",
+      "Course ID": "course_id",
+      "Registration Time": "registration_time",
+      "Status": "status"
+    },
+    "source_primary_key": [
+      "Student ID",
+      "Course ID"
+    ],
+    "mapped_primary_key": [
+      "student_id",
+      "course_id"
+    ],
+    "mapped_foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      },
+      {
+        "column": "course_id",
+        "parent_table": "course",
+        "parent_column": "course_id"
+      }
+    ]
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aaec",
+    "source_table": "Degree Examination Result",
+    "target_table": "degree_examination_result",
+    "columns": {
+      "Result ID": "result_id",
+      "Student ID": "student_id",
+      "Examination Name": "examination_name",
+      "Grade": "grade",
+      "Examination Date": "examination_date"
+    },
+    "source_primary_key": [
+      "Result ID"
+    ],
+    "mapped_primary_key": [
+      "result_id"
+    ],
+    "mapped_foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      }
+    ]
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aa43",
+    "source_table": "Student",
+    "target_table": "student",
+    "columns": {
+      "Student ID": "student_id",
+      "Name": "name",
+      "Class": "class",
+      "Major": "major"
+    },
+    "source_primary_key": [
+      "Student ID"
+    ],
+    "mapped_primary_key": [
+      "student_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aa43",
+    "source_table": "Task",
+    "target_table": "task",
+    "columns": {
+      "Task ID": "task_id",
+      "Task Title": "task_title",
+      "Task Description": "task_description",
+      "Task Start Date": "task_start_date",
+      "Task End Date": "task_end_date",
+      "Task Location": "task_location"
+    },
+    "source_primary_key": [
+      "Task ID"
+    ],
+    "mapped_primary_key": [
+      "task_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aa43",
+    "source_table": "Simulation Module",
+    "target_table": "simulation_module",
+    "columns": {
+      "Module ID": "module_id",
+      "Module Name": "module_name",
+      "Module Type": "module_type",
+      "Module Description": "module_description",
+      "Module Code": "module_code"
+    },
+    "source_primary_key": [
+      "Module ID"
+    ],
+    "mapped_primary_key": [
+      "module_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aa43",
+    "source_table": "Thesis",
+    "target_table": "thesis",
+    "columns": {
+      "Thesis ID": "thesis_id",
+      "Student ID": "student_id",
+      "Thesis Title": "thesis_title",
+      "Thesis Content": "thesis_content",
+      "Submission Date": "submission_date"
+    },
+    "source_primary_key": [
+      "Thesis ID"
+    ],
+    "mapped_primary_key": [
+      "thesis_id"
+    ],
+    "mapped_foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      }
+    ]
+  },
+  {
+    "record_id": "67552f0b13602ec03b41aa43",
+    "source_table": "Student Simulation Experiment Result",
+    "target_table": "student_simulation_experiment_result",
+    "columns": {
+      "Student ID": "student_id",
+      "Module ID": "module_id",
+      "Simulation Date": "simulation_date",
+      "Simulation Result Data": "simulation_result_data",
+      "Result Analysis": "result_analysis"
+    },
+    "source_primary_key": [
+      "Student ID",
+      "Module ID",
+      "Simulation Date"
+    ],
+    "mapped_primary_key": [
+      "student_id",
+      "module_id",
+      "simulation_date"
+    ],
+    "mapped_foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      },
+      {
+        "column": "module_id",
+        "parent_table": "simulation_module",
+        "parent_column": "module_id"
+      }
+    ]
+  },
+  {
+    "record_id": "67552f0b13602ec03b41ab04",
+    "source_table": "Student",
+    "target_table": "student",
+    "columns": {
+      "Student ID": "student_id",
+      "Name": "name",
+      "Class": "class"
+    },
+    "source_primary_key": [
+      "Student ID"
+    ],
+    "mapped_primary_key": [
+      "student_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41ab04",
+    "source_table": "Assignment",
+    "target_table": "assignment",
+    "columns": {
+      "Assignment ID": "assignment_id",
+      "Student ID": "student_id",
+      "Assignment Content": "assignment_content"
+    },
+    "source_primary_key": [
+      "Assignment ID"
+    ],
+    "mapped_primary_key": [
+      "assignment_id"
+    ],
+    "mapped_foreign_keys": [
+      {
+        "column": "student_id",
+        "parent_table": "student",
+        "parent_column": "student_id"
+      }
+    ]
+  },
+  {
+    "record_id": "67552f0b13602ec03b41ab04",
+    "source_table": "Instructor",
+    "target_table": "instructor",
+    "columns": {
+      "Instructor ID": "instructor_id",
+      "Name": "instructor_name",
+      "Course": "course"
+    },
+    "source_primary_key": [
+      "Instructor ID"
+    ],
+    "mapped_primary_key": [
+      "instructor_id"
+    ],
+    "mapped_foreign_keys": []
+  },
+  {
+    "record_id": "67552f0b13602ec03b41ab04",
+    "source_table": "Assignment Grading",
+    "target_table": "assignment_grading",
+    "columns": {
+      "Assignment ID": "assignment_id",
+      "Instructor ID": "instructor_id",
+      "Grading Time": "grading_time",
+      "Score": "score",
+      "Evaluation": "evaluation"
+    },
+    "source_primary_key": [
+      "Assignment ID",
+      "Instructor ID",
+      "Grading Time"
+    ],
+    "mapped_primary_key": [
+      "assignment_id",
+      "instructor_id",
+      "grading_time"
+    ],
+    "mapped_foreign_keys": [
+      {
+        "column": "assignment_id",
+        "parent_table": "assignment",
+        "parent_column": "assignment_id"
+      },
+      {
+        "column": "instructor_id",
+        "parent_table": "instructor",
+        "parent_column": "instructor_id"
+      }
+    ]
+  }
+]

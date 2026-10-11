@@ -20,8 +20,8 @@
 
 ## What is reused and what is added
 
-- WarehouseFlow and UniversityFlow each start from an actual RSchema requirement and logical schema.
-- Both retain every original table, column, primary key and foreign-key relationship in the selected record.
+- WarehouseFlow starts from one actual RSchema requirement and logical schema; UniversityFlow combines three university examples.
+- Both retain each source table role, attribute and declared key relationship. UniversityFlow merges overlapping Student tables and fields; this integration is explicitly documented.
 - Their conceptual models are documented locally; upstream conceptual diagrams are not assumed to exist.
 - PlateFlow starts from selected table and column definitions supplied by a Korean manufacturing company.
 - Those manufacturing definitions do not declare SQL types, primary keys, foreign keys, process-code meanings or relationship counts.
@@ -39,13 +39,18 @@
 
 ## UniversityFlow
 
-- Four original tables, 21 columns and three foreign-key relationships are retained.
-- Students define cases; examinations and course registrations define events.
-- Examination results use unique result IDs so retakes remain separate records.
-- Registrations use the original student-course composite key, which retains one registration per pair.
-- Students with no events remain in the case population.
-- Notification and withdrawal questions are unsupported because their event times are absent.
-- UTC times and a passing score of 60 are documented simulation assumptions.
+- Combine course-registration, course-design and assignment-management examples from RSchema.
+- Merge the three Student tables by Student ID, including their overlapping Name and Class fields.
+- The 13 original table definitions become 11 combined tables; 60 original attribute definitions become 55 distinct columns.
+- All source primary keys and nine distinct foreign-key relationships are retained; no new table, column or foreign key is invented.
+- Shared student identity across separate source examples is an integration assumption.
+- Five event types are recorded: examinations, registrations, assignment grading, simulation-experiment completion and thesis submission.
+- Grading times are linked to student cases through assignment records.
+- Composite grading and experiment keys preserve regrading and repeated runs.
+- Planned task dates and teaching schedules are excluded from observed-event timelines.
+- Student timelines include all linked academic actions without asserting a single course or causal chain.
+- Notification, withdrawal and assignment-submission questions are unsupported because their times are absent.
+- UTC times, a passing score of 60 and academic action order are simulation assumptions.
 
 ## PlateFlow
 

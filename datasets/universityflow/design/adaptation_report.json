@@ -1,51 +1,44 @@
 {
-  "source_record_id": "67552f0b13602ec03b41aaec",
-  "original_tables": 4,
-  "retained_tables": 4,
-  "original_attribute_count": 21,
-  "retained_attribute_count": 21,
-  "original_fk_relationships": 3,
-  "retained_fk_relationships": 3,
+  "source_records": [
+    {
+      "id": "67552f0b13602ec03b41aaec",
+      "tables": 4,
+      "attributes": 21,
+      "all_tables_columns_pk_fk_retained": true
+    },
+    {
+      "id": "67552f0b13602ec03b41aa43",
+      "tables": 5,
+      "attributes": 25,
+      "all_tables_columns_pk_fk_retained": true
+    },
+    {
+      "id": "67552f0b13602ec03b41ab04",
+      "tables": 4,
+      "attributes": 14,
+      "all_tables_columns_pk_fk_retained": true
+    }
+  ],
+  "source_table_definitions": 13,
+  "combined_tables": 11,
+  "source_attribute_definitions": 60,
+  "combined_columns": 55,
+  "retained_fk_relationships": 9,
+  "merged_tables": [
+    "Three Student definitions merged by shared Student ID; overlapping Name and Class attributes unified"
+  ],
   "new_tables": 0,
   "new_columns": 0,
-  "renamed_tables": {
-    "Student": "student",
-    "Course": "course",
-    "Registration": "registration",
-    "Degree Examination Result": "degree_examination_result"
-  },
-  "renamed_columns": {
-    "Student ID": "student_id",
-    "Name": "name",
-    "Date of Birth": "date_of_birth",
-    "Phone Number": "phone_number",
-    "Home Address": "home_address",
-    "Registration Eligibility": "registration_eligibility",
-    "Course ID": "course_id",
-    "Course Name": "course_name",
-    "Credits": "credits",
-    "Instructor": "instructor",
-    "Class Time": "class_time",
-    "Class Location": "class_location",
-    "Registration Time": "registration_time",
-    "Status": "status",
-    "Result ID": "result_id",
-    "Examination Name": "examination_name",
-    "Grade": "grade",
-    "Examination Date": "examination_date"
-  },
-  "repairs": [],
+  "new_foreign_keys": 0,
   "additions": [
-    "SQLite data types and constraints",
-    "UTC instant-event interpretation",
-    "Synthetic passing threshold of 60",
-    "Eligibility/status values and simulation rules",
-    "Questions and expected extraction results"
+    "Shared student identity across three otherwise separate source examples",
+    "SQL types, constraints, UTC event-time meanings",
+    "Synthetic score threshold, scenario order and questions"
   ],
   "source_gaps": [
-    "No notification or information-verification timestamps",
-    "No eligibility-change or registration-status history",
-    "No result-publication timestamp",
-    "Composite registration key cannot retain multiple registrations for the same student and course"
+    "No assignment-submission or notification times",
+    "No withdrawal/status-change history",
+    "No links between tasks and experiments or students",
+    "No FK from instructor course labels to course offerings"
   ]
 }

@@ -2,9 +2,12 @@
   "case_concept": "Student",
   "activities": [
     "Degree Examination Taken",
-    "Course Registered"
+    "Course Registered",
+    "Assignment Graded",
+    "Simulation Experiment Completed",
+    "Thesis Submitted"
   ],
-  "default_scope": "The default student timeline contains recorded examination events and successful registrations.",
+  "default_scope": "The default student timeline includes all recorded examinations, registrations, assignment grading, simulation-experiment completions and thesis submissions linked to that student.",
   "case_population": "all student rows",
   "setting": "Catalog-assisted"
 }

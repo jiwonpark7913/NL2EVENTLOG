@@ -2,12 +2,12 @@
 
 - Three independent, English-language relational databases support development of natural-language event-log extraction.
 - Each dataset includes a populated SQLite database, data definitions, questions, expected answers, extraction SQL and reproducible generation code.
-- The examples below are ordered from warehouse operations to university registration to plate manufacturing.
+- The examples below are ordered from warehouse operations to university academic activities to plate manufacturing.
 
 | Dataset | Source used | Tables | Cases | Business events | Questions |
 |---|---|---:|---|---:|---:|
 | [WarehouseFlow](datasets/warehouseflow/README.md) | Actual RSchema requirement and logical schema | 6 | 4 warehouses | 80 | 7 |
-| [UniversityFlow](datasets/universityflow/README.md) | Actual RSchema university registration requirement and logical schema | 4 | 40 students | 87 | 8 |
+| [UniversityFlow](datasets/universityflow/README.md) | Three actual RSchema university requirements and logical schemas, combined through student identity | 11 | 40 students | 148 | 15 |
 | [PlateFlow](datasets/plateflow/README.md) | Selected table and column definitions from a Korean manufacturing company | 9 | 36 mother materials, linked to 39 cut pieces | 324 | 8 |
 
 - SQL results match the expected logs for all answerable questions.
@@ -34,7 +34,7 @@
 - [Data definitions](datasets/warehouseflow/docs/data_dictionary.md)
 - [Editable draw.io diagram](datasets/warehouseflow/docs/schema.drawio)
 
-## UniversityFlow — four tables
+## UniversityFlow — eleven tables
 
 ![UniversityFlow schema](datasets/universityflow/docs/schema.png)
 
@@ -76,7 +76,7 @@ python make_docs.py
 ## Folders and evaluation inputs
 
 - `datasets/warehouseflow/`: warehouse receiving and dispatching.
-- `datasets/universityflow/`: examinations and course registrations.
+- `datasets/universityflow/`: examinations, course registrations, grading, simulation experiments and thesis submissions.
 - `datasets/plateflow/`: plate manufacturing based on selected enterprise table definitions.
 - Each `input/`: database, schema, data dictionary, questions and task scope catalog supplied to the model.
 - Each `private/`: simulated history and expected process scopes, extraction specifications, SQL and logs used for evaluation.
@@ -99,7 +99,7 @@ python make_docs.py
 ## Sources and construction method
 
 - WarehouseFlow uses RSchema record `67552f0a13602ec03b41a78e`.
-- UniversityFlow uses RSchema record `67552f0b13602ec03b41aaec`.
+- UniversityFlow combines RSchema records `67552f0b13602ec03b41aaec`, `67552f0b13602ec03b41aa43` and `67552f0b13602ec03b41ab04` through an authored shared student identity.
 - Both use [hnuGraph/LLM4DBdesign](https://github.com/hnuGraph/LLM4DBdesign), commit `5eda099db3d9b768e5b532b5abc9f8fe117be85f`.
 - Original requirements and schema annotations are included with their source references.
 - PlateFlow uses selected metadata from a Korean manufacturing company.
