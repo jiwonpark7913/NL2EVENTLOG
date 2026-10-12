@@ -20,7 +20,7 @@
 
 ## Objects, activities and situations
 
-| Object / case | Activity types in its log | Situation / scope | Gold CSV |
+| Object / case | Activity types observed across all instances of this case type | Situation / scope | Gold CSV |
 |---|---|---|---|
 | warehouse | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this warehouse. | [CSV](private/gold_logs/OW01.csv) |
 | goods | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this goods. | [CSV](private/gold_logs/OW02.csv) |
@@ -52,14 +52,6 @@
 
 ![Schema](docs/schema.png)
 
-## Schema and documentation
-
-- [Table inventory and relationships](docs/schema_overview.md)
-- [English column dictionary](docs/data_dictionary.md)
-- [CSV dictionary](docs/data_dictionary.csv)
-- [Editable draw.io diagram](docs/schema.drawio)
-- [Object-based Gold logs and coverage](docs/object_event_logs.md)
-
 ## Question types and pairs
 
 - **Q1 Explicit:** case concept and exact activities.
@@ -77,3 +69,22 @@
 | Q4 | 7 |
 
 - [All question texts, types, pairs and answerability](docs/questions.md)
+
+## Schema and documentation
+
+- [Table inventory and relationships](docs/schema_overview.md)
+- [English column dictionary](docs/data_dictionary.md)
+- [CSV dictionary](docs/data_dictionary.csv)
+- [Editable draw.io diagram](docs/schema.drawio)
+- [Object-based Gold logs and coverage](docs/object_event_logs.md)
+
+## Event encoding and data definitions
+
+- [Table-by-table row/column encoding](docs/schema_overview.md)
+- [Three-part data dictionary: basic information, table definitions, column definitions](docs/data_dictionary.md)
+- [Table definitions CSV](docs/table_definitions.csv)
+- Process View includes the case concept and activity scope. Q1/Q2 state the scope explicitly; Q3/Q4 infer it from the declared catalog.
+- [Question activity counts and pairs](docs/questions.md): requested and extractable activity counts are shown separately.
+
+- [Verified warehouse links and activity counts per individual case](docs/object_activity_verification.md)
+- The object–activity table lists the union across all instances; an individual receiving/dispatch job has only its applicable branch.

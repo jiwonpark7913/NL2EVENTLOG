@@ -1,27 +1,28 @@
 """Generate schema documentation and editable diagrams from actual SQLite schemas."""
 from pathlib import Path
-import sqlite3,json,html,xml.etree.ElementTree as ET
+import sqlite3,json,html,re,xml.etree.ElementTree as ET
+from event_encoding import annotate
 import fitz
 from readability import format_documents
 ROOT=Path(__file__).resolve().parent
 def esc(s):return html.escape(str(s))
 def build(name,positions,title):
  p=ROOT/"datasets"/name;out=p/"docs";out.mkdir(exist_ok=True)
- d=json.loads((p/"input/data_dictionary.json").read_text());tables=d["tables"]
+ d=annotate(p);tables=d["tables"]
  con=sqlite3.connect(p/"input/database.sqlite");con.row_factory=sqlite3.Row
  info={t["table"]:dict(cols=list(con.execute("PRAGMA table_info("+t["table"]+")")),fk=list(con.execute("PRAGMA foreign_key_list("+t["table"]+")")),rows=con.execute("SELECT COUNT(*) FROM "+t["table"]).fetchone()[0]) for t in tables}
  docs="# "+title+" — table and column dictionary\n\nGenerated from the executable SQLite schema and English metadata.\n\n"
- docs+="| Table | Rows | Columns | Primary key | Role |\n|---|---:|---:|---|---|\n"
+ docs+="| Table | Rows | Columns | Event encoding | Primary key | Role |\n|---|---:|---:|---|---|---|\n"
  for t in tables:
   n=t["table"];i=info[n];pk=[r["name"] for r in i["cols"] if r["pk"]]
-  docs+="| "+n+" | "+str(i["rows"])+" | "+str(len(i["cols"]))+" | "+", ".join(pk)+" | "+t["definition"]+" |\n"
- docs+="\n## Columns\n"
+  docs+="| "+n+" | "+str(i["rows"])+" | "+str(len(i["cols"]))+" | "+t["event_encoding"]+" | "+", ".join(pk)+" | "+t["definition"]+" |\n"
+ docs+="\n- Row encoding: each occurrence is a separate row; its activity comes from a code, label or the table meaning.\n- Column encoding: an object row stores actual milestone times in dedicated columns. It can contain one or several milestones.\n- No event encoding: the table supplies context, plans, identities or links rather than direct events.\n- Planned dates, snapshots and technical timestamps do not automatically become events.\n\n## Columns\n"
  flat=[]
  for t in tables:
-  n=t["table"];docs+="\n### "+n+"\n\n"+t["definition"]+"\n\n| Column | Type | Required | Key / relationship | Definition |\n|---|---|---|---|---|\n"
+  n=t["table"];docs+="\n### "+n+"\n\n"+t["definition"]+"\n\n- Event encoding: "+t["event_encoding"]+". "+t["encoding_detail"]+"\n\n| Column | Type | Required | Key / relationship | Definition |\n|---|---|---|---|---|\n"
   for c,r in zip(t["columns"],info[n]["cols"]):
    fk=[f for f in info[n]["fk"] if f["from"]==c["name"]];key=("PK" if r["pk"] else "")+"".join(("; " if r["pk"] else "")+"FK → "+f["table"]+"."+f["to"] for f in fk)
-   row=dict(table=n,column=c["name"],sql_type=r["type"],required="yes" if r["notnull"] or r["pk"] else "no",key_relationship=key,definition=c["definition"])
+   row=dict(table=n,column=c["name"],sql_type=r["type"],required="yes" if r["notnull"] or r["pk"] else "no",key_relationship=key,definition=c["definition"],event_encoding=t["event_encoding"],encoding_detail=t["encoding_detail"])
    flat.append(row);docs+="| "+row["column"]+" | "+row["sql_type"]+" | "+row["required"]+" | "+key+" | "+c["definition"]+" |\n"
  if name=="plateflow":
   docs+="\n## Logical history identity reference\n\nmaterial_operation_history.material_id refers to either as_rolled_material.material_id or plate_material.plate_material_id. This is not a single-table SQLite FK. The builder validates the two disjoint identity sets with an insert trigger and an orphan check. Dashed diagram edges show this logical reference.\n"
@@ -132,10 +133,13 @@ def build(name,positions,title):
  overview+="\n## Relationships\n\n| Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |\n|---|---|---|---|---|---|\n"
  for r in relationships:overview+="| "+r["parent"]+" | "+r["child"]+" | "+r["from_col"]+" | "+r["to_col"]+" | "+r["label"]+" | "+("logical" if r["logical"] else "declared")+" |\n"
  (out/"schema_overview.md").write_text(overview)
- readme=p/"README.md";s=readme.read_text().split("\n## Schema and documentation")[0];s+="\n## Schema and documentation\n\n"+("" if "![Schema](docs/schema.png)" in s else "![Schema](docs/schema.png)\n\n")+"- [Table inventory and relationships](docs/schema_overview.md)\n- [English column dictionary](docs/data_dictionary.md)\n- [CSV dictionary](docs/data_dictionary.csv)\n- [Editable draw.io diagram](docs/schema.drawio)\n- [Object-based Gold logs and coverage](docs/object_event_logs.md)\n";readme.write_text(s)
+ readme=p/"README.md";s=re.sub(r"\n## Schema and documentation\n.*?(?=\n## |\Z)","",readme.read_text(),flags=re.S);s+="\n## Schema and documentation\n\n"+("" if "![Schema](docs/schema.png)" in s else "![Schema](docs/schema.png)\n\n")+"- [Table inventory and relationships](docs/schema_overview.md)\n- [English column dictionary](docs/data_dictionary.md)\n- [CSV dictionary](docs/data_dictionary.csv)\n- [Editable draw.io diagram](docs/schema.drawio)\n- [Object-based Gold logs and coverage](docs/object_event_logs.md)\n";readme.write_text(s)
  con.close()
 build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130),"transaction_record":(575,480),"goods_transaction_detail":(65,830),"loader_transaction":(1085,830)},"WarehouseFlow · RSchema")
 build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
 
 build("universityflow",{"student":(65,130),"course":(575,130),"instructor":(1085,130),"degree_examination_result":(65,480),"registration":(575,480),"assignment":(1085,480),"task":(65,830),"simulation_module":(575,830),"assignment_grading":(1085,830),"thesis":(65,1180),"student_simulation_experiment_result":(575,1180)},"UniversityFlow · combined RSchema examples")
 format_documents(ROOT)
+
+from dictionary_standard import render
+for name in ["warehouseflow","universityflow","plateflow"]:render(ROOT/"datasets"/name)

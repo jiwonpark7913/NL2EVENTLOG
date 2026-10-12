@@ -52,3 +52,15 @@
 - [warehouseflow question list](datasets/warehouseflow/docs/questions.md)
 - [universityflow question list](datasets/universityflow/docs/questions.md)
 - [plateflow question list](datasets/plateflow/docs/questions.md)
+
+## Question counts by type
+
+| Dataset | Q1 Explicit | Q2 Paraphrased | Q3 Full Lifecycle | Q4 Full Lifecycle Paraphrased |
+|---|---:|---:|---:|---:|
+| plateflow | 12 | 12 | 9 | 9 |
+| universityflow | 19 | 19 | 12 | 12 |
+| warehouseflow | 9 | 9 | 7 | 7 |
+
+- All pairs are one-to-one: Q1 ↔ Q2 and Q3 ↔ Q4. Missing originals/paraphrases are repaired during question construction.
+- Process View already includes activity scope; activities are not a separate concept added to it.
+- Each question list includes requested and extractable activity counts.

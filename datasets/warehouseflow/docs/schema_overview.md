@@ -4,16 +4,21 @@
 
 - [Editable draw.io diagram](schema.drawio) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
 
-| Table | Rows | Columns | Primary key | Role |
-|---|---:|---:|---|---|
-| warehouse | 4 | 3 | warehouse_number | Warehouse master |
-| goods | 6 | 2 | goods_id | Goods master |
-| loader | 5 | 3 | loader_id | Loading/unloading worker master |
-| transaction_record | 80 | 4 | transaction_id | Inbound/outbound task header, one business occurrence per row |
-| goods_transaction_detail | 138 | 3 | goods_id, transaction_id | Goods lines per transaction; composite key prevents repeated goods within one task |
-| loader_transaction | 167 | 2 | loader_id, transaction_id | Worker assignment bridge; multiple workers may share one task |
-| transaction_record_activity | 314 | 5 | event_id | Authored actual-action history for transaction_record |
-| lifecycle_case_link | 3022 | 3 | event_id, case_table, case_id | Explicit case attribution across typed action histories; auxiliary extraction index, not a business case |
+| Table | Rows | Columns | Event encoding | Primary key | Role |
+|---|---:|---:|---|---|---|
+| warehouse | 4 | 3 | No event encoding | warehouse_number | Warehouse master |
+| goods | 6 | 2 | No event encoding | goods_id | Goods master |
+| loader | 5 | 3 | No event encoding | loader_id | Loading/unloading worker master |
+| transaction_record | 80 | 4 | Row encoding | transaction_id | Inbound/outbound task header, one business occurrence per row |
+| goods_transaction_detail | 138 | 3 | No event encoding | goods_id, transaction_id | Goods lines per transaction; composite key prevents repeated goods within one task |
+| loader_transaction | 167 | 2 | No event encoding | loader_id, transaction_id | Worker assignment bridge; multiple workers may share one task |
+| transaction_record_activity | 314 | 5 | Row encoding | event_id | Authored actual-action history for transaction_record |
+| lifecycle_case_link | 3022 | 3 | No event encoding | event_id, case_table, case_id | Explicit case attribution across typed action histories; auxiliary extraction index, not a business case |
+
+- Row encoding: each occurrence is a separate row; its activity comes from a code, label or the table meaning.
+- Column encoding: an object row stores actual milestone times in dedicated columns. It can contain one or several milestones.
+- No event encoding: the table supplies context, plans, identities or links rather than direct events.
+- Planned dates, snapshots and technical timestamps do not automatically become events.
 
 
 ## Relationships

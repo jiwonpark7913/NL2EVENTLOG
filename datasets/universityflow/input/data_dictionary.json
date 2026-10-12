@@ -28,7 +28,12 @@
               "source_table": "Student",
               "source_attribute": "Student ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "name",
@@ -51,7 +56,12 @@
               "source_table": "Student",
               "source_attribute": "Name"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "date_of_birth",
@@ -64,7 +74,12 @@
               "source_table": "Student",
               "source_attribute": "Date of Birth"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.date_of_birth",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "phone_number",
@@ -77,7 +92,12 @@
               "source_table": "Student",
               "source_attribute": "Phone Number"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.phone_number",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "home_address",
@@ -90,7 +110,12 @@
               "source_table": "Student",
               "source_attribute": "Home Address"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.home_address",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "registration_eligibility",
@@ -103,7 +128,12 @@
               "source_table": "Student",
               "source_attribute": "Registration Eligibility"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.registration_eligibility",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(registration_eligibility IN ('ELIGIBLE','INELIGIBLE'))",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "class",
@@ -121,7 +151,12 @@
               "source_table": "Student",
               "source_attribute": "Class"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.class",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "major",
@@ -134,7 +169,12 @@
               "source_table": "Student",
               "source_attribute": "Major"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student.major",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -154,7 +194,10 @@
           "record_id": "67552f0b13602ec03b41ab04",
           "source_table": "Student"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.student"
     },
     {
       "table": "course",
@@ -171,7 +214,12 @@
               "source_table": "Course",
               "source_attribute": "Course ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.course.course_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "course_name",
@@ -184,7 +232,12 @@
               "source_table": "Course",
               "source_attribute": "Course Name"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.course.course_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "credits",
@@ -197,7 +250,12 @@
               "source_table": "Course",
               "source_attribute": "Credits"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.course.credits",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(credits > 0)",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
         },
         {
           "name": "instructor",
@@ -210,7 +268,12 @@
               "source_table": "Course",
               "source_attribute": "Instructor"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.course.instructor",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "class_time",
@@ -223,7 +286,12 @@
               "source_table": "Course",
               "source_attribute": "Class Time"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.course.class_time",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "class_location",
@@ -236,7 +304,12 @@
               "source_table": "Course",
               "source_attribute": "Class Location"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.course.class_location",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -248,7 +321,10 @@
           "record_id": "67552f0b13602ec03b41aaec",
           "source_table": "Course"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.course"
     },
     {
       "table": "registration",
@@ -265,7 +341,12 @@
               "source_table": "Registration",
               "source_attribute": "Student ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.registration.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "course_id",
@@ -278,7 +359,12 @@
               "source_table": "Registration",
               "source_attribute": "Course ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.registration.course_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "registration_time",
@@ -291,7 +377,12 @@
               "source_table": "Registration",
               "source_attribute": "Registration Time"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.registration.registration_time",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "status",
@@ -304,7 +395,12 @@
               "source_table": "Registration",
               "source_attribute": "Status"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.registration.status",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(status='REGISTERED')",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -328,7 +424,10 @@
           "record_id": "67552f0b13602ec03b41aaec",
           "source_table": "Registration"
         }
-      ]
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "One successful registration occurrence per student-course row.",
+      "metadata_id": "universityflow.registration"
     },
     {
       "table": "degree_examination_result",
@@ -345,7 +444,12 @@
               "source_table": "Degree Examination Result",
               "source_attribute": "Result ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.degree_examination_result.result_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "student_id",
@@ -358,7 +462,12 @@
               "source_table": "Degree Examination Result",
               "source_attribute": "Student ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.degree_examination_result.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "examination_name",
@@ -371,7 +480,12 @@
               "source_table": "Degree Examination Result",
               "source_attribute": "Examination Name"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.degree_examination_result.examination_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "grade",
@@ -384,7 +498,12 @@
               "source_table": "Degree Examination Result",
               "source_attribute": "Grade"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.degree_examination_result.grade",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(grade BETWEEN 0 AND 100)",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
         },
         {
           "name": "examination_date",
@@ -397,7 +516,12 @@
               "source_table": "Degree Examination Result",
               "source_attribute": "Examination Date"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.degree_examination_result.examination_date",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -415,7 +539,10 @@
           "record_id": "67552f0b13602ec03b41aaec",
           "source_table": "Degree Examination Result"
         }
-      ]
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "One examination sitting per result row.",
+      "metadata_id": "universityflow.degree_examination_result"
     },
     {
       "table": "task",
@@ -432,7 +559,12 @@
               "source_table": "Task",
               "source_attribute": "Task ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.task.task_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "task_title",
@@ -445,7 +577,12 @@
               "source_table": "Task",
               "source_attribute": "Task Title"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.task.task_title",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "task_description",
@@ -458,7 +595,12 @@
               "source_table": "Task",
               "source_attribute": "Task Description"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.task.task_description",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "task_start_date",
@@ -471,7 +613,12 @@
               "source_table": "Task",
               "source_attribute": "Task Start Date"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.task.task_start_date",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "task_end_date",
@@ -484,7 +631,12 @@
               "source_table": "Task",
               "source_attribute": "Task End Date"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.task.task_end_date",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "task_location",
@@ -497,7 +649,12 @@
               "source_table": "Task",
               "source_attribute": "Task Location"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.task.task_location",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -509,7 +666,10 @@
           "record_id": "67552f0b13602ec03b41aa43",
           "source_table": "Task"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.task"
     },
     {
       "table": "simulation_module",
@@ -526,7 +686,12 @@
               "source_table": "Simulation Module",
               "source_attribute": "Module ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.simulation_module.module_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_name",
@@ -539,7 +704,12 @@
               "source_table": "Simulation Module",
               "source_attribute": "Module Name"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.simulation_module.module_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_type",
@@ -552,7 +722,12 @@
               "source_table": "Simulation Module",
               "source_attribute": "Module Type"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.simulation_module.module_type",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_description",
@@ -565,7 +740,12 @@
               "source_table": "Simulation Module",
               "source_attribute": "Module Description"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.simulation_module.module_description",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_code",
@@ -578,7 +758,12 @@
               "source_table": "Simulation Module",
               "source_attribute": "Module Code"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.simulation_module.module_code",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -590,7 +775,10 @@
           "record_id": "67552f0b13602ec03b41aa43",
           "source_table": "Simulation Module"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.simulation_module"
     },
     {
       "table": "thesis",
@@ -607,7 +795,12 @@
               "source_table": "Thesis",
               "source_attribute": "Thesis ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.thesis.thesis_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "student_id",
@@ -620,7 +813,12 @@
               "source_table": "Thesis",
               "source_attribute": "Student ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.thesis.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "thesis_title",
@@ -633,7 +831,12 @@
               "source_table": "Thesis",
               "source_attribute": "Thesis Title"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.thesis.thesis_title",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "thesis_content",
@@ -646,7 +849,12 @@
               "source_table": "Thesis",
               "source_attribute": "Thesis Content"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.thesis.thesis_content",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "submission_date",
@@ -659,7 +867,12 @@
               "source_table": "Thesis",
               "source_attribute": "Submission Date"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.thesis.submission_date",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -677,7 +890,10 @@
           "record_id": "67552f0b13602ec03b41aa43",
           "source_table": "Thesis"
         }
-      ]
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "One thesis object row stores its actual submission milestone. Extracted event columns: submission_date.",
+      "metadata_id": "universityflow.thesis"
     },
     {
       "table": "student_simulation_experiment_result",
@@ -694,7 +910,12 @@
               "source_table": "Student Simulation Experiment Result",
               "source_attribute": "Student ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student_simulation_experiment_result.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_id",
@@ -707,7 +928,12 @@
               "source_table": "Student Simulation Experiment Result",
               "source_attribute": "Module ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student_simulation_experiment_result.module_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "simulation_date",
@@ -720,7 +946,12 @@
               "source_table": "Student Simulation Experiment Result",
               "source_attribute": "Simulation Date"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_date",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "simulation_result_data",
@@ -733,7 +964,12 @@
               "source_table": "Student Simulation Experiment Result",
               "source_attribute": "Simulation Result Data"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_result_data",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "result_analysis",
@@ -746,7 +982,12 @@
               "source_table": "Student Simulation Experiment Result",
               "source_attribute": "Result Analysis"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.student_simulation_experiment_result.result_analysis",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -771,7 +1012,10 @@
           "record_id": "67552f0b13602ec03b41aa43",
           "source_table": "Student Simulation Experiment Result"
         }
-      ]
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "One completed simulation run per composite-key row.",
+      "metadata_id": "universityflow.student_simulation_experiment_result"
     },
     {
       "table": "assignment",
@@ -788,7 +1032,12 @@
               "source_table": "Assignment",
               "source_attribute": "Assignment ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment.assignment_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "student_id",
@@ -801,7 +1050,12 @@
               "source_table": "Assignment",
               "source_attribute": "Student ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "assignment_content",
@@ -814,7 +1068,12 @@
               "source_table": "Assignment",
               "source_attribute": "Assignment Content"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment.assignment_content",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -832,7 +1091,10 @@
           "record_id": "67552f0b13602ec03b41ab04",
           "source_table": "Assignment"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.assignment"
     },
     {
       "table": "instructor",
@@ -849,7 +1111,12 @@
               "source_table": "Instructor",
               "source_attribute": "Instructor ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.instructor.instructor_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "instructor_name",
@@ -862,7 +1129,12 @@
               "source_table": "Instructor",
               "source_attribute": "Name"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.instructor.instructor_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "course",
@@ -875,7 +1147,12 @@
               "source_table": "Instructor",
               "source_attribute": "Course"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.instructor.course",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -887,7 +1164,10 @@
           "record_id": "67552f0b13602ec03b41ab04",
           "source_table": "Instructor"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.instructor"
     },
     {
       "table": "assignment_grading",
@@ -904,7 +1184,12 @@
               "source_table": "Assignment Grading",
               "source_attribute": "Assignment ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment_grading.assignment_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "instructor_id",
@@ -917,7 +1202,12 @@
               "source_table": "Assignment Grading",
               "source_attribute": "Instructor ID"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment_grading.instructor_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "grading_time",
@@ -930,7 +1220,12 @@
               "source_table": "Assignment Grading",
               "source_attribute": "Grading Time"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment_grading.grading_time",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "score",
@@ -943,7 +1238,12 @@
               "source_table": "Assignment Grading",
               "source_attribute": "Score"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment_grading.score",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(score BETWEEN 0 AND 100)",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
         },
         {
           "name": "evaluation",
@@ -956,7 +1256,12 @@
               "source_table": "Assignment Grading",
               "source_attribute": "Evaluation"
             }
-          ]
+          ],
+          "metadata_id": "universityflow.assignment_grading.evaluation",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -981,7 +1286,10 @@
           "record_id": "67552f0b13602ec03b41ab04",
           "source_table": "Assignment Grading"
         }
-      ]
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "One grading occurrence per composite-key row.",
+      "metadata_id": "universityflow.assignment_grading"
     },
     {
       "table": "registration_activity",
@@ -991,37 +1299,67 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.registration_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "student_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to registration.student_id"
+          "definition": "Explicit parent object key; FK to registration.student_id",
+          "metadata_id": "universityflow.registration_activity.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "course_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to registration.course_id"
+          "definition": "Explicit parent object key; FK to registration.course_id",
+          "metadata_id": "universityflow.registration_activity.course_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.registration_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.registration_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.registration_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1039,7 +1377,10 @@
           "parent_column": "course_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.registration_activity"
     },
     {
       "table": "degree_examination_result_activity",
@@ -1049,31 +1390,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.degree_examination_result_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "result_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to degree_examination_result.result_id"
+          "definition": "Explicit parent object key; FK to degree_examination_result.result_id",
+          "metadata_id": "universityflow.degree_examination_result_activity.result_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.degree_examination_result_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.degree_examination_result_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.degree_examination_result_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1086,7 +1452,10 @@
           "parent_column": "result_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.degree_examination_result_activity"
     },
     {
       "table": "assignment_activity",
@@ -1096,31 +1465,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.assignment_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "assignment_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to assignment.assignment_id"
+          "definition": "Explicit parent object key; FK to assignment.assignment_id",
+          "metadata_id": "universityflow.assignment_activity.assignment_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.assignment_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.assignment_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.assignment_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1133,7 +1527,10 @@
           "parent_column": "assignment_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.assignment_activity"
     },
     {
       "table": "simulation_module_activity",
@@ -1143,31 +1540,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.simulation_module_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to simulation_module.module_id"
+          "definition": "Explicit parent object key; FK to simulation_module.module_id",
+          "metadata_id": "universityflow.simulation_module_activity.module_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.simulation_module_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.simulation_module_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.simulation_module_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1180,7 +1602,10 @@
           "parent_column": "module_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.simulation_module_activity"
     },
     {
       "table": "student_simulation_experiment_result_activity",
@@ -1190,43 +1615,78 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "student_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.student_id"
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.student_id",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.student_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "module_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.module_id"
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.module_id",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.module_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "simulation_date",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.simulation_date"
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.simulation_date",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.simulation_date",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.student_simulation_experiment_result_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1249,7 +1709,10 @@
           "parent_column": "simulation_date"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.student_simulation_experiment_result_activity"
     },
     {
       "table": "thesis_activity",
@@ -1259,31 +1722,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.thesis_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "thesis_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to thesis.thesis_id"
+          "definition": "Explicit parent object key; FK to thesis.thesis_id",
+          "metadata_id": "universityflow.thesis_activity.thesis_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.thesis_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.thesis_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.thesis_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1296,7 +1784,10 @@
           "parent_column": "thesis_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.thesis_activity"
     },
     {
       "table": "course_activity",
@@ -1306,31 +1797,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.course_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "course_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to course.course_id"
+          "definition": "Explicit parent object key; FK to course.course_id",
+          "metadata_id": "universityflow.course_activity.course_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.course_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.course_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.course_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1343,7 +1859,10 @@
           "parent_column": "course_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.course_activity"
     },
     {
       "table": "task_activity",
@@ -1353,31 +1872,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "universityflow.task_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "task_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to task.task_id"
+          "definition": "Explicit parent object key; FK to task.task_id",
+          "metadata_id": "universityflow.task_activity.task_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "universityflow.task_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "universityflow.task_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "universityflow.task_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1390,7 +1934,10 @@
           "parent_column": "task_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "universityflow.task_activity"
     },
     {
       "table": "lifecycle_case_link",
@@ -1406,22 +1953,40 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Validated identity in a typed activity table; polymorphic reference"
+          "definition": "Validated identity in a typed activity table; polymorphic reference",
+          "metadata_id": "universityflow.lifecycle_case_link.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "case_table",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled existing business table name"
+          "definition": "Controlled existing business table name",
+          "metadata_id": "universityflow.lifecycle_case_link.case_table",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "case_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon",
+          "metadata_id": "universityflow.lifecycle_case_link.case_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "universityflow.lifecycle_case_link"
     }
   ],
   "value_domain": {
@@ -1549,6 +2114,33 @@
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
       "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
+  ],
+  "dictionary_basic_information": {
+    "dictionary_id": "NL2EVENTLOG:universityflow",
+    "version": "2026-10-12",
+    "name": "UniversityFlow",
+    "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
+    "language": "en",
+    "timezone": "UTC",
+    "dbms": "SQLite",
+    "namespace": "universityflow",
+    "maintainer": "NL2EVENTLOG project maintainers",
+    "registration_status": "Project-maintained draft; not ISO-registered or certified",
+    "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
+    "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
+    "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
+  },
+  "standards_references": [
+    {
+      "standard": "ISO/IEC 11179-3:2023",
+      "url": "https://www.iso.org/standard/78915.html",
+      "application": "Registry identification, administration and definition concepts"
+    },
+    {
+      "standard": "ISO/IEC 11179-4:2004",
+      "url": "https://www.iso.org/standard/35346.html",
+      "application": "Semantic formulation of data definitions"
     }
   ]
 }

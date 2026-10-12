@@ -13,16 +13,29 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Synthetic slab identity",
-          "source_column": "MTL_NO"
+          "source_column": "MTL_NO",
+          "metadata_id": "plateflow.slab_material.slab_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "charge_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Upstream charge identity, contextual attribute",
-          "source_column": "CHARGE_NO"
+          "source_column": "CHARGE_NO",
+          "metadata_id": "plateflow.slab_material.charge_id",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "plateflow.slab_material"
     },
     {
       "table": "planned_rolling_instruction",
@@ -34,23 +47,41 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Plan identity",
-          "source_column": "PLATE_HR_WORK_DIR_ID"
+          "source_column": "PLATE_HR_WORK_DIR_ID",
+          "metadata_id": "plateflow.planned_rolling_instruction.plan_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "slab_id",
           "type": "TEXT",
           "constraints": "NOT NULL REFERENCES slab_material(slab_id)",
           "definition": "Planned input slab",
-          "source_column": "SLAB_NO"
+          "source_column": "SLAB_NO",
+          "metadata_id": "plateflow.planned_rolling_instruction.slab_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL REFERENCES slab_material(slab_id)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "planned_reheat_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Scheduled furnace charging time",
-          "source_column": "PLT_RF_CH_SCHE_DT"
+          "source_column": "PLT_RF_CH_SCHE_DT",
+          "metadata_id": "plateflow.planned_rolling_instruction.planned_reheat_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "plateflow.planned_rolling_instruction"
     },
     {
       "table": "rolling_instruction",
@@ -62,23 +93,41 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Synthetic row identity",
-          "source_column": "WIP_ENTITY_ID"
+          "source_column": "WIP_ENTITY_ID",
+          "metadata_id": "plateflow.rolling_instruction.instruction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "plan_id",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id)",
           "definition": "Synthetic explicit link to plan",
-          "source_column": null
+          "source_column": null,
+          "metadata_id": "plateflow.rolling_instruction.plan_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "released_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Actual instruction release time",
-          "source_column": "OP_INDI_RELEASE_DT"
+          "source_column": "OP_INDI_RELEASE_DT",
+          "metadata_id": "plateflow.rolling_instruction.released_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Instruction object row stores its actual release milestone. Extracted event columns: released_at.",
+      "metadata_id": "plateflow.rolling_instruction"
     },
     {
       "table": "as_rolled_material",
@@ -90,65 +139,113 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Mother material identity",
-          "source_column": "MTL_NO"
+          "source_column": "MTL_NO",
+          "metadata_id": "plateflow.as_rolled_material.material_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "as_rolled_plate_no",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE",
           "definition": "Mother as-rolled plate number",
-          "source_column": "AS_ROLLED_PLATE_NO"
+          "source_column": "AS_ROLLED_PLATE_NO",
+          "metadata_id": "plateflow.as_rolled_material.as_rolled_plate_no",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "slab_id",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE REFERENCES slab_material(slab_id)",
           "definition": "Source slab",
-          "source_column": "SLAB_NO"
+          "source_column": "SLAB_NO",
+          "metadata_id": "plateflow.as_rolled_material.slab_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE REFERENCES slab_material(slab_id)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "instruction_id",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id)",
           "definition": "Synthetic explicit link to released instruction",
-          "source_column": null
+          "source_column": null,
+          "metadata_id": "plateflow.as_rolled_material.instruction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "furnace_charged_at",
           "type": "TEXT",
           "constraints": "",
           "definition": "Actual furnace material charging",
-          "source_column": "RF_CH_DT"
+          "source_column": "RF_CH_DT",
+          "metadata_id": "plateflow.as_rolled_material.furnace_charged_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "crop_shear_passed_at",
           "type": "TEXT",
           "constraints": "",
           "definition": "Actual crop-shear passage",
-          "source_column": "PLT_CS_PPLT_DT"
+          "source_column": "PLT_CS_PPLT_DT",
+          "metadata_id": "plateflow.as_rolled_material.crop_shear_passed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "latest_operation_completed_at",
           "type": "TEXT",
           "constraints": "",
           "definition": "Snapshot of latest mother-material operation, not always rolling completion",
-          "source_column": "PLT_AC_OP_END_OP_DT"
+          "source_column": "PLT_AC_OP_END_OP_DT",
+          "metadata_id": "plateflow.as_rolled_material.latest_operation_completed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "created_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Technical database creation timestamp",
-          "source_column": "CREATION_TIMESTAMP"
+          "source_column": "CREATION_TIMESTAMP",
+          "metadata_id": "plateflow.as_rolled_material.created_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "updated_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Technical database update timestamp",
-          "source_column": "LAST_UPDATE_TIMESTAMP"
+          "source_column": "LAST_UPDATE_TIMESTAMP",
+          "metadata_id": "plateflow.as_rolled_material.updated_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "One material object row contains two different extracted business milestones. Extracted event columns: furnace_charged_at, crop_shear_passed_at.",
+      "metadata_id": "plateflow.as_rolled_material"
     },
     {
       "table": "furnace_charge_tracking",
@@ -160,30 +257,53 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Tracking occurrence ID",
-          "source_column": "TRACKING_CODE"
+          "source_column": "TRACKING_CODE",
+          "metadata_id": "plateflow.furnace_charge_tracking.tracking_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "material_id",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)",
           "definition": "Tracked material",
-          "source_column": "MTL_NO"
+          "source_column": "MTL_NO",
+          "metadata_id": "plateflow.furnace_charge_tracking.material_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "yard_instruction_received_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Actual yard instruction receipt",
-          "source_column": "YD_INDI_RCP_DT"
+          "source_column": "YD_INDI_RCP_DT",
+          "metadata_id": "plateflow.furnace_charge_tracking.yard_instruction_received_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "lot_charging_started_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Furnace lot charging start; different event granularity from material entry",
-          "source_column": "HT_FCE_CH_LOT_CH_SAT_DT"
+          "source_column": "HT_FCE_CH_LOT_CH_SAT_DT",
+          "metadata_id": "plateflow.furnace_charge_tracking.lot_charging_started_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Only yard instruction receipt is currently extracted; lot_charging_started_at is outside the declared material-event scope. Extracted event columns: yard_instruction_received_at.",
+      "metadata_id": "plateflow.furnace_charge_tracking"
     },
     {
       "table": "cutting_finishing_instruction",
@@ -195,30 +315,53 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Synthetic instruction ID",
-          "source_column": "WIP_ENTITY_ID"
+          "source_column": "WIP_ENTITY_ID",
+          "metadata_id": "plateflow.cutting_finishing_instruction.instruction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "material_id",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)",
           "definition": "Directed mother material",
-          "source_column": "MTL_NO"
+          "source_column": "MTL_NO",
+          "metadata_id": "plateflow.cutting_finishing_instruction.material_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "released_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Actual cutting/finishing instruction release",
-          "source_column": "OP_INDI_RELEASE_DT"
+          "source_column": "OP_INDI_RELEASE_DT",
+          "metadata_id": "plateflow.cutting_finishing_instruction.released_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "cut_method",
           "type": "TEXT",
           "constraints": "NOT NULL CHECK(cut_method='SPLIT')",
           "definition": "Synthetic split-cut method code",
-          "source_column": "PL_CUT_METH"
+          "source_column": "PL_CUT_METH",
+          "metadata_id": "plateflow.cutting_finishing_instruction.cut_method",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(cut_method='SPLIT')",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Cutting instruction object row stores its actual release milestone. Extracted event columns: released_at.",
+      "metadata_id": "plateflow.cutting_finishing_instruction"
     },
     {
       "table": "plate_material",
@@ -230,37 +373,65 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Finished-piece material identity",
-          "source_column": "MTL_NO"
+          "source_column": "MTL_NO",
+          "metadata_id": "plateflow.plate_material.plate_material_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "plate_no",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE",
           "definition": "Individual Plate number",
-          "source_column": "PLATE_NO"
+          "source_column": "PLATE_NO",
+          "metadata_id": "plateflow.plate_material.plate_no",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "parent_as_rolled_plate_no",
           "type": "TEXT",
           "constraints": "NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no)",
           "definition": "Mother as-rolled plate number; synthetic FK policy",
-          "source_column": "AS_ROLLED_PLATE_NO"
+          "source_column": "AS_ROLLED_PLATE_NO",
+          "metadata_id": "plateflow.plate_material.parent_as_rolled_plate_no",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "dimension_inspected_at",
           "type": "TEXT",
           "constraints": "",
           "definition": "Actual dimensional inspection timestamp",
-          "source_column": "SIZE_INSP_DATE"
+          "source_column": "SIZE_INSP_DATE",
+          "metadata_id": "plateflow.plate_material.dimension_inspected_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "latest_operation_completed_at",
           "type": "TEXT",
           "constraints": "",
           "definition": "Latest piece operation snapshot",
-          "source_column": "PLT_AC_OP_END_OP_DT"
+          "source_column": "PLT_AC_OP_END_OP_DT",
+          "metadata_id": "plateflow.plate_material.latest_operation_completed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "One cut-piece object row stores its actual dimensional-inspection milestone. Extracted event columns: dimension_inspected_at.",
+      "metadata_id": "plateflow.plate_material"
     },
     {
       "table": "operation_code",
@@ -272,16 +443,29 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Synthetic process code",
-          "source_column": null
+          "source_column": null,
+          "metadata_id": "plateflow.operation_code.code",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "meaning",
           "type": "TEXT",
           "constraints": "NOT NULL UNIQUE",
           "definition": "English operation meaning",
-          "source_column": null
+          "source_column": null,
+          "metadata_id": "plateflow.operation_code.meaning",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL UNIQUE",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "plateflow.operation_code"
     },
     {
       "table": "material_operation_history",
@@ -293,44 +477,77 @@
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
           "definition": "Operation occurrence ID",
-          "source_column": "TRANSACTION_ID"
+          "source_column": "TRANSACTION_ID",
+          "metadata_id": "plateflow.material_operation_history.transaction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "material_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Mother or piece material identity; validated against both material tables",
-          "source_column": "MTL_NO"
+          "source_column": "MTL_NO",
+          "metadata_id": "plateflow.material_operation_history.material_id",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "operation_code",
           "type": "TEXT",
           "constraints": "NOT NULL REFERENCES operation_code(code)",
           "definition": "Synthetic factory/process code",
-          "source_column": "FAC_OP_CD_N"
+          "source_column": "FAC_OP_CD_N",
+          "metadata_id": "plateflow.material_operation_history.operation_code",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL REFERENCES operation_code(code)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "started_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Actual operation start time",
-          "source_column": "OP_SAT_DT"
+          "source_column": "OP_SAT_DT",
+          "metadata_id": "plateflow.material_operation_history.started_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "completed_at",
           "type": "TEXT",
           "constraints": "NOT NULL CHECK(completed_at > started_at)",
           "definition": "Actual operation completion time",
-          "source_column": "OP_DN_DT"
+          "source_column": "OP_DN_DT",
+          "metadata_id": "plateflow.material_operation_history.completed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(completed_at > started_at)",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "created_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Technical record insertion time",
-          "source_column": "CREATION_TIMESTAMP"
+          "source_column": "CREATION_TIMESTAMP",
+          "metadata_id": "plateflow.material_operation_history.created_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
-      ]
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "operation_code selects the action; one completed operation per history row. started_at is not currently extracted as a second event.",
+      "metadata_id": "plateflow.material_operation_history"
     },
     {
       "table": "slab_material_activity",
@@ -340,31 +557,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "plateflow.slab_material_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "slab_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to slab_material.slab_id"
+          "definition": "Explicit parent object key; FK to slab_material.slab_id",
+          "metadata_id": "plateflow.slab_material_activity.slab_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "plateflow.slab_material_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "plateflow.slab_material_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "plateflow.slab_material_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -377,7 +619,10 @@
           "parent_column": "slab_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "plateflow.slab_material_activity"
     },
     {
       "table": "planned_rolling_instruction_activity",
@@ -387,31 +632,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "plateflow.planned_rolling_instruction_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "plan_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to planned_rolling_instruction.plan_id"
+          "definition": "Explicit parent object key; FK to planned_rolling_instruction.plan_id",
+          "metadata_id": "plateflow.planned_rolling_instruction_activity.plan_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "plateflow.planned_rolling_instruction_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "plateflow.planned_rolling_instruction_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "plateflow.planned_rolling_instruction_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -424,7 +694,10 @@
           "parent_column": "plan_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "plateflow.planned_rolling_instruction_activity"
     },
     {
       "table": "rolling_instruction_activity",
@@ -434,31 +707,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "plateflow.rolling_instruction_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "instruction_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to rolling_instruction.instruction_id"
+          "definition": "Explicit parent object key; FK to rolling_instruction.instruction_id",
+          "metadata_id": "plateflow.rolling_instruction_activity.instruction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "plateflow.rolling_instruction_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "plateflow.rolling_instruction_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "plateflow.rolling_instruction_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -471,7 +769,10 @@
           "parent_column": "instruction_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "plateflow.rolling_instruction_activity"
     },
     {
       "table": "furnace_charge_tracking_activity",
@@ -481,31 +782,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "plateflow.furnace_charge_tracking_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "tracking_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to furnace_charge_tracking.tracking_id"
+          "definition": "Explicit parent object key; FK to furnace_charge_tracking.tracking_id",
+          "metadata_id": "plateflow.furnace_charge_tracking_activity.tracking_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "plateflow.furnace_charge_tracking_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "plateflow.furnace_charge_tracking_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "plateflow.furnace_charge_tracking_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -518,7 +844,10 @@
           "parent_column": "tracking_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "plateflow.furnace_charge_tracking_activity"
     },
     {
       "table": "cutting_finishing_instruction_activity",
@@ -528,31 +857,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "plateflow.cutting_finishing_instruction_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "instruction_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to cutting_finishing_instruction.instruction_id"
+          "definition": "Explicit parent object key; FK to cutting_finishing_instruction.instruction_id",
+          "metadata_id": "plateflow.cutting_finishing_instruction_activity.instruction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "plateflow.cutting_finishing_instruction_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "plateflow.cutting_finishing_instruction_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "plateflow.cutting_finishing_instruction_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -565,7 +919,10 @@
           "parent_column": "instruction_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "plateflow.cutting_finishing_instruction_activity"
     },
     {
       "table": "plate_material_activity",
@@ -575,31 +932,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "plateflow.plate_material_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "plate_material_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to plate_material.plate_material_id"
+          "definition": "Explicit parent object key; FK to plate_material.plate_material_id",
+          "metadata_id": "plateflow.plate_material_activity.plate_material_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "plateflow.plate_material_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "plateflow.plate_material_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "plateflow.plate_material_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -612,7 +994,10 @@
           "parent_column": "plate_material_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "plateflow.plate_material_activity"
     },
     {
       "table": "lifecycle_case_link",
@@ -628,22 +1013,40 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Validated identity in a typed activity table; polymorphic reference"
+          "definition": "Validated identity in a typed activity table; polymorphic reference",
+          "metadata_id": "plateflow.lifecycle_case_link.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "case_table",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled existing business table name"
+          "definition": "Controlled existing business table name",
+          "metadata_id": "plateflow.lifecycle_case_link.case_table",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "case_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon",
+          "metadata_id": "plateflow.lifecycle_case_link.case_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "plateflow.lifecycle_case_link"
     }
   ],
   "code_domain": {
@@ -743,6 +1146,33 @@
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
       "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
+  ],
+  "dictionary_basic_information": {
+    "dictionary_id": "NL2EVENTLOG:plateflow",
+    "version": "2026-10-12",
+    "name": "PlateFlow",
+    "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
+    "language": "en",
+    "timezone": "UTC",
+    "dbms": "SQLite",
+    "namespace": "plateflow",
+    "maintainer": "NL2EVENTLOG project maintainers",
+    "registration_status": "Project-maintained draft; not ISO-registered or certified",
+    "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
+    "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
+    "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
+  },
+  "standards_references": [
+    {
+      "standard": "ISO/IEC 11179-3:2023",
+      "url": "https://www.iso.org/standard/78915.html",
+      "application": "Registry identification, administration and definition concepts"
+    },
+    {
+      "standard": "ISO/IEC 11179-4:2004",
+      "url": "https://www.iso.org/standard/35346.html",
+      "application": "Semantic formulation of data definitions"
     }
   ]
 }

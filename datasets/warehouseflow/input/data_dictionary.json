@@ -13,27 +13,45 @@
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Warehouse identity",
-          "source_attribute": "Warehouse number"
+          "source_attribute": "Warehouse number",
+          "metadata_id": "warehouseflow.warehouse.warehouse_number",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "address",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Warehouse postal address",
-          "source_attribute": "Address"
+          "source_attribute": "Address",
+          "metadata_id": "warehouseflow.warehouse.address",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "capacity",
           "type": "INTEGER",
           "constraints": "NOT NULL CHECK(capacity > 0)",
           "definition": "Maximum total stock units; synthetic unit convention",
-          "source_attribute": "Capacity"
+          "source_attribute": "Capacity",
+          "metadata_id": "warehouseflow.warehouse.capacity",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(capacity > 0)",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
         "warehouse_number"
       ],
-      "foreign_keys": []
+      "foreign_keys": [],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "warehouseflow.warehouse"
     },
     {
       "table": "goods",
@@ -45,20 +63,33 @@
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Goods identity",
-          "source_attribute": "Goods ID"
+          "source_attribute": "Goods ID",
+          "metadata_id": "warehouseflow.goods.goods_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "goods_name",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Goods business name",
-          "source_attribute": "Goods name"
+          "source_attribute": "Goods name",
+          "metadata_id": "warehouseflow.goods.goods_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
         "goods_id"
       ],
-      "foreign_keys": []
+      "foreign_keys": [],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "warehouseflow.goods"
     },
     {
       "table": "loader",
@@ -70,27 +101,45 @@
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Worker name",
-          "source_attribute": "Name"
+          "source_attribute": "Name",
+          "metadata_id": "warehouseflow.loader.name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "phone",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Worker contact phone",
-          "source_attribute": "Phone"
+          "source_attribute": "Phone",
+          "metadata_id": "warehouseflow.loader.phone",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "loader_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Worker identity",
-          "source_attribute": "Loader ID"
+          "source_attribute": "Loader ID",
+          "metadata_id": "warehouseflow.loader.loader_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
         "loader_id"
       ],
-      "foreign_keys": []
+      "foreign_keys": [],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "warehouseflow.loader"
     },
     {
       "table": "transaction_record",
@@ -102,28 +151,48 @@
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Inbound/outbound transaction identity",
-          "source_attribute": "transaction ID"
+          "source_attribute": "transaction ID",
+          "metadata_id": "warehouseflow.transaction_record.transaction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Actual UTC completion time of recorded task; instant-event convention",
-          "source_attribute": "time"
+          "source_attribute": "time",
+          "metadata_id": "warehouseflow.transaction_record.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "warehouse_number",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Warehouse identity",
-          "source_attribute": "warehouse number"
+          "source_attribute": "warehouse number",
+          "metadata_id": "warehouseflow.transaction_record.warehouse_number",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "transaction_type",
           "type": "TEXT",
           "constraints": "NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
           "definition": "IN = Goods Received; OUT = Goods Dispatched",
-          "source_attribute": "transaction type"
+          "source_attribute": "transaction type",
+          "metadata_id": "warehouseflow.transaction_record.transaction_type",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -135,7 +204,10 @@
           "parent_table": "warehouse",
           "parent_column": "warehouse_number"
         }
-      ]
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "transaction_type selects IN/OUT; one transaction occurrence per row.",
+      "metadata_id": "warehouseflow.transaction_record"
     },
     {
       "table": "goods_transaction_detail",
@@ -147,21 +219,36 @@
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Goods identity",
-          "source_attribute": "goods ID"
+          "source_attribute": "goods ID",
+          "metadata_id": "warehouseflow.goods_transaction_detail.goods_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "transaction_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Inbound/outbound transaction identity",
-          "source_attribute": "transaction ID"
+          "source_attribute": "transaction ID",
+          "metadata_id": "warehouseflow.goods_transaction_detail.transaction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "quantity",
           "type": "INTEGER",
           "constraints": "NOT NULL CHECK(quantity > 0)",
           "definition": "Positive number of units of this goods type moved by the transaction",
-          "source_attribute": "quantity"
+          "source_attribute": "quantity",
+          "metadata_id": "warehouseflow.goods_transaction_detail.quantity",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(quantity > 0)",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -179,7 +266,10 @@
           "parent_table": "transaction_record",
           "parent_column": "transaction_id"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "warehouseflow.goods_transaction_detail"
     },
     {
       "table": "loader_transaction",
@@ -191,14 +281,24 @@
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Worker identity",
-          "source_attribute": "Loader ID"
+          "source_attribute": "Loader ID",
+          "metadata_id": "warehouseflow.loader_transaction.loader_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "transaction_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
           "definition": "Inbound/outbound transaction identity",
-          "source_attribute": "transaction ID"
+          "source_attribute": "transaction ID",
+          "metadata_id": "warehouseflow.loader_transaction.transaction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -216,7 +316,10 @@
           "parent_table": "transaction_record",
           "parent_column": "transaction_id"
         }
-      ]
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "warehouseflow.loader_transaction"
     },
     {
       "table": "transaction_record_activity",
@@ -226,31 +329,56 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
+          "definition": "Stable identity of this actual business action; authored extension",
+          "metadata_id": "warehouseflow.transaction_record_activity.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "transaction_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to transaction_record.transaction_id"
+          "definition": "Explicit parent object key; FK to transaction_record.transaction_id",
+          "metadata_id": "warehouseflow.transaction_record_activity.transaction_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "activity",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
+          "definition": "Controlled business activity label; not a technical database update",
+          "metadata_id": "warehouseflow.transaction_record_activity.activity",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "occurred_at",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+          "definition": "Actual occurrence time in UTC, distinct from planned dates",
+          "metadata_id": "warehouseflow.transaction_record_activity.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "outcome",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
+          "metadata_id": "warehouseflow.transaction_record_activity.outcome",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -263,7 +391,10 @@
           "parent_column": "transaction_id"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
+      "metadata_id": "warehouseflow.transaction_record_activity"
     },
     {
       "table": "lifecycle_case_link",
@@ -279,22 +410,40 @@
           "name": "event_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Validated identity in a typed activity table; polymorphic reference"
+          "definition": "Validated identity in a typed activity table; polymorphic reference",
+          "metadata_id": "warehouseflow.lifecycle_case_link.event_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "case_table",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Controlled existing business table name"
+          "definition": "Controlled existing business table name",
+          "metadata_id": "warehouseflow.lifecycle_case_link.case_table",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         },
         {
           "name": "case_id",
           "type": "TEXT",
           "constraints": "NOT NULL",
-          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon",
+          "metadata_id": "warehouseflow.lifecycle_case_link.case_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: NOT NULL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
-      "source_origin": "authored_lifecycle_extension"
+      "source_origin": "authored_lifecycle_extension",
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "metadata_id": "warehouseflow.lifecycle_case_link"
     }
   ],
   "value_domain": {
@@ -331,6 +480,33 @@
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
       "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    }
+  ],
+  "dictionary_basic_information": {
+    "dictionary_id": "NL2EVENTLOG:warehouseflow",
+    "version": "2026-10-12",
+    "name": "WarehouseFlow RSchema v1",
+    "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
+    "language": "en",
+    "timezone": "UTC",
+    "dbms": "SQLite",
+    "namespace": "warehouseflow",
+    "maintainer": "NL2EVENTLOG project maintainers",
+    "registration_status": "Project-maintained draft; not ISO-registered or certified",
+    "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
+    "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
+    "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
+  },
+  "standards_references": [
+    {
+      "standard": "ISO/IEC 11179-3:2023",
+      "url": "https://www.iso.org/standard/78915.html",
+      "application": "Registry identification, administration and definition concepts"
+    },
+    {
+      "standard": "ISO/IEC 11179-4:2004",
+      "url": "https://www.iso.org/standard/35346.html",
+      "application": "Semantic formulation of data definitions"
     }
   ]
 }
