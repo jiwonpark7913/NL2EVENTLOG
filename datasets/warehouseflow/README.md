@@ -4,14 +4,14 @@
 - **Source:** One preserved RSchema warehouse requirement and logical schema. Original source columns and keys are preserved.
 - **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
 - **Database:** 8 tables; 10 activity types; 6 object / case types; 394 distinct recorded business events.
-- **Gold:** 12 answerable question-specific CSV logs out of 13 questions. Paraphrase pairs can share the same expected content.
+- **Gold:** 30 answerable question-specific CSV logs out of 32 questions. Paired requests share the same expected content.
 - **Execution:** Run `python datasets/warehouseflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
 ## Dataset counts
 
 | Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|
-| WarehouseFlow | 8 | 6 | 10 | 394 | 13 | 12 |
+| WarehouseFlow | 8 | 6 | 10 | 394 | 32 | 30 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
@@ -59,3 +59,21 @@
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
 - [Object-based Gold logs and coverage](docs/object_event_logs.md)
+
+## Question types and pairs
+
+- **Q1 Explicit:** case concept and exact activities.
+- **Q2 Paraphrased:** alternate wording of Q1, with identical Gold scope.
+- **Q3 Full Lifecycle:** case concept only, using the declared default recorded scope.
+- **Q4 Full Lifecycle Paraphrased:** alternate wording of Q3, with identical Gold scope.
+- `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
+- Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
+
+| Type | Questions |
+|---|---:|
+| Q1 | 9 |
+| Q2 | 9 |
+| Q3 | 7 |
+| Q4 | 7 |
+
+- [All question texts, types, pairs and answerability](docs/questions.md)

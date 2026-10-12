@@ -88,131 +88,371 @@
   "questions": [
     {
       "question_id": "U01",
+      "question_type": "Q1",
       "status": "pass",
       "event_count": 40
     },
     {
       "question_id": "U02",
+      "question_type": "Q2",
       "status": "pass",
       "event_count": 40
     },
     {
       "question_id": "U03",
+      "question_type": "Q1",
       "status": "pass",
       "event_count": 47
     },
     {
       "question_id": "U04",
+      "question_type": "Q2",
       "status": "pass",
       "event_count": 47
     },
     {
       "question_id": "U05",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 763
     },
     {
       "question_id": "U06",
+      "question_type": "Q4",
       "status": "pass",
       "event_count": 763
     },
     {
       "question_id": "U07",
+      "question_type": "Q1",
       "status": "unsupported_by_design"
     },
     {
       "question_id": "U08",
+      "question_type": "Q1",
       "status": "unsupported_by_design"
     },
     {
       "question_id": "U09",
+      "question_type": "Q1",
       "status": "pass",
       "event_count": 18
     },
     {
       "question_id": "U10",
+      "question_type": "Q2",
       "status": "pass",
       "event_count": 18
     },
     {
       "question_id": "U11",
+      "question_type": "Q1",
       "status": "pass",
       "event_count": 27
     },
     {
       "question_id": "U12",
+      "question_type": "Q2",
       "status": "pass",
       "event_count": 27
     },
     {
       "question_id": "U13",
+      "question_type": "Q1",
       "status": "pass",
       "event_count": 16
     },
     {
       "question_id": "U14",
+      "question_type": "Q2",
       "status": "pass",
       "event_count": 16
     },
     {
       "question_id": "U15",
+      "question_type": "Q1",
       "status": "pass",
       "event_count": 16
     },
     {
       "question_id": "OU01",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 763
     },
     {
       "question_id": "OU02",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 298
     },
     {
       "question_id": "OU03",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 275
     },
     {
       "question_id": "OU04",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 194
     },
     {
       "question_id": "OU05",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 142
     },
     {
       "question_id": "OU06",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 73
     },
     {
       "question_id": "OU07",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 131
     },
     {
       "question_id": "OU08",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 90
     },
     {
       "question_id": "OU09",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 86
     },
     {
       "question_id": "OU10",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 18
     },
     {
       "question_id": "OU11",
+      "question_type": "Q3",
       "status": "pass",
       "event_count": 11
+    },
+    {
+      "question_id": "U07P",
+      "question_type": "Q2",
+      "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "U08P",
+      "question_type": "Q2",
+      "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "U15P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 16
+    },
+    {
+      "question_id": "OU01P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 763
+    },
+    {
+      "question_id": "OU01E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 54
+    },
+    {
+      "question_id": "OU01EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 54
+    },
+    {
+      "question_id": "OU02P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 298
+    },
+    {
+      "question_id": "OU02E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 134
+    },
+    {
+      "question_id": "OU02EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 134
+    },
+    {
+      "question_id": "OU03P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 275
+    },
+    {
+      "question_id": "OU03E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 134
+    },
+    {
+      "question_id": "OU03EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 134
+    },
+    {
+      "question_id": "OU04P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 194
+    },
+    {
+      "question_id": "OU04E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 120
+    },
+    {
+      "question_id": "OU04EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 120
+    },
+    {
+      "question_id": "OU05P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 142
+    },
+    {
+      "question_id": "OU05E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 77
+    },
+    {
+      "question_id": "OU05EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 77
+    },
+    {
+      "question_id": "OU06P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 73
+    },
+    {
+      "question_id": "OU06E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 45
+    },
+    {
+      "question_id": "OU06EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 45
+    },
+    {
+      "question_id": "OU07P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 131
+    },
+    {
+      "question_id": "OU07E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 77
+    },
+    {
+      "question_id": "OU07EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 77
+    },
+    {
+      "question_id": "OU08P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 90
+    },
+    {
+      "question_id": "OU08E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 54
+    },
+    {
+      "question_id": "OU08EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 54
+    },
+    {
+      "question_id": "OU09P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 86
+    },
+    {
+      "question_id": "OU09E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 50
+    },
+    {
+      "question_id": "OU09EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 50
+    },
+    {
+      "question_id": "OU10P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OU10E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OU10EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 18
+    },
+    {
+      "question_id": "OU11P",
+      "question_type": "Q4",
+      "status": "pass",
+      "event_count": 11
+    },
+    {
+      "question_id": "OU11E",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 8
+    },
+    {
+      "question_id": "OU11EP",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 8
     }
   ],
   "checks": {
@@ -540,8 +780,8 @@
       "reason": "Activity storage/index for its parent-object log; not an independent business case."
     }
   ],
-  "total_questions": 26,
-  "answerable_questions": 24,
+  "total_questions": 62,
+  "answerable_questions": 58,
   "lifecycle_extensions": {
     "added_tables": 9,
     "added_events": 660,
@@ -551,5 +791,12 @@
       "actual_action_order": "pass",
       "full_sql_equals_history": "pass"
     }
-  }
+  },
+  "question_type_counts": {
+    "Q1": 19,
+    "Q2": 19,
+    "Q3": 12,
+    "Q4": 12
+  },
+  "question_pair_checks": "identical ES, process view, answerability and CSV verified"
 }

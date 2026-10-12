@@ -1,0 +1,1 @@
+SELECT e.event_id,l.case_id,e.activity,e.occurred_at timestamp FROM assignment_activity e JOIN lifecycle_case_link l ON l.event_id=e.event_id WHERE l.case_table='student' AND e.activity='Assignment Submitted' ORDER BY l.case_id,e.occurred_at,e.event_id;

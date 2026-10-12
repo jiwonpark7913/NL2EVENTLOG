@@ -6,9 +6,9 @@
 
 | Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|
-| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 394 | 13 | 12 |
-| [UniversityFlow](datasets/universityflow/README.md) | 20 | 11 | 41 | 808 | 26 | 24 |
-| [PlateFlow](datasets/plateflow/README.md) | 16 | 8 | 37 | 1036 | 16 | 15 |
+| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 394 | 32 | 30 |
+| [UniversityFlow](datasets/universityflow/README.md) | 20 | 11 | 41 | 808 | 62 | 58 |
+| [PlateFlow](datasets/plateflow/README.md) | 16 | 8 | 37 | 1036 | 42 | 40 |
 
 - **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. Activity-history tables, extraction indexes and reference tables are excluded.
@@ -40,3 +40,15 @@
 
 ![PlateFlow schema](datasets/plateflow/docs/schema.png)
 
+
+## Question types and pairs
+
+- **Q1 Explicit:** case concept and exact activities.
+- **Q2 Paraphrased:** alternate wording of Q1, with identical Gold scope.
+- **Q3 Full Lifecycle:** case concept only, using the declared default recorded scope.
+- **Q4 Full Lifecycle Paraphrased:** alternate wording of Q3, with identical Gold scope.
+- `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
+- Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
+- [warehouseflow question list](datasets/warehouseflow/docs/questions.md)
+- [universityflow question list](datasets/universityflow/docs/questions.md)
+- [plateflow question list](datasets/plateflow/docs/questions.md)

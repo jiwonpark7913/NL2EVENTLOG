@@ -356,5 +356,12 @@
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
       "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
     }
-  ]
+  ],
+  "question_types": {
+    "Q1": "Explicit",
+    "Q2": "Paraphrased",
+    "Q3": "Full Lifecycle",
+    "Q4": "Full Lifecycle Paraphrased"
+  },
+  "question_scope_policy": "Q1/Q2 specify activity subsets; Q3/Q4 use the declared default or object-view scope. Unavailable evidence, not query type, determines answerability."
 }

@@ -1,0 +1,764 @@
+event_id,case_id,activity,timestamp
+LC:degree_examination_result:E001-1:1,S001,Examination Scheduled,2026-02-02T07:00:00Z
+LC:degree_examination_result:E001-1:2,S001,Examination Checked In,2026-02-02T08:00:00Z
+EX:E001-1,S001,Degree Examination Taken,2026-02-02T09:00:00Z
+LC:degree_examination_result:E001-1:3,S001,Examination Score Published,2026-02-02T11:00:00Z
+LC:degree_examination_result:E002-1:1,S002,Examination Scheduled,2026-02-03T07:00:00Z
+LC:degree_examination_result:E002-1:2,S002,Examination Checked In,2026-02-03T08:00:00Z
+EX:E002-1,S002,Degree Examination Taken,2026-02-03T09:00:00Z
+LC:degree_examination_result:E002-1:3,S002,Examination Score Published,2026-02-03T11:00:00Z
+LC:degree_examination_result:E002-1:4,S002,Examination Result Reviewed,2026-02-03T12:00:00Z
+LC:degree_examination_result:E002-2:1,S002,Examination Scheduled,2026-02-05T07:00:00Z
+LC:degree_examination_result:E002-2:2,S002,Examination Checked In,2026-02-05T08:00:00Z
+EX:E002-2,S002,Degree Examination Taken,2026-02-05T09:00:00Z
+LC:degree_examination_result:E002-2:3,S002,Examination Score Published,2026-02-05T11:00:00Z
+LC:degree_examination_result:E002-2:4,S002,Examination Result Reviewed,2026-02-05T12:00:00Z
+LC:registration:S002:C01:1,S002,Registration Requested,2026-02-07T07:00:00Z
+LC:registration:S002:C01:2,S002,Registration Approved,2026-02-07T09:00:00Z
+REG:S002:C01,S002,Course Registered,2026-02-07T11:00:00Z
+LC:registration:S002:C06:1,S002,Registration Requested,2026-02-07T12:00:00Z
+LC:assignment:A002:1,S002,Assignment Assigned,2026-02-07T14:00:00Z
+LC:registration:S002:C06:2,S002,Registration Approved,2026-02-07T14:00:00Z
+REG:S002:C06,S002,Course Registered,2026-02-07T16:00:00Z
+LC:registration:S002:C01:3,S002,Course Started,2026-02-09T11:00:00Z
+LC:assignment:A002:2,S002,Assignment Submitted,2026-02-09T14:00:00Z
+LC:registration:S002:C06:3,S002,Course Started,2026-02-09T16:00:00Z
+GRADE:A002:I03:2026-02-11T14:00:00Z,S002,Assignment Graded,2026-02-11T14:00:00Z
+LC:assignment:A002:3,S002,Assignment Revision Requested,2026-02-11T15:00:00Z
+LC:assignment:A002:4,S002,Assignment Resubmitted,2026-02-12T14:00:00Z
+LC:assignment:A002:5,S002,Assignment Regraded,2026-02-13T02:00:00Z
+LC:student_simulation_experiment_result:S002:M03:2026-02-13T15:00:00Z:1,S002,Simulation Run Scheduled,2026-02-13T13:00:00Z
+LC:student_simulation_experiment_result:S002:M03:2026-02-13T15:00:00Z:2,S002,Simulation Run Started,2026-02-13T14:00:00Z
+SIM:S002:M03:2026-02-13T15:00:00Z,S002,Simulation Experiment Completed,2026-02-13T15:00:00Z
+LC:student_simulation_experiment_result:S002:M03:2026-02-13T15:00:00Z:3,S002,Simulation Output Reviewed,2026-02-13T17:00:00Z
+LC:thesis:TH002:1,S002,Thesis Draft Registered,2026-02-19T16:00:00Z
+THESIS:TH002,S002,Thesis Submitted,2026-02-23T16:00:00Z
+LC:thesis:TH002:2,S002,Thesis Review Started,2026-02-24T16:00:00Z
+LC:thesis:TH002:3,S002,Thesis Revision Requested,2026-02-25T16:00:00Z
+LC:thesis:TH002:4,S002,Thesis Resubmitted,2026-02-26T16:00:00Z
+LC:registration:S002:C01:4,S002,Course Assessment Completed,2026-02-27T11:00:00Z
+LC:registration:S002:C06:4,S002,Course Assessment Completed,2026-02-27T16:00:00Z
+LC:registration:S002:C06:5,S002,Course Grade Finalized,2026-03-01T16:00:00Z
+LC:degree_examination_result:E003-1:1,S003,Examination Scheduled,2026-02-04T07:00:00Z
+LC:degree_examination_result:E003-1:2,S003,Examination Checked In,2026-02-04T08:00:00Z
+EX:E003-1,S003,Degree Examination Taken,2026-02-04T09:00:00Z
+LC:degree_examination_result:E003-1:3,S003,Examination Score Published,2026-02-04T11:00:00Z
+LC:degree_examination_result:E003-1:4,S003,Examination Result Reviewed,2026-02-04T12:00:00Z
+LC:registration:S003:C02:1,S003,Registration Requested,2026-02-08T08:00:00Z
+LC:registration:S003:C02:2,S003,Registration Approved,2026-02-08T10:00:00Z
+LC:registration:S003:C04:1,S003,Registration Requested,2026-02-08T10:00:00Z
+LC:registration:S003:C05:1,S003,Registration Requested,2026-02-08T11:00:00Z
+LC:registration:S003:C04:2,S003,Registration Approved,2026-02-08T12:00:00Z
+REG:S003:C02,S003,Course Registered,2026-02-08T12:00:00Z
+LC:registration:S003:C05:2,S003,Registration Approved,2026-02-08T13:00:00Z
+LC:assignment:A003:1,S003,Assignment Assigned,2026-02-08T14:00:00Z
+REG:S003:C04,S003,Course Registered,2026-02-08T14:00:00Z
+REG:S003:C05,S003,Course Registered,2026-02-08T15:00:00Z
+LC:registration:S003:C02:3,S003,Course Started,2026-02-10T12:00:00Z
+LC:assignment:A003:2,S003,Assignment Submitted,2026-02-10T14:00:00Z
+LC:registration:S003:C04:3,S003,Course Started,2026-02-10T14:00:00Z
+LC:registration:S003:C05:3,S003,Course Started,2026-02-10T15:00:00Z
+GRADE:A003:I01:2026-02-12T14:00:00Z,S003,Assignment Graded,2026-02-12T14:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-14T15:00:00Z:1,S003,Simulation Run Scheduled,2026-02-14T13:00:00Z
+LC:assignment:A003:3,S003,Assignment Grade Finalized,2026-02-14T14:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-14T15:00:00Z:2,S003,Simulation Run Started,2026-02-14T14:00:00Z
+SIM:S003:M01:2026-02-14T15:00:00Z,S003,Simulation Experiment Completed,2026-02-14T15:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-14T15:00:00Z:3,S003,Simulation Output Reviewed,2026-02-14T17:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-14T15:00:00Z:4,S003,Simulation Result Accepted,2026-02-14T18:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-15T15:00:00Z:1,S003,Simulation Run Scheduled,2026-02-15T13:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-15T15:00:00Z:2,S003,Simulation Run Started,2026-02-15T14:00:00Z
+SIM:S003:M01:2026-02-15T15:00:00Z,S003,Simulation Experiment Completed,2026-02-15T15:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-15T15:00:00Z:3,S003,Simulation Output Reviewed,2026-02-15T17:00:00Z
+LC:student_simulation_experiment_result:S003:M01:2026-02-15T15:00:00Z:4,S003,Simulation Result Accepted,2026-02-15T18:00:00Z
+LC:thesis:TH003:1,S003,Thesis Draft Registered,2026-02-20T16:00:00Z
+THESIS:TH003,S003,Thesis Submitted,2026-02-24T16:00:00Z
+LC:thesis:TH003:2,S003,Thesis Review Started,2026-02-25T16:00:00Z
+LC:registration:S003:C02:4,S003,Course Assessment Completed,2026-02-28T12:00:00Z
+LC:registration:S003:C04:4,S003,Course Assessment Completed,2026-02-28T14:00:00Z
+LC:registration:S003:C05:4,S003,Course Assessment Completed,2026-02-28T15:00:00Z
+LC:thesis:TH003:3,S003,Thesis Accepted,2026-02-28T16:00:00Z
+LC:registration:S003:C02:5,S003,Course Grade Finalized,2026-03-02T12:00:00Z
+LC:registration:S003:C04:5,S003,Course Grade Finalized,2026-03-02T14:00:00Z
+LC:registration:S003:C05:5,S003,Course Grade Finalized,2026-03-02T15:00:00Z
+LC:degree_examination_result:E005-1:1,S005,Examination Scheduled,2026-02-06T07:00:00Z
+LC:degree_examination_result:E005-1:2,S005,Examination Checked In,2026-02-06T08:00:00Z
+EX:E005-1,S005,Degree Examination Taken,2026-02-06T09:00:00Z
+LC:degree_examination_result:E005-1:3,S005,Examination Score Published,2026-02-06T11:00:00Z
+LC:degree_examination_result:E005-1:4,S005,Examination Result Reviewed,2026-02-06T12:00:00Z
+LC:degree_examination_result:E006-1:1,S006,Examination Scheduled,2026-02-07T07:00:00Z
+LC:degree_examination_result:E006-1:2,S006,Examination Checked In,2026-02-07T08:00:00Z
+EX:E006-1,S006,Degree Examination Taken,2026-02-07T09:00:00Z
+LC:degree_examination_result:E006-1:3,S006,Examination Score Published,2026-02-07T11:00:00Z
+LC:degree_examination_result:E006-1:4,S006,Examination Result Reviewed,2026-02-07T12:00:00Z
+LC:degree_examination_result:E006-2:1,S006,Examination Scheduled,2026-02-09T07:00:00Z
+LC:degree_examination_result:E006-2:2,S006,Examination Checked In,2026-02-09T08:00:00Z
+EX:E006-2,S006,Degree Examination Taken,2026-02-09T09:00:00Z
+LC:degree_examination_result:E006-2:3,S006,Examination Score Published,2026-02-09T11:00:00Z
+LC:degree_examination_result:E006-2:4,S006,Examination Result Reviewed,2026-02-09T12:00:00Z
+LC:registration:S006:C02:1,S006,Registration Requested,2026-02-11T08:00:00Z
+LC:registration:S006:C02:2,S006,Registration Approved,2026-02-11T10:00:00Z
+LC:registration:S006:C04:1,S006,Registration Requested,2026-02-11T10:00:00Z
+LC:registration:S006:C04:2,S006,Registration Approved,2026-02-11T12:00:00Z
+LC:registration:S006:C06:1,S006,Registration Requested,2026-02-11T12:00:00Z
+REG:S006:C02,S006,Course Registered,2026-02-11T12:00:00Z
+LC:assignment:A006:1,S006,Assignment Assigned,2026-02-11T14:00:00Z
+LC:registration:S006:C06:2,S006,Registration Approved,2026-02-11T14:00:00Z
+REG:S006:C04,S006,Course Registered,2026-02-11T14:00:00Z
+REG:S006:C06,S006,Course Registered,2026-02-11T16:00:00Z
+LC:registration:S006:C02:3,S006,Course Started,2026-02-13T12:00:00Z
+LC:assignment:A006:2,S006,Assignment Submitted,2026-02-13T14:00:00Z
+LC:registration:S006:C04:3,S006,Course Started,2026-02-13T14:00:00Z
+LC:registration:S006:C06:3,S006,Course Started,2026-02-13T16:00:00Z
+GRADE:A006:I01:2026-02-15T14:00:00Z,S006,Assignment Graded,2026-02-15T14:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-17T15:00:00Z:1,S006,Simulation Run Scheduled,2026-02-17T13:00:00Z
+LC:assignment:A006:3,S006,Assignment Grade Finalized,2026-02-17T14:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-17T15:00:00Z:2,S006,Simulation Run Started,2026-02-17T14:00:00Z
+SIM:S006:M01:2026-02-17T15:00:00Z,S006,Simulation Experiment Completed,2026-02-17T15:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-17T15:00:00Z:3,S006,Simulation Output Reviewed,2026-02-17T17:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-17T15:00:00Z:4,S006,Simulation Result Accepted,2026-02-17T18:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-18T15:00:00Z:1,S006,Simulation Run Scheduled,2026-02-18T13:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-18T15:00:00Z:2,S006,Simulation Run Started,2026-02-18T14:00:00Z
+SIM:S006:M01:2026-02-18T15:00:00Z,S006,Simulation Experiment Completed,2026-02-18T15:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-18T15:00:00Z:3,S006,Simulation Output Reviewed,2026-02-18T17:00:00Z
+LC:student_simulation_experiment_result:S006:M01:2026-02-18T15:00:00Z:4,S006,Simulation Result Accepted,2026-02-18T18:00:00Z
+LC:thesis:TH006:1,S006,Thesis Draft Registered,2026-02-23T16:00:00Z
+THESIS:TH006,S006,Thesis Submitted,2026-02-27T16:00:00Z
+LC:thesis:TH006:2,S006,Thesis Review Started,2026-02-28T16:00:00Z
+LC:registration:S006:C02:4,S006,Course Assessment Completed,2026-03-03T12:00:00Z
+LC:registration:S006:C04:4,S006,Course Assessment Completed,2026-03-03T14:00:00Z
+LC:registration:S006:C06:4,S006,Course Assessment Completed,2026-03-03T16:00:00Z
+LC:thesis:TH006:3,S006,Thesis Accepted,2026-03-03T16:00:00Z
+LC:registration:S006:C04:5,S006,Course Grade Finalized,2026-03-05T14:00:00Z
+LC:registration:S006:C06:5,S006,Course Grade Finalized,2026-03-05T16:00:00Z
+LC:degree_examination_result:E007-1:1,S007,Examination Scheduled,2026-02-08T07:00:00Z
+LC:degree_examination_result:E007-1:2,S007,Examination Checked In,2026-02-08T08:00:00Z
+EX:E007-1,S007,Degree Examination Taken,2026-02-08T09:00:00Z
+LC:degree_examination_result:E007-1:3,S007,Examination Score Published,2026-02-08T11:00:00Z
+LC:registration:S007:C01:1,S007,Registration Requested,2026-02-12T07:00:00Z
+LC:registration:S007:C02:1,S007,Registration Requested,2026-02-12T08:00:00Z
+LC:registration:S007:C01:2,S007,Registration Approved,2026-02-12T09:00:00Z
+LC:registration:S007:C02:2,S007,Registration Approved,2026-02-12T10:00:00Z
+LC:registration:S007:C05:1,S007,Registration Requested,2026-02-12T11:00:00Z
+REG:S007:C01,S007,Course Registered,2026-02-12T11:00:00Z
+REG:S007:C02,S007,Course Registered,2026-02-12T12:00:00Z
+LC:registration:S007:C05:2,S007,Registration Approved,2026-02-12T13:00:00Z
+LC:assignment:A007:1,S007,Assignment Assigned,2026-02-12T14:00:00Z
+REG:S007:C05,S007,Course Registered,2026-02-12T15:00:00Z
+LC:registration:S007:C01:3,S007,Course Started,2026-02-14T11:00:00Z
+LC:registration:S007:C02:3,S007,Course Started,2026-02-14T12:00:00Z
+LC:assignment:A007:2,S007,Assignment Submitted,2026-02-14T14:00:00Z
+LC:registration:S007:C05:3,S007,Course Started,2026-02-14T15:00:00Z
+GRADE:A007:I02:2026-02-16T14:00:00Z,S007,Assignment Graded,2026-02-16T14:00:00Z
+LC:assignment:A007:3,S007,Assignment Revision Requested,2026-02-16T15:00:00Z
+GRADE:A007:I02:2026-02-17T14:00:00Z,S007,Assignment Graded,2026-02-17T14:00:00Z
+LC:assignment:A007:4,S007,Assignment Resubmitted,2026-02-17T14:00:00Z
+LC:student_simulation_experiment_result:S007:M02:2026-02-18T15:00:00Z:1,S007,Simulation Run Scheduled,2026-02-18T13:00:00Z
+LC:student_simulation_experiment_result:S007:M02:2026-02-18T15:00:00Z:2,S007,Simulation Run Started,2026-02-18T14:00:00Z
+SIM:S007:M02:2026-02-18T15:00:00Z,S007,Simulation Experiment Completed,2026-02-18T15:00:00Z
+LC:student_simulation_experiment_result:S007:M02:2026-02-18T15:00:00Z:3,S007,Simulation Output Reviewed,2026-02-18T17:00:00Z
+LC:student_simulation_experiment_result:S007:M02:2026-02-18T15:00:00Z:4,S007,Simulation Result Accepted,2026-02-18T18:00:00Z
+LC:assignment:A007:5,S007,Assignment Regraded,2026-02-19T02:00:00Z
+LC:assignment:A007:6,S007,Assignment Grade Finalized,2026-02-19T14:00:00Z
+LC:thesis:TH007:1,S007,Thesis Draft Registered,2026-02-24T16:00:00Z
+THESIS:TH007,S007,Thesis Submitted,2026-02-28T16:00:00Z
+LC:thesis:TH007:2,S007,Thesis Review Started,2026-03-01T16:00:00Z
+LC:thesis:TH007:3,S007,Thesis Revision Requested,2026-03-02T16:00:00Z
+LC:thesis:TH007:4,S007,Thesis Resubmitted,2026-03-03T16:00:00Z
+LC:registration:S007:C01:4,S007,Course Assessment Completed,2026-03-04T11:00:00Z
+LC:registration:S007:C02:4,S007,Course Assessment Completed,2026-03-04T12:00:00Z
+LC:registration:S007:C05:4,S007,Course Assessment Completed,2026-03-04T15:00:00Z
+LC:thesis:TH007:5,S007,Thesis Accepted,2026-03-04T16:00:00Z
+LC:registration:S007:C01:5,S007,Course Grade Finalized,2026-03-06T11:00:00Z
+LC:registration:S007:C02:5,S007,Course Grade Finalized,2026-03-06T12:00:00Z
+LC:registration:S007:C05:5,S007,Course Grade Finalized,2026-03-06T15:00:00Z
+LC:degree_examination_result:E009-1:1,S009,Examination Scheduled,2026-02-10T07:00:00Z
+LC:degree_examination_result:E009-1:2,S009,Examination Checked In,2026-02-10T08:00:00Z
+EX:E009-1,S009,Degree Examination Taken,2026-02-10T09:00:00Z
+LC:degree_examination_result:E009-1:3,S009,Examination Score Published,2026-02-10T11:00:00Z
+LC:degree_examination_result:E009-1:4,S009,Examination Result Reviewed,2026-02-10T12:00:00Z
+LC:assignment:A010:1,S010,Assignment Assigned,2026-01-03T00:00:00Z
+LC:degree_examination_result:E010-1:1,S010,Examination Scheduled,2026-02-11T07:00:00Z
+LC:degree_examination_result:E010-1:2,S010,Examination Checked In,2026-02-11T08:00:00Z
+EX:E010-1,S010,Degree Examination Taken,2026-02-11T09:00:00Z
+LC:degree_examination_result:E010-1:3,S010,Examination Score Published,2026-02-11T11:00:00Z
+LC:degree_examination_result:E010-1:4,S010,Examination Result Reviewed,2026-02-11T12:00:00Z
+LC:degree_examination_result:E010-2:1,S010,Examination Scheduled,2026-02-13T07:00:00Z
+LC:degree_examination_result:E010-2:2,S010,Examination Checked In,2026-02-13T08:00:00Z
+EX:E010-2,S010,Degree Examination Taken,2026-02-13T09:00:00Z
+LC:degree_examination_result:E010-2:3,S010,Examination Score Published,2026-02-13T11:00:00Z
+LC:degree_examination_result:E010-2:4,S010,Examination Result Reviewed,2026-02-13T12:00:00Z
+LC:registration:S010:C02:1,S010,Registration Requested,2026-02-15T08:00:00Z
+LC:registration:S010:C02:2,S010,Registration Approved,2026-02-15T10:00:00Z
+LC:registration:S010:C06:1,S010,Registration Requested,2026-02-15T12:00:00Z
+REG:S010:C02,S010,Course Registered,2026-02-15T12:00:00Z
+LC:registration:S010:C06:2,S010,Registration Approved,2026-02-15T14:00:00Z
+REG:S010:C06,S010,Course Registered,2026-02-15T16:00:00Z
+LC:registration:S010:C02:3,S010,Course Started,2026-02-17T12:00:00Z
+LC:registration:S010:C06:3,S010,Course Started,2026-02-17T16:00:00Z
+LC:student_simulation_experiment_result:S010:M02:2026-02-21T15:00:00Z:1,S010,Simulation Run Scheduled,2026-02-21T13:00:00Z
+LC:student_simulation_experiment_result:S010:M02:2026-02-21T15:00:00Z:2,S010,Simulation Run Started,2026-02-21T14:00:00Z
+SIM:S010:M02:2026-02-21T15:00:00Z,S010,Simulation Experiment Completed,2026-02-21T15:00:00Z
+LC:student_simulation_experiment_result:S010:M02:2026-02-21T15:00:00Z:3,S010,Simulation Output Reviewed,2026-02-21T17:00:00Z
+LC:student_simulation_experiment_result:S010:M02:2026-02-21T15:00:00Z:4,S010,Simulation Result Accepted,2026-02-21T18:00:00Z
+LC:registration:S010:C02:4,S010,Course Assessment Completed,2026-03-07T12:00:00Z
+LC:registration:S010:C06:4,S010,Course Assessment Completed,2026-03-07T16:00:00Z
+LC:registration:S010:C02:5,S010,Course Grade Finalized,2026-03-09T12:00:00Z
+LC:registration:S010:C06:5,S010,Course Grade Finalized,2026-03-09T16:00:00Z
+LC:degree_examination_result:E011-1:1,S011,Examination Scheduled,2026-02-12T07:00:00Z
+LC:degree_examination_result:E011-1:2,S011,Examination Checked In,2026-02-12T08:00:00Z
+EX:E011-1,S011,Degree Examination Taken,2026-02-12T09:00:00Z
+LC:degree_examination_result:E011-1:3,S011,Examination Score Published,2026-02-12T11:00:00Z
+LC:degree_examination_result:E011-1:4,S011,Examination Result Reviewed,2026-02-12T12:00:00Z
+LC:registration:S011:C01:1,S011,Registration Requested,2026-02-16T07:00:00Z
+LC:registration:S011:C02:1,S011,Registration Requested,2026-02-16T08:00:00Z
+LC:registration:S011:C01:2,S011,Registration Approved,2026-02-16T09:00:00Z
+LC:registration:S011:C02:2,S011,Registration Approved,2026-02-16T10:00:00Z
+LC:registration:S011:C04:1,S011,Registration Requested,2026-02-16T10:00:00Z
+REG:S011:C01,S011,Course Registered,2026-02-16T11:00:00Z
+LC:registration:S011:C04:2,S011,Registration Approved,2026-02-16T12:00:00Z
+REG:S011:C02,S011,Course Registered,2026-02-16T12:00:00Z
+LC:assignment:A011:1,S011,Assignment Assigned,2026-02-16T14:00:00Z
+REG:S011:C04,S011,Course Registered,2026-02-16T14:00:00Z
+LC:registration:S011:C01:3,S011,Course Started,2026-02-18T11:00:00Z
+LC:registration:S011:C02:3,S011,Course Started,2026-02-18T12:00:00Z
+LC:assignment:A011:2,S011,Assignment Submitted,2026-02-18T14:00:00Z
+LC:registration:S011:C04:3,S011,Course Started,2026-02-18T14:00:00Z
+GRADE:A011:I03:2026-02-20T14:00:00Z,S011,Assignment Graded,2026-02-20T14:00:00Z
+LC:student_simulation_experiment_result:S011:M03:2026-02-22T15:00:00Z:1,S011,Simulation Run Scheduled,2026-02-22T13:00:00Z
+LC:assignment:A011:3,S011,Assignment Grade Finalized,2026-02-22T14:00:00Z
+LC:student_simulation_experiment_result:S011:M03:2026-02-22T15:00:00Z:2,S011,Simulation Run Started,2026-02-22T14:00:00Z
+SIM:S011:M03:2026-02-22T15:00:00Z,S011,Simulation Experiment Completed,2026-02-22T15:00:00Z
+LC:student_simulation_experiment_result:S011:M03:2026-02-22T15:00:00Z:3,S011,Simulation Output Reviewed,2026-02-22T17:00:00Z
+LC:thesis:TH011:1,S011,Thesis Draft Registered,2026-02-28T16:00:00Z
+THESIS:TH011,S011,Thesis Submitted,2026-03-04T16:00:00Z
+LC:thesis:TH011:2,S011,Thesis Review Started,2026-03-05T16:00:00Z
+LC:registration:S011:C01:4,S011,Course Assessment Completed,2026-03-08T11:00:00Z
+LC:registration:S011:C02:4,S011,Course Assessment Completed,2026-03-08T12:00:00Z
+LC:registration:S011:C04:4,S011,Course Assessment Completed,2026-03-08T14:00:00Z
+LC:thesis:TH011:3,S011,Thesis Accepted,2026-03-08T16:00:00Z
+LC:registration:S011:C01:5,S011,Course Grade Finalized,2026-03-10T11:00:00Z
+LC:registration:S011:C04:5,S011,Course Grade Finalized,2026-03-10T14:00:00Z
+LC:degree_examination_result:E013-1:1,S013,Examination Scheduled,2026-02-14T07:00:00Z
+LC:degree_examination_result:E013-1:2,S013,Examination Checked In,2026-02-14T08:00:00Z
+EX:E013-1,S013,Degree Examination Taken,2026-02-14T09:00:00Z
+LC:degree_examination_result:E013-1:3,S013,Examination Score Published,2026-02-14T11:00:00Z
+LC:degree_examination_result:E013-1:4,S013,Examination Result Reviewed,2026-02-14T12:00:00Z
+LC:degree_examination_result:E014-1:1,S014,Examination Scheduled,2026-02-15T07:00:00Z
+LC:degree_examination_result:E014-1:2,S014,Examination Checked In,2026-02-15T08:00:00Z
+EX:E014-1,S014,Degree Examination Taken,2026-02-15T09:00:00Z
+LC:degree_examination_result:E014-1:3,S014,Examination Score Published,2026-02-15T11:00:00Z
+LC:degree_examination_result:E014-1:4,S014,Examination Result Reviewed,2026-02-15T12:00:00Z
+LC:degree_examination_result:E014-2:1,S014,Examination Scheduled,2026-02-17T07:00:00Z
+LC:degree_examination_result:E014-2:2,S014,Examination Checked In,2026-02-17T08:00:00Z
+EX:E014-2,S014,Degree Examination Taken,2026-02-17T09:00:00Z
+LC:degree_examination_result:E014-2:3,S014,Examination Score Published,2026-02-17T11:00:00Z
+LC:registration:S014:C02:1,S014,Registration Requested,2026-02-19T08:00:00Z
+LC:registration:S014:C02:2,S014,Registration Approved,2026-02-19T10:00:00Z
+LC:registration:S014:C04:1,S014,Registration Requested,2026-02-19T10:00:00Z
+LC:registration:S014:C04:2,S014,Registration Approved,2026-02-19T12:00:00Z
+REG:S014:C02,S014,Course Registered,2026-02-19T12:00:00Z
+LC:assignment:A014:1,S014,Assignment Assigned,2026-02-19T14:00:00Z
+REG:S014:C04,S014,Course Registered,2026-02-19T14:00:00Z
+LC:registration:S014:C02:3,S014,Course Started,2026-02-21T12:00:00Z
+LC:assignment:A014:2,S014,Assignment Submitted,2026-02-21T14:00:00Z
+LC:registration:S014:C04:3,S014,Course Started,2026-02-21T14:00:00Z
+GRADE:A014:I03:2026-02-23T14:00:00Z,S014,Assignment Graded,2026-02-23T14:00:00Z
+LC:assignment:A014:3,S014,Assignment Revision Requested,2026-02-23T15:00:00Z
+GRADE:A014:I03:2026-02-24T14:00:00Z,S014,Assignment Graded,2026-02-24T14:00:00Z
+LC:assignment:A014:4,S014,Assignment Resubmitted,2026-02-24T14:00:00Z
+LC:student_simulation_experiment_result:S014:M03:2026-02-25T15:00:00Z:1,S014,Simulation Run Scheduled,2026-02-25T13:00:00Z
+LC:student_simulation_experiment_result:S014:M03:2026-02-25T15:00:00Z:2,S014,Simulation Run Started,2026-02-25T14:00:00Z
+SIM:S014:M03:2026-02-25T15:00:00Z,S014,Simulation Experiment Completed,2026-02-25T15:00:00Z
+LC:student_simulation_experiment_result:S014:M03:2026-02-25T15:00:00Z:3,S014,Simulation Output Reviewed,2026-02-25T17:00:00Z
+LC:student_simulation_experiment_result:S014:M03:2026-02-25T15:00:00Z:4,S014,Simulation Result Accepted,2026-02-25T18:00:00Z
+LC:assignment:A014:5,S014,Assignment Regraded,2026-02-26T02:00:00Z
+LC:assignment:A014:6,S014,Assignment Grade Finalized,2026-02-26T14:00:00Z
+LC:thesis:TH014:1,S014,Thesis Draft Registered,2026-03-03T16:00:00Z
+THESIS:TH014,S014,Thesis Submitted,2026-03-07T16:00:00Z
+LC:thesis:TH014:2,S014,Thesis Review Started,2026-03-08T16:00:00Z
+LC:registration:S014:C02:4,S014,Course Assessment Completed,2026-03-11T12:00:00Z
+LC:registration:S014:C04:4,S014,Course Assessment Completed,2026-03-11T14:00:00Z
+LC:thesis:TH014:3,S014,Thesis Accepted,2026-03-11T16:00:00Z
+LC:registration:S014:C02:5,S014,Course Grade Finalized,2026-03-13T12:00:00Z
+LC:registration:S014:C04:5,S014,Course Grade Finalized,2026-03-13T14:00:00Z
+LC:assignment:A015:1,S015,Assignment Assigned,2026-01-06T00:00:00Z
+LC:degree_examination_result:E015-1:1,S015,Examination Scheduled,2026-02-16T07:00:00Z
+LC:degree_examination_result:E015-1:2,S015,Examination Checked In,2026-02-16T08:00:00Z
+EX:E015-1,S015,Degree Examination Taken,2026-02-16T09:00:00Z
+LC:degree_examination_result:E015-1:3,S015,Examination Score Published,2026-02-16T11:00:00Z
+LC:degree_examination_result:E015-1:4,S015,Examination Result Reviewed,2026-02-16T12:00:00Z
+LC:registration:S015:C04:1,S015,Registration Requested,2026-02-20T10:00:00Z
+LC:registration:S015:C05:1,S015,Registration Requested,2026-02-20T11:00:00Z
+LC:registration:S015:C04:2,S015,Registration Approved,2026-02-20T12:00:00Z
+LC:registration:S015:C06:1,S015,Registration Requested,2026-02-20T12:00:00Z
+LC:registration:S015:C05:2,S015,Registration Approved,2026-02-20T13:00:00Z
+LC:registration:S015:C06:2,S015,Registration Approved,2026-02-20T14:00:00Z
+REG:S015:C04,S015,Course Registered,2026-02-20T14:00:00Z
+REG:S015:C05,S015,Course Registered,2026-02-20T15:00:00Z
+REG:S015:C06,S015,Course Registered,2026-02-20T16:00:00Z
+LC:registration:S015:C04:3,S015,Course Started,2026-02-22T14:00:00Z
+LC:registration:S015:C05:3,S015,Course Started,2026-02-22T15:00:00Z
+LC:registration:S015:C06:3,S015,Course Started,2026-02-22T16:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-26T15:00:00Z:1,S015,Simulation Run Scheduled,2026-02-26T13:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-26T15:00:00Z:2,S015,Simulation Run Started,2026-02-26T14:00:00Z
+SIM:S015:M01:2026-02-26T15:00:00Z,S015,Simulation Experiment Completed,2026-02-26T15:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-26T15:00:00Z:3,S015,Simulation Output Reviewed,2026-02-26T17:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-26T15:00:00Z:4,S015,Simulation Result Accepted,2026-02-26T18:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-27T15:00:00Z:1,S015,Simulation Run Scheduled,2026-02-27T13:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-27T15:00:00Z:2,S015,Simulation Run Started,2026-02-27T14:00:00Z
+SIM:S015:M01:2026-02-27T15:00:00Z,S015,Simulation Experiment Completed,2026-02-27T15:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-27T15:00:00Z:3,S015,Simulation Output Reviewed,2026-02-27T17:00:00Z
+LC:student_simulation_experiment_result:S015:M01:2026-02-27T15:00:00Z:4,S015,Simulation Result Accepted,2026-02-27T18:00:00Z
+LC:registration:S015:C04:4,S015,Course Assessment Completed,2026-03-12T14:00:00Z
+LC:registration:S015:C05:4,S015,Course Assessment Completed,2026-03-12T15:00:00Z
+LC:registration:S015:C06:4,S015,Course Assessment Completed,2026-03-12T16:00:00Z
+LC:registration:S015:C04:5,S015,Course Grade Finalized,2026-03-14T14:00:00Z
+LC:registration:S015:C05:5,S015,Course Grade Finalized,2026-03-14T15:00:00Z
+LC:registration:S015:C06:5,S015,Course Grade Finalized,2026-03-14T16:00:00Z
+LC:degree_examination_result:E017-1:1,S017,Examination Scheduled,2026-02-18T07:00:00Z
+LC:degree_examination_result:E017-1:2,S017,Examination Checked In,2026-02-18T08:00:00Z
+EX:E017-1,S017,Degree Examination Taken,2026-02-18T09:00:00Z
+LC:degree_examination_result:E017-1:3,S017,Examination Score Published,2026-02-18T11:00:00Z
+LC:degree_examination_result:E017-1:4,S017,Examination Result Reviewed,2026-02-18T12:00:00Z
+LC:degree_examination_result:E018-1:1,S018,Examination Scheduled,2026-02-19T07:00:00Z
+LC:degree_examination_result:E018-1:2,S018,Examination Checked In,2026-02-19T08:00:00Z
+EX:E018-1,S018,Degree Examination Taken,2026-02-19T09:00:00Z
+LC:degree_examination_result:E018-1:3,S018,Examination Score Published,2026-02-19T11:00:00Z
+LC:degree_examination_result:E018-1:4,S018,Examination Result Reviewed,2026-02-19T12:00:00Z
+LC:degree_examination_result:E018-2:1,S018,Examination Scheduled,2026-02-21T07:00:00Z
+LC:degree_examination_result:E018-2:2,S018,Examination Checked In,2026-02-21T08:00:00Z
+EX:E018-2,S018,Degree Examination Taken,2026-02-21T09:00:00Z
+LC:degree_examination_result:E018-2:3,S018,Examination Score Published,2026-02-21T11:00:00Z
+LC:degree_examination_result:E018-2:4,S018,Examination Result Reviewed,2026-02-21T12:00:00Z
+LC:registration:S018:C05:1,S018,Registration Requested,2026-02-23T11:00:00Z
+LC:registration:S018:C05:2,S018,Registration Approved,2026-02-23T13:00:00Z
+LC:assignment:A018:1,S018,Assignment Assigned,2026-02-23T14:00:00Z
+REG:S018:C05,S018,Course Registered,2026-02-23T15:00:00Z
+LC:assignment:A018:2,S018,Assignment Submitted,2026-02-25T14:00:00Z
+LC:registration:S018:C05:3,S018,Course Started,2026-02-25T15:00:00Z
+GRADE:A018:I01:2026-02-27T14:00:00Z,S018,Assignment Graded,2026-02-27T14:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-01T15:00:00Z:1,S018,Simulation Run Scheduled,2026-03-01T13:00:00Z
+LC:assignment:A018:3,S018,Assignment Grade Finalized,2026-03-01T14:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-01T15:00:00Z:2,S018,Simulation Run Started,2026-03-01T14:00:00Z
+SIM:S018:M01:2026-03-01T15:00:00Z,S018,Simulation Experiment Completed,2026-03-01T15:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-01T15:00:00Z:3,S018,Simulation Output Reviewed,2026-03-01T17:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-01T15:00:00Z:4,S018,Simulation Result Accepted,2026-03-01T18:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-02T15:00:00Z:1,S018,Simulation Run Scheduled,2026-03-02T13:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-02T15:00:00Z:2,S018,Simulation Run Started,2026-03-02T14:00:00Z
+SIM:S018:M01:2026-03-02T15:00:00Z,S018,Simulation Experiment Completed,2026-03-02T15:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-02T15:00:00Z:3,S018,Simulation Output Reviewed,2026-03-02T17:00:00Z
+LC:student_simulation_experiment_result:S018:M01:2026-03-02T15:00:00Z:4,S018,Simulation Result Accepted,2026-03-02T18:00:00Z
+LC:thesis:TH018:1,S018,Thesis Draft Registered,2026-03-07T16:00:00Z
+THESIS:TH018,S018,Thesis Submitted,2026-03-11T16:00:00Z
+LC:thesis:TH018:2,S018,Thesis Review Started,2026-03-12T16:00:00Z
+LC:thesis:TH018:3,S018,Thesis Revision Requested,2026-03-13T16:00:00Z
+LC:thesis:TH018:4,S018,Thesis Resubmitted,2026-03-14T16:00:00Z
+LC:registration:S018:C05:4,S018,Course Assessment Completed,2026-03-15T15:00:00Z
+LC:thesis:TH018:5,S018,Thesis Accepted,2026-03-15T16:00:00Z
+LC:degree_examination_result:E019-1:1,S019,Examination Scheduled,2026-02-20T07:00:00Z
+LC:degree_examination_result:E019-1:2,S019,Examination Checked In,2026-02-20T08:00:00Z
+EX:E019-1,S019,Degree Examination Taken,2026-02-20T09:00:00Z
+LC:degree_examination_result:E019-1:3,S019,Examination Score Published,2026-02-20T11:00:00Z
+LC:degree_examination_result:E019-1:4,S019,Examination Result Reviewed,2026-02-20T12:00:00Z
+LC:registration:S019:C02:1,S019,Registration Requested,2026-02-24T08:00:00Z
+LC:registration:S019:C02:2,S019,Registration Approved,2026-02-24T10:00:00Z
+LC:registration:S019:C05:1,S019,Registration Requested,2026-02-24T11:00:00Z
+REG:S019:C02,S019,Course Registered,2026-02-24T12:00:00Z
+LC:registration:S019:C05:2,S019,Registration Approved,2026-02-24T13:00:00Z
+LC:assignment:A019:1,S019,Assignment Assigned,2026-02-24T14:00:00Z
+REG:S019:C05,S019,Course Registered,2026-02-24T15:00:00Z
+LC:registration:S019:C02:3,S019,Course Started,2026-02-26T12:00:00Z
+LC:assignment:A019:2,S019,Assignment Submitted,2026-02-26T14:00:00Z
+LC:registration:S019:C05:3,S019,Course Started,2026-02-26T15:00:00Z
+GRADE:A019:I02:2026-02-28T14:00:00Z,S019,Assignment Graded,2026-02-28T14:00:00Z
+LC:assignment:A019:3,S019,Assignment Revision Requested,2026-02-28T15:00:00Z
+LC:assignment:A019:4,S019,Assignment Resubmitted,2026-03-01T14:00:00Z
+LC:assignment:A019:5,S019,Assignment Regraded,2026-03-02T02:00:00Z
+LC:student_simulation_experiment_result:S019:M02:2026-03-02T15:00:00Z:1,S019,Simulation Run Scheduled,2026-03-02T13:00:00Z
+LC:assignment:A019:6,S019,Assignment Grade Finalized,2026-03-02T14:00:00Z
+LC:student_simulation_experiment_result:S019:M02:2026-03-02T15:00:00Z:2,S019,Simulation Run Started,2026-03-02T14:00:00Z
+SIM:S019:M02:2026-03-02T15:00:00Z,S019,Simulation Experiment Completed,2026-03-02T15:00:00Z
+LC:student_simulation_experiment_result:S019:M02:2026-03-02T15:00:00Z:3,S019,Simulation Output Reviewed,2026-03-02T17:00:00Z
+LC:student_simulation_experiment_result:S019:M02:2026-03-02T15:00:00Z:4,S019,Simulation Result Accepted,2026-03-02T18:00:00Z
+LC:thesis:TH019:1,S019,Thesis Draft Registered,2026-03-08T16:00:00Z
+THESIS:TH019,S019,Thesis Submitted,2026-03-12T16:00:00Z
+LC:thesis:TH019:2,S019,Thesis Review Started,2026-03-13T16:00:00Z
+LC:registration:S019:C02:4,S019,Course Assessment Completed,2026-03-16T12:00:00Z
+LC:registration:S019:C05:4,S019,Course Assessment Completed,2026-03-16T15:00:00Z
+LC:registration:S019:C02:5,S019,Course Grade Finalized,2026-03-18T12:00:00Z
+LC:registration:S019:C05:5,S019,Course Grade Finalized,2026-03-18T15:00:00Z
+LC:degree_examination_result:E021-1:1,S021,Examination Scheduled,2026-02-22T07:00:00Z
+LC:degree_examination_result:E021-1:2,S021,Examination Checked In,2026-02-22T08:00:00Z
+EX:E021-1,S021,Degree Examination Taken,2026-02-22T09:00:00Z
+LC:degree_examination_result:E021-1:3,S021,Examination Score Published,2026-02-22T11:00:00Z
+LC:degree_examination_result:E021-1:4,S021,Examination Result Reviewed,2026-02-22T12:00:00Z
+LC:degree_examination_result:E022-1:1,S022,Examination Scheduled,2026-02-23T07:00:00Z
+LC:degree_examination_result:E022-1:2,S022,Examination Checked In,2026-02-23T08:00:00Z
+EX:E022-1,S022,Degree Examination Taken,2026-02-23T09:00:00Z
+LC:degree_examination_result:E022-1:3,S022,Examination Score Published,2026-02-23T11:00:00Z
+LC:degree_examination_result:E022-2:1,S022,Examination Scheduled,2026-02-25T07:00:00Z
+LC:degree_examination_result:E022-2:2,S022,Examination Checked In,2026-02-25T08:00:00Z
+EX:E022-2,S022,Degree Examination Taken,2026-02-25T09:00:00Z
+LC:degree_examination_result:E022-2:3,S022,Examination Score Published,2026-02-25T11:00:00Z
+LC:degree_examination_result:E022-2:4,S022,Examination Result Reviewed,2026-02-25T12:00:00Z
+LC:registration:S022:C02:1,S022,Registration Requested,2026-02-27T08:00:00Z
+LC:registration:S022:C03:1,S022,Registration Requested,2026-02-27T09:00:00Z
+LC:registration:S022:C02:2,S022,Registration Approved,2026-02-27T10:00:00Z
+LC:registration:S022:C03:2,S022,Registration Approved,2026-02-27T11:00:00Z
+LC:registration:S022:C05:1,S022,Registration Requested,2026-02-27T11:00:00Z
+REG:S022:C02,S022,Course Registered,2026-02-27T12:00:00Z
+LC:registration:S022:C05:2,S022,Registration Approved,2026-02-27T13:00:00Z
+REG:S022:C03,S022,Course Registered,2026-02-27T13:00:00Z
+LC:assignment:A022:1,S022,Assignment Assigned,2026-02-27T14:00:00Z
+REG:S022:C05,S022,Course Registered,2026-02-27T15:00:00Z
+LC:registration:S022:C02:3,S022,Course Started,2026-03-01T12:00:00Z
+LC:registration:S022:C03:3,S022,Course Started,2026-03-01T13:00:00Z
+LC:assignment:A022:2,S022,Assignment Submitted,2026-03-01T14:00:00Z
+LC:registration:S022:C05:3,S022,Course Started,2026-03-01T15:00:00Z
+GRADE:A022:I02:2026-03-03T14:00:00Z,S022,Assignment Graded,2026-03-03T14:00:00Z
+LC:student_simulation_experiment_result:S022:M02:2026-03-05T15:00:00Z:1,S022,Simulation Run Scheduled,2026-03-05T13:00:00Z
+LC:assignment:A022:3,S022,Assignment Grade Finalized,2026-03-05T14:00:00Z
+LC:student_simulation_experiment_result:S022:M02:2026-03-05T15:00:00Z:2,S022,Simulation Run Started,2026-03-05T14:00:00Z
+SIM:S022:M02:2026-03-05T15:00:00Z,S022,Simulation Experiment Completed,2026-03-05T15:00:00Z
+LC:student_simulation_experiment_result:S022:M02:2026-03-05T15:00:00Z:3,S022,Simulation Output Reviewed,2026-03-05T17:00:00Z
+LC:thesis:TH022:1,S022,Thesis Draft Registered,2026-03-11T16:00:00Z
+THESIS:TH022,S022,Thesis Submitted,2026-03-15T16:00:00Z
+LC:thesis:TH022:2,S022,Thesis Review Started,2026-03-16T16:00:00Z
+LC:registration:S022:C02:4,S022,Course Assessment Completed,2026-03-19T12:00:00Z
+LC:registration:S022:C03:4,S022,Course Assessment Completed,2026-03-19T13:00:00Z
+LC:registration:S022:C05:4,S022,Course Assessment Completed,2026-03-19T15:00:00Z
+LC:thesis:TH022:3,S022,Thesis Accepted,2026-03-19T16:00:00Z
+LC:registration:S022:C02:5,S022,Course Grade Finalized,2026-03-21T12:00:00Z
+LC:registration:S022:C03:5,S022,Course Grade Finalized,2026-03-21T13:00:00Z
+LC:registration:S022:C05:5,S022,Course Grade Finalized,2026-03-21T15:00:00Z
+LC:degree_examination_result:E023-1:1,S023,Examination Scheduled,2026-02-24T07:00:00Z
+LC:degree_examination_result:E023-1:2,S023,Examination Checked In,2026-02-24T08:00:00Z
+EX:E023-1,S023,Degree Examination Taken,2026-02-24T09:00:00Z
+LC:degree_examination_result:E023-1:3,S023,Examination Score Published,2026-02-24T11:00:00Z
+LC:degree_examination_result:E023-1:4,S023,Examination Result Reviewed,2026-02-24T12:00:00Z
+LC:registration:S023:C02:1,S023,Registration Requested,2026-02-28T08:00:00Z
+LC:registration:S023:C02:2,S023,Registration Approved,2026-02-28T10:00:00Z
+LC:registration:S023:C06:1,S023,Registration Requested,2026-02-28T12:00:00Z
+REG:S023:C02,S023,Course Registered,2026-02-28T12:00:00Z
+LC:assignment:A023:1,S023,Assignment Assigned,2026-02-28T14:00:00Z
+LC:registration:S023:C06:2,S023,Registration Approved,2026-02-28T14:00:00Z
+REG:S023:C06,S023,Course Registered,2026-02-28T16:00:00Z
+LC:registration:S023:C02:3,S023,Course Started,2026-03-02T12:00:00Z
+LC:assignment:A023:2,S023,Assignment Submitted,2026-03-02T14:00:00Z
+LC:registration:S023:C06:3,S023,Course Started,2026-03-02T16:00:00Z
+GRADE:A023:I03:2026-03-04T14:00:00Z,S023,Assignment Graded,2026-03-04T14:00:00Z
+LC:student_simulation_experiment_result:S023:M03:2026-03-06T15:00:00Z:1,S023,Simulation Run Scheduled,2026-03-06T13:00:00Z
+LC:assignment:A023:3,S023,Assignment Grade Finalized,2026-03-06T14:00:00Z
+LC:student_simulation_experiment_result:S023:M03:2026-03-06T15:00:00Z:2,S023,Simulation Run Started,2026-03-06T14:00:00Z
+SIM:S023:M03:2026-03-06T15:00:00Z,S023,Simulation Experiment Completed,2026-03-06T15:00:00Z
+LC:student_simulation_experiment_result:S023:M03:2026-03-06T15:00:00Z:3,S023,Simulation Output Reviewed,2026-03-06T17:00:00Z
+LC:student_simulation_experiment_result:S023:M03:2026-03-06T15:00:00Z:4,S023,Simulation Result Accepted,2026-03-06T18:00:00Z
+LC:thesis:TH023:1,S023,Thesis Draft Registered,2026-03-12T16:00:00Z
+THESIS:TH023,S023,Thesis Submitted,2026-03-16T16:00:00Z
+LC:thesis:TH023:2,S023,Thesis Review Started,2026-03-17T16:00:00Z
+LC:thesis:TH023:3,S023,Thesis Revision Requested,2026-03-18T16:00:00Z
+LC:thesis:TH023:4,S023,Thesis Resubmitted,2026-03-19T16:00:00Z
+LC:registration:S023:C02:4,S023,Course Assessment Completed,2026-03-20T12:00:00Z
+LC:registration:S023:C06:4,S023,Course Assessment Completed,2026-03-20T16:00:00Z
+LC:thesis:TH023:5,S023,Thesis Accepted,2026-03-20T16:00:00Z
+LC:registration:S023:C02:5,S023,Course Grade Finalized,2026-03-22T12:00:00Z
+LC:degree_examination_result:E025-1:1,S025,Examination Scheduled,2026-02-26T07:00:00Z
+LC:degree_examination_result:E025-1:2,S025,Examination Checked In,2026-02-26T08:00:00Z
+EX:E025-1,S025,Degree Examination Taken,2026-02-26T09:00:00Z
+LC:degree_examination_result:E025-1:3,S025,Examination Score Published,2026-02-26T11:00:00Z
+LC:degree_examination_result:E025-1:4,S025,Examination Result Reviewed,2026-02-26T12:00:00Z
+LC:degree_examination_result:E026-1:1,S026,Examination Scheduled,2026-02-27T07:00:00Z
+LC:degree_examination_result:E026-1:2,S026,Examination Checked In,2026-02-27T08:00:00Z
+EX:E026-1,S026,Degree Examination Taken,2026-02-27T09:00:00Z
+LC:degree_examination_result:E026-1:3,S026,Examination Score Published,2026-02-27T11:00:00Z
+LC:degree_examination_result:E026-1:4,S026,Examination Result Reviewed,2026-02-27T12:00:00Z
+LC:degree_examination_result:E026-2:1,S026,Examination Scheduled,2026-03-01T07:00:00Z
+LC:degree_examination_result:E026-2:2,S026,Examination Checked In,2026-03-01T08:00:00Z
+EX:E026-2,S026,Degree Examination Taken,2026-03-01T09:00:00Z
+LC:degree_examination_result:E026-2:3,S026,Examination Score Published,2026-03-01T11:00:00Z
+LC:degree_examination_result:E026-2:4,S026,Examination Result Reviewed,2026-03-01T12:00:00Z
+LC:registration:S026:C04:1,S026,Registration Requested,2026-03-03T10:00:00Z
+LC:registration:S026:C04:2,S026,Registration Approved,2026-03-03T12:00:00Z
+LC:assignment:A026:1,S026,Assignment Assigned,2026-03-03T14:00:00Z
+REG:S026:C04,S026,Course Registered,2026-03-03T14:00:00Z
+LC:assignment:A026:2,S026,Assignment Submitted,2026-03-05T14:00:00Z
+LC:registration:S026:C04:3,S026,Course Started,2026-03-05T14:00:00Z
+GRADE:A026:I03:2026-03-07T14:00:00Z,S026,Assignment Graded,2026-03-07T14:00:00Z
+LC:assignment:A026:3,S026,Assignment Revision Requested,2026-03-07T15:00:00Z
+LC:assignment:A026:4,S026,Assignment Resubmitted,2026-03-08T14:00:00Z
+LC:assignment:A026:5,S026,Assignment Regraded,2026-03-09T02:00:00Z
+LC:student_simulation_experiment_result:S026:M03:2026-03-09T15:00:00Z:1,S026,Simulation Run Scheduled,2026-03-09T13:00:00Z
+LC:assignment:A026:6,S026,Assignment Grade Finalized,2026-03-09T14:00:00Z
+LC:student_simulation_experiment_result:S026:M03:2026-03-09T15:00:00Z:2,S026,Simulation Run Started,2026-03-09T14:00:00Z
+SIM:S026:M03:2026-03-09T15:00:00Z,S026,Simulation Experiment Completed,2026-03-09T15:00:00Z
+LC:student_simulation_experiment_result:S026:M03:2026-03-09T15:00:00Z:3,S026,Simulation Output Reviewed,2026-03-09T17:00:00Z
+LC:student_simulation_experiment_result:S026:M03:2026-03-09T15:00:00Z:4,S026,Simulation Result Accepted,2026-03-09T18:00:00Z
+LC:thesis:TH026:1,S026,Thesis Draft Registered,2026-03-15T16:00:00Z
+THESIS:TH026,S026,Thesis Submitted,2026-03-19T16:00:00Z
+LC:thesis:TH026:2,S026,Thesis Review Started,2026-03-20T16:00:00Z
+LC:registration:S026:C04:4,S026,Course Assessment Completed,2026-03-23T14:00:00Z
+LC:thesis:TH026:3,S026,Thesis Accepted,2026-03-23T16:00:00Z
+LC:registration:S026:C04:5,S026,Course Grade Finalized,2026-03-25T14:00:00Z
+LC:degree_examination_result:E027-1:1,S027,Examination Scheduled,2026-02-28T07:00:00Z
+LC:degree_examination_result:E027-1:2,S027,Examination Checked In,2026-02-28T08:00:00Z
+EX:E027-1,S027,Degree Examination Taken,2026-02-28T09:00:00Z
+LC:degree_examination_result:E027-1:3,S027,Examination Score Published,2026-02-28T11:00:00Z
+LC:degree_examination_result:E027-1:4,S027,Examination Result Reviewed,2026-02-28T12:00:00Z
+LC:registration:S027:C02:1,S027,Registration Requested,2026-03-04T08:00:00Z
+LC:registration:S027:C02:2,S027,Registration Approved,2026-03-04T10:00:00Z
+LC:registration:S027:C04:1,S027,Registration Requested,2026-03-04T10:00:00Z
+LC:registration:S027:C04:2,S027,Registration Approved,2026-03-04T12:00:00Z
+REG:S027:C02,S027,Course Registered,2026-03-04T12:00:00Z
+LC:assignment:A027:1,S027,Assignment Assigned,2026-03-04T14:00:00Z
+REG:S027:C04,S027,Course Registered,2026-03-04T14:00:00Z
+LC:registration:S027:C02:3,S027,Course Started,2026-03-06T12:00:00Z
+LC:assignment:A027:2,S027,Assignment Submitted,2026-03-06T14:00:00Z
+LC:registration:S027:C04:3,S027,Course Started,2026-03-06T14:00:00Z
+GRADE:A027:I01:2026-03-08T14:00:00Z,S027,Assignment Graded,2026-03-08T14:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-10T15:00:00Z:1,S027,Simulation Run Scheduled,2026-03-10T13:00:00Z
+LC:assignment:A027:3,S027,Assignment Grade Finalized,2026-03-10T14:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-10T15:00:00Z:2,S027,Simulation Run Started,2026-03-10T14:00:00Z
+SIM:S027:M01:2026-03-10T15:00:00Z,S027,Simulation Experiment Completed,2026-03-10T15:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-10T15:00:00Z:3,S027,Simulation Output Reviewed,2026-03-10T17:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-10T15:00:00Z:4,S027,Simulation Result Accepted,2026-03-10T18:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-11T15:00:00Z:1,S027,Simulation Run Scheduled,2026-03-11T13:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-11T15:00:00Z:2,S027,Simulation Run Started,2026-03-11T14:00:00Z
+SIM:S027:M01:2026-03-11T15:00:00Z,S027,Simulation Experiment Completed,2026-03-11T15:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-11T15:00:00Z:3,S027,Simulation Output Reviewed,2026-03-11T17:00:00Z
+LC:student_simulation_experiment_result:S027:M01:2026-03-11T15:00:00Z:4,S027,Simulation Result Accepted,2026-03-11T18:00:00Z
+LC:thesis:TH027:1,S027,Thesis Draft Registered,2026-03-16T16:00:00Z
+THESIS:TH027,S027,Thesis Submitted,2026-03-20T16:00:00Z
+LC:thesis:TH027:2,S027,Thesis Review Started,2026-03-21T16:00:00Z
+LC:registration:S027:C02:4,S027,Course Assessment Completed,2026-03-24T12:00:00Z
+LC:registration:S027:C04:4,S027,Course Assessment Completed,2026-03-24T14:00:00Z
+LC:thesis:TH027:3,S027,Thesis Accepted,2026-03-24T16:00:00Z
+LC:registration:S027:C02:5,S027,Course Grade Finalized,2026-03-26T12:00:00Z
+LC:registration:S027:C04:5,S027,Course Grade Finalized,2026-03-26T14:00:00Z
+LC:degree_examination_result:E029-1:1,S029,Examination Scheduled,2026-03-02T07:00:00Z
+LC:degree_examination_result:E029-1:2,S029,Examination Checked In,2026-03-02T08:00:00Z
+EX:E029-1,S029,Degree Examination Taken,2026-03-02T09:00:00Z
+LC:degree_examination_result:E029-1:3,S029,Examination Score Published,2026-03-02T11:00:00Z
+LC:assignment:A030:1,S030,Assignment Assigned,2026-01-13T00:00:00Z
+LC:degree_examination_result:E030-1:1,S030,Examination Scheduled,2026-03-03T07:00:00Z
+LC:degree_examination_result:E030-1:2,S030,Examination Checked In,2026-03-03T08:00:00Z
+EX:E030-1,S030,Degree Examination Taken,2026-03-03T09:00:00Z
+LC:degree_examination_result:E030-1:3,S030,Examination Score Published,2026-03-03T11:00:00Z
+LC:degree_examination_result:E030-1:4,S030,Examination Result Reviewed,2026-03-03T12:00:00Z
+LC:degree_examination_result:E030-2:1,S030,Examination Scheduled,2026-03-05T07:00:00Z
+LC:degree_examination_result:E030-2:2,S030,Examination Checked In,2026-03-05T08:00:00Z
+EX:E030-2,S030,Degree Examination Taken,2026-03-05T09:00:00Z
+LC:degree_examination_result:E030-2:3,S030,Examination Score Published,2026-03-05T11:00:00Z
+LC:degree_examination_result:E030-2:4,S030,Examination Result Reviewed,2026-03-05T12:00:00Z
+LC:registration:S030:C01:1,S030,Registration Requested,2026-03-07T07:00:00Z
+LC:registration:S030:C02:1,S030,Registration Requested,2026-03-07T08:00:00Z
+LC:registration:S030:C01:2,S030,Registration Approved,2026-03-07T09:00:00Z
+LC:registration:S030:C03:1,S030,Registration Requested,2026-03-07T09:00:00Z
+LC:registration:S030:C02:2,S030,Registration Approved,2026-03-07T10:00:00Z
+LC:registration:S030:C03:2,S030,Registration Approved,2026-03-07T11:00:00Z
+REG:S030:C01,S030,Course Registered,2026-03-07T11:00:00Z
+REG:S030:C02,S030,Course Registered,2026-03-07T12:00:00Z
+REG:S030:C03,S030,Course Registered,2026-03-07T13:00:00Z
+LC:registration:S030:C01:3,S030,Course Started,2026-03-09T11:00:00Z
+LC:registration:S030:C02:3,S030,Course Started,2026-03-09T12:00:00Z
+LC:registration:S030:C03:3,S030,Course Started,2026-03-09T13:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-13T15:00:00Z:1,S030,Simulation Run Scheduled,2026-03-13T13:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-13T15:00:00Z:2,S030,Simulation Run Started,2026-03-13T14:00:00Z
+SIM:S030:M01:2026-03-13T15:00:00Z,S030,Simulation Experiment Completed,2026-03-13T15:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-13T15:00:00Z:3,S030,Simulation Output Reviewed,2026-03-13T17:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-13T15:00:00Z:4,S030,Simulation Result Accepted,2026-03-13T18:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-14T15:00:00Z:1,S030,Simulation Run Scheduled,2026-03-14T13:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-14T15:00:00Z:2,S030,Simulation Run Started,2026-03-14T14:00:00Z
+SIM:S030:M01:2026-03-14T15:00:00Z,S030,Simulation Experiment Completed,2026-03-14T15:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-14T15:00:00Z:3,S030,Simulation Output Reviewed,2026-03-14T17:00:00Z
+LC:student_simulation_experiment_result:S030:M01:2026-03-14T15:00:00Z:4,S030,Simulation Result Accepted,2026-03-14T18:00:00Z
+LC:registration:S030:C01:4,S030,Course Assessment Completed,2026-03-27T11:00:00Z
+LC:registration:S030:C02:4,S030,Course Assessment Completed,2026-03-27T12:00:00Z
+LC:registration:S030:C03:4,S030,Course Assessment Completed,2026-03-27T13:00:00Z
+LC:registration:S030:C01:5,S030,Course Grade Finalized,2026-03-29T11:00:00Z
+LC:registration:S030:C02:5,S030,Course Grade Finalized,2026-03-29T12:00:00Z
+LC:registration:S030:C03:5,S030,Course Grade Finalized,2026-03-29T13:00:00Z
+LC:degree_examination_result:E031-1:1,S031,Examination Scheduled,2026-03-04T07:00:00Z
+LC:degree_examination_result:E031-1:2,S031,Examination Checked In,2026-03-04T08:00:00Z
+EX:E031-1,S031,Degree Examination Taken,2026-03-04T09:00:00Z
+LC:degree_examination_result:E031-1:3,S031,Examination Score Published,2026-03-04T11:00:00Z
+LC:degree_examination_result:E031-1:4,S031,Examination Result Reviewed,2026-03-04T12:00:00Z
+LC:registration:S031:C02:1,S031,Registration Requested,2026-03-08T08:00:00Z
+LC:registration:S031:C03:1,S031,Registration Requested,2026-03-08T09:00:00Z
+LC:registration:S031:C02:2,S031,Registration Approved,2026-03-08T10:00:00Z
+LC:registration:S031:C03:2,S031,Registration Approved,2026-03-08T11:00:00Z
+LC:registration:S031:C05:1,S031,Registration Requested,2026-03-08T11:00:00Z
+REG:S031:C02,S031,Course Registered,2026-03-08T12:00:00Z
+LC:registration:S031:C05:2,S031,Registration Approved,2026-03-08T13:00:00Z
+REG:S031:C03,S031,Course Registered,2026-03-08T13:00:00Z
+LC:assignment:A031:1,S031,Assignment Assigned,2026-03-08T14:00:00Z
+REG:S031:C05,S031,Course Registered,2026-03-08T15:00:00Z
+LC:registration:S031:C02:3,S031,Course Started,2026-03-10T12:00:00Z
+LC:registration:S031:C03:3,S031,Course Started,2026-03-10T13:00:00Z
+LC:assignment:A031:2,S031,Assignment Submitted,2026-03-10T14:00:00Z
+LC:registration:S031:C05:3,S031,Course Started,2026-03-10T15:00:00Z
+GRADE:A031:I02:2026-03-12T14:00:00Z,S031,Assignment Graded,2026-03-12T14:00:00Z
+LC:assignment:A031:3,S031,Assignment Revision Requested,2026-03-12T15:00:00Z
+LC:assignment:A031:4,S031,Assignment Resubmitted,2026-03-13T14:00:00Z
+LC:assignment:A031:5,S031,Assignment Regraded,2026-03-14T02:00:00Z
+LC:student_simulation_experiment_result:S031:M02:2026-03-14T15:00:00Z:1,S031,Simulation Run Scheduled,2026-03-14T13:00:00Z
+LC:assignment:A031:6,S031,Assignment Grade Finalized,2026-03-14T14:00:00Z
+LC:student_simulation_experiment_result:S031:M02:2026-03-14T15:00:00Z:2,S031,Simulation Run Started,2026-03-14T14:00:00Z
+SIM:S031:M02:2026-03-14T15:00:00Z,S031,Simulation Experiment Completed,2026-03-14T15:00:00Z
+LC:student_simulation_experiment_result:S031:M02:2026-03-14T15:00:00Z:3,S031,Simulation Output Reviewed,2026-03-14T17:00:00Z
+LC:thesis:TH031:1,S031,Thesis Draft Registered,2026-03-20T16:00:00Z
+THESIS:TH031,S031,Thesis Submitted,2026-03-24T16:00:00Z
+LC:thesis:TH031:2,S031,Thesis Review Started,2026-03-25T16:00:00Z
+LC:thesis:TH031:3,S031,Thesis Revision Requested,2026-03-26T16:00:00Z
+LC:thesis:TH031:4,S031,Thesis Resubmitted,2026-03-27T16:00:00Z
+LC:registration:S031:C02:4,S031,Course Assessment Completed,2026-03-28T12:00:00Z
+LC:registration:S031:C03:4,S031,Course Assessment Completed,2026-03-28T13:00:00Z
+LC:registration:S031:C05:4,S031,Course Assessment Completed,2026-03-28T15:00:00Z
+LC:thesis:TH031:5,S031,Thesis Accepted,2026-03-28T16:00:00Z
+LC:registration:S031:C02:5,S031,Course Grade Finalized,2026-03-30T12:00:00Z
+LC:registration:S031:C03:5,S031,Course Grade Finalized,2026-03-30T13:00:00Z
+LC:degree_examination_result:E033-1:1,S033,Examination Scheduled,2026-03-06T07:00:00Z
+LC:degree_examination_result:E033-1:2,S033,Examination Checked In,2026-03-06T08:00:00Z
+EX:E033-1,S033,Degree Examination Taken,2026-03-06T09:00:00Z
+LC:degree_examination_result:E033-1:3,S033,Examination Score Published,2026-03-06T11:00:00Z
+LC:degree_examination_result:E033-1:4,S033,Examination Result Reviewed,2026-03-06T12:00:00Z
+LC:degree_examination_result:E034-1:1,S034,Examination Scheduled,2026-03-07T07:00:00Z
+LC:degree_examination_result:E034-1:2,S034,Examination Checked In,2026-03-07T08:00:00Z
+EX:E034-1,S034,Degree Examination Taken,2026-03-07T09:00:00Z
+LC:degree_examination_result:E034-1:3,S034,Examination Score Published,2026-03-07T11:00:00Z
+LC:degree_examination_result:E034-1:4,S034,Examination Result Reviewed,2026-03-07T12:00:00Z
+LC:degree_examination_result:E034-2:1,S034,Examination Scheduled,2026-03-09T07:00:00Z
+LC:degree_examination_result:E034-2:2,S034,Examination Checked In,2026-03-09T08:00:00Z
+EX:E034-2,S034,Degree Examination Taken,2026-03-09T09:00:00Z
+LC:degree_examination_result:E034-2:3,S034,Examination Score Published,2026-03-09T11:00:00Z
+LC:degree_examination_result:E034-2:4,S034,Examination Result Reviewed,2026-03-09T12:00:00Z
+LC:registration:S034:C04:1,S034,Registration Requested,2026-03-11T10:00:00Z
+LC:registration:S034:C05:1,S034,Registration Requested,2026-03-11T11:00:00Z
+LC:registration:S034:C04:2,S034,Registration Approved,2026-03-11T12:00:00Z
+LC:registration:S034:C06:1,S034,Registration Requested,2026-03-11T12:00:00Z
+LC:registration:S034:C05:2,S034,Registration Approved,2026-03-11T13:00:00Z
+LC:assignment:A034:1,S034,Assignment Assigned,2026-03-11T14:00:00Z
+LC:registration:S034:C06:2,S034,Registration Approved,2026-03-11T14:00:00Z
+REG:S034:C04,S034,Course Registered,2026-03-11T14:00:00Z
+REG:S034:C05,S034,Course Registered,2026-03-11T15:00:00Z
+REG:S034:C06,S034,Course Registered,2026-03-11T16:00:00Z
+LC:assignment:A034:2,S034,Assignment Submitted,2026-03-13T14:00:00Z
+LC:registration:S034:C04:3,S034,Course Started,2026-03-13T14:00:00Z
+LC:registration:S034:C05:3,S034,Course Started,2026-03-13T15:00:00Z
+LC:registration:S034:C06:3,S034,Course Started,2026-03-13T16:00:00Z
+GRADE:A034:I02:2026-03-15T14:00:00Z,S034,Assignment Graded,2026-03-15T14:00:00Z
+LC:student_simulation_experiment_result:S034:M02:2026-03-17T15:00:00Z:1,S034,Simulation Run Scheduled,2026-03-17T13:00:00Z
+LC:assignment:A034:3,S034,Assignment Grade Finalized,2026-03-17T14:00:00Z
+LC:student_simulation_experiment_result:S034:M02:2026-03-17T15:00:00Z:2,S034,Simulation Run Started,2026-03-17T14:00:00Z
+SIM:S034:M02:2026-03-17T15:00:00Z,S034,Simulation Experiment Completed,2026-03-17T15:00:00Z
+LC:student_simulation_experiment_result:S034:M02:2026-03-17T15:00:00Z:3,S034,Simulation Output Reviewed,2026-03-17T17:00:00Z
+LC:student_simulation_experiment_result:S034:M02:2026-03-17T15:00:00Z:4,S034,Simulation Result Accepted,2026-03-17T18:00:00Z
+LC:thesis:TH034:1,S034,Thesis Draft Registered,2026-03-23T16:00:00Z
+THESIS:TH034,S034,Thesis Submitted,2026-03-27T16:00:00Z
+LC:thesis:TH034:2,S034,Thesis Review Started,2026-03-28T16:00:00Z
+LC:registration:S034:C04:4,S034,Course Assessment Completed,2026-03-31T14:00:00Z
+LC:registration:S034:C05:4,S034,Course Assessment Completed,2026-03-31T15:00:00Z
+LC:registration:S034:C06:4,S034,Course Assessment Completed,2026-03-31T16:00:00Z
+LC:thesis:TH034:3,S034,Thesis Accepted,2026-03-31T16:00:00Z
+LC:registration:S034:C04:5,S034,Course Grade Finalized,2026-04-02T14:00:00Z
+LC:registration:S034:C05:5,S034,Course Grade Finalized,2026-04-02T15:00:00Z
+LC:registration:S034:C06:5,S034,Course Grade Finalized,2026-04-02T16:00:00Z
+LC:assignment:A035:1,S035,Assignment Assigned,2026-01-16T00:00:00Z
+LC:degree_examination_result:E035-1:1,S035,Examination Scheduled,2026-03-08T07:00:00Z
+LC:degree_examination_result:E035-1:2,S035,Examination Checked In,2026-03-08T08:00:00Z
+EX:E035-1,S035,Degree Examination Taken,2026-03-08T09:00:00Z
+LC:degree_examination_result:E035-1:3,S035,Examination Score Published,2026-03-08T11:00:00Z
+LC:registration:S035:C06:1,S035,Registration Requested,2026-03-12T12:00:00Z
+LC:registration:S035:C06:2,S035,Registration Approved,2026-03-12T14:00:00Z
+REG:S035:C06,S035,Course Registered,2026-03-12T16:00:00Z
+LC:registration:S035:C06:3,S035,Course Started,2026-03-14T16:00:00Z
+LC:student_simulation_experiment_result:S035:M03:2026-03-18T15:00:00Z:1,S035,Simulation Run Scheduled,2026-03-18T13:00:00Z
+LC:student_simulation_experiment_result:S035:M03:2026-03-18T15:00:00Z:2,S035,Simulation Run Started,2026-03-18T14:00:00Z
+SIM:S035:M03:2026-03-18T15:00:00Z,S035,Simulation Experiment Completed,2026-03-18T15:00:00Z
+LC:student_simulation_experiment_result:S035:M03:2026-03-18T15:00:00Z:3,S035,Simulation Output Reviewed,2026-03-18T17:00:00Z
+LC:student_simulation_experiment_result:S035:M03:2026-03-18T15:00:00Z:4,S035,Simulation Result Accepted,2026-03-18T18:00:00Z
+LC:registration:S035:C06:4,S035,Course Assessment Completed,2026-04-01T16:00:00Z
+LC:registration:S035:C06:5,S035,Course Grade Finalized,2026-04-03T16:00:00Z
+LC:degree_examination_result:E037-1:1,S037,Examination Scheduled,2026-03-10T07:00:00Z
+LC:degree_examination_result:E037-1:2,S037,Examination Checked In,2026-03-10T08:00:00Z
+EX:E037-1,S037,Degree Examination Taken,2026-03-10T09:00:00Z
+LC:degree_examination_result:E037-1:3,S037,Examination Score Published,2026-03-10T11:00:00Z
+LC:degree_examination_result:E037-1:4,S037,Examination Result Reviewed,2026-03-10T12:00:00Z
+LC:degree_examination_result:E038-1:1,S038,Examination Scheduled,2026-03-11T07:00:00Z
+LC:degree_examination_result:E038-1:2,S038,Examination Checked In,2026-03-11T08:00:00Z
+EX:E038-1,S038,Degree Examination Taken,2026-03-11T09:00:00Z
+LC:degree_examination_result:E038-1:3,S038,Examination Score Published,2026-03-11T11:00:00Z
+LC:degree_examination_result:E038-1:4,S038,Examination Result Reviewed,2026-03-11T12:00:00Z
+LC:degree_examination_result:E038-2:1,S038,Examination Scheduled,2026-03-13T07:00:00Z
+LC:degree_examination_result:E038-2:2,S038,Examination Checked In,2026-03-13T08:00:00Z
+EX:E038-2,S038,Degree Examination Taken,2026-03-13T09:00:00Z
+LC:degree_examination_result:E038-2:3,S038,Examination Score Published,2026-03-13T11:00:00Z
+LC:degree_examination_result:E038-2:4,S038,Examination Result Reviewed,2026-03-13T12:00:00Z
+LC:registration:S038:C01:1,S038,Registration Requested,2026-03-15T07:00:00Z
+LC:registration:S038:C01:2,S038,Registration Approved,2026-03-15T09:00:00Z
+LC:registration:S038:C04:1,S038,Registration Requested,2026-03-15T10:00:00Z
+REG:S038:C01,S038,Course Registered,2026-03-15T11:00:00Z
+LC:registration:S038:C04:2,S038,Registration Approved,2026-03-15T12:00:00Z
+LC:registration:S038:C06:1,S038,Registration Requested,2026-03-15T12:00:00Z
+LC:assignment:A038:1,S038,Assignment Assigned,2026-03-15T14:00:00Z
+LC:registration:S038:C06:2,S038,Registration Approved,2026-03-15T14:00:00Z
+REG:S038:C04,S038,Course Registered,2026-03-15T14:00:00Z
+REG:S038:C06,S038,Course Registered,2026-03-15T16:00:00Z
+LC:registration:S038:C01:3,S038,Course Started,2026-03-17T11:00:00Z
+LC:assignment:A038:2,S038,Assignment Submitted,2026-03-17T14:00:00Z
+LC:registration:S038:C04:3,S038,Course Started,2026-03-17T14:00:00Z
+LC:registration:S038:C06:3,S038,Course Started,2026-03-17T16:00:00Z
+GRADE:A038:I03:2026-03-19T14:00:00Z,S038,Assignment Graded,2026-03-19T14:00:00Z
+LC:assignment:A038:3,S038,Assignment Revision Requested,2026-03-19T15:00:00Z
+LC:assignment:A038:4,S038,Assignment Resubmitted,2026-03-20T14:00:00Z
+LC:assignment:A038:5,S038,Assignment Regraded,2026-03-21T02:00:00Z
+LC:student_simulation_experiment_result:S038:M03:2026-03-21T15:00:00Z:1,S038,Simulation Run Scheduled,2026-03-21T13:00:00Z
+LC:assignment:A038:6,S038,Assignment Grade Finalized,2026-03-21T14:00:00Z
+LC:student_simulation_experiment_result:S038:M03:2026-03-21T15:00:00Z:2,S038,Simulation Run Started,2026-03-21T14:00:00Z
+SIM:S038:M03:2026-03-21T15:00:00Z,S038,Simulation Experiment Completed,2026-03-21T15:00:00Z
+LC:student_simulation_experiment_result:S038:M03:2026-03-21T15:00:00Z:3,S038,Simulation Output Reviewed,2026-03-21T17:00:00Z
+LC:student_simulation_experiment_result:S038:M03:2026-03-21T15:00:00Z:4,S038,Simulation Result Accepted,2026-03-21T18:00:00Z
+LC:thesis:TH038:1,S038,Thesis Draft Registered,2026-03-27T16:00:00Z
+THESIS:TH038,S038,Thesis Submitted,2026-03-31T16:00:00Z
+LC:thesis:TH038:2,S038,Thesis Review Started,2026-04-01T16:00:00Z
+LC:registration:S038:C01:4,S038,Course Assessment Completed,2026-04-04T11:00:00Z
+LC:registration:S038:C04:4,S038,Course Assessment Completed,2026-04-04T14:00:00Z
+LC:registration:S038:C06:4,S038,Course Assessment Completed,2026-04-04T16:00:00Z
+LC:registration:S038:C04:5,S038,Course Grade Finalized,2026-04-06T14:00:00Z
+LC:registration:S038:C06:5,S038,Course Grade Finalized,2026-04-06T16:00:00Z
+LC:degree_examination_result:E039-1:1,S039,Examination Scheduled,2026-03-12T07:00:00Z
+LC:degree_examination_result:E039-1:2,S039,Examination Checked In,2026-03-12T08:00:00Z
+EX:E039-1,S039,Degree Examination Taken,2026-03-12T09:00:00Z
+LC:degree_examination_result:E039-1:3,S039,Examination Score Published,2026-03-12T11:00:00Z
+LC:degree_examination_result:E039-1:4,S039,Examination Result Reviewed,2026-03-12T12:00:00Z
+LC:registration:S039:C01:1,S039,Registration Requested,2026-03-16T07:00:00Z
+LC:registration:S039:C01:2,S039,Registration Approved,2026-03-16T09:00:00Z
+LC:registration:S039:C05:1,S039,Registration Requested,2026-03-16T11:00:00Z
+REG:S039:C01,S039,Course Registered,2026-03-16T11:00:00Z
+LC:registration:S039:C05:2,S039,Registration Approved,2026-03-16T13:00:00Z
+LC:assignment:A039:1,S039,Assignment Assigned,2026-03-16T14:00:00Z
+REG:S039:C05,S039,Course Registered,2026-03-16T15:00:00Z
+LC:registration:S039:C01:3,S039,Course Started,2026-03-18T11:00:00Z
+LC:assignment:A039:2,S039,Assignment Submitted,2026-03-18T14:00:00Z
+LC:registration:S039:C05:3,S039,Course Started,2026-03-18T15:00:00Z
+GRADE:A039:I01:2026-03-20T14:00:00Z,S039,Assignment Graded,2026-03-20T14:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-22T15:00:00Z:1,S039,Simulation Run Scheduled,2026-03-22T13:00:00Z
+LC:assignment:A039:3,S039,Assignment Grade Finalized,2026-03-22T14:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-22T15:00:00Z:2,S039,Simulation Run Started,2026-03-22T14:00:00Z
+SIM:S039:M01:2026-03-22T15:00:00Z,S039,Simulation Experiment Completed,2026-03-22T15:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-22T15:00:00Z:3,S039,Simulation Output Reviewed,2026-03-22T17:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-22T15:00:00Z:4,S039,Simulation Result Accepted,2026-03-22T18:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-23T15:00:00Z:1,S039,Simulation Run Scheduled,2026-03-23T13:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-23T15:00:00Z:2,S039,Simulation Run Started,2026-03-23T14:00:00Z
+SIM:S039:M01:2026-03-23T15:00:00Z,S039,Simulation Experiment Completed,2026-03-23T15:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-23T15:00:00Z:3,S039,Simulation Output Reviewed,2026-03-23T17:00:00Z
+LC:student_simulation_experiment_result:S039:M01:2026-03-23T15:00:00Z:4,S039,Simulation Result Accepted,2026-03-23T18:00:00Z
+LC:thesis:TH039:1,S039,Thesis Draft Registered,2026-03-28T16:00:00Z
+THESIS:TH039,S039,Thesis Submitted,2026-04-01T16:00:00Z
+LC:thesis:TH039:2,S039,Thesis Review Started,2026-04-02T16:00:00Z
+LC:thesis:TH039:3,S039,Thesis Revision Requested,2026-04-03T16:00:00Z
+LC:thesis:TH039:4,S039,Thesis Resubmitted,2026-04-04T16:00:00Z
+LC:registration:S039:C01:4,S039,Course Assessment Completed,2026-04-05T11:00:00Z
+LC:registration:S039:C05:4,S039,Course Assessment Completed,2026-04-05T15:00:00Z
+LC:thesis:TH039:5,S039,Thesis Accepted,2026-04-05T16:00:00Z
+LC:registration:S039:C01:5,S039,Course Grade Finalized,2026-04-07T11:00:00Z
+LC:registration:S039:C05:5,S039,Course Grade Finalized,2026-04-07T15:00:00Z

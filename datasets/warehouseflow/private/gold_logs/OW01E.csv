@@ -1,0 +1,130 @@
+event_id,case_id,activity,timestamp
+LC:transaction_record:T001:1,W1,Receiving Requested,2026-03-31T21:00:00Z
+LC:transaction_record:T005:1,W1,Receiving Requested,2026-04-01T01:00:00Z
+TX:T001,W1,Goods Received,2026-04-01T01:00:00Z
+LC:transaction_record:T009:1,W1,Receiving Requested,2026-04-01T05:00:00Z
+TX:T005,W1,Goods Received,2026-04-01T05:00:00Z
+LC:transaction_record:T005:4,W1,Goods Put Away,2026-04-01T06:00:00Z
+TX:T009,W1,Goods Received,2026-04-01T09:00:00Z
+LC:transaction_record:T009:4,W1,Goods Put Away,2026-04-01T10:00:00Z
+LC:transaction_record:T017:1,W1,Receiving Requested,2026-04-01T13:00:00Z
+TX:T017,W1,Goods Received,2026-04-01T17:00:00Z
+LC:transaction_record:T017:4,W1,Goods Put Away,2026-04-01T18:00:00Z
+LC:transaction_record:T025:1,W1,Receiving Requested,2026-04-01T21:00:00Z
+TX:T025,W1,Goods Received,2026-04-02T01:00:00Z
+LC:transaction_record:T025:4,W1,Goods Put Away,2026-04-02T02:00:00Z
+LC:transaction_record:T033:1,W1,Receiving Requested,2026-04-02T05:00:00Z
+TX:T033,W1,Goods Received,2026-04-02T09:00:00Z
+LC:transaction_record:T033:4,W1,Goods Put Away,2026-04-02T10:00:00Z
+LC:transaction_record:T041:1,W1,Receiving Requested,2026-04-02T13:00:00Z
+TX:T041,W1,Goods Received,2026-04-02T17:00:00Z
+LC:transaction_record:T041:4,W1,Goods Put Away,2026-04-02T18:00:00Z
+LC:transaction_record:T049:1,W1,Receiving Requested,2026-04-02T21:00:00Z
+LC:transaction_record:T053:1,W1,Receiving Requested,2026-04-03T01:00:00Z
+TX:T049,W1,Goods Received,2026-04-03T01:00:00Z
+LC:transaction_record:T049:4,W1,Goods Put Away,2026-04-03T02:00:00Z
+LC:transaction_record:T057:1,W1,Receiving Requested,2026-04-03T05:00:00Z
+TX:T053,W1,Goods Received,2026-04-03T05:00:00Z
+LC:transaction_record:T053:4,W1,Goods Put Away,2026-04-03T06:00:00Z
+TX:T057,W1,Goods Received,2026-04-03T09:00:00Z
+LC:transaction_record:T065:1,W1,Receiving Requested,2026-04-03T13:00:00Z
+TX:T065,W1,Goods Received,2026-04-03T17:00:00Z
+LC:transaction_record:T065:4,W1,Goods Put Away,2026-04-03T18:00:00Z
+LC:transaction_record:T073:1,W1,Receiving Requested,2026-04-03T21:00:00Z
+TX:T073,W1,Goods Received,2026-04-04T01:00:00Z
+LC:transaction_record:T073:4,W1,Goods Put Away,2026-04-04T02:00:00Z
+LC:transaction_record:T002:1,W2,Receiving Requested,2026-03-31T22:00:00Z
+TX:T002,W2,Goods Received,2026-04-01T02:00:00Z
+LC:transaction_record:T002:4,W2,Goods Put Away,2026-04-01T03:00:00Z
+LC:transaction_record:T010:1,W2,Receiving Requested,2026-04-01T06:00:00Z
+TX:T010,W2,Goods Received,2026-04-01T10:00:00Z
+LC:transaction_record:T010:4,W2,Goods Put Away,2026-04-01T11:00:00Z
+LC:transaction_record:T018:1,W2,Receiving Requested,2026-04-01T14:00:00Z
+TX:T018,W2,Goods Received,2026-04-01T18:00:00Z
+LC:transaction_record:T018:4,W2,Goods Put Away,2026-04-01T19:00:00Z
+LC:transaction_record:T026:1,W2,Receiving Requested,2026-04-01T22:00:00Z
+TX:T026,W2,Goods Received,2026-04-02T02:00:00Z
+LC:transaction_record:T026:4,W2,Goods Put Away,2026-04-02T03:00:00Z
+LC:transaction_record:T034:1,W2,Receiving Requested,2026-04-02T06:00:00Z
+LC:transaction_record:T038:1,W2,Receiving Requested,2026-04-02T10:00:00Z
+TX:T034,W2,Goods Received,2026-04-02T10:00:00Z
+LC:transaction_record:T034:4,W2,Goods Put Away,2026-04-02T11:00:00Z
+LC:transaction_record:T042:1,W2,Receiving Requested,2026-04-02T14:00:00Z
+TX:T038,W2,Goods Received,2026-04-02T14:00:00Z
+LC:transaction_record:T038:4,W2,Goods Put Away,2026-04-02T15:00:00Z
+TX:T042,W2,Goods Received,2026-04-02T18:00:00Z
+LC:transaction_record:T042:4,W2,Goods Put Away,2026-04-02T19:00:00Z
+LC:transaction_record:T050:1,W2,Receiving Requested,2026-04-02T22:00:00Z
+TX:T050,W2,Goods Received,2026-04-03T02:00:00Z
+LC:transaction_record:T058:1,W2,Receiving Requested,2026-04-03T06:00:00Z
+TX:T058,W2,Goods Received,2026-04-03T10:00:00Z
+LC:transaction_record:T058:4,W2,Goods Put Away,2026-04-03T11:00:00Z
+LC:transaction_record:T066:1,W2,Receiving Requested,2026-04-03T14:00:00Z
+TX:T066,W2,Goods Received,2026-04-03T18:00:00Z
+LC:transaction_record:T066:4,W2,Goods Put Away,2026-04-03T19:00:00Z
+LC:transaction_record:T074:1,W2,Receiving Requested,2026-04-03T22:00:00Z
+TX:T074,W2,Goods Received,2026-04-04T02:00:00Z
+LC:transaction_record:T074:4,W2,Goods Put Away,2026-04-04T03:00:00Z
+LC:transaction_record:T003:1,W3,Receiving Requested,2026-03-31T23:00:00Z
+TX:T003,W3,Goods Received,2026-04-01T03:00:00Z
+LC:transaction_record:T003:4,W3,Goods Put Away,2026-04-01T04:00:00Z
+LC:transaction_record:T011:1,W3,Receiving Requested,2026-04-01T07:00:00Z
+TX:T011,W3,Goods Received,2026-04-01T11:00:00Z
+LC:transaction_record:T011:4,W3,Goods Put Away,2026-04-01T12:00:00Z
+LC:transaction_record:T019:1,W3,Receiving Requested,2026-04-01T15:00:00Z
+TX:T019,W3,Goods Received,2026-04-01T19:00:00Z
+LC:transaction_record:T019:4,W3,Goods Put Away,2026-04-01T20:00:00Z
+LC:transaction_record:T027:1,W3,Receiving Requested,2026-04-01T23:00:00Z
+TX:T027,W3,Goods Received,2026-04-02T03:00:00Z
+LC:transaction_record:T027:4,W3,Goods Put Away,2026-04-02T04:00:00Z
+LC:transaction_record:T035:1,W3,Receiving Requested,2026-04-02T07:00:00Z
+TX:T035,W3,Goods Received,2026-04-02T11:00:00Z
+LC:transaction_record:T035:4,W3,Goods Put Away,2026-04-02T12:00:00Z
+LC:transaction_record:T043:1,W3,Receiving Requested,2026-04-02T15:00:00Z
+TX:T043,W3,Goods Received,2026-04-02T19:00:00Z
+LC:transaction_record:T051:1,W3,Receiving Requested,2026-04-02T23:00:00Z
+TX:T051,W3,Goods Received,2026-04-03T03:00:00Z
+LC:transaction_record:T051:4,W3,Goods Put Away,2026-04-03T04:00:00Z
+LC:transaction_record:T059:1,W3,Receiving Requested,2026-04-03T07:00:00Z
+TX:T059,W3,Goods Received,2026-04-03T11:00:00Z
+LC:transaction_record:T059:4,W3,Goods Put Away,2026-04-03T12:00:00Z
+LC:transaction_record:T067:1,W3,Receiving Requested,2026-04-03T15:00:00Z
+TX:T067,W3,Goods Received,2026-04-03T19:00:00Z
+LC:transaction_record:T067:4,W3,Goods Put Away,2026-04-03T20:00:00Z
+LC:transaction_record:T075:1,W3,Receiving Requested,2026-04-03T23:00:00Z
+TX:T075,W3,Goods Received,2026-04-04T03:00:00Z
+LC:transaction_record:T075:4,W3,Goods Put Away,2026-04-04T04:00:00Z
+LC:transaction_record:T004:1,W4,Receiving Requested,2026-04-01T00:00:00Z
+LC:transaction_record:T008:1,W4,Receiving Requested,2026-04-01T04:00:00Z
+TX:T004,W4,Goods Received,2026-04-01T04:00:00Z
+LC:transaction_record:T004:4,W4,Goods Put Away,2026-04-01T05:00:00Z
+LC:transaction_record:T012:1,W4,Receiving Requested,2026-04-01T08:00:00Z
+TX:T008,W4,Goods Received,2026-04-01T08:00:00Z
+TX:T012,W4,Goods Received,2026-04-01T12:00:00Z
+LC:transaction_record:T012:4,W4,Goods Put Away,2026-04-01T13:00:00Z
+LC:transaction_record:T020:1,W4,Receiving Requested,2026-04-01T16:00:00Z
+TX:T020,W4,Goods Received,2026-04-01T20:00:00Z
+LC:transaction_record:T020:4,W4,Goods Put Away,2026-04-01T21:00:00Z
+LC:transaction_record:T028:1,W4,Receiving Requested,2026-04-02T00:00:00Z
+TX:T028,W4,Goods Received,2026-04-02T04:00:00Z
+LC:transaction_record:T028:4,W4,Goods Put Away,2026-04-02T05:00:00Z
+LC:transaction_record:T036:1,W4,Receiving Requested,2026-04-02T08:00:00Z
+TX:T036,W4,Goods Received,2026-04-02T12:00:00Z
+LC:transaction_record:T044:1,W4,Receiving Requested,2026-04-02T16:00:00Z
+TX:T044,W4,Goods Received,2026-04-02T20:00:00Z
+LC:transaction_record:T044:4,W4,Goods Put Away,2026-04-02T21:00:00Z
+LC:transaction_record:T052:1,W4,Receiving Requested,2026-04-03T00:00:00Z
+LC:transaction_record:T056:1,W4,Receiving Requested,2026-04-03T04:00:00Z
+TX:T052,W4,Goods Received,2026-04-03T04:00:00Z
+LC:transaction_record:T052:4,W4,Goods Put Away,2026-04-03T05:00:00Z
+LC:transaction_record:T060:1,W4,Receiving Requested,2026-04-03T08:00:00Z
+TX:T056,W4,Goods Received,2026-04-03T08:00:00Z
+LC:transaction_record:T056:4,W4,Goods Put Away,2026-04-03T09:00:00Z
+TX:T060,W4,Goods Received,2026-04-03T12:00:00Z
+LC:transaction_record:T060:4,W4,Goods Put Away,2026-04-03T13:00:00Z
+LC:transaction_record:T068:1,W4,Receiving Requested,2026-04-03T16:00:00Z
+TX:T068,W4,Goods Received,2026-04-03T20:00:00Z
+LC:transaction_record:T068:4,W4,Goods Put Away,2026-04-03T21:00:00Z
+LC:transaction_record:T076:1,W4,Receiving Requested,2026-04-04T00:00:00Z
+TX:T076,W4,Goods Received,2026-04-04T04:00:00Z
+LC:transaction_record:T076:4,W4,Goods Put Away,2026-04-04T05:00:00Z

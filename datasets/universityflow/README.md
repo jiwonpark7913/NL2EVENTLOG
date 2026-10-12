@@ -4,14 +4,14 @@
 - **Source:** Three preserved RSchema university requirements and logical schemas. Original source columns and keys are preserved.
 - **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
 - **Database:** 20 tables; 41 activity types; 11 object / case types; 808 distinct recorded business events.
-- **Gold:** 24 answerable question-specific CSV logs out of 26 questions. Paraphrase pairs can share the same expected content.
+- **Gold:** 58 answerable question-specific CSV logs out of 62 questions. Paired requests share the same expected content.
 - **Execution:** Run `python datasets/universityflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
 ## Dataset counts
 
 | Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|
-| UniversityFlow | 20 | 11 | 41 | 808 | 26 | 24 |
+| UniversityFlow | 20 | 11 | 41 | 808 | 62 | 58 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
@@ -63,3 +63,21 @@
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
 - [Object-based Gold logs and coverage](docs/object_event_logs.md)
+
+## Question types and pairs
+
+- **Q1 Explicit:** case concept and exact activities.
+- **Q2 Paraphrased:** alternate wording of Q1, with identical Gold scope.
+- **Q3 Full Lifecycle:** case concept only, using the declared default recorded scope.
+- **Q4 Full Lifecycle Paraphrased:** alternate wording of Q3, with identical Gold scope.
+- `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
+- Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
+
+| Type | Questions |
+|---|---:|
+| Q1 | 19 |
+| Q2 | 19 |
+| Q3 | 12 |
+| Q4 | 12 |
+
+- [All question texts, types, pairs and answerability](docs/questions.md)
