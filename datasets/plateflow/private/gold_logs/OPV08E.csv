@@ -1,4 +1,28 @@
 event_id,case_id,activity,timestamp
+LC:furnace_charge_tracking:TRM003:3,LC:furnace_charge_tracking:TRM003:3,Heating Completed,2026-03-04T05:40:00Z
+LC:furnace_charge_tracking:TRM004:3,LC:furnace_charge_tracking:TRM004:3,Heating Completed,2026-03-05T05:40:00Z
+LC:furnace_charge_tracking:TRM005:3,LC:furnace_charge_tracking:TRM005:3,Heating Completed,2026-03-06T05:40:00Z
+LC:furnace_charge_tracking:TRM006:3,LC:furnace_charge_tracking:TRM006:3,Heating Completed,2026-03-07T05:40:00Z
+LC:furnace_charge_tracking:TRM009:3,LC:furnace_charge_tracking:TRM009:3,Heating Completed,2026-03-10T05:40:00Z
+LC:furnace_charge_tracking:TRM010:3,LC:furnace_charge_tracking:TRM010:3,Heating Completed,2026-03-11T05:40:00Z
+LC:furnace_charge_tracking:TRM011:3,LC:furnace_charge_tracking:TRM011:3,Heating Completed,2026-03-12T05:40:00Z
+LC:furnace_charge_tracking:TRM012:3,LC:furnace_charge_tracking:TRM012:3,Heating Completed,2026-03-13T05:40:00Z
+LC:furnace_charge_tracking:TRM015:3,LC:furnace_charge_tracking:TRM015:3,Heating Completed,2026-03-16T05:40:00Z
+LC:furnace_charge_tracking:TRM016:3,LC:furnace_charge_tracking:TRM016:3,Heating Completed,2026-03-17T05:40:00Z
+LC:furnace_charge_tracking:TRM017:3,LC:furnace_charge_tracking:TRM017:3,Heating Completed,2026-03-18T05:40:00Z
+LC:furnace_charge_tracking:TRM018:3,LC:furnace_charge_tracking:TRM018:3,Heating Completed,2026-03-19T05:40:00Z
+LC:furnace_charge_tracking:TRM021:3,LC:furnace_charge_tracking:TRM021:3,Heating Completed,2026-03-22T05:40:00Z
+LC:furnace_charge_tracking:TRM022:3,LC:furnace_charge_tracking:TRM022:3,Heating Completed,2026-03-23T05:40:00Z
+LC:furnace_charge_tracking:TRM023:3,LC:furnace_charge_tracking:TRM023:3,Heating Completed,2026-03-24T05:40:00Z
+LC:furnace_charge_tracking:TRM024:3,LC:furnace_charge_tracking:TRM024:3,Heating Completed,2026-03-25T05:40:00Z
+LC:furnace_charge_tracking:TRM027:3,LC:furnace_charge_tracking:TRM027:3,Heating Completed,2026-03-28T05:40:00Z
+LC:furnace_charge_tracking:TRM028:3,LC:furnace_charge_tracking:TRM028:3,Heating Completed,2026-03-29T05:40:00Z
+LC:furnace_charge_tracking:TRM029:3,LC:furnace_charge_tracking:TRM029:3,Heating Completed,2026-03-30T05:40:00Z
+LC:furnace_charge_tracking:TRM030:3,LC:furnace_charge_tracking:TRM030:3,Heating Completed,2026-03-31T05:40:00Z
+LC:furnace_charge_tracking:TRM033:3,LC:furnace_charge_tracking:TRM033:3,Heating Completed,2026-04-03T05:40:00Z
+LC:furnace_charge_tracking:TRM034:3,LC:furnace_charge_tracking:TRM034:3,Heating Completed,2026-04-04T05:40:00Z
+LC:furnace_charge_tracking:TRM035:3,LC:furnace_charge_tracking:TRM035:3,Heating Completed,2026-04-05T05:40:00Z
+LC:furnace_charge_tracking:TRM036:3,LC:furnace_charge_tracking:TRM036:3,Heating Completed,2026-04-06T05:40:00Z
 OP:M004-CO,M004-CO,Cooling Completed,2026-03-05T07:00:00Z
 OP:M005-CO,M005-CO,Cooling Completed,2026-03-06T07:00:00Z
 OP:M006-CO,M006-CO,Cooling Completed,2026-03-07T07:00:00Z
@@ -21,35 +45,23 @@ OP:P005-1-HT1,P005-1-HT1,Heat Treatment Completed,2026-03-06T12:00:00Z
 OP:P005-2-HT1,P005-2-HT1,Heat Treatment Completed,2026-03-06T12:00:00Z
 OP:P006-1-HT1,P006-1-HT1,Heat Treatment Completed,2026-03-07T14:00:00Z
 OP:P006-1-HT2,P006-1-HT2,Heat Treatment Completed,2026-03-07T17:00:00Z
-OP:P006-1-IF1,P006-1-IF1,Inspection Failed,2026-03-07T12:00:00Z
-OP:P006-1-IF2,P006-1-IF2,Inspection Failed,2026-03-07T15:00:00Z
 OP:P011-1-HT1,P011-1-HT1,Heat Treatment Completed,2026-03-12T12:00:00Z
 OP:P012-1-HT1,P012-1-HT1,Heat Treatment Completed,2026-03-13T14:00:00Z
 OP:P012-1-HT2,P012-1-HT2,Heat Treatment Completed,2026-03-13T17:00:00Z
-OP:P012-1-IF1,P012-1-IF1,Inspection Failed,2026-03-13T12:00:00Z
-OP:P012-1-IF2,P012-1-IF2,Inspection Failed,2026-03-13T15:00:00Z
 OP:P017-1-HT1,P017-1-HT1,Heat Treatment Completed,2026-03-18T12:00:00Z
 OP:P017-2-HT1,P017-2-HT1,Heat Treatment Completed,2026-03-18T12:00:00Z
 OP:P017-3-HT1,P017-3-HT1,Heat Treatment Completed,2026-03-18T12:00:00Z
 OP:P018-1-HT1,P018-1-HT1,Heat Treatment Completed,2026-03-19T14:00:00Z
 OP:P018-1-HT2,P018-1-HT2,Heat Treatment Completed,2026-03-19T17:00:00Z
-OP:P018-1-IF1,P018-1-IF1,Inspection Failed,2026-03-19T12:00:00Z
-OP:P018-1-IF2,P018-1-IF2,Inspection Failed,2026-03-19T15:00:00Z
 OP:P023-1-HT1,P023-1-HT1,Heat Treatment Completed,2026-03-24T12:00:00Z
 OP:P023-2-HT1,P023-2-HT1,Heat Treatment Completed,2026-03-24T12:00:00Z
 OP:P024-1-HT1,P024-1-HT1,Heat Treatment Completed,2026-03-25T14:00:00Z
 OP:P024-1-HT2,P024-1-HT2,Heat Treatment Completed,2026-03-25T17:00:00Z
-OP:P024-1-IF1,P024-1-IF1,Inspection Failed,2026-03-25T12:00:00Z
-OP:P024-1-IF2,P024-1-IF2,Inspection Failed,2026-03-25T15:00:00Z
 OP:P029-1-HT1,P029-1-HT1,Heat Treatment Completed,2026-03-30T12:00:00Z
 OP:P030-1-HT1,P030-1-HT1,Heat Treatment Completed,2026-03-31T14:00:00Z
 OP:P030-1-HT2,P030-1-HT2,Heat Treatment Completed,2026-03-31T17:00:00Z
-OP:P030-1-IF1,P030-1-IF1,Inspection Failed,2026-03-31T12:00:00Z
-OP:P030-1-IF2,P030-1-IF2,Inspection Failed,2026-03-31T15:00:00Z
 OP:P035-1-HT1,P035-1-HT1,Heat Treatment Completed,2026-04-05T12:00:00Z
 OP:P035-2-HT1,P035-2-HT1,Heat Treatment Completed,2026-04-05T12:00:00Z
 OP:P035-3-HT1,P035-3-HT1,Heat Treatment Completed,2026-04-05T12:00:00Z
 OP:P036-1-HT1,P036-1-HT1,Heat Treatment Completed,2026-04-06T14:00:00Z
 OP:P036-1-HT2,P036-1-HT2,Heat Treatment Completed,2026-04-06T17:00:00Z
-OP:P036-1-IF1,P036-1-IF1,Inspection Failed,2026-04-06T12:00:00Z
-OP:P036-1-IF2,P036-1-IF2,Inspection Failed,2026-04-06T15:00:00Z

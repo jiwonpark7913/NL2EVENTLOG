@@ -1,74 +1,262 @@
 [
   {
-    "table": "slab_material_activity",
+    "activity": "Slab Received",
+    "table": "slab_material",
+    "encoding": "column",
+    "timestamp_column": "slab_received_at",
     "event_key": [
-      "event_id"
+      "slab_id",
+      "slab_received_at"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "slab_material",
-    "object_key": [
-      "slab_id"
-    ]
+    "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':1' event_id, 'Slab Received' activity, slab_received_at timestamp FROM slab_material WHERE slab_received_at IS NOT NULL"
   },
   {
-    "table": "planned_rolling_instruction_activity",
+    "activity": "Slab Identity Verified",
+    "table": "slab_material",
+    "encoding": "column",
+    "timestamp_column": "slab_identity_verified_at",
     "event_key": [
-      "event_id"
+      "slab_id",
+      "slab_identity_verified_at"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "planned_rolling_instruction",
-    "object_key": [
-      "plan_id"
-    ]
+    "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':2' event_id, 'Slab Identity Verified' activity, slab_identity_verified_at timestamp FROM slab_material WHERE slab_identity_verified_at IS NOT NULL"
   },
   {
-    "table": "rolling_instruction_activity",
+    "activity": "Slab Quality Checked",
+    "table": "slab_material",
+    "encoding": "column",
+    "timestamp_column": "slab_quality_checked_at",
     "event_key": [
-      "event_id"
+      "slab_id",
+      "slab_quality_checked_at"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "rolling_instruction",
-    "object_key": [
-      "instruction_id"
-    ]
+    "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':3' event_id, 'Slab Quality Checked' activity, slab_quality_checked_at timestamp FROM slab_material WHERE slab_quality_checked_at IS NOT NULL"
   },
   {
-    "table": "furnace_charge_tracking_activity",
+    "activity": "Slab Released for Rolling",
+    "table": "slab_material",
+    "encoding": "column",
+    "timestamp_column": "slab_released_for_rolling_at",
     "event_key": [
-      "event_id"
+      "slab_id",
+      "slab_released_for_rolling_at"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "furnace_charge_tracking",
-    "object_key": [
-      "tracking_id"
-    ]
+    "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':4' event_id, 'Slab Released for Rolling' activity, slab_released_for_rolling_at timestamp FROM slab_material WHERE slab_released_for_rolling_at IS NOT NULL"
   },
   {
-    "table": "cutting_finishing_instruction_activity",
+    "activity": "Rolling Plan Created",
+    "table": "planned_rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_plan_created_at",
     "event_key": [
-      "event_id"
+      "plan_id",
+      "rolling_plan_created_at"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "cutting_finishing_instruction",
-    "object_key": [
-      "instruction_id"
-    ]
+    "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':1' event_id, 'Rolling Plan Created' activity, rolling_plan_created_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_created_at IS NOT NULL"
   },
   {
-    "table": "plate_material_activity",
+    "activity": "Rolling Plan Reviewed",
+    "table": "planned_rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_plan_reviewed_at",
     "event_key": [
-      "event_id"
+      "plan_id",
+      "rolling_plan_reviewed_at"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "plate_material",
-    "object_key": [
-      "plate_material_id"
-    ]
+    "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':2' event_id, 'Rolling Plan Reviewed' activity, rolling_plan_reviewed_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_reviewed_at IS NOT NULL"
+  },
+  {
+    "activity": "Rolling Plan Approved",
+    "table": "planned_rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_plan_approved_at",
+    "event_key": [
+      "plan_id",
+      "rolling_plan_approved_at"
+    ],
+    "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':3' event_id, 'Rolling Plan Approved' activity, rolling_plan_approved_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_approved_at IS NOT NULL"
+  },
+  {
+    "activity": "Rolling Plan Released",
+    "table": "planned_rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_plan_released_at",
+    "event_key": [
+      "plan_id",
+      "rolling_plan_released_at"
+    ],
+    "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':4' event_id, 'Rolling Plan Released' activity, rolling_plan_released_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_released_at IS NOT NULL"
+  },
+  {
+    "activity": "Rolling Instruction Acknowledged",
+    "table": "rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_instruction_acknowledged_at",
+    "event_key": [
+      "instruction_id",
+      "rolling_instruction_acknowledged_at"
+    ],
+    "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':1' event_id, 'Rolling Instruction Acknowledged' activity, rolling_instruction_acknowledged_at timestamp FROM rolling_instruction WHERE rolling_instruction_acknowledged_at IS NOT NULL"
+  },
+  {
+    "activity": "Rolling Setup Verified",
+    "table": "rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_setup_verified_at",
+    "event_key": [
+      "instruction_id",
+      "rolling_setup_verified_at"
+    ],
+    "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':2' event_id, 'Rolling Setup Verified' activity, rolling_setup_verified_at timestamp FROM rolling_instruction WHERE rolling_setup_verified_at IS NOT NULL"
+  },
+  {
+    "activity": "Rolling Work Started",
+    "table": "rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_work_started_at",
+    "event_key": [
+      "instruction_id",
+      "rolling_work_started_at"
+    ],
+    "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':3' event_id, 'Rolling Work Started' activity, rolling_work_started_at timestamp FROM rolling_instruction WHERE rolling_work_started_at IS NOT NULL"
+  },
+  {
+    "activity": "Rolling Instruction Closed",
+    "table": "rolling_instruction",
+    "encoding": "column",
+    "timestamp_column": "rolling_instruction_closed_at",
+    "event_key": [
+      "instruction_id",
+      "rolling_instruction_closed_at"
+    ],
+    "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':4' event_id, 'Rolling Instruction Closed' activity, rolling_instruction_closed_at timestamp FROM rolling_instruction WHERE rolling_instruction_closed_at IS NOT NULL"
+  },
+  {
+    "activity": "Furnace Charge Assigned",
+    "table": "furnace_charge_tracking",
+    "encoding": "column",
+    "timestamp_column": "furnace_charge_assigned_at",
+    "event_key": [
+      "tracking_id",
+      "furnace_charge_assigned_at"
+    ],
+    "event_sql": "SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':1' event_id, 'Furnace Charge Assigned' activity, furnace_charge_assigned_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_assigned_at IS NOT NULL"
+  },
+  {
+    "activity": "Furnace Charge Confirmed",
+    "table": "furnace_charge_tracking",
+    "encoding": "column",
+    "timestamp_column": "furnace_charge_confirmed_at",
+    "event_key": [
+      "tracking_id",
+      "furnace_charge_confirmed_at"
+    ],
+    "event_sql": "SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':2' event_id, 'Furnace Charge Confirmed' activity, furnace_charge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_confirmed_at IS NOT NULL"
+  },
+  {
+    "activity": "Heating Completed",
+    "table": "material_operation_history",
+    "encoding": "row",
+    "timestamp_column": "completed_at",
+    "code": "HF",
+    "event_id_column": "transaction_id",
+    "event_sql": "SELECT transaction_id event_id, 'Heating Completed' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='HF'"
+  },
+  {
+    "activity": "Furnace Discharge Confirmed",
+    "table": "furnace_charge_tracking",
+    "encoding": "column",
+    "timestamp_column": "furnace_discharge_confirmed_at",
+    "event_key": [
+      "tracking_id",
+      "furnace_discharge_confirmed_at"
+    ],
+    "event_sql": "SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':4' event_id, 'Furnace Discharge Confirmed' activity, furnace_discharge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_discharge_confirmed_at IS NOT NULL"
+  },
+  {
+    "activity": "Cutting Instruction Acknowledged",
+    "table": "cutting_finishing_instruction",
+    "encoding": "column",
+    "timestamp_column": "cutting_instruction_acknowledged_at",
+    "event_key": [
+      "instruction_id",
+      "cutting_instruction_acknowledged_at"
+    ],
+    "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':1' event_id, 'Cutting Instruction Acknowledged' activity, cutting_instruction_acknowledged_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_acknowledged_at IS NOT NULL"
+  },
+  {
+    "activity": "Cutting Setup Verified",
+    "table": "cutting_finishing_instruction",
+    "encoding": "column",
+    "timestamp_column": "cutting_setup_verified_at",
+    "event_key": [
+      "instruction_id",
+      "cutting_setup_verified_at"
+    ],
+    "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':2' event_id, 'Cutting Setup Verified' activity, cutting_setup_verified_at timestamp FROM cutting_finishing_instruction WHERE cutting_setup_verified_at IS NOT NULL"
+  },
+  {
+    "activity": "Cutting Work Started",
+    "table": "cutting_finishing_instruction",
+    "encoding": "column",
+    "timestamp_column": "cutting_work_started_at",
+    "event_key": [
+      "instruction_id",
+      "cutting_work_started_at"
+    ],
+    "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':3' event_id, 'Cutting Work Started' activity, cutting_work_started_at timestamp FROM cutting_finishing_instruction WHERE cutting_work_started_at IS NOT NULL"
+  },
+  {
+    "activity": "Cutting Instruction Closed",
+    "table": "cutting_finishing_instruction",
+    "encoding": "column",
+    "timestamp_column": "cutting_instruction_closed_at",
+    "event_key": [
+      "instruction_id",
+      "cutting_instruction_closed_at"
+    ],
+    "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':4' event_id, 'Cutting Instruction Closed' activity, cutting_instruction_closed_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_closed_at IS NOT NULL"
+  },
+  {
+    "activity": "Plate Piece Identified",
+    "table": "plate_material",
+    "encoding": "column",
+    "timestamp_column": "plate_piece_identified_at",
+    "event_key": [
+      "plate_material_id",
+      "plate_piece_identified_at"
+    ],
+    "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':1' event_id, 'Plate Piece Identified' activity, plate_piece_identified_at timestamp FROM plate_material WHERE plate_piece_identified_at IS NOT NULL"
+  },
+  {
+    "activity": "Plate Surface Checked",
+    "table": "material_operation_history",
+    "encoding": "row",
+    "timestamp_column": "completed_at",
+    "code": "SF",
+    "event_id_column": "transaction_id",
+    "event_sql": "SELECT transaction_id event_id, 'Plate Surface Checked' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='SF'"
+  },
+  {
+    "activity": "Plate Quality Released",
+    "table": "plate_material",
+    "encoding": "column",
+    "timestamp_column": "plate_quality_released_at",
+    "event_key": [
+      "plate_material_id",
+      "plate_quality_released_at"
+    ],
+    "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':3' event_id, 'Plate Quality Released' activity, plate_quality_released_at timestamp FROM plate_material WHERE plate_quality_released_at IS NOT NULL"
+  },
+  {
+    "activity": "Plate Packed",
+    "table": "plate_material",
+    "encoding": "column",
+    "timestamp_column": "plate_packed_at",
+    "event_key": [
+      "plate_material_id",
+      "plate_packed_at"
+    ],
+    "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':4' event_id, 'Plate Packed' activity, plate_packed_at timestamp FROM plate_material WHERE plate_packed_at IS NOT NULL"
   }
 ]

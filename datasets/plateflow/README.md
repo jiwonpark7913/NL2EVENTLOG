@@ -2,8 +2,8 @@
 
 - **Situation:** Slabs are checked and released, rolling plans and instructions progress through approval and execution, furnace tracking records heating stages, and cut pieces progress through inspection, quality release and packing.
 - **Source:** Selected metadata from a Korean manufacturing company. Original source columns and keys are preserved.
-- **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 16 tables; 37 activity types; 8 object / case types; 1036 distinct recorded business events.
+- **Extension:** New milestone columns, operation codes and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
+- **Database:** 9 tables; 37 activity types; 8 object / case types; 1036 distinct recorded business events.
 - **Gold:** 40 answerable question-specific CSV logs out of 42 questions. Paired requests share the same expected content.
 - **Execution:** Run `python datasets/plateflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
@@ -11,7 +11,7 @@
 
 | Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|
-| PlateFlow | 16 | 8 | 37 | 1036 | 42 | 40 |
+| PlateFlow | 9 | 8 | 37 | 1036 | 42 | 40 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
@@ -29,7 +29,7 @@
 | furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heating Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record. | [CSV](private/gold_logs/OPV05.csv) |
 | cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started | Original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction. | [CSV](private/gold_logs/OPV06.csv) |
 | plate_material | Dimensional Inspection Completed; Heat Treatment Completed; Inspection Failed; Inspection Passed; Plate Packed; Plate Piece Identified; Plate Quality Released; Plate Surface Checked | Original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece. | [CSV](private/gold_logs/OPV07.csv) |
-| material_operation_history | Cooling Completed; Heat Treatment Completed; Inspection Failed; Inspection Passed; Leveling Completed; Rolling Completed; Split Cutting Completed | The operation-completion event represented by this transaction ID, preserving its process-code meaning. | [CSV](private/gold_logs/OPV08.csv) |
+| material_operation_history | Cooling Completed; Heat Treatment Completed; Heating Completed; Inspection Failed; Inspection Passed; Leveling Completed; Plate Surface Checked; Rolling Completed; Split Cutting Completed | The operation-completion event represented by this transaction ID, preserving its process-code meaning. | [CSV](private/gold_logs/OPV08.csv) |
 
 - Atomic grading and operation records are auxiliary cases; a single occurrence is not expanded into an invented lifecycle.
 - Master cases can aggregate unrelated jobs. Multiple activity types do not imply one causal process across all rows.
@@ -40,9 +40,9 @@
 
 ## Database, extraction and validation
 
-- Typed `<object>_activity` tables store `event_id`, parent PK/FK, `activity`, actual `occurred_at` and `outcome`.
-- `lifecycle_case_link` is an explicitly validated auxiliary index relating a recorded event to each permitted case. It is not a business object.
-- Full ES queries union original milestone sources and new action histories. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
+- Actual one-time milestones are columns on the existing slab, plan, instruction, tracking and plate-piece tables. Repeatable heating completions and surface checks are HF/SF rows in `material_operation_history`; meanings are stored in `operation_code`.
+- Event-to-case relationships are derived directly through existing business keys and material genealogy JOINs. No generic activity table or persisted event/case index is used.
+- Full ES queries union original and added milestone columns with existing operation-history rows. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
 - Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
 - [Detailed activity design](docs/object_activity_design.md)
 - [Event-log case scopes and counts](docs/object_event_logs.md)
@@ -66,20 +66,12 @@
 |---|---:|---:|---:|---:|
 | Q1 | 12 | 11 | 1 | 2.83 |
 | Q2 | 12 | 11 | 1 | 2.83 |
-| Q3 | 9 | 9 | 0 | 16.22 |
-| Q4 | 9 | 9 | 0 | 16.22 |
+| Q3 | 9 | 9 | 0 | 16.44 |
+| Q4 | 9 | 9 | 0 | 16.44 |
 
 - Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - [All question texts, types, pairs and answerability](docs/questions.md)
-
-## Schema and documentation
-
-- [Table inventory and relationships](docs/schema_overview.md)
-- [English column dictionary](docs/data_dictionary.md)
-- [CSV dictionary](docs/data_dictionary.csv)
-- [Editable draw.io diagram](docs/schema.drawio)
-- [Object-based Gold logs and coverage](docs/object_event_logs.md)
 
 ## Event encoding and data definitions
 
@@ -88,3 +80,18 @@
 - [Table definitions CSV](docs/table_definitions.csv)
 - Process View includes the case concept and activity scope. Q1/Q2 state the scope explicitly; Q3/Q4 infer it from the declared catalog.
 - [Question activity counts and pairs](docs/questions.md): requested and extractable activity counts are shown separately.
+
+## Native manufacturing storage
+
+- The original nine table roles remain. Six generic activity tables and the persisted case-link index were removed.
+- [Added column/code definitions and direct case JOINs](design/native_storage_mapping.json)
+- Event identities and simulated business history are preserved across this storage redesign.
+- All added columns/codes are authored synthetic assumptions; original manufacturer column mappings remain in `design/source_mapping.json`.
+
+## Schema and documentation
+
+- [Table inventory and relationships](docs/schema_overview.md)
+- [English column dictionary](docs/data_dictionary.md)
+- [CSV dictionary](docs/data_dictionary.csv)
+- [Editable draw.io diagram](docs/schema.drawio)
+- [Object-based Gold logs and coverage](docs/object_event_logs.md)

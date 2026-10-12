@@ -116,7 +116,7 @@
       "question_id": "OPV08",
       "question_type": "Q3",
       "status": "pass",
-      "event_count": 153
+      "event_count": 216
     },
     {
       "question_id": "V07P",
@@ -259,19 +259,19 @@
       "question_id": "OPV08P",
       "question_type": "Q4",
       "status": "pass",
-      "event_count": 153
+      "event_count": 216
     },
     {
       "question_id": "OPV08E",
       "question_type": "Q1",
       "status": "pass",
-      "event_count": 54
+      "event_count": 66
     },
     {
       "question_id": "OPV08EP",
       "question_type": "Q2",
       "status": "pass",
-      "event_count": 54
+      "event_count": 66
     }
   ],
   "checks": {
@@ -511,16 +511,18 @@
       "kind": "event_record",
       "status": "answerable",
       "scope_rule": "The operation-completion event represented by this transaction ID, preserving its process-code meaning.",
-      "case_count": 153,
-      "cases_with_events": 153,
+      "case_count": 216,
+      "cases_with_events": 216,
       "cases_without_events": 0,
-      "event_rows": 153,
+      "event_rows": 216,
       "activities": [
         "Cooling Completed",
         "Heat Treatment Completed",
+        "Heating Completed",
         "Inspection Failed",
         "Inspection Passed",
         "Leveling Completed",
+        "Plate Surface Checked",
         "Rolling Completed",
         "Split Cutting Completed"
       ],
@@ -532,41 +534,6 @@
       "case_table": "operation_code",
       "status": "reference_table",
       "reason": "Operation codes define activity meanings. They are not business-object instances or cases."
-    },
-    {
-      "case_table": "slab_material_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "planned_rolling_instruction_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "rolling_instruction_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "furnace_charge_tracking_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "cutting_finishing_instruction_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "plate_material_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "lifecycle_case_link",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
     }
   ],
   "total_questions": 42,
@@ -618,25 +585,20 @@
     "furnace_charge_tracking": 30,
     "cutting_finishing_instruction": 18,
     "plate_material": 39,
-    "operation_code": 7,
-    "material_operation_history": 153,
-    "slab_material_activity": 138,
-    "planned_rolling_instruction_activity": 138,
-    "rolling_instruction_activity": 114,
-    "furnace_charge_tracking_activity": 103,
-    "cutting_finishing_instruction_activity": 69,
-    "plate_material_activity": 150,
-    "lifecycle_case_link": 1998
+    "operation_code": 9,
+    "material_operation_history": 216
   },
   "lifecycle_extensions": {
-    "added_tables": 7,
+    "added_tables": 0,
     "added_events": 712,
     "source_origin": "authored",
     "checks": {
       "typed_foreign_keys": "pass",
       "actual_action_order": "pass",
       "full_sql_equals_history": "pass"
-    }
+    },
+    "added_columns": 22,
+    "storage_policy": "native business columns plus existing operation history"
   },
   "question_type_counts": {
     "Q1": 12,

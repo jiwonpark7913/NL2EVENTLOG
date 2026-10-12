@@ -65,7 +65,7 @@ def extend_dataset(p):
   add('material_operation_history','Material operation record','The operation-completion event represented by this transaction ID, preserving its process-code meaning.',"SELECT 'OP:' || transaction_id event_id, transaction_id case_id FROM material_operation_history",[('OP:'+r['transaction_id'],r['transaction_id']) for r in ops],'event_record')
  if (p/'private/lifecycle_links.json').exists():
   original=base['original_event_specification'];base_sql=builder.compile_es(original).strip().rstrip(';').split(' ORDER BY case_id,timestamp,event_id')[0]
-  extra=' UNION ALL '.join('SELECT event_id, NULL case_id, activity, occurred_at timestamp FROM '+x['table'] for x in base['activity_sources'])
+  extra=' UNION ALL '.join(('SELECT event_id, NULL case_id,activity,timestamp FROM ('+x['event_sql']+')') if 'event_sql' in x else 'SELECT event_id, NULL case_id, activity, occurred_at timestamp FROM '+x['table'] for x in base['activity_sources'])
   base_sql += ' UNION ALL '+extra
  if (p/'private/lifecycle_links.json').exists():
   added=json.loads((p/'private/lifecycle_links.json').read_text())
@@ -73,8 +73,11 @@ def extend_dataset(p):
    links=added.get(v['table'],{})
    for eid,ids in links.items():v['mapping'][eid].update(ids)
    if links:
-    v['mapping_sql'] += " UNION ALL SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='"+v['table']+"'"
+    v['mapping_sql'] += ' UNION ALL '+base['native_case_mapping_sql'][v['table']] if 'native_case_mapping_sql' in base else " UNION ALL SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='"+v['table']+"'"
     v['scope_rule']='Original recorded actions and authored lifecycle actions explicitly linked to this '+v['case_concept'].lower()+'.'
+  if name=='plateflow' and 'native_case_mapping_sql' in base:
+   v=next(v for v in views if v['table']=='material_operation_history');sql=base['native_case_mapping_sql'][v['table']];v['mapping_sql']+=' UNION ALL '+sql
+   for r in con.execute(sql):v['mapping'][r['event_id']].add(r['case_id'])
   if name=='universityflow':
    add('task','Course-design task','Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.',"SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='task'",[(eid,oid) for eid,ids in added.get('task',{}).items() for oid in ids])
  catalog=json.loads((p/'input/task_scope_catalog.json').read_text());report=json.loads((p/'validation_report.json').read_text());report['questions']=[q for q in report['questions'] if not q['question_id'].startswith(prefix)];results=[];coverage=[]

@@ -8,7 +8,7 @@
 |---|---:|---:|---:|---:|---:|---:|
 | [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 394 | 32 | 30 |
 | [UniversityFlow](datasets/universityflow/README.md) | 20 | 11 | 41 | 808 | 62 | 58 |
-| [PlateFlow](datasets/plateflow/README.md) | 16 | 8 | 37 | 1036 | 42 | 40 |
+| [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 37 | 1036 | 42 | 40 |
 
 - **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. Activity-history tables, extraction indexes and reference tables are excluded.
@@ -66,11 +66,13 @@
 | UniversityFlow | Q4 | 12 | 12 | 0 | 9.83 |
 | PlateFlow | Q1 | 12 | 11 | 1 | 2.83 |
 | PlateFlow | Q2 | 12 | 11 | 1 | 2.83 |
-| PlateFlow | Q3 | 9 | 9 | 0 | 16.22 |
-| PlateFlow | Q4 | 9 | 9 | 0 | 16.22 |
+| PlateFlow | Q3 | 9 | 9 | 0 | 16.44 |
+| PlateFlow | Q4 | 9 | 9 | 0 | 16.44 |
 
 - Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - All pairs are one-to-one: Q1 ↔ Q2 and Q3 ↔ Q4. Missing originals/paraphrases are repaired during question construction.
 - Process View already includes activity scope; activities are not a separate concept added to it.
 - Each question list includes requested and extractable activity counts.
+
+- PlateFlow uses its original nine business-table roles: one-time milestone columns plus repeatable operation-history rows. WarehouseFlow and UniversityFlow retain their existing storage designs.

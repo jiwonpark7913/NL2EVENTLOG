@@ -229,13 +229,15 @@
       "kind": "event_record",
       "status": "answerable",
       "scope_rule": "The operation-completion event represented by this transaction ID, preserving its process-code meaning.",
-      "case_count": 153,
+      "case_count": 216,
       "activities": [
         "Cooling Completed",
         "Heat Treatment Completed",
+        "Heating Completed",
         "Inspection Failed",
         "Inspection Passed",
         "Leveling Completed",
+        "Plate Surface Checked",
         "Rolling Completed",
         "Split Cutting Completed"
       ]
@@ -246,41 +248,6 @@
       "case_table": "operation_code",
       "status": "reference_table",
       "reason": "Operation codes define activity meanings. They are not business-object instances or cases."
-    },
-    {
-      "case_table": "slab_material_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "planned_rolling_instruction_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "rolling_instruction_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "furnace_charge_tracking_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "cutting_finishing_instruction_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "plate_material_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "lifecycle_case_link",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
     }
   ],
   "object_activity_design": [

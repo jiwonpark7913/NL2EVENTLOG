@@ -1,7 +1,6 @@
 [
   {
     "object_table": "slab_material",
-    "activity_table": "slab_material_activity",
     "activities": [
       "Slab Received",
       "Slab Identity Verified",
@@ -9,11 +8,11 @@
       "Slab Released for Rolling"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "storage": "Existing slab_material milestone columns; repeatable checks/heating use material_operation_history where applicable"
   },
   {
     "object_table": "planned_rolling_instruction",
-    "activity_table": "planned_rolling_instruction_activity",
     "activities": [
       "Rolling Plan Created",
       "Rolling Plan Reviewed",
@@ -21,11 +20,11 @@
       "Rolling Plan Released"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "storage": "Existing planned_rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable"
   },
   {
     "object_table": "rolling_instruction",
-    "activity_table": "rolling_instruction_activity",
     "activities": [
       "Rolling Instruction Acknowledged",
       "Rolling Setup Verified",
@@ -33,11 +32,11 @@
       "Rolling Instruction Closed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "storage": "Existing rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable"
   },
   {
     "object_table": "furnace_charge_tracking",
-    "activity_table": "furnace_charge_tracking_activity",
     "activities": [
       "Furnace Charge Assigned",
       "Furnace Charge Confirmed",
@@ -45,11 +44,11 @@
       "Furnace Discharge Confirmed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "storage": "Existing furnace_charge_tracking milestone columns; repeatable checks/heating use material_operation_history where applicable"
   },
   {
     "object_table": "cutting_finishing_instruction",
-    "activity_table": "cutting_finishing_instruction_activity",
     "activities": [
       "Cutting Instruction Acknowledged",
       "Cutting Setup Verified",
@@ -57,11 +56,11 @@
       "Cutting Instruction Closed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "storage": "Existing cutting_finishing_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable"
   },
   {
     "object_table": "plate_material",
-    "activity_table": "plate_material_activity",
     "activities": [
       "Plate Piece Identified",
       "Plate Surface Checked",
@@ -69,6 +68,7 @@
       "Plate Packed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "storage": "Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable"
   }
 ]

@@ -1,0 +1,390 @@
+{
+  "milestone_columns": [
+    {
+      "table": "slab_material",
+      "column": "slab_received_at",
+      "activity": "Slab Received"
+    },
+    {
+      "table": "slab_material",
+      "column": "slab_identity_verified_at",
+      "activity": "Slab Identity Verified"
+    },
+    {
+      "table": "slab_material",
+      "column": "slab_quality_checked_at",
+      "activity": "Slab Quality Checked"
+    },
+    {
+      "table": "slab_material",
+      "column": "slab_released_for_rolling_at",
+      "activity": "Slab Released for Rolling"
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_created_at",
+      "activity": "Rolling Plan Created"
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_reviewed_at",
+      "activity": "Rolling Plan Reviewed"
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_approved_at",
+      "activity": "Rolling Plan Approved"
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_released_at",
+      "activity": "Rolling Plan Released"
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_instruction_acknowledged_at",
+      "activity": "Rolling Instruction Acknowledged"
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_setup_verified_at",
+      "activity": "Rolling Setup Verified"
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_work_started_at",
+      "activity": "Rolling Work Started"
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_instruction_closed_at",
+      "activity": "Rolling Instruction Closed"
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "furnace_charge_assigned_at",
+      "activity": "Furnace Charge Assigned"
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "furnace_charge_confirmed_at",
+      "activity": "Furnace Charge Confirmed"
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "furnace_discharge_confirmed_at",
+      "activity": "Furnace Discharge Confirmed"
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_instruction_acknowledged_at",
+      "activity": "Cutting Instruction Acknowledged"
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_setup_verified_at",
+      "activity": "Cutting Setup Verified"
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_work_started_at",
+      "activity": "Cutting Work Started"
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_instruction_closed_at",
+      "activity": "Cutting Instruction Closed"
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_piece_identified_at",
+      "activity": "Plate Piece Identified"
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_quality_released_at",
+      "activity": "Plate Quality Released"
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_packed_at",
+      "activity": "Plate Packed"
+    }
+  ],
+  "operation_codes": {
+    "HF": "Heating Completed",
+    "SF": "Plate Surface Checked"
+  },
+  "sources": [
+    {
+      "activity": "Slab Received",
+      "table": "slab_material",
+      "encoding": "column",
+      "timestamp_column": "slab_received_at",
+      "event_key": [
+        "slab_id",
+        "slab_received_at"
+      ],
+      "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':1' event_id, 'Slab Received' activity, slab_received_at timestamp FROM slab_material WHERE slab_received_at IS NOT NULL"
+    },
+    {
+      "activity": "Slab Identity Verified",
+      "table": "slab_material",
+      "encoding": "column",
+      "timestamp_column": "slab_identity_verified_at",
+      "event_key": [
+        "slab_id",
+        "slab_identity_verified_at"
+      ],
+      "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':2' event_id, 'Slab Identity Verified' activity, slab_identity_verified_at timestamp FROM slab_material WHERE slab_identity_verified_at IS NOT NULL"
+    },
+    {
+      "activity": "Slab Quality Checked",
+      "table": "slab_material",
+      "encoding": "column",
+      "timestamp_column": "slab_quality_checked_at",
+      "event_key": [
+        "slab_id",
+        "slab_quality_checked_at"
+      ],
+      "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':3' event_id, 'Slab Quality Checked' activity, slab_quality_checked_at timestamp FROM slab_material WHERE slab_quality_checked_at IS NOT NULL"
+    },
+    {
+      "activity": "Slab Released for Rolling",
+      "table": "slab_material",
+      "encoding": "column",
+      "timestamp_column": "slab_released_for_rolling_at",
+      "event_key": [
+        "slab_id",
+        "slab_released_for_rolling_at"
+      ],
+      "event_sql": "SELECT 'LC:slab_material:' || slab_id || ':4' event_id, 'Slab Released for Rolling' activity, slab_released_for_rolling_at timestamp FROM slab_material WHERE slab_released_for_rolling_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Plan Created",
+      "table": "planned_rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_plan_created_at",
+      "event_key": [
+        "plan_id",
+        "rolling_plan_created_at"
+      ],
+      "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':1' event_id, 'Rolling Plan Created' activity, rolling_plan_created_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_created_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Plan Reviewed",
+      "table": "planned_rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_plan_reviewed_at",
+      "event_key": [
+        "plan_id",
+        "rolling_plan_reviewed_at"
+      ],
+      "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':2' event_id, 'Rolling Plan Reviewed' activity, rolling_plan_reviewed_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_reviewed_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Plan Approved",
+      "table": "planned_rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_plan_approved_at",
+      "event_key": [
+        "plan_id",
+        "rolling_plan_approved_at"
+      ],
+      "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':3' event_id, 'Rolling Plan Approved' activity, rolling_plan_approved_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_approved_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Plan Released",
+      "table": "planned_rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_plan_released_at",
+      "event_key": [
+        "plan_id",
+        "rolling_plan_released_at"
+      ],
+      "event_sql": "SELECT 'LC:planned_rolling_instruction:' || plan_id || ':4' event_id, 'Rolling Plan Released' activity, rolling_plan_released_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_released_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Instruction Acknowledged",
+      "table": "rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_instruction_acknowledged_at",
+      "event_key": [
+        "instruction_id",
+        "rolling_instruction_acknowledged_at"
+      ],
+      "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':1' event_id, 'Rolling Instruction Acknowledged' activity, rolling_instruction_acknowledged_at timestamp FROM rolling_instruction WHERE rolling_instruction_acknowledged_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Setup Verified",
+      "table": "rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_setup_verified_at",
+      "event_key": [
+        "instruction_id",
+        "rolling_setup_verified_at"
+      ],
+      "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':2' event_id, 'Rolling Setup Verified' activity, rolling_setup_verified_at timestamp FROM rolling_instruction WHERE rolling_setup_verified_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Work Started",
+      "table": "rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_work_started_at",
+      "event_key": [
+        "instruction_id",
+        "rolling_work_started_at"
+      ],
+      "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':3' event_id, 'Rolling Work Started' activity, rolling_work_started_at timestamp FROM rolling_instruction WHERE rolling_work_started_at IS NOT NULL"
+    },
+    {
+      "activity": "Rolling Instruction Closed",
+      "table": "rolling_instruction",
+      "encoding": "column",
+      "timestamp_column": "rolling_instruction_closed_at",
+      "event_key": [
+        "instruction_id",
+        "rolling_instruction_closed_at"
+      ],
+      "event_sql": "SELECT 'LC:rolling_instruction:' || instruction_id || ':4' event_id, 'Rolling Instruction Closed' activity, rolling_instruction_closed_at timestamp FROM rolling_instruction WHERE rolling_instruction_closed_at IS NOT NULL"
+    },
+    {
+      "activity": "Furnace Charge Assigned",
+      "table": "furnace_charge_tracking",
+      "encoding": "column",
+      "timestamp_column": "furnace_charge_assigned_at",
+      "event_key": [
+        "tracking_id",
+        "furnace_charge_assigned_at"
+      ],
+      "event_sql": "SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':1' event_id, 'Furnace Charge Assigned' activity, furnace_charge_assigned_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_assigned_at IS NOT NULL"
+    },
+    {
+      "activity": "Furnace Charge Confirmed",
+      "table": "furnace_charge_tracking",
+      "encoding": "column",
+      "timestamp_column": "furnace_charge_confirmed_at",
+      "event_key": [
+        "tracking_id",
+        "furnace_charge_confirmed_at"
+      ],
+      "event_sql": "SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':2' event_id, 'Furnace Charge Confirmed' activity, furnace_charge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_confirmed_at IS NOT NULL"
+    },
+    {
+      "activity": "Heating Completed",
+      "table": "material_operation_history",
+      "encoding": "row",
+      "timestamp_column": "completed_at",
+      "code": "HF",
+      "event_id_column": "transaction_id",
+      "event_sql": "SELECT transaction_id event_id, 'Heating Completed' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='HF'"
+    },
+    {
+      "activity": "Furnace Discharge Confirmed",
+      "table": "furnace_charge_tracking",
+      "encoding": "column",
+      "timestamp_column": "furnace_discharge_confirmed_at",
+      "event_key": [
+        "tracking_id",
+        "furnace_discharge_confirmed_at"
+      ],
+      "event_sql": "SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':4' event_id, 'Furnace Discharge Confirmed' activity, furnace_discharge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_discharge_confirmed_at IS NOT NULL"
+    },
+    {
+      "activity": "Cutting Instruction Acknowledged",
+      "table": "cutting_finishing_instruction",
+      "encoding": "column",
+      "timestamp_column": "cutting_instruction_acknowledged_at",
+      "event_key": [
+        "instruction_id",
+        "cutting_instruction_acknowledged_at"
+      ],
+      "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':1' event_id, 'Cutting Instruction Acknowledged' activity, cutting_instruction_acknowledged_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_acknowledged_at IS NOT NULL"
+    },
+    {
+      "activity": "Cutting Setup Verified",
+      "table": "cutting_finishing_instruction",
+      "encoding": "column",
+      "timestamp_column": "cutting_setup_verified_at",
+      "event_key": [
+        "instruction_id",
+        "cutting_setup_verified_at"
+      ],
+      "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':2' event_id, 'Cutting Setup Verified' activity, cutting_setup_verified_at timestamp FROM cutting_finishing_instruction WHERE cutting_setup_verified_at IS NOT NULL"
+    },
+    {
+      "activity": "Cutting Work Started",
+      "table": "cutting_finishing_instruction",
+      "encoding": "column",
+      "timestamp_column": "cutting_work_started_at",
+      "event_key": [
+        "instruction_id",
+        "cutting_work_started_at"
+      ],
+      "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':3' event_id, 'Cutting Work Started' activity, cutting_work_started_at timestamp FROM cutting_finishing_instruction WHERE cutting_work_started_at IS NOT NULL"
+    },
+    {
+      "activity": "Cutting Instruction Closed",
+      "table": "cutting_finishing_instruction",
+      "encoding": "column",
+      "timestamp_column": "cutting_instruction_closed_at",
+      "event_key": [
+        "instruction_id",
+        "cutting_instruction_closed_at"
+      ],
+      "event_sql": "SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':4' event_id, 'Cutting Instruction Closed' activity, cutting_instruction_closed_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_closed_at IS NOT NULL"
+    },
+    {
+      "activity": "Plate Piece Identified",
+      "table": "plate_material",
+      "encoding": "column",
+      "timestamp_column": "plate_piece_identified_at",
+      "event_key": [
+        "plate_material_id",
+        "plate_piece_identified_at"
+      ],
+      "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':1' event_id, 'Plate Piece Identified' activity, plate_piece_identified_at timestamp FROM plate_material WHERE plate_piece_identified_at IS NOT NULL"
+    },
+    {
+      "activity": "Plate Surface Checked",
+      "table": "material_operation_history",
+      "encoding": "row",
+      "timestamp_column": "completed_at",
+      "code": "SF",
+      "event_id_column": "transaction_id",
+      "event_sql": "SELECT transaction_id event_id, 'Plate Surface Checked' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='SF'"
+    },
+    {
+      "activity": "Plate Quality Released",
+      "table": "plate_material",
+      "encoding": "column",
+      "timestamp_column": "plate_quality_released_at",
+      "event_key": [
+        "plate_material_id",
+        "plate_quality_released_at"
+      ],
+      "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':3' event_id, 'Plate Quality Released' activity, plate_quality_released_at timestamp FROM plate_material WHERE plate_quality_released_at IS NOT NULL"
+    },
+    {
+      "activity": "Plate Packed",
+      "table": "plate_material",
+      "encoding": "column",
+      "timestamp_column": "plate_packed_at",
+      "event_key": [
+        "plate_material_id",
+        "plate_packed_at"
+      ],
+      "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':4' event_id, 'Plate Packed' activity, plate_packed_at timestamp FROM plate_material WHERE plate_packed_at IS NOT NULL"
+    }
+  ],
+  "case_mapping_sql": {
+    "slab_material": "SELECT e.event_id,o.slab_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':1' event_id, 'Slab Received' activity, slab_received_at timestamp FROM slab_material WHERE slab_received_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':1' UNION ALL SELECT e.event_id,o.slab_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':2' event_id, 'Slab Identity Verified' activity, slab_identity_verified_at timestamp FROM slab_material WHERE slab_identity_verified_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':2' UNION ALL SELECT e.event_id,o.slab_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':3' event_id, 'Slab Quality Checked' activity, slab_quality_checked_at timestamp FROM slab_material WHERE slab_quality_checked_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':3' UNION ALL SELECT e.event_id,o.slab_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':4' event_id, 'Slab Released for Rolling' activity, slab_released_for_rolling_at timestamp FROM slab_material WHERE slab_released_for_rolling_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':4' UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':1' event_id, 'Rolling Plan Created' activity, rolling_plan_created_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_created_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':1' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':2' event_id, 'Rolling Plan Reviewed' activity, rolling_plan_reviewed_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_reviewed_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':2' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':3' event_id, 'Rolling Plan Approved' activity, rolling_plan_approved_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_approved_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':3' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':4' event_id, 'Rolling Plan Released' activity, rolling_plan_released_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_released_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':4' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':1' event_id, 'Rolling Instruction Acknowledged' activity, rolling_instruction_acknowledged_at timestamp FROM rolling_instruction WHERE rolling_instruction_acknowledged_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':1' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':2' event_id, 'Rolling Setup Verified' activity, rolling_setup_verified_at timestamp FROM rolling_instruction WHERE rolling_setup_verified_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':2' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':3' event_id, 'Rolling Work Started' activity, rolling_work_started_at timestamp FROM rolling_instruction WHERE rolling_work_started_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':3' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':4' event_id, 'Rolling Instruction Closed' activity, rolling_instruction_closed_at timestamp FROM rolling_instruction WHERE rolling_instruction_closed_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':4' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':1' event_id, 'Furnace Charge Assigned' activity, furnace_charge_assigned_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_assigned_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':1' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':2' event_id, 'Furnace Charge Confirmed' activity, furnace_charge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_confirmed_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':2' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT transaction_id event_id, 'Heating Completed' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='HF') e JOIN material_operation_history h ON h.transaction_id=e.event_id JOIN furnace_charge_tracking o ON o.material_id=h.material_id JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':4' event_id, 'Furnace Discharge Confirmed' activity, furnace_discharge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_discharge_confirmed_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':4' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':1' event_id, 'Cutting Instruction Acknowledged' activity, cutting_instruction_acknowledged_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_acknowledged_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':1' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':2' event_id, 'Cutting Setup Verified' activity, cutting_setup_verified_at timestamp FROM cutting_finishing_instruction WHERE cutting_setup_verified_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':2' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':3' event_id, 'Cutting Work Started' activity, cutting_work_started_at timestamp FROM cutting_finishing_instruction WHERE cutting_work_started_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':3' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':4' event_id, 'Cutting Instruction Closed' activity, cutting_instruction_closed_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_closed_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':4' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':1' event_id, 'Plate Piece Identified' activity, plate_piece_identified_at timestamp FROM plate_material WHERE plate_piece_identified_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':1' JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT transaction_id event_id, 'Plate Surface Checked' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='SF') e JOIN material_operation_history h ON h.transaction_id=e.event_id JOIN plate_material o ON o.plate_material_id=h.material_id JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':3' event_id, 'Plate Quality Released' activity, plate_quality_released_at timestamp FROM plate_material WHERE plate_quality_released_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':3' JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no UNION ALL SELECT e.event_id,m.slab_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':4' event_id, 'Plate Packed' activity, plate_packed_at timestamp FROM plate_material WHERE plate_packed_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':4' JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no",
+    "as_rolled_material": "SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':1' event_id, 'Slab Received' activity, slab_received_at timestamp FROM slab_material WHERE slab_received_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':1' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':2' event_id, 'Slab Identity Verified' activity, slab_identity_verified_at timestamp FROM slab_material WHERE slab_identity_verified_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':2' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':3' event_id, 'Slab Quality Checked' activity, slab_quality_checked_at timestamp FROM slab_material WHERE slab_quality_checked_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':3' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:slab_material:' || slab_id || ':4' event_id, 'Slab Released for Rolling' activity, slab_released_for_rolling_at timestamp FROM slab_material WHERE slab_released_for_rolling_at IS NOT NULL) e JOIN slab_material o ON e.event_id='LC:slab_material:' || o.slab_id || ':4' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':1' event_id, 'Rolling Plan Created' activity, rolling_plan_created_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_created_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':1' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':2' event_id, 'Rolling Plan Reviewed' activity, rolling_plan_reviewed_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_reviewed_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':2' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':3' event_id, 'Rolling Plan Approved' activity, rolling_plan_approved_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_approved_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':3' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':4' event_id, 'Rolling Plan Released' activity, rolling_plan_released_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_released_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':4' JOIN as_rolled_material m ON m.slab_id=o.slab_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':1' event_id, 'Rolling Instruction Acknowledged' activity, rolling_instruction_acknowledged_at timestamp FROM rolling_instruction WHERE rolling_instruction_acknowledged_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':1' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':2' event_id, 'Rolling Setup Verified' activity, rolling_setup_verified_at timestamp FROM rolling_instruction WHERE rolling_setup_verified_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':2' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':3' event_id, 'Rolling Work Started' activity, rolling_work_started_at timestamp FROM rolling_instruction WHERE rolling_work_started_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':3' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':4' event_id, 'Rolling Instruction Closed' activity, rolling_instruction_closed_at timestamp FROM rolling_instruction WHERE rolling_instruction_closed_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':4' JOIN as_rolled_material m ON m.instruction_id=o.instruction_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':1' event_id, 'Furnace Charge Assigned' activity, furnace_charge_assigned_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_assigned_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':1' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':2' event_id, 'Furnace Charge Confirmed' activity, furnace_charge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_confirmed_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':2' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT transaction_id event_id, 'Heating Completed' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='HF') e JOIN material_operation_history h ON h.transaction_id=e.event_id JOIN furnace_charge_tracking o ON o.material_id=h.material_id JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':4' event_id, 'Furnace Discharge Confirmed' activity, furnace_discharge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_discharge_confirmed_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':4' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':1' event_id, 'Cutting Instruction Acknowledged' activity, cutting_instruction_acknowledged_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_acknowledged_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':1' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':2' event_id, 'Cutting Setup Verified' activity, cutting_setup_verified_at timestamp FROM cutting_finishing_instruction WHERE cutting_setup_verified_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':2' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':3' event_id, 'Cutting Work Started' activity, cutting_work_started_at timestamp FROM cutting_finishing_instruction WHERE cutting_work_started_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':3' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':4' event_id, 'Cutting Instruction Closed' activity, cutting_instruction_closed_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_closed_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':4' JOIN as_rolled_material m ON m.material_id=o.material_id UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':1' event_id, 'Plate Piece Identified' activity, plate_piece_identified_at timestamp FROM plate_material WHERE plate_piece_identified_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':1' JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT transaction_id event_id, 'Plate Surface Checked' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='SF') e JOIN material_operation_history h ON h.transaction_id=e.event_id JOIN plate_material o ON o.plate_material_id=h.material_id JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':3' event_id, 'Plate Quality Released' activity, plate_quality_released_at timestamp FROM plate_material WHERE plate_quality_released_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':3' JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no UNION ALL SELECT e.event_id,m.material_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':4' event_id, 'Plate Packed' activity, plate_packed_at timestamp FROM plate_material WHERE plate_packed_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':4' JOIN as_rolled_material m ON m.as_rolled_plate_no=o.parent_as_rolled_plate_no",
+    "planned_rolling_instruction": "SELECT e.event_id,o.plan_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':1' event_id, 'Rolling Plan Created' activity, rolling_plan_created_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_created_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':1' UNION ALL SELECT e.event_id,o.plan_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':2' event_id, 'Rolling Plan Reviewed' activity, rolling_plan_reviewed_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_reviewed_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':2' UNION ALL SELECT e.event_id,o.plan_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':3' event_id, 'Rolling Plan Approved' activity, rolling_plan_approved_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_approved_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':3' UNION ALL SELECT e.event_id,o.plan_id case_id FROM (SELECT 'LC:planned_rolling_instruction:' || plan_id || ':4' event_id, 'Rolling Plan Released' activity, rolling_plan_released_at timestamp FROM planned_rolling_instruction WHERE rolling_plan_released_at IS NOT NULL) e JOIN planned_rolling_instruction o ON e.event_id='LC:planned_rolling_instruction:' || o.plan_id || ':4'",
+    "rolling_instruction": "SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':1' event_id, 'Rolling Instruction Acknowledged' activity, rolling_instruction_acknowledged_at timestamp FROM rolling_instruction WHERE rolling_instruction_acknowledged_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':1' UNION ALL SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':2' event_id, 'Rolling Setup Verified' activity, rolling_setup_verified_at timestamp FROM rolling_instruction WHERE rolling_setup_verified_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':2' UNION ALL SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':3' event_id, 'Rolling Work Started' activity, rolling_work_started_at timestamp FROM rolling_instruction WHERE rolling_work_started_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':3' UNION ALL SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:rolling_instruction:' || instruction_id || ':4' event_id, 'Rolling Instruction Closed' activity, rolling_instruction_closed_at timestamp FROM rolling_instruction WHERE rolling_instruction_closed_at IS NOT NULL) e JOIN rolling_instruction o ON e.event_id='LC:rolling_instruction:' || o.instruction_id || ':4'",
+    "furnace_charge_tracking": "SELECT e.event_id,o.tracking_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':1' event_id, 'Furnace Charge Assigned' activity, furnace_charge_assigned_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_assigned_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':1' UNION ALL SELECT e.event_id,o.tracking_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':2' event_id, 'Furnace Charge Confirmed' activity, furnace_charge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_charge_confirmed_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':2' UNION ALL SELECT e.event_id,o.tracking_id case_id FROM (SELECT transaction_id event_id, 'Heating Completed' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='HF') e JOIN material_operation_history h ON h.transaction_id=e.event_id JOIN furnace_charge_tracking o ON o.material_id=h.material_id UNION ALL SELECT e.event_id,o.tracking_id case_id FROM (SELECT 'LC:furnace_charge_tracking:' || tracking_id || ':4' event_id, 'Furnace Discharge Confirmed' activity, furnace_discharge_confirmed_at timestamp FROM furnace_charge_tracking WHERE furnace_discharge_confirmed_at IS NOT NULL) e JOIN furnace_charge_tracking o ON e.event_id='LC:furnace_charge_tracking:' || o.tracking_id || ':4'",
+    "cutting_finishing_instruction": "SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':1' event_id, 'Cutting Instruction Acknowledged' activity, cutting_instruction_acknowledged_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_acknowledged_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':1' UNION ALL SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':2' event_id, 'Cutting Setup Verified' activity, cutting_setup_verified_at timestamp FROM cutting_finishing_instruction WHERE cutting_setup_verified_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':2' UNION ALL SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':3' event_id, 'Cutting Work Started' activity, cutting_work_started_at timestamp FROM cutting_finishing_instruction WHERE cutting_work_started_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':3' UNION ALL SELECT e.event_id,o.instruction_id case_id FROM (SELECT 'LC:cutting_finishing_instruction:' || instruction_id || ':4' event_id, 'Cutting Instruction Closed' activity, cutting_instruction_closed_at timestamp FROM cutting_finishing_instruction WHERE cutting_instruction_closed_at IS NOT NULL) e JOIN cutting_finishing_instruction o ON e.event_id='LC:cutting_finishing_instruction:' || o.instruction_id || ':4'",
+    "plate_material": "SELECT e.event_id,o.plate_material_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':1' event_id, 'Plate Piece Identified' activity, plate_piece_identified_at timestamp FROM plate_material WHERE plate_piece_identified_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':1' UNION ALL SELECT e.event_id,o.plate_material_id case_id FROM (SELECT transaction_id event_id, 'Plate Surface Checked' activity, completed_at timestamp FROM material_operation_history WHERE operation_code='SF') e JOIN material_operation_history h ON h.transaction_id=e.event_id JOIN plate_material o ON o.plate_material_id=h.material_id UNION ALL SELECT e.event_id,o.plate_material_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':3' event_id, 'Plate Quality Released' activity, plate_quality_released_at timestamp FROM plate_material WHERE plate_quality_released_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':3' UNION ALL SELECT e.event_id,o.plate_material_id case_id FROM (SELECT 'LC:plate_material:' || plate_material_id || ':4' event_id, 'Plate Packed' activity, plate_packed_at timestamp FROM plate_material WHERE plate_packed_at IS NOT NULL) e JOIN plate_material o ON e.event_id='LC:plate_material:' || o.plate_material_id || ':4'",
+    "material_operation_history": "SELECT transaction_id event_id, transaction_id case_id FROM material_operation_history WHERE operation_code IN ('HF','SF')"
+  }
+}

@@ -1,34 +1,17 @@
-# PlateFlow Requirements
+# PlateFlow activity storage in existing business tables
 
-- A fictional steelworks maintains distinct records for slab materials, planned rolling instructions, released rolling instructions, furnace-charge tracking, as-rolled mother materials, cutting/finishing instructions, individual cut Plate materials and operation history.
-- Preserve milestone timestamps on material records and repeated operation occurrences with start/completion times in history.
-- Separate planned, actual and technical times.
-- Model one-to-many mother-to-piece relationships.
-- Extract mother-material lifecycle logs including descendant-piece operations exactly once.
-- Use a table that defines the synthetic process-code meanings.
+- Nine original table roles are retained. Generic activity tables and the persisted case-link index are removed.
+- Actual one-time milestones use nullable timestamp columns on their existing business objects.
+- Repeatable heating completions and surface checks use HF/SF rows in material_operation_history, with meanings in operation_code.
+- Technical timestamps, planned times and latest-operation snapshots remain excluded as separate events.
+- Milestone additions and code meanings are authored assumptions, not claimed original source fields.
+- Existing FK and material-genealogy paths derive event-to-case links directly in SQL.
 
-- The physical separation follows selected tables in the supplied Korean manufacturer metadata.
-- Relationship counts, keys, types, code values and execution rules are newly specified assumptions.
-
-## Authored lifecycle extension
-
-# Plateflow object activities and scenarios
-
-- Original source requirements, columns and keys remain preserved.
-- Every action below is an explicitly authored domain extension; these stages were not present in the source schemas.
-- Each added history row records an actual activity, occurrence time, outcome and a declared FK to its object.
-- Conditional revision branches and incomplete cases are intentional. Atomic grading/operation records remain auxiliary logs.
-- Master-object views aggregate linked work; they do not assert one chronological causal process across unrelated jobs.
-
-| Object | Added activities | Situation | Storage |
-|---|---|---|---|
-| slab_material | Slab Received → Slab Identity Verified → Slab Quality Checked → Slab Released for Rolling | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | slab_material_activity |
-| planned_rolling_instruction | Rolling Plan Created → Rolling Plan Reviewed → Rolling Plan Approved → Rolling Plan Released | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | planned_rolling_instruction_activity |
-| rolling_instruction | Rolling Instruction Acknowledged → Rolling Setup Verified → Rolling Work Started → Rolling Instruction Closed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | rolling_instruction_activity |
-| furnace_charge_tracking | Furnace Charge Assigned → Furnace Charge Confirmed → Heating Completed → Furnace Discharge Confirmed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | furnace_charge_tracking_activity |
-| cutting_finishing_instruction | Cutting Instruction Acknowledged → Cutting Setup Verified → Cutting Work Started → Cutting Instruction Closed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | cutting_finishing_instruction_activity |
-| plate_material | Plate Piece Identified → Plate Surface Checked → Plate Quality Released → Plate Packed | Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects. | plate_material_activity |
-
-- The full ES unions the original milestone sources and the new typed activity histories, then applies explicit event-to-case links.
-- Related goods/workers, students/instructors and parent materials receive an event only through a documented business relationship.
-- `lifecycle_case_link` is a generated extraction index with validated object identities; it is not an additional business object.
+| Object | Activities | Storage |
+|---|---|---|
+| slab_material | Slab Received; Slab Identity Verified; Slab Quality Checked; Slab Released for Rolling | Existing slab_material milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| planned_rolling_instruction | Rolling Plan Created; Rolling Plan Reviewed; Rolling Plan Approved; Rolling Plan Released | Existing planned_rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| rolling_instruction | Rolling Instruction Acknowledged; Rolling Setup Verified; Rolling Work Started; Rolling Instruction Closed | Existing rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Heating Completed; Furnace Discharge Confirmed | Existing furnace_charge_tracking milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Setup Verified; Cutting Work Started; Cutting Instruction Closed | Existing cutting_finishing_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| plate_material | Plate Piece Identified; Plate Surface Checked; Plate Quality Released; Plate Packed | Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable |

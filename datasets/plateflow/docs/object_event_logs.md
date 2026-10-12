@@ -17,7 +17,7 @@
 | furnace_charge_tracking | Furnace tracking record | tracking record | OPV05 | 30 | 133 | [CSV](../private/gold_logs/OPV05.csv) |
 | cutting_finishing_instruction | Cutting instruction | business object | OPV06 | 18 | 87 | [CSV](../private/gold_logs/OPV06.csv) |
 | plate_material | Cut plate piece | business object | OPV07 | 39 | 264 | [CSV](../private/gold_logs/OPV07.csv) |
-| material_operation_history | Material operation record | event record | OPV08 | 153 | 153 | [CSV](../private/gold_logs/OPV08.csv) |
+| material_operation_history | Material operation record | event record | OPV08 | 216 | 216 | [CSV](../private/gold_logs/OPV08.csv) |
 
 ## Scope of each view
 
@@ -33,10 +33,3 @@
 ## Tables without an actual event-log view
 
 - **operation_code:** Operation codes define activity meanings. They are not business-object instances or cases.
-- **slab_material_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **planned_rolling_instruction_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **rolling_instruction_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **furnace_charge_tracking_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **cutting_finishing_instruction_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **plate_material_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **lifecycle_case_link:** Activity storage/index for its parent-object log; not an independent business case.

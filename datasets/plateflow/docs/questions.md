@@ -34,7 +34,7 @@
 | OPV05 | Q3 Full Lifecycle | — | O | 5 | 5 | Extract the full recorded lifecycle event log for each furnace tracking record. |
 | OPV06 | Q3 Full Lifecycle | — | O | 5 | 5 | Extract the full recorded lifecycle event log for each cutting instruction. |
 | OPV07 | Q3 Full Lifecycle | — | O | 8 | 8 | Extract the full recorded lifecycle event log for each cut plate piece. |
-| OPV08 | Q3 Full Lifecycle | — | O | 7 | 7 | Extract the full recorded lifecycle event log for each material operation record. |
+| OPV08 | Q3 Full Lifecycle | — | O | 9 | 9 | Extract the full recorded lifecycle event log for each material operation record. |
 | V07P | Q2 Paraphrased | V07 | O | 3 | 3 | For each as-rolled mother material, build a timeline of the cutting work order being issued, the mother plate being cut into separate pieces, the dimensions of a cut piece being checked. |
 | V08P | Q2 Paraphrased | V08 | X | 1 | 0 | For each slab, build a timeline of the initial casting of a slab. |
 | OPV01P | Q4 Full Lifecycle Paraphrased | OPV01 | O | 37 | 37 | Show the complete recorded history associated with each slab. |
@@ -58,6 +58,6 @@
 | OPV07P | Q4 Full Lifecycle Paraphrased | OPV07 | O | 8 | 8 | Show the complete recorded history associated with each cut plate piece. |
 | OPV07E | Q1 Explicit | — | O | 3 | 3 | Extract Dimensional Inspection Completed, Heat Treatment Completed, Inspection Failed events for each cut plate piece. |
 | OPV07EP | Q2 Paraphrased | OPV07E | O | 3 | 3 | For each cut plate piece, build a timeline of the dimensions of a cut piece being checked, heat treatment finishing, a quality check rejecting the material. |
-| OPV08P | Q4 Full Lifecycle Paraphrased | OPV08 | O | 7 | 7 | Show the complete recorded history associated with each material operation record. |
-| OPV08E | Q1 Explicit | — | O | 3 | 3 | Extract Cooling Completed, Heat Treatment Completed, Inspection Failed events for each material operation record. |
-| OPV08EP | Q2 Paraphrased | OPV08E | O | 3 | 3 | For each material operation record, build a timeline of cooling finishing, heat treatment finishing, a quality check rejecting the material. |
+| OPV08P | Q4 Full Lifecycle Paraphrased | OPV08 | O | 9 | 9 | Show the complete recorded history associated with each material operation record. |
+| OPV08E | Q1 Explicit | — | O | 3 | 3 | Extract Cooling Completed, Heat Treatment Completed, Heating Completed events for each material operation record. |
+| OPV08EP | Q2 Paraphrased | OPV08E | O | 3 | 3 | For each material operation record, build a timeline of cooling finishing, heat treatment finishing, furnace heating finishing. |

@@ -72,14 +72,6 @@
 
 - [All question texts, types, pairs and answerability](docs/questions.md)
 
-## Schema and documentation
-
-- [Table inventory and relationships](docs/schema_overview.md)
-- [English column dictionary](docs/data_dictionary.md)
-- [CSV dictionary](docs/data_dictionary.csv)
-- [Editable draw.io diagram](docs/schema.drawio)
-- [Object-based Gold logs and coverage](docs/object_event_logs.md)
-
 ## Event encoding and data definitions
 
 - [Table-by-table row/column encoding](docs/schema_overview.md)
@@ -90,3 +82,11 @@
 
 - [Verified warehouse links and activity counts per individual case](docs/object_activity_verification.md)
 - The object–activity table lists the union across all instances; an individual receiving/dispatch job has only its applicable branch.
+
+## Schema and documentation
+
+- [Table inventory and relationships](docs/schema_overview.md)
+- [English column dictionary](docs/data_dictionary.md)
+- [CSV dictionary](docs/data_dictionary.csv)
+- [Editable draw.io diagram](docs/schema.drawio)
+- [Object-based Gold logs and coverage](docs/object_event_logs.md)
