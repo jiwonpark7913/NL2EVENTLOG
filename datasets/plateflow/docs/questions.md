@@ -18,7 +18,7 @@
 | Q4 Full Lifecycle Paraphrased | Process View: case; implicit activity scope | O / X | Alternate wording of Q3 with identical default scope |
 
 | ID | Type | Paired with | Answerability | Requested activities | Extractable activities | Question |
-|---|---|---|---|---|---:|---:|---|
+|---|---|---|---|---:|---:|---|
 | V01 | Q1 Explicit | — | O | 3 | 3 | Extract Reheating Started, Rolling Completed, Crop Shear Passed events for each as-rolled mother material. |
 | V02 | Q2 Paraphrased | V01 | O | 3 | 3 | For each as-rolled mother material, build a timeline of the material entering the reheating furnace, rolling finishing, the mother plate passing the crop shear. |
 | V03 | Q1 Explicit | — | O | 3 | 3 | Extract Inspection Failed, Heat Treatment Completed, Inspection Passed events for each as-rolled mother material. |

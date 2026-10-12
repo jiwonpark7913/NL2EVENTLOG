@@ -18,7 +18,7 @@
 | Q4 Full Lifecycle Paraphrased | Process View: case; implicit activity scope | O / X | Alternate wording of Q3 with identical default scope |
 
 | ID | Type | Paired with | Answerability | Requested activities | Extractable activities | Question |
-|---|---|---|---|---|---:|---:|---|
+|---|---|---|---|---:|---:|---|
 | U01 | Q1 Explicit | — | O | 1 | 1 | Extract Degree Examination Taken events for each student. |
 | U02 | Q2 Paraphrased | U01 | O | 1 | 1 | For each student, build a timeline of the student sitting the degree examination. |
 | U03 | Q1 Explicit | — | O | 1 | 1 | Extract Course Registered events for each student. |

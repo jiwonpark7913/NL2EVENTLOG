@@ -18,7 +18,7 @@
 | Q4 Full Lifecycle Paraphrased | Process View: case; implicit activity scope | O / X | Alternate wording of Q3 with identical default scope |
 
 | ID | Type | Paired with | Answerability | Requested activities | Extractable activities | Question |
-|---|---|---|---|---|---:|---:|---|
+|---|---|---|---|---:|---:|---|
 | R01 | Q1 Explicit | — | O | 1 | 1 | Extract Goods Received events for each warehouse. |
 | R02 | Q2 Paraphrased | R01 | O | 1 | 1 | For each warehouse, build a timeline of goods arriving at the warehouse. |
 | R03 | Q1 Explicit | — | O | 1 | 1 | Extract Goods Dispatched events for each warehouse. |
