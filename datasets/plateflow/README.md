@@ -62,12 +62,14 @@
 - `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
 - Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
 
-| Type | Questions |
-|---|---:|
-| Q1 | 12 |
-| Q2 | 12 |
-| Q3 | 9 |
-| Q4 | 9 |
+| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
+|---|---:|---:|---:|---:|
+| Q1 | 12 | 11 | 1 | 2.83 |
+| Q2 | 12 | 11 | 1 | 2.83 |
+| Q3 | 9 | 9 | 0 | 16.22 |
+| Q4 | 9 | 9 | 0 | 16.22 |
+
+- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - [All question texts, types, pairs and answerability](docs/questions.md)
 

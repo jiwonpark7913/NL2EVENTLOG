@@ -40,7 +40,6 @@
 
 ![PlateFlow schema](datasets/plateflow/docs/schema.png)
 
-
 ## Question types and pairs
 
 - **Q1 Explicit:** case concept and exact activities.
@@ -53,13 +52,24 @@
 - [universityflow question list](datasets/universityflow/docs/questions.md)
 - [plateflow question list](datasets/plateflow/docs/questions.md)
 
-## Question counts by type
+### Question statistics by dataset and type
 
-| Dataset | Q1 Explicit | Q2 Paraphrased | Q3 Full Lifecycle | Q4 Full Lifecycle Paraphrased |
-|---|---:|---:|---:|---:|
-| plateflow | 12 | 12 | 9 | 9 |
-| universityflow | 19 | 19 | 12 | 12 |
-| warehouseflow | 9 | 9 | 7 | 7 |
+| Dataset | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
+|---|---|---:|---:|---:|---:|
+| WarehouseFlow | Q1 | 9 | 8 | 1 | 2.33 |
+| WarehouseFlow | Q2 | 9 | 8 | 1 | 2.33 |
+| WarehouseFlow | Q3 | 7 | 7 | 0 | 10.00 |
+| WarehouseFlow | Q4 | 7 | 7 | 0 | 10.00 |
+| UniversityFlow | Q1 | 19 | 17 | 2 | 2.05 |
+| UniversityFlow | Q2 | 19 | 17 | 2 | 2.05 |
+| UniversityFlow | Q3 | 12 | 12 | 0 | 9.83 |
+| UniversityFlow | Q4 | 12 | 12 | 0 | 9.83 |
+| PlateFlow | Q1 | 12 | 11 | 1 | 2.83 |
+| PlateFlow | Q2 | 12 | 11 | 1 | 2.83 |
+| PlateFlow | Q3 | 9 | 9 | 0 | 16.22 |
+| PlateFlow | Q4 | 9 | 9 | 0 | 16.22 |
+
+- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - All pairs are one-to-one: Q1 ↔ Q2 and Q3 ↔ Q4. Missing originals/paraphrases are repaired during question construction.
 - Process View already includes activity scope; activities are not a separate concept added to it.
