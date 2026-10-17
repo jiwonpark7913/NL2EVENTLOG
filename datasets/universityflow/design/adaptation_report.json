@@ -46,7 +46,6 @@
   "authored_lifecycle_extensions": [
     {
       "object_table": "registration",
-      "activity_table": "registration_activity",
       "activities": [
         "Registration Requested",
         "Registration Approved",
@@ -55,11 +54,34 @@
         "Course Grade Finalized"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Registration Requested",
+          "column": "registration_requested_at"
+        },
+        {
+          "activity": "Registration Approved",
+          "column": "registration_approved_at"
+        },
+        {
+          "activity": "Course Started",
+          "column": "course_started_at"
+        },
+        {
+          "activity": "Course Assessment Completed",
+          "column": "course_assessment_completed_at"
+        },
+        {
+          "activity": "Course Grade Finalized",
+          "column": "course_grade_finalized_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing registration milestone columns"
     },
     {
       "object_table": "degree_examination_result",
-      "activity_table": "degree_examination_result_activity",
       "activities": [
         "Examination Scheduled",
         "Examination Checked In",
@@ -67,11 +89,30 @@
         "Examination Result Reviewed"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Examination Scheduled",
+          "column": "examination_scheduled_at"
+        },
+        {
+          "activity": "Examination Checked In",
+          "column": "examination_checked_in_at"
+        },
+        {
+          "activity": "Examination Score Published",
+          "column": "examination_score_published_at"
+        },
+        {
+          "activity": "Examination Result Reviewed",
+          "column": "examination_result_reviewed_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing degree_examination_result milestone columns"
     },
     {
       "object_table": "assignment",
-      "activity_table": "assignment_activity",
       "activities": [
         "Assignment Assigned",
         "Assignment Submitted",
@@ -81,11 +122,34 @@
         "Assignment Regraded"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Assignment Revision Requested",
+          "column": "assignment_revision_requested_at"
+        },
+        {
+          "activity": "Assignment Resubmitted",
+          "column": "assignment_resubmitted_at"
+        },
+        {
+          "activity": "Assignment Assigned",
+          "column": "assignment_assigned_at"
+        },
+        {
+          "activity": "Assignment Submitted",
+          "column": "assignment_submitted_at"
+        },
+        {
+          "activity": "Assignment Grade Finalized",
+          "column": "assignment_grade_finalized_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing assignment milestone columns; grading/regrading rows in assignment_grading"
     },
     {
       "object_table": "simulation_module",
-      "activity_table": "simulation_module_activity",
       "activities": [
         "Simulation Module Published",
         "Simulation Module Validated",
@@ -93,11 +157,30 @@
         "Simulation Module Retired"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Simulation Module Published",
+          "column": "simulation_module_published_at"
+        },
+        {
+          "activity": "Simulation Module Validated",
+          "column": "simulation_module_validated_at"
+        },
+        {
+          "activity": "Simulation Module Released",
+          "column": "simulation_module_released_at"
+        },
+        {
+          "activity": "Simulation Module Retired",
+          "column": "simulation_module_retired_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing simulation_module milestone columns"
     },
     {
       "object_table": "student_simulation_experiment_result",
-      "activity_table": "student_simulation_experiment_result_activity",
       "activities": [
         "Simulation Run Scheduled",
         "Simulation Run Started",
@@ -105,11 +188,30 @@
         "Simulation Result Accepted"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Simulation Run Scheduled",
+          "column": "simulation_run_scheduled_at"
+        },
+        {
+          "activity": "Simulation Run Started",
+          "column": "simulation_run_started_at"
+        },
+        {
+          "activity": "Simulation Output Reviewed",
+          "column": "simulation_output_reviewed_at"
+        },
+        {
+          "activity": "Simulation Result Accepted",
+          "column": "simulation_result_accepted_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing student_simulation_experiment_result milestone columns"
     },
     {
       "object_table": "thesis",
-      "activity_table": "thesis_activity",
       "activities": [
         "Thesis Draft Registered",
         "Thesis Review Started",
@@ -118,11 +220,34 @@
         "Thesis Accepted"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Thesis Revision Requested",
+          "column": "thesis_revision_requested_at"
+        },
+        {
+          "activity": "Thesis Resubmitted",
+          "column": "thesis_resubmitted_at"
+        },
+        {
+          "activity": "Thesis Draft Registered",
+          "column": "thesis_draft_registered_at"
+        },
+        {
+          "activity": "Thesis Review Started",
+          "column": "thesis_review_started_at"
+        },
+        {
+          "activity": "Thesis Accepted",
+          "column": "thesis_accepted_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing thesis milestone columns"
     },
     {
       "object_table": "course",
-      "activity_table": "course_activity",
       "activities": [
         "Course Offering Proposed",
         "Course Offering Approved",
@@ -130,11 +255,30 @@
         "Course Offering Closed"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Course Offering Proposed",
+          "column": "course_offering_proposed_at"
+        },
+        {
+          "activity": "Course Offering Approved",
+          "column": "course_offering_approved_at"
+        },
+        {
+          "activity": "Course Offering Published",
+          "column": "course_offering_published_at"
+        },
+        {
+          "activity": "Course Offering Closed",
+          "column": "course_offering_closed_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing course milestone columns"
     },
     {
       "object_table": "task",
-      "activity_table": "task_activity",
       "activities": [
         "Design Task Created",
         "Design Task Approved",
@@ -142,452 +286,31 @@
         "Design Task Closed"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Design Task Created",
+          "column": "design_task_created_at"
+        },
+        {
+          "activity": "Design Task Approved",
+          "column": "design_task_approved_at"
+        },
+        {
+          "activity": "Design Task Published",
+          "column": "design_task_published_at"
+        },
+        {
+          "activity": "Design Task Closed",
+          "column": "design_task_closed_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Existing task milestone columns"
     }
   ],
-  "added_tables": [
-    {
-      "table": "registration_activity",
-      "definition": "Authored actual-action history for registration",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "student_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to registration.student_id"
-        },
-        {
-          "name": "course_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to registration.course_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "student_id",
-          "parent_table": "registration",
-          "parent_column": "student_id"
-        },
-        {
-          "column": "course_id",
-          "parent_table": "registration",
-          "parent_column": "course_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "degree_examination_result_activity",
-      "definition": "Authored actual-action history for degree_examination_result",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "result_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to degree_examination_result.result_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "result_id",
-          "parent_table": "degree_examination_result",
-          "parent_column": "result_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "assignment_activity",
-      "definition": "Authored actual-action history for assignment",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "assignment_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to assignment.assignment_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "assignment_id",
-          "parent_table": "assignment",
-          "parent_column": "assignment_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "simulation_module_activity",
-      "definition": "Authored actual-action history for simulation_module",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "module_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to simulation_module.module_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "module_id",
-          "parent_table": "simulation_module",
-          "parent_column": "module_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "student_simulation_experiment_result_activity",
-      "definition": "Authored actual-action history for student_simulation_experiment_result",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "student_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.student_id"
-        },
-        {
-          "name": "module_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.module_id"
-        },
-        {
-          "name": "simulation_date",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.simulation_date"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "student_id",
-          "parent_table": "student_simulation_experiment_result",
-          "parent_column": "student_id"
-        },
-        {
-          "column": "module_id",
-          "parent_table": "student_simulation_experiment_result",
-          "parent_column": "module_id"
-        },
-        {
-          "column": "simulation_date",
-          "parent_table": "student_simulation_experiment_result",
-          "parent_column": "simulation_date"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "thesis_activity",
-      "definition": "Authored actual-action history for thesis",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "thesis_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to thesis.thesis_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "thesis_id",
-          "parent_table": "thesis",
-          "parent_column": "thesis_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "course_activity",
-      "definition": "Authored actual-action history for course",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "course_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to course.course_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "course_id",
-          "parent_table": "course",
-          "parent_column": "course_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "task_activity",
-      "definition": "Authored actual-action history for task",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "task_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to task.task_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "task_id",
-          "parent_table": "task",
-          "parent_column": "task_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "lifecycle_case_link",
-      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
-      "primary_key": [
-        "event_id",
-        "case_table",
-        "case_id"
-      ],
-      "foreign_keys": [],
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Validated identity in a typed activity table; polymorphic reference"
-        },
-        {
-          "name": "case_table",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled existing business table name"
-        },
-        {
-          "name": "case_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    }
-  ],
-  "final_table_count": 18,
+  "added_tables": [],
+  "final_table_count": 11,
   "current_tables": [
     {
       "table": "student",
@@ -823,6 +546,38 @@
               "source_attribute": "Class Location"
             }
           ]
+        },
+        {
+          "name": "course_offering_proposed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Offering Proposed",
+          "definition": "Actual UTC time of Course Offering Proposed. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "course_offering_approved_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Offering Approved",
+          "definition": "Actual UTC time of Course Offering Approved. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "course_offering_published_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Offering Published",
+          "definition": "Actual UTC time of Course Offering Published. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "course_offering_closed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Offering Closed",
+          "definition": "Actual UTC time of Course Offering Closed. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
         }
       ],
       "primary_key": [
@@ -1156,6 +911,38 @@
               "source_attribute": "Task Location"
             }
           ]
+        },
+        {
+          "name": "design_task_created_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Design Task Created",
+          "definition": "Actual UTC time of Design Task Created. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "design_task_approved_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Design Task Approved",
+          "definition": "Actual UTC time of Design Task Approved. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "design_task_published_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Design Task Published",
+          "definition": "Actual UTC time of Design Task Published. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "design_task_closed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Design Task Closed",
+          "definition": "Actual UTC time of Design Task Closed. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
         }
       ],
       "primary_key": [
@@ -1237,6 +1024,38 @@
               "source_attribute": "Module Code"
             }
           ]
+        },
+        {
+          "name": "simulation_module_published_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Module Published",
+          "definition": "Actual UTC time of Simulation Module Published. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "simulation_module_validated_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Module Validated",
+          "definition": "Actual UTC time of Simulation Module Validated. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "simulation_module_released_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Module Released",
+          "definition": "Actual UTC time of Simulation Module Released. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "simulation_module_retired_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Module Retired",
+          "definition": "Actual UTC time of Simulation Module Retired. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
         }
       ],
       "primary_key": [
@@ -1342,6 +1161,22 @@
           "source_origin": "authored_milestone_column",
           "event_activity": "Thesis Accepted",
           "definition": "Actual UTC time of Thesis Accepted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "thesis_revision_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Revision Requested",
+          "definition": "Actual UTC time of Thesis Revision Requested. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "thesis_resubmitted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Resubmitted",
+          "definition": "Actual UTC time of Thesis Resubmitted. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
         }
       ],
       "primary_key": [
@@ -1429,6 +1264,38 @@
               "source_attribute": "Result Analysis"
             }
           ]
+        },
+        {
+          "name": "simulation_run_scheduled_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Run Scheduled",
+          "definition": "Actual UTC time of Simulation Run Scheduled. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "simulation_run_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Run Started",
+          "definition": "Actual UTC time of Simulation Run Started. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "simulation_output_reviewed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Output Reviewed",
+          "definition": "Actual UTC time of Simulation Output Reviewed. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "simulation_result_accepted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Simulation Result Accepted",
+          "definition": "Actual UTC time of Simulation Result Accepted. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
         }
       ],
       "primary_key": [
@@ -1521,6 +1388,22 @@
           "source_origin": "authored_milestone_column",
           "event_activity": "Assignment Grade Finalized",
           "definition": "Actual UTC time of Assignment Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "assignment_revision_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Revision Requested",
+          "definition": "Actual UTC time of Assignment Revision Requested. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
+        },
+        {
+          "name": "assignment_resubmitted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Resubmitted",
+          "definition": "Actual UTC time of Assignment Resubmitted. One occurrence per source business record in this simulation. NULL means no recorded occurrence."
         }
       ],
       "primary_key": [
@@ -1663,6 +1546,20 @@
               "source_attribute": "Evaluation"
             }
           ]
+        },
+        {
+          "name": "grading_kind",
+          "type": "TEXT",
+          "constraints": "NOT NULL DEFAULT 'ORIGINAL' CHECK(grading_kind IN ('ORIGINAL','REASSESSMENT'))",
+          "definition": "ORIGINAL retains each existing Assignment Graded occurrence. REASSESSMENT denotes an authored Assignment Regraded occurrence.",
+          "source_origin": "authored_assessment_classification"
+        },
+        {
+          "name": "reassessment_event_id",
+          "type": "TEXT",
+          "constraints": "UNIQUE through ux_reassessment_event_id; nullable for ORIGINAL rows",
+          "definition": "Stable identity of an authored reassessment occurrence. The source composite PK remains unchanged; distinct reassessments have distinct occurrence IDs.",
+          "source_origin": "authored_assessment_identifier"
         }
       ],
       "primary_key": [
@@ -1688,341 +1585,6 @@
           "source_table": "Assignment Grading"
         }
       ]
-    },
-    {
-      "table": "assignment_activity",
-      "definition": "Authored actual-action history for assignment",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "assignment_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to assignment.assignment_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "assignment_id",
-          "parent_table": "assignment",
-          "parent_column": "assignment_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "simulation_module_activity",
-      "definition": "Authored actual-action history for simulation_module",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "module_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to simulation_module.module_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "module_id",
-          "parent_table": "simulation_module",
-          "parent_column": "module_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "student_simulation_experiment_result_activity",
-      "definition": "Authored actual-action history for student_simulation_experiment_result",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "student_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.student_id"
-        },
-        {
-          "name": "module_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.module_id"
-        },
-        {
-          "name": "simulation_date",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.simulation_date"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "student_id",
-          "parent_table": "student_simulation_experiment_result",
-          "parent_column": "student_id"
-        },
-        {
-          "column": "module_id",
-          "parent_table": "student_simulation_experiment_result",
-          "parent_column": "module_id"
-        },
-        {
-          "column": "simulation_date",
-          "parent_table": "student_simulation_experiment_result",
-          "parent_column": "simulation_date"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "thesis_activity",
-      "definition": "Authored actual-action history for thesis",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "thesis_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to thesis.thesis_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "thesis_id",
-          "parent_table": "thesis",
-          "parent_column": "thesis_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "course_activity",
-      "definition": "Authored actual-action history for course",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "course_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to course.course_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "course_id",
-          "parent_table": "course",
-          "parent_column": "course_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "task_activity",
-      "definition": "Authored actual-action history for task",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension"
-        },
-        {
-          "name": "task_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to task.task_id"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "task_id",
-          "parent_table": "task",
-          "parent_column": "task_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
-    },
-    {
-      "table": "lifecycle_case_link",
-      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
-      "primary_key": [
-        "event_id",
-        "case_table",
-        "case_id"
-      ],
-      "foreign_keys": [],
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Validated identity in a typed activity table; polymorphic reference"
-        },
-        {
-          "name": "case_table",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled existing business table name"
-        },
-        {
-          "name": "case_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension"
     }
   ],
   "timestamp_migration": [
@@ -2628,5 +2190,132 @@
   "removed_empty_history_tables": [
     "registration_activity",
     "degree_examination_result_activity"
-  ]
+  ],
+  "native_consolidation": {
+    "added_milestone_columns": [
+      {
+        "table": "assignment",
+        "column": "assignment_revision_requested_at",
+        "activity": "Assignment Revision Requested"
+      },
+      {
+        "table": "assignment",
+        "column": "assignment_resubmitted_at",
+        "activity": "Assignment Resubmitted"
+      },
+      {
+        "table": "thesis",
+        "column": "thesis_revision_requested_at",
+        "activity": "Thesis Revision Requested"
+      },
+      {
+        "table": "thesis",
+        "column": "thesis_resubmitted_at",
+        "activity": "Thesis Resubmitted"
+      },
+      {
+        "table": "simulation_module",
+        "column": "simulation_module_published_at",
+        "activity": "Simulation Module Published"
+      },
+      {
+        "table": "simulation_module",
+        "column": "simulation_module_validated_at",
+        "activity": "Simulation Module Validated"
+      },
+      {
+        "table": "simulation_module",
+        "column": "simulation_module_released_at",
+        "activity": "Simulation Module Released"
+      },
+      {
+        "table": "simulation_module",
+        "column": "simulation_module_retired_at",
+        "activity": "Simulation Module Retired"
+      },
+      {
+        "table": "student_simulation_experiment_result",
+        "column": "simulation_run_scheduled_at",
+        "activity": "Simulation Run Scheduled"
+      },
+      {
+        "table": "student_simulation_experiment_result",
+        "column": "simulation_run_started_at",
+        "activity": "Simulation Run Started"
+      },
+      {
+        "table": "student_simulation_experiment_result",
+        "column": "simulation_output_reviewed_at",
+        "activity": "Simulation Output Reviewed"
+      },
+      {
+        "table": "student_simulation_experiment_result",
+        "column": "simulation_result_accepted_at",
+        "activity": "Simulation Result Accepted"
+      },
+      {
+        "table": "course",
+        "column": "course_offering_proposed_at",
+        "activity": "Course Offering Proposed"
+      },
+      {
+        "table": "course",
+        "column": "course_offering_approved_at",
+        "activity": "Course Offering Approved"
+      },
+      {
+        "table": "course",
+        "column": "course_offering_published_at",
+        "activity": "Course Offering Published"
+      },
+      {
+        "table": "course",
+        "column": "course_offering_closed_at",
+        "activity": "Course Offering Closed"
+      },
+      {
+        "table": "task",
+        "column": "design_task_created_at",
+        "activity": "Design Task Created"
+      },
+      {
+        "table": "task",
+        "column": "design_task_approved_at",
+        "activity": "Design Task Approved"
+      },
+      {
+        "table": "task",
+        "column": "design_task_published_at",
+        "activity": "Design Task Published"
+      },
+      {
+        "table": "task",
+        "column": "design_task_closed_at",
+        "activity": "Design Task Closed"
+      }
+    ],
+    "removed_tables": [
+      "assignment_activity",
+      "thesis_activity",
+      "simulation_module_activity",
+      "student_simulation_experiment_result_activity",
+      "course_activity",
+      "task_activity",
+      "lifecycle_case_link"
+    ],
+    "assessment_storage": "assignment_grading with grading_kind",
+    "case_mapping_sql": {
+      "assignment": "SELECT e.event_id,o.assignment_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':3' event_id,'Assignment Revision Requested' activity,assignment_revision_requested_at timestamp,assignment_id object_key FROM assignment WHERE assignment_revision_requested_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.assignment_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':4' event_id,'Assignment Resubmitted' activity,assignment_resubmitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_resubmitted_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.assignment_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':1' event_id, 'Assignment Assigned' activity, assignment_assigned_at timestamp,assignment_id object_key FROM assignment WHERE assignment_assigned_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.assignment_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':2' event_id, 'Assignment Submitted' activity, assignment_submitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_submitted_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.assignment_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':' || CASE WHEN assignment_revision_requested_at IS NOT NULL THEN '6' ELSE '3' END event_id,'Assignment Grade Finalized' activity,assignment_grade_finalized_at timestamp,assignment_id object_key FROM assignment WHERE assignment_grade_finalized_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.assignment_id case_id FROM (SELECT reassessment_event_id event_id,'Assignment Regraded' activity,grading_time timestamp,assignment_id || ':' || instructor_id || ':' || grading_time object_key FROM assignment_grading WHERE grading_kind='REASSESSMENT') e JOIN assignment_grading o ON o.assignment_id || ':' || o.instructor_id || ':' || o.grading_time=e.object_key",
+      "student": "SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':3' event_id,'Assignment Revision Requested' activity,assignment_revision_requested_at timestamp,assignment_id object_key FROM assignment WHERE assignment_revision_requested_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':4' event_id,'Assignment Resubmitted' activity,assignment_resubmitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_resubmitted_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':3' event_id,'Thesis Revision Requested' activity,thesis_revision_requested_at timestamp,thesis_id object_key FROM thesis WHERE thesis_revision_requested_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':4' event_id,'Thesis Resubmitted' activity,thesis_resubmitted_at timestamp,thesis_id object_key FROM thesis WHERE thesis_resubmitted_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':1' event_id,'Simulation Run Scheduled' activity,simulation_run_scheduled_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_scheduled_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':2' event_id,'Simulation Run Started' activity,simulation_run_started_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_started_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':3' event_id,'Simulation Output Reviewed' activity,simulation_output_reviewed_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_output_reviewed_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':4' event_id,'Simulation Result Accepted' activity,simulation_result_accepted_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_result_accepted_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':1' event_id, 'Registration Requested' activity, registration_requested_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_requested_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':2' event_id, 'Registration Approved' activity, registration_approved_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_approved_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':3' event_id, 'Course Started' activity, course_started_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_started_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':4' event_id, 'Course Assessment Completed' activity, course_assessment_completed_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_assessment_completed_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':5' event_id, 'Course Grade Finalized' activity, course_grade_finalized_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_grade_finalized_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':1' event_id, 'Examination Scheduled' activity, examination_scheduled_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_scheduled_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':2' event_id, 'Examination Checked In' activity, examination_checked_in_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_checked_in_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':3' event_id, 'Examination Score Published' activity, examination_score_published_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_score_published_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':4' event_id, 'Examination Result Reviewed' activity, examination_result_reviewed_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_result_reviewed_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':1' event_id, 'Assignment Assigned' activity, assignment_assigned_at timestamp,assignment_id object_key FROM assignment WHERE assignment_assigned_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':2' event_id, 'Assignment Submitted' activity, assignment_submitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_submitted_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':' || CASE WHEN assignment_revision_requested_at IS NOT NULL THEN '6' ELSE '3' END event_id,'Assignment Grade Finalized' activity,assignment_grade_finalized_at timestamp,assignment_id object_key FROM assignment WHERE assignment_grade_finalized_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':1' event_id, 'Thesis Draft Registered' activity, thesis_draft_registered_at timestamp,thesis_id object_key FROM thesis WHERE thesis_draft_registered_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':2' event_id, 'Thesis Review Started' activity, thesis_review_started_at timestamp,thesis_id object_key FROM thesis WHERE thesis_review_started_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.student_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':' || CASE WHEN thesis_revision_requested_at IS NOT NULL THEN '5' ELSE '3' END event_id,'Thesis Accepted' activity,thesis_accepted_at timestamp,thesis_id object_key FROM thesis WHERE thesis_accepted_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,a.student_id case_id FROM (SELECT reassessment_event_id event_id,'Assignment Regraded' activity,grading_time timestamp,assignment_id || ':' || instructor_id || ':' || grading_time object_key FROM assignment_grading WHERE grading_kind='REASSESSMENT') e JOIN assignment_grading o ON o.assignment_id || ':' || o.instructor_id || ':' || o.grading_time=e.object_key JOIN assignment a ON a.assignment_id=o.assignment_id",
+      "instructor": "SELECT e.event_id,g.instructor_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':3' event_id,'Assignment Revision Requested' activity,assignment_revision_requested_at timestamp,assignment_id object_key FROM assignment WHERE assignment_revision_requested_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key JOIN (SELECT DISTINCT assignment_id,instructor_id FROM assignment_grading WHERE grading_kind='ORIGINAL') g ON g.assignment_id=o.assignment_id UNION ALL SELECT e.event_id,g.instructor_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':4' event_id,'Assignment Resubmitted' activity,assignment_resubmitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_resubmitted_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key JOIN (SELECT DISTINCT assignment_id,instructor_id FROM assignment_grading WHERE grading_kind='ORIGINAL') g ON g.assignment_id=o.assignment_id UNION ALL SELECT e.event_id,g.instructor_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':1' event_id, 'Assignment Assigned' activity, assignment_assigned_at timestamp,assignment_id object_key FROM assignment WHERE assignment_assigned_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key JOIN (SELECT DISTINCT assignment_id,instructor_id FROM assignment_grading WHERE grading_kind='ORIGINAL') g ON g.assignment_id=o.assignment_id UNION ALL SELECT e.event_id,g.instructor_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':2' event_id, 'Assignment Submitted' activity, assignment_submitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_submitted_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key JOIN (SELECT DISTINCT assignment_id,instructor_id FROM assignment_grading WHERE grading_kind='ORIGINAL') g ON g.assignment_id=o.assignment_id UNION ALL SELECT e.event_id,g.instructor_id case_id FROM (SELECT 'LC:assignment:' || assignment_id || ':' || CASE WHEN assignment_revision_requested_at IS NOT NULL THEN '6' ELSE '3' END event_id,'Assignment Grade Finalized' activity,assignment_grade_finalized_at timestamp,assignment_id object_key FROM assignment WHERE assignment_grade_finalized_at IS NOT NULL) e JOIN assignment o ON o.assignment_id=e.object_key JOIN (SELECT DISTINCT assignment_id,instructor_id FROM assignment_grading WHERE grading_kind='ORIGINAL') g ON g.assignment_id=o.assignment_id UNION ALL SELECT e.event_id,o.instructor_id case_id FROM (SELECT reassessment_event_id event_id,'Assignment Regraded' activity,grading_time timestamp,assignment_id || ':' || instructor_id || ':' || grading_time object_key FROM assignment_grading WHERE grading_kind='REASSESSMENT') e JOIN assignment_grading o ON o.assignment_id || ':' || o.instructor_id || ':' || o.grading_time=e.object_key",
+      "thesis": "SELECT e.event_id,o.thesis_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':3' event_id,'Thesis Revision Requested' activity,thesis_revision_requested_at timestamp,thesis_id object_key FROM thesis WHERE thesis_revision_requested_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.thesis_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':4' event_id,'Thesis Resubmitted' activity,thesis_resubmitted_at timestamp,thesis_id object_key FROM thesis WHERE thesis_resubmitted_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.thesis_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':1' event_id, 'Thesis Draft Registered' activity, thesis_draft_registered_at timestamp,thesis_id object_key FROM thesis WHERE thesis_draft_registered_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.thesis_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':2' event_id, 'Thesis Review Started' activity, thesis_review_started_at timestamp,thesis_id object_key FROM thesis WHERE thesis_review_started_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key UNION ALL SELECT e.event_id,o.thesis_id case_id FROM (SELECT 'LC:thesis:' || thesis_id || ':' || CASE WHEN thesis_revision_requested_at IS NOT NULL THEN '5' ELSE '3' END event_id,'Thesis Accepted' activity,thesis_accepted_at timestamp,thesis_id object_key FROM thesis WHERE thesis_accepted_at IS NOT NULL) e JOIN thesis o ON o.thesis_id=e.object_key",
+      "simulation_module": "SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:simulation_module:' || module_id || ':1' event_id,'Simulation Module Published' activity,simulation_module_published_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_published_at IS NOT NULL) e JOIN simulation_module o ON o.module_id=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:simulation_module:' || module_id || ':2' event_id,'Simulation Module Validated' activity,simulation_module_validated_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_validated_at IS NOT NULL) e JOIN simulation_module o ON o.module_id=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:simulation_module:' || module_id || ':3' event_id,'Simulation Module Released' activity,simulation_module_released_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_released_at IS NOT NULL) e JOIN simulation_module o ON o.module_id=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:simulation_module:' || module_id || ':4' event_id,'Simulation Module Retired' activity,simulation_module_retired_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_retired_at IS NOT NULL) e JOIN simulation_module o ON o.module_id=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':1' event_id,'Simulation Run Scheduled' activity,simulation_run_scheduled_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_scheduled_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':2' event_id,'Simulation Run Started' activity,simulation_run_started_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_started_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':3' event_id,'Simulation Output Reviewed' activity,simulation_output_reviewed_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_output_reviewed_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.module_id case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':4' event_id,'Simulation Result Accepted' activity,simulation_result_accepted_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_result_accepted_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key",
+      "student_simulation_experiment_result": "SELECT e.event_id,o.student_id || ':' || o.module_id || ':' || o.simulation_date case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':1' event_id,'Simulation Run Scheduled' activity,simulation_run_scheduled_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_scheduled_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.module_id || ':' || o.simulation_date case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':2' event_id,'Simulation Run Started' activity,simulation_run_started_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_started_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.module_id || ':' || o.simulation_date case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':3' event_id,'Simulation Output Reviewed' activity,simulation_output_reviewed_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_output_reviewed_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.module_id || ':' || o.simulation_date case_id FROM (SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':4' event_id,'Simulation Result Accepted' activity,simulation_result_accepted_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_result_accepted_at IS NOT NULL) e JOIN student_simulation_experiment_result o ON o.student_id || ':' || o.module_id || ':' || o.simulation_date=e.object_key",
+      "course": "SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:course:' || course_id || ':1' event_id,'Course Offering Proposed' activity,course_offering_proposed_at timestamp,course_id object_key FROM course WHERE course_offering_proposed_at IS NOT NULL) e JOIN course o ON o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:course:' || course_id || ':2' event_id,'Course Offering Approved' activity,course_offering_approved_at timestamp,course_id object_key FROM course WHERE course_offering_approved_at IS NOT NULL) e JOIN course o ON o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:course:' || course_id || ':3' event_id,'Course Offering Published' activity,course_offering_published_at timestamp,course_id object_key FROM course WHERE course_offering_published_at IS NOT NULL) e JOIN course o ON o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:course:' || course_id || ':4' event_id,'Course Offering Closed' activity,course_offering_closed_at timestamp,course_id object_key FROM course WHERE course_offering_closed_at IS NOT NULL) e JOIN course o ON o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':1' event_id, 'Registration Requested' activity, registration_requested_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_requested_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':2' event_id, 'Registration Approved' activity, registration_approved_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_approved_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':3' event_id, 'Course Started' activity, course_started_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_started_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':4' event_id, 'Course Assessment Completed' activity, course_assessment_completed_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_assessment_completed_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':5' event_id, 'Course Grade Finalized' activity, course_grade_finalized_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_grade_finalized_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key",
+      "task": "SELECT e.event_id,o.task_id case_id FROM (SELECT 'LC:task:' || task_id || ':1' event_id,'Design Task Created' activity,design_task_created_at timestamp,task_id object_key FROM task WHERE design_task_created_at IS NOT NULL) e JOIN task o ON o.task_id=e.object_key UNION ALL SELECT e.event_id,o.task_id case_id FROM (SELECT 'LC:task:' || task_id || ':2' event_id,'Design Task Approved' activity,design_task_approved_at timestamp,task_id object_key FROM task WHERE design_task_approved_at IS NOT NULL) e JOIN task o ON o.task_id=e.object_key UNION ALL SELECT e.event_id,o.task_id case_id FROM (SELECT 'LC:task:' || task_id || ':3' event_id,'Design Task Published' activity,design_task_published_at timestamp,task_id object_key FROM task WHERE design_task_published_at IS NOT NULL) e JOIN task o ON o.task_id=e.object_key UNION ALL SELECT e.event_id,o.task_id case_id FROM (SELECT 'LC:task:' || task_id || ':4' event_id,'Design Task Closed' activity,design_task_closed_at timestamp,task_id object_key FROM task WHERE design_task_closed_at IS NOT NULL) e JOIN task o ON o.task_id=e.object_key",
+      "registration": "SELECT e.event_id,o.student_id || ':' || o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':1' event_id, 'Registration Requested' activity, registration_requested_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_requested_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':2' event_id, 'Registration Approved' activity, registration_approved_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_approved_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':3' event_id, 'Course Started' activity, course_started_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_started_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':4' event_id, 'Course Assessment Completed' activity, course_assessment_completed_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_assessment_completed_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key UNION ALL SELECT e.event_id,o.student_id || ':' || o.course_id case_id FROM (SELECT 'LC:registration:' || student_id || ':' || course_id || ':5' event_id, 'Course Grade Finalized' activity, course_grade_finalized_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_grade_finalized_at IS NOT NULL) e JOIN registration o ON o.student_id || ':' || o.course_id=e.object_key",
+      "degree_examination_result": "SELECT e.event_id,o.result_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':1' event_id, 'Examination Scheduled' activity, examination_scheduled_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_scheduled_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.result_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':2' event_id, 'Examination Checked In' activity, examination_checked_in_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_checked_in_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.result_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':3' event_id, 'Examination Score Published' activity, examination_score_published_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_score_published_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key UNION ALL SELECT e.event_id,o.result_id case_id FROM (SELECT 'LC:degree_examination_result:' || result_id || ':4' event_id, 'Examination Result Reviewed' activity, examination_result_reviewed_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_result_reviewed_at IS NOT NULL) e JOIN degree_examination_result o ON o.result_id=e.object_key",
+      "assignment_grading": "SELECT e.event_id,o.assignment_id || ':' || o.instructor_id || ':' || o.grading_time case_id FROM (SELECT reassessment_event_id event_id,'Assignment Regraded' activity,grading_time timestamp,assignment_id || ':' || instructor_id || ':' || grading_time object_key FROM assignment_grading WHERE grading_kind='REASSESSMENT') e JOIN assignment_grading o ON o.assignment_id || ':' || o.instructor_id || ':' || o.grading_time=e.object_key"
+    }
+  }
 }

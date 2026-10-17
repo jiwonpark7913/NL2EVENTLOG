@@ -66,14 +66,7 @@
     "student_simulation_experiment_result": 27,
     "assignment": 20,
     "instructor": 3,
-    "assignment_grading": 18,
-    "assignment_activity": 21,
-    "simulation_module_activity": 11,
-    "student_simulation_experiment_result_activity": 104,
-    "thesis_activity": 12,
-    "course_activity": 23,
-    "task_activity": 11,
-    "lifecycle_case_link": 1675
+    "assignment_grading": 25
   },
   "scenario_counts": {
     "failed": 10,
@@ -230,7 +223,7 @@
       "question_id": "OU10",
       "question_type": "Q3",
       "status": "pass",
-      "event_count": 18
+      "event_count": 25
     },
     {
       "question_id": "OU11",
@@ -468,7 +461,7 @@
       "question_id": "OU10P",
       "question_type": "Q4",
       "status": "pass",
-      "event_count": 18
+      "event_count": 25
     },
     {
       "question_id": "OU10E",
@@ -749,13 +742,14 @@
       "case_concept": "Assignment grading record",
       "kind": "event_record",
       "status": "answerable",
-      "scope_rule": "The single grading action represented by the assignment-instructor-time key.",
-      "case_count": 18,
-      "cases_with_events": 18,
+      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this assignment grading record.",
+      "case_count": 25,
+      "cases_with_events": 25,
       "cases_without_events": 0,
-      "event_rows": 18,
+      "event_rows": 25,
       "activities": [
-        "Assignment Graded"
+        "Assignment Graded",
+        "Assignment Regraded"
       ],
       "log_path": "private/gold_logs/OU10.csv"
     },
@@ -779,43 +773,7 @@
       "log_path": "private/gold_logs/OU11.csv"
     }
   ],
-  "unavailable_object_views": [
-    {
-      "case_table": "assignment_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "simulation_module_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "student_simulation_experiment_result_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "thesis_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "course_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "task_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "lifecycle_case_link",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    }
-  ],
+  "unavailable_object_views": [],
   "total_questions": 70,
   "answerable_questions": 66,
   "lifecycle_extensions": {
@@ -837,6 +795,20 @@
     "original_event_identity_and_time": "preserved",
     "duplicate_event_storage": "none"
   },
+  "native_consolidation": {
+    "final_tables": 11,
+    "removed_tables": [
+      "assignment_activity",
+      "thesis_activity",
+      "simulation_module_activity",
+      "student_simulation_experiment_result_activity",
+      "course_activity",
+      "task_activity",
+      "lifecycle_case_link"
+    ],
+    "original_events": "preserved",
+    "actual_source_pk_fk": "retained"
+  },
   "question_type_counts": {
     "Q1": 23,
     "Q2": 23,
@@ -845,9 +817,9 @@
   },
   "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
   "timestamp_summary": {
-    "timestamp_columns": 27,
-    "event_timestamp_columns": 26,
-    "other_timestamp_columns": 1,
+    "timestamp_columns": 40,
+    "event_timestamp_columns": 40,
+    "other_timestamp_columns": 0,
     "date_only_columns": [
       "student.date_of_birth",
       "task.task_start_date",

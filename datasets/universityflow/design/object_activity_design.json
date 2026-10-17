@@ -33,7 +33,7 @@
       }
     ],
     "row_activities": [],
-    "storage": "Actual milestone columns on registration"
+    "storage": "Existing registration milestone columns"
   },
   {
     "object_table": "degree_examination_result",
@@ -64,11 +64,10 @@
       }
     ],
     "row_activities": [],
-    "storage": "Actual milestone columns on degree_examination_result"
+    "storage": "Existing degree_examination_result milestone columns"
   },
   {
     "object_table": "assignment",
-    "activity_table": "assignment_activity",
     "activities": [
       "Assignment Assigned",
       "Assignment Submitted",
@@ -80,6 +79,14 @@
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
     "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
     "milestone_columns": [
+      {
+        "activity": "Assignment Revision Requested",
+        "column": "assignment_revision_requested_at"
+      },
+      {
+        "activity": "Assignment Resubmitted",
+        "column": "assignment_resubmitted_at"
+      },
       {
         "activity": "Assignment Assigned",
         "column": "assignment_assigned_at"
@@ -93,16 +100,11 @@
         "column": "assignment_grade_finalized_at"
       }
     ],
-    "row_activities": [
-      "Assignment Revision Requested",
-      "Assignment Resubmitted",
-      "Assignment Regraded"
-    ],
-    "storage": "Actual milestone columns on assignment; remaining repeatable actions stay in assignment_activity"
+    "row_activities": [],
+    "storage": "Existing assignment milestone columns; grading/regrading rows in assignment_grading"
   },
   {
     "object_table": "simulation_module",
-    "activity_table": "simulation_module_activity",
     "activities": [
       "Simulation Module Published",
       "Simulation Module Validated",
@@ -110,11 +112,30 @@
       "Simulation Module Retired"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Simulation Module Published",
+        "column": "simulation_module_published_at"
+      },
+      {
+        "activity": "Simulation Module Validated",
+        "column": "simulation_module_validated_at"
+      },
+      {
+        "activity": "Simulation Module Released",
+        "column": "simulation_module_released_at"
+      },
+      {
+        "activity": "Simulation Module Retired",
+        "column": "simulation_module_retired_at"
+      }
+    ],
+    "row_activities": [],
+    "storage": "Existing simulation_module milestone columns"
   },
   {
     "object_table": "student_simulation_experiment_result",
-    "activity_table": "student_simulation_experiment_result_activity",
     "activities": [
       "Simulation Run Scheduled",
       "Simulation Run Started",
@@ -122,11 +143,30 @@
       "Simulation Result Accepted"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Simulation Run Scheduled",
+        "column": "simulation_run_scheduled_at"
+      },
+      {
+        "activity": "Simulation Run Started",
+        "column": "simulation_run_started_at"
+      },
+      {
+        "activity": "Simulation Output Reviewed",
+        "column": "simulation_output_reviewed_at"
+      },
+      {
+        "activity": "Simulation Result Accepted",
+        "column": "simulation_result_accepted_at"
+      }
+    ],
+    "row_activities": [],
+    "storage": "Existing student_simulation_experiment_result milestone columns"
   },
   {
     "object_table": "thesis",
-    "activity_table": "thesis_activity",
     "activities": [
       "Thesis Draft Registered",
       "Thesis Review Started",
@@ -137,6 +177,14 @@
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
     "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
     "milestone_columns": [
+      {
+        "activity": "Thesis Revision Requested",
+        "column": "thesis_revision_requested_at"
+      },
+      {
+        "activity": "Thesis Resubmitted",
+        "column": "thesis_resubmitted_at"
+      },
       {
         "activity": "Thesis Draft Registered",
         "column": "thesis_draft_registered_at"
@@ -150,15 +198,11 @@
         "column": "thesis_accepted_at"
       }
     ],
-    "row_activities": [
-      "Thesis Revision Requested",
-      "Thesis Resubmitted"
-    ],
-    "storage": "Actual milestone columns on thesis; remaining repeatable actions stay in thesis_activity"
+    "row_activities": [],
+    "storage": "Existing thesis milestone columns"
   },
   {
     "object_table": "course",
-    "activity_table": "course_activity",
     "activities": [
       "Course Offering Proposed",
       "Course Offering Approved",
@@ -166,11 +210,30 @@
       "Course Offering Closed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Course Offering Proposed",
+        "column": "course_offering_proposed_at"
+      },
+      {
+        "activity": "Course Offering Approved",
+        "column": "course_offering_approved_at"
+      },
+      {
+        "activity": "Course Offering Published",
+        "column": "course_offering_published_at"
+      },
+      {
+        "activity": "Course Offering Closed",
+        "column": "course_offering_closed_at"
+      }
+    ],
+    "row_activities": [],
+    "storage": "Existing course milestone columns"
   },
   {
     "object_table": "task",
-    "activity_table": "task_activity",
     "activities": [
       "Design Task Created",
       "Design Task Approved",
@@ -178,6 +241,26 @@
       "Design Task Closed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Design Task Created",
+        "column": "design_task_created_at"
+      },
+      {
+        "activity": "Design Task Approved",
+        "column": "design_task_approved_at"
+      },
+      {
+        "activity": "Design Task Published",
+        "column": "design_task_published_at"
+      },
+      {
+        "activity": "Design Task Closed",
+        "column": "design_task_closed_at"
+      }
+    ],
+    "row_activities": [],
+    "storage": "Existing task milestone columns"
   }
 ]

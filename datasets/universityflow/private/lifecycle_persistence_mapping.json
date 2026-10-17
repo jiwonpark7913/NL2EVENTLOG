@@ -1,122 +1,231 @@
 [
   {
-    "table": "assignment_activity",
-    "event_key": [
-      "event_id"
-    ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
+    "activity": "Assignment Revision Requested",
+    "table": "assignment",
     "object_table": "assignment",
     "object_key": [
       "assignment_id"
     ],
-    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM assignment_activity",
-    "encoding": "row",
-    "activities": [
-      "Assignment Revision Requested",
-      "Assignment Resubmitted",
-      "Assignment Regraded"
-    ]
+    "encoding": "column",
+    "timestamp_column": "assignment_revision_requested_at",
+    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':3' event_id,'Assignment Revision Requested' activity,assignment_revision_requested_at timestamp,assignment_id object_key FROM assignment WHERE assignment_revision_requested_at IS NOT NULL"
   },
   {
-    "table": "simulation_module_activity",
-    "event_key": [
-      "event_id"
+    "activity": "Assignment Resubmitted",
+    "table": "assignment",
+    "object_table": "assignment",
+    "object_key": [
+      "assignment_id"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
+    "encoding": "column",
+    "timestamp_column": "assignment_resubmitted_at",
+    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':4' event_id,'Assignment Resubmitted' activity,assignment_resubmitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_resubmitted_at IS NOT NULL"
+  },
+  {
+    "activity": "Thesis Revision Requested",
+    "table": "thesis",
+    "object_table": "thesis",
+    "object_key": [
+      "thesis_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "thesis_revision_requested_at",
+    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':3' event_id,'Thesis Revision Requested' activity,thesis_revision_requested_at timestamp,thesis_id object_key FROM thesis WHERE thesis_revision_requested_at IS NOT NULL"
+  },
+  {
+    "activity": "Thesis Resubmitted",
+    "table": "thesis",
+    "object_table": "thesis",
+    "object_key": [
+      "thesis_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "thesis_resubmitted_at",
+    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':4' event_id,'Thesis Resubmitted' activity,thesis_resubmitted_at timestamp,thesis_id object_key FROM thesis WHERE thesis_resubmitted_at IS NOT NULL"
+  },
+  {
+    "activity": "Simulation Module Published",
+    "table": "simulation_module",
     "object_table": "simulation_module",
     "object_key": [
       "module_id"
     ],
-    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM simulation_module_activity",
-    "encoding": "row",
-    "activities": [
-      "Simulation Module Published",
-      "Simulation Module Validated",
-      "Simulation Module Released",
-      "Simulation Module Retired"
-    ]
+    "encoding": "column",
+    "timestamp_column": "simulation_module_published_at",
+    "event_sql": "SELECT 'LC:simulation_module:' || module_id || ':1' event_id,'Simulation Module Published' activity,simulation_module_published_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_published_at IS NOT NULL"
   },
   {
-    "table": "student_simulation_experiment_result_activity",
-    "event_key": [
-      "event_id"
+    "activity": "Simulation Module Validated",
+    "table": "simulation_module",
+    "object_table": "simulation_module",
+    "object_key": [
+      "module_id"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
+    "encoding": "column",
+    "timestamp_column": "simulation_module_validated_at",
+    "event_sql": "SELECT 'LC:simulation_module:' || module_id || ':2' event_id,'Simulation Module Validated' activity,simulation_module_validated_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_validated_at IS NOT NULL"
+  },
+  {
+    "activity": "Simulation Module Released",
+    "table": "simulation_module",
+    "object_table": "simulation_module",
+    "object_key": [
+      "module_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "simulation_module_released_at",
+    "event_sql": "SELECT 'LC:simulation_module:' || module_id || ':3' event_id,'Simulation Module Released' activity,simulation_module_released_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_released_at IS NOT NULL"
+  },
+  {
+    "activity": "Simulation Module Retired",
+    "table": "simulation_module",
+    "object_table": "simulation_module",
+    "object_key": [
+      "module_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "simulation_module_retired_at",
+    "event_sql": "SELECT 'LC:simulation_module:' || module_id || ':4' event_id,'Simulation Module Retired' activity,simulation_module_retired_at timestamp,module_id object_key FROM simulation_module WHERE simulation_module_retired_at IS NOT NULL"
+  },
+  {
+    "activity": "Simulation Run Scheduled",
+    "table": "student_simulation_experiment_result",
     "object_table": "student_simulation_experiment_result",
     "object_key": [
       "student_id",
       "module_id",
       "simulation_date"
     ],
-    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM student_simulation_experiment_result_activity",
-    "encoding": "row",
-    "activities": [
-      "Simulation Run Scheduled",
-      "Simulation Run Started",
-      "Simulation Output Reviewed",
-      "Simulation Result Accepted"
-    ]
+    "encoding": "column",
+    "timestamp_column": "simulation_run_scheduled_at",
+    "event_sql": "SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':1' event_id,'Simulation Run Scheduled' activity,simulation_run_scheduled_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_scheduled_at IS NOT NULL"
   },
   {
-    "table": "thesis_activity",
-    "event_key": [
-      "event_id"
-    ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
-    "object_table": "thesis",
+    "activity": "Simulation Run Started",
+    "table": "student_simulation_experiment_result",
+    "object_table": "student_simulation_experiment_result",
     "object_key": [
-      "thesis_id"
+      "student_id",
+      "module_id",
+      "simulation_date"
     ],
-    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM thesis_activity",
-    "encoding": "row",
-    "activities": [
-      "Thesis Revision Requested",
-      "Thesis Resubmitted"
-    ]
+    "encoding": "column",
+    "timestamp_column": "simulation_run_started_at",
+    "event_sql": "SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':2' event_id,'Simulation Run Started' activity,simulation_run_started_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_run_started_at IS NOT NULL"
   },
   {
-    "table": "course_activity",
-    "event_key": [
-      "event_id"
+    "activity": "Simulation Output Reviewed",
+    "table": "student_simulation_experiment_result",
+    "object_table": "student_simulation_experiment_result",
+    "object_key": [
+      "student_id",
+      "module_id",
+      "simulation_date"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
+    "encoding": "column",
+    "timestamp_column": "simulation_output_reviewed_at",
+    "event_sql": "SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':3' event_id,'Simulation Output Reviewed' activity,simulation_output_reviewed_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_output_reviewed_at IS NOT NULL"
+  },
+  {
+    "activity": "Simulation Result Accepted",
+    "table": "student_simulation_experiment_result",
+    "object_table": "student_simulation_experiment_result",
+    "object_key": [
+      "student_id",
+      "module_id",
+      "simulation_date"
+    ],
+    "encoding": "column",
+    "timestamp_column": "simulation_result_accepted_at",
+    "event_sql": "SELECT 'LC:student_simulation_experiment_result:' || student_id || ':' || module_id || ':' || simulation_date || ':4' event_id,'Simulation Result Accepted' activity,simulation_result_accepted_at timestamp,student_id || ':' || module_id || ':' || simulation_date object_key FROM student_simulation_experiment_result WHERE simulation_result_accepted_at IS NOT NULL"
+  },
+  {
+    "activity": "Course Offering Proposed",
+    "table": "course",
     "object_table": "course",
     "object_key": [
       "course_id"
     ],
-    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM course_activity",
-    "encoding": "row",
-    "activities": [
-      "Course Offering Proposed",
-      "Course Offering Approved",
-      "Course Offering Published",
-      "Course Offering Closed"
-    ]
+    "encoding": "column",
+    "timestamp_column": "course_offering_proposed_at",
+    "event_sql": "SELECT 'LC:course:' || course_id || ':1' event_id,'Course Offering Proposed' activity,course_offering_proposed_at timestamp,course_id object_key FROM course WHERE course_offering_proposed_at IS NOT NULL"
   },
   {
-    "table": "task_activity",
-    "event_key": [
-      "event_id"
+    "activity": "Course Offering Approved",
+    "table": "course",
+    "object_table": "course",
+    "object_key": [
+      "course_id"
     ],
-    "timestamp_column": "occurred_at",
-    "activity_column": "activity",
+    "encoding": "column",
+    "timestamp_column": "course_offering_approved_at",
+    "event_sql": "SELECT 'LC:course:' || course_id || ':2' event_id,'Course Offering Approved' activity,course_offering_approved_at timestamp,course_id object_key FROM course WHERE course_offering_approved_at IS NOT NULL"
+  },
+  {
+    "activity": "Course Offering Published",
+    "table": "course",
+    "object_table": "course",
+    "object_key": [
+      "course_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "course_offering_published_at",
+    "event_sql": "SELECT 'LC:course:' || course_id || ':3' event_id,'Course Offering Published' activity,course_offering_published_at timestamp,course_id object_key FROM course WHERE course_offering_published_at IS NOT NULL"
+  },
+  {
+    "activity": "Course Offering Closed",
+    "table": "course",
+    "object_table": "course",
+    "object_key": [
+      "course_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "course_offering_closed_at",
+    "event_sql": "SELECT 'LC:course:' || course_id || ':4' event_id,'Course Offering Closed' activity,course_offering_closed_at timestamp,course_id object_key FROM course WHERE course_offering_closed_at IS NOT NULL"
+  },
+  {
+    "activity": "Design Task Created",
+    "table": "task",
     "object_table": "task",
     "object_key": [
       "task_id"
     ],
-    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM task_activity",
-    "encoding": "row",
-    "activities": [
-      "Design Task Created",
-      "Design Task Approved",
-      "Design Task Published",
-      "Design Task Closed"
-    ]
+    "encoding": "column",
+    "timestamp_column": "design_task_created_at",
+    "event_sql": "SELECT 'LC:task:' || task_id || ':1' event_id,'Design Task Created' activity,design_task_created_at timestamp,task_id object_key FROM task WHERE design_task_created_at IS NOT NULL"
+  },
+  {
+    "activity": "Design Task Approved",
+    "table": "task",
+    "object_table": "task",
+    "object_key": [
+      "task_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "design_task_approved_at",
+    "event_sql": "SELECT 'LC:task:' || task_id || ':2' event_id,'Design Task Approved' activity,design_task_approved_at timestamp,task_id object_key FROM task WHERE design_task_approved_at IS NOT NULL"
+  },
+  {
+    "activity": "Design Task Published",
+    "table": "task",
+    "object_table": "task",
+    "object_key": [
+      "task_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "design_task_published_at",
+    "event_sql": "SELECT 'LC:task:' || task_id || ':3' event_id,'Design Task Published' activity,design_task_published_at timestamp,task_id object_key FROM task WHERE design_task_published_at IS NOT NULL"
+  },
+  {
+    "activity": "Design Task Closed",
+    "table": "task",
+    "object_table": "task",
+    "object_key": [
+      "task_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "design_task_closed_at",
+    "event_sql": "SELECT 'LC:task:' || task_id || ':4' event_id,'Design Task Closed' activity,design_task_closed_at timestamp,task_id object_key FROM task WHERE design_task_closed_at IS NOT NULL"
   },
   {
     "activity": "Registration Requested",
@@ -133,7 +242,7 @@
       "course_id",
       "registration_requested_at"
     ],
-    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':1' event_id, 'Registration Requested' activity, registration_requested_at timestamp FROM registration WHERE registration_requested_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':1' event_id, 'Registration Requested' activity, registration_requested_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_requested_at IS NOT NULL"
   },
   {
     "activity": "Registration Approved",
@@ -150,7 +259,7 @@
       "course_id",
       "registration_approved_at"
     ],
-    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':2' event_id, 'Registration Approved' activity, registration_approved_at timestamp FROM registration WHERE registration_approved_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':2' event_id, 'Registration Approved' activity, registration_approved_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE registration_approved_at IS NOT NULL"
   },
   {
     "activity": "Course Started",
@@ -167,7 +276,7 @@
       "course_id",
       "course_started_at"
     ],
-    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':3' event_id, 'Course Started' activity, course_started_at timestamp FROM registration WHERE course_started_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':3' event_id, 'Course Started' activity, course_started_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_started_at IS NOT NULL"
   },
   {
     "activity": "Course Assessment Completed",
@@ -184,7 +293,7 @@
       "course_id",
       "course_assessment_completed_at"
     ],
-    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':4' event_id, 'Course Assessment Completed' activity, course_assessment_completed_at timestamp FROM registration WHERE course_assessment_completed_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':4' event_id, 'Course Assessment Completed' activity, course_assessment_completed_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_assessment_completed_at IS NOT NULL"
   },
   {
     "activity": "Course Grade Finalized",
@@ -201,7 +310,7 @@
       "course_id",
       "course_grade_finalized_at"
     ],
-    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':5' event_id, 'Course Grade Finalized' activity, course_grade_finalized_at timestamp FROM registration WHERE course_grade_finalized_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:registration:' || student_id || ':' || course_id || ':5' event_id, 'Course Grade Finalized' activity, course_grade_finalized_at timestamp,student_id || ':' || course_id object_key FROM registration WHERE course_grade_finalized_at IS NOT NULL"
   },
   {
     "activity": "Examination Scheduled",
@@ -216,7 +325,7 @@
       "result_id",
       "examination_scheduled_at"
     ],
-    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':1' event_id, 'Examination Scheduled' activity, examination_scheduled_at timestamp FROM degree_examination_result WHERE examination_scheduled_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':1' event_id, 'Examination Scheduled' activity, examination_scheduled_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_scheduled_at IS NOT NULL"
   },
   {
     "activity": "Examination Checked In",
@@ -231,7 +340,7 @@
       "result_id",
       "examination_checked_in_at"
     ],
-    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':2' event_id, 'Examination Checked In' activity, examination_checked_in_at timestamp FROM degree_examination_result WHERE examination_checked_in_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':2' event_id, 'Examination Checked In' activity, examination_checked_in_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_checked_in_at IS NOT NULL"
   },
   {
     "activity": "Examination Score Published",
@@ -246,7 +355,7 @@
       "result_id",
       "examination_score_published_at"
     ],
-    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':3' event_id, 'Examination Score Published' activity, examination_score_published_at timestamp FROM degree_examination_result WHERE examination_score_published_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':3' event_id, 'Examination Score Published' activity, examination_score_published_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_score_published_at IS NOT NULL"
   },
   {
     "activity": "Examination Result Reviewed",
@@ -261,7 +370,7 @@
       "result_id",
       "examination_result_reviewed_at"
     ],
-    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':4' event_id, 'Examination Result Reviewed' activity, examination_result_reviewed_at timestamp FROM degree_examination_result WHERE examination_result_reviewed_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:degree_examination_result:' || result_id || ':4' event_id, 'Examination Result Reviewed' activity, examination_result_reviewed_at timestamp,result_id object_key FROM degree_examination_result WHERE examination_result_reviewed_at IS NOT NULL"
   },
   {
     "activity": "Assignment Assigned",
@@ -276,7 +385,7 @@
       "assignment_id",
       "assignment_assigned_at"
     ],
-    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':1' event_id, 'Assignment Assigned' activity, assignment_assigned_at timestamp FROM assignment WHERE assignment_assigned_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':1' event_id, 'Assignment Assigned' activity, assignment_assigned_at timestamp,assignment_id object_key FROM assignment WHERE assignment_assigned_at IS NOT NULL"
   },
   {
     "activity": "Assignment Submitted",
@@ -291,7 +400,7 @@
       "assignment_id",
       "assignment_submitted_at"
     ],
-    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':2' event_id, 'Assignment Submitted' activity, assignment_submitted_at timestamp FROM assignment WHERE assignment_submitted_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':2' event_id, 'Assignment Submitted' activity, assignment_submitted_at timestamp,assignment_id object_key FROM assignment WHERE assignment_submitted_at IS NOT NULL"
   },
   {
     "activity": "Assignment Grade Finalized",
@@ -306,7 +415,7 @@
       "assignment_id",
       "assignment_grade_finalized_at"
     ],
-    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':' || CASE WHEN EXISTS (SELECT 1 FROM assignment_activity rv WHERE rv.assignment_id=assignment.assignment_id AND rv.activity='Assignment Revision Requested') THEN '6' ELSE '3' END event_id, 'Assignment Grade Finalized' activity, assignment_grade_finalized_at timestamp FROM assignment WHERE assignment_grade_finalized_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:assignment:' || assignment_id || ':' || CASE WHEN assignment_revision_requested_at IS NOT NULL THEN '6' ELSE '3' END event_id,'Assignment Grade Finalized' activity,assignment_grade_finalized_at timestamp,assignment_id object_key FROM assignment WHERE assignment_grade_finalized_at IS NOT NULL"
   },
   {
     "activity": "Thesis Draft Registered",
@@ -321,7 +430,7 @@
       "thesis_id",
       "thesis_draft_registered_at"
     ],
-    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':1' event_id, 'Thesis Draft Registered' activity, thesis_draft_registered_at timestamp FROM thesis WHERE thesis_draft_registered_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':1' event_id, 'Thesis Draft Registered' activity, thesis_draft_registered_at timestamp,thesis_id object_key FROM thesis WHERE thesis_draft_registered_at IS NOT NULL"
   },
   {
     "activity": "Thesis Review Started",
@@ -336,7 +445,7 @@
       "thesis_id",
       "thesis_review_started_at"
     ],
-    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':2' event_id, 'Thesis Review Started' activity, thesis_review_started_at timestamp FROM thesis WHERE thesis_review_started_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':2' event_id, 'Thesis Review Started' activity, thesis_review_started_at timestamp,thesis_id object_key FROM thesis WHERE thesis_review_started_at IS NOT NULL"
   },
   {
     "activity": "Thesis Accepted",
@@ -351,6 +460,19 @@
       "thesis_id",
       "thesis_accepted_at"
     ],
-    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':' || CASE WHEN EXISTS (SELECT 1 FROM thesis_activity rv WHERE rv.thesis_id=thesis.thesis_id AND rv.activity='Thesis Revision Requested') THEN '5' ELSE '3' END event_id, 'Thesis Accepted' activity, thesis_accepted_at timestamp FROM thesis WHERE thesis_accepted_at IS NOT NULL"
+    "event_sql": "SELECT 'LC:thesis:' || thesis_id || ':' || CASE WHEN thesis_revision_requested_at IS NOT NULL THEN '5' ELSE '3' END event_id,'Thesis Accepted' activity,thesis_accepted_at timestamp,thesis_id object_key FROM thesis WHERE thesis_accepted_at IS NOT NULL"
+  },
+  {
+    "activity": "Assignment Regraded",
+    "table": "assignment_grading",
+    "object_table": "assignment_grading",
+    "object_key": [
+      "assignment_id",
+      "instructor_id",
+      "grading_time"
+    ],
+    "encoding": "row",
+    "timestamp_column": "grading_time",
+    "event_sql": "SELECT reassessment_event_id event_id,'Assignment Regraded' activity,grading_time timestamp,assignment_id || ':' || instructor_id || ':' || grading_time object_key FROM assignment_grading WHERE grading_kind='REASSESSMENT'"
   }
 ]

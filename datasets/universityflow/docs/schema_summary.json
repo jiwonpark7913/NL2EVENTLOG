@@ -1,5 +1,5 @@
 {
-  "table_count": 18,
+  "table_count": 11,
   "tables": {
     "student": {
       "row_count": 40,
@@ -10,7 +10,7 @@
     },
     "course": {
       "row_count": 6,
-      "column_count": 6,
+      "column_count": 10,
       "primary_key": [
         "course_id"
       ]
@@ -32,28 +32,28 @@
     },
     "task": {
       "row_count": 3,
-      "column_count": 6,
+      "column_count": 10,
       "primary_key": [
         "task_id"
       ]
     },
     "simulation_module": {
       "row_count": 3,
-      "column_count": 5,
+      "column_count": 9,
       "primary_key": [
         "module_id"
       ]
     },
     "thesis": {
       "row_count": 16,
-      "column_count": 8,
+      "column_count": 10,
       "primary_key": [
         "thesis_id"
       ]
     },
     "student_simulation_experiment_result": {
       "row_count": 27,
-      "column_count": 5,
+      "column_count": 9,
       "primary_key": [
         "student_id",
         "module_id",
@@ -62,7 +62,7 @@
     },
     "assignment": {
       "row_count": 20,
-      "column_count": 6,
+      "column_count": 8,
       "primary_key": [
         "assignment_id"
       ]
@@ -75,63 +75,12 @@
       ]
     },
     "assignment_grading": {
-      "row_count": 18,
-      "column_count": 5,
+      "row_count": 25,
+      "column_count": 7,
       "primary_key": [
         "assignment_id",
         "instructor_id",
         "grading_time"
-      ]
-    },
-    "assignment_activity": {
-      "row_count": 21,
-      "column_count": 5,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "simulation_module_activity": {
-      "row_count": 11,
-      "column_count": 5,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "student_simulation_experiment_result_activity": {
-      "row_count": 104,
-      "column_count": 7,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "thesis_activity": {
-      "row_count": 12,
-      "column_count": 5,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "course_activity": {
-      "row_count": 23,
-      "column_count": 5,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "task_activity": {
-      "row_count": 11,
-      "column_count": 5,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "lifecycle_case_link": {
-      "row_count": 1675,
-      "column_count": 3,
-      "primary_key": [
-        "event_id",
-        "case_table",
-        "case_id"
       ]
     }
   },
@@ -207,70 +156,6 @@
       "logical": false,
       "from_col": "assignment_id",
       "to_col": "assignment_id"
-    },
-    {
-      "parent": "assignment",
-      "child": "assignment_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "assignment_id",
-      "to_col": "assignment_id"
-    },
-    {
-      "parent": "simulation_module",
-      "child": "simulation_module_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "module_id",
-      "to_col": "module_id"
-    },
-    {
-      "parent": "student_simulation_experiment_result",
-      "child": "student_simulation_experiment_result_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "student_id",
-      "to_col": "student_id"
-    },
-    {
-      "parent": "student_simulation_experiment_result",
-      "child": "student_simulation_experiment_result_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "module_id",
-      "to_col": "module_id"
-    },
-    {
-      "parent": "student_simulation_experiment_result",
-      "child": "student_simulation_experiment_result_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "simulation_date",
-      "to_col": "simulation_date"
-    },
-    {
-      "parent": "thesis",
-      "child": "thesis_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "thesis_id",
-      "to_col": "thesis_id"
-    },
-    {
-      "parent": "course",
-      "child": "course_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "course_id",
-      "to_col": "course_id"
-    },
-    {
-      "parent": "task",
-      "child": "task_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "task_id",
-      "to_col": "task_id"
     }
   ]
 }

@@ -14,7 +14,7 @@ for p in (ROOT/'datasets').iterdir():
   mapping=json.loads((p/'design/timestamp_column_mapping.json').read_text())
   for m in mapping['migrated_columns']:
    assert con.execute('SELECT COUNT('+m['column']+') FROM '+m['table']).fetchone()[0]==len(m['preserved_event_ids'])
-   if m['old_table'] not in mapping['removed_empty_history_tables']:assert con.execute('SELECT COUNT(*) FROM '+m['old_table']+' WHERE activity=?',(m['activity'],)).fetchone()[0]==0
+   if con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?",(m['old_table'],)).fetchone():assert con.execute('SELECT COUNT(*) FROM '+m['old_table']+' WHERE activity=?',(m['activity'],)).fetchone()[0]==0
  if p.name=='plateflow':
   for r in con.execute('SELECT * FROM plate_material'):
    if r['plate_quality_review_started_at']:assert r['plate_quality_review_started_at']<r['plate_quality_released_at']

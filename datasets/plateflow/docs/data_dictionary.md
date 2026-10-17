@@ -20,6 +20,7 @@
 | standards_profile | Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment. |
 | layout | 1 Dictionary basic information; 2 Table definitions; 3 Column definitions |
 
+- A table has at most one PRIMARY KEY constraint. Multiple PK-marked columns are members of that single composite key; they are not independent primary keys. FK marks can overlap with those PK columns.
 - The three-part layout is a project documentation choice, not a mandated ISO/IEC template.
 - ISO/IEC 11179-4 addresses semantic definitions rather than prescribing their formatting. Only public standard scope descriptions were consulted.
 - SQL keys and constraints are taken from the executable DB. SQLite TEXT has no declared maximum length unless an explicit constraint says otherwise. Examples are observed synthetic values, not additional allowed-value constraints.

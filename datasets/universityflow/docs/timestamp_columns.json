@@ -1,7 +1,7 @@
 {
-  "timestamp_columns": 27,
-  "event_timestamp_columns": 26,
-  "other_timestamp_columns": 1,
+  "timestamp_columns": 40,
+  "event_timestamp_columns": 40,
+  "other_timestamp_columns": 0,
   "date_only_columns": [
     "student.date_of_birth",
     "task.task_start_date",
@@ -9,6 +9,34 @@
   ],
   "baseline_timestamp_columns": 14,
   "columns": [
+    {
+      "table": "course",
+      "column": "course_offering_proposed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 6
+    },
+    {
+      "table": "course",
+      "column": "course_offering_approved_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 6
+    },
+    {
+      "table": "course",
+      "column": "course_offering_published_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 6
+    },
+    {
+      "table": "course",
+      "column": "course_offering_closed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 5
+    },
     {
       "table": "registration",
       "column": "registration_time",
@@ -87,6 +115,62 @@
       "non_null_rows": 34
     },
     {
+      "table": "task",
+      "column": "design_task_created_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 3
+    },
+    {
+      "table": "task",
+      "column": "design_task_approved_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 3
+    },
+    {
+      "table": "task",
+      "column": "design_task_published_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 3
+    },
+    {
+      "table": "task",
+      "column": "design_task_closed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 2
+    },
+    {
+      "table": "simulation_module",
+      "column": "simulation_module_published_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 3
+    },
+    {
+      "table": "simulation_module",
+      "column": "simulation_module_validated_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 3
+    },
+    {
+      "table": "simulation_module",
+      "column": "simulation_module_released_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 3
+    },
+    {
+      "table": "simulation_module",
+      "column": "simulation_module_retired_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 2
+    },
+    {
       "table": "thesis",
       "column": "submission_date",
       "role": "actual event time",
@@ -115,11 +199,53 @@
       "non_null_rows": 13
     },
     {
+      "table": "thesis",
+      "column": "thesis_revision_requested_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 6
+    },
+    {
+      "table": "thesis",
+      "column": "thesis_resubmitted_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 6
+    },
+    {
       "table": "student_simulation_experiment_result",
       "column": "simulation_date",
       "role": "actual event time",
       "used_as_event_time": true,
       "non_null_rows": 27
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "column": "simulation_run_scheduled_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 27
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "column": "simulation_run_started_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 27
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "column": "simulation_output_reviewed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 27
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "column": "simulation_result_accepted_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 23
     },
     {
       "table": "assignment",
@@ -143,60 +269,25 @@
       "non_null_rows": 15
     },
     {
+      "table": "assignment",
+      "column": "assignment_revision_requested_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 7
+    },
+    {
+      "table": "assignment",
+      "column": "assignment_resubmitted_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 7
+    },
+    {
       "table": "assignment_grading",
       "column": "grading_time",
       "role": "actual event time",
       "used_as_event_time": true,
-      "non_null_rows": 18
-    },
-    {
-      "table": "assignment_activity",
-      "column": "occurred_at",
-      "role": "actual event time",
-      "used_as_event_time": true,
-      "non_null_rows": 21
-    },
-    {
-      "table": "simulation_module_activity",
-      "column": "occurred_at",
-      "role": "actual event time",
-      "used_as_event_time": true,
-      "non_null_rows": 11
-    },
-    {
-      "table": "student_simulation_experiment_result_activity",
-      "column": "simulation_date",
-      "role": "copied timestamp in parent identity",
-      "used_as_event_time": false,
-      "non_null_rows": 104
-    },
-    {
-      "table": "student_simulation_experiment_result_activity",
-      "column": "occurred_at",
-      "role": "actual event time",
-      "used_as_event_time": true,
-      "non_null_rows": 104
-    },
-    {
-      "table": "thesis_activity",
-      "column": "occurred_at",
-      "role": "actual event time",
-      "used_as_event_time": true,
-      "non_null_rows": 12
-    },
-    {
-      "table": "course_activity",
-      "column": "occurred_at",
-      "role": "actual event time",
-      "used_as_event_time": true,
-      "non_null_rows": 23
-    },
-    {
-      "table": "task_activity",
-      "column": "occurred_at",
-      "role": "actual event time",
-      "used_as_event_time": true,
-      "non_null_rows": 11
+      "non_null_rows": 25
     }
   ]
 }

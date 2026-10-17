@@ -14,10 +14,10 @@ for name in ['warehouseflow','universityflow','plateflow']:
   q=g['question_id'];sql=(p/'private/gold_sql'/f'{q}.sql').read_text();actual=[dict(r) for r in con.execute(sql)];expected=list(csv.DictReader((p/'private/gold_logs'/f'{q}.csv').open()))
   assert actual==expected,(name,q);assert len({(e['case_id'],e['event_id']) for e in actual})==len(actual)
   assert all(all(e[k]==hist[e['event_id']][k] for k in ['activity','timestamp']) for e in actual);count+=1
- for table in ({r['case_table'] for r in con.execute('SELECT DISTINCT case_table FROM lifecycle_case_link')} if name!='plateflow' else set()):
+ for table in ({r['case_table'] for r in con.execute('SELECT DISTINCT case_table FROM lifecycle_case_link')} if con.execute("SELECT 1 FROM sqlite_master WHERE name='lifecycle_case_link'").fetchone() else set()):
   pk=[r['name'] for r in sorted(con.execute('PRAGMA table_info('+table+')'),key=lambda r:r['pk']) if r['pk']];keys={':'.join(str(r[k]) for k in pk) for r in con.execute('SELECT * FROM '+table)}
   assert {r[0] for r in con.execute('SELECT case_id FROM lifecycle_case_link WHERE case_table=?',(table,))}<=keys
- if name!='plateflow':assert {r[0] for r in con.execute('SELECT event_id FROM lifecycle_case_link')}<=hist.keys()
+ if con.execute("SELECT 1 FROM sqlite_master WHERE name='lifecycle_case_link'").fetchone():assert {r[0] for r in con.execute('SELECT event_id FROM lifecycle_case_link')}<=hist.keys()
  for table in [r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE '%_activity'")]:
   parent=table[:-9];pk=[r['name'] for r in sorted(con.execute('PRAGMA table_info('+parent+')'),key=lambda r:r['pk']) if r['pk']];groups={}
   for row in con.execute('SELECT * FROM '+table):groups.setdefault(tuple(row[k] for k in pk),[]).append(row)

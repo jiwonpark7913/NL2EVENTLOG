@@ -43,7 +43,7 @@
 | OU07 | Q3 Full Lifecycle | — | O | 5 | 5 | Extract the full recorded lifecycle event log for each simulation experiment result record. |
 | OU08 | Q3 Full Lifecycle | — | O | 7 | 7 | Extract the full recorded lifecycle event log for each assignment. |
 | OU09 | Q3 Full Lifecycle | — | O | 7 | 7 | Extract the full recorded lifecycle event log for each instructor. |
-| OU10 | Q3 Full Lifecycle | — | O | 1 | 1 | Extract the full recorded lifecycle event log for each assignment grading record. |
+| OU10 | Q3 Full Lifecycle | — | O | 2 | 2 | Extract the full recorded lifecycle event log for each assignment grading record. |
 | OU11 | Q3 Full Lifecycle | — | O | 4 | 4 | Extract the full recorded lifecycle event log for each course-design task. |
 | TS01 | Q1 Explicit | — | O | 4 | 4 | Extract Examination Scheduled, Examination Checked In, Examination Score Published, Examination Result Reviewed events for each student. |
 | TS02 | Q1 Explicit | — | O | 5 | 5 | Extract Registration Requested, Registration Approved, Course Started, Course Assessment Completed, Course Grade Finalized events for each student-course registration. |
@@ -83,7 +83,7 @@
 | OU09P | Q4 Full Lifecycle Paraphrased | OU09 | O | 7 | 7 | Show the complete recorded history associated with each instructor. |
 | OU09E | Q1 Explicit | — | O | 3 | 3 | Extract Assignment Assigned, Assignment Submitted, Assignment Graded events for each instructor. |
 | OU09EP | Q2 Paraphrased | OU09E | O | 3 | 3 | For each instructor, build a timeline of coursework being set for the student, the student handing in coursework, an instructor assessing the assignment. |
-| OU10P | Q4 Full Lifecycle Paraphrased | OU10 | O | 1 | 1 | Show the complete recorded history associated with each assignment grading record. |
+| OU10P | Q4 Full Lifecycle Paraphrased | OU10 | O | 2 | 2 | Show the complete recorded history associated with each assignment grading record. |
 | OU10E | Q1 Explicit | — | O | 1 | 1 | Extract Assignment Graded events for each assignment grading record. |
 | OU10EP | Q2 Paraphrased | OU10E | O | 1 | 1 | For each assignment grading record, build a timeline of an instructor assessing the assignment. |
 | OU11P | Q4 Full Lifecycle Paraphrased | OU11 | O | 4 | 4 | Show the complete recorded history associated with each course-design task. |

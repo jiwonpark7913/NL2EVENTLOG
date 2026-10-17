@@ -61,6 +61,8 @@ def construct(p):
   if g.get('category')!='object_view':continue
   available=g['process_view']['activities'];acts=[a for a in priority if a in available][:3]
   if len(acts)<min(3,len(available)):acts+=(a for a in available if a not in acts);acts=acts[:3]
+  overrides=json.loads((p/'input/task_scope_catalog.json').read_text()).get('explicit_activity_scope_overrides',{})
+  if qid in overrides:acts=overrides[qid];assert set(acts)<=set(available)
   q=copy.deepcopy(qs[qid]);new=copy.deepcopy(g);eid=qid+'E';q['question_id']=new['question_id']=eid;obj=g['process_view']['case_concept'];q['text']='Extract '+', '.join(acts)+' events for each '+obj.lower()+'.';new['process_view']['activities']=acts;new['process_view']['scope_rule']='Only the explicitly selected activities; use the same event-to-case relationships as the full object view.'
   literal=lambda x:"'"+x.replace("'","''")+"'";fullsql=b.compile_es(g['es']).strip().rstrip(';');new['es']=dict(version='question-subset-es-1',case_population_query=g['es']['case_population_query'],base_event_specification=g['es'],selected_activities=acts,compiled_sql='SELECT * FROM ('+fullsql+') WHERE activity IN ('+','.join(map(literal,acts))+') ORDER BY case_id,timestamp,event_id;');metadata(q,new,'Q1',generated=True);store(q,new)
   pq=copy.deepcopy(q);pg=copy.deepcopy(new);pq['question_id']=pg['question_id']=eid+'P';pq['text']='For each '+obj.lower()+', build a timeline of '+', '.join(PHRASES[a] for a in acts)+'.';metadata(pq,pg,'Q2',eid,True);store(pq,pg)

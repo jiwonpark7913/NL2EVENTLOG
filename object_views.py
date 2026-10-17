@@ -79,7 +79,7 @@ def extend_dataset(p):
    v=next(v for v in views if v['table']=='material_operation_history');sql=base['native_case_mapping_sql'][v['table']];v['mapping_sql']+=' UNION ALL '+sql
    for r in con.execute(sql):v['mapping'][r['event_id']].add(r['case_id'])
   if name=='universityflow':
-   add('task','Course-design task','Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.',"SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='task'",[(eid,oid) for eid,ids in added.get('task',{}).items() for oid in ids])
+   add('task','Course-design task','Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.',(base['native_case_mapping_sql']['task'] if 'native_case_mapping_sql' in base else "SELECT event_id,case_id FROM lifecycle_case_link WHERE case_table='task'"),[(eid,oid) for eid,ids in added.get('task',{}).items() for oid in ids])
  catalog=json.loads((p/'input/task_scope_catalog.json').read_text());report=json.loads((p/'validation_report.json').read_text());report['questions']=[q for q in report['questions'] if not q['question_id'].startswith(prefix)];results=[];coverage=[]
  for k,v in enumerate(views,1):
   qid=prefix+f'{k:02}';sql='SELECT e.event_id, m.case_id, e.activity, e.timestamp FROM ('+base_sql+') e JOIN ('+v['mapping_sql']+') m ON m.event_id=e.event_id ORDER BY m.case_id,e.timestamp,e.event_id;'

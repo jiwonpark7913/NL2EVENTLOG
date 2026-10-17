@@ -3,7 +3,7 @@
 - **Situation:** Students take examinations, request course registration, complete course assessment, submit assignments and simulation results, and revise theses. Courses, instructors and modules aggregate their explicitly linked actions.
 - **Source:** Three preserved RSchema university requirements and logical schemas. Original source columns and keys are preserved.
 - **Extension:** Milestone columns, retained action histories and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 18 tables; 11 object / case types; 41 activity types; 27 timestamp columns (26 event timestamp columns); 808 distinct events.
+- **Database:** 11 tables; 11 object / case types; 41 activity types; 40 timestamp columns (40 event timestamp columns); 808 distinct events.
 - **Gold:** 58 answerable question-specific CSV logs out of 62 questions. Paired requests share the same expected content.
 - **Execution:** Run `python datasets/universityflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
@@ -11,7 +11,7 @@
 
 | Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| UniversityFlow | 18 | 11 | 41 | 27 | 26 | 808 | 70 | 66 |
+| UniversityFlow | 11 | 11 | 41 | 40 | 40 | 808 | 70 | 66 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
@@ -31,7 +31,7 @@
 | student_simulation_experiment_result | Simulation Experiment Completed; Simulation Output Reviewed; Simulation Result Accepted; Simulation Run Scheduled; Simulation Run Started | Original recorded actions and authored lifecycle actions explicitly linked to this simulation experiment result record. | [CSV](private/gold_logs/OU07.csv) |
 | assignment | Assignment Assigned; Assignment Grade Finalized; Assignment Graded; Assignment Regraded; Assignment Resubmitted; Assignment Revision Requested; Assignment Submitted | Original recorded actions and authored lifecycle actions explicitly linked to this assignment. | [CSV](private/gold_logs/OU08.csv) |
 | instructor | Assignment Assigned; Assignment Grade Finalized; Assignment Graded; Assignment Regraded; Assignment Resubmitted; Assignment Revision Requested; Assignment Submitted | Original recorded actions and authored lifecycle actions explicitly linked to this instructor. | [CSV](private/gold_logs/OU09.csv) |
-| assignment_grading | Assignment Graded | The single grading action represented by the assignment-instructor-time key. | [CSV](private/gold_logs/OU10.csv) |
+| assignment_grading | Assignment Graded; Assignment Regraded | Original recorded actions and authored lifecycle actions explicitly linked to this assignment grading record. | [CSV](private/gold_logs/OU10.csv) |
 | task | Design Task Approved; Design Task Closed; Design Task Created; Design Task Published | Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions. | [CSV](private/gold_logs/OU11.csv) |
 
 - Atomic grading and operation records are auxiliary cases; a single occurrence is not expanded into an invented lifecycle.
@@ -43,9 +43,9 @@
 
 ## Database, extraction and validation
 
-- One-time events use named actual-time columns on the existing business record. Retained `<object>_activity` tables store the remaining row-encoded actions; migrated events are removed from those rows.
-- `lifecycle_case_link` is an explicitly validated auxiliary index relating a recorded event to each permitted case. It is not a business object.
-- Full ES queries union original milestone sources and new action histories. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
+- One-time stages are named actual-time columns on the existing business tables. Repeated grading/reassessment uses rows of `assignment_grading`, distinguished by `grading_kind`. No `_activity` tables remain.
+- Event-to-case attribution uses existing PK/FK relationships directly; there is no persisted event/case index.
+- Full ES queries union milestone columns with grading, registration, examination and experiment occurrences. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
 - Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
 - [Detailed activity design](docs/object_activity_design.md)
 - [Event-log case scopes and counts](docs/object_event_logs.md)
@@ -69,8 +69,8 @@
 |---|---:|---:|---:|---:|
 | Q1 | 23 | 21 | 2 | 2.35 |
 | Q2 | 23 | 21 | 2 | 2.35 |
-| Q3 | 12 | 12 | 0 | 9.83 |
-| Q4 | 12 | 12 | 0 | 9.83 |
+| Q3 | 12 | 12 | 0 | 9.92 |
+| Q4 | 12 | 12 | 0 | 9.92 |
 
 - Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
@@ -83,6 +83,17 @@
 - [Table definitions CSV](docs/table_definitions.csv)
 - Process View includes the case concept and activity scope. Q1/Q2 state the scope explicitly; Q3/Q4 infer it from the declared catalog.
 - [Question activity counts and pairs](docs/questions.md): requested and extractable activity counts are shown separately.
+
+## Consolidation and primary keys
+
+- The eleven original university business-table roles are retained. All generic activity tables and the event/case index have been removed.
+- One revision branch per assignment/thesis is represented by milestone columns in this simulation. Multiple revision rounds require a dedicated submission/review history.
+- A table has one PRIMARY KEY constraint. Several PK-marked columns form one composite key, not several independent primary keys.
+- `registration`: `(student_id, course_id)` identifies one student-course registration.
+- `assignment_grading`: `(assignment_id, instructor_id, grading_time)` identifies one grading occurrence.
+- `student_simulation_experiment_result`: `(student_id, module_id, simulation_date)` identifies one simulation-run record.
+- PK/FK means the column belongs to the primary key and also references another table.
+- [Storage and direct case JOIN definitions](design/native_storage_mapping.json)
 
 ## Schema and documentation
 

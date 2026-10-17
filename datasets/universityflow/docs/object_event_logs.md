@@ -19,7 +19,7 @@
 | student_simulation_experiment_result | Simulation experiment result record | event record | OU07 | 27 | 131 | [CSV](../private/gold_logs/OU07.csv) |
 | assignment | Assignment | business object | OU08 | 20 | 90 | [CSV](../private/gold_logs/OU08.csv) |
 | instructor | Instructor | business object | OU09 | 3 | 86 | [CSV](../private/gold_logs/OU09.csv) |
-| assignment_grading | Assignment grading record | event record | OU10 | 18 | 18 | [CSV](../private/gold_logs/OU10.csv) |
+| assignment_grading | Assignment grading record | event record | OU10 | 25 | 25 | [CSV](../private/gold_logs/OU10.csv) |
 | task | Course-design task | business object | OU11 | 3 | 11 | [CSV](../private/gold_logs/OU11.csv) |
 
 ## Scope of each view
@@ -33,15 +33,9 @@
 - **OU07 — Simulation experiment result record:** Original recorded actions and authored lifecycle actions explicitly linked to this simulation experiment result record.
 - **OU08 — Assignment:** Original recorded actions and authored lifecycle actions explicitly linked to this assignment.
 - **OU09 — Instructor:** Original recorded actions and authored lifecycle actions explicitly linked to this instructor.
-- **OU10 — Assignment grading record:** The single grading action represented by the assignment-instructor-time key.
+- **OU10 — Assignment grading record:** Original recorded actions and authored lifecycle actions explicitly linked to this assignment grading record.
 - **OU11 — Course-design task:** Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions.
 
 ## Tables without an actual event-log view
 
-- **assignment_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **simulation_module_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **student_simulation_experiment_result_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **thesis_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **course_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **task_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **lifecycle_case_link:** Activity storage/index for its parent-object log; not an independent business case.
+- Every keyed table in this database has an actual recorded-event view.
