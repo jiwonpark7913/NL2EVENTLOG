@@ -12,6 +12,8 @@
 | timezone | UTC |
 | dbms | SQLite |
 | namespace | plateflow |
+| timestamp_columns | 39 |
+| event_timestamp_columns | 31 |
 | maintainer | NL2EVENTLOG project maintainers |
 | registration_status | Project-maintained draft; not ISO-registered or certified |
 | source_policy | Source definitions are retained and authored lifecycle additions are identified in source/design documents. |
@@ -47,7 +49,7 @@
 - **as_rolled_material:** One material object row contains two different extracted business milestones. Extracted event columns: furnace_charged_at, crop_shear_passed_at.
 - **furnace_charge_tracking:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: furnace_charge_assigned_at, furnace_charge_confirmed_at, furnace_discharge_confirmed_at.
 - **cutting_finishing_instruction:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: cutting_instruction_acknowledged_at, cutting_setup_verified_at, cutting_work_started_at, cutting_instruction_closed_at.
-- **plate_material:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: plate_piece_identified_at, plate_quality_released_at, plate_packed_at.
+- **plate_material:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: plate_piece_identified_at, plate_quality_released_at, plate_packed_at, plate_quality_review_started_at, plate_packing_started_at.
 - **operation_code:** Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.
 - **material_operation_history:** operation_code selects the action; one completed operation per history row. started_at is not currently extracted as a second event.
 
@@ -151,8 +153,10 @@
 | plateflow.plate_material.plate_piece_identified_at | Plate Piece Identified At / plate_piece_identified_at | Actual UTC time of Plate Piece Identified. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T12:36:00Z", "2026-03-05T12:42:00Z", "2026-03-05T12:48:00Z"] |
 | plateflow.plate_material.plate_quality_released_at | Plate Quality Released At / plate_quality_released_at | Actual UTC time of Plate Quality Released. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T14:36:00Z", "2026-03-05T14:42:00Z", "2026-03-05T14:48:00Z"] |
 | plateflow.plate_material.plate_packed_at | Plate Packed At / plate_packed_at | Actual UTC time of Plate Packed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T15:42:00Z", "2026-03-05T15:48:00Z", "2026-03-06T15:36:00Z"] |
+| plateflow.plate_material.plate_quality_review_started_at | Plate Quality Review Started At / plate_quality_review_started_at | Actual UTC time of Plate Quality Review Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T14:21:00Z", "2026-03-05T14:27:00Z", "2026-03-05T14:33:00Z"] |
+| plateflow.plate_material.plate_packing_started_at | Plate Packing Started At / plate_packing_started_at | Actual UTC time of Plate Packing Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T15:27:00Z", "2026-03-05T15:33:00Z", "2026-03-06T15:21:00Z"] |
 
-- **Declared table constraints:** `CREATE TABLE plate_material (plate_material_id TEXT PRIMARY KEY, plate_no TEXT NOT NULL UNIQUE, parent_as_rolled_plate_no TEXT NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no), dimension_inspected_at TEXT , latest_operation_completed_at TEXT , plate_piece_identified_at TEXT, plate_quality_released_at TEXT, plate_packed_at TEXT)`
+- **Declared table constraints:** `CREATE TABLE plate_material (plate_material_id TEXT PRIMARY KEY, plate_no TEXT NOT NULL UNIQUE, parent_as_rolled_plate_no TEXT NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no), dimension_inspected_at TEXT , latest_operation_completed_at TEXT , plate_piece_identified_at TEXT, plate_quality_released_at TEXT, plate_packed_at TEXT, plate_quality_review_started_at TEXT, plate_packing_started_at TEXT)`
 
 ### operation_code
 
@@ -211,4 +215,4 @@
 | rolling_instruction | Rolling Instruction Acknowledged; Rolling Setup Verified; Rolling Work Started; Rolling Instruction Closed | Existing rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
 | furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Heating Completed; Furnace Discharge Confirmed | Existing furnace_charge_tracking milestone columns; repeatable checks/heating use material_operation_history where applicable |
 | cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Setup Verified; Cutting Work Started; Cutting Instruction Closed | Existing cutting_finishing_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| plate_material | Plate Piece Identified; Plate Surface Checked; Plate Quality Released; Plate Packed | Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| plate_material | Plate Piece Identified; Plate Surface Checked; Plate Quality Released; Plate Packed; Plate Quality Review Started; Plate Packing Started | Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable |

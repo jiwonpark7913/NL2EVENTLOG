@@ -1,0 +1,51 @@
+{
+  "timestamp_columns": 6,
+  "event_timestamp_columns": 6,
+  "other_timestamp_columns": 0,
+  "date_only_columns": [],
+  "baseline_timestamp_columns": 2,
+  "columns": [
+    {
+      "table": "transaction_record",
+      "column": "occurred_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 80
+    },
+    {
+      "table": "transaction_record",
+      "column": "receiving_requested_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 45
+    },
+    {
+      "table": "transaction_record",
+      "column": "receiving_scheduled_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 45
+    },
+    {
+      "table": "transaction_record",
+      "column": "dispatch_requested_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 35
+    },
+    {
+      "table": "transaction_record",
+      "column": "dispatch_approved_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 35
+    },
+    {
+      "table": "transaction_record_activity",
+      "column": "occurred_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 154
+    }
+  ]
+}

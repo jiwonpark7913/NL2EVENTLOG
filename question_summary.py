@@ -12,6 +12,9 @@ def stats(p):
  return out
 HEADER='| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |\n|---|---:|---:|---:|---:|\n'
 def refresh():
+ for n in ['warehouseflow','universityflow','plateflow']:
+  f=ROOT/'datasets'/n/'input/questions.jsonl'
+  if not f.exists() or any('question_type' not in json.loads(x) for x in f.read_text().splitlines()):return []
  allrows=[]
  for name,title in [('warehouseflow','WarehouseFlow'),('universityflow','UniversityFlow'),('plateflow','PlateFlow')]:
   p=ROOT/'datasets'/name;rows=stats(p);table=HEADER+''.join(f'| {t} | {n} | {a} | {x} | {avg:.2f} |\n' for t,n,a,x,avg in rows);readme=p/'README.md';s=readme.read_text();start=s.index('## Question types and pairs');head=s[:start];tail=s[start:]

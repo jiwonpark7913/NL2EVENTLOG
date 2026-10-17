@@ -1,7 +1,6 @@
 [
   {
     "object_table": "registration",
-    "activity_table": "registration_activity",
     "activities": [
       "Registration Requested",
       "Registration Approved",
@@ -10,11 +9,34 @@
       "Course Grade Finalized"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Registration Requested",
+        "column": "registration_requested_at"
+      },
+      {
+        "activity": "Registration Approved",
+        "column": "registration_approved_at"
+      },
+      {
+        "activity": "Course Started",
+        "column": "course_started_at"
+      },
+      {
+        "activity": "Course Assessment Completed",
+        "column": "course_assessment_completed_at"
+      },
+      {
+        "activity": "Course Grade Finalized",
+        "column": "course_grade_finalized_at"
+      }
+    ],
+    "row_activities": [],
+    "storage": "Actual milestone columns on registration"
   },
   {
     "object_table": "degree_examination_result",
-    "activity_table": "degree_examination_result_activity",
     "activities": [
       "Examination Scheduled",
       "Examination Checked In",
@@ -22,7 +44,27 @@
       "Examination Result Reviewed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Examination Scheduled",
+        "column": "examination_scheduled_at"
+      },
+      {
+        "activity": "Examination Checked In",
+        "column": "examination_checked_in_at"
+      },
+      {
+        "activity": "Examination Score Published",
+        "column": "examination_score_published_at"
+      },
+      {
+        "activity": "Examination Result Reviewed",
+        "column": "examination_result_reviewed_at"
+      }
+    ],
+    "row_activities": [],
+    "storage": "Actual milestone columns on degree_examination_result"
   },
   {
     "object_table": "assignment",
@@ -36,7 +78,27 @@
       "Assignment Regraded"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Assignment Assigned",
+        "column": "assignment_assigned_at"
+      },
+      {
+        "activity": "Assignment Submitted",
+        "column": "assignment_submitted_at"
+      },
+      {
+        "activity": "Assignment Grade Finalized",
+        "column": "assignment_grade_finalized_at"
+      }
+    ],
+    "row_activities": [
+      "Assignment Revision Requested",
+      "Assignment Resubmitted",
+      "Assignment Regraded"
+    ],
+    "storage": "Actual milestone columns on assignment; remaining repeatable actions stay in assignment_activity"
   },
   {
     "object_table": "simulation_module",
@@ -73,7 +135,26 @@
       "Thesis Accepted"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Thesis Draft Registered",
+        "column": "thesis_draft_registered_at"
+      },
+      {
+        "activity": "Thesis Review Started",
+        "column": "thesis_review_started_at"
+      },
+      {
+        "activity": "Thesis Accepted",
+        "column": "thesis_accepted_at"
+      }
+    ],
+    "row_activities": [
+      "Thesis Revision Requested",
+      "Thesis Resubmitted"
+    ],
+    "storage": "Actual milestone columns on thesis; remaining repeatable actions stay in thesis_activity"
   },
   {
     "object_table": "course",

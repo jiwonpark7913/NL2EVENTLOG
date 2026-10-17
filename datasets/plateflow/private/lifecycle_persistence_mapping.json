@@ -258,5 +258,27 @@
       "plate_packed_at"
     ],
     "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':4' event_id, 'Plate Packed' activity, plate_packed_at timestamp FROM plate_material WHERE plate_packed_at IS NOT NULL"
+  },
+  {
+    "activity": "Plate Quality Review Started",
+    "table": "plate_material",
+    "encoding": "column",
+    "timestamp_column": "plate_quality_review_started_at",
+    "event_key": [
+      "plate_material_id",
+      "plate_quality_review_started_at"
+    ],
+    "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':5' event_id, 'Plate Quality Review Started' activity, plate_quality_review_started_at timestamp FROM plate_material WHERE plate_quality_review_started_at IS NOT NULL"
+  },
+  {
+    "activity": "Plate Packing Started",
+    "table": "plate_material",
+    "encoding": "column",
+    "timestamp_column": "plate_packing_started_at",
+    "event_key": [
+      "plate_material_id",
+      "plate_packing_started_at"
+    ],
+    "event_sql": "SELECT 'LC:plate_material:' || plate_material_id || ':6' event_id, 'Plate Packing Started' activity, plate_packing_started_at timestamp FROM plate_material WHERE plate_packing_started_at IS NOT NULL"
   }
 ]

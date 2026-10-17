@@ -1,0 +1,282 @@
+{
+  "timestamp_columns": 39,
+  "event_timestamp_columns": 31,
+  "other_timestamp_columns": 8,
+  "date_only_columns": [],
+  "baseline_timestamp_columns": 37,
+  "columns": [
+    {
+      "table": "slab_material",
+      "column": "slab_received_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "slab_material",
+      "column": "slab_identity_verified_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "slab_material",
+      "column": "slab_quality_checked_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "slab_material",
+      "column": "slab_released_for_rolling_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 30
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "planned_reheat_at",
+      "role": "planned instant",
+      "used_as_event_time": false,
+      "non_null_rows": 36
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_created_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_reviewed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_approved_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "rolling_plan_released_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 30
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "released_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_instruction_acknowledged_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 36
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_setup_verified_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 34
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_work_started_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 24
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "rolling_instruction_closed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 20
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "furnace_charged_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 30
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "crop_shear_passed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 18
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "latest_operation_completed_at",
+      "role": "latest-operation snapshot",
+      "used_as_event_time": false,
+      "non_null_rows": 24
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "created_at",
+      "role": "technical record timestamp",
+      "used_as_event_time": false,
+      "non_null_rows": 36
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "updated_at",
+      "role": "technical record timestamp",
+      "used_as_event_time": false,
+      "non_null_rows": 36
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "yard_instruction_received_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 30
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "lot_charging_started_at",
+      "role": "lot-level instant outside material-event scope",
+      "used_as_event_time": false,
+      "non_null_rows": 30
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "furnace_charge_assigned_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 30
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "furnace_charge_confirmed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 29
+    },
+    {
+      "table": "furnace_charge_tracking",
+      "column": "furnace_discharge_confirmed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 20
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "released_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 18
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_instruction_acknowledged_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 18
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_setup_verified_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 18
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_work_started_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 18
+    },
+    {
+      "table": "cutting_finishing_instruction",
+      "column": "cutting_instruction_closed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 15
+    },
+    {
+      "table": "plate_material",
+      "column": "dimension_inspected_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 39
+    },
+    {
+      "table": "plate_material",
+      "column": "latest_operation_completed_at",
+      "role": "latest-operation snapshot",
+      "used_as_event_time": false,
+      "non_null_rows": 39
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_piece_identified_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 39
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_quality_released_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 39
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_packed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 33
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_quality_review_started_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 39
+    },
+    {
+      "table": "plate_material",
+      "column": "plate_packing_started_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 33
+    },
+    {
+      "table": "material_operation_history",
+      "column": "started_at",
+      "role": "operation interval start, not a separately selected event",
+      "used_as_event_time": false,
+      "non_null_rows": 216
+    },
+    {
+      "table": "material_operation_history",
+      "column": "completed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 216
+    },
+    {
+      "table": "material_operation_history",
+      "column": "created_at",
+      "role": "technical record timestamp",
+      "used_as_event_time": false,
+      "non_null_rows": 216
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "table_count": 20,
+  "table_count": 18,
   "tables": {
     "student": {
       "row_count": 40,
@@ -17,7 +17,7 @@
     },
     "registration": {
       "row_count": 47,
-      "column_count": 4,
+      "column_count": 9,
       "primary_key": [
         "student_id",
         "course_id"
@@ -25,7 +25,7 @@
     },
     "degree_examination_result": {
       "row_count": 40,
-      "column_count": 5,
+      "column_count": 9,
       "primary_key": [
         "result_id"
       ]
@@ -46,7 +46,7 @@
     },
     "thesis": {
       "row_count": 16,
-      "column_count": 5,
+      "column_count": 8,
       "primary_key": [
         "thesis_id"
       ]
@@ -62,7 +62,7 @@
     },
     "assignment": {
       "row_count": 20,
-      "column_count": 3,
+      "column_count": 6,
       "primary_key": [
         "assignment_id"
       ]
@@ -83,22 +83,8 @@
         "grading_time"
       ]
     },
-    "registration_activity": {
-      "row_count": 228,
-      "column_count": 6,
-      "primary_key": [
-        "event_id"
-      ]
-    },
-    "degree_examination_result_activity": {
-      "row_count": 154,
-      "column_count": 5,
-      "primary_key": [
-        "event_id"
-      ]
-    },
     "assignment_activity": {
-      "row_count": 72,
+      "row_count": 21,
       "column_count": 5,
       "primary_key": [
         "event_id"
@@ -119,7 +105,7 @@
       ]
     },
     "thesis_activity": {
-      "row_count": 57,
+      "row_count": 12,
       "column_count": 5,
       "primary_key": [
         "event_id"
@@ -221,30 +207,6 @@
       "logical": false,
       "from_col": "assignment_id",
       "to_col": "assignment_id"
-    },
-    {
-      "parent": "registration",
-      "child": "registration_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "student_id",
-      "to_col": "student_id"
-    },
-    {
-      "parent": "registration",
-      "child": "registration_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "course_id",
-      "to_col": "course_id"
-    },
-    {
-      "parent": "degree_examination_result",
-      "child": "degree_examination_result_activity",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "result_id",
-      "to_col": "result_id"
     },
     {
       "parent": "assignment",

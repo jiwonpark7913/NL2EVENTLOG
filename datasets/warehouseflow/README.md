@@ -2,16 +2,16 @@
 
 - **Situation:** Goods enter a warehouse and complete inspection and putaway, or leave through approval, picking, packing and dispatch. Goods and workers are linked to each transaction.
 - **Source:** One preserved RSchema warehouse requirement and logical schema. Original source columns and keys are preserved.
-- **Extension:** New activity histories, timestamps and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 8 tables; 10 activity types; 6 object / case types; 394 distinct recorded business events.
+- **Extension:** Milestone columns, retained action histories and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
+- **Database:** 8 tables; 6 object / case types; 10 activity types; 6 timestamp columns (6 event timestamp columns); 394 distinct events.
 - **Gold:** 30 answerable question-specific CSV logs out of 32 questions. Paired requests share the same expected content.
 - **Execution:** Run `python datasets/warehouseflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
 ## Dataset counts
 
-| Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
-|---|---:|---:|---:|---:|---:|---:|
-| WarehouseFlow | 8 | 6 | 10 | 394 | 32 | 30 |
+| Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| WarehouseFlow | 8 | 6 | 10 | 6 | 6 | 394 | 34 | 32 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
@@ -20,7 +20,7 @@
 
 ## Objects, activities and situations
 
-| Object / case | Activity types observed across all instances of this case type | Situation / scope | Gold CSV |
+| Object / case | Activity types across all cases | Situation / scope | Gold CSV |
 |---|---|---|---|
 | warehouse | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this warehouse. | [CSV](private/gold_logs/OW01.csv) |
 | goods | Dispatch Approved; Dispatch Requested; Goods Dispatched; Goods Packed; Goods Picked; Goods Put Away; Goods Received; Receiving Inspection Completed; Receiving Requested; Receiving Scheduled | Original recorded actions and authored lifecycle actions explicitly linked to this goods. | [CSV](private/gold_logs/OW02.csv) |
@@ -39,7 +39,7 @@
 
 ## Database, extraction and validation
 
-- Typed `<object>_activity` tables store `event_id`, parent PK/FK, `activity`, actual `occurred_at` and `outcome`.
+- One-time events use named actual-time columns on the existing business record. Retained `<object>_activity` tables store the remaining row-encoded actions; migrated events are removed from those rows.
 - `lifecycle_case_link` is an explicitly validated auxiliary index relating a recorded event to each permitted case. It is not a business object.
 - Full ES queries union original milestone sources and new action histories. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
 - Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
@@ -63,8 +63,8 @@
 
 | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
 |---|---:|---:|---:|---:|
-| Q1 | 9 | 8 | 1 | 2.33 |
-| Q2 | 9 | 8 | 1 | 2.33 |
+| Q1 | 10 | 9 | 1 | 2.50 |
+| Q2 | 10 | 9 | 1 | 2.50 |
 | Q3 | 7 | 7 | 0 | 10.00 |
 | Q4 | 7 | 7 | 0 | 10.00 |
 
@@ -90,3 +90,10 @@
 - [CSV dictionary](docs/data_dictionary.csv)
 - [Editable draw.io diagram](docs/schema.drawio)
 - [Object-based Gold logs and coverage](docs/object_event_logs.md)
+
+## Timestamp columns
+
+- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.
+- [Timestamp inventory and roles](docs/timestamp_columns.md)
+- [Milestone-column extraction questions and Gold activity counts](docs/questions.md)
+- Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.

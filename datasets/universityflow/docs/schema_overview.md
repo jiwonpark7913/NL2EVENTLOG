@@ -8,21 +8,19 @@
 |---|---:|---:|---|---|---|
 | student | 40 | 8 | No event encoding | student_id | Unified student information from the three university examples |
 | course | 6 | 6 | No event encoding | course_id | Course offerings and planned teaching schedules |
-| registration | 47 | 4 | Row encoding | student_id, course_id | Successful registrations; one retained row per student and course |
-| degree_examination_result | 40 | 5 | Row encoding | result_id | Examination results including retakes |
+| registration | 47 | 9 | Mixed (row + column) | student_id, course_id | Successful registrations; one retained row per student and course |
+| degree_examination_result | 40 | 9 | Mixed (row + column) | result_id | Examination results including retakes |
 | task | 3 | 6 | No event encoding | task_id | Course-design task descriptions and scheduled task periods |
 | simulation_module | 3 | 5 | No event encoding | module_id | Simulation module descriptions and example code |
-| thesis | 16 | 5 | Column encoding | thesis_id | Student theses with actual submission times |
+| thesis | 16 | 8 | Column encoding | thesis_id | Student theses with actual submission times |
 | student_simulation_experiment_result | 27 | 5 | Row encoding | student_id, module_id, simulation_date | Student simulation results with actual experiment-completion times |
-| assignment | 20 | 3 | No event encoding | assignment_id | Student assignment content; submission time is not recorded |
+| assignment | 20 | 6 | Column encoding | assignment_id | Student assignment content; submission time is not recorded |
 | instructor | 3 | 3 | No event encoding | instructor_id | Instructor information from the assignment-management example |
 | assignment_grading | 18 | 5 | Row encoding | assignment_id, instructor_id, grading_time | Every recorded grading action, including regrading |
-| registration_activity | 228 | 6 | Row encoding | event_id | Authored actual-action history for registration |
-| degree_examination_result_activity | 154 | 5 | Row encoding | event_id | Authored actual-action history for degree_examination_result |
-| assignment_activity | 72 | 5 | Row encoding | event_id | Authored actual-action history for assignment |
+| assignment_activity | 21 | 5 | Row encoding | event_id | Authored actual-action history for assignment |
 | simulation_module_activity | 11 | 5 | Row encoding | event_id | Authored actual-action history for simulation_module |
 | student_simulation_experiment_result_activity | 104 | 7 | Row encoding | event_id | Authored actual-action history for student_simulation_experiment_result |
-| thesis_activity | 57 | 5 | Row encoding | event_id | Authored actual-action history for thesis |
+| thesis_activity | 12 | 5 | Row encoding | event_id | Authored actual-action history for thesis |
 | course_activity | 23 | 5 | Row encoding | event_id | Authored actual-action history for course |
 | task_activity | 11 | 5 | Row encoding | event_id | Authored actual-action history for task |
 | lifecycle_case_link | 1675 | 3 | No event encoding | event_id, case_table, case_id | Explicit case attribution across typed action histories; auxiliary extraction index, not a business case |
@@ -46,9 +44,6 @@
 | student | assignment | student_id | student_id | 1 : 0..N | declared |
 | instructor | assignment_grading | instructor_id | instructor_id | 1 : 0..N | declared |
 | assignment | assignment_grading | assignment_id | assignment_id | 1 : 0..N | declared |
-| registration | registration_activity | student_id | student_id | 1 : 0..N | declared |
-| registration | registration_activity | course_id | course_id | 1 : 0..N | declared |
-| degree_examination_result | degree_examination_result_activity | result_id | result_id | 1 : 0..N | declared |
 | assignment | assignment_activity | assignment_id | assignment_id | 1 : 0..N | declared |
 | simulation_module | simulation_module_activity | module_id | module_id | 1 : 0..N | declared |
 | student_simulation_experiment_result | student_simulation_experiment_result_activity | student_id | student_id | 1 : 0..N | declared |

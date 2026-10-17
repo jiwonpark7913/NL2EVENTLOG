@@ -9,6 +9,74 @@
     "object_table": "transaction_record",
     "object_key": [
       "transaction_id"
+    ],
+    "event_sql": "SELECT event_id,activity,occurred_at timestamp FROM transaction_record_activity",
+    "encoding": "row",
+    "activities": [
+      "Receiving Inspection Completed",
+      "Goods Put Away",
+      "Goods Picked",
+      "Goods Packed"
     ]
+  },
+  {
+    "activity": "Receiving Requested",
+    "table": "transaction_record",
+    "object_table": "transaction_record",
+    "object_key": [
+      "transaction_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "receiving_requested_at",
+    "event_key": [
+      "transaction_id",
+      "receiving_requested_at"
+    ],
+    "event_sql": "SELECT 'LC:transaction_record:' || transaction_id || ':1' event_id, 'Receiving Requested' activity, receiving_requested_at timestamp FROM transaction_record WHERE receiving_requested_at IS NOT NULL"
+  },
+  {
+    "activity": "Receiving Scheduled",
+    "table": "transaction_record",
+    "object_table": "transaction_record",
+    "object_key": [
+      "transaction_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "receiving_scheduled_at",
+    "event_key": [
+      "transaction_id",
+      "receiving_scheduled_at"
+    ],
+    "event_sql": "SELECT 'LC:transaction_record:' || transaction_id || ':2' event_id, 'Receiving Scheduled' activity, receiving_scheduled_at timestamp FROM transaction_record WHERE receiving_scheduled_at IS NOT NULL"
+  },
+  {
+    "activity": "Dispatch Requested",
+    "table": "transaction_record",
+    "object_table": "transaction_record",
+    "object_key": [
+      "transaction_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "dispatch_requested_at",
+    "event_key": [
+      "transaction_id",
+      "dispatch_requested_at"
+    ],
+    "event_sql": "SELECT 'LC:transaction_record:' || transaction_id || ':1' event_id, 'Dispatch Requested' activity, dispatch_requested_at timestamp FROM transaction_record WHERE dispatch_requested_at IS NOT NULL"
+  },
+  {
+    "activity": "Dispatch Approved",
+    "table": "transaction_record",
+    "object_table": "transaction_record",
+    "object_key": [
+      "transaction_id"
+    ],
+    "encoding": "column",
+    "timestamp_column": "dispatch_approved_at",
+    "event_key": [
+      "transaction_id",
+      "dispatch_approved_at"
+    ],
+    "event_sql": "SELECT 'LC:transaction_record:' || transaction_id || ':2' event_id, 'Dispatch Approved' activity, dispatch_approved_at timestamp FROM transaction_record WHERE dispatch_approved_at IS NOT NULL"
   }
 ]

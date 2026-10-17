@@ -38,8 +38,6 @@
 
 ## Tables without an actual event-log view
 
-- **registration_activity:** Activity storage/index for its parent-object log; not an independent business case.
-- **degree_examination_result_activity:** Activity storage/index for its parent-object log; not an independent business case.
 - **assignment_activity:** Activity storage/index for its parent-object log; not an independent business case.
 - **simulation_module_activity:** Activity storage/index for its parent-object log; not an independent business case.
 - **student_simulation_experiment_result_activity:** Activity storage/index for its parent-object log; not an independent business case.

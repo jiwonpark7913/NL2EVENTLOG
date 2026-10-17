@@ -81,9 +81,14 @@ DIM:P004-3,SL004,Dimensional Inspection Completed,2026-03-05T13:48:00Z
 LC:plate_material:P004-1:2,SL004,Plate Surface Checked,2026-03-05T14:06:00Z
 LC:plate_material:P004-2:2,SL004,Plate Surface Checked,2026-03-05T14:12:00Z
 LC:plate_material:P004-3:2,SL004,Plate Surface Checked,2026-03-05T14:18:00Z
+LC:plate_material:P004-1:5,SL004,Plate Quality Review Started,2026-03-05T14:21:00Z
+LC:plate_material:P004-2:5,SL004,Plate Quality Review Started,2026-03-05T14:27:00Z
+LC:plate_material:P004-3:5,SL004,Plate Quality Review Started,2026-03-05T14:33:00Z
 LC:plate_material:P004-1:3,SL004,Plate Quality Released,2026-03-05T14:36:00Z
 LC:plate_material:P004-2:3,SL004,Plate Quality Released,2026-03-05T14:42:00Z
 LC:plate_material:P004-3:3,SL004,Plate Quality Released,2026-03-05T14:48:00Z
+LC:plate_material:P004-2:6,SL004,Plate Packing Started,2026-03-05T15:27:00Z
+LC:plate_material:P004-3:6,SL004,Plate Packing Started,2026-03-05T15:33:00Z
 LC:plate_material:P004-2:4,SL004,Plate Packed,2026-03-05T15:42:00Z
 LC:plate_material:P004-3:4,SL004,Plate Packed,2026-03-05T15:48:00Z
 LC:planned_rolling_instruction:PLAN005:1,SL005,Rolling Plan Created,2026-03-05T14:00:00Z
@@ -125,8 +130,12 @@ DIM:P005-1,SL005,Dimensional Inspection Completed,2026-03-06T13:36:00Z
 DIM:P005-2,SL005,Dimensional Inspection Completed,2026-03-06T13:42:00Z
 LC:plate_material:P005-1:2,SL005,Plate Surface Checked,2026-03-06T14:06:00Z
 LC:plate_material:P005-2:2,SL005,Plate Surface Checked,2026-03-06T14:12:00Z
+LC:plate_material:P005-1:5,SL005,Plate Quality Review Started,2026-03-06T14:21:00Z
+LC:plate_material:P005-2:5,SL005,Plate Quality Review Started,2026-03-06T14:27:00Z
 LC:plate_material:P005-1:3,SL005,Plate Quality Released,2026-03-06T14:36:00Z
 LC:plate_material:P005-2:3,SL005,Plate Quality Released,2026-03-06T14:42:00Z
+LC:plate_material:P005-1:6,SL005,Plate Packing Started,2026-03-06T15:21:00Z
+LC:plate_material:P005-2:6,SL005,Plate Packing Started,2026-03-06T15:27:00Z
 LC:plate_material:P005-1:4,SL005,Plate Packed,2026-03-06T15:36:00Z
 LC:plate_material:P005-2:4,SL005,Plate Packed,2026-03-06T15:42:00Z
 LC:planned_rolling_instruction:PLAN006:1,SL006,Rolling Plan Created,2026-03-06T14:00:00Z
@@ -166,7 +175,9 @@ OP:P006-1-HT2,SL006,Heat Treatment Completed,2026-03-07T17:00:00Z
 OP:P006-1-IP,SL006,Inspection Passed,2026-03-07T18:00:00Z
 DIM:P006-1,SL006,Dimensional Inspection Completed,2026-03-07T18:30:00Z
 LC:plate_material:P006-1:2,SL006,Plate Surface Checked,2026-03-07T19:00:00Z
+LC:plate_material:P006-1:5,SL006,Plate Quality Review Started,2026-03-07T19:15:00Z
 LC:plate_material:P006-1:3,SL006,Plate Quality Released,2026-03-07T19:30:00Z
+LC:plate_material:P006-1:6,SL006,Plate Packing Started,2026-03-07T20:15:00Z
 LC:plate_material:P006-1:4,SL006,Plate Packed,2026-03-07T20:30:00Z
 LC:planned_rolling_instruction:PLAN007:1,SL007,Rolling Plan Created,2026-03-07T14:00:00Z
 LC:slab_material:SL007:1,SL007,Slab Received,2026-03-07T14:00:00Z
@@ -251,9 +262,14 @@ DIM:P010-3,SL010,Dimensional Inspection Completed,2026-03-11T13:48:00Z
 LC:plate_material:P010-1:2,SL010,Plate Surface Checked,2026-03-11T14:06:00Z
 LC:plate_material:P010-2:2,SL010,Plate Surface Checked,2026-03-11T14:12:00Z
 LC:plate_material:P010-3:2,SL010,Plate Surface Checked,2026-03-11T14:18:00Z
+LC:plate_material:P010-1:5,SL010,Plate Quality Review Started,2026-03-11T14:21:00Z
+LC:plate_material:P010-2:5,SL010,Plate Quality Review Started,2026-03-11T14:27:00Z
+LC:plate_material:P010-3:5,SL010,Plate Quality Review Started,2026-03-11T14:33:00Z
 LC:plate_material:P010-1:3,SL010,Plate Quality Released,2026-03-11T14:36:00Z
 LC:plate_material:P010-2:3,SL010,Plate Quality Released,2026-03-11T14:42:00Z
 LC:plate_material:P010-3:3,SL010,Plate Quality Released,2026-03-11T14:48:00Z
+LC:plate_material:P010-1:6,SL010,Plate Packing Started,2026-03-11T15:21:00Z
+LC:plate_material:P010-3:6,SL010,Plate Packing Started,2026-03-11T15:33:00Z
 LC:plate_material:P010-1:4,SL010,Plate Packed,2026-03-11T15:36:00Z
 LC:plate_material:P010-3:4,SL010,Plate Packed,2026-03-11T15:48:00Z
 LC:planned_rolling_instruction:PLAN011:1,SL011,Rolling Plan Created,2026-03-11T14:00:00Z
@@ -290,7 +306,9 @@ OP:P011-1-HT1,SL011,Heat Treatment Completed,2026-03-12T12:00:00Z
 OP:P011-1-IP,SL011,Inspection Passed,2026-03-12T13:06:00Z
 DIM:P011-1,SL011,Dimensional Inspection Completed,2026-03-12T13:36:00Z
 LC:plate_material:P011-1:2,SL011,Plate Surface Checked,2026-03-12T14:06:00Z
+LC:plate_material:P011-1:5,SL011,Plate Quality Review Started,2026-03-12T14:21:00Z
 LC:plate_material:P011-1:3,SL011,Plate Quality Released,2026-03-12T14:36:00Z
+LC:plate_material:P011-1:6,SL011,Plate Packing Started,2026-03-12T15:21:00Z
 LC:plate_material:P011-1:4,SL011,Plate Packed,2026-03-12T15:36:00Z
 LC:planned_rolling_instruction:PLAN012:1,SL012,Rolling Plan Created,2026-03-12T14:00:00Z
 LC:slab_material:SL012:1,SL012,Slab Received,2026-03-12T14:00:00Z
@@ -329,7 +347,9 @@ OP:P012-1-HT2,SL012,Heat Treatment Completed,2026-03-13T17:00:00Z
 OP:P012-1-IP,SL012,Inspection Passed,2026-03-13T18:00:00Z
 DIM:P012-1,SL012,Dimensional Inspection Completed,2026-03-13T18:30:00Z
 LC:plate_material:P012-1:2,SL012,Plate Surface Checked,2026-03-13T19:00:00Z
+LC:plate_material:P012-1:5,SL012,Plate Quality Review Started,2026-03-13T19:15:00Z
 LC:plate_material:P012-1:3,SL012,Plate Quality Released,2026-03-13T19:30:00Z
+LC:plate_material:P012-1:6,SL012,Plate Packing Started,2026-03-13T20:15:00Z
 LC:plate_material:P012-1:4,SL012,Plate Packed,2026-03-13T20:30:00Z
 LC:planned_rolling_instruction:PLAN013:1,SL013,Rolling Plan Created,2026-03-13T14:00:00Z
 LC:slab_material:SL013:1,SL013,Slab Received,2026-03-13T14:00:00Z
@@ -407,7 +427,9 @@ LC:plate_material:P016-1:1,SL016,Plate Piece Identified,2026-03-17T12:36:00Z
 OP:P016-1-IP,SL016,Inspection Passed,2026-03-17T13:06:00Z
 DIM:P016-1,SL016,Dimensional Inspection Completed,2026-03-17T13:36:00Z
 LC:plate_material:P016-1:2,SL016,Plate Surface Checked,2026-03-17T14:06:00Z
+LC:plate_material:P016-1:5,SL016,Plate Quality Review Started,2026-03-17T14:21:00Z
 LC:plate_material:P016-1:3,SL016,Plate Quality Released,2026-03-17T14:36:00Z
+LC:plate_material:P016-1:6,SL016,Plate Packing Started,2026-03-17T15:21:00Z
 LC:plate_material:P016-1:4,SL016,Plate Packed,2026-03-17T15:36:00Z
 LC:planned_rolling_instruction:PLAN017:1,SL017,Rolling Plan Created,2026-03-17T14:00:00Z
 LC:slab_material:SL017:1,SL017,Slab Received,2026-03-17T14:00:00Z
@@ -452,9 +474,14 @@ DIM:P017-3,SL017,Dimensional Inspection Completed,2026-03-18T13:48:00Z
 LC:plate_material:P017-1:2,SL017,Plate Surface Checked,2026-03-18T14:06:00Z
 LC:plate_material:P017-2:2,SL017,Plate Surface Checked,2026-03-18T14:12:00Z
 LC:plate_material:P017-3:2,SL017,Plate Surface Checked,2026-03-18T14:18:00Z
+LC:plate_material:P017-1:5,SL017,Plate Quality Review Started,2026-03-18T14:21:00Z
+LC:plate_material:P017-2:5,SL017,Plate Quality Review Started,2026-03-18T14:27:00Z
+LC:plate_material:P017-3:5,SL017,Plate Quality Review Started,2026-03-18T14:33:00Z
 LC:plate_material:P017-1:3,SL017,Plate Quality Released,2026-03-18T14:36:00Z
 LC:plate_material:P017-2:3,SL017,Plate Quality Released,2026-03-18T14:42:00Z
 LC:plate_material:P017-3:3,SL017,Plate Quality Released,2026-03-18T14:48:00Z
+LC:plate_material:P017-1:6,SL017,Plate Packing Started,2026-03-18T15:21:00Z
+LC:plate_material:P017-2:6,SL017,Plate Packing Started,2026-03-18T15:27:00Z
 LC:plate_material:P017-1:4,SL017,Plate Packed,2026-03-18T15:36:00Z
 LC:plate_material:P017-2:4,SL017,Plate Packed,2026-03-18T15:42:00Z
 LC:planned_rolling_instruction:PLAN018:1,SL018,Rolling Plan Created,2026-03-18T14:00:00Z
@@ -496,16 +523,22 @@ DIM:P018-3,SL018,Dimensional Inspection Completed,2026-03-19T13:48:00Z
 OP:P018-1-HT1,SL018,Heat Treatment Completed,2026-03-19T14:00:00Z
 LC:plate_material:P018-2:2,SL018,Plate Surface Checked,2026-03-19T14:12:00Z
 LC:plate_material:P018-3:2,SL018,Plate Surface Checked,2026-03-19T14:18:00Z
+LC:plate_material:P018-2:5,SL018,Plate Quality Review Started,2026-03-19T14:27:00Z
+LC:plate_material:P018-3:5,SL018,Plate Quality Review Started,2026-03-19T14:33:00Z
 LC:plate_material:P018-2:3,SL018,Plate Quality Released,2026-03-19T14:42:00Z
 LC:plate_material:P018-3:3,SL018,Plate Quality Released,2026-03-19T14:48:00Z
 OP:P018-1-IF2,SL018,Inspection Failed,2026-03-19T15:00:00Z
+LC:plate_material:P018-2:6,SL018,Plate Packing Started,2026-03-19T15:27:00Z
+LC:plate_material:P018-3:6,SL018,Plate Packing Started,2026-03-19T15:33:00Z
 LC:plate_material:P018-2:4,SL018,Plate Packed,2026-03-19T15:42:00Z
 LC:plate_material:P018-3:4,SL018,Plate Packed,2026-03-19T15:48:00Z
 OP:P018-1-HT2,SL018,Heat Treatment Completed,2026-03-19T17:00:00Z
 OP:P018-1-IP,SL018,Inspection Passed,2026-03-19T18:00:00Z
 DIM:P018-1,SL018,Dimensional Inspection Completed,2026-03-19T18:30:00Z
 LC:plate_material:P018-1:2,SL018,Plate Surface Checked,2026-03-19T19:00:00Z
+LC:plate_material:P018-1:5,SL018,Plate Quality Review Started,2026-03-19T19:15:00Z
 LC:plate_material:P018-1:3,SL018,Plate Quality Released,2026-03-19T19:30:00Z
+LC:plate_material:P018-1:6,SL018,Plate Packing Started,2026-03-19T20:15:00Z
 LC:plate_material:P018-1:4,SL018,Plate Packed,2026-03-19T20:30:00Z
 LC:planned_rolling_instruction:PLAN019:1,SL019,Rolling Plan Created,2026-03-19T14:00:00Z
 LC:slab_material:SL019:1,SL019,Slab Received,2026-03-19T14:00:00Z
@@ -583,7 +616,9 @@ LC:plate_material:P022-1:1,SL022,Plate Piece Identified,2026-03-23T12:36:00Z
 OP:P022-1-IP,SL022,Inspection Passed,2026-03-23T13:06:00Z
 DIM:P022-1,SL022,Dimensional Inspection Completed,2026-03-23T13:36:00Z
 LC:plate_material:P022-1:2,SL022,Plate Surface Checked,2026-03-23T14:06:00Z
+LC:plate_material:P022-1:5,SL022,Plate Quality Review Started,2026-03-23T14:21:00Z
 LC:plate_material:P022-1:3,SL022,Plate Quality Released,2026-03-23T14:36:00Z
+LC:plate_material:P022-1:6,SL022,Plate Packing Started,2026-03-23T15:21:00Z
 LC:plate_material:P022-1:4,SL022,Plate Packed,2026-03-23T15:36:00Z
 LC:planned_rolling_instruction:PLAN023:1,SL023,Rolling Plan Created,2026-03-23T14:00:00Z
 LC:slab_material:SL023:1,SL023,Slab Received,2026-03-23T14:00:00Z
@@ -624,8 +659,12 @@ DIM:P023-1,SL023,Dimensional Inspection Completed,2026-03-24T13:36:00Z
 DIM:P023-2,SL023,Dimensional Inspection Completed,2026-03-24T13:42:00Z
 LC:plate_material:P023-1:2,SL023,Plate Surface Checked,2026-03-24T14:06:00Z
 LC:plate_material:P023-2:2,SL023,Plate Surface Checked,2026-03-24T14:12:00Z
+LC:plate_material:P023-1:5,SL023,Plate Quality Review Started,2026-03-24T14:21:00Z
+LC:plate_material:P023-2:5,SL023,Plate Quality Review Started,2026-03-24T14:27:00Z
 LC:plate_material:P023-1:3,SL023,Plate Quality Released,2026-03-24T14:36:00Z
 LC:plate_material:P023-2:3,SL023,Plate Quality Released,2026-03-24T14:42:00Z
+LC:plate_material:P023-1:6,SL023,Plate Packing Started,2026-03-24T15:21:00Z
+LC:plate_material:P023-2:6,SL023,Plate Packing Started,2026-03-24T15:27:00Z
 LC:plate_material:P023-1:4,SL023,Plate Packed,2026-03-24T15:36:00Z
 LC:plate_material:P023-2:4,SL023,Plate Packed,2026-03-24T15:42:00Z
 LC:planned_rolling_instruction:PLAN024:1,SL024,Rolling Plan Created,2026-03-24T14:00:00Z
@@ -668,15 +707,20 @@ DIM:P024-3,SL024,Dimensional Inspection Completed,2026-03-25T13:48:00Z
 OP:P024-1-HT1,SL024,Heat Treatment Completed,2026-03-25T14:00:00Z
 LC:plate_material:P024-2:2,SL024,Plate Surface Checked,2026-03-25T14:12:00Z
 LC:plate_material:P024-3:2,SL024,Plate Surface Checked,2026-03-25T14:18:00Z
+LC:plate_material:P024-2:5,SL024,Plate Quality Review Started,2026-03-25T14:27:00Z
+LC:plate_material:P024-3:5,SL024,Plate Quality Review Started,2026-03-25T14:33:00Z
 LC:plate_material:P024-2:3,SL024,Plate Quality Released,2026-03-25T14:42:00Z
 LC:plate_material:P024-3:3,SL024,Plate Quality Released,2026-03-25T14:48:00Z
 OP:P024-1-IF2,SL024,Inspection Failed,2026-03-25T15:00:00Z
+LC:plate_material:P024-2:6,SL024,Plate Packing Started,2026-03-25T15:27:00Z
+LC:plate_material:P024-3:6,SL024,Plate Packing Started,2026-03-25T15:33:00Z
 LC:plate_material:P024-2:4,SL024,Plate Packed,2026-03-25T15:42:00Z
 LC:plate_material:P024-3:4,SL024,Plate Packed,2026-03-25T15:48:00Z
 OP:P024-1-HT2,SL024,Heat Treatment Completed,2026-03-25T17:00:00Z
 OP:P024-1-IP,SL024,Inspection Passed,2026-03-25T18:00:00Z
 DIM:P024-1,SL024,Dimensional Inspection Completed,2026-03-25T18:30:00Z
 LC:plate_material:P024-1:2,SL024,Plate Surface Checked,2026-03-25T19:00:00Z
+LC:plate_material:P024-1:5,SL024,Plate Quality Review Started,2026-03-25T19:15:00Z
 LC:plate_material:P024-1:3,SL024,Plate Quality Released,2026-03-25T19:30:00Z
 LC:planned_rolling_instruction:PLAN025:1,SL025,Rolling Plan Created,2026-03-25T14:00:00Z
 LC:slab_material:SL025:1,SL025,Slab Received,2026-03-25T14:00:00Z
@@ -764,9 +808,15 @@ DIM:P028-3,SL028,Dimensional Inspection Completed,2026-03-29T13:48:00Z
 LC:plate_material:P028-1:2,SL028,Plate Surface Checked,2026-03-29T14:06:00Z
 LC:plate_material:P028-2:2,SL028,Plate Surface Checked,2026-03-29T14:12:00Z
 LC:plate_material:P028-3:2,SL028,Plate Surface Checked,2026-03-29T14:18:00Z
+LC:plate_material:P028-1:5,SL028,Plate Quality Review Started,2026-03-29T14:21:00Z
+LC:plate_material:P028-2:5,SL028,Plate Quality Review Started,2026-03-29T14:27:00Z
+LC:plate_material:P028-3:5,SL028,Plate Quality Review Started,2026-03-29T14:33:00Z
 LC:plate_material:P028-1:3,SL028,Plate Quality Released,2026-03-29T14:36:00Z
 LC:plate_material:P028-2:3,SL028,Plate Quality Released,2026-03-29T14:42:00Z
 LC:plate_material:P028-3:3,SL028,Plate Quality Released,2026-03-29T14:48:00Z
+LC:plate_material:P028-1:6,SL028,Plate Packing Started,2026-03-29T15:21:00Z
+LC:plate_material:P028-2:6,SL028,Plate Packing Started,2026-03-29T15:27:00Z
+LC:plate_material:P028-3:6,SL028,Plate Packing Started,2026-03-29T15:33:00Z
 LC:plate_material:P028-1:4,SL028,Plate Packed,2026-03-29T15:36:00Z
 LC:plate_material:P028-2:4,SL028,Plate Packed,2026-03-29T15:42:00Z
 LC:plate_material:P028-3:4,SL028,Plate Packed,2026-03-29T15:48:00Z
@@ -801,7 +851,9 @@ OP:P029-1-HT1,SL029,Heat Treatment Completed,2026-03-30T12:00:00Z
 OP:P029-1-IP,SL029,Inspection Passed,2026-03-30T13:06:00Z
 DIM:P029-1,SL029,Dimensional Inspection Completed,2026-03-30T13:36:00Z
 LC:plate_material:P029-1:2,SL029,Plate Surface Checked,2026-03-30T14:06:00Z
+LC:plate_material:P029-1:5,SL029,Plate Quality Review Started,2026-03-30T14:21:00Z
 LC:plate_material:P029-1:3,SL029,Plate Quality Released,2026-03-30T14:36:00Z
+LC:plate_material:P029-1:6,SL029,Plate Packing Started,2026-03-30T15:21:00Z
 LC:plate_material:P029-1:4,SL029,Plate Packed,2026-03-30T15:36:00Z
 LC:planned_rolling_instruction:PLAN030:1,SL030,Rolling Plan Created,2026-03-30T14:00:00Z
 LC:slab_material:SL030:1,SL030,Slab Received,2026-03-30T14:00:00Z
@@ -842,15 +894,20 @@ DIM:P030-3,SL030,Dimensional Inspection Completed,2026-03-31T13:48:00Z
 OP:P030-1-HT1,SL030,Heat Treatment Completed,2026-03-31T14:00:00Z
 LC:plate_material:P030-2:2,SL030,Plate Surface Checked,2026-03-31T14:12:00Z
 LC:plate_material:P030-3:2,SL030,Plate Surface Checked,2026-03-31T14:18:00Z
+LC:plate_material:P030-2:5,SL030,Plate Quality Review Started,2026-03-31T14:27:00Z
+LC:plate_material:P030-3:5,SL030,Plate Quality Review Started,2026-03-31T14:33:00Z
 LC:plate_material:P030-2:3,SL030,Plate Quality Released,2026-03-31T14:42:00Z
 LC:plate_material:P030-3:3,SL030,Plate Quality Released,2026-03-31T14:48:00Z
 OP:P030-1-IF2,SL030,Inspection Failed,2026-03-31T15:00:00Z
+LC:plate_material:P030-2:6,SL030,Plate Packing Started,2026-03-31T15:27:00Z
+LC:plate_material:P030-3:6,SL030,Plate Packing Started,2026-03-31T15:33:00Z
 LC:plate_material:P030-2:4,SL030,Plate Packed,2026-03-31T15:42:00Z
 LC:plate_material:P030-3:4,SL030,Plate Packed,2026-03-31T15:48:00Z
 OP:P030-1-HT2,SL030,Heat Treatment Completed,2026-03-31T17:00:00Z
 OP:P030-1-IP,SL030,Inspection Passed,2026-03-31T18:00:00Z
 DIM:P030-1,SL030,Dimensional Inspection Completed,2026-03-31T18:30:00Z
 LC:plate_material:P030-1:2,SL030,Plate Surface Checked,2026-03-31T19:00:00Z
+LC:plate_material:P030-1:5,SL030,Plate Quality Review Started,2026-03-31T19:15:00Z
 LC:plate_material:P030-1:3,SL030,Plate Quality Released,2026-03-31T19:30:00Z
 LC:planned_rolling_instruction:PLAN031:1,SL031,Rolling Plan Created,2026-03-31T14:00:00Z
 LC:slab_material:SL031:1,SL031,Slab Received,2026-03-31T14:00:00Z
@@ -935,8 +992,12 @@ DIM:P034-1,SL034,Dimensional Inspection Completed,2026-04-04T13:36:00Z
 DIM:P034-2,SL034,Dimensional Inspection Completed,2026-04-04T13:42:00Z
 LC:plate_material:P034-1:2,SL034,Plate Surface Checked,2026-04-04T14:06:00Z
 LC:plate_material:P034-2:2,SL034,Plate Surface Checked,2026-04-04T14:12:00Z
+LC:plate_material:P034-1:5,SL034,Plate Quality Review Started,2026-04-04T14:21:00Z
+LC:plate_material:P034-2:5,SL034,Plate Quality Review Started,2026-04-04T14:27:00Z
 LC:plate_material:P034-1:3,SL034,Plate Quality Released,2026-04-04T14:36:00Z
 LC:plate_material:P034-2:3,SL034,Plate Quality Released,2026-04-04T14:42:00Z
+LC:plate_material:P034-1:6,SL034,Plate Packing Started,2026-04-04T15:21:00Z
+LC:plate_material:P034-2:6,SL034,Plate Packing Started,2026-04-04T15:27:00Z
 LC:plate_material:P034-1:4,SL034,Plate Packed,2026-04-04T15:36:00Z
 LC:plate_material:P034-2:4,SL034,Plate Packed,2026-04-04T15:42:00Z
 LC:planned_rolling_instruction:PLAN035:1,SL035,Rolling Plan Created,2026-04-04T14:00:00Z
@@ -982,9 +1043,14 @@ DIM:P035-3,SL035,Dimensional Inspection Completed,2026-04-05T13:48:00Z
 LC:plate_material:P035-1:2,SL035,Plate Surface Checked,2026-04-05T14:06:00Z
 LC:plate_material:P035-2:2,SL035,Plate Surface Checked,2026-04-05T14:12:00Z
 LC:plate_material:P035-3:2,SL035,Plate Surface Checked,2026-04-05T14:18:00Z
+LC:plate_material:P035-1:5,SL035,Plate Quality Review Started,2026-04-05T14:21:00Z
+LC:plate_material:P035-2:5,SL035,Plate Quality Review Started,2026-04-05T14:27:00Z
+LC:plate_material:P035-3:5,SL035,Plate Quality Review Started,2026-04-05T14:33:00Z
 LC:plate_material:P035-1:3,SL035,Plate Quality Released,2026-04-05T14:36:00Z
 LC:plate_material:P035-2:3,SL035,Plate Quality Released,2026-04-05T14:42:00Z
 LC:plate_material:P035-3:3,SL035,Plate Quality Released,2026-04-05T14:48:00Z
+LC:plate_material:P035-1:6,SL035,Plate Packing Started,2026-04-05T15:21:00Z
+LC:plate_material:P035-2:6,SL035,Plate Packing Started,2026-04-05T15:27:00Z
 LC:plate_material:P035-1:4,SL035,Plate Packed,2026-04-05T15:36:00Z
 LC:plate_material:P035-2:4,SL035,Plate Packed,2026-04-05T15:42:00Z
 LC:planned_rolling_instruction:PLAN036:1,SL036,Rolling Plan Created,2026-04-05T14:00:00Z
@@ -1024,14 +1090,20 @@ DIM:P036-3,SL036,Dimensional Inspection Completed,2026-04-06T13:48:00Z
 OP:P036-1-HT1,SL036,Heat Treatment Completed,2026-04-06T14:00:00Z
 LC:plate_material:P036-2:2,SL036,Plate Surface Checked,2026-04-06T14:12:00Z
 LC:plate_material:P036-3:2,SL036,Plate Surface Checked,2026-04-06T14:18:00Z
+LC:plate_material:P036-2:5,SL036,Plate Quality Review Started,2026-04-06T14:27:00Z
+LC:plate_material:P036-3:5,SL036,Plate Quality Review Started,2026-04-06T14:33:00Z
 LC:plate_material:P036-2:3,SL036,Plate Quality Released,2026-04-06T14:42:00Z
 LC:plate_material:P036-3:3,SL036,Plate Quality Released,2026-04-06T14:48:00Z
 OP:P036-1-IF2,SL036,Inspection Failed,2026-04-06T15:00:00Z
+LC:plate_material:P036-2:6,SL036,Plate Packing Started,2026-04-06T15:27:00Z
+LC:plate_material:P036-3:6,SL036,Plate Packing Started,2026-04-06T15:33:00Z
 LC:plate_material:P036-2:4,SL036,Plate Packed,2026-04-06T15:42:00Z
 LC:plate_material:P036-3:4,SL036,Plate Packed,2026-04-06T15:48:00Z
 OP:P036-1-HT2,SL036,Heat Treatment Completed,2026-04-06T17:00:00Z
 OP:P036-1-IP,SL036,Inspection Passed,2026-04-06T18:00:00Z
 DIM:P036-1,SL036,Dimensional Inspection Completed,2026-04-06T18:30:00Z
 LC:plate_material:P036-1:2,SL036,Plate Surface Checked,2026-04-06T19:00:00Z
+LC:plate_material:P036-1:5,SL036,Plate Quality Review Started,2026-04-06T19:15:00Z
 LC:plate_material:P036-1:3,SL036,Plate Quality Released,2026-04-06T19:30:00Z
+LC:plate_material:P036-1:6,SL036,Plate Packing Started,2026-04-06T20:15:00Z
 LC:plate_material:P036-1:4,SL036,Plate Packed,2026-04-06T20:30:00Z

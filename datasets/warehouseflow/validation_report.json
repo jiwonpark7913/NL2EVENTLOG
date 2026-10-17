@@ -25,7 +25,7 @@
     "transaction_record": 80,
     "goods_transaction_detail": 138,
     "loader_transaction": 167,
-    "transaction_record_activity": 314,
+    "transaction_record_activity": 154,
     "lifecycle_case_link": 3022
   },
   "naive_detail_worker_join_rows": 289,
@@ -115,9 +115,21 @@
       "event_count": 823
     },
     {
+      "question_id": "TS01",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 160
+    },
+    {
       "question_id": "R07P",
       "question_type": "Q2",
       "status": "unsupported_by_design"
+    },
+    {
+      "question_id": "TS01P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 160
     },
     {
       "question_id": "OW01P",
@@ -412,8 +424,8 @@
       "reason": "Activity storage/index for its parent-object log; not an independent business case."
     }
   ],
-  "total_questions": 32,
-  "answerable_questions": 30,
+  "total_questions": 34,
+  "answerable_questions": 32,
   "lifecycle_extensions": {
     "added_tables": 2,
     "added_events": 314,
@@ -424,11 +436,24 @@
       "full_sql_equals_history": "pass"
     }
   },
+  "timestamp_migration": {
+    "added_columns": 4,
+    "removed_empty_history_tables": [],
+    "original_event_identity_and_time": "preserved",
+    "duplicate_event_storage": "none"
+  },
   "question_type_counts": {
-    "Q1": 9,
-    "Q2": 9,
+    "Q1": 10,
+    "Q2": 10,
     "Q3": 7,
     "Q4": 7
   },
-  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified"
+  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
+  "timestamp_summary": {
+    "timestamp_columns": 6,
+    "event_timestamp_columns": 6,
+    "other_timestamp_columns": 0,
+    "date_only_columns": [],
+    "baseline_timestamp_columns": 2
+  }
 }

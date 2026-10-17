@@ -12,7 +12,7 @@
 | as_rolled_material | 36 | 9 | Column encoding | material_id | As-rolled mother material with milestone columns and latest-operation snapshot |
 | furnace_charge_tracking | 30 | 7 | Column encoding | tracking_id | Furnace charge tracking record separated from material lifecycle snapshot |
 | cutting_finishing_instruction | 18 | 8 | Column encoding | instruction_id | Cutting/finishing work instruction for mother material |
-| plate_material | 39 | 8 | Column encoding | plate_material_id | Individual cut Plate material, distinct from mother as-rolled material |
+| plate_material | 39 | 10 | Column encoding | plate_material_id | Individual cut Plate material, distinct from mother as-rolled material |
 | operation_code | 9 | 2 | No event encoding | code | Synthetic operation process-code meanings; codes are newly authored |
 | material_operation_history | 216 | 6 | Row encoding | transaction_id | Immutable operation history for mother and piece material identities |
 

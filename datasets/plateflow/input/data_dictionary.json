@@ -691,10 +691,34 @@
           "value_domain": "SQL type and declared constraints: See table DDL",
           "declared_length": "Not bounded by declared SQLite type",
           "default_value": "No SQL default"
+        },
+        {
+          "name": "plate_quality_review_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Actual UTC time of Plate Quality Review Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field.",
+          "source_origin": "authored_lifecycle_extension",
+          "metadata_id": "plateflow.plate_material.plate_quality_review_started_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "plate_packing_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "definition": "Actual UTC time of Plate Packing Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field.",
+          "source_origin": "authored_lifecycle_extension",
+          "metadata_id": "plateflow.plate_material.plate_packing_started_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "event_encoding": "Column encoding",
-      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: plate_piece_identified_at, plate_quality_released_at, plate_packed_at.",
+      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: plate_piece_identified_at, plate_quality_released_at, plate_packed_at, plate_quality_review_started_at, plate_packing_started_at.",
       "metadata_id": "plateflow.plate_material"
     },
     {
@@ -910,13 +934,22 @@
         "Plate Piece Identified",
         "Plate Surface Checked",
         "Plate Quality Released",
-        "Plate Packed"
+        "Plate Packed",
+        "Plate Quality Review Started",
+        "Plate Packing Started"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
       "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
       "storage": "Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable"
     }
   ],
+  "timestamp_summary": {
+    "timestamp_columns": 39,
+    "event_timestamp_columns": 31,
+    "other_timestamp_columns": 8,
+    "date_only_columns": [],
+    "baseline_timestamp_columns": 37
+  },
   "dictionary_basic_information": {
     "dictionary_id": "NL2EVENTLOG:plateflow",
     "version": "2026-10-12",
@@ -926,6 +959,8 @@
     "timezone": "UTC",
     "dbms": "SQLite",
     "namespace": "plateflow",
+    "timestamp_columns": 39,
+    "event_timestamp_columns": 31,
     "maintainer": "NL2EVENTLOG project maintainers",
     "registration_status": "Project-maintained draft; not ISO-registered or certified",
     "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",

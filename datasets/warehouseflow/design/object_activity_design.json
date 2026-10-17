@@ -13,6 +13,31 @@
       "Goods Packed"
     ],
     "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+    "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+    "milestone_columns": [
+      {
+        "activity": "Receiving Requested",
+        "column": "receiving_requested_at"
+      },
+      {
+        "activity": "Receiving Scheduled",
+        "column": "receiving_scheduled_at"
+      },
+      {
+        "activity": "Dispatch Requested",
+        "column": "dispatch_requested_at"
+      },
+      {
+        "activity": "Dispatch Approved",
+        "column": "dispatch_approved_at"
+      }
+    ],
+    "row_activities": [
+      "Receiving Inspection Completed",
+      "Goods Put Away",
+      "Goods Picked",
+      "Goods Packed"
+    ],
+    "storage": "Actual milestone columns on transaction_record; remaining repeatable actions stay in transaction_record_activity"
   }
 ]

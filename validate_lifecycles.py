@@ -25,8 +25,8 @@ for name in ['warehouseflow','universityflow','plateflow']:
  if name=='warehouseflow':
   for r in con.execute('SELECT * FROM transaction_record'):
    acts={x['activity']:x['occurred_at'] for x in con.execute('SELECT * FROM transaction_record_activity WHERE transaction_id=?',(r['transaction_id'],))};original=hist['TX:'+r['transaction_id']]
-   if original['activity']=='Goods Received':assert acts['Receiving Scheduled']<original['timestamp']<acts['Receiving Inspection Completed']
-   else:assert acts['Dispatch Approved']<acts['Goods Picked']<acts['Goods Packed']<original['timestamp']
+   if original['activity']=='Goods Received':assert r['receiving_scheduled_at']<original['timestamp']<acts['Receiving Inspection Completed']
+   else:assert r['dispatch_approved_at']<acts['Goods Picked']<acts['Goods Packed']<original['timestamp']
  if name=='plateflow':
   for r in con.execute('SELECT * FROM furnace_charge_tracking'):
    acts={k:v for k,v in [('Furnace Discharge Confirmed',r['furnace_discharge_confirmed_at']),('Heating Completed',con.execute("SELECT completed_at FROM material_operation_history WHERE material_id=? AND operation_code='HF'",(r['material_id'],)).fetchone())] if v};acts['Heating Completed']=acts['Heating Completed'][0] if 'Heating Completed' in acts else None

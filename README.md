@@ -4,11 +4,11 @@
 - Original source definitions are retained; typed business-action histories extend the domains with explicitly authored lifecycles.
 - Each dataset includes an executable DB, requirements, data dictionary, square-table draw.io/PNG ERDs, questions, ES, SQL and Gold CSVs.
 
-| Dataset | Tables | Object / case types | Activity types | Distinct events | Questions | Gold CSVs |
-|---|---:|---:|---:|---:|---:|---:|
-| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 394 | 32 | 30 |
-| [UniversityFlow](datasets/universityflow/README.md) | 20 | 11 | 41 | 808 | 62 | 58 |
-| [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 37 | 1036 | 42 | 40 |
+| Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 6 | 6 | 394 | 34 | 32 |
+| [UniversityFlow](datasets/universityflow/README.md) | 18 | 11 | 41 | 27 | 26 | 808 | 70 | 66 |
+| [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 39 | 39 | 31 | 1108 | 44 | 42 |
 
 - **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. Activity-history tables, extraction indexes and reference tables are excluded.
@@ -56,18 +56,18 @@
 
 | Dataset | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
 |---|---|---:|---:|---:|---:|
-| WarehouseFlow | Q1 | 9 | 8 | 1 | 2.33 |
-| WarehouseFlow | Q2 | 9 | 8 | 1 | 2.33 |
+| WarehouseFlow | Q1 | 10 | 9 | 1 | 2.50 |
+| WarehouseFlow | Q2 | 10 | 9 | 1 | 2.50 |
 | WarehouseFlow | Q3 | 7 | 7 | 0 | 10.00 |
 | WarehouseFlow | Q4 | 7 | 7 | 0 | 10.00 |
-| UniversityFlow | Q1 | 19 | 17 | 2 | 2.05 |
-| UniversityFlow | Q2 | 19 | 17 | 2 | 2.05 |
+| UniversityFlow | Q1 | 23 | 21 | 2 | 2.35 |
+| UniversityFlow | Q2 | 23 | 21 | 2 | 2.35 |
 | UniversityFlow | Q3 | 12 | 12 | 0 | 9.83 |
 | UniversityFlow | Q4 | 12 | 12 | 0 | 9.83 |
-| PlateFlow | Q1 | 12 | 11 | 1 | 2.83 |
-| PlateFlow | Q2 | 12 | 11 | 1 | 2.83 |
-| PlateFlow | Q3 | 9 | 9 | 0 | 16.44 |
-| PlateFlow | Q4 | 9 | 9 | 0 | 16.44 |
+| PlateFlow | Q1 | 13 | 12 | 1 | 2.77 |
+| PlateFlow | Q2 | 13 | 12 | 1 | 2.77 |
+| PlateFlow | Q3 | 9 | 9 | 0 | 17.33 |
+| PlateFlow | Q4 | 9 | 9 | 0 | 17.33 |
 
 - Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
@@ -76,3 +76,13 @@
 - Each question list includes requested and extractable activity counts.
 
 - PlateFlow uses its original nine business-table roles: one-time milestone columns plus repeatable operation-history rows. WarehouseFlow and UniversityFlow retain their existing storage designs.
+
+## Timestamp columns
+
+- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.
+
+| Dataset | Previous timestamp columns | Current timestamp columns | Current event timestamp columns |
+|---|---:|---:|---:|
+| WarehouseFlow | 2 | 6 | 6 |
+| UniversityFlow | 14 | 27 | 26 |
+| PlateFlow | 37 | 39 | 31 |

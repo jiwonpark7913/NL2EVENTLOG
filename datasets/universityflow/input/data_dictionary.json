@@ -401,6 +401,71 @@
           "value_domain": "SQL type and declared constraints: NOT NULL CHECK(status='REGISTERED')",
           "declared_length": "Not bounded by declared SQLite type",
           "default_value": "No SQL default"
+        },
+        {
+          "name": "registration_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Registration Requested",
+          "definition": "Actual UTC time of Registration Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.registration.registration_requested_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "registration_approved_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Registration Approved",
+          "definition": "Actual UTC time of Registration Approved. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.registration.registration_approved_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "course_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Started",
+          "definition": "Actual UTC time of Course Started. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.registration.course_started_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "course_assessment_completed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Assessment Completed",
+          "definition": "Actual UTC time of Course Assessment Completed. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.registration.course_assessment_completed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "course_grade_finalized_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Grade Finalized",
+          "definition": "Actual UTC time of Course Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.registration.course_grade_finalized_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -425,8 +490,8 @@
           "source_table": "Registration"
         }
       ],
-      "event_encoding": "Row encoding",
-      "encoding_detail": "One successful registration occurrence per student-course row.",
+      "event_encoding": "Mixed (row + column)",
+      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: registration_requested_at, registration_approved_at, course_started_at, course_assessment_completed_at, course_grade_finalized_at.",
       "metadata_id": "universityflow.registration"
     },
     {
@@ -522,6 +587,58 @@
           "value_domain": "SQL type and declared constraints: NOT NULL",
           "declared_length": "Not bounded by declared SQLite type",
           "default_value": "No SQL default"
+        },
+        {
+          "name": "examination_scheduled_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Scheduled",
+          "definition": "Actual UTC time of Examination Scheduled. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.degree_examination_result.examination_scheduled_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "examination_checked_in_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Checked In",
+          "definition": "Actual UTC time of Examination Checked In. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.degree_examination_result.examination_checked_in_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "examination_score_published_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Score Published",
+          "definition": "Actual UTC time of Examination Score Published. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.degree_examination_result.examination_score_published_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "examination_result_reviewed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Result Reviewed",
+          "definition": "Actual UTC time of Examination Result Reviewed. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.degree_examination_result.examination_result_reviewed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -540,8 +657,8 @@
           "source_table": "Degree Examination Result"
         }
       ],
-      "event_encoding": "Row encoding",
-      "encoding_detail": "One examination sitting per result row.",
+      "event_encoding": "Mixed (row + column)",
+      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: examination_scheduled_at, examination_checked_in_at, examination_score_published_at, examination_result_reviewed_at.",
       "metadata_id": "universityflow.degree_examination_result"
     },
     {
@@ -873,6 +990,45 @@
           "value_domain": "SQL type and declared constraints: NOT NULL",
           "declared_length": "Not bounded by declared SQLite type",
           "default_value": "No SQL default"
+        },
+        {
+          "name": "thesis_draft_registered_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Draft Registered",
+          "definition": "Actual UTC time of Thesis Draft Registered. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.thesis.thesis_draft_registered_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "thesis_review_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Review Started",
+          "definition": "Actual UTC time of Thesis Review Started. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.thesis.thesis_review_started_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "thesis_accepted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Accepted",
+          "definition": "Actual UTC time of Thesis Accepted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.thesis.thesis_accepted_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -892,7 +1048,7 @@
         }
       ],
       "event_encoding": "Column encoding",
-      "encoding_detail": "One thesis object row stores its actual submission milestone. Extracted event columns: submission_date.",
+      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: thesis_draft_registered_at, thesis_review_started_at, thesis_accepted_at.",
       "metadata_id": "universityflow.thesis"
     },
     {
@@ -1074,6 +1230,45 @@
           "value_domain": "SQL type and declared constraints: NOT NULL",
           "declared_length": "Not bounded by declared SQLite type",
           "default_value": "No SQL default"
+        },
+        {
+          "name": "assignment_assigned_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Assigned",
+          "definition": "Actual UTC time of Assignment Assigned. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.assignment.assignment_assigned_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "assignment_submitted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Submitted",
+          "definition": "Actual UTC time of Assignment Submitted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.assignment.assignment_submitted_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "assignment_grade_finalized_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Grade Finalized",
+          "definition": "Actual UTC time of Assignment Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "universityflow.assignment.assignment_grade_finalized_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -1092,8 +1287,8 @@
           "source_table": "Assignment"
         }
       ],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: assignment_assigned_at, assignment_submitted_at, assignment_grade_finalized_at.",
       "metadata_id": "universityflow.assignment"
     },
     {
@@ -1290,172 +1485,6 @@
       "event_encoding": "Row encoding",
       "encoding_detail": "One grading occurrence per composite-key row.",
       "metadata_id": "universityflow.assignment_grading"
-    },
-    {
-      "table": "registration_activity",
-      "definition": "Authored actual-action history for registration",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension",
-          "metadata_id": "universityflow.registration_activity.event_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "student_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to registration.student_id",
-          "metadata_id": "universityflow.registration_activity.student_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "course_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to registration.course_id",
-          "metadata_id": "universityflow.registration_activity.course_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update",
-          "metadata_id": "universityflow.registration_activity.activity",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates",
-          "metadata_id": "universityflow.registration_activity.occurred_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
-          "metadata_id": "universityflow.registration_activity.outcome",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "student_id",
-          "parent_table": "registration",
-          "parent_column": "student_id"
-        },
-        {
-          "column": "course_id",
-          "parent_table": "registration",
-          "parent_column": "course_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension",
-      "event_encoding": "Row encoding",
-      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
-      "metadata_id": "universityflow.registration_activity"
-    },
-    {
-      "table": "degree_examination_result_activity",
-      "definition": "Authored actual-action history for degree_examination_result",
-      "columns": [
-        {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension",
-          "metadata_id": "universityflow.degree_examination_result_activity.event_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "result_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to degree_examination_result.result_id",
-          "metadata_id": "universityflow.degree_examination_result_activity.result_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update",
-          "metadata_id": "universityflow.degree_examination_result_activity.activity",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates",
-          "metadata_id": "universityflow.degree_examination_result_activity.occurred_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
-          "metadata_id": "universityflow.degree_examination_result_activity.outcome",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
-      "primary_key": [
-        "event_id"
-      ],
-      "foreign_keys": [
-        {
-          "column": "result_id",
-          "parent_table": "degree_examination_result",
-          "parent_column": "result_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension",
-      "event_encoding": "Row encoding",
-      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
-      "metadata_id": "universityflow.degree_examination_result_activity"
     },
     {
       "table": "assignment_activity",
@@ -2012,12 +2041,13 @@
     "Original source rows are preserved. Added typed activity histories are authored synthetic domain extensions, not claimed source fields.",
     "Only actual occurred_at times generate lifecycle events. Planned dates and technical timestamps remain excluded.",
     "Lifecycle case links use exact typed object identity. Related cases may share an event; uniqueness is (case_id,event_id).",
-    "Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case."
+    "Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case.",
+    "One-time milestone events are stored in named timestamp columns on their business record. They have been removed from generic action rows to prevent duplicate extraction.",
+    "Repeated review/revision/grading/experiment actions remain row encoded; milestone timestamps preserve their original event IDs and actual times."
   ],
   "object_activity_design": [
     {
       "object_table": "registration",
-      "activity_table": "registration_activity",
       "activities": [
         "Registration Requested",
         "Registration Approved",
@@ -2026,11 +2056,34 @@
         "Course Grade Finalized"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Registration Requested",
+          "column": "registration_requested_at"
+        },
+        {
+          "activity": "Registration Approved",
+          "column": "registration_approved_at"
+        },
+        {
+          "activity": "Course Started",
+          "column": "course_started_at"
+        },
+        {
+          "activity": "Course Assessment Completed",
+          "column": "course_assessment_completed_at"
+        },
+        {
+          "activity": "Course Grade Finalized",
+          "column": "course_grade_finalized_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Actual milestone columns on registration"
     },
     {
       "object_table": "degree_examination_result",
-      "activity_table": "degree_examination_result_activity",
       "activities": [
         "Examination Scheduled",
         "Examination Checked In",
@@ -2038,7 +2091,27 @@
         "Examination Result Reviewed"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Examination Scheduled",
+          "column": "examination_scheduled_at"
+        },
+        {
+          "activity": "Examination Checked In",
+          "column": "examination_checked_in_at"
+        },
+        {
+          "activity": "Examination Score Published",
+          "column": "examination_score_published_at"
+        },
+        {
+          "activity": "Examination Result Reviewed",
+          "column": "examination_result_reviewed_at"
+        }
+      ],
+      "row_activities": [],
+      "storage": "Actual milestone columns on degree_examination_result"
     },
     {
       "object_table": "assignment",
@@ -2052,7 +2125,27 @@
         "Assignment Regraded"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Assignment Assigned",
+          "column": "assignment_assigned_at"
+        },
+        {
+          "activity": "Assignment Submitted",
+          "column": "assignment_submitted_at"
+        },
+        {
+          "activity": "Assignment Grade Finalized",
+          "column": "assignment_grade_finalized_at"
+        }
+      ],
+      "row_activities": [
+        "Assignment Revision Requested",
+        "Assignment Resubmitted",
+        "Assignment Regraded"
+      ],
+      "storage": "Actual milestone columns on assignment; remaining repeatable actions stay in assignment_activity"
     },
     {
       "object_table": "simulation_module",
@@ -2089,7 +2182,26 @@
         "Thesis Accepted"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Thesis Draft Registered",
+          "column": "thesis_draft_registered_at"
+        },
+        {
+          "activity": "Thesis Review Started",
+          "column": "thesis_review_started_at"
+        },
+        {
+          "activity": "Thesis Accepted",
+          "column": "thesis_accepted_at"
+        }
+      ],
+      "row_activities": [
+        "Thesis Revision Requested",
+        "Thesis Resubmitted"
+      ],
+      "storage": "Actual milestone columns on thesis; remaining repeatable actions stay in thesis_activity"
     },
     {
       "object_table": "course",
@@ -2116,6 +2228,17 @@
       "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
     }
   ],
+  "timestamp_summary": {
+    "timestamp_columns": 27,
+    "event_timestamp_columns": 26,
+    "other_timestamp_columns": 1,
+    "date_only_columns": [
+      "student.date_of_birth",
+      "task.task_start_date",
+      "task.task_end_date"
+    ],
+    "baseline_timestamp_columns": 14
+  },
   "dictionary_basic_information": {
     "dictionary_id": "NL2EVENTLOG:universityflow",
     "version": "2026-10-12",
@@ -2125,6 +2248,8 @@
     "timezone": "UTC",
     "dbms": "SQLite",
     "namespace": "universityflow",
+    "timestamp_columns": 27,
+    "event_timestamp_columns": 26,
     "maintainer": "NL2EVENTLOG project maintainers",
     "registration_status": "Project-maintained draft; not ISO-registered or certified",
     "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",

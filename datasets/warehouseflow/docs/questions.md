@@ -32,7 +32,9 @@
 | OW04 | Q3 Full Lifecycle | — | O | 10 | 10 | Extract the full recorded lifecycle event log for each warehouse transaction. |
 | OW05 | Q3 Full Lifecycle | — | O | 10 | 10 | Extract the full recorded lifecycle event log for each goods transaction line. |
 | OW06 | Q3 Full Lifecycle | — | O | 10 | 10 | Extract the full recorded lifecycle event log for each worker transaction assignment. |
+| TS01 | Q1 Explicit | — | O | 4 | 4 | Extract Receiving Requested, Receiving Scheduled, Dispatch Requested, Dispatch Approved events for each warehouse transaction. |
 | R07P | Q2 Paraphrased | R07 | X | 1 | 0 | For each warehouse, build a timeline of the beginning of warehouse handling jobs. |
+| TS01P | Q2 Paraphrased | TS01 | O | 4 | 4 | For each warehouse transaction, build a timeline of a request to take goods into storage, an inbound handling appointment being arranged, a request to send goods out, permission being granted to send goods out. |
 | OW01P | Q4 Full Lifecycle Paraphrased | OW01 | O | 10 | 10 | Show the complete recorded history associated with each warehouse. |
 | OW01E | Q1 Explicit | — | O | 3 | 3 | Extract Receiving Requested, Goods Received, Goods Put Away events for each warehouse. |
 | OW01EP | Q2 Paraphrased | OW01E | O | 3 | 3 | For each warehouse, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations. |

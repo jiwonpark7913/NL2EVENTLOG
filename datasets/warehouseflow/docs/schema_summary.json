@@ -24,7 +24,7 @@
     },
     "transaction_record": {
       "row_count": 80,
-      "column_count": 4,
+      "column_count": 8,
       "primary_key": [
         "transaction_id"
       ]
@@ -46,7 +46,7 @@
       ]
     },
     "transaction_record_activity": {
-      "row_count": 314,
+      "row_count": 154,
       "column_count": 5,
       "primary_key": [
         "event_id"

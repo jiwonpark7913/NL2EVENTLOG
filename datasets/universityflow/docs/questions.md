@@ -45,9 +45,17 @@
 | OU09 | Q3 Full Lifecycle | — | O | 7 | 7 | Extract the full recorded lifecycle event log for each instructor. |
 | OU10 | Q3 Full Lifecycle | — | O | 1 | 1 | Extract the full recorded lifecycle event log for each assignment grading record. |
 | OU11 | Q3 Full Lifecycle | — | O | 4 | 4 | Extract the full recorded lifecycle event log for each course-design task. |
+| TS01 | Q1 Explicit | — | O | 4 | 4 | Extract Examination Scheduled, Examination Checked In, Examination Score Published, Examination Result Reviewed events for each student. |
+| TS02 | Q1 Explicit | — | O | 5 | 5 | Extract Registration Requested, Registration Approved, Course Started, Course Assessment Completed, Course Grade Finalized events for each student-course registration. |
+| TS03 | Q1 Explicit | — | O | 3 | 3 | Extract Assignment Assigned, Assignment Submitted, Assignment Grade Finalized events for each assignment. |
+| TS04 | Q1 Explicit | — | O | 3 | 3 | Extract Thesis Draft Registered, Thesis Review Started, Thesis Accepted events for each thesis. |
 | U07P | Q2 Paraphrased | U07 | X | 1 | 0 | For each student, build a timeline of confirmation messages being sent after a course sign-up. |
 | U08P | Q2 Paraphrased | U08 | X | 1 | 0 | For each student, build a timeline of the student leaving a course after signing up. |
 | U15P | Q2 Paraphrased | U15 | O | 1 | 1 | For each student, build a timeline of the student handing in coursework. |
+| TS01P | Q2 Paraphrased | TS01 | O | 4 | 4 | For each student, build a timeline of an examination sitting being arranged, the candidate checking in for the examination, the examination mark being released, the examination result being reviewed. |
+| TS02P | Q2 Paraphrased | TS02 | O | 5 | 5 | For each student-course registration, build a timeline of the student requesting a place on a course, the request for a course place being accepted, teaching beginning for the enrolled course, the course assessment finishing, the course mark being made final. |
+| TS03P | Q2 Paraphrased | TS03 | O | 3 | 3 | For each assignment, build a timeline of coursework being set for the student, the student handing in coursework, the coursework mark being made final. |
+| TS04P | Q2 Paraphrased | TS04 | O | 3 | 3 | For each thesis, build a timeline of a thesis draft being registered for review, the review of a thesis beginning, a thesis receiving final approval. |
 | OU01P | Q4 Full Lifecycle Paraphrased | OU01 | O | 29 | 29 | Show the complete recorded history associated with each student. |
 | OU01E | Q1 Explicit | — | O | 3 | 3 | Extract Assignment Assigned, Assignment Submitted, Assignment Graded events for each student. |
 | OU01EP | Q2 Paraphrased | OU01E | O | 3 | 3 | For each student, build a timeline of coursework being set for the student, the student handing in coursework, an instructor assessing the assignment. |

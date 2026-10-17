@@ -10,13 +10,13 @@
 
 | Case table | Case concept | Kind | Question | Cases | Event rows | Gold CSV |
 |---|---|---|---|---:|---:|---|
-| slab_material | Slab | business object | OPV01 | 36 | 1036 | [CSV](../private/gold_logs/OPV01.csv) |
+| slab_material | Slab | business object | OPV01 | 36 | 1108 | [CSV](../private/gold_logs/OPV01.csv) |
 | planned_rolling_instruction | Rolling plan | business object | OPV02 | 36 | 174 | [CSV](../private/gold_logs/OPV02.csv) |
 | rolling_instruction | Rolling instruction | business object | OPV03 | 36 | 150 | [CSV](../private/gold_logs/OPV03.csv) |
-| as_rolled_material | Mother material | business object | OPV04 | 36 | 1036 | [CSV](../private/gold_logs/OPV04.csv) |
+| as_rolled_material | Mother material | business object | OPV04 | 36 | 1108 | [CSV](../private/gold_logs/OPV04.csv) |
 | furnace_charge_tracking | Furnace tracking record | tracking record | OPV05 | 30 | 133 | [CSV](../private/gold_logs/OPV05.csv) |
 | cutting_finishing_instruction | Cutting instruction | business object | OPV06 | 18 | 87 | [CSV](../private/gold_logs/OPV06.csv) |
-| plate_material | Cut plate piece | business object | OPV07 | 39 | 264 | [CSV](../private/gold_logs/OPV07.csv) |
+| plate_material | Cut plate piece | business object | OPV07 | 39 | 336 | [CSV](../private/gold_logs/OPV07.csv) |
 | material_operation_history | Material operation record | event record | OPV08 | 216 | 216 | [CSV](../private/gold_logs/OPV08.csv) |
 
 ## Scope of each view

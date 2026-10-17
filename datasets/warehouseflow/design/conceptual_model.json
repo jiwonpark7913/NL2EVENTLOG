@@ -111,5 +111,527 @@
       "source_origin": "authored_lifecycle_extension"
     }
   ],
-  "final_table_count": 8
+  "final_table_count": 8,
+  "current_tables": [
+    {
+      "table": "warehouse",
+      "source_table": "Warehouse",
+      "definition": "Warehouse master",
+      "columns": [
+        {
+          "name": "warehouse_number",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Warehouse identity",
+          "source_attribute": "Warehouse number"
+        },
+        {
+          "name": "address",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Warehouse postal address",
+          "source_attribute": "Address"
+        },
+        {
+          "name": "capacity",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(capacity > 0)",
+          "definition": "Maximum total stock units; synthetic unit convention",
+          "source_attribute": "Capacity"
+        }
+      ],
+      "primary_key": [
+        "warehouse_number"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "goods",
+      "source_table": "Goods",
+      "definition": "Goods master",
+      "columns": [
+        {
+          "name": "goods_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Goods identity",
+          "source_attribute": "Goods ID"
+        },
+        {
+          "name": "goods_name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Goods business name",
+          "source_attribute": "Goods name"
+        }
+      ],
+      "primary_key": [
+        "goods_id"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "loader",
+      "source_table": "Loader",
+      "definition": "Loading/unloading worker master",
+      "columns": [
+        {
+          "name": "name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker name",
+          "source_attribute": "Name"
+        },
+        {
+          "name": "phone",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker contact phone",
+          "source_attribute": "Phone"
+        },
+        {
+          "name": "loader_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker identity",
+          "source_attribute": "Loader ID"
+        }
+      ],
+      "primary_key": [
+        "loader_id"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "transaction_record",
+      "source_table": "transaction record",
+      "definition": "Inbound/outbound task header, one business occurrence per row",
+      "columns": [
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Inbound/outbound transaction identity",
+          "source_attribute": "transaction ID"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual UTC completion time of recorded task; instant-event convention",
+          "source_attribute": "time"
+        },
+        {
+          "name": "warehouse_number",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Warehouse identity",
+          "source_attribute": "warehouse number"
+        },
+        {
+          "name": "transaction_type",
+          "type": "TEXT",
+          "constraints": "NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
+          "definition": "IN = Goods Received; OUT = Goods Dispatched",
+          "source_attribute": "transaction type"
+        },
+        {
+          "name": "receiving_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Receiving Requested",
+          "definition": "Actual UTC time of Receiving Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "receiving_scheduled_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Receiving Scheduled",
+          "definition": "Actual UTC time of Receiving Scheduled. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "dispatch_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Dispatch Requested",
+          "definition": "Actual UTC time of Dispatch Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "dispatch_approved_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Dispatch Approved",
+          "definition": "Actual UTC time of Dispatch Approved. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        }
+      ],
+      "primary_key": [
+        "transaction_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "warehouse_number",
+          "parent_table": "warehouse",
+          "parent_column": "warehouse_number"
+        }
+      ]
+    },
+    {
+      "table": "goods_transaction_detail",
+      "source_table": "good transaction record details",
+      "definition": "Goods lines per transaction; composite key prevents repeated goods within one task",
+      "columns": [
+        {
+          "name": "goods_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Goods identity",
+          "source_attribute": "goods ID"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Inbound/outbound transaction identity",
+          "source_attribute": "transaction ID"
+        },
+        {
+          "name": "quantity",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(quantity > 0)",
+          "definition": "Positive number of units of this goods type moved by the transaction",
+          "source_attribute": "quantity"
+        }
+      ],
+      "primary_key": [
+        "goods_id",
+        "transaction_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "goods_id",
+          "parent_table": "goods",
+          "parent_column": "goods_id"
+        },
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ]
+    },
+    {
+      "table": "loader_transaction",
+      "source_table": "stevedore-transaction record",
+      "definition": "Worker assignment bridge; multiple workers may share one task",
+      "columns": [
+        {
+          "name": "loader_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Worker identity",
+          "source_attribute": "Loader ID"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Inbound/outbound transaction identity",
+          "source_attribute": "transaction ID"
+        }
+      ],
+      "primary_key": [
+        "loader_id",
+        "transaction_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "loader_id",
+          "parent_table": "loader",
+          "parent_column": "loader_id"
+        },
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ]
+    },
+    {
+      "table": "transaction_record_activity",
+      "definition": "Authored actual-action history for transaction_record",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "transaction_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to transaction_record.transaction_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "transaction_id",
+          "parent_table": "transaction_record",
+          "parent_column": "transaction_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    }
+  ],
+  "timestamp_migration": [
+    {
+      "table": "transaction_record",
+      "column": "receiving_requested_at",
+      "activity": "Receiving Requested",
+      "old_table": "transaction_record_activity",
+      "preserved_event_ids": [
+        "LC:transaction_record:T001:1",
+        "LC:transaction_record:T002:1",
+        "LC:transaction_record:T003:1",
+        "LC:transaction_record:T004:1",
+        "LC:transaction_record:T005:1",
+        "LC:transaction_record:T008:1",
+        "LC:transaction_record:T009:1",
+        "LC:transaction_record:T010:1",
+        "LC:transaction_record:T011:1",
+        "LC:transaction_record:T012:1",
+        "LC:transaction_record:T017:1",
+        "LC:transaction_record:T018:1",
+        "LC:transaction_record:T019:1",
+        "LC:transaction_record:T020:1",
+        "LC:transaction_record:T025:1",
+        "LC:transaction_record:T026:1",
+        "LC:transaction_record:T027:1",
+        "LC:transaction_record:T028:1",
+        "LC:transaction_record:T033:1",
+        "LC:transaction_record:T034:1",
+        "LC:transaction_record:T035:1",
+        "LC:transaction_record:T036:1",
+        "LC:transaction_record:T038:1",
+        "LC:transaction_record:T041:1",
+        "LC:transaction_record:T042:1",
+        "LC:transaction_record:T043:1",
+        "LC:transaction_record:T044:1",
+        "LC:transaction_record:T049:1",
+        "LC:transaction_record:T050:1",
+        "LC:transaction_record:T051:1",
+        "LC:transaction_record:T052:1",
+        "LC:transaction_record:T053:1",
+        "LC:transaction_record:T056:1",
+        "LC:transaction_record:T057:1",
+        "LC:transaction_record:T058:1",
+        "LC:transaction_record:T059:1",
+        "LC:transaction_record:T060:1",
+        "LC:transaction_record:T065:1",
+        "LC:transaction_record:T066:1",
+        "LC:transaction_record:T067:1",
+        "LC:transaction_record:T068:1",
+        "LC:transaction_record:T073:1",
+        "LC:transaction_record:T074:1",
+        "LC:transaction_record:T075:1",
+        "LC:transaction_record:T076:1"
+      ]
+    },
+    {
+      "table": "transaction_record",
+      "column": "receiving_scheduled_at",
+      "activity": "Receiving Scheduled",
+      "old_table": "transaction_record_activity",
+      "preserved_event_ids": [
+        "LC:transaction_record:T001:2",
+        "LC:transaction_record:T002:2",
+        "LC:transaction_record:T003:2",
+        "LC:transaction_record:T004:2",
+        "LC:transaction_record:T005:2",
+        "LC:transaction_record:T008:2",
+        "LC:transaction_record:T009:2",
+        "LC:transaction_record:T010:2",
+        "LC:transaction_record:T011:2",
+        "LC:transaction_record:T012:2",
+        "LC:transaction_record:T017:2",
+        "LC:transaction_record:T018:2",
+        "LC:transaction_record:T019:2",
+        "LC:transaction_record:T020:2",
+        "LC:transaction_record:T025:2",
+        "LC:transaction_record:T026:2",
+        "LC:transaction_record:T027:2",
+        "LC:transaction_record:T028:2",
+        "LC:transaction_record:T033:2",
+        "LC:transaction_record:T034:2",
+        "LC:transaction_record:T035:2",
+        "LC:transaction_record:T036:2",
+        "LC:transaction_record:T038:2",
+        "LC:transaction_record:T041:2",
+        "LC:transaction_record:T042:2",
+        "LC:transaction_record:T043:2",
+        "LC:transaction_record:T044:2",
+        "LC:transaction_record:T049:2",
+        "LC:transaction_record:T050:2",
+        "LC:transaction_record:T051:2",
+        "LC:transaction_record:T052:2",
+        "LC:transaction_record:T053:2",
+        "LC:transaction_record:T056:2",
+        "LC:transaction_record:T057:2",
+        "LC:transaction_record:T058:2",
+        "LC:transaction_record:T059:2",
+        "LC:transaction_record:T060:2",
+        "LC:transaction_record:T065:2",
+        "LC:transaction_record:T066:2",
+        "LC:transaction_record:T067:2",
+        "LC:transaction_record:T068:2",
+        "LC:transaction_record:T073:2",
+        "LC:transaction_record:T074:2",
+        "LC:transaction_record:T075:2",
+        "LC:transaction_record:T076:2"
+      ]
+    },
+    {
+      "table": "transaction_record",
+      "column": "dispatch_requested_at",
+      "activity": "Dispatch Requested",
+      "old_table": "transaction_record_activity",
+      "preserved_event_ids": [
+        "LC:transaction_record:T006:1",
+        "LC:transaction_record:T007:1",
+        "LC:transaction_record:T013:1",
+        "LC:transaction_record:T014:1",
+        "LC:transaction_record:T015:1",
+        "LC:transaction_record:T016:1",
+        "LC:transaction_record:T021:1",
+        "LC:transaction_record:T022:1",
+        "LC:transaction_record:T023:1",
+        "LC:transaction_record:T024:1",
+        "LC:transaction_record:T029:1",
+        "LC:transaction_record:T030:1",
+        "LC:transaction_record:T031:1",
+        "LC:transaction_record:T032:1",
+        "LC:transaction_record:T037:1",
+        "LC:transaction_record:T039:1",
+        "LC:transaction_record:T040:1",
+        "LC:transaction_record:T045:1",
+        "LC:transaction_record:T046:1",
+        "LC:transaction_record:T047:1",
+        "LC:transaction_record:T048:1",
+        "LC:transaction_record:T054:1",
+        "LC:transaction_record:T055:1",
+        "LC:transaction_record:T061:1",
+        "LC:transaction_record:T062:1",
+        "LC:transaction_record:T063:1",
+        "LC:transaction_record:T064:1",
+        "LC:transaction_record:T069:1",
+        "LC:transaction_record:T070:1",
+        "LC:transaction_record:T071:1",
+        "LC:transaction_record:T072:1",
+        "LC:transaction_record:T077:1",
+        "LC:transaction_record:T078:1",
+        "LC:transaction_record:T079:1",
+        "LC:transaction_record:T080:1"
+      ]
+    },
+    {
+      "table": "transaction_record",
+      "column": "dispatch_approved_at",
+      "activity": "Dispatch Approved",
+      "old_table": "transaction_record_activity",
+      "preserved_event_ids": [
+        "LC:transaction_record:T006:2",
+        "LC:transaction_record:T007:2",
+        "LC:transaction_record:T013:2",
+        "LC:transaction_record:T014:2",
+        "LC:transaction_record:T015:2",
+        "LC:transaction_record:T016:2",
+        "LC:transaction_record:T021:2",
+        "LC:transaction_record:T022:2",
+        "LC:transaction_record:T023:2",
+        "LC:transaction_record:T024:2",
+        "LC:transaction_record:T029:2",
+        "LC:transaction_record:T030:2",
+        "LC:transaction_record:T031:2",
+        "LC:transaction_record:T032:2",
+        "LC:transaction_record:T037:2",
+        "LC:transaction_record:T039:2",
+        "LC:transaction_record:T040:2",
+        "LC:transaction_record:T045:2",
+        "LC:transaction_record:T046:2",
+        "LC:transaction_record:T047:2",
+        "LC:transaction_record:T048:2",
+        "LC:transaction_record:T054:2",
+        "LC:transaction_record:T055:2",
+        "LC:transaction_record:T061:2",
+        "LC:transaction_record:T062:2",
+        "LC:transaction_record:T063:2",
+        "LC:transaction_record:T064:2",
+        "LC:transaction_record:T069:2",
+        "LC:transaction_record:T070:2",
+        "LC:transaction_record:T071:2",
+        "LC:transaction_record:T072:2",
+        "LC:transaction_record:T077:2",
+        "LC:transaction_record:T078:2",
+        "LC:transaction_record:T079:2",
+        "LC:transaction_record:T080:2"
+      ]
+    }
+  ],
+  "removed_empty_history_tables": []
 }

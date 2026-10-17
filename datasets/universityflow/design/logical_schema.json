@@ -1525,5 +1525,2046 @@
       "source_origin": "authored_lifecycle_extension"
     }
   ],
-  "final_table_count": 20
+  "final_table_count": 18,
+  "current_tables": [
+    {
+      "table": "student",
+      "definition": "Unified student information from the three university examples",
+      "columns": [
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student identifier shared across the three combined examples",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Student ID"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Student ID"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Student",
+              "source_attribute": "Student ID"
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student name",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Name"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Name"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Student",
+              "source_attribute": "Name"
+            }
+          ]
+        },
+        {
+          "name": "date_of_birth",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Birth date; not an academic event",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Date of Birth"
+            }
+          ]
+        },
+        {
+          "name": "phone_number",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student contact number",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Phone Number"
+            }
+          ]
+        },
+        {
+          "name": "home_address",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student postal address",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Home Address"
+            }
+          ]
+        },
+        {
+          "name": "registration_eligibility",
+          "type": "TEXT",
+          "constraints": "NOT NULL CHECK(registration_eligibility IN ('ELIGIBLE','INELIGIBLE'))",
+          "definition": "Current eligibility, ELIGIBLE or INELIGIBLE; changes are not timestamped",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Registration Eligibility"
+            }
+          ]
+        },
+        {
+          "name": "class",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student class or cohort",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Class"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Student",
+              "source_attribute": "Class"
+            }
+          ]
+        },
+        {
+          "name": "major",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student major",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Major"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "student_id"
+      ],
+      "foreign_keys": [],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aaec",
+          "source_table": "Student"
+        },
+        {
+          "record_id": "67552f0b13602ec03b41aa43",
+          "source_table": "Student"
+        },
+        {
+          "record_id": "67552f0b13602ec03b41ab04",
+          "source_table": "Student"
+        }
+      ]
+    },
+    {
+      "table": "course",
+      "definition": "Course offerings and planned teaching schedules",
+      "columns": [
+        {
+          "name": "course_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Course-offering identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Course ID"
+            }
+          ]
+        },
+        {
+          "name": "course_name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Course title",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Course Name"
+            }
+          ]
+        },
+        {
+          "name": "credits",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(credits > 0)",
+          "definition": "Academic credit units",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Credits"
+            }
+          ]
+        },
+        {
+          "name": "instructor",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Instructor name as stored in the registration source; no FK to instructor is assumed",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Instructor"
+            }
+          ]
+        },
+        {
+          "name": "class_time",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Planned teaching time; not proof that a class occurred",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Class Time"
+            }
+          ]
+        },
+        {
+          "name": "class_location",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Planned teaching location",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Class Location"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "course_id"
+      ],
+      "foreign_keys": [],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aaec",
+          "source_table": "Course"
+        }
+      ]
+    },
+    {
+      "table": "registration",
+      "definition": "Successful registrations; one retained row per student and course",
+      "columns": [
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student identifier shared across the three combined examples",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Student ID"
+            }
+          ]
+        },
+        {
+          "name": "course_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Course-offering identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Course ID"
+            }
+          ]
+        },
+        {
+          "name": "registration_time",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual successful registration time in UTC",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Registration Time"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "type": "TEXT",
+          "constraints": "NOT NULL CHECK(status='REGISTERED')",
+          "definition": "Current registration status; REGISTERED in the simulated rows; no change history",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Status"
+            }
+          ]
+        },
+        {
+          "name": "registration_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Registration Requested",
+          "definition": "Actual UTC time of Registration Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "registration_approved_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Registration Approved",
+          "definition": "Actual UTC time of Registration Approved. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "course_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Started",
+          "definition": "Actual UTC time of Course Started. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "course_assessment_completed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Assessment Completed",
+          "definition": "Actual UTC time of Course Assessment Completed. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "course_grade_finalized_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Course Grade Finalized",
+          "definition": "Actual UTC time of Course Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        }
+      ],
+      "primary_key": [
+        "student_id",
+        "course_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "course_id",
+          "parent_table": "course",
+          "parent_column": "course_id"
+        }
+      ],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aaec",
+          "source_table": "Registration"
+        }
+      ]
+    },
+    {
+      "table": "degree_examination_result",
+      "definition": "Examination results including retakes",
+      "columns": [
+        {
+          "name": "result_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Unique examination-result identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Result ID"
+            }
+          ]
+        },
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student identifier shared across the three combined examples",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Student ID"
+            }
+          ]
+        },
+        {
+          "name": "examination_name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Degree examination name",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Examination Name"
+            }
+          ]
+        },
+        {
+          "name": "grade",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(grade BETWEEN 0 AND 100)",
+          "definition": "Examination score, 0 to 100; 60 is the simulated passing threshold",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Grade"
+            }
+          ]
+        },
+        {
+          "name": "examination_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual examination time in UTC; not score-publication time",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Examination Date"
+            }
+          ]
+        },
+        {
+          "name": "examination_scheduled_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Scheduled",
+          "definition": "Actual UTC time of Examination Scheduled. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "examination_checked_in_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Checked In",
+          "definition": "Actual UTC time of Examination Checked In. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "examination_score_published_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Score Published",
+          "definition": "Actual UTC time of Examination Score Published. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "examination_result_reviewed_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Examination Result Reviewed",
+          "definition": "Actual UTC time of Examination Result Reviewed. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        }
+      ],
+      "primary_key": [
+        "result_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        }
+      ],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aaec",
+          "source_table": "Degree Examination Result"
+        }
+      ]
+    },
+    {
+      "table": "task",
+      "definition": "Course-design task descriptions and scheduled task periods",
+      "columns": [
+        {
+          "name": "task_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Course-design task identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task ID"
+            }
+          ]
+        },
+        {
+          "name": "task_title",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Task title",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Title"
+            }
+          ]
+        },
+        {
+          "name": "task_description",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Task description",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Description"
+            }
+          ]
+        },
+        {
+          "name": "task_start_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Scheduled task-period start; not an observed student action",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Start Date"
+            }
+          ]
+        },
+        {
+          "name": "task_end_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Scheduled task deadline; not proof of completion",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task End Date"
+            }
+          ]
+        },
+        {
+          "name": "task_location",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Task location",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Location"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "task_id"
+      ],
+      "foreign_keys": [],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aa43",
+          "source_table": "Task"
+        }
+      ]
+    },
+    {
+      "table": "simulation_module",
+      "definition": "Simulation module descriptions and example code",
+      "columns": [
+        {
+          "name": "module_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Simulation module identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module ID"
+            }
+          ]
+        },
+        {
+          "name": "module_name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Module name",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Name"
+            }
+          ]
+        },
+        {
+          "name": "module_type",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Simulation method, such as PCM or DPCM",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Type"
+            }
+          ]
+        },
+        {
+          "name": "module_description",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Module description",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Description"
+            }
+          ]
+        },
+        {
+          "name": "module_code",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Example module code; not an event code",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Code"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "module_id"
+      ],
+      "foreign_keys": [],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aa43",
+          "source_table": "Simulation Module"
+        }
+      ]
+    },
+    {
+      "table": "thesis",
+      "definition": "Student theses with actual submission times",
+      "columns": [
+        {
+          "name": "thesis_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Thesis identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Thesis ID"
+            }
+          ]
+        },
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student identifier shared across the three combined examples",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Student ID"
+            }
+          ]
+        },
+        {
+          "name": "thesis_title",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Thesis title",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Thesis Title"
+            }
+          ]
+        },
+        {
+          "name": "thesis_content",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Submitted thesis content",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Thesis Content"
+            }
+          ]
+        },
+        {
+          "name": "submission_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual thesis-submission time in UTC",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Submission Date"
+            }
+          ]
+        },
+        {
+          "name": "thesis_draft_registered_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Draft Registered",
+          "definition": "Actual UTC time of Thesis Draft Registered. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "thesis_review_started_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Review Started",
+          "definition": "Actual UTC time of Thesis Review Started. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "thesis_accepted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Thesis Accepted",
+          "definition": "Actual UTC time of Thesis Accepted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        }
+      ],
+      "primary_key": [
+        "thesis_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        }
+      ],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aa43",
+          "source_table": "Thesis"
+        }
+      ]
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "definition": "Student simulation results with actual experiment-completion times",
+      "columns": [
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student identifier shared across the three combined examples",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Student ID"
+            }
+          ]
+        },
+        {
+          "name": "module_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Simulation module identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Module ID"
+            }
+          ]
+        },
+        {
+          "name": "simulation_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual experiment-completion time in UTC; this interpretation is an added simulation assumption",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Simulation Date"
+            }
+          ]
+        },
+        {
+          "name": "simulation_result_data",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Stored experiment output; not a timestamp",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Simulation Result Data"
+            }
+          ]
+        },
+        {
+          "name": "result_analysis",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student analysis of the experiment result",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Result Analysis"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "student_id",
+        "module_id",
+        "simulation_date"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "module_id",
+          "parent_table": "simulation_module",
+          "parent_column": "module_id"
+        }
+      ],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41aa43",
+          "source_table": "Student Simulation Experiment Result"
+        }
+      ]
+    },
+    {
+      "table": "assignment",
+      "definition": "Student assignment content; submission time is not recorded",
+      "columns": [
+        {
+          "name": "assignment_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Assignment identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment",
+              "source_attribute": "Assignment ID"
+            }
+          ]
+        },
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Student identifier shared across the three combined examples",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment",
+              "source_attribute": "Student ID"
+            }
+          ]
+        },
+        {
+          "name": "assignment_content",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Submitted assignment content; actual submission time is absent",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment",
+              "source_attribute": "Assignment Content"
+            }
+          ]
+        },
+        {
+          "name": "assignment_assigned_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Assigned",
+          "definition": "Actual UTC time of Assignment Assigned. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "assignment_submitted_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Submitted",
+          "definition": "Actual UTC time of Assignment Submitted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        },
+        {
+          "name": "assignment_grade_finalized_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Assignment Grade Finalized",
+          "definition": "Actual UTC time of Assignment Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field."
+        }
+      ],
+      "primary_key": [
+        "assignment_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        }
+      ],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41ab04",
+          "source_table": "Assignment"
+        }
+      ]
+    },
+    {
+      "table": "instructor",
+      "definition": "Instructor information from the assignment-management example",
+      "columns": [
+        {
+          "name": "instructor_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Instructor identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Instructor",
+              "source_attribute": "Instructor ID"
+            }
+          ]
+        },
+        {
+          "name": "instructor_name",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Instructor name",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Instructor",
+              "source_attribute": "Name"
+            }
+          ]
+        },
+        {
+          "name": "course",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Instructor course label from the assignment source; no declared FK to course",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Instructor",
+              "source_attribute": "Course"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "instructor_id"
+      ],
+      "foreign_keys": [],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41ab04",
+          "source_table": "Instructor"
+        }
+      ]
+    },
+    {
+      "table": "assignment_grading",
+      "definition": "Every recorded grading action, including regrading",
+      "columns": [
+        {
+          "name": "assignment_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Assignment identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Assignment ID"
+            }
+          ]
+        },
+        {
+          "name": "instructor_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Instructor identifier",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Instructor ID"
+            }
+          ]
+        },
+        {
+          "name": "grading_time",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual grading time in UTC; regrading creates another composite-key row",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Grading Time"
+            }
+          ]
+        },
+        {
+          "name": "score",
+          "type": "INTEGER",
+          "constraints": "NOT NULL CHECK(score BETWEEN 0 AND 100)",
+          "definition": "Assignment grade, 0 to 100",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Score"
+            }
+          ]
+        },
+        {
+          "name": "evaluation",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Instructor feedback",
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Evaluation"
+            }
+          ]
+        }
+      ],
+      "primary_key": [
+        "assignment_id",
+        "instructor_id",
+        "grading_time"
+      ],
+      "foreign_keys": [
+        {
+          "column": "assignment_id",
+          "parent_table": "assignment",
+          "parent_column": "assignment_id"
+        },
+        {
+          "column": "instructor_id",
+          "parent_table": "instructor",
+          "parent_column": "instructor_id"
+        }
+      ],
+      "source_records": [
+        {
+          "record_id": "67552f0b13602ec03b41ab04",
+          "source_table": "Assignment Grading"
+        }
+      ]
+    },
+    {
+      "table": "assignment_activity",
+      "definition": "Authored actual-action history for assignment",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "assignment_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to assignment.assignment_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "assignment_id",
+          "parent_table": "assignment",
+          "parent_column": "assignment_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "simulation_module_activity",
+      "definition": "Authored actual-action history for simulation_module",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "module_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to simulation_module.module_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "module_id",
+          "parent_table": "simulation_module",
+          "parent_column": "module_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "student_simulation_experiment_result_activity",
+      "definition": "Authored actual-action history for student_simulation_experiment_result",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "student_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.student_id"
+        },
+        {
+          "name": "module_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.module_id"
+        },
+        {
+          "name": "simulation_date",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to student_simulation_experiment_result.simulation_date"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student_simulation_experiment_result",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "module_id",
+          "parent_table": "student_simulation_experiment_result",
+          "parent_column": "module_id"
+        },
+        {
+          "column": "simulation_date",
+          "parent_table": "student_simulation_experiment_result",
+          "parent_column": "simulation_date"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "thesis_activity",
+      "definition": "Authored actual-action history for thesis",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "thesis_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to thesis.thesis_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "thesis_id",
+          "parent_table": "thesis",
+          "parent_column": "thesis_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "course_activity",
+      "definition": "Authored actual-action history for course",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "course_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to course.course_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "course_id",
+          "parent_table": "course",
+          "parent_column": "course_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "task_activity",
+      "definition": "Authored actual-action history for task",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "PRIMARY KEY",
+          "definition": "Stable identity of this actual business action; authored extension"
+        },
+        {
+          "name": "task_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Explicit parent object key; FK to task.task_id"
+        },
+        {
+          "name": "activity",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled business activity label; not a technical database update"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Actual occurrence time in UTC, distinct from planned dates"
+        },
+        {
+          "name": "outcome",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED"
+        }
+      ],
+      "primary_key": [
+        "event_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "task_id",
+          "parent_table": "task",
+          "parent_column": "task_id"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    },
+    {
+      "table": "lifecycle_case_link",
+      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
+      "primary_key": [
+        "event_id",
+        "case_table",
+        "case_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Validated identity in a typed activity table; polymorphic reference"
+        },
+        {
+          "name": "case_table",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Controlled existing business table name"
+        },
+        {
+          "name": "case_id",
+          "type": "TEXT",
+          "constraints": "NOT NULL",
+          "definition": "Serialized primary key of the declared case table; composite parts separated by colon"
+        }
+      ],
+      "source_origin": "authored_lifecycle_extension"
+    }
+  ],
+  "timestamp_migration": [
+    {
+      "table": "registration",
+      "column": "registration_requested_at",
+      "activity": "Registration Requested",
+      "old_table": "registration_activity",
+      "preserved_event_ids": [
+        "LC:registration:S002:C01:1",
+        "LC:registration:S002:C06:1",
+        "LC:registration:S003:C02:1",
+        "LC:registration:S003:C05:1",
+        "LC:registration:S003:C04:1",
+        "LC:registration:S006:C06:1",
+        "LC:registration:S006:C04:1",
+        "LC:registration:S006:C02:1",
+        "LC:registration:S007:C01:1",
+        "LC:registration:S007:C02:1",
+        "LC:registration:S007:C05:1",
+        "LC:registration:S010:C06:1",
+        "LC:registration:S010:C02:1",
+        "LC:registration:S011:C04:1",
+        "LC:registration:S011:C02:1",
+        "LC:registration:S011:C01:1",
+        "LC:registration:S014:C04:1",
+        "LC:registration:S014:C02:1",
+        "LC:registration:S015:C05:1",
+        "LC:registration:S015:C04:1",
+        "LC:registration:S015:C06:1",
+        "LC:registration:S018:C05:1",
+        "LC:registration:S019:C05:1",
+        "LC:registration:S019:C02:1",
+        "LC:registration:S022:C02:1",
+        "LC:registration:S022:C05:1",
+        "LC:registration:S022:C03:1",
+        "LC:registration:S023:C02:1",
+        "LC:registration:S023:C06:1",
+        "LC:registration:S026:C04:1",
+        "LC:registration:S027:C02:1",
+        "LC:registration:S027:C04:1",
+        "LC:registration:S030:C01:1",
+        "LC:registration:S030:C03:1",
+        "LC:registration:S030:C02:1",
+        "LC:registration:S031:C05:1",
+        "LC:registration:S031:C03:1",
+        "LC:registration:S031:C02:1",
+        "LC:registration:S034:C04:1",
+        "LC:registration:S034:C05:1",
+        "LC:registration:S034:C06:1",
+        "LC:registration:S035:C06:1",
+        "LC:registration:S038:C01:1",
+        "LC:registration:S038:C04:1",
+        "LC:registration:S038:C06:1",
+        "LC:registration:S039:C05:1",
+        "LC:registration:S039:C01:1"
+      ]
+    },
+    {
+      "table": "registration",
+      "column": "registration_approved_at",
+      "activity": "Registration Approved",
+      "old_table": "registration_activity",
+      "preserved_event_ids": [
+        "LC:registration:S002:C01:2",
+        "LC:registration:S002:C06:2",
+        "LC:registration:S003:C02:2",
+        "LC:registration:S003:C05:2",
+        "LC:registration:S003:C04:2",
+        "LC:registration:S006:C06:2",
+        "LC:registration:S006:C04:2",
+        "LC:registration:S006:C02:2",
+        "LC:registration:S007:C01:2",
+        "LC:registration:S007:C02:2",
+        "LC:registration:S007:C05:2",
+        "LC:registration:S010:C06:2",
+        "LC:registration:S010:C02:2",
+        "LC:registration:S011:C04:2",
+        "LC:registration:S011:C02:2",
+        "LC:registration:S011:C01:2",
+        "LC:registration:S014:C04:2",
+        "LC:registration:S014:C02:2",
+        "LC:registration:S015:C05:2",
+        "LC:registration:S015:C04:2",
+        "LC:registration:S015:C06:2",
+        "LC:registration:S018:C05:2",
+        "LC:registration:S019:C05:2",
+        "LC:registration:S019:C02:2",
+        "LC:registration:S022:C02:2",
+        "LC:registration:S022:C05:2",
+        "LC:registration:S022:C03:2",
+        "LC:registration:S023:C02:2",
+        "LC:registration:S023:C06:2",
+        "LC:registration:S026:C04:2",
+        "LC:registration:S027:C02:2",
+        "LC:registration:S027:C04:2",
+        "LC:registration:S030:C01:2",
+        "LC:registration:S030:C03:2",
+        "LC:registration:S030:C02:2",
+        "LC:registration:S031:C05:2",
+        "LC:registration:S031:C03:2",
+        "LC:registration:S031:C02:2",
+        "LC:registration:S034:C04:2",
+        "LC:registration:S034:C05:2",
+        "LC:registration:S034:C06:2",
+        "LC:registration:S035:C06:2",
+        "LC:registration:S038:C01:2",
+        "LC:registration:S038:C04:2",
+        "LC:registration:S038:C06:2",
+        "LC:registration:S039:C05:2",
+        "LC:registration:S039:C01:2"
+      ]
+    },
+    {
+      "table": "registration",
+      "column": "course_started_at",
+      "activity": "Course Started",
+      "old_table": "registration_activity",
+      "preserved_event_ids": [
+        "LC:registration:S002:C01:3",
+        "LC:registration:S002:C06:3",
+        "LC:registration:S003:C02:3",
+        "LC:registration:S003:C05:3",
+        "LC:registration:S003:C04:3",
+        "LC:registration:S006:C06:3",
+        "LC:registration:S006:C04:3",
+        "LC:registration:S006:C02:3",
+        "LC:registration:S007:C01:3",
+        "LC:registration:S007:C02:3",
+        "LC:registration:S007:C05:3",
+        "LC:registration:S010:C06:3",
+        "LC:registration:S010:C02:3",
+        "LC:registration:S011:C04:3",
+        "LC:registration:S011:C02:3",
+        "LC:registration:S011:C01:3",
+        "LC:registration:S014:C04:3",
+        "LC:registration:S014:C02:3",
+        "LC:registration:S015:C05:3",
+        "LC:registration:S015:C04:3",
+        "LC:registration:S015:C06:3",
+        "LC:registration:S018:C05:3",
+        "LC:registration:S019:C05:3",
+        "LC:registration:S019:C02:3",
+        "LC:registration:S022:C02:3",
+        "LC:registration:S022:C05:3",
+        "LC:registration:S022:C03:3",
+        "LC:registration:S023:C02:3",
+        "LC:registration:S023:C06:3",
+        "LC:registration:S026:C04:3",
+        "LC:registration:S027:C02:3",
+        "LC:registration:S027:C04:3",
+        "LC:registration:S030:C01:3",
+        "LC:registration:S030:C03:3",
+        "LC:registration:S030:C02:3",
+        "LC:registration:S031:C05:3",
+        "LC:registration:S031:C03:3",
+        "LC:registration:S031:C02:3",
+        "LC:registration:S034:C04:3",
+        "LC:registration:S034:C05:3",
+        "LC:registration:S034:C06:3",
+        "LC:registration:S035:C06:3",
+        "LC:registration:S038:C01:3",
+        "LC:registration:S038:C04:3",
+        "LC:registration:S038:C06:3",
+        "LC:registration:S039:C05:3",
+        "LC:registration:S039:C01:3"
+      ]
+    },
+    {
+      "table": "registration",
+      "column": "course_assessment_completed_at",
+      "activity": "Course Assessment Completed",
+      "old_table": "registration_activity",
+      "preserved_event_ids": [
+        "LC:registration:S002:C01:4",
+        "LC:registration:S002:C06:4",
+        "LC:registration:S003:C02:4",
+        "LC:registration:S003:C05:4",
+        "LC:registration:S003:C04:4",
+        "LC:registration:S006:C06:4",
+        "LC:registration:S006:C04:4",
+        "LC:registration:S006:C02:4",
+        "LC:registration:S007:C01:4",
+        "LC:registration:S007:C02:4",
+        "LC:registration:S007:C05:4",
+        "LC:registration:S010:C06:4",
+        "LC:registration:S010:C02:4",
+        "LC:registration:S011:C04:4",
+        "LC:registration:S011:C02:4",
+        "LC:registration:S011:C01:4",
+        "LC:registration:S014:C04:4",
+        "LC:registration:S014:C02:4",
+        "LC:registration:S015:C05:4",
+        "LC:registration:S015:C04:4",
+        "LC:registration:S015:C06:4",
+        "LC:registration:S018:C05:4",
+        "LC:registration:S019:C05:4",
+        "LC:registration:S019:C02:4",
+        "LC:registration:S022:C02:4",
+        "LC:registration:S022:C05:4",
+        "LC:registration:S022:C03:4",
+        "LC:registration:S023:C02:4",
+        "LC:registration:S023:C06:4",
+        "LC:registration:S026:C04:4",
+        "LC:registration:S027:C02:4",
+        "LC:registration:S027:C04:4",
+        "LC:registration:S030:C01:4",
+        "LC:registration:S030:C03:4",
+        "LC:registration:S030:C02:4",
+        "LC:registration:S031:C05:4",
+        "LC:registration:S031:C03:4",
+        "LC:registration:S031:C02:4",
+        "LC:registration:S034:C04:4",
+        "LC:registration:S034:C05:4",
+        "LC:registration:S034:C06:4",
+        "LC:registration:S035:C06:4",
+        "LC:registration:S038:C01:4",
+        "LC:registration:S038:C04:4",
+        "LC:registration:S038:C06:4",
+        "LC:registration:S039:C05:4",
+        "LC:registration:S039:C01:4"
+      ]
+    },
+    {
+      "table": "registration",
+      "column": "course_grade_finalized_at",
+      "activity": "Course Grade Finalized",
+      "old_table": "registration_activity",
+      "preserved_event_ids": [
+        "LC:registration:S002:C06:5",
+        "LC:registration:S003:C02:5",
+        "LC:registration:S003:C05:5",
+        "LC:registration:S003:C04:5",
+        "LC:registration:S006:C06:5",
+        "LC:registration:S006:C04:5",
+        "LC:registration:S007:C01:5",
+        "LC:registration:S007:C02:5",
+        "LC:registration:S007:C05:5",
+        "LC:registration:S010:C06:5",
+        "LC:registration:S010:C02:5",
+        "LC:registration:S011:C04:5",
+        "LC:registration:S011:C01:5",
+        "LC:registration:S014:C04:5",
+        "LC:registration:S014:C02:5",
+        "LC:registration:S015:C05:5",
+        "LC:registration:S015:C04:5",
+        "LC:registration:S015:C06:5",
+        "LC:registration:S019:C05:5",
+        "LC:registration:S019:C02:5",
+        "LC:registration:S022:C02:5",
+        "LC:registration:S022:C05:5",
+        "LC:registration:S022:C03:5",
+        "LC:registration:S023:C02:5",
+        "LC:registration:S026:C04:5",
+        "LC:registration:S027:C02:5",
+        "LC:registration:S027:C04:5",
+        "LC:registration:S030:C01:5",
+        "LC:registration:S030:C03:5",
+        "LC:registration:S030:C02:5",
+        "LC:registration:S031:C03:5",
+        "LC:registration:S031:C02:5",
+        "LC:registration:S034:C04:5",
+        "LC:registration:S034:C05:5",
+        "LC:registration:S034:C06:5",
+        "LC:registration:S035:C06:5",
+        "LC:registration:S038:C04:5",
+        "LC:registration:S038:C06:5",
+        "LC:registration:S039:C05:5",
+        "LC:registration:S039:C01:5"
+      ]
+    },
+    {
+      "table": "degree_examination_result",
+      "column": "examination_scheduled_at",
+      "activity": "Examination Scheduled",
+      "old_table": "degree_examination_result_activity",
+      "preserved_event_ids": [
+        "LC:degree_examination_result:E001-1:1",
+        "LC:degree_examination_result:E002-1:1",
+        "LC:degree_examination_result:E002-2:1",
+        "LC:degree_examination_result:E003-1:1",
+        "LC:degree_examination_result:E005-1:1",
+        "LC:degree_examination_result:E006-1:1",
+        "LC:degree_examination_result:E006-2:1",
+        "LC:degree_examination_result:E007-1:1",
+        "LC:degree_examination_result:E009-1:1",
+        "LC:degree_examination_result:E010-1:1",
+        "LC:degree_examination_result:E010-2:1",
+        "LC:degree_examination_result:E011-1:1",
+        "LC:degree_examination_result:E013-1:1",
+        "LC:degree_examination_result:E014-1:1",
+        "LC:degree_examination_result:E014-2:1",
+        "LC:degree_examination_result:E015-1:1",
+        "LC:degree_examination_result:E017-1:1",
+        "LC:degree_examination_result:E018-1:1",
+        "LC:degree_examination_result:E018-2:1",
+        "LC:degree_examination_result:E019-1:1",
+        "LC:degree_examination_result:E021-1:1",
+        "LC:degree_examination_result:E022-1:1",
+        "LC:degree_examination_result:E022-2:1",
+        "LC:degree_examination_result:E023-1:1",
+        "LC:degree_examination_result:E025-1:1",
+        "LC:degree_examination_result:E026-1:1",
+        "LC:degree_examination_result:E026-2:1",
+        "LC:degree_examination_result:E027-1:1",
+        "LC:degree_examination_result:E029-1:1",
+        "LC:degree_examination_result:E030-1:1",
+        "LC:degree_examination_result:E030-2:1",
+        "LC:degree_examination_result:E031-1:1",
+        "LC:degree_examination_result:E033-1:1",
+        "LC:degree_examination_result:E034-1:1",
+        "LC:degree_examination_result:E034-2:1",
+        "LC:degree_examination_result:E035-1:1",
+        "LC:degree_examination_result:E037-1:1",
+        "LC:degree_examination_result:E038-1:1",
+        "LC:degree_examination_result:E038-2:1",
+        "LC:degree_examination_result:E039-1:1"
+      ]
+    },
+    {
+      "table": "degree_examination_result",
+      "column": "examination_checked_in_at",
+      "activity": "Examination Checked In",
+      "old_table": "degree_examination_result_activity",
+      "preserved_event_ids": [
+        "LC:degree_examination_result:E001-1:2",
+        "LC:degree_examination_result:E002-1:2",
+        "LC:degree_examination_result:E002-2:2",
+        "LC:degree_examination_result:E003-1:2",
+        "LC:degree_examination_result:E005-1:2",
+        "LC:degree_examination_result:E006-1:2",
+        "LC:degree_examination_result:E006-2:2",
+        "LC:degree_examination_result:E007-1:2",
+        "LC:degree_examination_result:E009-1:2",
+        "LC:degree_examination_result:E010-1:2",
+        "LC:degree_examination_result:E010-2:2",
+        "LC:degree_examination_result:E011-1:2",
+        "LC:degree_examination_result:E013-1:2",
+        "LC:degree_examination_result:E014-1:2",
+        "LC:degree_examination_result:E014-2:2",
+        "LC:degree_examination_result:E015-1:2",
+        "LC:degree_examination_result:E017-1:2",
+        "LC:degree_examination_result:E018-1:2",
+        "LC:degree_examination_result:E018-2:2",
+        "LC:degree_examination_result:E019-1:2",
+        "LC:degree_examination_result:E021-1:2",
+        "LC:degree_examination_result:E022-1:2",
+        "LC:degree_examination_result:E022-2:2",
+        "LC:degree_examination_result:E023-1:2",
+        "LC:degree_examination_result:E025-1:2",
+        "LC:degree_examination_result:E026-1:2",
+        "LC:degree_examination_result:E026-2:2",
+        "LC:degree_examination_result:E027-1:2",
+        "LC:degree_examination_result:E029-1:2",
+        "LC:degree_examination_result:E030-1:2",
+        "LC:degree_examination_result:E030-2:2",
+        "LC:degree_examination_result:E031-1:2",
+        "LC:degree_examination_result:E033-1:2",
+        "LC:degree_examination_result:E034-1:2",
+        "LC:degree_examination_result:E034-2:2",
+        "LC:degree_examination_result:E035-1:2",
+        "LC:degree_examination_result:E037-1:2",
+        "LC:degree_examination_result:E038-1:2",
+        "LC:degree_examination_result:E038-2:2",
+        "LC:degree_examination_result:E039-1:2"
+      ]
+    },
+    {
+      "table": "degree_examination_result",
+      "column": "examination_score_published_at",
+      "activity": "Examination Score Published",
+      "old_table": "degree_examination_result_activity",
+      "preserved_event_ids": [
+        "LC:degree_examination_result:E001-1:3",
+        "LC:degree_examination_result:E002-1:3",
+        "LC:degree_examination_result:E002-2:3",
+        "LC:degree_examination_result:E003-1:3",
+        "LC:degree_examination_result:E005-1:3",
+        "LC:degree_examination_result:E006-1:3",
+        "LC:degree_examination_result:E006-2:3",
+        "LC:degree_examination_result:E007-1:3",
+        "LC:degree_examination_result:E009-1:3",
+        "LC:degree_examination_result:E010-1:3",
+        "LC:degree_examination_result:E010-2:3",
+        "LC:degree_examination_result:E011-1:3",
+        "LC:degree_examination_result:E013-1:3",
+        "LC:degree_examination_result:E014-1:3",
+        "LC:degree_examination_result:E014-2:3",
+        "LC:degree_examination_result:E015-1:3",
+        "LC:degree_examination_result:E017-1:3",
+        "LC:degree_examination_result:E018-1:3",
+        "LC:degree_examination_result:E018-2:3",
+        "LC:degree_examination_result:E019-1:3",
+        "LC:degree_examination_result:E021-1:3",
+        "LC:degree_examination_result:E022-1:3",
+        "LC:degree_examination_result:E022-2:3",
+        "LC:degree_examination_result:E023-1:3",
+        "LC:degree_examination_result:E025-1:3",
+        "LC:degree_examination_result:E026-1:3",
+        "LC:degree_examination_result:E026-2:3",
+        "LC:degree_examination_result:E027-1:3",
+        "LC:degree_examination_result:E029-1:3",
+        "LC:degree_examination_result:E030-1:3",
+        "LC:degree_examination_result:E030-2:3",
+        "LC:degree_examination_result:E031-1:3",
+        "LC:degree_examination_result:E033-1:3",
+        "LC:degree_examination_result:E034-1:3",
+        "LC:degree_examination_result:E034-2:3",
+        "LC:degree_examination_result:E035-1:3",
+        "LC:degree_examination_result:E037-1:3",
+        "LC:degree_examination_result:E038-1:3",
+        "LC:degree_examination_result:E038-2:3",
+        "LC:degree_examination_result:E039-1:3"
+      ]
+    },
+    {
+      "table": "degree_examination_result",
+      "column": "examination_result_reviewed_at",
+      "activity": "Examination Result Reviewed",
+      "old_table": "degree_examination_result_activity",
+      "preserved_event_ids": [
+        "LC:degree_examination_result:E002-1:4",
+        "LC:degree_examination_result:E002-2:4",
+        "LC:degree_examination_result:E003-1:4",
+        "LC:degree_examination_result:E005-1:4",
+        "LC:degree_examination_result:E006-1:4",
+        "LC:degree_examination_result:E006-2:4",
+        "LC:degree_examination_result:E009-1:4",
+        "LC:degree_examination_result:E010-1:4",
+        "LC:degree_examination_result:E010-2:4",
+        "LC:degree_examination_result:E011-1:4",
+        "LC:degree_examination_result:E013-1:4",
+        "LC:degree_examination_result:E014-1:4",
+        "LC:degree_examination_result:E015-1:4",
+        "LC:degree_examination_result:E017-1:4",
+        "LC:degree_examination_result:E018-1:4",
+        "LC:degree_examination_result:E018-2:4",
+        "LC:degree_examination_result:E019-1:4",
+        "LC:degree_examination_result:E021-1:4",
+        "LC:degree_examination_result:E022-2:4",
+        "LC:degree_examination_result:E023-1:4",
+        "LC:degree_examination_result:E025-1:4",
+        "LC:degree_examination_result:E026-1:4",
+        "LC:degree_examination_result:E026-2:4",
+        "LC:degree_examination_result:E027-1:4",
+        "LC:degree_examination_result:E030-1:4",
+        "LC:degree_examination_result:E030-2:4",
+        "LC:degree_examination_result:E031-1:4",
+        "LC:degree_examination_result:E033-1:4",
+        "LC:degree_examination_result:E034-1:4",
+        "LC:degree_examination_result:E034-2:4",
+        "LC:degree_examination_result:E037-1:4",
+        "LC:degree_examination_result:E038-1:4",
+        "LC:degree_examination_result:E038-2:4",
+        "LC:degree_examination_result:E039-1:4"
+      ]
+    },
+    {
+      "table": "assignment",
+      "column": "assignment_assigned_at",
+      "activity": "Assignment Assigned",
+      "old_table": "assignment_activity",
+      "preserved_event_ids": [
+        "LC:assignment:A002:1",
+        "LC:assignment:A003:1",
+        "LC:assignment:A006:1",
+        "LC:assignment:A007:1",
+        "LC:assignment:A010:1",
+        "LC:assignment:A011:1",
+        "LC:assignment:A014:1",
+        "LC:assignment:A015:1",
+        "LC:assignment:A018:1",
+        "LC:assignment:A019:1",
+        "LC:assignment:A022:1",
+        "LC:assignment:A023:1",
+        "LC:assignment:A026:1",
+        "LC:assignment:A027:1",
+        "LC:assignment:A030:1",
+        "LC:assignment:A031:1",
+        "LC:assignment:A034:1",
+        "LC:assignment:A035:1",
+        "LC:assignment:A038:1",
+        "LC:assignment:A039:1"
+      ]
+    },
+    {
+      "table": "assignment",
+      "column": "assignment_submitted_at",
+      "activity": "Assignment Submitted",
+      "old_table": "assignment_activity",
+      "preserved_event_ids": [
+        "LC:assignment:A002:2",
+        "LC:assignment:A003:2",
+        "LC:assignment:A006:2",
+        "LC:assignment:A007:2",
+        "LC:assignment:A011:2",
+        "LC:assignment:A014:2",
+        "LC:assignment:A018:2",
+        "LC:assignment:A019:2",
+        "LC:assignment:A022:2",
+        "LC:assignment:A023:2",
+        "LC:assignment:A026:2",
+        "LC:assignment:A027:2",
+        "LC:assignment:A031:2",
+        "LC:assignment:A034:2",
+        "LC:assignment:A038:2",
+        "LC:assignment:A039:2"
+      ]
+    },
+    {
+      "table": "assignment",
+      "column": "assignment_grade_finalized_at",
+      "activity": "Assignment Grade Finalized",
+      "old_table": "assignment_activity",
+      "preserved_event_ids": [
+        "LC:assignment:A003:3",
+        "LC:assignment:A006:3",
+        "LC:assignment:A007:6",
+        "LC:assignment:A011:3",
+        "LC:assignment:A014:6",
+        "LC:assignment:A018:3",
+        "LC:assignment:A019:6",
+        "LC:assignment:A022:3",
+        "LC:assignment:A023:3",
+        "LC:assignment:A026:6",
+        "LC:assignment:A027:3",
+        "LC:assignment:A031:6",
+        "LC:assignment:A034:3",
+        "LC:assignment:A038:6",
+        "LC:assignment:A039:3"
+      ]
+    },
+    {
+      "table": "thesis",
+      "column": "thesis_draft_registered_at",
+      "activity": "Thesis Draft Registered",
+      "old_table": "thesis_activity",
+      "preserved_event_ids": [
+        "LC:thesis:TH002:1",
+        "LC:thesis:TH003:1",
+        "LC:thesis:TH006:1",
+        "LC:thesis:TH007:1",
+        "LC:thesis:TH011:1",
+        "LC:thesis:TH014:1",
+        "LC:thesis:TH018:1",
+        "LC:thesis:TH019:1",
+        "LC:thesis:TH022:1",
+        "LC:thesis:TH023:1",
+        "LC:thesis:TH026:1",
+        "LC:thesis:TH027:1",
+        "LC:thesis:TH031:1",
+        "LC:thesis:TH034:1",
+        "LC:thesis:TH038:1",
+        "LC:thesis:TH039:1"
+      ]
+    },
+    {
+      "table": "thesis",
+      "column": "thesis_review_started_at",
+      "activity": "Thesis Review Started",
+      "old_table": "thesis_activity",
+      "preserved_event_ids": [
+        "LC:thesis:TH002:2",
+        "LC:thesis:TH003:2",
+        "LC:thesis:TH006:2",
+        "LC:thesis:TH007:2",
+        "LC:thesis:TH011:2",
+        "LC:thesis:TH014:2",
+        "LC:thesis:TH018:2",
+        "LC:thesis:TH019:2",
+        "LC:thesis:TH022:2",
+        "LC:thesis:TH023:2",
+        "LC:thesis:TH026:2",
+        "LC:thesis:TH027:2",
+        "LC:thesis:TH031:2",
+        "LC:thesis:TH034:2",
+        "LC:thesis:TH038:2",
+        "LC:thesis:TH039:2"
+      ]
+    },
+    {
+      "table": "thesis",
+      "column": "thesis_accepted_at",
+      "activity": "Thesis Accepted",
+      "old_table": "thesis_activity",
+      "preserved_event_ids": [
+        "LC:thesis:TH003:3",
+        "LC:thesis:TH006:3",
+        "LC:thesis:TH007:5",
+        "LC:thesis:TH011:3",
+        "LC:thesis:TH014:3",
+        "LC:thesis:TH018:5",
+        "LC:thesis:TH022:3",
+        "LC:thesis:TH023:5",
+        "LC:thesis:TH026:3",
+        "LC:thesis:TH027:3",
+        "LC:thesis:TH031:5",
+        "LC:thesis:TH034:3",
+        "LC:thesis:TH039:5"
+      ]
+    }
+  ],
+  "removed_empty_history_tables": [
+    "registration_activity",
+    "degree_examination_result_activity"
+  ]
 }

@@ -11,6 +11,6 @@ def annotate(p):
  d=json.loads((p/'input/data_dictionary.json').read_text())
  for t in d['tables']:
   t.update(encoding(p.name,t['table']))
-  added=[c['name'] for c in t['columns'] if c.get('source_origin')=='authored_lifecycle_extension']
-  if p.name=='plateflow' and added:t.update(event_encoding='Column encoding',encoding_detail='Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: '+', '.join(added)+'.')
+  added=[c['name'] for c in t['columns'] if c.get('source_origin') in ['authored_lifecycle_extension','authored_milestone_column']]
+  if added:t.update(event_encoding=('Mixed (row + column)' if t['table'] in ROW.get(p.name,{}) else 'Column encoding'),encoding_detail='Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: '+', '.join(added)+'.')
  (p/'input/data_dictionary.json').write_text(json.dumps(d,indent=2)+'\n');return d

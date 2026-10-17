@@ -193,6 +193,58 @@
           "value_domain": "SQL type and declared constraints: NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
           "declared_length": "Not bounded by declared SQLite type",
           "default_value": "No SQL default"
+        },
+        {
+          "name": "receiving_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Receiving Requested",
+          "definition": "Actual UTC time of Receiving Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "warehouseflow.transaction_record.receiving_requested_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "receiving_scheduled_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Receiving Scheduled",
+          "definition": "Actual UTC time of Receiving Scheduled. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "warehouseflow.transaction_record.receiving_scheduled_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "dispatch_requested_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Dispatch Requested",
+          "definition": "Actual UTC time of Dispatch Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "warehouseflow.transaction_record.dispatch_requested_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "dispatch_approved_at",
+          "type": "TEXT",
+          "constraints": "",
+          "source_origin": "authored_milestone_column",
+          "event_activity": "Dispatch Approved",
+          "definition": "Actual UTC time of Dispatch Approved. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "metadata_id": "warehouseflow.transaction_record.dispatch_approved_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
         }
       ],
       "primary_key": [
@@ -205,8 +257,8 @@
           "parent_column": "warehouse_number"
         }
       ],
-      "event_encoding": "Row encoding",
-      "encoding_detail": "transaction_type selects IN/OUT; one transaction occurrence per row.",
+      "event_encoding": "Mixed (row + column)",
+      "encoding_detail": "Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: receiving_requested_at, receiving_scheduled_at, dispatch_requested_at, dispatch_approved_at.",
       "metadata_id": "warehouseflow.transaction_record"
     },
     {
@@ -462,7 +514,9 @@
     "Original source rows are preserved. Added typed activity histories are authored synthetic domain extensions, not claimed source fields.",
     "Only actual occurred_at times generate lifecycle events. Planned dates and technical timestamps remain excluded.",
     "Lifecycle case links use exact typed object identity. Related cases may share an event; uniqueness is (case_id,event_id).",
-    "Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case."
+    "Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case.",
+    "One-time milestone events are stored in named timestamp columns on their business record. They have been removed from generic action rows to prevent duplicate extraction.",
+    "Repeated review/revision/grading/experiment actions remain row encoded; milestone timestamps preserve their original event IDs and actual times."
   ],
   "object_activity_design": [
     {
@@ -479,9 +533,41 @@
         "Goods Packed"
       ],
       "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
+      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata",
+      "milestone_columns": [
+        {
+          "activity": "Receiving Requested",
+          "column": "receiving_requested_at"
+        },
+        {
+          "activity": "Receiving Scheduled",
+          "column": "receiving_scheduled_at"
+        },
+        {
+          "activity": "Dispatch Requested",
+          "column": "dispatch_requested_at"
+        },
+        {
+          "activity": "Dispatch Approved",
+          "column": "dispatch_approved_at"
+        }
+      ],
+      "row_activities": [
+        "Receiving Inspection Completed",
+        "Goods Put Away",
+        "Goods Picked",
+        "Goods Packed"
+      ],
+      "storage": "Actual milestone columns on transaction_record; remaining repeatable actions stay in transaction_record_activity"
     }
   ],
+  "timestamp_summary": {
+    "timestamp_columns": 6,
+    "event_timestamp_columns": 6,
+    "other_timestamp_columns": 0,
+    "date_only_columns": [],
+    "baseline_timestamp_columns": 2
+  },
   "dictionary_basic_information": {
     "dictionary_id": "NL2EVENTLOG:warehouseflow",
     "version": "2026-10-12",
@@ -491,6 +577,8 @@
     "timezone": "UTC",
     "dbms": "SQLite",
     "namespace": "warehouseflow",
+    "timestamp_columns": 6,
+    "event_timestamp_columns": 6,
     "maintainer": "NL2EVENTLOG project maintainers",
     "registration_status": "Project-maintained draft; not ISO-registered or certified",
     "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",

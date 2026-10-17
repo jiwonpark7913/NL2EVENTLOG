@@ -2,7 +2,7 @@
   "seed": 20261013,
   "mother_materials": 36,
   "plate_materials": 39,
-  "events": 1036,
+  "events": 1108,
   "tables": {
     "slab_material": 36,
     "planned_rolling_instruction": 36,
@@ -51,13 +51,13 @@
       "question_id": "V05",
       "question_type": "Q3",
       "status": "pass",
-      "event_count": 1036
+      "event_count": 1108
     },
     {
       "question_id": "V06",
       "question_type": "Q4",
       "status": "pass",
-      "event_count": 1036
+      "event_count": 1108
     },
     {
       "question_id": "V07",
@@ -74,7 +74,7 @@
       "question_id": "OPV01",
       "question_type": "Q3",
       "status": "pass",
-      "event_count": 1036
+      "event_count": 1108
     },
     {
       "question_id": "OPV02",
@@ -92,7 +92,7 @@
       "question_id": "OPV04",
       "question_type": "Q3",
       "status": "pass",
-      "event_count": 1036
+      "event_count": 1108
     },
     {
       "question_id": "OPV05",
@@ -110,13 +110,19 @@
       "question_id": "OPV07",
       "question_type": "Q3",
       "status": "pass",
-      "event_count": 264
+      "event_count": 336
     },
     {
       "question_id": "OPV08",
       "question_type": "Q3",
       "status": "pass",
       "event_count": 216
+    },
+    {
+      "question_id": "TS01",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 72
     },
     {
       "question_id": "V07P",
@@ -130,10 +136,16 @@
       "status": "unsupported_by_design"
     },
     {
+      "question_id": "TS01P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 72
+    },
+    {
       "question_id": "OPV01P",
       "question_type": "Q4",
       "status": "pass",
-      "event_count": 1036
+      "event_count": 1108
     },
     {
       "question_id": "OPV01E",
@@ -187,7 +199,7 @@
       "question_id": "OPV04P",
       "question_type": "Q4",
       "status": "pass",
-      "event_count": 1036
+      "event_count": 1108
     },
     {
       "question_id": "OPV04E",
@@ -241,7 +253,7 @@
       "question_id": "OPV07P",
       "question_type": "Q4",
       "status": "pass",
-      "event_count": 264
+      "event_count": 336
     },
     {
       "question_id": "OPV07E",
@@ -307,7 +319,7 @@
       "case_count": 36,
       "cases_with_events": 36,
       "cases_without_events": 0,
-      "event_rows": 1036,
+      "event_rows": 1108,
       "activities": [
         "Cooling Completed",
         "Crop Shear Passed",
@@ -326,8 +338,10 @@
         "Inspection Passed",
         "Leveling Completed",
         "Plate Packed",
+        "Plate Packing Started",
         "Plate Piece Identified",
         "Plate Quality Released",
+        "Plate Quality Review Started",
         "Plate Surface Checked",
         "Reheating Started",
         "Rolling Completed",
@@ -399,7 +413,7 @@
       "case_count": 36,
       "cases_with_events": 36,
       "cases_without_events": 0,
-      "event_rows": 1036,
+      "event_rows": 1108,
       "activities": [
         "Cooling Completed",
         "Crop Shear Passed",
@@ -418,8 +432,10 @@
         "Inspection Passed",
         "Leveling Completed",
         "Plate Packed",
+        "Plate Packing Started",
         "Plate Piece Identified",
         "Plate Quality Released",
+        "Plate Quality Review Started",
         "Plate Surface Checked",
         "Reheating Started",
         "Rolling Completed",
@@ -491,15 +507,17 @@
       "case_count": 39,
       "cases_with_events": 39,
       "cases_without_events": 0,
-      "event_rows": 264,
+      "event_rows": 336,
       "activities": [
         "Dimensional Inspection Completed",
         "Heat Treatment Completed",
         "Inspection Failed",
         "Inspection Passed",
         "Plate Packed",
+        "Plate Packing Started",
         "Plate Piece Identified",
         "Plate Quality Released",
+        "Plate Quality Review Started",
         "Plate Surface Checked"
       ],
       "log_path": "private/gold_logs/OPV07.csv"
@@ -536,8 +554,8 @@
       "reason": "Operation codes define activity meanings. They are not business-object instances or cases."
     }
   ],
-  "total_questions": 42,
-  "answerable_questions": 40,
+  "total_questions": 44,
+  "answerable_questions": 42,
   "activity_counts": {
     "Rolling Instruction Released": 36,
     "Yard Instruction Received": 30,
@@ -575,7 +593,9 @@
     "Plate Piece Identified": 39,
     "Plate Surface Checked": 39,
     "Plate Quality Released": 39,
-    "Plate Packed": 33
+    "Plate Packed": 33,
+    "Plate Quality Review Started": 39,
+    "Plate Packing Started": 33
   },
   "table_rows": {
     "slab_material": 36,
@@ -597,14 +617,21 @@
       "actual_action_order": "pass",
       "full_sql_equals_history": "pass"
     },
-    "added_columns": 22,
+    "added_columns": 24,
     "storage_policy": "native business columns plus existing operation history"
   },
   "question_type_counts": {
-    "Q1": 12,
-    "Q2": 12,
+    "Q1": 13,
+    "Q2": 13,
     "Q3": 9,
     "Q4": 9
   },
-  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified"
+  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
+  "timestamp_summary": {
+    "timestamp_columns": 39,
+    "event_timestamp_columns": 31,
+    "other_timestamp_columns": 8,
+    "date_only_columns": [],
+    "baseline_timestamp_columns": 37
+  }
 }

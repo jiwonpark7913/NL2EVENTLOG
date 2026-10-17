@@ -67,12 +67,10 @@
     "assignment": 20,
     "instructor": 3,
     "assignment_grading": 18,
-    "registration_activity": 228,
-    "degree_examination_result_activity": 154,
-    "assignment_activity": 72,
+    "assignment_activity": 21,
     "simulation_module_activity": 11,
     "student_simulation_experiment_result_activity": 104,
-    "thesis_activity": 57,
+    "thesis_activity": 12,
     "course_activity": 23,
     "task_activity": 11,
     "lifecycle_case_link": 1675
@@ -241,6 +239,30 @@
       "event_count": 11
     },
     {
+      "question_id": "TS01",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 154
+    },
+    {
+      "question_id": "TS02",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 228
+    },
+    {
+      "question_id": "TS03",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 51
+    },
+    {
+      "question_id": "TS04",
+      "question_type": "Q1",
+      "status": "pass",
+      "event_count": 45
+    },
+    {
       "question_id": "U07P",
       "question_type": "Q2",
       "status": "unsupported_by_design"
@@ -255,6 +277,30 @@
       "question_type": "Q2",
       "status": "pass",
       "event_count": 16
+    },
+    {
+      "question_id": "TS01P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 154
+    },
+    {
+      "question_id": "TS02P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 228
+    },
+    {
+      "question_id": "TS03P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 51
+    },
+    {
+      "question_id": "TS04P",
+      "question_type": "Q2",
+      "status": "pass",
+      "event_count": 45
     },
     {
       "question_id": "OU01P",
@@ -735,16 +781,6 @@
   ],
   "unavailable_object_views": [
     {
-      "case_table": "registration_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "degree_examination_result_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
       "case_table": "assignment_activity",
       "status": "supporting_history",
       "reason": "Activity storage/index for its parent-object log; not an independent business case."
@@ -780,8 +816,8 @@
       "reason": "Activity storage/index for its parent-object log; not an independent business case."
     }
   ],
-  "total_questions": 62,
-  "answerable_questions": 58,
+  "total_questions": 70,
+  "answerable_questions": 66,
   "lifecycle_extensions": {
     "added_tables": 9,
     "added_events": 660,
@@ -792,11 +828,31 @@
       "full_sql_equals_history": "pass"
     }
   },
+  "timestamp_migration": {
+    "added_columns": 15,
+    "removed_empty_history_tables": [
+      "registration_activity",
+      "degree_examination_result_activity"
+    ],
+    "original_event_identity_and_time": "preserved",
+    "duplicate_event_storage": "none"
+  },
   "question_type_counts": {
-    "Q1": 19,
-    "Q2": 19,
+    "Q1": 23,
+    "Q2": 23,
     "Q3": 12,
     "Q4": 12
   },
-  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified"
+  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
+  "timestamp_summary": {
+    "timestamp_columns": 27,
+    "event_timestamp_columns": 26,
+    "other_timestamp_columns": 1,
+    "date_only_columns": [
+      "student.date_of_birth",
+      "task.task_start_date",
+      "task.task_end_date"
+    ],
+    "baseline_timestamp_columns": 14
+  }
 }
