@@ -1,0 +1,130 @@
+[
+  {
+    "case_concept": "Patient",
+    "object_type": "PATIENT",
+    "case_count": 12,
+    "activity_count": 18,
+    "activities": [
+      "Discharge Authorized",
+      "Emergency Department Registered",
+      "Hospital Admitted",
+      "Hospital Discharged",
+      "Lab Measurement Charted",
+      "Lab Result Available",
+      "Lab Results Verified",
+      "Medication Administered",
+      "Medication Dispensed",
+      "Medication Not Given",
+      "Medication Stopped",
+      "Order Cancelled",
+      "Order Entered",
+      "Order Reviewed",
+      "Procedure Completed",
+      "Procedure Preparation Completed",
+      "Procedure Started",
+      "Specimen Received"
+    ],
+    "event_rows": 361,
+    "cases_without_events": 1
+  },
+  {
+    "case_concept": "Hospital Admission",
+    "object_type": "ADMISSION",
+    "case_count": 15,
+    "activity_count": 18,
+    "activities": [
+      "Discharge Authorized",
+      "Emergency Department Registered",
+      "Hospital Admitted",
+      "Hospital Discharged",
+      "Lab Measurement Charted",
+      "Lab Result Available",
+      "Lab Results Verified",
+      "Medication Administered",
+      "Medication Dispensed",
+      "Medication Not Given",
+      "Medication Stopped",
+      "Order Cancelled",
+      "Order Entered",
+      "Order Reviewed",
+      "Procedure Completed",
+      "Procedure Preparation Completed",
+      "Procedure Started",
+      "Specimen Received"
+    ],
+    "event_rows": 361,
+    "cases_without_events": 0
+  },
+  {
+    "case_concept": "Clinical Order",
+    "object_type": "CLINICAL_ORDER",
+    "case_count": 45,
+    "activity_count": 14,
+    "activities": [
+      "Lab Measurement Charted",
+      "Lab Result Available",
+      "Lab Results Verified",
+      "Medication Administered",
+      "Medication Dispensed",
+      "Medication Not Given",
+      "Medication Stopped",
+      "Order Cancelled",
+      "Order Entered",
+      "Order Reviewed",
+      "Procedure Completed",
+      "Procedure Preparation Completed",
+      "Procedure Started",
+      "Specimen Received"
+    ],
+    "event_rows": 310,
+    "cases_without_events": 0
+  },
+  {
+    "case_concept": "Laboratory Order",
+    "object_type": "CLINICAL_ORDER",
+    "case_count": 15,
+    "activity_count": 6,
+    "activities": [
+      "Lab Measurement Charted",
+      "Lab Result Available",
+      "Lab Results Verified",
+      "Order Entered",
+      "Order Reviewed",
+      "Specimen Received"
+    ],
+    "event_rows": 125,
+    "cases_without_events": 0
+  },
+  {
+    "case_concept": "Medication Order",
+    "object_type": "CLINICAL_ORDER",
+    "case_count": 15,
+    "activity_count": 6,
+    "activities": [
+      "Medication Administered",
+      "Medication Dispensed",
+      "Medication Not Given",
+      "Medication Stopped",
+      "Order Entered",
+      "Order Reviewed"
+    ],
+    "event_rows": 107,
+    "cases_without_events": 0
+  },
+  {
+    "case_concept": "Procedure Order",
+    "object_type": "CLINICAL_ORDER",
+    "case_count": 15,
+    "activity_count": 6,
+    "activities": [
+      "Order Cancelled",
+      "Order Entered",
+      "Order Reviewed",
+      "Procedure Completed",
+      "Procedure Preparation Completed",
+      "Procedure Started"
+    ],
+    "event_rows": 78,
+    "cases_without_events": 0
+  }
+]

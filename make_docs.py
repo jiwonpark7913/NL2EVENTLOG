@@ -43,6 +43,15 @@ def build(name,positions,title):
     if ix["unique"]:unique_sets.append([r["name"] for r in con.execute("PRAGMA index_info("+ix["name"]+")")])
    card="0..1" if [fk["from"]] in unique_sets else "0..N"
    relationships.append(dict(parent=fk["table"],child=n,label="1 : "+card,logical=False,from_col=fk["from"],to_col=fk["to"]))
+ if name=="hospitalflow":
+  relationships=[]
+  for n,i in info.items():
+   groups={}
+   for fk in i["fk"]:groups.setdefault(fk["id"],[]).append(fk)
+   unique_sets=[{r["name"] for r in con.execute("PRAGMA index_info("+ix["name"]+")")} for ix in con.execute("PRAGMA index_list("+n+")") if ix["unique"]]
+   for group in groups.values():
+    group.sort(key=lambda r:r["seq"]);childcols={r["from"] for r in group};card="0..1" if any(u<=childcols for u in unique_sets) else "0..N"
+    relationships.append(dict(parent=group[0]["table"],child=n,label="1 : "+card,logical=False,from_col=", ".join(r["from"] for r in group),to_col=", ".join(r["to"] for r in group)))
  if name=="plateflow":
   relationships += [dict(parent=t,child="material_operation_history",label="logical 1 : 0..N",logical=True,from_col="material_id",to_col="material_id" if t=="as_rolled_material" else "plate_material_id") for t in ["as_rolled_material","plate_material"]]
  js=lambda n,o:(out/n).write_text(json.dumps(o,indent=2)+"\n")
@@ -139,9 +148,10 @@ build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130
 build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
 
 build("universityflow",{"student":(65,130),"course":(575,130),"instructor":(1085,130),"degree_examination_result":(65,480),"registration":(575,480),"assignment":(1085,480),"task":(65,830),"simulation_module":(575,830),"assignment_grading":(1085,830),"thesis":(65,1180),"student_simulation_experiment_result":(575,1180)},"UniversityFlow · combined RSchema examples")
+build("hospitalflow",{"object_type":(65,130),"object":(575,130),"patients":(1085,130),"admissions":(1085,480),"clinical_order":(575,480),"order_history":(65,480),"lab_order":(65,830),"medication_order":(575,830),"procedure_order":(1085,830),"labevents":(65,1180),"emar":(575,1180),"procedureevents":(1085,1180)},"HospitalFlow · MIMIC-inspired synthetic")
 format_documents(ROOT)
 
 from timestamp_inventory import refresh
 refresh()
 from dictionary_standard import render
-for name in ["warehouseflow","universityflow","plateflow"]:render(ROOT/"datasets"/name)
+for name in ["warehouseflow","universityflow","plateflow","hospitalflow"]:render(ROOT/"datasets"/name)

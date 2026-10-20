@@ -1,0 +1,75 @@
+event_id,case_id,activity,timestamp
+MED:1:dispense,MED:1,Medication Dispensed,2026-01-09T13:00:00Z
+EMAR:1,MED:1,Medication Administered,2026-01-09T16:00:00Z
+EMAR:2,MED:1,Medication Administered,2026-01-10T00:00:00Z
+EMAR:3,MED:1,Medication Administered,2026-01-10T08:00:00Z
+MED:1:stop,MED:1,Medication Stopped,2026-01-11T00:00:00Z
+MED:10:dispense,MED:10,Medication Dispensed,2026-03-25T13:00:00Z
+EMAR:28,MED:10,Medication Administered,2026-03-25T16:00:00Z
+EMAR:29,MED:10,Medication Administered,2026-03-26T00:00:00Z
+EMAR:30,MED:10,Medication Administered,2026-03-26T08:00:00Z
+MED:10:stop,MED:10,Medication Stopped,2026-03-27T00:00:00Z
+MED:11:dispense,MED:11,Medication Dispensed,2026-04-02T21:00:00Z
+EMAR:31,MED:11,Medication Administered,2026-04-03T00:00:00Z
+EMAR:32,MED:11,Medication Administered,2026-04-03T08:00:00Z
+EMAR:33,MED:11,Medication Administered,2026-04-03T16:00:00Z
+MED:11:stop,MED:11,Medication Stopped,2026-04-04T08:00:00Z
+MED:12:dispense,MED:12,Medication Dispensed,2026-04-11T05:00:00Z
+EMAR:34,MED:12,Medication Administered,2026-04-11T08:00:00Z
+EMAR:35,MED:12,Medication Not Given,2026-04-11T16:00:00Z
+EMAR:36,MED:12,Medication Administered,2026-04-12T00:00:00Z
+MED:12:stop,MED:12,Medication Stopped,2026-04-12T16:00:00Z
+MED:13:dispense,MED:13,Medication Dispensed,2026-04-19T13:00:00Z
+EMAR:37,MED:13,Medication Administered,2026-04-19T16:00:00Z
+EMAR:38,MED:13,Medication Administered,2026-04-20T00:00:00Z
+EMAR:39,MED:13,Medication Administered,2026-04-20T08:00:00Z
+MED:13:stop,MED:13,Medication Stopped,2026-04-21T00:00:00Z
+MED:14:dispense,MED:14,Medication Dispensed,2026-04-27T21:00:00Z
+EMAR:40,MED:14,Medication Administered,2026-04-28T00:00:00Z
+EMAR:41,MED:14,Medication Administered,2026-04-28T08:00:00Z
+EMAR:42,MED:14,Medication Administered,2026-04-28T16:00:00Z
+MED:14:stop,MED:14,Medication Stopped,2026-04-29T08:00:00Z
+MED:15:dispense,MED:15,Medication Dispensed,2026-05-06T05:00:00Z
+EMAR:43,MED:15,Medication Administered,2026-05-06T08:00:00Z
+EMAR:44,MED:15,Medication Not Given,2026-05-06T16:00:00Z
+EMAR:45,MED:15,Medication Administered,2026-05-07T00:00:00Z
+MED:2:dispense,MED:2,Medication Dispensed,2026-01-17T21:00:00Z
+EMAR:4,MED:2,Medication Administered,2026-01-18T00:00:00Z
+EMAR:5,MED:2,Medication Administered,2026-01-18T08:00:00Z
+EMAR:6,MED:2,Medication Administered,2026-01-18T16:00:00Z
+MED:2:stop,MED:2,Medication Stopped,2026-01-19T08:00:00Z
+MED:3:dispense,MED:3,Medication Dispensed,2026-01-26T05:00:00Z
+EMAR:7,MED:3,Medication Administered,2026-01-26T08:00:00Z
+EMAR:8,MED:3,Medication Not Given,2026-01-26T16:00:00Z
+EMAR:9,MED:3,Medication Administered,2026-01-27T00:00:00Z
+MED:3:stop,MED:3,Medication Stopped,2026-01-27T16:00:00Z
+MED:4:dispense,MED:4,Medication Dispensed,2026-02-03T13:00:00Z
+EMAR:10,MED:4,Medication Administered,2026-02-03T16:00:00Z
+EMAR:11,MED:4,Medication Administered,2026-02-04T00:00:00Z
+EMAR:12,MED:4,Medication Administered,2026-02-04T08:00:00Z
+MED:4:stop,MED:4,Medication Stopped,2026-02-05T00:00:00Z
+MED:5:dispense,MED:5,Medication Dispensed,2026-02-11T21:00:00Z
+EMAR:13,MED:5,Medication Administered,2026-02-12T00:00:00Z
+EMAR:14,MED:5,Medication Administered,2026-02-12T08:00:00Z
+EMAR:15,MED:5,Medication Administered,2026-02-12T16:00:00Z
+MED:5:stop,MED:5,Medication Stopped,2026-02-13T08:00:00Z
+MED:6:dispense,MED:6,Medication Dispensed,2026-02-20T05:00:00Z
+EMAR:16,MED:6,Medication Administered,2026-02-20T08:00:00Z
+EMAR:17,MED:6,Medication Not Given,2026-02-20T16:00:00Z
+EMAR:18,MED:6,Medication Administered,2026-02-21T00:00:00Z
+MED:6:stop,MED:6,Medication Stopped,2026-02-21T16:00:00Z
+MED:7:dispense,MED:7,Medication Dispensed,2026-02-28T13:00:00Z
+EMAR:19,MED:7,Medication Administered,2026-02-28T16:00:00Z
+EMAR:20,MED:7,Medication Administered,2026-03-01T00:00:00Z
+EMAR:21,MED:7,Medication Administered,2026-03-01T08:00:00Z
+MED:7:stop,MED:7,Medication Stopped,2026-03-02T00:00:00Z
+MED:8:dispense,MED:8,Medication Dispensed,2026-03-08T21:00:00Z
+EMAR:22,MED:8,Medication Administered,2026-03-09T00:00:00Z
+EMAR:23,MED:8,Medication Administered,2026-03-09T08:00:00Z
+EMAR:24,MED:8,Medication Administered,2026-03-09T16:00:00Z
+MED:8:stop,MED:8,Medication Stopped,2026-03-10T08:00:00Z
+MED:9:dispense,MED:9,Medication Dispensed,2026-03-17T05:00:00Z
+EMAR:25,MED:9,Medication Administered,2026-03-17T08:00:00Z
+EMAR:26,MED:9,Medication Not Given,2026-03-17T16:00:00Z
+EMAR:27,MED:9,Medication Administered,2026-03-18T00:00:00Z
+MED:9:stop,MED:9,Medication Stopped,2026-03-18T16:00:00Z

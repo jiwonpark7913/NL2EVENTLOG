@@ -2,7 +2,7 @@
 import json,sqlite3,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-BASE={'warehouseflow':2,'universityflow':14,'plateflow':37}
+BASE={'warehouseflow':2,'universityflow':14,'plateflow':37,'hospitalflow':17}
 NOTE='- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.\n'
 def inventory(p):
  con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row;d=json.loads((p/'input/data_dictionary.json').read_text());rows=[];dates=[]
@@ -15,6 +15,7 @@ def inventory(p):
     if values or not cn.endswith('_at'):continue
    role='actual event time';used=True
    if cn in ['created_at','updated_at']:role='technical record timestamp';used=False
+   elif p.name=='hospitalflow' and cn=='storetime' and n in ['emar','procedureevents']:role='technical documentation time';used=False
    elif cn=='latest_operation_completed_at':role='latest-operation snapshot';used=False
    elif cn.startswith('planned_'):role='planned instant';used=False
    elif cn=='lot_charging_started_at':role='lot-level instant outside material-event scope';used=False
@@ -27,8 +28,8 @@ def inventory(p):
 
 def refresh():
  allrows=[]
- for name,title in [('warehouseflow','WarehouseFlow'),('universityflow','UniversityFlow'),('plateflow','PlateFlow')]:
-  p=ROOT/'datasets'/name;inv=inventory(p);r=json.loads((p/'validation_report.json').read_text());counts=[len(r['table_rows']),len(r['object_view_coverage']),len(r['activity_counts']),inv['timestamp_columns'],inv['event_timestamp_columns'],r['events'],r['total_questions'],r['answerable_questions']];header='| Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|\n';row='| '+title+' | '+' | '.join(map(str,counts))+' |';readme=p/'README.md';s=readme.read_text();s=re.sub(r'\| Dataset \| Tables \|.*?(?=\n\n)',header+row,s,count=1,flags=re.S);s=re.sub(r'- \*\*Database:\*\*[^\n]*',f'- **Database:** {counts[0]} tables; {counts[1]} object / case types; {counts[2]} activity types; {counts[3]} timestamp columns ({counts[4]} event timestamp columns); {counts[5]} distinct events.',s);s=re.sub(r'\n## Timestamp columns\n.*?(?=\n## |\Z)','',s,flags=re.S);s+='\n## Timestamp columns\n\n'+NOTE+'- [Timestamp inventory and roles](docs/timestamp_columns.md)\n- [Milestone-column extraction questions and Gold activity counts](docs/questions.md)\n- Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.\n';readme.write_text(s);allrows.append((title,counts,inv))
+ for name,title in [('warehouseflow','WarehouseFlow'),('universityflow','UniversityFlow'),('plateflow','PlateFlow'),('hospitalflow','HospitalFlow')]:
+  p=ROOT/'datasets'/name;inv=inventory(p);r=json.loads((p/'validation_report.json').read_text());counts=[len(r['table_rows']),r.get('semantic_object_types',len(r['object_view_coverage'])),len(r['activity_counts']),inv['timestamp_columns'],inv['event_timestamp_columns'],r['events'],r['total_questions'],r['answerable_questions']];header='| Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |\n|---|---:|---:|---:|---:|---:|---:|---:|---:|\n';row='| '+title+' | '+' | '.join(map(str,counts))+' |';readme=p/'README.md';s=readme.read_text();s=re.sub(r'\| Dataset \| Tables \|.*?(?=\n\n)',header+row,s,count=1,flags=re.S);s=re.sub(r'- \*\*Database:\*\*[^\n]*',f'- **Database:** {counts[0]} tables; {counts[1]} object / case types; {counts[2]} activity types; {counts[3]} timestamp columns ({counts[4]} event timestamp columns); {counts[5]} distinct events.',s);s=re.sub(r'\n## Timestamp columns\n.*?(?=\n## |\Z)','',s,flags=re.S);s+='\n## Timestamp columns\n\n'+NOTE+'- [Timestamp inventory and roles](docs/timestamp_columns.md)\n- [Milestone-column extraction questions and Gold activity counts](docs/questions.md)\n- Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.\n';readme.write_text(s);allrows.append((title,counts,inv))
  p=ROOT/'README.md';s=p.read_text();table=header+''.join('| ['+title+'](datasets/'+title.lower()+'/README.md) | '+' | '.join(map(str,counts))+' |\n' for title,counts,_ in allrows);s=re.sub(r'\| Dataset \| Tables \|.*?(?=\n\n)',table.rstrip(),s,count=1,flags=re.S);s=re.sub(r'\n## Timestamp columns\n.*?(?=\n## |\Z)','',s,flags=re.S);s+='\n## Timestamp columns\n\n'+NOTE+'\n| Dataset | Baseline timestamp columns before milestone expansion | Current timestamp columns | Current event timestamp columns |\n|---|---:|---:|---:|\n'+''.join(f'| {title} | {i["baseline_timestamp_columns"]} | {i["timestamp_columns"]} | {i["event_timestamp_columns"]} |\n' for title,_,i in allrows);p.write_text(s)
  return allrows
 if __name__=='__main__':

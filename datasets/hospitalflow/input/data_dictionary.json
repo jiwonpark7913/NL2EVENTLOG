@@ -1,0 +1,983 @@
+{
+  "name": "HospitalFlow",
+  "language": "en",
+  "timezone": "UTC",
+  "tables": [
+    {
+      "table": "object_type",
+      "definition": "Semantic object types shared across business tables; not activities or case instances.",
+      "columns": [
+        {
+          "name": "type_code",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Semantic type code, constrained by a foreign key or registry membership trigger.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.object_type.type_code",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "type_name",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "English name of the semantic object type.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.object_type.type_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "definition",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Definition of the semantic object type.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.object_type.definition",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "type_code"
+      ],
+      "foreign_keys": [],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Type, identity or context only; does not store an event.",
+      "metadata_id": "hospitalflow.object_type"
+    },
+    {
+      "table": "object",
+      "definition": "Globally unique object identities and their semantic types; no events are stored here.",
+      "columns": [
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.object.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "type_code",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Semantic type code, constrained by a foreign key or registry membership trigger.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.object.type_code",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "object_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "type_code",
+          "parent_table": "object_type",
+          "parent_column": "type_code"
+        }
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Type, identity or context only; does not store an event.",
+      "metadata_id": "hospitalflow.object"
+    },
+    {
+      "table": "patients",
+      "definition": "Synthetic patient identity, inspired by MIMIC subject_id.",
+      "columns": [
+        {
+          "name": "subject_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.patients.subject_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.patients.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "gender",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic demographic category, F or M.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.patients.gender",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "subject_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "object_id",
+          "parent_table": "object",
+          "parent_column": "object_id"
+        }
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Type, identity or context only; does not store an event.",
+      "metadata_id": "hospitalflow.patients"
+    },
+    {
+      "table": "admissions",
+      "definition": "Distinct hospital stays per patient with actual admission/discharge milestones.",
+      "columns": [
+        {
+          "name": "hadm_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic unique hospital admission identity.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.hadm_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "subject_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.subject_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "edregtime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual emergency department registration time; NULL for admissions without ED registration.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.edregtime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "admittime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual hospital admission time.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.admittime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "discharge_authorized_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Authored actual discharge authorization time; NULL if not occurred.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.discharge_authorized_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "dischtime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual hospital discharge time; NULL for an ongoing stay.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.admissions.dischtime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "hadm_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "object_id",
+          "parent_table": "object",
+          "parent_column": "object_id"
+        },
+        {
+          "column": "subject_id",
+          "parent_table": "patients",
+          "parent_column": "subject_id"
+        }
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
+      "metadata_id": "hospitalflow.admissions"
+    },
+    {
+      "table": "clinical_order",
+      "definition": "Authored common parent for laboratory, medication and procedure orders; not a MIMIC table.",
+      "columns": [
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.clinical_order.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "subject_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.clinical_order.subject_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "hadm_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic unique hospital admission identity.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.clinical_order.hadm_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_kind",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.clinical_order.order_kind",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "object_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "hadm_id",
+          "parent_table": "admissions",
+          "parent_column": "hadm_id"
+        },
+        {
+          "column": "subject_id",
+          "parent_table": "admissions",
+          "parent_column": "subject_id"
+        },
+        {
+          "column": "object_id",
+          "parent_table": "object",
+          "parent_column": "object_id"
+        }
+      ],
+      "event_encoding": "No event encoding",
+      "encoding_detail": "Type, identity or context only; does not store an event.",
+      "metadata_id": "hospitalflow.clinical_order"
+    },
+    {
+      "table": "lab_order",
+      "definition": "Authored laboratory-order subtype; several measurements may belong to one order.",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.lab_order.order_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.lab_order.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_kind",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.lab_order.order_kind",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "'LAB'"
+        },
+        {
+          "name": "specimen_received_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Authored actual receipt of a specimen for this order.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.lab_order.specimen_received_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "results_verified_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Authored actual verification of results after all recorded measurements become available.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.lab_order.results_verified_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "order_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "object_id",
+          "parent_table": "clinical_order",
+          "parent_column": "object_id"
+        },
+        {
+          "column": "order_kind",
+          "parent_table": "clinical_order",
+          "parent_column": "order_kind"
+        }
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
+      "metadata_id": "hospitalflow.lab_order"
+    },
+    {
+      "table": "medication_order",
+      "definition": "Authored medication-order subtype; repeated doses belong to one order.",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.medication_order.order_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.medication_order.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_kind",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.medication_order.order_kind",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "'MED'"
+        },
+        {
+          "name": "medication",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Fictional medication label; no treatment recommendation.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.medication_order.medication",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "dispensed_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Authored actual dispensing time.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.medication_order.dispensed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "stopped_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Authored actual stop time; NULL if not stopped.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.medication_order.stopped_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "order_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "object_id",
+          "parent_table": "clinical_order",
+          "parent_column": "object_id"
+        },
+        {
+          "column": "order_kind",
+          "parent_table": "clinical_order",
+          "parent_column": "order_kind"
+        }
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
+      "metadata_id": "hospitalflow.medication_order"
+    },
+    {
+      "table": "procedure_order",
+      "definition": "Authored procedure-order subtype; repeated execution episodes belong to one order.",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedure_order.order_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedure_order.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_kind",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedure_order.order_kind",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "'PROC'"
+        },
+        {
+          "name": "procedure_name",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Fictional procedure label.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedure_order.procedure_name",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "preparation_completed_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Authored actual completion of preparation for this procedure order.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedure_order.preparation_completed_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "order_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "object_id",
+          "parent_table": "clinical_order",
+          "parent_column": "object_id"
+        },
+        {
+          "column": "order_kind",
+          "parent_table": "clinical_order",
+          "parent_column": "order_kind"
+        }
+      ],
+      "event_encoding": "Column encoding",
+      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
+      "metadata_id": "hospitalflow.procedure_order"
+    },
+    {
+      "table": "order_history",
+      "definition": "Repeated order actions, inspired by provider order transaction semantics; not a copy of poe.",
+      "columns": [
+        {
+          "name": "history_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Unique occurrence identity for a repeated order action.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.order_history.history_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "object_id",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Global object identity; distinct from local subtype order_id.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.order_history.object_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "action",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "ENTERED, REVIEWED or CANCELLED order action; repeated REVIEWED is permitted.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.order_history.action",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual UTC time of the order action.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.order_history.occurred_at",
+          "representation_class": "Date/time text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "history_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "object_id",
+          "parent_table": "clinical_order",
+          "parent_column": "object_id"
+        }
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded.",
+      "metadata_id": "hospitalflow.order_history"
+    },
+    {
+      "table": "labevents",
+      "definition": "Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents.",
+      "columns": [
+        {
+          "name": "labevent_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Unique measurement occurrence identity; repeated item measurements remain distinct.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.labevent_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.order_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "itemid",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic laboratory concept ID; no original MIMIC item code is claimed.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.itemid",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "charttime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.charttime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "storetime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.storetime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "valuenum",
+          "type": "REAL",
+          "constraints": "See executable table DDL",
+          "definition": "Synthetic measurement numeric value.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.valuenum",
+          "representation_class": "Number",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "valueuom",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Measurement unit; all current synthetic measurements use arbitrary units.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.labevents.valueuom",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "labevent_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "order_id",
+          "parent_table": "lab_order",
+          "parent_column": "order_id"
+        }
+      ],
+      "event_encoding": "Mixed (row + column)",
+      "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence.",
+      "metadata_id": "hospitalflow.labevents"
+    },
+    {
+      "table": "emar",
+      "definition": "Medication administration or omission occurrences, inspired by MIMIC emar.",
+      "columns": [
+        {
+          "name": "emar_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Unique synthetic dose occurrence ID; simplified from the MIMIC identity structure.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.emar.emar_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.emar.order_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "charttime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.emar.charttime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "event_txt",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Administered or Not Given; selects the activity of this dose occurrence.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.emar.event_txt",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "storetime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.emar.storetime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "emar_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "order_id",
+          "parent_table": "medication_order",
+          "parent_column": "order_id"
+        }
+      ],
+      "event_encoding": "Row encoding",
+      "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded.",
+      "metadata_id": "hospitalflow.emar"
+    },
+    {
+      "table": "procedureevents",
+      "definition": "Procedure execution episodes with start/end times, inspired by MIMIC procedureevents.",
+      "columns": [
+        {
+          "name": "procedureevent_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Authored unique procedure episode identity; not an original MIMIC column.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedureevents.procedureevent_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "order_id",
+          "type": "INTEGER",
+          "constraints": "See executable table DDL",
+          "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedureevents.order_id",
+          "representation_class": "Identifier",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not applicable",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "starttime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual procedure episode start.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedureevents.starttime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "endtime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "Actual procedure episode completion; NULL if ongoing.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedureevents.endtime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        },
+        {
+          "name": "storetime",
+          "type": "TEXT",
+          "constraints": "See executable table DDL",
+          "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+          "source_origin": "mimic_inspired_synthetic_benchmark",
+          "metadata_id": "hospitalflow.procedureevents.storetime",
+          "representation_class": "Text",
+          "value_domain": "SQL type and declared constraints: See executable table DDL",
+          "declared_length": "Not bounded by declared SQLite type",
+          "default_value": "No SQL default"
+        }
+      ],
+      "primary_key": [
+        "procedureevent_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "order_id",
+          "parent_table": "procedure_order",
+          "parent_column": "order_id"
+        }
+      ],
+      "event_encoding": "Mixed (row + column)",
+      "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence.",
+      "metadata_id": "hospitalflow.procedureevents"
+    }
+  ],
+  "business_rules": [
+    "Three order subtype tables share Clinical Order type; cases remain separate globally unique objects.",
+    "Object/type registry contains identity and classification, not precomputed event/case links.",
+    "All timestamps and all records are synthetic UTC; no MIMIC patient data is redistributed.",
+    "MIMIC-inspired relationships are adapted; lab/procedure order FKs and common object model are authored.",
+    "Patient identity never merges distinct admission cases. Composite admission/patient FK rejects cross-patient attribution.",
+    "labevents.charttime is a charted measurement time; storetime is result availability. They are distinct activities, not two names for one event.",
+    "emar.storetime and procedureevents.storetime are documentation times, excluded from business-event extraction.",
+    "Missing events do not prove care did not occur. Full lifecycle means all recorded events in the declared scope.",
+    "Repeated order reviews, doses, measurements and procedure episodes retain occurrence IDs.",
+    "Model input is input/model_questions.jsonl plus DB/schema and catalog; answerability, counts and private Gold are evaluation annotations."
+  ],
+  "value_domain": {
+    "order_kind": "LAB / MED / PROC",
+    "type_code": "PATIENT / ADMISSION / CLINICAL_ORDER"
+  },
+  "timestamp_summary": {
+    "timestamp_columns": 17,
+    "event_timestamp_columns": 15,
+    "other_timestamp_columns": 2,
+    "date_only_columns": [],
+    "baseline_timestamp_columns": 17
+  },
+  "dictionary_basic_information": {
+    "dictionary_id": "NL2EVENTLOG:hospitalflow",
+    "version": "2026-10-20",
+    "name": "HospitalFlow",
+    "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
+    "language": "en",
+    "timezone": "UTC",
+    "dbms": "SQLite",
+    "namespace": "hospitalflow",
+    "timestamp_columns": 17,
+    "event_timestamp_columns": 15,
+    "maintainer": "NL2EVENTLOG project maintainers",
+    "registration_status": "Project-maintained draft; not ISO-registered or certified",
+    "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
+    "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
+    "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
+  },
+  "standards_references": [
+    {
+      "standard": "ISO/IEC 11179-3:2023",
+      "url": "https://www.iso.org/standard/78915.html",
+      "application": "Registry identification, administration and definition concepts"
+    },
+    {
+      "standard": "ISO/IEC 11179-4:2004",
+      "url": "https://www.iso.org/standard/35346.html",
+      "application": "Semantic formulation of data definitions"
+    }
+  ]
+}

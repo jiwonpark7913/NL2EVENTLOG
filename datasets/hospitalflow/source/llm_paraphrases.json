@@ -1,0 +1,24 @@
+{
+  "generator": "ChatGPT assistant LLM in this construction conversation",
+  "external_api_call": false,
+  "model_identifier": "Not programmatically exposed; no specific model version claimed",
+  "generated_on": "2026-10-20",
+  "prompt_template": "Paraphrase the following English event-log extraction question. Preserve exactly the case concept, population, activity scope, quantifiers and answerability. For Q1 use natural wording different from database activity labels without adding steps. For Q3 keep a full recorded lifecycle request without listing activities. Return only one paraphrase. Source question: {question}",
+  "outputs": {
+    "H01": "Build a separate timeline for every clinical order showing when it was placed, checked and, if applicable, cancelled.",
+    "H02": "For every clinical order, show the recorded times when its laboratory findings became available, its medicine was given or its procedure finished, as applicable.",
+    "H03": "For every laboratory order, show when each measurement was charted, when its findings became accessible and when the order's results were verified.",
+    "H04": "Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication.",
+    "H05": "For every procedure order, show when preparation finished and when each procedure occurrence began and ended.",
+    "H06": "For every hospital stay, show arrival registration in the emergency department, admission, authorization to leave and actual discharge.",
+    "H07": "For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures.",
+    "H08": "For every clinical order, show when its insurance claim was settled by payment.",
+    "HF01": "Build a complete timeline of all recorded care events for every patient.",
+    "HF02": "Show the entire recorded history of each individual hospital stay.",
+    "HF03": "Trace each clinical order through its complete recorded history.",
+    "HF04": "Show everything recorded over the life of each laboratory order.",
+    "HF05": "Build the complete recorded history of each medication order.",
+    "HF06": "Trace the whole recorded lifecycle of every procedure order."
+  },
+  "semantic_review": "Assistant reviewed each output against its frozen seed for case/population/activity/answerability equivalence; exact ES and Gold identity are additionally checked by code. This is an author review, not independent paraphrase-quality evaluation."
+}

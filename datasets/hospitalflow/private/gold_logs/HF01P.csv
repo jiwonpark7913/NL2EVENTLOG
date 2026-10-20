@@ -1,0 +1,362 @@
+event_id,case_id,activity,timestamp
+ADM:1:ed,P:1,Emergency Department Registered,2026-01-09T08:00:00Z
+ADM:1:in,P:1,Hospital Admitted,2026-01-09T09:00:00Z
+OH:1,P:1,Order Entered,2026-01-09T10:00:00Z
+OH:3,P:1,Order Entered,2026-01-09T10:00:00Z
+OH:5,P:1,Order Entered,2026-01-09T10:00:00Z
+OH:2,P:1,Order Reviewed,2026-01-09T11:00:00Z
+OH:4,P:1,Order Reviewed,2026-01-09T11:00:00Z
+OH:6,P:1,Order Reviewed,2026-01-09T11:00:00Z
+LAB:1:received,P:1,Specimen Received,2026-01-09T13:00:00Z
+MED:1:dispense,P:1,Medication Dispensed,2026-01-09T13:00:00Z
+PROC:1:prep,P:1,Procedure Preparation Completed,2026-01-09T13:00:00Z
+LABEV:1:chart,P:1,Lab Measurement Charted,2026-01-09T14:00:00Z
+LABEV:1:result,P:1,Lab Result Available,2026-01-09T15:00:00Z
+EMAR:1,P:1,Medication Administered,2026-01-09T16:00:00Z
+LABEV:2:chart,P:1,Lab Measurement Charted,2026-01-09T16:00:00Z
+PROCEV:1:start,P:1,Procedure Started,2026-01-09T16:00:00Z
+LABEV:2:result,P:1,Lab Result Available,2026-01-09T17:00:00Z
+LABEV:3:chart,P:1,Lab Measurement Charted,2026-01-09T18:00:00Z
+PROCEV:1:end,P:1,Procedure Completed,2026-01-09T18:00:00Z
+LABEV:3:result,P:1,Lab Result Available,2026-01-09T19:00:00Z
+LAB:1:verified,P:1,Lab Results Verified,2026-01-09T22:00:00Z
+EMAR:2,P:1,Medication Administered,2026-01-10T00:00:00Z
+EMAR:3,P:1,Medication Administered,2026-01-10T08:00:00Z
+MED:1:stop,P:1,Medication Stopped,2026-01-11T00:00:00Z
+ADM:1:auth,P:1,Discharge Authorized,2026-01-12T16:00:00Z
+ADM:1:out,P:1,Hospital Discharged,2026-01-12T18:00:00Z
+ADM:2:in,P:1,Hospital Admitted,2026-01-17T17:00:00Z
+OH:11,P:1,Order Entered,2026-01-17T18:00:00Z
+OH:7,P:1,Order Entered,2026-01-17T18:00:00Z
+OH:9,P:1,Order Entered,2026-01-17T18:00:00Z
+OH:10,P:1,Order Reviewed,2026-01-17T19:00:00Z
+OH:12,P:1,Order Reviewed,2026-01-17T19:00:00Z
+OH:8,P:1,Order Reviewed,2026-01-17T19:00:00Z
+LAB:2:received,P:1,Specimen Received,2026-01-17T21:00:00Z
+MED:2:dispense,P:1,Medication Dispensed,2026-01-17T21:00:00Z
+PROC:2:prep,P:1,Procedure Preparation Completed,2026-01-17T21:00:00Z
+LABEV:4:chart,P:1,Lab Measurement Charted,2026-01-17T22:00:00Z
+LABEV:4:result,P:1,Lab Result Available,2026-01-17T23:00:00Z
+EMAR:4,P:1,Medication Administered,2026-01-18T00:00:00Z
+LABEV:5:chart,P:1,Lab Measurement Charted,2026-01-18T00:00:00Z
+PROCEV:2:start,P:1,Procedure Started,2026-01-18T00:00:00Z
+LABEV:5:result,P:1,Lab Result Available,2026-01-18T01:00:00Z
+PROCEV:2:end,P:1,Procedure Completed,2026-01-18T02:00:00Z
+LAB:2:verified,P:1,Lab Results Verified,2026-01-18T06:00:00Z
+EMAR:5,P:1,Medication Administered,2026-01-18T08:00:00Z
+EMAR:6,P:1,Medication Administered,2026-01-18T16:00:00Z
+MED:2:stop,P:1,Medication Stopped,2026-01-19T08:00:00Z
+ADM:2:auth,P:1,Discharge Authorized,2026-01-21T00:00:00Z
+ADM:2:out,P:1,Hospital Discharged,2026-01-21T02:00:00Z
+ADM:14:in,P:10,Hospital Admitted,2026-04-27T17:00:00Z
+OH:90,P:10,Order Entered,2026-04-27T18:00:00Z
+OH:92,P:10,Order Entered,2026-04-27T18:00:00Z
+OH:94,P:10,Order Entered,2026-04-27T18:00:00Z
+OH:91,P:10,Order Reviewed,2026-04-27T19:00:00Z
+OH:93,P:10,Order Reviewed,2026-04-27T19:00:00Z
+OH:95,P:10,Order Reviewed,2026-04-27T19:00:00Z
+MED:14:dispense,P:10,Medication Dispensed,2026-04-27T21:00:00Z
+PROC:14:prep,P:10,Procedure Preparation Completed,2026-04-27T21:00:00Z
+EMAR:40,P:10,Medication Administered,2026-04-28T00:00:00Z
+PROCEV:15:start,P:10,Procedure Started,2026-04-28T00:00:00Z
+PROCEV:15:end,P:10,Procedure Completed,2026-04-28T02:00:00Z
+EMAR:41,P:10,Medication Administered,2026-04-28T08:00:00Z
+EMAR:42,P:10,Medication Administered,2026-04-28T16:00:00Z
+MED:14:stop,P:10,Medication Stopped,2026-04-29T08:00:00Z
+ADM:14:auth,P:10,Discharge Authorized,2026-05-01T00:00:00Z
+ADM:14:out,P:10,Hospital Discharged,2026-05-01T02:00:00Z
+ADM:15:ed,P:11,Emergency Department Registered,2026-05-06T00:00:00Z
+ADM:15:in,P:11,Hospital Admitted,2026-05-06T01:00:00Z
+OH:100,P:11,Order Entered,2026-05-06T02:00:00Z
+OH:96,P:11,Order Entered,2026-05-06T02:00:00Z
+OH:98,P:11,Order Entered,2026-05-06T02:00:00Z
+OH:101,P:11,Order Reviewed,2026-05-06T03:00:00Z
+OH:97,P:11,Order Reviewed,2026-05-06T03:00:00Z
+OH:99,P:11,Order Reviewed,2026-05-06T03:00:00Z
+OH:102,P:11,Order Cancelled,2026-05-06T04:00:00Z
+LAB:15:received,P:11,Specimen Received,2026-05-06T05:00:00Z
+MED:15:dispense,P:11,Medication Dispensed,2026-05-06T05:00:00Z
+LABEV:31:chart,P:11,Lab Measurement Charted,2026-05-06T06:00:00Z
+LABEV:31:result,P:11,Lab Result Available,2026-05-06T07:00:00Z
+EMAR:43,P:11,Medication Administered,2026-05-06T08:00:00Z
+LABEV:32:chart,P:11,Lab Measurement Charted,2026-05-06T08:00:00Z
+LABEV:32:result,P:11,Lab Result Available,2026-05-06T09:00:00Z
+LABEV:33:chart,P:11,Lab Measurement Charted,2026-05-06T10:00:00Z
+LABEV:33:result,P:11,Lab Result Available,2026-05-06T11:00:00Z
+LAB:15:verified,P:11,Lab Results Verified,2026-05-06T14:00:00Z
+EMAR:44,P:11,Medication Not Given,2026-05-06T16:00:00Z
+EMAR:45,P:11,Medication Administered,2026-05-07T00:00:00Z
+ADM:3:ed,P:2,Emergency Department Registered,2026-01-26T00:00:00Z
+ADM:3:in,P:2,Hospital Admitted,2026-01-26T01:00:00Z
+OH:13,P:2,Order Entered,2026-01-26T02:00:00Z
+OH:15,P:2,Order Entered,2026-01-26T02:00:00Z
+OH:17,P:2,Order Entered,2026-01-26T02:00:00Z
+OH:14,P:2,Order Reviewed,2026-01-26T03:00:00Z
+OH:16,P:2,Order Reviewed,2026-01-26T03:00:00Z
+OH:18,P:2,Order Reviewed,2026-01-26T03:00:00Z
+LAB:3:received,P:2,Specimen Received,2026-01-26T05:00:00Z
+MED:3:dispense,P:2,Medication Dispensed,2026-01-26T05:00:00Z
+PROC:3:prep,P:2,Procedure Preparation Completed,2026-01-26T05:00:00Z
+LABEV:6:chart,P:2,Lab Measurement Charted,2026-01-26T06:00:00Z
+LABEV:6:result,P:2,Lab Result Available,2026-01-26T07:00:00Z
+EMAR:7,P:2,Medication Administered,2026-01-26T08:00:00Z
+LABEV:7:chart,P:2,Lab Measurement Charted,2026-01-26T08:00:00Z
+PROCEV:3:start,P:2,Procedure Started,2026-01-26T08:00:00Z
+LABEV:7:result,P:2,Lab Result Available,2026-01-26T09:00:00Z
+LABEV:8:chart,P:2,Lab Measurement Charted,2026-01-26T10:00:00Z
+PROCEV:3:end,P:2,Procedure Completed,2026-01-26T10:00:00Z
+LABEV:8:result,P:2,Lab Result Available,2026-01-26T11:00:00Z
+LAB:3:verified,P:2,Lab Results Verified,2026-01-26T14:00:00Z
+EMAR:8,P:2,Medication Not Given,2026-01-26T16:00:00Z
+EMAR:9,P:2,Medication Administered,2026-01-27T00:00:00Z
+MED:3:stop,P:2,Medication Stopped,2026-01-27T16:00:00Z
+ADM:3:auth,P:2,Discharge Authorized,2026-01-29T08:00:00Z
+ADM:3:out,P:2,Hospital Discharged,2026-01-29T10:00:00Z
+ADM:4:in,P:2,Hospital Admitted,2026-02-03T09:00:00Z
+OH:19,P:2,Order Entered,2026-02-03T10:00:00Z
+OH:22,P:2,Order Entered,2026-02-03T10:00:00Z
+OH:25,P:2,Order Entered,2026-02-03T10:00:00Z
+OH:20,P:2,Order Reviewed,2026-02-03T11:00:00Z
+OH:23,P:2,Order Reviewed,2026-02-03T11:00:00Z
+OH:26,P:2,Order Reviewed,2026-02-03T11:00:00Z
+OH:21,P:2,Order Reviewed,2026-02-03T11:30:00Z
+OH:24,P:2,Order Reviewed,2026-02-03T11:30:00Z
+OH:27,P:2,Order Reviewed,2026-02-03T11:30:00Z
+LAB:4:received,P:2,Specimen Received,2026-02-03T13:00:00Z
+MED:4:dispense,P:2,Medication Dispensed,2026-02-03T13:00:00Z
+PROC:4:prep,P:2,Procedure Preparation Completed,2026-02-03T13:00:00Z
+LABEV:9:chart,P:2,Lab Measurement Charted,2026-02-03T14:00:00Z
+LABEV:9:result,P:2,Lab Result Available,2026-02-03T15:00:00Z
+EMAR:10,P:2,Medication Administered,2026-02-03T16:00:00Z
+LABEV:10:chart,P:2,Lab Measurement Charted,2026-02-03T16:00:00Z
+PROCEV:4:start,P:2,Procedure Started,2026-02-03T16:00:00Z
+LABEV:10:result,P:2,Lab Result Available,2026-02-03T17:00:00Z
+PROCEV:4:end,P:2,Procedure Completed,2026-02-03T18:00:00Z
+LAB:4:verified,P:2,Lab Results Verified,2026-02-03T22:00:00Z
+EMAR:11,P:2,Medication Administered,2026-02-04T00:00:00Z
+PROCEV:5:start,P:2,Procedure Started,2026-02-04T04:00:00Z
+PROCEV:5:end,P:2,Procedure Completed,2026-02-04T06:00:00Z
+EMAR:12,P:2,Medication Administered,2026-02-04T08:00:00Z
+MED:4:stop,P:2,Medication Stopped,2026-02-05T00:00:00Z
+ADM:4:auth,P:2,Discharge Authorized,2026-02-06T16:00:00Z
+ADM:4:out,P:2,Hospital Discharged,2026-02-06T18:00:00Z
+ADM:5:ed,P:3,Emergency Department Registered,2026-02-11T16:00:00Z
+ADM:5:in,P:3,Hospital Admitted,2026-02-11T17:00:00Z
+OH:28,P:3,Order Entered,2026-02-11T18:00:00Z
+OH:30,P:3,Order Entered,2026-02-11T18:00:00Z
+OH:32,P:3,Order Entered,2026-02-11T18:00:00Z
+OH:29,P:3,Order Reviewed,2026-02-11T19:00:00Z
+OH:31,P:3,Order Reviewed,2026-02-11T19:00:00Z
+OH:33,P:3,Order Reviewed,2026-02-11T19:00:00Z
+OH:34,P:3,Order Cancelled,2026-02-11T20:00:00Z
+LAB:5:received,P:3,Specimen Received,2026-02-11T21:00:00Z
+MED:5:dispense,P:3,Medication Dispensed,2026-02-11T21:00:00Z
+LABEV:11:chart,P:3,Lab Measurement Charted,2026-02-11T22:00:00Z
+LABEV:11:result,P:3,Lab Result Available,2026-02-11T23:00:00Z
+EMAR:13,P:3,Medication Administered,2026-02-12T00:00:00Z
+LABEV:12:chart,P:3,Lab Measurement Charted,2026-02-12T00:00:00Z
+LABEV:12:result,P:3,Lab Result Available,2026-02-12T01:00:00Z
+LABEV:13:chart,P:3,Lab Measurement Charted,2026-02-12T02:00:00Z
+LABEV:13:result,P:3,Lab Result Available,2026-02-12T03:00:00Z
+LAB:5:verified,P:3,Lab Results Verified,2026-02-12T06:00:00Z
+EMAR:14,P:3,Medication Administered,2026-02-12T08:00:00Z
+EMAR:15,P:3,Medication Administered,2026-02-12T16:00:00Z
+MED:5:stop,P:3,Medication Stopped,2026-02-13T08:00:00Z
+ADM:5:auth,P:3,Discharge Authorized,2026-02-15T00:00:00Z
+ADM:5:out,P:3,Hospital Discharged,2026-02-15T02:00:00Z
+ADM:6:in,P:3,Hospital Admitted,2026-02-20T01:00:00Z
+OH:35,P:3,Order Entered,2026-02-20T02:00:00Z
+OH:37,P:3,Order Entered,2026-02-20T02:00:00Z
+OH:39,P:3,Order Entered,2026-02-20T02:00:00Z
+OH:36,P:3,Order Reviewed,2026-02-20T03:00:00Z
+OH:38,P:3,Order Reviewed,2026-02-20T03:00:00Z
+OH:40,P:3,Order Reviewed,2026-02-20T03:00:00Z
+LAB:6:received,P:3,Specimen Received,2026-02-20T05:00:00Z
+MED:6:dispense,P:3,Medication Dispensed,2026-02-20T05:00:00Z
+PROC:6:prep,P:3,Procedure Preparation Completed,2026-02-20T05:00:00Z
+LABEV:14:chart,P:3,Lab Measurement Charted,2026-02-20T06:00:00Z
+LABEV:14:result,P:3,Lab Result Available,2026-02-20T07:00:00Z
+EMAR:16,P:3,Medication Administered,2026-02-20T08:00:00Z
+LABEV:15:chart,P:3,Lab Measurement Charted,2026-02-20T08:00:00Z
+PROCEV:6:start,P:3,Procedure Started,2026-02-20T08:00:00Z
+LABEV:15:result,P:3,Lab Result Available,2026-02-20T09:00:00Z
+PROCEV:6:end,P:3,Procedure Completed,2026-02-20T10:00:00Z
+LAB:6:verified,P:3,Lab Results Verified,2026-02-20T14:00:00Z
+EMAR:17,P:3,Medication Not Given,2026-02-20T16:00:00Z
+EMAR:18,P:3,Medication Administered,2026-02-21T00:00:00Z
+MED:6:stop,P:3,Medication Stopped,2026-02-21T16:00:00Z
+ADM:6:auth,P:3,Discharge Authorized,2026-02-23T08:00:00Z
+ADM:6:out,P:3,Hospital Discharged,2026-02-23T10:00:00Z
+ADM:7:ed,P:4,Emergency Department Registered,2026-02-28T08:00:00Z
+ADM:7:in,P:4,Hospital Admitted,2026-02-28T09:00:00Z
+OH:41,P:4,Order Entered,2026-02-28T10:00:00Z
+OH:43,P:4,Order Entered,2026-02-28T10:00:00Z
+OH:45,P:4,Order Entered,2026-02-28T10:00:00Z
+OH:42,P:4,Order Reviewed,2026-02-28T11:00:00Z
+OH:44,P:4,Order Reviewed,2026-02-28T11:00:00Z
+OH:46,P:4,Order Reviewed,2026-02-28T11:00:00Z
+MED:7:dispense,P:4,Medication Dispensed,2026-02-28T13:00:00Z
+PROC:7:prep,P:4,Procedure Preparation Completed,2026-02-28T13:00:00Z
+EMAR:19,P:4,Medication Administered,2026-02-28T16:00:00Z
+PROCEV:7:start,P:4,Procedure Started,2026-02-28T16:00:00Z
+PROCEV:7:end,P:4,Procedure Completed,2026-02-28T18:00:00Z
+EMAR:20,P:4,Medication Administered,2026-03-01T00:00:00Z
+EMAR:21,P:4,Medication Administered,2026-03-01T08:00:00Z
+MED:7:stop,P:4,Medication Stopped,2026-03-02T00:00:00Z
+ADM:7:auth,P:4,Discharge Authorized,2026-03-03T16:00:00Z
+ADM:7:out,P:4,Hospital Discharged,2026-03-03T18:00:00Z
+ADM:8:in,P:4,Hospital Admitted,2026-03-08T17:00:00Z
+OH:47,P:4,Order Entered,2026-03-08T18:00:00Z
+OH:50,P:4,Order Entered,2026-03-08T18:00:00Z
+OH:53,P:4,Order Entered,2026-03-08T18:00:00Z
+OH:48,P:4,Order Reviewed,2026-03-08T19:00:00Z
+OH:51,P:4,Order Reviewed,2026-03-08T19:00:00Z
+OH:54,P:4,Order Reviewed,2026-03-08T19:00:00Z
+OH:49,P:4,Order Reviewed,2026-03-08T19:30:00Z
+OH:52,P:4,Order Reviewed,2026-03-08T19:30:00Z
+OH:55,P:4,Order Reviewed,2026-03-08T19:30:00Z
+LAB:8:received,P:4,Specimen Received,2026-03-08T21:00:00Z
+MED:8:dispense,P:4,Medication Dispensed,2026-03-08T21:00:00Z
+PROC:8:prep,P:4,Procedure Preparation Completed,2026-03-08T21:00:00Z
+LABEV:16:chart,P:4,Lab Measurement Charted,2026-03-08T22:00:00Z
+LABEV:16:result,P:4,Lab Result Available,2026-03-08T23:00:00Z
+EMAR:22,P:4,Medication Administered,2026-03-09T00:00:00Z
+LABEV:17:chart,P:4,Lab Measurement Charted,2026-03-09T00:00:00Z
+PROCEV:8:start,P:4,Procedure Started,2026-03-09T00:00:00Z
+LABEV:17:result,P:4,Lab Result Available,2026-03-09T01:00:00Z
+PROCEV:8:end,P:4,Procedure Completed,2026-03-09T02:00:00Z
+LAB:8:verified,P:4,Lab Results Verified,2026-03-09T06:00:00Z
+EMAR:23,P:4,Medication Administered,2026-03-09T08:00:00Z
+PROCEV:9:start,P:4,Procedure Started,2026-03-09T12:00:00Z
+PROCEV:9:end,P:4,Procedure Completed,2026-03-09T14:00:00Z
+EMAR:24,P:4,Medication Administered,2026-03-09T16:00:00Z
+MED:8:stop,P:4,Medication Stopped,2026-03-10T08:00:00Z
+ADM:8:auth,P:4,Discharge Authorized,2026-03-12T00:00:00Z
+ADM:8:out,P:4,Hospital Discharged,2026-03-12T02:00:00Z
+ADM:9:ed,P:5,Emergency Department Registered,2026-03-17T00:00:00Z
+ADM:9:in,P:5,Hospital Admitted,2026-03-17T01:00:00Z
+OH:56,P:5,Order Entered,2026-03-17T02:00:00Z
+OH:58,P:5,Order Entered,2026-03-17T02:00:00Z
+OH:60,P:5,Order Entered,2026-03-17T02:00:00Z
+OH:57,P:5,Order Reviewed,2026-03-17T03:00:00Z
+OH:59,P:5,Order Reviewed,2026-03-17T03:00:00Z
+OH:61,P:5,Order Reviewed,2026-03-17T03:00:00Z
+LAB:9:received,P:5,Specimen Received,2026-03-17T05:00:00Z
+MED:9:dispense,P:5,Medication Dispensed,2026-03-17T05:00:00Z
+PROC:9:prep,P:5,Procedure Preparation Completed,2026-03-17T05:00:00Z
+LABEV:18:chart,P:5,Lab Measurement Charted,2026-03-17T06:00:00Z
+LABEV:18:result,P:5,Lab Result Available,2026-03-17T07:00:00Z
+EMAR:25,P:5,Medication Administered,2026-03-17T08:00:00Z
+LABEV:19:chart,P:5,Lab Measurement Charted,2026-03-17T08:00:00Z
+PROCEV:10:start,P:5,Procedure Started,2026-03-17T08:00:00Z
+LABEV:19:result,P:5,Lab Result Available,2026-03-17T09:00:00Z
+LABEV:20:chart,P:5,Lab Measurement Charted,2026-03-17T10:00:00Z
+PROCEV:10:end,P:5,Procedure Completed,2026-03-17T10:00:00Z
+LABEV:20:result,P:5,Lab Result Available,2026-03-17T11:00:00Z
+LAB:9:verified,P:5,Lab Results Verified,2026-03-17T14:00:00Z
+EMAR:26,P:5,Medication Not Given,2026-03-17T16:00:00Z
+EMAR:27,P:5,Medication Administered,2026-03-18T00:00:00Z
+MED:9:stop,P:5,Medication Stopped,2026-03-18T16:00:00Z
+ADM:9:auth,P:5,Discharge Authorized,2026-03-20T08:00:00Z
+ADM:9:out,P:5,Hospital Discharged,2026-03-20T10:00:00Z
+ADM:10:in,P:6,Hospital Admitted,2026-03-25T09:00:00Z
+OH:62,P:6,Order Entered,2026-03-25T10:00:00Z
+OH:64,P:6,Order Entered,2026-03-25T10:00:00Z
+OH:66,P:6,Order Entered,2026-03-25T10:00:00Z
+OH:63,P:6,Order Reviewed,2026-03-25T11:00:00Z
+OH:65,P:6,Order Reviewed,2026-03-25T11:00:00Z
+OH:67,P:6,Order Reviewed,2026-03-25T11:00:00Z
+OH:68,P:6,Order Cancelled,2026-03-25T12:00:00Z
+LAB:10:received,P:6,Specimen Received,2026-03-25T13:00:00Z
+MED:10:dispense,P:6,Medication Dispensed,2026-03-25T13:00:00Z
+LABEV:21:chart,P:6,Lab Measurement Charted,2026-03-25T14:00:00Z
+LABEV:21:result,P:6,Lab Result Available,2026-03-25T15:00:00Z
+EMAR:28,P:6,Medication Administered,2026-03-25T16:00:00Z
+LABEV:22:chart,P:6,Lab Measurement Charted,2026-03-25T16:00:00Z
+LABEV:22:result,P:6,Lab Result Available,2026-03-25T17:00:00Z
+LAB:10:verified,P:6,Lab Results Verified,2026-03-25T22:00:00Z
+EMAR:29,P:6,Medication Administered,2026-03-26T00:00:00Z
+EMAR:30,P:6,Medication Administered,2026-03-26T08:00:00Z
+MED:10:stop,P:6,Medication Stopped,2026-03-27T00:00:00Z
+ADM:10:auth,P:6,Discharge Authorized,2026-03-28T16:00:00Z
+ADM:10:out,P:6,Hospital Discharged,2026-03-28T18:00:00Z
+ADM:11:ed,P:7,Emergency Department Registered,2026-04-02T16:00:00Z
+ADM:11:in,P:7,Hospital Admitted,2026-04-02T17:00:00Z
+OH:69,P:7,Order Entered,2026-04-02T18:00:00Z
+OH:71,P:7,Order Entered,2026-04-02T18:00:00Z
+OH:73,P:7,Order Entered,2026-04-02T18:00:00Z
+OH:70,P:7,Order Reviewed,2026-04-02T19:00:00Z
+OH:72,P:7,Order Reviewed,2026-04-02T19:00:00Z
+OH:74,P:7,Order Reviewed,2026-04-02T19:00:00Z
+LAB:11:received,P:7,Specimen Received,2026-04-02T21:00:00Z
+MED:11:dispense,P:7,Medication Dispensed,2026-04-02T21:00:00Z
+PROC:11:prep,P:7,Procedure Preparation Completed,2026-04-02T21:00:00Z
+LABEV:23:chart,P:7,Lab Measurement Charted,2026-04-02T22:00:00Z
+LABEV:23:result,P:7,Lab Result Available,2026-04-02T23:00:00Z
+EMAR:31,P:7,Medication Administered,2026-04-03T00:00:00Z
+LABEV:24:chart,P:7,Lab Measurement Charted,2026-04-03T00:00:00Z
+PROCEV:11:start,P:7,Procedure Started,2026-04-03T00:00:00Z
+LABEV:24:result,P:7,Lab Result Available,2026-04-03T01:00:00Z
+LABEV:25:chart,P:7,Lab Measurement Charted,2026-04-03T02:00:00Z
+PROCEV:11:end,P:7,Procedure Completed,2026-04-03T02:00:00Z
+LABEV:25:result,P:7,Lab Result Available,2026-04-03T03:00:00Z
+LAB:11:verified,P:7,Lab Results Verified,2026-04-03T06:00:00Z
+EMAR:32,P:7,Medication Administered,2026-04-03T08:00:00Z
+EMAR:33,P:7,Medication Administered,2026-04-03T16:00:00Z
+MED:11:stop,P:7,Medication Stopped,2026-04-04T08:00:00Z
+ADM:11:auth,P:7,Discharge Authorized,2026-04-06T00:00:00Z
+ADM:11:out,P:7,Hospital Discharged,2026-04-06T02:00:00Z
+ADM:12:in,P:8,Hospital Admitted,2026-04-11T01:00:00Z
+OH:75,P:8,Order Entered,2026-04-11T02:00:00Z
+OH:78,P:8,Order Entered,2026-04-11T02:00:00Z
+OH:81,P:8,Order Entered,2026-04-11T02:00:00Z
+OH:76,P:8,Order Reviewed,2026-04-11T03:00:00Z
+OH:79,P:8,Order Reviewed,2026-04-11T03:00:00Z
+OH:82,P:8,Order Reviewed,2026-04-11T03:00:00Z
+OH:77,P:8,Order Reviewed,2026-04-11T03:30:00Z
+OH:80,P:8,Order Reviewed,2026-04-11T03:30:00Z
+OH:83,P:8,Order Reviewed,2026-04-11T03:30:00Z
+LAB:12:received,P:8,Specimen Received,2026-04-11T05:00:00Z
+MED:12:dispense,P:8,Medication Dispensed,2026-04-11T05:00:00Z
+PROC:12:prep,P:8,Procedure Preparation Completed,2026-04-11T05:00:00Z
+LABEV:26:chart,P:8,Lab Measurement Charted,2026-04-11T06:00:00Z
+LABEV:26:result,P:8,Lab Result Available,2026-04-11T07:00:00Z
+EMAR:34,P:8,Medication Administered,2026-04-11T08:00:00Z
+LABEV:27:chart,P:8,Lab Measurement Charted,2026-04-11T08:00:00Z
+PROCEV:12:start,P:8,Procedure Started,2026-04-11T08:00:00Z
+LABEV:27:result,P:8,Lab Result Available,2026-04-11T09:00:00Z
+PROCEV:12:end,P:8,Procedure Completed,2026-04-11T10:00:00Z
+LAB:12:verified,P:8,Lab Results Verified,2026-04-11T14:00:00Z
+EMAR:35,P:8,Medication Not Given,2026-04-11T16:00:00Z
+PROCEV:13:start,P:8,Procedure Started,2026-04-11T20:00:00Z
+PROCEV:13:end,P:8,Procedure Completed,2026-04-11T22:00:00Z
+EMAR:36,P:8,Medication Administered,2026-04-12T00:00:00Z
+MED:12:stop,P:8,Medication Stopped,2026-04-12T16:00:00Z
+ADM:12:auth,P:8,Discharge Authorized,2026-04-14T08:00:00Z
+ADM:12:out,P:8,Hospital Discharged,2026-04-14T10:00:00Z
+ADM:13:ed,P:9,Emergency Department Registered,2026-04-19T08:00:00Z
+ADM:13:in,P:9,Hospital Admitted,2026-04-19T09:00:00Z
+OH:84,P:9,Order Entered,2026-04-19T10:00:00Z
+OH:86,P:9,Order Entered,2026-04-19T10:00:00Z
+OH:88,P:9,Order Entered,2026-04-19T10:00:00Z
+OH:85,P:9,Order Reviewed,2026-04-19T11:00:00Z
+OH:87,P:9,Order Reviewed,2026-04-19T11:00:00Z
+OH:89,P:9,Order Reviewed,2026-04-19T11:00:00Z
+LAB:13:received,P:9,Specimen Received,2026-04-19T13:00:00Z
+MED:13:dispense,P:9,Medication Dispensed,2026-04-19T13:00:00Z
+PROC:13:prep,P:9,Procedure Preparation Completed,2026-04-19T13:00:00Z
+LABEV:28:chart,P:9,Lab Measurement Charted,2026-04-19T14:00:00Z
+LABEV:28:result,P:9,Lab Result Available,2026-04-19T15:00:00Z
+EMAR:37,P:9,Medication Administered,2026-04-19T16:00:00Z
+LABEV:29:chart,P:9,Lab Measurement Charted,2026-04-19T16:00:00Z
+PROCEV:14:start,P:9,Procedure Started,2026-04-19T16:00:00Z
+LABEV:29:result,P:9,Lab Result Available,2026-04-19T17:00:00Z
+LABEV:30:chart,P:9,Lab Measurement Charted,2026-04-19T18:00:00Z
+PROCEV:14:end,P:9,Procedure Completed,2026-04-19T18:00:00Z
+LABEV:30:result,P:9,Lab Result Available,2026-04-19T19:00:00Z
+LAB:13:verified,P:9,Lab Results Verified,2026-04-19T22:00:00Z
+EMAR:38,P:9,Medication Administered,2026-04-20T00:00:00Z
+EMAR:39,P:9,Medication Administered,2026-04-20T08:00:00Z
+MED:13:stop,P:9,Medication Stopped,2026-04-21T00:00:00Z
+ADM:13:auth,P:9,Discharge Authorized,2026-04-22T16:00:00Z
+ADM:13:out,P:9,Hospital Discharged,2026-04-22T18:00:00Z

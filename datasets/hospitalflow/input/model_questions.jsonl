@@ -1,0 +1,28 @@
+{"id": "H01", "question": "For each clinical order, extract Order Entered, Order Reviewed and Order Cancelled events."}
+{"id": "H01P", "question": "Build a separate timeline for every clinical order showing when it was placed, checked and, if applicable, cancelled."}
+{"id": "H02", "question": "For each clinical order, extract Lab Result Available, Medication Administered and Procedure Completed events."}
+{"id": "H02P", "question": "For every clinical order, show the recorded times when its laboratory findings became available, its medicine was given or its procedure finished, as applicable."}
+{"id": "H03", "question": "For each laboratory order, extract Lab Measurement Charted, Lab Result Available and Lab Results Verified events."}
+{"id": "H03P", "question": "For every laboratory order, show when each measurement was charted, when its findings became accessible and when the order's results were verified."}
+{"id": "H04", "question": "For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events."}
+{"id": "H04P", "question": "Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication."}
+{"id": "H05", "question": "For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events."}
+{"id": "H05P", "question": "For every procedure order, show when preparation finished and when each procedure occurrence began and ended."}
+{"id": "H06", "question": "For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Discharge Authorized and Hospital Discharged events."}
+{"id": "H06P", "question": "For every hospital stay, show arrival registration in the emergency department, admission, authorization to leave and actual discharge."}
+{"id": "H07", "question": "For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events."}
+{"id": "H07P", "question": "For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures."}
+{"id": "H08", "question": "For each clinical order, extract Insurance Claim Paid events."}
+{"id": "H08P", "question": "For every clinical order, show when its insurance claim was settled by payment."}
+{"id": "HF01", "question": "Extract the full recorded lifecycle for each patient."}
+{"id": "HF01P", "question": "Build a complete timeline of all recorded care events for every patient."}
+{"id": "HF02", "question": "Extract the full recorded lifecycle for each hospital admission."}
+{"id": "HF02P", "question": "Show the entire recorded history of each individual hospital stay."}
+{"id": "HF03", "question": "Extract the full recorded lifecycle for each clinical order."}
+{"id": "HF03P", "question": "Trace each clinical order through its complete recorded history."}
+{"id": "HF04", "question": "Extract the full recorded lifecycle for each laboratory order."}
+{"id": "HF04P", "question": "Show everything recorded over the life of each laboratory order."}
+{"id": "HF05", "question": "Extract the full recorded lifecycle for each medication order."}
+{"id": "HF05P", "question": "Build the complete recorded history of each medication order."}
+{"id": "HF06", "question": "Extract the full recorded lifecycle for each procedure order."}
+{"id": "HF06P", "question": "Trace the whole recorded lifecycle of every procedure order."}

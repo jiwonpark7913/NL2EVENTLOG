@@ -33,3 +33,5 @@ for name in ['warehouseflow','universityflow','plateflow']:
    if 'Furnace Discharge Confirmed' in acts:
     times=[e['timestamp'] for e in hist.values() if e['case_id']==r['material_id'] and e['activity']=='Rolling Completed'];assert times and acts['Heating Completed']<acts['Furnace Discharge Confirmed']<times[0]
  print(name,':',count,'Gold logs verified; schemas, typed FKs, case links and stage ordering passed')
+# HospitalFlow has explicit semantic types and subtype-union checks in its domain validator.
+subprocess.run([sys.executable,str(ROOT/'datasets/hospitalflow/validate.py')],check=True)

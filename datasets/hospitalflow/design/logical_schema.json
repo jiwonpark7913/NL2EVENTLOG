@@ -1,0 +1,634 @@
+[
+  {
+    "table": "object_type",
+    "definition": "Semantic object types shared across business tables; not activities or case instances.",
+    "columns": [
+      {
+        "name": "type_code",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Semantic type code, constrained by a foreign key or registry membership trigger.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "type_name",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "English name of the semantic object type.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "definition",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Definition of the semantic object type.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "type_code"
+    ],
+    "foreign_keys": [],
+    "event_encoding": "No event encoding",
+    "encoding_detail": "Type, identity or context only; does not store an event."
+  },
+  {
+    "table": "object",
+    "definition": "Globally unique object identities and their semantic types; no events are stored here.",
+    "columns": [
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "type_code",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Semantic type code, constrained by a foreign key or registry membership trigger.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "object_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "type_code",
+        "parent_table": "object_type",
+        "parent_column": "type_code"
+      }
+    ],
+    "event_encoding": "No event encoding",
+    "encoding_detail": "Type, identity or context only; does not store an event."
+  },
+  {
+    "table": "patients",
+    "definition": "Synthetic patient identity, inspired by MIMIC subject_id.",
+    "columns": [
+      {
+        "name": "subject_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "gender",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic demographic category, F or M.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "subject_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "object_id",
+        "parent_table": "object",
+        "parent_column": "object_id"
+      }
+    ],
+    "event_encoding": "No event encoding",
+    "encoding_detail": "Type, identity or context only; does not store an event."
+  },
+  {
+    "table": "admissions",
+    "definition": "Distinct hospital stays per patient with actual admission/discharge milestones.",
+    "columns": [
+      {
+        "name": "hadm_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic unique hospital admission identity.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "subject_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "edregtime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual emergency department registration time; NULL for admissions without ED registration.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "admittime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual hospital admission time.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "discharge_authorized_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual discharge authorization time; NULL if not occurred.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "dischtime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual hospital discharge time; NULL for an ongoing stay.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "hadm_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "object_id",
+        "parent_table": "object",
+        "parent_column": "object_id"
+      },
+      {
+        "column": "subject_id",
+        "parent_table": "patients",
+        "parent_column": "subject_id"
+      }
+    ],
+    "event_encoding": "Column encoding",
+    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+  },
+  {
+    "table": "clinical_order",
+    "definition": "Authored common parent for laboratory, medication and procedure orders; not a MIMIC table.",
+    "columns": [
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "subject_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "hadm_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic unique hospital admission identity.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_kind",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "object_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "hadm_id",
+        "parent_table": "admissions",
+        "parent_column": "hadm_id"
+      },
+      {
+        "column": "subject_id",
+        "parent_table": "admissions",
+        "parent_column": "subject_id"
+      },
+      {
+        "column": "object_id",
+        "parent_table": "object",
+        "parent_column": "object_id"
+      }
+    ],
+    "event_encoding": "No event encoding",
+    "encoding_detail": "Type, identity or context only; does not store an event."
+  },
+  {
+    "table": "lab_order",
+    "definition": "Authored laboratory-order subtype; several measurements may belong to one order.",
+    "columns": [
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_kind",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "specimen_received_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual receipt of a specimen for this order.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "results_verified_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual verification of results after all recorded measurements become available.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "order_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "object_id",
+        "parent_table": "clinical_order",
+        "parent_column": "object_id"
+      },
+      {
+        "column": "order_kind",
+        "parent_table": "clinical_order",
+        "parent_column": "order_kind"
+      }
+    ],
+    "event_encoding": "Column encoding",
+    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+  },
+  {
+    "table": "medication_order",
+    "definition": "Authored medication-order subtype; repeated doses belong to one order.",
+    "columns": [
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_kind",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "medication",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Fictional medication label; no treatment recommendation.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "dispensed_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual dispensing time.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "stopped_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual stop time; NULL if not stopped.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "order_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "object_id",
+        "parent_table": "clinical_order",
+        "parent_column": "object_id"
+      },
+      {
+        "column": "order_kind",
+        "parent_table": "clinical_order",
+        "parent_column": "order_kind"
+      }
+    ],
+    "event_encoding": "Column encoding",
+    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+  },
+  {
+    "table": "procedure_order",
+    "definition": "Authored procedure-order subtype; repeated execution episodes belong to one order.",
+    "columns": [
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_kind",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "procedure_name",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Fictional procedure label.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "preparation_completed_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual completion of preparation for this procedure order.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "order_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "object_id",
+        "parent_table": "clinical_order",
+        "parent_column": "object_id"
+      },
+      {
+        "column": "order_kind",
+        "parent_table": "clinical_order",
+        "parent_column": "order_kind"
+      }
+    ],
+    "event_encoding": "Column encoding",
+    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+  },
+  {
+    "table": "order_history",
+    "definition": "Repeated order actions, inspired by provider order transaction semantics; not a copy of poe.",
+    "columns": [
+      {
+        "name": "history_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Unique occurrence identity for a repeated order action.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "object_id",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Global object identity; distinct from local subtype order_id.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "action",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "ENTERED, REVIEWED or CANCELLED order action; repeated REVIEWED is permitted.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "occurred_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual UTC time of the order action.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "history_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "object_id",
+        "parent_table": "clinical_order",
+        "parent_column": "object_id"
+      }
+    ],
+    "event_encoding": "Row encoding",
+    "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded."
+  },
+  {
+    "table": "labevents",
+    "definition": "Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents.",
+    "columns": [
+      {
+        "name": "labevent_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Unique measurement occurrence identity; repeated item measurements remain distinct.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "itemid",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic laboratory concept ID; no original MIMIC item code is claimed.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "charttime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "storetime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "valuenum",
+        "type": "REAL",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic measurement numeric value.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "valueuom",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Measurement unit; all current synthetic measurements use arbitrary units.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "labevent_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "order_id",
+        "parent_table": "lab_order",
+        "parent_column": "order_id"
+      }
+    ],
+    "event_encoding": "Mixed (row + column)",
+    "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence."
+  },
+  {
+    "table": "emar",
+    "definition": "Medication administration or omission occurrences, inspired by MIMIC emar.",
+    "columns": [
+      {
+        "name": "emar_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Unique synthetic dose occurrence ID; simplified from the MIMIC identity structure.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "charttime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "event_txt",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Administered or Not Given; selects the activity of this dose occurrence.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "storetime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "emar_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "order_id",
+        "parent_table": "medication_order",
+        "parent_column": "order_id"
+      }
+    ],
+    "event_encoding": "Row encoding",
+    "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded."
+  },
+  {
+    "table": "procedureevents",
+    "definition": "Procedure execution episodes with start/end times, inspired by MIMIC procedureevents.",
+    "columns": [
+      {
+        "name": "procedureevent_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Authored unique procedure episode identity; not an original MIMIC column.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "starttime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual procedure episode start.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "endtime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual procedure episode completion; NULL if ongoing.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "storetime",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "procedureevent_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "order_id",
+        "parent_table": "procedure_order",
+        "parent_column": "order_id"
+      }
+    ],
+    "event_encoding": "Mixed (row + column)",
+    "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence."
+  }
+]

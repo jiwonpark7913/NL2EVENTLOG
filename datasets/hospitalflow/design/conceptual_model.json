@@ -1,0 +1,22 @@
+{
+  "entities": [
+    "Patient",
+    "Hospital Admission",
+    "Clinical Order"
+  ],
+  "subtypes": {
+    "Clinical Order": [
+      "Laboratory Order",
+      "Medication Order",
+      "Procedure Order"
+    ]
+  },
+  "relations": [
+    "Patient 1:N Hospital Admission",
+    "Hospital Admission 1:N Clinical Order",
+    "Clinical Order has exactly one subtype",
+    "Order subtype 1:N occurrence records"
+  ],
+  "object_type_count": 3,
+  "case_population_scope_count": 6
+}

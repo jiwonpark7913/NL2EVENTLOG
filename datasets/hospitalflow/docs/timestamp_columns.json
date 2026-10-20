@@ -1,0 +1,128 @@
+{
+  "timestamp_columns": 17,
+  "event_timestamp_columns": 15,
+  "other_timestamp_columns": 2,
+  "date_only_columns": [],
+  "baseline_timestamp_columns": 17,
+  "columns": [
+    {
+      "table": "admissions",
+      "column": "edregtime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 8
+    },
+    {
+      "table": "admissions",
+      "column": "admittime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 15
+    },
+    {
+      "table": "admissions",
+      "column": "discharge_authorized_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 14
+    },
+    {
+      "table": "admissions",
+      "column": "dischtime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 14
+    },
+    {
+      "table": "lab_order",
+      "column": "specimen_received_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 13
+    },
+    {
+      "table": "lab_order",
+      "column": "results_verified_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 13
+    },
+    {
+      "table": "medication_order",
+      "column": "dispensed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 15
+    },
+    {
+      "table": "medication_order",
+      "column": "stopped_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 14
+    },
+    {
+      "table": "procedure_order",
+      "column": "preparation_completed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 12
+    },
+    {
+      "table": "order_history",
+      "column": "occurred_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 102
+    },
+    {
+      "table": "labevents",
+      "column": "charttime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 33
+    },
+    {
+      "table": "labevents",
+      "column": "storetime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 33
+    },
+    {
+      "table": "emar",
+      "column": "charttime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 45
+    },
+    {
+      "table": "emar",
+      "column": "storetime",
+      "role": "technical documentation time",
+      "used_as_event_time": false,
+      "non_null_rows": 45
+    },
+    {
+      "table": "procedureevents",
+      "column": "starttime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 15
+    },
+    {
+      "table": "procedureevents",
+      "column": "endtime",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 15
+    },
+    {
+      "table": "procedureevents",
+      "column": "storetime",
+      "role": "technical documentation time",
+      "used_as_event_time": false,
+      "non_null_rows": 15
+    }
+  ]
+}

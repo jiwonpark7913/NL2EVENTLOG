@@ -1,0 +1,64 @@
+{
+  "source": "MIMIC-IV public schema documentation",
+  "patient_records_used": false,
+  "source_policy": "Reference concepts only; no original schema or patient-record reuse claimed",
+  "accessed": "2026-10-20",
+  "reference_tables": {
+    "patients": [
+      "subject_id"
+    ],
+    "admissions": [
+      "subject_id",
+      "hadm_id",
+      "edregtime",
+      "admittime",
+      "dischtime"
+    ],
+    "poe": [
+      "provider-order categories and transaction concepts; no direct field mapping"
+    ],
+    "labevents": [
+      "labevent_id",
+      "itemid",
+      "charttime",
+      "storetime",
+      "valuenum",
+      "valueuom"
+    ],
+    "emar": [
+      "charttime",
+      "storetime",
+      "event_txt; codes simplified and authored"
+    ],
+    "procedureevents": [
+      "starttime",
+      "endtime",
+      "storetime"
+    ]
+  },
+  "authored_tables": [
+    "object_type",
+    "object",
+    "clinical_order",
+    "lab_order",
+    "medication_order",
+    "procedure_order",
+    "order_history"
+  ],
+  "adaptations": [
+    "All SQL types, constraints and records are authored",
+    "Common supertype/subtype identity model is not supplied by MIMIC",
+    "Lab/procedure FK to local order tables is authored",
+    "Integer emar identity and procedureevent_id are simplified authored identities",
+    "Patient/admission links for event records are normalized through clinical_order",
+    "No claim that these 12 tables preserve all MIMIC fields or clinical relationships"
+  ],
+  "reference_urls": [
+    "https://mimic.mit.edu/docs/iv/modules/hosp/patients.html",
+    "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+    "https://mimic.mit.edu/docs/iv/modules/hosp/poe.html",
+    "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+    "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
+    "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dictionary_id": "NL2EVENTLOG:hospitalflow",
+  "version": "2026-10-20",
+  "name": "HospitalFlow",
+  "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
+  "language": "en",
+  "timezone": "UTC",
+  "dbms": "SQLite",
+  "namespace": "hospitalflow",
+  "timestamp_columns": 17,
+  "event_timestamp_columns": 15,
+  "maintainer": "NL2EVENTLOG project maintainers",
+  "registration_status": "Project-maintained draft; not ISO-registered or certified",
+  "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
+  "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
+  "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
+}
