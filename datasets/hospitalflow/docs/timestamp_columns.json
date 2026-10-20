@@ -1,9 +1,9 @@
 {
-  "timestamp_columns": 17,
-  "event_timestamp_columns": 15,
+  "timestamp_columns": 19,
+  "event_timestamp_columns": 17,
   "other_timestamp_columns": 2,
   "date_only_columns": [],
-  "baseline_timestamp_columns": 17,
+  "baseline_timestamp_columns": 19,
   "columns": [
     {
       "table": "admissions",
@@ -32,6 +32,20 @@
       "role": "actual event time",
       "used_as_event_time": true,
       "non_null_rows": 14
+    },
+    {
+      "table": "patient_profile",
+      "column": "profile_verified_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 6
+    },
+    {
+      "table": "admission_detail",
+      "column": "discharge_summary_signed_at",
+      "role": "actual event time",
+      "used_as_event_time": true,
+      "non_null_rows": 5
     },
     {
       "table": "lab_order",

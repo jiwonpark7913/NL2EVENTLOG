@@ -2,7 +2,7 @@
 import json,sqlite3,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-BASE={'warehouseflow':2,'universityflow':14,'plateflow':37,'hospitalflow':17}
+BASE={'warehouseflow':2,'universityflow':14,'plateflow':37,'hospitalflow':19}
 NOTE='- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.\n'
 def inventory(p):
  con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row;d=json.loads((p/'input/data_dictionary.json').read_text());rows=[];dates=[]

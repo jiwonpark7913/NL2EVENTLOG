@@ -24,6 +24,7 @@ EMAR:2,A:1,Medication Administered,2026-01-10T00:00:00Z
 EMAR:3,A:1,Medication Administered,2026-01-10T08:00:00Z
 MED:1:stop,A:1,Medication Stopped,2026-01-11T00:00:00Z
 ADM:1:auth,A:1,Discharge Authorized,2026-01-12T16:00:00Z
+ADM:1:summary,A:1,Discharge Summary Signed,2026-01-12T17:00:00Z
 ADM:1:out,A:1,Hospital Discharged,2026-01-12T18:00:00Z
 ADM:10:in,A:10,Hospital Admitted,2026-03-25T09:00:00Z
 OH:62,A:10,Order Entered,2026-03-25T10:00:00Z
@@ -45,6 +46,7 @@ EMAR:29,A:10,Medication Administered,2026-03-26T00:00:00Z
 EMAR:30,A:10,Medication Administered,2026-03-26T08:00:00Z
 MED:10:stop,A:10,Medication Stopped,2026-03-27T00:00:00Z
 ADM:10:auth,A:10,Discharge Authorized,2026-03-28T16:00:00Z
+ADM:10:summary,A:10,Discharge Summary Signed,2026-03-28T17:00:00Z
 ADM:10:out,A:10,Hospital Discharged,2026-03-28T18:00:00Z
 ADM:11:ed,A:11,Emergency Department Registered,2026-04-02T16:00:00Z
 ADM:11:in,A:11,Hospital Admitted,2026-04-02T17:00:00Z
@@ -125,6 +127,7 @@ EMAR:38,A:13,Medication Administered,2026-04-20T00:00:00Z
 EMAR:39,A:13,Medication Administered,2026-04-20T08:00:00Z
 MED:13:stop,A:13,Medication Stopped,2026-04-21T00:00:00Z
 ADM:13:auth,A:13,Discharge Authorized,2026-04-22T16:00:00Z
+ADM:13:summary,A:13,Discharge Summary Signed,2026-04-22T17:00:00Z
 ADM:13:out,A:13,Hospital Discharged,2026-04-22T18:00:00Z
 ADM:14:in,A:14,Hospital Admitted,2026-04-27T17:00:00Z
 OH:90,A:14,Order Entered,2026-04-27T18:00:00Z
@@ -240,6 +243,7 @@ PROCEV:5:end,A:4,Procedure Completed,2026-02-04T06:00:00Z
 EMAR:12,A:4,Medication Administered,2026-02-04T08:00:00Z
 MED:4:stop,A:4,Medication Stopped,2026-02-05T00:00:00Z
 ADM:4:auth,A:4,Discharge Authorized,2026-02-06T16:00:00Z
+ADM:4:summary,A:4,Discharge Summary Signed,2026-02-06T17:00:00Z
 ADM:4:out,A:4,Hospital Discharged,2026-02-06T18:00:00Z
 ADM:5:ed,A:5,Emergency Department Registered,2026-02-11T16:00:00Z
 ADM:5:in,A:5,Hospital Admitted,2026-02-11T17:00:00Z
@@ -305,6 +309,7 @@ EMAR:20,A:7,Medication Administered,2026-03-01T00:00:00Z
 EMAR:21,A:7,Medication Administered,2026-03-01T08:00:00Z
 MED:7:stop,A:7,Medication Stopped,2026-03-02T00:00:00Z
 ADM:7:auth,A:7,Discharge Authorized,2026-03-03T16:00:00Z
+ADM:7:summary,A:7,Discharge Summary Signed,2026-03-03T17:00:00Z
 ADM:7:out,A:7,Hospital Discharged,2026-03-03T18:00:00Z
 ADM:8:in,A:8,Hospital Admitted,2026-03-08T17:00:00Z
 OH:47,A:8,Order Entered,2026-03-08T18:00:00Z

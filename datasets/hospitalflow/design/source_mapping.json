@@ -37,21 +37,21 @@
     ]
   },
   "authored_tables": [
-    "object_type",
-    "object",
-    "clinical_order",
+    "patient_profile",
+    "admission_detail",
     "lab_order",
     "medication_order",
     "procedure_order",
     "order_history"
   ],
   "adaptations": [
-    "All SQL types, constraints and records are authored",
-    "Common supertype/subtype identity model is not supplied by MIMIC",
-    "Lab/procedure FK to local order tables is authored",
-    "Integer emar identity and procedureevent_id are simplified authored identities",
-    "Patient/admission links for event records are normalized through clinical_order",
-    "No claim that these 12 tables preserve all MIMIC fields or clinical relationships"
+    "All records, SQL types and constraints are authored",
+    "patients/admissions retain MIMIC-inspired patient/stay grains; optional profile/detail split-storage tables are authored",
+    "No generic object, object_type or clinical_order tables are present",
+    "Laboratory, medication and procedure orders are distinct business identities with independent local ID namespaces",
+    "Occurrence records are normalized through the appropriate order FK; history uses exactly one of three declared FKs",
+    "emar integer identity and procedureevent_id are authored simplifications",
+    "Identity group answers are private evaluation annotations, not input DB tables"
   ],
   "reference_urls": [
     "https://mimic.mit.edu/docs/iv/modules/hosp/patients.html",

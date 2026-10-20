@@ -1,4 +1,4 @@
-# HospitalFlow · MIMIC-inspired synthetic — Schema overview
+# HospitalFlow · split business-object storage — Schema overview
 
 ![Entity relationship diagram](schema.png)
 
@@ -6,15 +6,14 @@
 
 | Table | Rows | Columns | Event encoding | Primary key | Role |
 |---|---:|---:|---|---|---|
-| object_type | 3 | 3 | No event encoding | type_code | Semantic object types shared across business tables; not activities or case instances. |
-| object | 72 | 2 | No event encoding | object_id | Globally unique object identities and their semantic types; no events are stored here. |
-| patients | 12 | 3 | No event encoding | subject_id | Synthetic patient identity, inspired by MIMIC subject_id. |
-| admissions | 15 | 7 | Column encoding | hadm_id | Distinct hospital stays per patient with actual admission/discharge milestones. |
-| clinical_order | 45 | 4 | No event encoding | object_id | Authored common parent for laboratory, medication and procedure orders; not a MIMIC table. |
-| lab_order | 15 | 5 | Column encoding | order_id | Authored laboratory-order subtype; several measurements may belong to one order. |
-| medication_order | 15 | 6 | Column encoding | order_id | Authored medication-order subtype; repeated doses belong to one order. |
-| procedure_order | 15 | 5 | Column encoding | order_id | Authored procedure-order subtype; repeated execution episodes belong to one order. |
-| order_history | 102 | 4 | Row encoding | history_id | Repeated order actions, inspired by provider order transaction semantics; not a copy of poe. |
+| patients | 12 | 2 | No event encoding | subject_id | Synthetic patient identity, inspired by MIMIC subject_id. |
+| admissions | 15 | 6 | Column encoding | hadm_id | Distinct hospital stays per patient with actual admission/discharge milestones. |
+| patient_profile | 6 | 3 | Column encoding | subject_id | Optional additional information for the SAME patient identified by patients.subject_id, in the SAME identifier namespace. A matching subject_id denotes the same actual patient. No FK is declared; this identity relationship is explicitly documented. Authored split-storage extension. |
+| admission_detail | 5 | 3 | Column encoding | hadm_id | Optional additional information for the SAME hospital stay identified by admissions.hadm_id. A matching hadm_id denotes the same actual admission. Only a subset of admissions has a signed summary. Authored split-storage extension. |
+| lab_order | 15 | 4 | Column encoding | order_id | Distinct laboratory order; several measurements may belong to one order. |
+| medication_order | 15 | 5 | Column encoding | order_id | Distinct medication order; repeated doses belong to one order. |
+| procedure_order | 15 | 4 | Column encoding | order_id | Distinct procedure order; repeated execution episodes belong to one order. |
+| order_history | 102 | 6 | Row encoding | history_id | Repeated order actions, inspired by provider order transaction semantics; not a copy of poe. |
 | labevents | 33 | 7 | Mixed (row + column) | labevent_id | Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents. |
 | emar | 45 | 5 | Row encoding | emar_id | Medication administration or omission occurrences, inspired by MIMIC emar. |
 | procedureevents | 15 | 5 | Mixed (row + column) | procedureevent_id | Procedure execution episodes with start/end times, inspired by MIMIC procedureevents. |
@@ -29,16 +28,15 @@
 
 | Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |
 |---|---|---|---|---|---|
-| object_type | object | type_code | type_code | 1 : 0..N | declared |
-| object | patients | object_id | object_id | 1 : 0..1 | declared |
-| object | admissions | object_id | object_id | 1 : 0..1 | declared |
 | patients | admissions | subject_id | subject_id | 1 : 0..N | declared |
-| admissions | clinical_order | hadm_id, subject_id | hadm_id, subject_id | 1 : 0..N | declared |
-| object | clinical_order | object_id | object_id | 1 : 0..1 | declared |
-| clinical_order | lab_order | object_id, order_kind | object_id, order_kind | 1 : 0..1 | declared |
-| clinical_order | medication_order | object_id, order_kind | object_id, order_kind | 1 : 0..1 | declared |
-| clinical_order | procedure_order | object_id, order_kind | object_id, order_kind | 1 : 0..1 | declared |
-| clinical_order | order_history | object_id | object_id | 1 : 0..N | declared |
+| admissions | admission_detail | hadm_id | hadm_id | 1 : 0..N | declared |
+| admissions | lab_order | hadm_id | hadm_id | 1 : 0..N | declared |
+| admissions | medication_order | hadm_id | hadm_id | 1 : 0..N | declared |
+| admissions | procedure_order | hadm_id | hadm_id | 1 : 0..N | declared |
+| procedure_order | order_history | procedure_order_id | order_id | 1 : 0..N | declared |
+| medication_order | order_history | medication_order_id | order_id | 1 : 0..N | declared |
+| lab_order | order_history | lab_order_id | order_id | 1 : 0..N | declared |
 | lab_order | labevents | order_id | order_id | 1 : 0..N | declared |
 | medication_order | emar | order_id | order_id | 1 : 0..N | declared |
 | procedure_order | procedureevents | order_id | order_id | 1 : 0..N | declared |
+| patients | patient_profile | subject_id | subject_id | documented same identity; no FK | logical |

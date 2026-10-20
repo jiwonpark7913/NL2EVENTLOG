@@ -1,16 +1,155 @@
 [
-{"id":"H01","view":"Clinical Order","activities":["Order Entered","Order Reviewed","Order Cancelled"],"question":"For each clinical order, extract Order Entered, Order Reviewed and Order Cancelled events."},
-{"id":"H02","view":"Clinical Order","activities":["Lab Result Available","Medication Administered","Procedure Completed"],"question":"For each clinical order, extract Lab Result Available, Medication Administered and Procedure Completed events."},
-{"id":"H03","view":"Laboratory Order","activities":["Lab Measurement Charted","Lab Result Available","Lab Results Verified"],"question":"For each laboratory order, extract Lab Measurement Charted, Lab Result Available and Lab Results Verified events."},
-{"id":"H04","view":"Medication Order","activities":["Medication Dispensed","Medication Administered","Medication Not Given","Medication Stopped"],"question":"For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events."},
-{"id":"H05","view":"Procedure Order","activities":["Procedure Preparation Completed","Procedure Started","Procedure Completed"],"question":"For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events."},
-{"id":"H06","view":"Hospital Admission","activities":["Emergency Department Registered","Hospital Admitted","Discharge Authorized","Hospital Discharged"],"question":"For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Discharge Authorized and Hospital Discharged events."},
-{"id":"H07","view":"Patient","activities":["Hospital Admitted","Lab Result Available","Medication Administered","Procedure Completed","Hospital Discharged"],"question":"For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events."},
-{"id":"H08","view":"Clinical Order","activities":["Insurance Claim Paid"],"question":"For each clinical order, extract Insurance Claim Paid events.","answerable":false},
-{"id":"HF01","view":"Patient","question":"Extract the full recorded lifecycle for each patient."},
-{"id":"HF02","view":"Hospital Admission","question":"Extract the full recorded lifecycle for each hospital admission."},
-{"id":"HF03","view":"Clinical Order","question":"Extract the full recorded lifecycle for each clinical order."},
-{"id":"HF04","view":"Laboratory Order","question":"Extract the full recorded lifecycle for each laboratory order."},
-{"id":"HF05","view":"Medication Order","question":"Extract the full recorded lifecycle for each medication order."},
-{"id":"HF06","view":"Procedure Order","question":"Extract the full recorded lifecycle for each procedure order."}
+  {
+    "id": "H01",
+    "view": "Hospital Admission",
+    "activities": [
+      "Order Entered",
+      "Order Reviewed",
+      "Order Cancelled"
+    ],
+    "question": "For each hospital admission, extract Order Entered, Order Reviewed and Order Cancelled events."
+  },
+  {
+    "id": "H02",
+    "view": "Hospital Admission",
+    "activities": [
+      "Lab Result Available",
+      "Medication Administered",
+      "Procedure Completed"
+    ],
+    "question": "For each hospital admission, extract Lab Result Available, Medication Administered and Procedure Completed events."
+  },
+  {
+    "id": "H03",
+    "view": "Laboratory Order",
+    "activities": [
+      "Lab Measurement Charted",
+      "Lab Result Available",
+      "Lab Results Verified"
+    ],
+    "question": "For each laboratory order, extract Lab Measurement Charted, Lab Result Available and Lab Results Verified events."
+  },
+  {
+    "id": "H04",
+    "view": "Medication Order",
+    "activities": [
+      "Medication Dispensed",
+      "Medication Administered",
+      "Medication Not Given",
+      "Medication Stopped"
+    ],
+    "question": "For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events."
+  },
+  {
+    "id": "H05",
+    "view": "Procedure Order",
+    "activities": [
+      "Procedure Preparation Completed",
+      "Procedure Started",
+      "Procedure Completed"
+    ],
+    "question": "For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events."
+  },
+  {
+    "id": "H06",
+    "view": "Hospital Admission",
+    "activities": [
+      "Emergency Department Registered",
+      "Hospital Admitted",
+      "Discharge Authorized",
+      "Hospital Discharged"
+    ],
+    "question": "For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Discharge Authorized and Hospital Discharged events."
+  },
+  {
+    "id": "H07",
+    "view": "Patient",
+    "activities": [
+      "Hospital Admitted",
+      "Lab Result Available",
+      "Medication Administered",
+      "Procedure Completed",
+      "Hospital Discharged"
+    ],
+    "question": "For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events."
+  },
+  {
+    "id": "H08",
+    "view": "Hospital Admission",
+    "activities": [
+      "Insurance Claim Paid"
+    ],
+    "question": "For each hospital admission, extract Insurance Claim Paid events.",
+    "answerable": false
+  },
+  {
+    "id": "HF01",
+    "view": "Patient",
+    "question": "Extract the full recorded lifecycle for each patient."
+  },
+  {
+    "id": "HF02",
+    "view": "Hospital Admission",
+    "question": "Extract the full recorded lifecycle for each hospital admission."
+  },
+  {
+    "id": "HF03",
+    "view": "Order History Record",
+    "question": "Extract the full recorded lifecycle for each order history record."
+  },
+  {
+    "id": "HF04",
+    "view": "Laboratory Order",
+    "question": "Extract the full recorded lifecycle for each laboratory order."
+  },
+  {
+    "id": "HF05",
+    "view": "Medication Order",
+    "question": "Extract the full recorded lifecycle for each medication order."
+  },
+  {
+    "id": "HF06",
+    "view": "Procedure Order",
+    "question": "Extract the full recorded lifecycle for each procedure order."
+  },
+  {
+    "id": "H09",
+    "view": "Patient",
+    "activities": [
+      "Patient Profile Verified"
+    ],
+    "question": "For each patient, extract Patient Profile Verified events."
+  },
+  {
+    "id": "H10",
+    "view": "Hospital Admission",
+    "activities": [
+      "Discharge Summary Signed"
+    ],
+    "question": "For each hospital admission, extract Discharge Summary Signed events."
+  },
+  {
+    "id": "H11",
+    "view": "Patient",
+    "activities": [
+      "Patient Profile Verified",
+      "Hospital Admitted"
+    ],
+    "question": "For each patient, extract Patient Profile Verified and Hospital Admitted events."
+  },
+  {
+    "id": "HF07",
+    "view": "Lab Measurement",
+    "question": "Extract the full recorded lifecycle for each lab measurement."
+  },
+  {
+    "id": "HF08",
+    "view": "Medication Administration",
+    "question": "Extract the full recorded lifecycle for each medication administration."
+  },
+  {
+    "id": "HF09",
+    "view": "Procedure Episode",
+    "question": "Extract the full recorded lifecycle for each procedure episode."
+  }
 ]

@@ -1,9 +1,9 @@
+{"event_id": "PAT:1:profile", "activity": "Patient Profile Verified", "timestamp": "2026-01-08T12:00:00Z"}
 {"event_id": "ADM:1:ed", "activity": "Emergency Department Registered", "timestamp": "2026-01-09T08:00:00Z"}
 {"event_id": "ADM:1:in", "activity": "Hospital Admitted", "timestamp": "2026-01-09T09:00:00Z"}
 {"event_id": "ADM:1:auth", "activity": "Discharge Authorized", "timestamp": "2026-01-12T16:00:00Z"}
 {"event_id": "ADM:1:out", "activity": "Hospital Discharged", "timestamp": "2026-01-12T18:00:00Z"}
-{"event_id": "OH:1", "activity": "Order Entered", "timestamp": "2026-01-09T10:00:00Z"}
-{"event_id": "OH:2", "activity": "Order Reviewed", "timestamp": "2026-01-09T11:00:00Z"}
+{"event_id": "ADM:1:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-01-12T17:00:00Z"}
 {"event_id": "LAB:1:received", "activity": "Specimen Received", "timestamp": "2026-01-09T13:00:00Z"}
 {"event_id": "LABEV:1:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-09T14:00:00Z"}
 {"event_id": "LABEV:1:result", "activity": "Lab Result Available", "timestamp": "2026-01-09T15:00:00Z"}
@@ -12,47 +12,47 @@
 {"event_id": "LABEV:3:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-09T18:00:00Z"}
 {"event_id": "LABEV:3:result", "activity": "Lab Result Available", "timestamp": "2026-01-09T19:00:00Z"}
 {"event_id": "LAB:1:verified", "activity": "Lab Results Verified", "timestamp": "2026-01-09T22:00:00Z"}
-{"event_id": "OH:3", "activity": "Order Entered", "timestamp": "2026-01-09T10:00:00Z"}
-{"event_id": "OH:4", "activity": "Order Reviewed", "timestamp": "2026-01-09T11:00:00Z"}
+{"event_id": "OH:1", "activity": "Order Entered", "timestamp": "2026-01-09T10:00:00Z"}
+{"event_id": "OH:2", "activity": "Order Reviewed", "timestamp": "2026-01-09T11:00:00Z"}
 {"event_id": "MED:1:dispense", "activity": "Medication Dispensed", "timestamp": "2026-01-09T13:00:00Z"}
 {"event_id": "EMAR:1", "activity": "Medication Administered", "timestamp": "2026-01-09T16:00:00Z"}
 {"event_id": "EMAR:2", "activity": "Medication Administered", "timestamp": "2026-01-10T00:00:00Z"}
 {"event_id": "EMAR:3", "activity": "Medication Administered", "timestamp": "2026-01-10T08:00:00Z"}
 {"event_id": "MED:1:stop", "activity": "Medication Stopped", "timestamp": "2026-01-11T00:00:00Z"}
-{"event_id": "OH:5", "activity": "Order Entered", "timestamp": "2026-01-09T10:00:00Z"}
-{"event_id": "OH:6", "activity": "Order Reviewed", "timestamp": "2026-01-09T11:00:00Z"}
+{"event_id": "OH:3", "activity": "Order Entered", "timestamp": "2026-01-09T10:00:00Z"}
+{"event_id": "OH:4", "activity": "Order Reviewed", "timestamp": "2026-01-09T11:00:00Z"}
 {"event_id": "PROC:1:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-01-09T13:00:00Z"}
 {"event_id": "PROCEV:1:start", "activity": "Procedure Started", "timestamp": "2026-01-09T16:00:00Z"}
 {"event_id": "PROCEV:1:end", "activity": "Procedure Completed", "timestamp": "2026-01-09T18:00:00Z"}
+{"event_id": "OH:5", "activity": "Order Entered", "timestamp": "2026-01-09T10:00:00Z"}
+{"event_id": "OH:6", "activity": "Order Reviewed", "timestamp": "2026-01-09T11:00:00Z"}
 {"event_id": "ADM:2:in", "activity": "Hospital Admitted", "timestamp": "2026-01-17T17:00:00Z"}
 {"event_id": "ADM:2:auth", "activity": "Discharge Authorized", "timestamp": "2026-01-21T00:00:00Z"}
 {"event_id": "ADM:2:out", "activity": "Hospital Discharged", "timestamp": "2026-01-21T02:00:00Z"}
-{"event_id": "OH:7", "activity": "Order Entered", "timestamp": "2026-01-17T18:00:00Z"}
-{"event_id": "OH:8", "activity": "Order Reviewed", "timestamp": "2026-01-17T19:00:00Z"}
 {"event_id": "LAB:2:received", "activity": "Specimen Received", "timestamp": "2026-01-17T21:00:00Z"}
 {"event_id": "LABEV:4:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-17T22:00:00Z"}
 {"event_id": "LABEV:4:result", "activity": "Lab Result Available", "timestamp": "2026-01-17T23:00:00Z"}
 {"event_id": "LABEV:5:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-18T00:00:00Z"}
 {"event_id": "LABEV:5:result", "activity": "Lab Result Available", "timestamp": "2026-01-18T01:00:00Z"}
 {"event_id": "LAB:2:verified", "activity": "Lab Results Verified", "timestamp": "2026-01-18T06:00:00Z"}
-{"event_id": "OH:9", "activity": "Order Entered", "timestamp": "2026-01-17T18:00:00Z"}
-{"event_id": "OH:10", "activity": "Order Reviewed", "timestamp": "2026-01-17T19:00:00Z"}
+{"event_id": "OH:7", "activity": "Order Entered", "timestamp": "2026-01-17T18:00:00Z"}
+{"event_id": "OH:8", "activity": "Order Reviewed", "timestamp": "2026-01-17T19:00:00Z"}
 {"event_id": "MED:2:dispense", "activity": "Medication Dispensed", "timestamp": "2026-01-17T21:00:00Z"}
 {"event_id": "EMAR:4", "activity": "Medication Administered", "timestamp": "2026-01-18T00:00:00Z"}
 {"event_id": "EMAR:5", "activity": "Medication Administered", "timestamp": "2026-01-18T08:00:00Z"}
 {"event_id": "EMAR:6", "activity": "Medication Administered", "timestamp": "2026-01-18T16:00:00Z"}
 {"event_id": "MED:2:stop", "activity": "Medication Stopped", "timestamp": "2026-01-19T08:00:00Z"}
-{"event_id": "OH:11", "activity": "Order Entered", "timestamp": "2026-01-17T18:00:00Z"}
-{"event_id": "OH:12", "activity": "Order Reviewed", "timestamp": "2026-01-17T19:00:00Z"}
+{"event_id": "OH:9", "activity": "Order Entered", "timestamp": "2026-01-17T18:00:00Z"}
+{"event_id": "OH:10", "activity": "Order Reviewed", "timestamp": "2026-01-17T19:00:00Z"}
 {"event_id": "PROC:2:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-01-17T21:00:00Z"}
 {"event_id": "PROCEV:2:start", "activity": "Procedure Started", "timestamp": "2026-01-18T00:00:00Z"}
 {"event_id": "PROCEV:2:end", "activity": "Procedure Completed", "timestamp": "2026-01-18T02:00:00Z"}
+{"event_id": "OH:11", "activity": "Order Entered", "timestamp": "2026-01-17T18:00:00Z"}
+{"event_id": "OH:12", "activity": "Order Reviewed", "timestamp": "2026-01-17T19:00:00Z"}
 {"event_id": "ADM:3:ed", "activity": "Emergency Department Registered", "timestamp": "2026-01-26T00:00:00Z"}
 {"event_id": "ADM:3:in", "activity": "Hospital Admitted", "timestamp": "2026-01-26T01:00:00Z"}
 {"event_id": "ADM:3:auth", "activity": "Discharge Authorized", "timestamp": "2026-01-29T08:00:00Z"}
 {"event_id": "ADM:3:out", "activity": "Hospital Discharged", "timestamp": "2026-01-29T10:00:00Z"}
-{"event_id": "OH:13", "activity": "Order Entered", "timestamp": "2026-01-26T02:00:00Z"}
-{"event_id": "OH:14", "activity": "Order Reviewed", "timestamp": "2026-01-26T03:00:00Z"}
 {"event_id": "LAB:3:received", "activity": "Specimen Received", "timestamp": "2026-01-26T05:00:00Z"}
 {"event_id": "LABEV:6:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-26T06:00:00Z"}
 {"event_id": "LABEV:6:result", "activity": "Lab Result Available", "timestamp": "2026-01-26T07:00:00Z"}
@@ -61,52 +61,54 @@
 {"event_id": "LABEV:8:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-26T10:00:00Z"}
 {"event_id": "LABEV:8:result", "activity": "Lab Result Available", "timestamp": "2026-01-26T11:00:00Z"}
 {"event_id": "LAB:3:verified", "activity": "Lab Results Verified", "timestamp": "2026-01-26T14:00:00Z"}
-{"event_id": "OH:15", "activity": "Order Entered", "timestamp": "2026-01-26T02:00:00Z"}
-{"event_id": "OH:16", "activity": "Order Reviewed", "timestamp": "2026-01-26T03:00:00Z"}
+{"event_id": "OH:13", "activity": "Order Entered", "timestamp": "2026-01-26T02:00:00Z"}
+{"event_id": "OH:14", "activity": "Order Reviewed", "timestamp": "2026-01-26T03:00:00Z"}
 {"event_id": "MED:3:dispense", "activity": "Medication Dispensed", "timestamp": "2026-01-26T05:00:00Z"}
 {"event_id": "EMAR:7", "activity": "Medication Administered", "timestamp": "2026-01-26T08:00:00Z"}
 {"event_id": "EMAR:8", "activity": "Medication Not Given", "timestamp": "2026-01-26T16:00:00Z"}
 {"event_id": "EMAR:9", "activity": "Medication Administered", "timestamp": "2026-01-27T00:00:00Z"}
 {"event_id": "MED:3:stop", "activity": "Medication Stopped", "timestamp": "2026-01-27T16:00:00Z"}
-{"event_id": "OH:17", "activity": "Order Entered", "timestamp": "2026-01-26T02:00:00Z"}
-{"event_id": "OH:18", "activity": "Order Reviewed", "timestamp": "2026-01-26T03:00:00Z"}
+{"event_id": "OH:15", "activity": "Order Entered", "timestamp": "2026-01-26T02:00:00Z"}
+{"event_id": "OH:16", "activity": "Order Reviewed", "timestamp": "2026-01-26T03:00:00Z"}
 {"event_id": "PROC:3:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-01-26T05:00:00Z"}
 {"event_id": "PROCEV:3:start", "activity": "Procedure Started", "timestamp": "2026-01-26T08:00:00Z"}
 {"event_id": "PROCEV:3:end", "activity": "Procedure Completed", "timestamp": "2026-01-26T10:00:00Z"}
+{"event_id": "OH:17", "activity": "Order Entered", "timestamp": "2026-01-26T02:00:00Z"}
+{"event_id": "OH:18", "activity": "Order Reviewed", "timestamp": "2026-01-26T03:00:00Z"}
 {"event_id": "ADM:4:in", "activity": "Hospital Admitted", "timestamp": "2026-02-03T09:00:00Z"}
 {"event_id": "ADM:4:auth", "activity": "Discharge Authorized", "timestamp": "2026-02-06T16:00:00Z"}
 {"event_id": "ADM:4:out", "activity": "Hospital Discharged", "timestamp": "2026-02-06T18:00:00Z"}
-{"event_id": "OH:19", "activity": "Order Entered", "timestamp": "2026-02-03T10:00:00Z"}
-{"event_id": "OH:20", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:00:00Z"}
-{"event_id": "OH:21", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:30:00Z"}
+{"event_id": "ADM:4:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-02-06T17:00:00Z"}
 {"event_id": "LAB:4:received", "activity": "Specimen Received", "timestamp": "2026-02-03T13:00:00Z"}
 {"event_id": "LABEV:9:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-03T14:00:00Z"}
 {"event_id": "LABEV:9:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T15:00:00Z"}
 {"event_id": "LABEV:10:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-03T16:00:00Z"}
 {"event_id": "LABEV:10:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T17:00:00Z"}
 {"event_id": "LAB:4:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-03T22:00:00Z"}
-{"event_id": "OH:22", "activity": "Order Entered", "timestamp": "2026-02-03T10:00:00Z"}
-{"event_id": "OH:23", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:00:00Z"}
-{"event_id": "OH:24", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:30:00Z"}
+{"event_id": "OH:19", "activity": "Order Entered", "timestamp": "2026-02-03T10:00:00Z"}
+{"event_id": "OH:20", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:00:00Z"}
+{"event_id": "OH:21", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:30:00Z"}
 {"event_id": "MED:4:dispense", "activity": "Medication Dispensed", "timestamp": "2026-02-03T13:00:00Z"}
 {"event_id": "EMAR:10", "activity": "Medication Administered", "timestamp": "2026-02-03T16:00:00Z"}
 {"event_id": "EMAR:11", "activity": "Medication Administered", "timestamp": "2026-02-04T00:00:00Z"}
 {"event_id": "EMAR:12", "activity": "Medication Administered", "timestamp": "2026-02-04T08:00:00Z"}
 {"event_id": "MED:4:stop", "activity": "Medication Stopped", "timestamp": "2026-02-05T00:00:00Z"}
-{"event_id": "OH:25", "activity": "Order Entered", "timestamp": "2026-02-03T10:00:00Z"}
-{"event_id": "OH:26", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:00:00Z"}
-{"event_id": "OH:27", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:30:00Z"}
+{"event_id": "OH:22", "activity": "Order Entered", "timestamp": "2026-02-03T10:00:00Z"}
+{"event_id": "OH:23", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:00:00Z"}
+{"event_id": "OH:24", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:30:00Z"}
 {"event_id": "PROC:4:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-02-03T13:00:00Z"}
 {"event_id": "PROCEV:4:start", "activity": "Procedure Started", "timestamp": "2026-02-03T16:00:00Z"}
 {"event_id": "PROCEV:4:end", "activity": "Procedure Completed", "timestamp": "2026-02-03T18:00:00Z"}
 {"event_id": "PROCEV:5:start", "activity": "Procedure Started", "timestamp": "2026-02-04T04:00:00Z"}
 {"event_id": "PROCEV:5:end", "activity": "Procedure Completed", "timestamp": "2026-02-04T06:00:00Z"}
+{"event_id": "OH:25", "activity": "Order Entered", "timestamp": "2026-02-03T10:00:00Z"}
+{"event_id": "OH:26", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:00:00Z"}
+{"event_id": "OH:27", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:30:00Z"}
+{"event_id": "PAT:3:profile", "activity": "Patient Profile Verified", "timestamp": "2026-01-25T04:00:00Z"}
 {"event_id": "ADM:5:ed", "activity": "Emergency Department Registered", "timestamp": "2026-02-11T16:00:00Z"}
 {"event_id": "ADM:5:in", "activity": "Hospital Admitted", "timestamp": "2026-02-11T17:00:00Z"}
 {"event_id": "ADM:5:auth", "activity": "Discharge Authorized", "timestamp": "2026-02-15T00:00:00Z"}
 {"event_id": "ADM:5:out", "activity": "Hospital Discharged", "timestamp": "2026-02-15T02:00:00Z"}
-{"event_id": "OH:28", "activity": "Order Entered", "timestamp": "2026-02-11T18:00:00Z"}
-{"event_id": "OH:29", "activity": "Order Reviewed", "timestamp": "2026-02-11T19:00:00Z"}
 {"event_id": "LAB:5:received", "activity": "Specimen Received", "timestamp": "2026-02-11T21:00:00Z"}
 {"event_id": "LABEV:11:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-11T22:00:00Z"}
 {"event_id": "LABEV:11:result", "activity": "Lab Result Available", "timestamp": "2026-02-11T23:00:00Z"}
@@ -115,91 +117,93 @@
 {"event_id": "LABEV:13:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-12T02:00:00Z"}
 {"event_id": "LABEV:13:result", "activity": "Lab Result Available", "timestamp": "2026-02-12T03:00:00Z"}
 {"event_id": "LAB:5:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-12T06:00:00Z"}
-{"event_id": "OH:30", "activity": "Order Entered", "timestamp": "2026-02-11T18:00:00Z"}
-{"event_id": "OH:31", "activity": "Order Reviewed", "timestamp": "2026-02-11T19:00:00Z"}
+{"event_id": "OH:28", "activity": "Order Entered", "timestamp": "2026-02-11T18:00:00Z"}
+{"event_id": "OH:29", "activity": "Order Reviewed", "timestamp": "2026-02-11T19:00:00Z"}
 {"event_id": "MED:5:dispense", "activity": "Medication Dispensed", "timestamp": "2026-02-11T21:00:00Z"}
 {"event_id": "EMAR:13", "activity": "Medication Administered", "timestamp": "2026-02-12T00:00:00Z"}
 {"event_id": "EMAR:14", "activity": "Medication Administered", "timestamp": "2026-02-12T08:00:00Z"}
 {"event_id": "EMAR:15", "activity": "Medication Administered", "timestamp": "2026-02-12T16:00:00Z"}
 {"event_id": "MED:5:stop", "activity": "Medication Stopped", "timestamp": "2026-02-13T08:00:00Z"}
+{"event_id": "OH:30", "activity": "Order Entered", "timestamp": "2026-02-11T18:00:00Z"}
+{"event_id": "OH:31", "activity": "Order Reviewed", "timestamp": "2026-02-11T19:00:00Z"}
 {"event_id": "OH:32", "activity": "Order Entered", "timestamp": "2026-02-11T18:00:00Z"}
 {"event_id": "OH:33", "activity": "Order Reviewed", "timestamp": "2026-02-11T19:00:00Z"}
 {"event_id": "OH:34", "activity": "Order Cancelled", "timestamp": "2026-02-11T20:00:00Z"}
 {"event_id": "ADM:6:in", "activity": "Hospital Admitted", "timestamp": "2026-02-20T01:00:00Z"}
 {"event_id": "ADM:6:auth", "activity": "Discharge Authorized", "timestamp": "2026-02-23T08:00:00Z"}
 {"event_id": "ADM:6:out", "activity": "Hospital Discharged", "timestamp": "2026-02-23T10:00:00Z"}
-{"event_id": "OH:35", "activity": "Order Entered", "timestamp": "2026-02-20T02:00:00Z"}
-{"event_id": "OH:36", "activity": "Order Reviewed", "timestamp": "2026-02-20T03:00:00Z"}
 {"event_id": "LAB:6:received", "activity": "Specimen Received", "timestamp": "2026-02-20T05:00:00Z"}
 {"event_id": "LABEV:14:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-20T06:00:00Z"}
 {"event_id": "LABEV:14:result", "activity": "Lab Result Available", "timestamp": "2026-02-20T07:00:00Z"}
 {"event_id": "LABEV:15:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-20T08:00:00Z"}
 {"event_id": "LABEV:15:result", "activity": "Lab Result Available", "timestamp": "2026-02-20T09:00:00Z"}
 {"event_id": "LAB:6:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-20T14:00:00Z"}
-{"event_id": "OH:37", "activity": "Order Entered", "timestamp": "2026-02-20T02:00:00Z"}
-{"event_id": "OH:38", "activity": "Order Reviewed", "timestamp": "2026-02-20T03:00:00Z"}
+{"event_id": "OH:35", "activity": "Order Entered", "timestamp": "2026-02-20T02:00:00Z"}
+{"event_id": "OH:36", "activity": "Order Reviewed", "timestamp": "2026-02-20T03:00:00Z"}
 {"event_id": "MED:6:dispense", "activity": "Medication Dispensed", "timestamp": "2026-02-20T05:00:00Z"}
 {"event_id": "EMAR:16", "activity": "Medication Administered", "timestamp": "2026-02-20T08:00:00Z"}
 {"event_id": "EMAR:17", "activity": "Medication Not Given", "timestamp": "2026-02-20T16:00:00Z"}
 {"event_id": "EMAR:18", "activity": "Medication Administered", "timestamp": "2026-02-21T00:00:00Z"}
 {"event_id": "MED:6:stop", "activity": "Medication Stopped", "timestamp": "2026-02-21T16:00:00Z"}
-{"event_id": "OH:39", "activity": "Order Entered", "timestamp": "2026-02-20T02:00:00Z"}
-{"event_id": "OH:40", "activity": "Order Reviewed", "timestamp": "2026-02-20T03:00:00Z"}
+{"event_id": "OH:37", "activity": "Order Entered", "timestamp": "2026-02-20T02:00:00Z"}
+{"event_id": "OH:38", "activity": "Order Reviewed", "timestamp": "2026-02-20T03:00:00Z"}
 {"event_id": "PROC:6:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-02-20T05:00:00Z"}
 {"event_id": "PROCEV:6:start", "activity": "Procedure Started", "timestamp": "2026-02-20T08:00:00Z"}
 {"event_id": "PROCEV:6:end", "activity": "Procedure Completed", "timestamp": "2026-02-20T10:00:00Z"}
+{"event_id": "OH:39", "activity": "Order Entered", "timestamp": "2026-02-20T02:00:00Z"}
+{"event_id": "OH:40", "activity": "Order Reviewed", "timestamp": "2026-02-20T03:00:00Z"}
 {"event_id": "ADM:7:ed", "activity": "Emergency Department Registered", "timestamp": "2026-02-28T08:00:00Z"}
 {"event_id": "ADM:7:in", "activity": "Hospital Admitted", "timestamp": "2026-02-28T09:00:00Z"}
 {"event_id": "ADM:7:auth", "activity": "Discharge Authorized", "timestamp": "2026-03-03T16:00:00Z"}
 {"event_id": "ADM:7:out", "activity": "Hospital Discharged", "timestamp": "2026-03-03T18:00:00Z"}
+{"event_id": "ADM:7:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-03-03T17:00:00Z"}
 {"event_id": "OH:41", "activity": "Order Entered", "timestamp": "2026-02-28T10:00:00Z"}
 {"event_id": "OH:42", "activity": "Order Reviewed", "timestamp": "2026-02-28T11:00:00Z"}
-{"event_id": "OH:43", "activity": "Order Entered", "timestamp": "2026-02-28T10:00:00Z"}
-{"event_id": "OH:44", "activity": "Order Reviewed", "timestamp": "2026-02-28T11:00:00Z"}
 {"event_id": "MED:7:dispense", "activity": "Medication Dispensed", "timestamp": "2026-02-28T13:00:00Z"}
 {"event_id": "EMAR:19", "activity": "Medication Administered", "timestamp": "2026-02-28T16:00:00Z"}
 {"event_id": "EMAR:20", "activity": "Medication Administered", "timestamp": "2026-03-01T00:00:00Z"}
 {"event_id": "EMAR:21", "activity": "Medication Administered", "timestamp": "2026-03-01T08:00:00Z"}
 {"event_id": "MED:7:stop", "activity": "Medication Stopped", "timestamp": "2026-03-02T00:00:00Z"}
-{"event_id": "OH:45", "activity": "Order Entered", "timestamp": "2026-02-28T10:00:00Z"}
-{"event_id": "OH:46", "activity": "Order Reviewed", "timestamp": "2026-02-28T11:00:00Z"}
+{"event_id": "OH:43", "activity": "Order Entered", "timestamp": "2026-02-28T10:00:00Z"}
+{"event_id": "OH:44", "activity": "Order Reviewed", "timestamp": "2026-02-28T11:00:00Z"}
 {"event_id": "PROC:7:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-02-28T13:00:00Z"}
 {"event_id": "PROCEV:7:start", "activity": "Procedure Started", "timestamp": "2026-02-28T16:00:00Z"}
 {"event_id": "PROCEV:7:end", "activity": "Procedure Completed", "timestamp": "2026-02-28T18:00:00Z"}
+{"event_id": "OH:45", "activity": "Order Entered", "timestamp": "2026-02-28T10:00:00Z"}
+{"event_id": "OH:46", "activity": "Order Reviewed", "timestamp": "2026-02-28T11:00:00Z"}
 {"event_id": "ADM:8:in", "activity": "Hospital Admitted", "timestamp": "2026-03-08T17:00:00Z"}
 {"event_id": "ADM:8:auth", "activity": "Discharge Authorized", "timestamp": "2026-03-12T00:00:00Z"}
 {"event_id": "ADM:8:out", "activity": "Hospital Discharged", "timestamp": "2026-03-12T02:00:00Z"}
-{"event_id": "OH:47", "activity": "Order Entered", "timestamp": "2026-03-08T18:00:00Z"}
-{"event_id": "OH:48", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:00:00Z"}
-{"event_id": "OH:49", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:30:00Z"}
 {"event_id": "LAB:8:received", "activity": "Specimen Received", "timestamp": "2026-03-08T21:00:00Z"}
 {"event_id": "LABEV:16:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-08T22:00:00Z"}
 {"event_id": "LABEV:16:result", "activity": "Lab Result Available", "timestamp": "2026-03-08T23:00:00Z"}
 {"event_id": "LABEV:17:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-09T00:00:00Z"}
 {"event_id": "LABEV:17:result", "activity": "Lab Result Available", "timestamp": "2026-03-09T01:00:00Z"}
 {"event_id": "LAB:8:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-09T06:00:00Z"}
-{"event_id": "OH:50", "activity": "Order Entered", "timestamp": "2026-03-08T18:00:00Z"}
-{"event_id": "OH:51", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:00:00Z"}
-{"event_id": "OH:52", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:30:00Z"}
+{"event_id": "OH:47", "activity": "Order Entered", "timestamp": "2026-03-08T18:00:00Z"}
+{"event_id": "OH:48", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:00:00Z"}
+{"event_id": "OH:49", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:30:00Z"}
 {"event_id": "MED:8:dispense", "activity": "Medication Dispensed", "timestamp": "2026-03-08T21:00:00Z"}
 {"event_id": "EMAR:22", "activity": "Medication Administered", "timestamp": "2026-03-09T00:00:00Z"}
 {"event_id": "EMAR:23", "activity": "Medication Administered", "timestamp": "2026-03-09T08:00:00Z"}
 {"event_id": "EMAR:24", "activity": "Medication Administered", "timestamp": "2026-03-09T16:00:00Z"}
 {"event_id": "MED:8:stop", "activity": "Medication Stopped", "timestamp": "2026-03-10T08:00:00Z"}
-{"event_id": "OH:53", "activity": "Order Entered", "timestamp": "2026-03-08T18:00:00Z"}
-{"event_id": "OH:54", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:00:00Z"}
-{"event_id": "OH:55", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:30:00Z"}
+{"event_id": "OH:50", "activity": "Order Entered", "timestamp": "2026-03-08T18:00:00Z"}
+{"event_id": "OH:51", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:00:00Z"}
+{"event_id": "OH:52", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:30:00Z"}
 {"event_id": "PROC:8:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-03-08T21:00:00Z"}
 {"event_id": "PROCEV:8:start", "activity": "Procedure Started", "timestamp": "2026-03-09T00:00:00Z"}
 {"event_id": "PROCEV:8:end", "activity": "Procedure Completed", "timestamp": "2026-03-09T02:00:00Z"}
 {"event_id": "PROCEV:9:start", "activity": "Procedure Started", "timestamp": "2026-03-09T12:00:00Z"}
 {"event_id": "PROCEV:9:end", "activity": "Procedure Completed", "timestamp": "2026-03-09T14:00:00Z"}
+{"event_id": "OH:53", "activity": "Order Entered", "timestamp": "2026-03-08T18:00:00Z"}
+{"event_id": "OH:54", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:00:00Z"}
+{"event_id": "OH:55", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:30:00Z"}
+{"event_id": "PAT:5:profile", "activity": "Patient Profile Verified", "timestamp": "2026-02-10T20:00:00Z"}
 {"event_id": "ADM:9:ed", "activity": "Emergency Department Registered", "timestamp": "2026-03-17T00:00:00Z"}
 {"event_id": "ADM:9:in", "activity": "Hospital Admitted", "timestamp": "2026-03-17T01:00:00Z"}
 {"event_id": "ADM:9:auth", "activity": "Discharge Authorized", "timestamp": "2026-03-20T08:00:00Z"}
 {"event_id": "ADM:9:out", "activity": "Hospital Discharged", "timestamp": "2026-03-20T10:00:00Z"}
-{"event_id": "OH:56", "activity": "Order Entered", "timestamp": "2026-03-17T02:00:00Z"}
-{"event_id": "OH:57", "activity": "Order Reviewed", "timestamp": "2026-03-17T03:00:00Z"}
 {"event_id": "LAB:9:received", "activity": "Specimen Received", "timestamp": "2026-03-17T05:00:00Z"}
 {"event_id": "LABEV:18:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-17T06:00:00Z"}
 {"event_id": "LABEV:18:result", "activity": "Lab Result Available", "timestamp": "2026-03-17T07:00:00Z"}
@@ -208,45 +212,47 @@
 {"event_id": "LABEV:20:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-17T10:00:00Z"}
 {"event_id": "LABEV:20:result", "activity": "Lab Result Available", "timestamp": "2026-03-17T11:00:00Z"}
 {"event_id": "LAB:9:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-17T14:00:00Z"}
-{"event_id": "OH:58", "activity": "Order Entered", "timestamp": "2026-03-17T02:00:00Z"}
-{"event_id": "OH:59", "activity": "Order Reviewed", "timestamp": "2026-03-17T03:00:00Z"}
+{"event_id": "OH:56", "activity": "Order Entered", "timestamp": "2026-03-17T02:00:00Z"}
+{"event_id": "OH:57", "activity": "Order Reviewed", "timestamp": "2026-03-17T03:00:00Z"}
 {"event_id": "MED:9:dispense", "activity": "Medication Dispensed", "timestamp": "2026-03-17T05:00:00Z"}
 {"event_id": "EMAR:25", "activity": "Medication Administered", "timestamp": "2026-03-17T08:00:00Z"}
 {"event_id": "EMAR:26", "activity": "Medication Not Given", "timestamp": "2026-03-17T16:00:00Z"}
 {"event_id": "EMAR:27", "activity": "Medication Administered", "timestamp": "2026-03-18T00:00:00Z"}
 {"event_id": "MED:9:stop", "activity": "Medication Stopped", "timestamp": "2026-03-18T16:00:00Z"}
-{"event_id": "OH:60", "activity": "Order Entered", "timestamp": "2026-03-17T02:00:00Z"}
-{"event_id": "OH:61", "activity": "Order Reviewed", "timestamp": "2026-03-17T03:00:00Z"}
+{"event_id": "OH:58", "activity": "Order Entered", "timestamp": "2026-03-17T02:00:00Z"}
+{"event_id": "OH:59", "activity": "Order Reviewed", "timestamp": "2026-03-17T03:00:00Z"}
 {"event_id": "PROC:9:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-03-17T05:00:00Z"}
 {"event_id": "PROCEV:10:start", "activity": "Procedure Started", "timestamp": "2026-03-17T08:00:00Z"}
 {"event_id": "PROCEV:10:end", "activity": "Procedure Completed", "timestamp": "2026-03-17T10:00:00Z"}
+{"event_id": "OH:60", "activity": "Order Entered", "timestamp": "2026-03-17T02:00:00Z"}
+{"event_id": "OH:61", "activity": "Order Reviewed", "timestamp": "2026-03-17T03:00:00Z"}
 {"event_id": "ADM:10:in", "activity": "Hospital Admitted", "timestamp": "2026-03-25T09:00:00Z"}
 {"event_id": "ADM:10:auth", "activity": "Discharge Authorized", "timestamp": "2026-03-28T16:00:00Z"}
 {"event_id": "ADM:10:out", "activity": "Hospital Discharged", "timestamp": "2026-03-28T18:00:00Z"}
-{"event_id": "OH:62", "activity": "Order Entered", "timestamp": "2026-03-25T10:00:00Z"}
-{"event_id": "OH:63", "activity": "Order Reviewed", "timestamp": "2026-03-25T11:00:00Z"}
+{"event_id": "ADM:10:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-03-28T17:00:00Z"}
 {"event_id": "LAB:10:received", "activity": "Specimen Received", "timestamp": "2026-03-25T13:00:00Z"}
 {"event_id": "LABEV:21:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T14:00:00Z"}
 {"event_id": "LABEV:21:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T15:00:00Z"}
 {"event_id": "LABEV:22:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T16:00:00Z"}
 {"event_id": "LABEV:22:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T17:00:00Z"}
 {"event_id": "LAB:10:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T22:00:00Z"}
-{"event_id": "OH:64", "activity": "Order Entered", "timestamp": "2026-03-25T10:00:00Z"}
-{"event_id": "OH:65", "activity": "Order Reviewed", "timestamp": "2026-03-25T11:00:00Z"}
+{"event_id": "OH:62", "activity": "Order Entered", "timestamp": "2026-03-25T10:00:00Z"}
+{"event_id": "OH:63", "activity": "Order Reviewed", "timestamp": "2026-03-25T11:00:00Z"}
 {"event_id": "MED:10:dispense", "activity": "Medication Dispensed", "timestamp": "2026-03-25T13:00:00Z"}
 {"event_id": "EMAR:28", "activity": "Medication Administered", "timestamp": "2026-03-25T16:00:00Z"}
 {"event_id": "EMAR:29", "activity": "Medication Administered", "timestamp": "2026-03-26T00:00:00Z"}
 {"event_id": "EMAR:30", "activity": "Medication Administered", "timestamp": "2026-03-26T08:00:00Z"}
 {"event_id": "MED:10:stop", "activity": "Medication Stopped", "timestamp": "2026-03-27T00:00:00Z"}
+{"event_id": "OH:64", "activity": "Order Entered", "timestamp": "2026-03-25T10:00:00Z"}
+{"event_id": "OH:65", "activity": "Order Reviewed", "timestamp": "2026-03-25T11:00:00Z"}
 {"event_id": "OH:66", "activity": "Order Entered", "timestamp": "2026-03-25T10:00:00Z"}
 {"event_id": "OH:67", "activity": "Order Reviewed", "timestamp": "2026-03-25T11:00:00Z"}
 {"event_id": "OH:68", "activity": "Order Cancelled", "timestamp": "2026-03-25T12:00:00Z"}
+{"event_id": "PAT:7:profile", "activity": "Patient Profile Verified", "timestamp": "2026-02-27T12:00:00Z"}
 {"event_id": "ADM:11:ed", "activity": "Emergency Department Registered", "timestamp": "2026-04-02T16:00:00Z"}
 {"event_id": "ADM:11:in", "activity": "Hospital Admitted", "timestamp": "2026-04-02T17:00:00Z"}
 {"event_id": "ADM:11:auth", "activity": "Discharge Authorized", "timestamp": "2026-04-06T00:00:00Z"}
 {"event_id": "ADM:11:out", "activity": "Hospital Discharged", "timestamp": "2026-04-06T02:00:00Z"}
-{"event_id": "OH:69", "activity": "Order Entered", "timestamp": "2026-04-02T18:00:00Z"}
-{"event_id": "OH:70", "activity": "Order Reviewed", "timestamp": "2026-04-02T19:00:00Z"}
 {"event_id": "LAB:11:received", "activity": "Specimen Received", "timestamp": "2026-04-02T21:00:00Z"}
 {"event_id": "LABEV:23:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-02T22:00:00Z"}
 {"event_id": "LABEV:23:result", "activity": "Lab Result Available", "timestamp": "2026-04-02T23:00:00Z"}
@@ -255,52 +261,54 @@
 {"event_id": "LABEV:25:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-03T02:00:00Z"}
 {"event_id": "LABEV:25:result", "activity": "Lab Result Available", "timestamp": "2026-04-03T03:00:00Z"}
 {"event_id": "LAB:11:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-03T06:00:00Z"}
-{"event_id": "OH:71", "activity": "Order Entered", "timestamp": "2026-04-02T18:00:00Z"}
-{"event_id": "OH:72", "activity": "Order Reviewed", "timestamp": "2026-04-02T19:00:00Z"}
+{"event_id": "OH:69", "activity": "Order Entered", "timestamp": "2026-04-02T18:00:00Z"}
+{"event_id": "OH:70", "activity": "Order Reviewed", "timestamp": "2026-04-02T19:00:00Z"}
 {"event_id": "MED:11:dispense", "activity": "Medication Dispensed", "timestamp": "2026-04-02T21:00:00Z"}
 {"event_id": "EMAR:31", "activity": "Medication Administered", "timestamp": "2026-04-03T00:00:00Z"}
 {"event_id": "EMAR:32", "activity": "Medication Administered", "timestamp": "2026-04-03T08:00:00Z"}
 {"event_id": "EMAR:33", "activity": "Medication Administered", "timestamp": "2026-04-03T16:00:00Z"}
 {"event_id": "MED:11:stop", "activity": "Medication Stopped", "timestamp": "2026-04-04T08:00:00Z"}
-{"event_id": "OH:73", "activity": "Order Entered", "timestamp": "2026-04-02T18:00:00Z"}
-{"event_id": "OH:74", "activity": "Order Reviewed", "timestamp": "2026-04-02T19:00:00Z"}
+{"event_id": "OH:71", "activity": "Order Entered", "timestamp": "2026-04-02T18:00:00Z"}
+{"event_id": "OH:72", "activity": "Order Reviewed", "timestamp": "2026-04-02T19:00:00Z"}
 {"event_id": "PROC:11:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-04-02T21:00:00Z"}
 {"event_id": "PROCEV:11:start", "activity": "Procedure Started", "timestamp": "2026-04-03T00:00:00Z"}
 {"event_id": "PROCEV:11:end", "activity": "Procedure Completed", "timestamp": "2026-04-03T02:00:00Z"}
+{"event_id": "OH:73", "activity": "Order Entered", "timestamp": "2026-04-02T18:00:00Z"}
+{"event_id": "OH:74", "activity": "Order Reviewed", "timestamp": "2026-04-02T19:00:00Z"}
 {"event_id": "ADM:12:in", "activity": "Hospital Admitted", "timestamp": "2026-04-11T01:00:00Z"}
 {"event_id": "ADM:12:auth", "activity": "Discharge Authorized", "timestamp": "2026-04-14T08:00:00Z"}
 {"event_id": "ADM:12:out", "activity": "Hospital Discharged", "timestamp": "2026-04-14T10:00:00Z"}
-{"event_id": "OH:75", "activity": "Order Entered", "timestamp": "2026-04-11T02:00:00Z"}
-{"event_id": "OH:76", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:00:00Z"}
-{"event_id": "OH:77", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:30:00Z"}
 {"event_id": "LAB:12:received", "activity": "Specimen Received", "timestamp": "2026-04-11T05:00:00Z"}
 {"event_id": "LABEV:26:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-11T06:00:00Z"}
 {"event_id": "LABEV:26:result", "activity": "Lab Result Available", "timestamp": "2026-04-11T07:00:00Z"}
 {"event_id": "LABEV:27:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-11T08:00:00Z"}
 {"event_id": "LABEV:27:result", "activity": "Lab Result Available", "timestamp": "2026-04-11T09:00:00Z"}
 {"event_id": "LAB:12:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-11T14:00:00Z"}
-{"event_id": "OH:78", "activity": "Order Entered", "timestamp": "2026-04-11T02:00:00Z"}
-{"event_id": "OH:79", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:00:00Z"}
-{"event_id": "OH:80", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:30:00Z"}
+{"event_id": "OH:75", "activity": "Order Entered", "timestamp": "2026-04-11T02:00:00Z"}
+{"event_id": "OH:76", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:00:00Z"}
+{"event_id": "OH:77", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:30:00Z"}
 {"event_id": "MED:12:dispense", "activity": "Medication Dispensed", "timestamp": "2026-04-11T05:00:00Z"}
 {"event_id": "EMAR:34", "activity": "Medication Administered", "timestamp": "2026-04-11T08:00:00Z"}
 {"event_id": "EMAR:35", "activity": "Medication Not Given", "timestamp": "2026-04-11T16:00:00Z"}
 {"event_id": "EMAR:36", "activity": "Medication Administered", "timestamp": "2026-04-12T00:00:00Z"}
 {"event_id": "MED:12:stop", "activity": "Medication Stopped", "timestamp": "2026-04-12T16:00:00Z"}
-{"event_id": "OH:81", "activity": "Order Entered", "timestamp": "2026-04-11T02:00:00Z"}
-{"event_id": "OH:82", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:00:00Z"}
-{"event_id": "OH:83", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:30:00Z"}
+{"event_id": "OH:78", "activity": "Order Entered", "timestamp": "2026-04-11T02:00:00Z"}
+{"event_id": "OH:79", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:00:00Z"}
+{"event_id": "OH:80", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:30:00Z"}
 {"event_id": "PROC:12:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-04-11T05:00:00Z"}
 {"event_id": "PROCEV:12:start", "activity": "Procedure Started", "timestamp": "2026-04-11T08:00:00Z"}
 {"event_id": "PROCEV:12:end", "activity": "Procedure Completed", "timestamp": "2026-04-11T10:00:00Z"}
 {"event_id": "PROCEV:13:start", "activity": "Procedure Started", "timestamp": "2026-04-11T20:00:00Z"}
 {"event_id": "PROCEV:13:end", "activity": "Procedure Completed", "timestamp": "2026-04-11T22:00:00Z"}
+{"event_id": "OH:81", "activity": "Order Entered", "timestamp": "2026-04-11T02:00:00Z"}
+{"event_id": "OH:82", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:00:00Z"}
+{"event_id": "OH:83", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:30:00Z"}
+{"event_id": "PAT:9:profile", "activity": "Patient Profile Verified", "timestamp": "2026-03-16T04:00:00Z"}
 {"event_id": "ADM:13:ed", "activity": "Emergency Department Registered", "timestamp": "2026-04-19T08:00:00Z"}
 {"event_id": "ADM:13:in", "activity": "Hospital Admitted", "timestamp": "2026-04-19T09:00:00Z"}
 {"event_id": "ADM:13:auth", "activity": "Discharge Authorized", "timestamp": "2026-04-22T16:00:00Z"}
 {"event_id": "ADM:13:out", "activity": "Hospital Discharged", "timestamp": "2026-04-22T18:00:00Z"}
-{"event_id": "OH:84", "activity": "Order Entered", "timestamp": "2026-04-19T10:00:00Z"}
-{"event_id": "OH:85", "activity": "Order Reviewed", "timestamp": "2026-04-19T11:00:00Z"}
+{"event_id": "ADM:13:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-04-22T17:00:00Z"}
 {"event_id": "LAB:13:received", "activity": "Specimen Received", "timestamp": "2026-04-19T13:00:00Z"}
 {"event_id": "LABEV:28:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-19T14:00:00Z"}
 {"event_id": "LABEV:28:result", "activity": "Lab Result Available", "timestamp": "2026-04-19T15:00:00Z"}
@@ -309,39 +317,40 @@
 {"event_id": "LABEV:30:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-19T18:00:00Z"}
 {"event_id": "LABEV:30:result", "activity": "Lab Result Available", "timestamp": "2026-04-19T19:00:00Z"}
 {"event_id": "LAB:13:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-19T22:00:00Z"}
-{"event_id": "OH:86", "activity": "Order Entered", "timestamp": "2026-04-19T10:00:00Z"}
-{"event_id": "OH:87", "activity": "Order Reviewed", "timestamp": "2026-04-19T11:00:00Z"}
+{"event_id": "OH:84", "activity": "Order Entered", "timestamp": "2026-04-19T10:00:00Z"}
+{"event_id": "OH:85", "activity": "Order Reviewed", "timestamp": "2026-04-19T11:00:00Z"}
 {"event_id": "MED:13:dispense", "activity": "Medication Dispensed", "timestamp": "2026-04-19T13:00:00Z"}
 {"event_id": "EMAR:37", "activity": "Medication Administered", "timestamp": "2026-04-19T16:00:00Z"}
 {"event_id": "EMAR:38", "activity": "Medication Administered", "timestamp": "2026-04-20T00:00:00Z"}
 {"event_id": "EMAR:39", "activity": "Medication Administered", "timestamp": "2026-04-20T08:00:00Z"}
 {"event_id": "MED:13:stop", "activity": "Medication Stopped", "timestamp": "2026-04-21T00:00:00Z"}
-{"event_id": "OH:88", "activity": "Order Entered", "timestamp": "2026-04-19T10:00:00Z"}
-{"event_id": "OH:89", "activity": "Order Reviewed", "timestamp": "2026-04-19T11:00:00Z"}
+{"event_id": "OH:86", "activity": "Order Entered", "timestamp": "2026-04-19T10:00:00Z"}
+{"event_id": "OH:87", "activity": "Order Reviewed", "timestamp": "2026-04-19T11:00:00Z"}
 {"event_id": "PROC:13:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-04-19T13:00:00Z"}
 {"event_id": "PROCEV:14:start", "activity": "Procedure Started", "timestamp": "2026-04-19T16:00:00Z"}
 {"event_id": "PROCEV:14:end", "activity": "Procedure Completed", "timestamp": "2026-04-19T18:00:00Z"}
+{"event_id": "OH:88", "activity": "Order Entered", "timestamp": "2026-04-19T10:00:00Z"}
+{"event_id": "OH:89", "activity": "Order Reviewed", "timestamp": "2026-04-19T11:00:00Z"}
 {"event_id": "ADM:14:in", "activity": "Hospital Admitted", "timestamp": "2026-04-27T17:00:00Z"}
 {"event_id": "ADM:14:auth", "activity": "Discharge Authorized", "timestamp": "2026-05-01T00:00:00Z"}
 {"event_id": "ADM:14:out", "activity": "Hospital Discharged", "timestamp": "2026-05-01T02:00:00Z"}
 {"event_id": "OH:90", "activity": "Order Entered", "timestamp": "2026-04-27T18:00:00Z"}
 {"event_id": "OH:91", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:00:00Z"}
-{"event_id": "OH:92", "activity": "Order Entered", "timestamp": "2026-04-27T18:00:00Z"}
-{"event_id": "OH:93", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:00:00Z"}
 {"event_id": "MED:14:dispense", "activity": "Medication Dispensed", "timestamp": "2026-04-27T21:00:00Z"}
 {"event_id": "EMAR:40", "activity": "Medication Administered", "timestamp": "2026-04-28T00:00:00Z"}
 {"event_id": "EMAR:41", "activity": "Medication Administered", "timestamp": "2026-04-28T08:00:00Z"}
 {"event_id": "EMAR:42", "activity": "Medication Administered", "timestamp": "2026-04-28T16:00:00Z"}
 {"event_id": "MED:14:stop", "activity": "Medication Stopped", "timestamp": "2026-04-29T08:00:00Z"}
-{"event_id": "OH:94", "activity": "Order Entered", "timestamp": "2026-04-27T18:00:00Z"}
-{"event_id": "OH:95", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:00:00Z"}
+{"event_id": "OH:92", "activity": "Order Entered", "timestamp": "2026-04-27T18:00:00Z"}
+{"event_id": "OH:93", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:00:00Z"}
 {"event_id": "PROC:14:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-04-27T21:00:00Z"}
 {"event_id": "PROCEV:15:start", "activity": "Procedure Started", "timestamp": "2026-04-28T00:00:00Z"}
 {"event_id": "PROCEV:15:end", "activity": "Procedure Completed", "timestamp": "2026-04-28T02:00:00Z"}
+{"event_id": "OH:94", "activity": "Order Entered", "timestamp": "2026-04-27T18:00:00Z"}
+{"event_id": "OH:95", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:00:00Z"}
+{"event_id": "PAT:11:profile", "activity": "Patient Profile Verified", "timestamp": "2026-04-01T20:00:00Z"}
 {"event_id": "ADM:15:ed", "activity": "Emergency Department Registered", "timestamp": "2026-05-06T00:00:00Z"}
 {"event_id": "ADM:15:in", "activity": "Hospital Admitted", "timestamp": "2026-05-06T01:00:00Z"}
-{"event_id": "OH:96", "activity": "Order Entered", "timestamp": "2026-05-06T02:00:00Z"}
-{"event_id": "OH:97", "activity": "Order Reviewed", "timestamp": "2026-05-06T03:00:00Z"}
 {"event_id": "LAB:15:received", "activity": "Specimen Received", "timestamp": "2026-05-06T05:00:00Z"}
 {"event_id": "LABEV:31:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-06T06:00:00Z"}
 {"event_id": "LABEV:31:result", "activity": "Lab Result Available", "timestamp": "2026-05-06T07:00:00Z"}
@@ -350,12 +359,14 @@
 {"event_id": "LABEV:33:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-06T10:00:00Z"}
 {"event_id": "LABEV:33:result", "activity": "Lab Result Available", "timestamp": "2026-05-06T11:00:00Z"}
 {"event_id": "LAB:15:verified", "activity": "Lab Results Verified", "timestamp": "2026-05-06T14:00:00Z"}
-{"event_id": "OH:98", "activity": "Order Entered", "timestamp": "2026-05-06T02:00:00Z"}
-{"event_id": "OH:99", "activity": "Order Reviewed", "timestamp": "2026-05-06T03:00:00Z"}
+{"event_id": "OH:96", "activity": "Order Entered", "timestamp": "2026-05-06T02:00:00Z"}
+{"event_id": "OH:97", "activity": "Order Reviewed", "timestamp": "2026-05-06T03:00:00Z"}
 {"event_id": "MED:15:dispense", "activity": "Medication Dispensed", "timestamp": "2026-05-06T05:00:00Z"}
 {"event_id": "EMAR:43", "activity": "Medication Administered", "timestamp": "2026-05-06T08:00:00Z"}
 {"event_id": "EMAR:44", "activity": "Medication Not Given", "timestamp": "2026-05-06T16:00:00Z"}
 {"event_id": "EMAR:45", "activity": "Medication Administered", "timestamp": "2026-05-07T00:00:00Z"}
+{"event_id": "OH:98", "activity": "Order Entered", "timestamp": "2026-05-06T02:00:00Z"}
+{"event_id": "OH:99", "activity": "Order Reviewed", "timestamp": "2026-05-06T03:00:00Z"}
 {"event_id": "OH:100", "activity": "Order Entered", "timestamp": "2026-05-06T02:00:00Z"}
 {"event_id": "OH:101", "activity": "Order Reviewed", "timestamp": "2026-05-06T03:00:00Z"}
 {"event_id": "OH:102", "activity": "Order Cancelled", "timestamp": "2026-05-06T04:00:00Z"}

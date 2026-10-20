@@ -1,11 +1,13 @@
 # Source references and interpretation
 
-- Consulted 2026-10-20. Public documentation only; no MIMIC patient records were downloaded or used. These links document the reference concepts, not the authored object model.
+- Consulted 2026-10-20. Public documentation only; no MIMIC patient records were downloaded or used. These links document the reference concepts, not the authored split-storage design.
 - [MIMIC-IV schema overview](https://mimic.mit.edu/docs/iv/about/schema-overview.html): patient, admission and order/event-level grains.
 - [admissions](https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html): subject_id can recur across separate hadm_id values; admittime, dischtime and edregtime have distinct meanings. HospitalFlow omits death and demographic detail beyond a synthetic gender field.
 - [poe](https://mimic.mit.edu/docs/iv/modules/hosp/poe.html): provider orders include laboratory, medication and other categories; transaction types describe order actions. HospitalFlow uses authored ENTERED/REVIEWED/CANCELLED histories, not the original poe codes or schema.
 - [labevents](https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html): repeated measurement rows, charttime for charted measurement time and storetime for result availability. HospitalFlow does not equate charttime with result availability or infer a specimen-receipt event from it.
 - [emar](https://mimic.mit.edu/docs/iv/modules/hosp/emar.html): medication administration occurrences and order links. HospitalFlow simplifies identity and supplies controlled Administered/Not Given codes; its integer emar_id is not the MIMIC identity format.
 - [procedureevents](https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html): episode starttime/endtime and separate documentation storetime. The original table is ICU-specific; HospitalFlow deliberately adapts episode timing to a synthetic hospital procedure-order model and does not claim ICU coverage or original stay_id relationships.
-- Lab/procedure order links, order subtype tables, the semantic registry, discharge authorization, specimen receipt, result verification, dispensing, stopping and preparation are authored benchmark additions. Real MIMIC joins and completeness differ; this dataset does not demonstrate faithful reconstruction of actual MIMIC care workflows.
+- Lab/procedure order links, order subtype tables, the optional patient/admission split tables, discharge authorization, specimen receipt, result verification, dispensing, stopping and preparation are authored benchmark additions. Real MIMIC joins and completeness differ; this dataset does not demonstrate faithful reconstruction of actual MIMIC care workflows.
 - All numeric measurements, medication names, procedures, dates and identifiers are fictional. Clinical completeness and realistic patient distributions have not been assessed.
+
+- Correction: there is no common clinical_order parent or semantic registry in the executable DB. patient_profile and admission_detail are explicitly authored examples of the same patient/admission stored across physical tables, not MIMIC source tables.

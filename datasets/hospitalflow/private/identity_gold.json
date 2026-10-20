@@ -1,0 +1,1953 @@
+{
+  "scope": "Author-assigned evaluation ground truth, not predictions from an implemented identity judge.",
+  "physical_object_count": 11,
+  "expected_group_count": 9,
+  "expected_group_reduction": 2,
+  "groups": [
+    {
+      "object_type": "Patient",
+      "members": [
+        {
+          "table": "patients",
+          "primary_key": [
+            "subject_id"
+          ],
+          "canonical_key_prefix": "P:"
+        },
+        {
+          "table": "patient_profile",
+          "primary_key": [
+            "subject_id"
+          ],
+          "canonical_key_prefix": "P:"
+        }
+      ]
+    },
+    {
+      "object_type": "Hospital Admission",
+      "members": [
+        {
+          "table": "admissions",
+          "primary_key": [
+            "hadm_id"
+          ],
+          "canonical_key_prefix": "A:"
+        },
+        {
+          "table": "admission_detail",
+          "primary_key": [
+            "hadm_id"
+          ],
+          "canonical_key_prefix": "A:"
+        }
+      ]
+    },
+    {
+      "object_type": "Laboratory Order",
+      "members": [
+        {
+          "table": "lab_order",
+          "primary_key": [
+            "order_id"
+          ],
+          "canonical_key_prefix": "LAB:"
+        }
+      ]
+    },
+    {
+      "object_type": "Medication Order",
+      "members": [
+        {
+          "table": "medication_order",
+          "primary_key": [
+            "order_id"
+          ],
+          "canonical_key_prefix": "MED:"
+        }
+      ]
+    },
+    {
+      "object_type": "Procedure Order",
+      "members": [
+        {
+          "table": "procedure_order",
+          "primary_key": [
+            "order_id"
+          ],
+          "canonical_key_prefix": "PROC:"
+        }
+      ]
+    },
+    {
+      "object_type": "Order History Record",
+      "members": [
+        {
+          "table": "order_history",
+          "primary_key": [
+            "history_id"
+          ],
+          "canonical_key_prefix": "H:"
+        }
+      ]
+    },
+    {
+      "object_type": "Lab Measurement",
+      "members": [
+        {
+          "table": "labevents",
+          "primary_key": [
+            "labevent_id"
+          ],
+          "canonical_key_prefix": "LM:"
+        }
+      ]
+    },
+    {
+      "object_type": "Medication Administration",
+      "members": [
+        {
+          "table": "emar",
+          "primary_key": [
+            "emar_id"
+          ],
+          "canonical_key_prefix": "DOSE:"
+        }
+      ]
+    },
+    {
+      "object_type": "Procedure Episode",
+      "members": [
+        {
+          "table": "procedureevents",
+          "primary_key": [
+            "procedureevent_id"
+          ],
+          "canonical_key_prefix": "EP:"
+        }
+      ]
+    }
+  ],
+  "pair_count": 55,
+  "expected_decision_counts": {
+    "MERGE": 2,
+    "SEPARATE": 53,
+    "UNRESOLVED": 0
+  },
+  "pairs": [
+    {
+      "tables": [
+        "patients",
+        "patient_profile"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "subject_id"
+        ]
+      ],
+      "expected_same_object_type": "YES",
+      "expected_same_key_namespace": "YES",
+      "expected_decision": "MERGE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:patient_profile.subject_id",
+        "dictionary:table:patients",
+        "dictionary:table:patient_profile"
+      ],
+      "reason": "Explicit definitions identify the same actual patient/admission in the same identifier namespace; supplementary rows are optional.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 6,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 0.5,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "admissions"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "hadm_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:admissions.hadm_id",
+        "dictionary:table:patients",
+        "dictionary:table:admissions"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 15,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.8,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "admission_detail"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "hadm_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:table:patients",
+        "dictionary:table:admission_detail"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 5,
+        "intersection_count": 4,
+        "overlap_min": 0.8,
+        "coverage_A": 0.3333333333333333,
+        "coverage_B": 0.8,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "lab_order"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:lab_order.order_id",
+        "dictionary:table:patients",
+        "dictionary:table:lab_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 15,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.8,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "medication_order"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:medication_order.order_id",
+        "dictionary:table:patients",
+        "dictionary:table:medication_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 15,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.8,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "procedure_order"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:procedure_order.order_id",
+        "dictionary:table:patients",
+        "dictionary:table:procedure_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 15,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.8,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:patients",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 102,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.11764705882352941,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:patients",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 33,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.36363636363636365,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:patients",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 45,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.26666666666666666,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patients",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patients.subject_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:patients",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 12,
+        "count_B": 15,
+        "intersection_count": 12,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.8,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "admissions"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "hadm_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:admissions.hadm_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:admissions"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 15,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.4,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "admission_detail"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "hadm_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:admission_detail"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 5,
+        "intersection_count": 2,
+        "overlap_min": 0.4,
+        "coverage_A": 0.3333333333333333,
+        "coverage_B": 0.4,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "lab_order"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:lab_order.order_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:lab_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 15,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.4,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "medication_order"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:medication_order.order_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:medication_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 15,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.4,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "procedure_order"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:procedure_order.order_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:procedure_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 15,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.4,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 102,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.058823529411764705,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 33,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.18181818181818182,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 45,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.13333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "patient_profile",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "subject_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:patient_profile.subject_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:patient_profile",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 6,
+        "count_B": 15,
+        "intersection_count": 6,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.4,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "admission_detail"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "hadm_id"
+        ]
+      ],
+      "expected_same_object_type": "YES",
+      "expected_same_key_namespace": "YES",
+      "expected_decision": "MERGE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:table:admissions",
+        "dictionary:table:admission_detail"
+      ],
+      "reason": "Explicit definitions identify the same actual patient/admission in the same identifier namespace; supplementary rows are optional.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 5,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 0.3333333333333333,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "lab_order"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:lab_order.order_id",
+        "dictionary:table:admissions",
+        "dictionary:table:lab_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "medication_order"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:medication_order.order_id",
+        "dictionary:table:admissions",
+        "dictionary:table:medication_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "procedure_order"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:procedure_order.order_id",
+        "dictionary:table:admissions",
+        "dictionary:table:procedure_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:admissions",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 102,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.14705882352941177,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:admissions",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 33,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.45454545454545453,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:admissions",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 45,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admissions",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admissions.hadm_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:admissions",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "lab_order"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:lab_order.order_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:lab_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 15,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "medication_order"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:medication_order.order_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:medication_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 15,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "procedure_order"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:procedure_order.order_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:procedure_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 15,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 102,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.049019607843137254,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 33,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.15151515151515152,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 45,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.1111111111111111,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "admission_detail",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "hadm_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:admission_detail.hadm_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:admission_detail",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 5,
+        "count_B": 15,
+        "intersection_count": 5,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "lab_order",
+        "medication_order"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:lab_order.order_id",
+        "dictionary:medication_order.order_id",
+        "dictionary:table:lab_order",
+        "dictionary:table:medication_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "lab_order",
+        "procedure_order"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:lab_order.order_id",
+        "dictionary:procedure_order.order_id",
+        "dictionary:table:lab_order",
+        "dictionary:table:procedure_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "lab_order",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:lab_order.order_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:lab_order",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 102,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.14705882352941177,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "lab_order",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:lab_order.order_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:lab_order",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 33,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.45454545454545453,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "lab_order",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:lab_order.order_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:lab_order",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 45,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "lab_order",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:lab_order.order_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:lab_order",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "medication_order",
+        "procedure_order"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "order_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:medication_order.order_id",
+        "dictionary:procedure_order.order_id",
+        "dictionary:table:medication_order",
+        "dictionary:table:procedure_order"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "medication_order",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:medication_order.order_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:medication_order",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 102,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.14705882352941177,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "medication_order",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:medication_order.order_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:medication_order",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 33,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.45454545454545453,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "medication_order",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:medication_order.order_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:medication_order",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 45,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "medication_order",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:medication_order.order_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:medication_order",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "procedure_order",
+        "order_history"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "history_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:procedure_order.order_id",
+        "dictionary:order_history.history_id",
+        "dictionary:table:procedure_order",
+        "dictionary:table:order_history"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 102,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.14705882352941177,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "procedure_order",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:procedure_order.order_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:procedure_order",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 33,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.45454545454545453,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "procedure_order",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:procedure_order.order_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:procedure_order",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 45,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.3333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "procedure_order",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "order_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:procedure_order.order_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:procedure_order",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 15,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "order_history",
+        "labevents"
+      ],
+      "primary_keys": [
+        [
+          "history_id"
+        ],
+        [
+          "labevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:order_history.history_id",
+        "dictionary:labevents.labevent_id",
+        "dictionary:table:order_history",
+        "dictionary:table:labevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 102,
+        "count_B": 33,
+        "intersection_count": 33,
+        "overlap_min": 1.0,
+        "coverage_A": 0.3235294117647059,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "order_history",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "history_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:order_history.history_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:order_history",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 102,
+        "count_B": 45,
+        "intersection_count": 45,
+        "overlap_min": 1.0,
+        "coverage_A": 0.4411764705882353,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "order_history",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "history_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:order_history.history_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:order_history",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 102,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 0.14705882352941177,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "labevents",
+        "emar"
+      ],
+      "primary_keys": [
+        [
+          "labevent_id"
+        ],
+        [
+          "emar_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:labevents.labevent_id",
+        "dictionary:emar.emar_id",
+        "dictionary:table:labevents",
+        "dictionary:table:emar"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 33,
+        "count_B": 45,
+        "intersection_count": 33,
+        "overlap_min": 1.0,
+        "coverage_A": 1.0,
+        "coverage_B": 0.7333333333333333,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "labevents",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "labevent_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:labevents.labevent_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:labevents",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 33,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 0.45454545454545453,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    },
+    {
+      "tables": [
+        "emar",
+        "procedureevents"
+      ],
+      "primary_keys": [
+        [
+          "emar_id"
+        ],
+        [
+          "procedureevent_id"
+        ]
+      ],
+      "expected_same_object_type": "NO",
+      "expected_same_key_namespace": "NO",
+      "expected_decision": "SEPARATE",
+      "evidence_refs": [
+        "dictionary:emar.emar_id",
+        "dictionary:procedureevents.procedureevent_id",
+        "dictionary:table:emar",
+        "dictionary:table:procedureevents"
+      ],
+      "reason": "The complete primary keys identify different business entities or occurrence records. Equal integer values or foreign keys do not establish instance identity.",
+      "key_statistics": {
+        "count_A": 45,
+        "count_B": 15,
+        "intersection_count": 15,
+        "overlap_min": 1.0,
+        "coverage_A": 0.3333333333333333,
+        "coverage_B": 1.0,
+        "scope": "Full key sets, no sampling; complete single-column PKs, exact comparison, no lossy normalization."
+      }
+    }
+  ]
+}

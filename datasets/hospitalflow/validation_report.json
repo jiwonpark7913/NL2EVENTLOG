@@ -1,10 +1,9 @@
 {
   "table_rows": {
-    "object_type": 3,
-    "object": 72,
     "patients": 12,
     "admissions": 15,
-    "clinical_order": 45,
+    "patient_profile": 6,
+    "admission_detail": 5,
     "lab_order": 15,
     "medication_order": 15,
     "procedure_order": 15,
@@ -13,16 +12,19 @@
     "emar": 45,
     "procedureevents": 15
   },
-  "semantic_object_types": 3,
-  "object_instances": 72,
+  "semantic_object_types": 9,
+  "physical_objects": 11,
+  "identity_groups": 9,
+  "object_instances": 267,
   "object_view_coverage": [
     {
       "case_concept": "Patient",
-      "object_type": "PATIENT",
+      "object_type": "Patient",
       "case_count": 12,
-      "activity_count": 18,
+      "activity_count": 20,
       "activities": [
         "Discharge Authorized",
+        "Discharge Summary Signed",
         "Emergency Department Registered",
         "Hospital Admitted",
         "Hospital Discharged",
@@ -36,21 +38,23 @@
         "Order Cancelled",
         "Order Entered",
         "Order Reviewed",
+        "Patient Profile Verified",
         "Procedure Completed",
         "Procedure Preparation Completed",
         "Procedure Started",
         "Specimen Received"
       ],
-      "event_rows": 361,
+      "event_rows": 372,
       "cases_without_events": 1
     },
     {
       "case_concept": "Hospital Admission",
-      "object_type": "ADMISSION",
+      "object_type": "Hospital Admission",
       "case_count": 15,
-      "activity_count": 18,
+      "activity_count": 19,
       "activities": [
         "Discharge Authorized",
+        "Discharge Summary Signed",
         "Emergency Department Registered",
         "Hospital Admitted",
         "Hospital Discharged",
@@ -69,36 +73,12 @@
         "Procedure Started",
         "Specimen Received"
       ],
-      "event_rows": 361,
-      "cases_without_events": 0
-    },
-    {
-      "case_concept": "Clinical Order",
-      "object_type": "CLINICAL_ORDER",
-      "case_count": 45,
-      "activity_count": 14,
-      "activities": [
-        "Lab Measurement Charted",
-        "Lab Result Available",
-        "Lab Results Verified",
-        "Medication Administered",
-        "Medication Dispensed",
-        "Medication Not Given",
-        "Medication Stopped",
-        "Order Cancelled",
-        "Order Entered",
-        "Order Reviewed",
-        "Procedure Completed",
-        "Procedure Preparation Completed",
-        "Procedure Started",
-        "Specimen Received"
-      ],
-      "event_rows": 310,
+      "event_rows": 366,
       "cases_without_events": 0
     },
     {
       "case_concept": "Laboratory Order",
-      "object_type": "CLINICAL_ORDER",
+      "object_type": "Laboratory Order",
       "case_count": 15,
       "activity_count": 6,
       "activities": [
@@ -114,7 +94,7 @@
     },
     {
       "case_concept": "Medication Order",
-      "object_type": "CLINICAL_ORDER",
+      "object_type": "Medication Order",
       "case_count": 15,
       "activity_count": 6,
       "activities": [
@@ -130,7 +110,7 @@
     },
     {
       "case_concept": "Procedure Order",
-      "object_type": "CLINICAL_ORDER",
+      "object_type": "Procedure Order",
       "case_count": 15,
       "activity_count": 6,
       "activities": [
@@ -143,19 +123,70 @@
       ],
       "event_rows": 78,
       "cases_without_events": 0
+    },
+    {
+      "case_concept": "Order History Record",
+      "object_type": "Order History Record",
+      "case_count": 102,
+      "activity_count": 3,
+      "activities": [
+        "Order Cancelled",
+        "Order Entered",
+        "Order Reviewed"
+      ],
+      "event_rows": 102,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Lab Measurement",
+      "object_type": "Lab Measurement",
+      "case_count": 33,
+      "activity_count": 2,
+      "activities": [
+        "Lab Measurement Charted",
+        "Lab Result Available"
+      ],
+      "event_rows": 66,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Medication Administration",
+      "object_type": "Medication Administration",
+      "case_count": 45,
+      "activity_count": 2,
+      "activities": [
+        "Medication Administered",
+        "Medication Not Given"
+      ],
+      "event_rows": 45,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Procedure Episode",
+      "object_type": "Procedure Episode",
+      "case_count": 15,
+      "activity_count": 2,
+      "activities": [
+        "Procedure Completed",
+        "Procedure Started"
+      ],
+      "event_rows": 30,
+      "cases_without_events": 0
     }
   ],
   "activity_counts": {
+    "Patient Profile Verified": 6,
     "Emergency Department Registered": 8,
     "Hospital Admitted": 15,
     "Discharge Authorized": 14,
     "Hospital Discharged": 14,
-    "Order Entered": 45,
-    "Order Reviewed": 54,
+    "Discharge Summary Signed": 5,
     "Specimen Received": 13,
     "Lab Measurement Charted": 33,
     "Lab Result Available": 33,
     "Lab Results Verified": 13,
+    "Order Entered": 45,
+    "Order Reviewed": 54,
     "Medication Dispensed": 15,
     "Medication Administered": 40,
     "Medication Stopped": 14,
@@ -165,36 +196,37 @@
     "Medication Not Given": 5,
     "Order Cancelled": 3
   },
-  "events": 361,
-  "total_questions": 28,
-  "answerable_questions": 26,
+  "events": 372,
+  "total_questions": 40,
+  "answerable_questions": 38,
   "timestamp_summary": {
-    "timestamp_columns": 17,
-    "event_timestamp_columns": 15,
+    "timestamp_columns": 19,
+    "event_timestamp_columns": 17,
     "other_timestamp_columns": 2,
     "date_only_columns": [],
-    "baseline_timestamp_columns": 17
+    "baseline_timestamp_columns": 19
   },
   "checks": {
-    "wrong_registry_type": true,
-    "wrong_subtype": true,
-    "cross_admission_patient": true,
-    "type_change_rejected": true,
-    "orphan_event": true,
+    "orphan_order": true,
+    "orphan_history": true,
+    "ambiguous_history_order": true,
     "gold_sql_matches_independent_generation_history": true,
     "exact_question_pairs": true,
-    "subtypes_partition_common_type": true,
-    "local_ids_overlap_without_case_collision": true,
+    "independent_order_identities": true,
     "patient_multiple_admissions": true,
     "pending_cancelled_and_empty_cases": true
   },
   "validation_scope": "Internal construction consistency, not model extraction accuracy or clinical realism evaluation.",
   "persisted_artifact_validation": {
-    "gold_csvs_verified": 26,
-    "common_type_equals_disjoint_subtype_union": true,
-    "physical_event_columns_covered": 15,
-    "cross_admission_leakage": false,
-    "repeated_occurrences_preserved": true,
+    "gold_csvs_verified": 38,
+    "physical_objects": 11,
+    "expected_identity_groups": 9,
+    "expected_positive_pairs_verified": 2,
+    "full_gold_pair_count": 55,
+    "actual_identity_classifier_run": false,
+    "split_storage_events_preserve_sources_and_occurrences": true,
+    "own_and_fk_attribution_verified": true,
+    "physical_event_columns_covered": 17,
     "frozen_llm_pairs_verified": true,
     "schema_round_trip": true
   }

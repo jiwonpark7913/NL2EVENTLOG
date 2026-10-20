@@ -1,0 +1,52 @@
+{
+  "scope": "Isolated authored test specifications; not extra live HospitalFlow tables or measured classifier results.",
+  "cases": [
+    {
+      "name": "independent_patient_namespace",
+      "same_object_type": "YES",
+      "same_key_namespace": "NO",
+      "mapping": "ABSENT",
+      "expected_decision": "UNRESOLVED",
+      "definition": "Two patient systems independently allocate integer IDs; no correspondence is supplied."
+    },
+    {
+      "name": "partial_overlap_without_identity_documentation",
+      "same_object_type": "UNKNOWN",
+      "same_key_namespace": "UNKNOWN",
+      "mapping": "ABSENT",
+      "expected_decision": "UNRESOLVED",
+      "definition": "Two full 1000-key sets share 300 keys; overlap alone is insufficient."
+    },
+    {
+      "name": "empty_identity_evidence",
+      "keys_A": [],
+      "keys_B": [],
+      "coverage_A": null,
+      "coverage_B": null,
+      "overlap_min": null,
+      "expected_decision": "UNRESOLVED"
+    },
+    {
+      "name": "composite_key_partial_match",
+      "pk_A": [
+        "patient_id",
+        "visit_sequence"
+      ],
+      "pk_B": [
+        "patient_id"
+      ],
+      "expected_decision": "SEPARATE",
+      "definition": "An admission is not its patient; do not discard visit_sequence."
+    },
+    {
+      "name": "mapping_group_conflict",
+      "edges": [
+        "A-B supported",
+        "B-C supported",
+        "A-C contradicted"
+      ],
+      "expected_decision": "UNRESOLVED",
+      "definition": "Do not take transitive closure through a conflict."
+    }
+  ]
+}

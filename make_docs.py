@@ -52,6 +52,8 @@ def build(name,positions,title):
    for group in groups.values():
     group.sort(key=lambda r:r["seq"]);childcols={r["from"] for r in group};card="0..1" if any(u<=childcols for u in unique_sets) else "0..N"
     relationships.append(dict(parent=group[0]["table"],child=n,label="1 : "+card,logical=False,from_col=", ".join(r["from"] for r in group),to_col=", ".join(r["to"] for r in group)))
+ if name=="hospitalflow":
+  relationships.append(dict(parent="patients",child="patient_profile",label="documented same identity; no FK",logical=True,from_col="subject_id",to_col="subject_id"))
  if name=="plateflow":
   relationships += [dict(parent=t,child="material_operation_history",label="logical 1 : 0..N",logical=True,from_col="material_id",to_col="material_id" if t=="as_rolled_material" else "plate_material_id") for t in ["as_rolled_material","plate_material"]]
  js=lambda n,o:(out/n).write_text(json.dumps(o,indent=2)+"\n")
@@ -91,6 +93,13 @@ def build(name,positions,title):
    gutter=20 if left else width-20;mid=ty-35
    waypoints=[(gutter,sy),(gutter,mid),(tx,mid)]
    port_style=f"exitX={0 if left else 1};exitY=0.5;entryX=0.5;entryY=0;"
+  if name=="hospitalflow" and grid[r["parent"]][1]==grid[r["child"]][1] and abs(grid[r["parent"]][0]-grid[r["child"]][0])>1:
+   sx=x1+bw/2;sy=y1;tx=x2+bw/2;ty=y2;lane=y1-30
+   waypoints=[(sx,lane),(tx,lane)];port_style="exitX=0.5;exitY=0;entryX=0.5;entryY=0;"
+  if name=="hospitalflow" and grid[r["child"]][1]-grid[r["parent"]][1]>1:
+   col=grid[r["parent"]][0];left=col==0;sx=x1 if left else x1+bw;sy=y1+h1/2;tx=x2+bw/2;ty=y2
+   gutter=20 if left else x1+bw+25
+   waypoints=[(gutter,sy),(gutter,ty-30),(tx,ty-30)];port_style=f"exitX={0 if left else 1};exitY=0.5;entryX=0.5;entryY=0;"
   path=f"M {sx} {sy} "+(" ".join(f"L {px} {py}" for px,py in waypoints) if waypoints else f"L {sx} {mid} L {tx} {mid}")+f" L {tx} {ty}"
   dash=' stroke-dasharray="7 5"' if r["logical"] else ""
   edge_svg.append(f'<path d="{path}" fill="none" stroke="#69788e" stroke-width="2"{dash}/>')
@@ -148,7 +157,7 @@ build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130
 build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
 
 build("universityflow",{"student":(65,130),"course":(575,130),"instructor":(1085,130),"degree_examination_result":(65,480),"registration":(575,480),"assignment":(1085,480),"task":(65,830),"simulation_module":(575,830),"assignment_grading":(1085,830),"thesis":(65,1180),"student_simulation_experiment_result":(575,1180)},"UniversityFlow · combined RSchema examples")
-build("hospitalflow",{"object_type":(65,130),"object":(575,130),"patients":(1085,130),"admissions":(1085,480),"clinical_order":(575,480),"order_history":(65,480),"lab_order":(65,830),"medication_order":(575,830),"procedure_order":(1085,830),"labevents":(65,1180),"emar":(575,1180),"procedureevents":(1085,1180)},"HospitalFlow · MIMIC-inspired synthetic")
+build("hospitalflow",{"patients":(65,130),"patient_profile":(575,130),"admissions":(1085,130),"lab_order":(65,480),"medication_order":(575,480),"procedure_order":(1085,480),"labevents":(65,830),"emar":(575,830),"procedureevents":(1085,830),"order_history":(65,1180),"admission_detail":(1085,1180)},"HospitalFlow · split business-object storage")
 format_documents(ROOT)
 
 from timestamp_inventory import refresh

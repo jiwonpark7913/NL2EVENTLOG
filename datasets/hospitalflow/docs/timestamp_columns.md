@@ -8,6 +8,8 @@
 | admissions | admittime | actual event time | Yes | 15 |
 | admissions | discharge_authorized_at | actual event time | Yes | 14 |
 | admissions | dischtime | actual event time | Yes | 14 |
+| patient_profile | profile_verified_at | actual event time | Yes | 6 |
+| admission_detail | discharge_summary_signed_at | actual event time | Yes | 5 |
 | lab_order | specimen_received_at | actual event time | Yes | 13 |
 | lab_order | results_verified_at | actual event time | Yes | 13 |
 | medication_order | dispensed_at | actual event time | Yes | 15 |

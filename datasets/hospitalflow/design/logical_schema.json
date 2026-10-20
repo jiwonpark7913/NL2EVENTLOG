@@ -1,70 +1,5 @@
 [
   {
-    "table": "object_type",
-    "definition": "Semantic object types shared across business tables; not activities or case instances.",
-    "columns": [
-      {
-        "name": "type_code",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Semantic type code, constrained by a foreign key or registry membership trigger.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "type_name",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "English name of the semantic object type.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "definition",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Definition of the semantic object type.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      }
-    ],
-    "primary_key": [
-      "type_code"
-    ],
-    "foreign_keys": [],
-    "event_encoding": "No event encoding",
-    "encoding_detail": "Type, identity or context only; does not store an event."
-  },
-  {
-    "table": "object",
-    "definition": "Globally unique object identities and their semantic types; no events are stored here.",
-    "columns": [
-      {
-        "name": "object_id",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "type_code",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Semantic type code, constrained by a foreign key or registry membership trigger.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      }
-    ],
-    "primary_key": [
-      "object_id"
-    ],
-    "foreign_keys": [
-      {
-        "column": "type_code",
-        "parent_table": "object_type",
-        "parent_column": "type_code"
-      }
-    ],
-    "event_encoding": "No event encoding",
-    "encoding_detail": "Type, identity or context only; does not store an event."
-  },
-  {
     "table": "patients",
     "definition": "Synthetic patient identity, inspired by MIMIC subject_id.",
     "columns": [
@@ -73,13 +8,6 @@
         "type": "INTEGER",
         "constraints": "See executable table DDL",
         "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "object_id",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -93,13 +21,7 @@
     "primary_key": [
       "subject_id"
     ],
-    "foreign_keys": [
-      {
-        "column": "object_id",
-        "parent_table": "object",
-        "parent_column": "object_id"
-      }
-    ],
+    "foreign_keys": [],
     "event_encoding": "No event encoding",
     "encoding_detail": "Type, identity or context only; does not store an event."
   },
@@ -119,13 +41,6 @@
         "type": "INTEGER",
         "constraints": "See executable table DDL",
         "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "object_id",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -162,11 +77,6 @@
     ],
     "foreign_keys": [
       {
-        "column": "object_id",
-        "parent_table": "object",
-        "parent_column": "object_id"
-      },
-      {
         "column": "subject_id",
         "parent_table": "patients",
         "parent_column": "subject_id"
@@ -176,16 +86,9 @@
     "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
   },
   {
-    "table": "clinical_order",
-    "definition": "Authored common parent for laboratory, medication and procedure orders; not a MIMIC table.",
+    "table": "patient_profile",
+    "definition": "Optional additional information for the SAME patient identified by patients.subject_id, in the SAME identifier namespace. A matching subject_id denotes the same actual patient. No FK is declared; this identity relationship is explicitly documented. Authored split-storage extension.",
     "columns": [
-      {
-        "name": "object_id",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
       {
         "name": "subject_id",
         "type": "INTEGER",
@@ -194,6 +97,32 @@
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
+        "name": "profile_verified_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Actual verification of supplementary patient information; one-time milestone for the same patient, not a separate profile object.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "preferred_language",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic preferred language.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
+    ],
+    "primary_key": [
+      "subject_id"
+    ],
+    "foreign_keys": [],
+    "event_encoding": "Column encoding",
+    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+  },
+  {
+    "table": "admission_detail",
+    "definition": "Optional additional information for the SAME hospital stay identified by admissions.hadm_id. A matching hadm_id denotes the same actual admission. Only a subset of admissions has a signed summary. Authored split-storage extension.",
+    "columns": [
+      {
         "name": "hadm_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
@@ -201,59 +130,49 @@
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
-        "name": "order_kind",
+        "name": "discharge_summary_signed_at",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "definition": "Actual signing time of the summary for the same hospital admission; not a separate admission instance.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "summary_status",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "SIGNED; a recorded signed summary is present.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
     "primary_key": [
-      "object_id"
+      "hadm_id"
     ],
     "foreign_keys": [
       {
         "column": "hadm_id",
         "parent_table": "admissions",
         "parent_column": "hadm_id"
-      },
-      {
-        "column": "subject_id",
-        "parent_table": "admissions",
-        "parent_column": "subject_id"
-      },
-      {
-        "column": "object_id",
-        "parent_table": "object",
-        "parent_column": "object_id"
       }
     ],
-    "event_encoding": "No event encoding",
-    "encoding_detail": "Type, identity or context only; does not store an event."
+    "event_encoding": "Column encoding",
+    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
   },
   {
     "table": "lab_order",
-    "definition": "Authored laboratory-order subtype; several measurements may belong to one order.",
+    "definition": "Distinct laboratory order; several measurements may belong to one order.",
     "columns": [
       {
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
-        "name": "object_id",
-        "type": "TEXT",
+        "name": "hadm_id",
+        "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "order_kind",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "definition": "Synthetic unique hospital admission identity.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -276,14 +195,9 @@
     ],
     "foreign_keys": [
       {
-        "column": "object_id",
-        "parent_table": "clinical_order",
-        "parent_column": "object_id"
-      },
-      {
-        "column": "order_kind",
-        "parent_table": "clinical_order",
-        "parent_column": "order_kind"
+        "column": "hadm_id",
+        "parent_table": "admissions",
+        "parent_column": "hadm_id"
       }
     ],
     "event_encoding": "Column encoding",
@@ -291,27 +205,20 @@
   },
   {
     "table": "medication_order",
-    "definition": "Authored medication-order subtype; repeated doses belong to one order.",
+    "definition": "Distinct medication order; repeated doses belong to one order.",
     "columns": [
       {
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
-        "name": "object_id",
-        "type": "TEXT",
+        "name": "hadm_id",
+        "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "order_kind",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "definition": "Synthetic unique hospital admission identity.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -341,14 +248,9 @@
     ],
     "foreign_keys": [
       {
-        "column": "object_id",
-        "parent_table": "clinical_order",
-        "parent_column": "object_id"
-      },
-      {
-        "column": "order_kind",
-        "parent_table": "clinical_order",
-        "parent_column": "order_kind"
+        "column": "hadm_id",
+        "parent_table": "admissions",
+        "parent_column": "hadm_id"
       }
     ],
     "event_encoding": "Column encoding",
@@ -356,27 +258,20 @@
   },
   {
     "table": "procedure_order",
-    "definition": "Authored procedure-order subtype; repeated execution episodes belong to one order.",
+    "definition": "Distinct procedure order; repeated execution episodes belong to one order.",
     "columns": [
       {
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
-        "name": "object_id",
-        "type": "TEXT",
+        "name": "hadm_id",
+        "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "order_kind",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "LAB, MED or PROC; composite FK enforces membership in the matching common-parent subtype.",
+        "definition": "Synthetic unique hospital admission identity.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -399,14 +294,9 @@
     ],
     "foreign_keys": [
       {
-        "column": "object_id",
-        "parent_table": "clinical_order",
-        "parent_column": "object_id"
-      },
-      {
-        "column": "order_kind",
-        "parent_table": "clinical_order",
-        "parent_column": "order_kind"
+        "column": "hadm_id",
+        "parent_table": "admissions",
+        "parent_column": "hadm_id"
       }
     ],
     "event_encoding": "Column encoding",
@@ -424,10 +314,24 @@
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
-        "name": "object_id",
-        "type": "TEXT",
+        "name": "lab_order_id",
+        "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Global object identity; distinct from local subtype order_id.",
+        "definition": "FK to a distinct laboratory order; exactly one order FK is non-null per history row.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "medication_order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "FK to a distinct medication order; exactly one order FK is non-null per history row.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "procedure_order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "FK to a distinct procedure order; exactly one order FK is non-null per history row.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -450,9 +354,19 @@
     ],
     "foreign_keys": [
       {
-        "column": "object_id",
-        "parent_table": "clinical_order",
-        "parent_column": "object_id"
+        "column": "procedure_order_id",
+        "parent_table": "procedure_order",
+        "parent_column": "order_id"
+      },
+      {
+        "column": "medication_order_id",
+        "parent_table": "medication_order",
+        "parent_column": "order_id"
+      },
+      {
+        "column": "lab_order_id",
+        "parent_table": "lab_order",
+        "parent_column": "order_id"
       }
     ],
     "event_encoding": "Row encoding",
@@ -473,7 +387,7 @@
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -540,7 +454,7 @@
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -593,7 +507,7 @@
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Subtype-local order identity; deliberately overlaps across the three order tables.",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {

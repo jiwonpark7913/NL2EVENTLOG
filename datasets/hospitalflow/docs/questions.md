@@ -4,10 +4,10 @@
 
 | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
 | --- | --- | --- | --- | --- |
-| Q1 | 8 | 7 | 1 | 3.25 |
-| Q2 | 8 | 7 | 1 | 3.25 |
-| Q3 | 6 | 6 | 0 | 11.33 |
-| Q4 | 6 | 6 | 0 | 11.33 |
+| Q1 | 11 | 10 | 1 | 2.73 |
+| Q2 | 11 | 10 | 1 | 2.73 |
+| Q3 | 9 | 9 | 0 | 7.33 |
+| Q4 | 9 | 9 | 0 | 7.33 |
 
 - Average includes all requests in the type, including unsupported activity requests.
 - Process View includes the case concept and activity scope. Q3/Q4 leave the scope implicit via the catalog.
@@ -15,10 +15,10 @@
 
 | ID | Type | Paired with | Answerability | Requested activities | Extractable activities | Question |
 | --- | --- | --- | --- | --- | --- | --- |
-| H01 | Q1 | H01P | Answerable | 3 | 3 | For each clinical order, extract Order Entered, Order Reviewed and Order Cancelled events. |
-| H01P | Q2 | H01 | Answerable | 3 | 3 | Build a separate timeline for every clinical order showing when it was placed, checked and, if applicable, cancelled. |
-| H02 | Q1 | H02P | Answerable | 3 | 3 | For each clinical order, extract Lab Result Available, Medication Administered and Procedure Completed events. |
-| H02P | Q2 | H02 | Answerable | 3 | 3 | For every clinical order, show the recorded times when its laboratory findings became available, its medicine was given or its procedure finished, as applicable. |
+| H01 | Q1 | H01P | Answerable | 3 | 3 | For each hospital admission, extract Order Entered, Order Reviewed and Order Cancelled events. |
+| H01P | Q2 | H01 | Answerable | 3 | 3 | For every hospital stay, build a timeline of when its orders were placed, checked and, if applicable, cancelled. |
+| H02 | Q1 | H02P | Answerable | 3 | 3 | For each hospital admission, extract Lab Result Available, Medication Administered and Procedure Completed events. |
+| H02P | Q2 | H02 | Answerable | 3 | 3 | For every hospital stay, show when laboratory findings became available, medicines were given and procedures finished. |
 | H03 | Q1 | H03P | Answerable | 3 | 3 | For each laboratory order, extract Lab Measurement Charted, Lab Result Available and Lab Results Verified events. |
 | H03P | Q2 | H03 | Answerable | 3 | 3 | For every laboratory order, show when each measurement was charted, when its findings became accessible and when the order's results were verified. |
 | H04 | Q1 | H04P | Answerable | 4 | 4 | For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events. |
@@ -29,17 +29,29 @@
 | H06P | Q2 | H06 | Answerable | 4 | 4 | For every hospital stay, show arrival registration in the emergency department, admission, authorization to leave and actual discharge. |
 | H07 | Q1 | H07P | Answerable | 5 | 5 | For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events. |
 | H07P | Q2 | H07 | Answerable | 5 | 5 | For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures. |
-| H08 | Q1 | H08P | Non-answerable | 1 | 0 | For each clinical order, extract Insurance Claim Paid events. |
-| H08P | Q2 | H08 | Non-answerable | 1 | 0 | For every clinical order, show when its insurance claim was settled by payment. |
-| HF01 | Q3 | HF01P | Answerable | 18 | 18 | Extract the full recorded lifecycle for each patient. |
-| HF01P | Q4 | HF01 | Answerable | 18 | 18 | Build a complete timeline of all recorded care events for every patient. |
-| HF02 | Q3 | HF02P | Answerable | 18 | 18 | Extract the full recorded lifecycle for each hospital admission. |
-| HF02P | Q4 | HF02 | Answerable | 18 | 18 | Show the entire recorded history of each individual hospital stay. |
-| HF03 | Q3 | HF03P | Answerable | 14 | 14 | Extract the full recorded lifecycle for each clinical order. |
-| HF03P | Q4 | HF03 | Answerable | 14 | 14 | Trace each clinical order through its complete recorded history. |
+| H08 | Q1 | H08P | Non-answerable | 1 | 0 | For each hospital admission, extract Insurance Claim Paid events. |
+| H08P | Q2 | H08 | Non-answerable | 1 | 0 | For each hospital stay, show when its insurance claim was settled by payment. |
+| HF01 | Q3 | HF01P | Answerable | 20 | 20 | Extract the full recorded lifecycle for each patient. |
+| HF01P | Q4 | HF01 | Answerable | 20 | 20 | Build a complete timeline of all recorded care events for every patient. |
+| HF02 | Q3 | HF02P | Answerable | 19 | 19 | Extract the full recorded lifecycle for each hospital admission. |
+| HF02P | Q4 | HF02 | Answerable | 19 | 19 | Show the entire recorded history of each individual hospital stay. |
+| HF03 | Q3 | HF03P | Answerable | 3 | 3 | Extract the full recorded lifecycle for each order history record. |
+| HF03P | Q4 | HF03 | Answerable | 3 | 3 | Show the complete recorded history of every individual order history record. |
 | HF04 | Q3 | HF04P | Answerable | 6 | 6 | Extract the full recorded lifecycle for each laboratory order. |
 | HF04P | Q4 | HF04 | Answerable | 6 | 6 | Show everything recorded over the life of each laboratory order. |
 | HF05 | Q3 | HF05P | Answerable | 6 | 6 | Extract the full recorded lifecycle for each medication order. |
 | HF05P | Q4 | HF05 | Answerable | 6 | 6 | Build the complete recorded history of each medication order. |
 | HF06 | Q3 | HF06P | Answerable | 6 | 6 | Extract the full recorded lifecycle for each procedure order. |
 | HF06P | Q4 | HF06 | Answerable | 6 | 6 | Trace the whole recorded lifecycle of every procedure order. |
+| H09 | Q1 | H09P | Answerable | 1 | 1 | For each patient, extract Patient Profile Verified events. |
+| H09P | Q2 | H09 | Answerable | 1 | 1 | For each patient, show when their supplementary personal information was verified. |
+| H10 | Q1 | H10P | Answerable | 1 | 1 | For each hospital admission, extract Discharge Summary Signed events. |
+| H10P | Q2 | H10 | Answerable | 1 | 1 | For each hospital stay, show when its discharge summary was signed. |
+| H11 | Q1 | H11P | Answerable | 2 | 2 | For each patient, extract Patient Profile Verified and Hospital Admitted events. |
+| H11P | Q2 | H11 | Answerable | 2 | 2 | Build a timeline for every patient showing verification of their supplementary personal information and their entries into hospital. |
+| HF07 | Q3 | HF07P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each lab measurement. |
+| HF07P | Q4 | HF07 | Answerable | 2 | 2 | Show the entire recorded history of each individual laboratory measurement. |
+| HF08 | Q3 | HF08P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each medication administration. |
+| HF08P | Q4 | HF08 | Answerable | 2 | 2 | Build the complete recorded history of every individual medication administration record. |
+| HF09 | Q3 | HF09P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each procedure episode. |
+| HF09P | Q4 | HF09 | Answerable | 2 | 2 | Trace each individual procedure episode through its whole recorded lifecycle. |

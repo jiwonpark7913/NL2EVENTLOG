@@ -1,22 +1,27 @@
 {
-  "entities": [
-    "Patient",
-    "Hospital Admission",
-    "Clinical Order"
-  ],
-  "subtypes": {
-    "Clinical Order": [
-      "Laboratory Order",
-      "Medication Order",
-      "Procedure Order"
+  "meaning": "Multiple physical representations of the same instance, not a shared parent for distinct order kinds",
+  "physical_objects": 11,
+  "expected_groups": 9,
+  "same_identity_examples": [
+    [
+      "patients",
+      "patient_profile"
+    ],
+    [
+      "admissions",
+      "admission_detail"
     ]
-  },
-  "relations": [
-    "Patient 1:N Hospital Admission",
-    "Hospital Admission 1:N Clinical Order",
-    "Clinical Order has exactly one subtype",
-    "Order subtype 1:N occurrence records"
   ],
-  "object_type_count": 3,
-  "case_population_scope_count": 6
+  "different_identity_examples": [
+    [
+      "lab_order",
+      "medication_order"
+    ],
+    [
+      "order_history",
+      "lab_order"
+    ]
+  ],
+  "gold_location": "private/identity_gold.json",
+  "classifier_executed": false
 }

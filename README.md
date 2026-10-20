@@ -9,11 +9,11 @@
 | [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 6 | 6 | 394 | 34 | 32 |
 | [UniversityFlow](datasets/universityflow/README.md) | 11 | 11 | 41 | 40 | 40 | 808 | 70 | 66 |
 | [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 39 | 39 | 31 | 1108 | 44 | 42 |
-| [HospitalFlow](datasets/hospitalflow/README.md) | 12 | 3 | 18 | 17 | 15 | 361 | 28 | 26 |
+| [HospitalFlow](datasets/hospitalflow/README.md) | 11 | 9 | 20 | 19 | 17 | 372 | 40 | 38 |
 
 - **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
-- **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. Activity-history tables, extraction indexes and reference tables are excluded.
-- **HospitalFlow counting:** three explicitly registered semantic types and six case population scopes. Laboratory/medication/procedure scopes restrict Clinical Order; they are not three extra types. Existing datasets count table-based case concepts and do not yet have this semantic registry.
+- **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. History-only storage, extraction indexes and reference tables are generally excluded; HospitalFlow explicitly includes independently keyed history/occurrence cases for identity-separation tests.
+- **HospitalFlow counting:** 11 physical table/PK representations form 9 expected identity-compatible groups. Two pairs split the same patient/admission across tables; occurrence records retain their own identities. Gold membership is private evaluation data.
 - **Case:** the object used to group a timeline, such as a transaction, student or plate piece.
 - **Event:** one actual recorded action with an event identity and occurrence time.
 - **Gold:** expected answer for one question; paraphrase pairs may have identical logs.
@@ -45,7 +45,7 @@
 ## HospitalFlow
 
 - [Objects, shared object types, activities and files](datasets/hospitalflow/README.md)
-- MIMIC-inspired public schema concepts with fully synthetic records. Three order tables share Clinical Order type while retaining distinct cases.
+- MIMIC-inspired synthetic hospital records with optional same-patient and same-admission split storage; no generic object/type registry.
 
 ![HospitalFlow schema](datasets/hospitalflow/docs/schema.png)
 
@@ -78,10 +78,10 @@
 | PlateFlow | Q2 | 13 | 12 | 1 | 2.77 |
 | PlateFlow | Q3 | 9 | 9 | 0 | 17.33 |
 | PlateFlow | Q4 | 9 | 9 | 0 | 17.33 |
-| HospitalFlow | Q1 | 8 | 7 | 1 | 3.25 |
-| HospitalFlow | Q2 | 8 | 7 | 1 | 3.25 |
-| HospitalFlow | Q3 | 6 | 6 | 0 | 11.33 |
-| HospitalFlow | Q4 | 6 | 6 | 0 | 11.33 |
+| HospitalFlow | Q1 | 11 | 10 | 1 | 2.73 |
+| HospitalFlow | Q2 | 11 | 10 | 1 | 2.73 |
+| HospitalFlow | Q3 | 9 | 9 | 0 | 7.33 |
+| HospitalFlow | Q4 | 9 | 9 | 0 | 7.33 |
 
 - Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
@@ -93,11 +93,11 @@
 
 ## HospitalFlow construction and validation
 
-- HospitalFlow adds an explicit semantic object/type registry. Its laboratory, medication and procedure tables share Clinical Order type; individual cases remain distinct.
+- HospitalFlow tests identity-compatible grouping of patients/patient_profile and admissions/admission_detail. Different order types and history records stay separate; grouping answers are private.
 - Q1/Q3 seeds are frozen before the assistant LLM creates Q2/Q4 paraphrases. Saved prompts and outputs document this process; no external model/API call is claimed.
 - Existing datasets retain their prior questions; the new LLM paraphrase provenance applies to HospitalFlow.
 - Run `python datasets/hospitalflow/build.py`, `python make_docs.py`, `python question_summary.py`, `python validate_lifecycles.py` and `python validate_timestamp_columns.py` from the repository root.
-- HospitalFlow uses 17 timestamp columns from its initial design; its baseline count does not indicate a prior released version.
+- HospitalFlow uses 19 timestamp columns in the corrected business-table design; its baseline count is the count before any further milestone expansion.
 
 ## Timestamp columns
 
@@ -108,4 +108,4 @@
 | WarehouseFlow | 2 | 6 | 6 |
 | UniversityFlow | 14 | 40 | 40 |
 | PlateFlow | 37 | 39 | 31 |
-| HospitalFlow | 17 | 17 | 15 |
+| HospitalFlow | 19 | 19 | 17 |

@@ -1,65 +1,58 @@
 {
-  "table_count": 12,
+  "table_count": 11,
   "tables": {
-    "object_type": {
-      "row_count": 3,
-      "column_count": 3,
-      "primary_key": [
-        "type_code"
-      ]
-    },
-    "object": {
-      "row_count": 72,
-      "column_count": 2,
-      "primary_key": [
-        "object_id"
-      ]
-    },
     "patients": {
       "row_count": 12,
-      "column_count": 3,
+      "column_count": 2,
       "primary_key": [
         "subject_id"
       ]
     },
     "admissions": {
       "row_count": 15,
-      "column_count": 7,
+      "column_count": 6,
       "primary_key": [
         "hadm_id"
       ]
     },
-    "clinical_order": {
-      "row_count": 45,
-      "column_count": 4,
+    "patient_profile": {
+      "row_count": 6,
+      "column_count": 3,
       "primary_key": [
-        "object_id"
+        "subject_id"
+      ]
+    },
+    "admission_detail": {
+      "row_count": 5,
+      "column_count": 3,
+      "primary_key": [
+        "hadm_id"
       ]
     },
     "lab_order": {
       "row_count": 15,
-      "column_count": 5,
+      "column_count": 4,
       "primary_key": [
         "order_id"
       ]
     },
     "medication_order": {
       "row_count": 15,
-      "column_count": 6,
+      "column_count": 5,
       "primary_key": [
         "order_id"
       ]
     },
     "procedure_order": {
       "row_count": 15,
-      "column_count": 5,
+      "column_count": 4,
       "primary_key": [
         "order_id"
       ]
     },
     "order_history": {
       "row_count": 102,
-      "column_count": 4,
+      "column_count": 6,
       "primary_key": [
         "history_id"
       ]
@@ -88,30 +81,6 @@
   },
   "relationships": [
     {
-      "parent": "object_type",
-      "child": "object",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "type_code",
-      "to_col": "type_code"
-    },
-    {
-      "parent": "object",
-      "child": "patients",
-      "label": "1 : 0..1",
-      "logical": false,
-      "from_col": "object_id",
-      "to_col": "object_id"
-    },
-    {
-      "parent": "object",
-      "child": "admissions",
-      "label": "1 : 0..1",
-      "logical": false,
-      "from_col": "object_id",
-      "to_col": "object_id"
-    },
-    {
       "parent": "patients",
       "child": "admissions",
       "label": "1 : 0..N",
@@ -121,51 +90,59 @@
     },
     {
       "parent": "admissions",
-      "child": "clinical_order",
+      "child": "admission_detail",
       "label": "1 : 0..N",
       "logical": false,
-      "from_col": "hadm_id, subject_id",
-      "to_col": "hadm_id, subject_id"
+      "from_col": "hadm_id",
+      "to_col": "hadm_id"
     },
     {
-      "parent": "object",
-      "child": "clinical_order",
-      "label": "1 : 0..1",
-      "logical": false,
-      "from_col": "object_id",
-      "to_col": "object_id"
-    },
-    {
-      "parent": "clinical_order",
+      "parent": "admissions",
       "child": "lab_order",
-      "label": "1 : 0..1",
+      "label": "1 : 0..N",
       "logical": false,
-      "from_col": "object_id, order_kind",
-      "to_col": "object_id, order_kind"
+      "from_col": "hadm_id",
+      "to_col": "hadm_id"
     },
     {
-      "parent": "clinical_order",
+      "parent": "admissions",
       "child": "medication_order",
-      "label": "1 : 0..1",
+      "label": "1 : 0..N",
       "logical": false,
-      "from_col": "object_id, order_kind",
-      "to_col": "object_id, order_kind"
+      "from_col": "hadm_id",
+      "to_col": "hadm_id"
     },
     {
-      "parent": "clinical_order",
+      "parent": "admissions",
       "child": "procedure_order",
-      "label": "1 : 0..1",
+      "label": "1 : 0..N",
       "logical": false,
-      "from_col": "object_id, order_kind",
-      "to_col": "object_id, order_kind"
+      "from_col": "hadm_id",
+      "to_col": "hadm_id"
     },
     {
-      "parent": "clinical_order",
+      "parent": "procedure_order",
       "child": "order_history",
       "label": "1 : 0..N",
       "logical": false,
-      "from_col": "object_id",
-      "to_col": "object_id"
+      "from_col": "procedure_order_id",
+      "to_col": "order_id"
+    },
+    {
+      "parent": "medication_order",
+      "child": "order_history",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "medication_order_id",
+      "to_col": "order_id"
+    },
+    {
+      "parent": "lab_order",
+      "child": "order_history",
+      "label": "1 : 0..N",
+      "logical": false,
+      "from_col": "lab_order_id",
+      "to_col": "order_id"
     },
     {
       "parent": "lab_order",
@@ -190,6 +167,14 @@
       "logical": false,
       "from_col": "order_id",
       "to_col": "order_id"
+    },
+    {
+      "parent": "patients",
+      "child": "patient_profile",
+      "label": "documented same identity; no FK",
+      "logical": true,
+      "from_col": "subject_id",
+      "to_col": "subject_id"
     }
   ]
 }
