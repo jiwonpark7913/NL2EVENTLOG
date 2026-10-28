@@ -1,0 +1,976 @@
+{
+  "name": "PlateFlow New",
+  "language": "en",
+  "timezone": "UTC",
+  "dbms": "SQLite",
+  "description": "Synthetic plate-manufacturing business records with explicitly declared identifiers and relationships.",
+  "tables": [
+    {
+      "table": "slab_material",
+      "definition": "Slab identity, steel grade and actual receipt, verification and release times.",
+      "columns": [
+        {
+          "name": "slab_id",
+          "sql_type": "TEXT",
+          "definition": "Unique slab identifier; on a plan or mother record, identifies its source slab.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "charge_id",
+          "sql_type": "TEXT",
+          "definition": "Steelmaking charge identifier recorded for material genealogy; no casting time is recorded here.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "steel_grade",
+          "sql_type": "TEXT",
+          "definition": "Synthetic steel-grade category G1 or G2.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "received_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC time at which the slab was received.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "verified_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC time at which the slab identity was verified; NULL if not yet verified.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "released_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "slab_id"
+      ],
+      "sql_definition": "CREATE TABLE slab_material(slab_id TEXT PRIMARY KEY NOT NULL, charge_id TEXT NOT NULL, steel_grade TEXT NOT NULL CHECK(steel_grade IN ('G1','G2')), received_at TEXT NOT NULL, verified_at TEXT, released_at TEXT, CHECK(verified_at IS NULL OR received_at<=verified_at), CHECK(released_at IS NULL OR (verified_at IS NOT NULL AND verified_at<=released_at)))"
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "definition": "One rolling plan per slab, its scheduled reheating time and actual submission, approval and release times.",
+      "columns": [
+        {
+          "name": "plan_id",
+          "sql_type": "TEXT",
+          "definition": "Unique rolling-plan identifier; on an instruction, references its plan.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "slab_id",
+          "sql_type": "TEXT",
+          "definition": "Unique slab identifier; on a plan or mother record, identifies its source slab.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "slab_material",
+              "column": "slab_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "planned_reheat_at",
+          "sql_type": "TEXT",
+          "definition": "Scheduled UTC reheating time; a schedule does not establish that reheating occurred.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "submitted_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC rolling-plan submission time.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "approved_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC rolling-plan approval time; NULL if not yet approved.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "released_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "plan_id"
+      ],
+      "sql_definition": "CREATE TABLE planned_rolling_instruction(plan_id TEXT PRIMARY KEY NOT NULL, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), planned_reheat_at TEXT NOT NULL, submitted_at TEXT NOT NULL, approved_at TEXT, released_at TEXT, CHECK(approved_at IS NULL OR submitted_at<=approved_at), CHECK(released_at IS NULL OR (approved_at IS NOT NULL AND approved_at<=released_at)))"
+    },
+    {
+      "table": "rolling_instruction",
+      "definition": "An issued rolling instruction for an approved plan.",
+      "columns": [
+        {
+          "name": "instruction_id",
+          "sql_type": "TEXT",
+          "definition": "Unique rolling-instruction identifier; on a mother record, references the instruction allocating it.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "plan_id",
+          "sql_type": "TEXT",
+          "definition": "Unique rolling-plan identifier; on an instruction, references its plan.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "planned_rolling_instruction",
+              "column": "plan_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "issued_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC rolling-instruction issue time.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "instruction_id"
+      ],
+      "sql_definition": "CREATE TABLE rolling_instruction(instruction_id TEXT PRIMARY KEY NOT NULL, plan_id TEXT NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id), issued_at TEXT NOT NULL)"
+    },
+    {
+      "table": "as_rolled_material",
+      "definition": "Allocated mother-material identity and genealogy for a rolling instruction; created_at and updated_at describe database maintenance, not production completion.",
+      "columns": [
+        {
+          "name": "material_id",
+          "sql_type": "TEXT",
+          "definition": "Unique mother-material identifier; on a work record, references the mother material processed.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "plate_no",
+          "sql_type": "TEXT",
+          "definition": "Unique business plate number within this table; mother and piece numbers have separate ranges.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "slab_id",
+          "sql_type": "TEXT",
+          "definition": "Unique slab identifier; on a plan or mother record, identifies its source slab.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "slab_material",
+              "column": "slab_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "instruction_id",
+          "sql_type": "TEXT",
+          "definition": "Unique rolling-instruction identifier; on a mother record, references the instruction allocating it.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "rolling_instruction",
+              "column": "instruction_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "created_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database record-creation time; this field does not document a production action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "updated_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database maintenance time; this field does not document a production action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "material_id"
+      ],
+      "sql_definition": "CREATE TABLE as_rolled_material(material_id TEXT PRIMARY KEY NOT NULL, plate_no TEXT NOT NULL UNIQUE, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), instruction_id TEXT NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id), created_at TEXT NOT NULL, updated_at TEXT NOT NULL, CHECK(created_at<=updated_at))"
+    },
+    {
+      "table": "process_code",
+      "definition": "Business code meanings within each manufacturing process group. The same code text can have a different meaning in another group.",
+      "columns": [
+        {
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "code",
+          "sql_type": "TEXT",
+          "definition": "Business code within a process group; the pair (process_group,code) uniquely identifies its meaning.",
+          "required": true,
+          "primary_key_position": 2,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "meaning",
+          "sql_type": "TEXT",
+          "definition": "English business meaning of the code in the specified process group.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        }
+      ],
+      "primary_key": [
+        "process_group",
+        "code"
+      ],
+      "sql_definition": "CREATE TABLE process_code(process_group TEXT NOT NULL CHECK(process_group IN ('FURNACE','ROLLING','FINISHING')), code TEXT NOT NULL, meaning TEXT NOT NULL, PRIMARY KEY(process_group,code))"
+    },
+    {
+      "table": "equipment",
+      "definition": "Equipment identifiers, names and system-maintenance times. Each equipment_code identifies a machine, not a manufacturing step.",
+      "columns": [
+        {
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "equipment_code",
+          "sql_type": "TEXT",
+          "definition": "Human-readable machine code; identifies the machine, not the work performed.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "equipment_name",
+          "sql_type": "TEXT",
+          "definition": "English equipment-unit name.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "created_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database record-creation time; this field does not document a production action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "updated_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database maintenance time; this field does not document a production action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "equipment_id"
+      ],
+      "sql_definition": "CREATE TABLE equipment(equipment_id TEXT PRIMARY KEY NOT NULL, equipment_code TEXT NOT NULL UNIQUE, equipment_name TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, CHECK(created_at<=updated_at))"
+    },
+    {
+      "table": "furnace_operation_history",
+      "definition": "Actual furnace work occurrences for mother materials, retaining repeat work and unfinished intervals.",
+      "columns": [
+        {
+          "name": "operation_id",
+          "sql_type": "TEXT",
+          "definition": "Unique work-occurrence identifier within this table; repeat work receives a new identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "material_id",
+          "sql_type": "TEXT",
+          "definition": "Unique mother-material identifier; on a work record, references the mother material processed.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "as_rolled_material",
+              "column": "material_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'FURNACE'",
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "process_group",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "operation_code",
+          "sql_type": "TEXT",
+          "definition": "Kind of manufacturing work performed, as defined by the matching process_group/code entry.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "equipment",
+              "column": "equipment_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "operation_id"
+      ],
+      "sql_definition": "CREATE TABLE furnace_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), process_group TEXT NOT NULL DEFAULT 'FURNACE' CHECK(process_group='FURNACE'), operation_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,operation_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at))"
+    },
+    {
+      "table": "rolling_operation_history",
+      "definition": "Actual rolling phase occurrences for mother materials, retaining repeat work and unfinished intervals.",
+      "columns": [
+        {
+          "name": "operation_id",
+          "sql_type": "TEXT",
+          "definition": "Unique work-occurrence identifier within this table; repeat work receives a new identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "material_id",
+          "sql_type": "TEXT",
+          "definition": "Unique mother-material identifier; on a work record, references the mother material processed.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "as_rolled_material",
+              "column": "material_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'ROLLING'",
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "process_group",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "phase_code",
+          "sql_type": "TEXT",
+          "definition": "Rolling phase performed, as defined by the matching process_group/code entry.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "equipment",
+              "column": "equipment_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "operation_id"
+      ],
+      "sql_definition": "CREATE TABLE rolling_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), process_group TEXT NOT NULL DEFAULT 'ROLLING' CHECK(process_group='ROLLING'), phase_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,phase_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at))"
+    },
+    {
+      "table": "plate_material",
+      "definition": "Individual plate-piece identity and mother-material genealogy, with actual identification, release and packing times.",
+      "columns": [
+        {
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "plate_no",
+          "sql_type": "TEXT",
+          "definition": "Unique business plate number within this table; mother and piece numbers have separate ranges.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "mother_material_id",
+          "sql_type": "TEXT",
+          "definition": "Mother material from which the individual plate piece was derived.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "as_rolled_material",
+              "column": "material_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "identified_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC time at which the plate piece was identified after rolling.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "released_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "packed_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC packing-completion time; NULL if not yet packed.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "plate_id"
+      ],
+      "sql_definition": "CREATE TABLE plate_material(plate_id TEXT PRIMARY KEY NOT NULL, plate_no TEXT NOT NULL UNIQUE, mother_material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), identified_at TEXT NOT NULL, released_at TEXT, packed_at TEXT, CHECK(released_at IS NULL OR identified_at<=released_at), CHECK(packed_at IS NULL OR (released_at IS NOT NULL AND released_at<=packed_at)))"
+    },
+    {
+      "table": "finishing_operation_history",
+      "definition": "Actual finishing work occurrences for individual plate pieces, including repeated heat treatment after rework.",
+      "columns": [
+        {
+          "name": "operation_id",
+          "sql_type": "TEXT",
+          "definition": "Unique work-occurrence identifier within this table; repeat work receives a new identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "plate_material",
+              "column": "plate_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'FINISHING'",
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "process_group",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "operation_code",
+          "sql_type": "TEXT",
+          "definition": "Kind of manufacturing work performed, as defined by the matching process_group/code entry.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "equipment",
+              "column": "equipment_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "operation_id"
+      ],
+      "sql_definition": "CREATE TABLE finishing_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), process_group TEXT NOT NULL DEFAULT 'FINISHING' CHECK(process_group='FINISHING'), operation_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,operation_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at))"
+    },
+    {
+      "table": "dimension_inspection",
+      "definition": "One dimensional inspection record per inspection occurrence. Reinspection has a new inspection_id; PASS/FAIL describes its result.",
+      "columns": [
+        {
+          "name": "inspection_id",
+          "sql_type": "TEXT",
+          "definition": "Unique dimensional-inspection occurrence identifier; distinct for each reinspection.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "plate_material",
+              "column": "plate_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "inspected_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC dimensional-inspection completion time.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "result_code",
+          "sql_type": "TEXT",
+          "definition": "Inspection outcome PASS or FAIL; either value represents a completed dimensional inspection.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "thickness_mm",
+          "sql_type": "REAL",
+          "definition": "Synthetic measured thickness in millimetres.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "mm"
+        }
+      ],
+      "primary_key": [
+        "inspection_id"
+      ],
+      "sql_definition": "CREATE TABLE dimension_inspection(inspection_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), inspected_at TEXT NOT NULL, result_code TEXT NOT NULL CHECK(result_code IN ('PASS','FAIL')), thickness_mm REAL NOT NULL CHECK(thickness_mm>0))"
+    },
+    {
+      "table": "plate_quality_review",
+      "definition": "One quality review record per review round. APPROVED/REWORK describes its outcome; PENDING means the review has not finished.",
+      "columns": [
+        {
+          "name": "review_id",
+          "sql_type": "TEXT",
+          "definition": "Unique quality-review round identifier; distinct for each subsequent review.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "plate_material",
+              "column": "plate_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "review_status",
+          "sql_type": "TEXT",
+          "definition": "APPROVED or REWORK for a finished quality review, PENDING for an unfinished review.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        }
+      ],
+      "primary_key": [
+        "review_id"
+      ],
+      "sql_definition": "CREATE TABLE plate_quality_review(review_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), started_at TEXT NOT NULL, finished_at TEXT, review_status TEXT NOT NULL CHECK(review_status IN ('APPROVED','REWORK','PENDING')), CHECK((review_status='PENDING' AND finished_at IS NULL) OR (review_status IN ('APPROVED','REWORK') AND finished_at IS NOT NULL AND started_at<finished_at)))"
+    }
+  ],
+  "code_values": [
+    {
+      "process_group": "FURNACE",
+      "code": "CH",
+      "meaning": "Furnace charging"
+    },
+    {
+      "process_group": "FURNACE",
+      "code": "HT",
+      "meaning": "Furnace heating"
+    },
+    {
+      "process_group": "FURNACE",
+      "code": "DS",
+      "meaning": "Furnace discharge"
+    },
+    {
+      "process_group": "ROLLING",
+      "code": "RR",
+      "meaning": "Rough rolling"
+    },
+    {
+      "process_group": "ROLLING",
+      "code": "FR",
+      "meaning": "Finish rolling"
+    },
+    {
+      "process_group": "FINISHING",
+      "code": "LEV",
+      "meaning": "Leveling"
+    },
+    {
+      "process_group": "FINISHING",
+      "code": "HT",
+      "meaning": "Heat treatment"
+    },
+    {
+      "process_group": "FINISHING",
+      "code": "SF",
+      "meaning": "Surface finishing"
+    }
+  ],
+  "business_rules": [
+    "Each plan concerns one slab. Each issued instruction refers to one plan. Mother and plate-piece identifiers refer to distinct physical materials.",
+    "A mother-material identity can be allocated before work finishes. Database creation and maintenance times are not evidence of production completion.",
+    "Every work occurrence retains its own identifier. Repeat work, reinspection and later review rounds retain separate records.",
+    "Each work-history table is restricted to its declared process group. Code meanings are resolved within that group.",
+    "Review outcome and inspection result describe the result of the same kind of business record; they do not change its business purpose.",
+    "Actual start times may exist without finish times. NULL finish means unfinished work; NULL release/packing means not yet released/packed.",
+    "Scheduled reheating time is a plan and may differ from actual heating time.",
+    "An approved quality review is required before piece release; packing follows release.",
+    "All business records, identifiers, times and measurements are synthetic."
+  ]
+}

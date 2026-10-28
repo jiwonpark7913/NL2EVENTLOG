@@ -1,0 +1,274 @@
+{
+  "table_count": 12,
+  "tables": {
+    "slab_material": {
+      "rows": 30,
+      "columns": 6,
+      "primary_key": [
+        "slab_id"
+      ]
+    },
+    "planned_rolling_instruction": {
+      "rows": 28,
+      "columns": 6,
+      "primary_key": [
+        "plan_id"
+      ]
+    },
+    "rolling_instruction": {
+      "rows": 26,
+      "columns": 3,
+      "primary_key": [
+        "instruction_id"
+      ]
+    },
+    "as_rolled_material": {
+      "rows": 26,
+      "columns": 6,
+      "primary_key": [
+        "material_id"
+      ]
+    },
+    "process_code": {
+      "rows": 8,
+      "columns": 3,
+      "primary_key": [
+        "process_group",
+        "code"
+      ]
+    },
+    "equipment": {
+      "rows": 7,
+      "columns": 5,
+      "primary_key": [
+        "equipment_id"
+      ]
+    },
+    "furnace_operation_history": {
+      "rows": 70,
+      "columns": 7,
+      "primary_key": [
+        "operation_id"
+      ]
+    },
+    "rolling_operation_history": {
+      "rows": 44,
+      "columns": 7,
+      "primary_key": [
+        "operation_id"
+      ]
+    },
+    "plate_material": {
+      "rows": 38,
+      "columns": 6,
+      "primary_key": [
+        "plate_id"
+      ]
+    },
+    "finishing_operation_history": {
+      "rows": 130,
+      "columns": 7,
+      "primary_key": [
+        "operation_id"
+      ]
+    },
+    "dimension_inspection": {
+      "rows": 46,
+      "columns": 5,
+      "primary_key": [
+        "inspection_id"
+      ]
+    },
+    "plate_quality_review": {
+      "rows": 46,
+      "columns": 5,
+      "primary_key": [
+        "review_id"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "parent": "slab_material",
+      "child": "planned_rolling_instruction",
+      "columns": [
+        "slab_id"
+      ],
+      "parent_columns": [
+        "slab_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "planned_rolling_instruction",
+      "child": "rolling_instruction",
+      "columns": [
+        "plan_id"
+      ],
+      "parent_columns": [
+        "plan_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "rolling_instruction",
+      "child": "as_rolled_material",
+      "columns": [
+        "instruction_id"
+      ],
+      "parent_columns": [
+        "instruction_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "slab_material",
+      "child": "as_rolled_material",
+      "columns": [
+        "slab_id"
+      ],
+      "parent_columns": [
+        "slab_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "process_code",
+      "child": "furnace_operation_history",
+      "columns": [
+        "process_group",
+        "operation_code"
+      ],
+      "parent_columns": [
+        "process_group",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "equipment",
+      "child": "furnace_operation_history",
+      "columns": [
+        "equipment_id"
+      ],
+      "parent_columns": [
+        "equipment_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "furnace_operation_history",
+      "columns": [
+        "material_id"
+      ],
+      "parent_columns": [
+        "material_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "process_code",
+      "child": "rolling_operation_history",
+      "columns": [
+        "process_group",
+        "phase_code"
+      ],
+      "parent_columns": [
+        "process_group",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "equipment",
+      "child": "rolling_operation_history",
+      "columns": [
+        "equipment_id"
+      ],
+      "parent_columns": [
+        "equipment_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "rolling_operation_history",
+      "columns": [
+        "material_id"
+      ],
+      "parent_columns": [
+        "material_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "as_rolled_material",
+      "child": "plate_material",
+      "columns": [
+        "mother_material_id"
+      ],
+      "parent_columns": [
+        "material_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "process_code",
+      "child": "finishing_operation_history",
+      "columns": [
+        "process_group",
+        "operation_code"
+      ],
+      "parent_columns": [
+        "process_group",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "equipment",
+      "child": "finishing_operation_history",
+      "columns": [
+        "equipment_id"
+      ],
+      "parent_columns": [
+        "equipment_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "plate_material",
+      "child": "finishing_operation_history",
+      "columns": [
+        "plate_id"
+      ],
+      "parent_columns": [
+        "plate_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "plate_material",
+      "child": "dimension_inspection",
+      "columns": [
+        "plate_id"
+      ],
+      "parent_columns": [
+        "plate_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "plate_material",
+      "child": "plate_quality_review",
+      "columns": [
+        "plate_id"
+      ],
+      "parent_columns": [
+        "plate_id"
+      ],
+      "cardinality": "1 : 0..N"
+    }
+  ]
+}

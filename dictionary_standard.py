@@ -7,6 +7,10 @@ def mdtable(headers,rows):
  esc=lambda x:str(x).replace('|','\\|').replace('\n',' ')
  return '| '+' | '.join(headers)+' |\n| '+' | '.join('---' for _ in headers)+' |\n'+''.join('| '+' | '.join(esc(x) for x in row)+' |\n' for row in rows)
 def render(p):
+ if p.name=='plateflow_new':
+  import runpy
+  module=runpy.run_path(str(p/'documentation.py'));con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row
+  result=module['render_dictionary'](p,con,json.loads((p/'input/data_dictionary.json').read_text()));con.close();return result
  d=json.loads((p/'input/data_dictionary.json').read_text());con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row
  basic=dict(dictionary_id='NL2EVENTLOG:'+p.name,version='2026-10-20' if p.name=='hospitalflow' else '2026-10-12',name=d['name'],description='English synthetic relational database for query-conditioned process-view and event-log extraction.',language='en',timezone='UTC',dbms='SQLite',namespace=p.name,timestamp_columns=d.get('timestamp_summary',{}).get('timestamp_columns','See inventory'),event_timestamp_columns=d.get('timestamp_summary',{}).get('event_timestamp_columns','See inventory'),maintainer='NL2EVENTLOG project maintainers',registration_status='Project-maintained draft; not ISO-registered or certified',source_policy='Source definitions are retained and authored lifecycle additions are identified in source/design documents.',standards_profile='Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.',layout='1 Dictionary basic information; 2 Table definitions; 3 Column definitions')
  d['dictionary_basic_information']=basic;tabledefs=[];coldefs=[]

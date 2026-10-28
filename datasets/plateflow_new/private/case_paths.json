@@ -1,0 +1,204 @@
+{
+  "Slab": {
+    "slab_material": {
+      "case_key": "s.slab_id",
+      "joins": "",
+      "distinct": false
+    },
+    "planned_rolling_instruction": {
+      "case_key": "s.slab_id",
+      "joins": "",
+      "distinct": false
+    },
+    "rolling_instruction": {
+      "case_key": "p.slab_id",
+      "joins": " JOIN planned_rolling_instruction p ON p.plan_id=s.plan_id",
+      "distinct": false
+    },
+    "furnace_operation_history": {
+      "case_key": "m.slab_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id",
+      "distinct": false
+    },
+    "rolling_operation_history": {
+      "case_key": "m.slab_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id",
+      "distinct": false
+    },
+    "plate_material": {
+      "case_key": "m.slab_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.mother_material_id",
+      "distinct": false
+    },
+    "finishing_operation_history": {
+      "case_key": "m.slab_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "dimension_inspection": {
+      "case_key": "m.slab_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "plate_quality_review": {
+      "case_key": "m.slab_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    }
+  },
+  "Rolling Plan": {
+    "planned_rolling_instruction": {
+      "case_key": "s.plan_id",
+      "joins": "",
+      "distinct": false
+    },
+    "rolling_instruction": {
+      "case_key": "s.plan_id",
+      "joins": "",
+      "distinct": false
+    }
+  },
+  "Rolling Instruction": {
+    "rolling_instruction": {
+      "case_key": "s.instruction_id",
+      "joins": "",
+      "distinct": false
+    },
+    "furnace_operation_history": {
+      "case_key": "m.instruction_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id",
+      "distinct": false
+    },
+    "rolling_operation_history": {
+      "case_key": "m.instruction_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id",
+      "distinct": false
+    },
+    "plate_material": {
+      "case_key": "m.instruction_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.mother_material_id",
+      "distinct": false
+    },
+    "finishing_operation_history": {
+      "case_key": "m.instruction_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "dimension_inspection": {
+      "case_key": "m.instruction_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "plate_quality_review": {
+      "case_key": "m.instruction_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    }
+  },
+  "Mother Material": {
+    "furnace_operation_history": {
+      "case_key": "s.material_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id",
+      "distinct": false
+    },
+    "rolling_operation_history": {
+      "case_key": "s.material_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id",
+      "distinct": false
+    },
+    "plate_material": {
+      "case_key": "m.material_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.mother_material_id",
+      "distinct": false
+    },
+    "finishing_operation_history": {
+      "case_key": "m.material_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "dimension_inspection": {
+      "case_key": "m.material_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "plate_quality_review": {
+      "case_key": "m.material_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    }
+  },
+  "Plate Piece": {
+    "plate_material": {
+      "case_key": "s.plate_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.mother_material_id",
+      "distinct": false
+    },
+    "finishing_operation_history": {
+      "case_key": "s.plate_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "dimension_inspection": {
+      "case_key": "s.plate_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    },
+    "plate_quality_review": {
+      "case_key": "s.plate_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id",
+      "distinct": false
+    }
+  },
+  "Dimension Inspection": {
+    "dimension_inspection": {
+      "case_key": "s.inspection_id",
+      "joins": "",
+      "distinct": false
+    }
+  },
+  "Quality Review": {
+    "plate_quality_review": {
+      "case_key": "s.review_id",
+      "joins": "",
+      "distinct": false
+    }
+  },
+  "Equipment": {
+    "furnace_operation_history": {
+      "case_key": "s.equipment_id",
+      "joins": "",
+      "distinct": false
+    },
+    "rolling_operation_history": {
+      "case_key": "s.equipment_id",
+      "joins": "",
+      "distinct": false
+    },
+    "finishing_operation_history": {
+      "case_key": "s.equipment_id",
+      "joins": "",
+      "distinct": false
+    }
+  },
+  "Furnace Operation Record": {
+    "furnace_operation_history": {
+      "case_key": "s.operation_id",
+      "joins": "",
+      "distinct": false
+    }
+  },
+  "Rolling Operation Record": {
+    "rolling_operation_history": {
+      "case_key": "s.operation_id",
+      "joins": "",
+      "distinct": false
+    }
+  },
+  "Finishing Operation Record": {
+    "finishing_operation_history": {
+      "case_key": "s.operation_id",
+      "joins": "",
+      "distinct": false
+    }
+  }
+}

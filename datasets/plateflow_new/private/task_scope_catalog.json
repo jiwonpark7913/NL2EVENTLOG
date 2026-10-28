@@ -1,0 +1,192 @@
+{
+  "views": [
+    {
+      "case_concept": "Slab",
+      "case_table": "slab_material",
+      "case_count": 30,
+      "activity_count": 20,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
+        "Heating Completed",
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Rolling Instruction Issued",
+        "Rolling Plan Approved",
+        "Rolling Plan Released",
+        "Rolling Plan Submitted",
+        "Rough Rolling Completed",
+        "Slab Received",
+        "Slab Released",
+        "Slab Verified",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 620,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Rolling Plan",
+      "case_table": "planned_rolling_instruction",
+      "case_count": 28,
+      "activity_count": 4,
+      "activities": [
+        "Rolling Instruction Issued",
+        "Rolling Plan Approved",
+        "Rolling Plan Released",
+        "Rolling Plan Submitted"
+      ],
+      "event_rows": 106,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Rolling Instruction",
+      "case_table": "rolling_instruction",
+      "case_count": 26,
+      "activity_count": 14,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
+        "Heating Completed",
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Rolling Instruction Issued",
+        "Rough Rolling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 454,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Mother Material",
+      "case_table": "as_rolled_material",
+      "case_count": 26,
+      "activity_count": 13,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
+        "Heating Completed",
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Rough Rolling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 428,
+      "cases_without_events": 2
+    },
+    {
+      "case_concept": "Plate Piece",
+      "case_table": "plate_material",
+      "case_count": 38,
+      "activity_count": 8,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Heat Treatment Completed",
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 318,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Dimension Inspection",
+      "case_table": "dimension_inspection",
+      "case_count": 46,
+      "activity_count": 1,
+      "activities": [
+        "Dimensional Inspection Completed"
+      ],
+      "event_rows": 46,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Quality Review",
+      "case_table": "plate_quality_review",
+      "case_count": 46,
+      "activity_count": 1,
+      "activities": [
+        "Plate Quality Review Completed"
+      ],
+      "event_rows": 43,
+      "cases_without_events": 3
+    },
+    {
+      "case_concept": "Equipment",
+      "case_table": "equipment",
+      "case_count": 7,
+      "activity_count": 8,
+      "activities": [
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
+        "Heating Completed",
+        "Leveling Completed",
+        "Rough Rolling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 240,
+      "cases_without_events": 1
+    },
+    {
+      "case_concept": "Furnace Operation Record",
+      "case_table": "furnace_operation_history",
+      "case_count": 70,
+      "activity_count": 3,
+      "activities": [
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heating Completed"
+      ],
+      "event_rows": 68,
+      "cases_without_events": 2
+    },
+    {
+      "case_concept": "Rolling Operation Record",
+      "case_table": "rolling_operation_history",
+      "case_count": 44,
+      "activity_count": 2,
+      "activities": [
+        "Finish Rolling Completed",
+        "Rough Rolling Completed"
+      ],
+      "event_rows": 42,
+      "cases_without_events": 2
+    },
+    {
+      "case_concept": "Finishing Operation Record",
+      "case_table": "finishing_operation_history",
+      "case_count": 130,
+      "activity_count": 3,
+      "activities": [
+        "Heat Treatment Completed",
+        "Leveling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 130,
+      "cases_without_events": 0
+    }
+  ],
+  "completion_policy": "Use completed occurrences and actual point milestones only; start times do not create extra labels."
+}

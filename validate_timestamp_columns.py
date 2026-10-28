@@ -3,6 +3,9 @@ import json,csv,sqlite3
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 for p in (ROOT/'datasets').iterdir():
+ if p.name=='plateflow_new':
+  import subprocess,sys
+  subprocess.run([sys.executable,str(p/'validate.py')],check=True);continue
  con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row;inv=json.loads((p/'docs/timestamp_columns.json').read_text());assert inv['timestamp_columns']==len({(x['table'],x['column']) for x in inv['columns']})
  questions=[json.loads(l) for l in (p/'input/questions.jsonl').read_text().splitlines()];gs={g['question_id']:g for g in map(json.loads,(p/'private/gold.jsonl').read_text().splitlines())}
  for q in questions:

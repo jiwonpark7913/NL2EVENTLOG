@@ -1,0 +1,177 @@
+{
+  "timestamp_columns": 24,
+  "event_timestamp_columns": 15,
+  "other_timestamp_columns": 9,
+  "baseline_timestamp_columns": 24,
+  "columns": [
+    {
+      "table": "slab_material",
+      "column": "received_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 30
+    },
+    {
+      "table": "slab_material",
+      "column": "verified_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 28
+    },
+    {
+      "table": "slab_material",
+      "column": "released_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 28
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "planned_reheat_at",
+      "role": "Scheduled instant",
+      "used_as_event_time": false,
+      "non_null_rows": 28
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "submitted_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 28
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "approved_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 26
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "column": "released_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 26
+    },
+    {
+      "table": "rolling_instruction",
+      "column": "issued_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 26
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "created_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 26
+    },
+    {
+      "table": "as_rolled_material",
+      "column": "updated_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 26
+    },
+    {
+      "table": "equipment",
+      "column": "created_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 7
+    },
+    {
+      "table": "equipment",
+      "column": "updated_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 7
+    },
+    {
+      "table": "furnace_operation_history",
+      "column": "started_at",
+      "role": "Actual interval start; not separately emitted",
+      "used_as_event_time": false,
+      "non_null_rows": 70
+    },
+    {
+      "table": "furnace_operation_history",
+      "column": "finished_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 68
+    },
+    {
+      "table": "rolling_operation_history",
+      "column": "started_at",
+      "role": "Actual interval start; not separately emitted",
+      "used_as_event_time": false,
+      "non_null_rows": 44
+    },
+    {
+      "table": "rolling_operation_history",
+      "column": "finished_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 42
+    },
+    {
+      "table": "plate_material",
+      "column": "identified_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 38
+    },
+    {
+      "table": "plate_material",
+      "column": "released_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 35
+    },
+    {
+      "table": "plate_material",
+      "column": "packed_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 26
+    },
+    {
+      "table": "finishing_operation_history",
+      "column": "started_at",
+      "role": "Actual interval start; not separately emitted",
+      "used_as_event_time": false,
+      "non_null_rows": 130
+    },
+    {
+      "table": "finishing_operation_history",
+      "column": "finished_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 130
+    },
+    {
+      "table": "dimension_inspection",
+      "column": "inspected_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 46
+    },
+    {
+      "table": "plate_quality_review",
+      "column": "started_at",
+      "role": "Actual interval start; not separately emitted",
+      "used_as_event_time": false,
+      "non_null_rows": 46
+    },
+    {
+      "table": "plate_quality_review",
+      "column": "finished_at",
+      "role": "Completed work or actual milestone",
+      "used_as_event_time": true,
+      "non_null_rows": 43
+    }
+  ],
+  "date_only_columns": []
+}

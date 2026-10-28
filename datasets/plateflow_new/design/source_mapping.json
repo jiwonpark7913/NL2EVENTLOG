@@ -1,0 +1,25 @@
+{
+  "source": "Existing PlateFlow adaptation of supplied Korean manufacturing-company metadata",
+  "profile": "Independent authored variant for activity-carrier discovery; not original observed production rows or a lossless manufacturer-schema replica",
+  "reference": "source/plateflow_source_mapping_reference.json",
+  "reused_business_roles": [
+    "slab identity and charge",
+    "rolling plans and issued instructions",
+    "mother-to-piece material genealogy",
+    "actual manufacturing operation occurrences",
+    "piece inspection, review, release and packing"
+  ],
+  "authored_changes": [
+    "Split work storage into furnace, rolling and piece-finishing histories",
+    "Use declared group-qualified code FKs and distinct actual starts/finishes",
+    "Add actual dimension-inspection and quality-review occurrence tables",
+    "Use ordinary equipment and grade/outcome columns as contextual distractors",
+    "Keep extraction-selection metadata outside the business dictionary",
+    "All records, codes, names, constraints, distributions and times are synthetic"
+  ],
+  "not_claimed": [
+    "Original source row values",
+    "Original source SQL types or keys where these were not declared",
+    "A learned detector or measured LLM classification accuracy"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+ "purpose":"Allowlisted model input for event-source discovery and query-specific event-log extraction",
+ "paths":["input/database.sqlite","input/schema.sql","input/data_dictionary.json","input/task_context.md","input/model_questions.jsonl"],
+ "policy":"Supply only these files. All other dataset files are construction or evaluation material. The business dictionary supplies ordinary definitions and declared constraints."
+}

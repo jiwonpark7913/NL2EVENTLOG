@@ -35,3 +35,6 @@ for name in ['warehouseflow','universityflow','plateflow']:
  print(name,':',count,'Gold logs verified; schemas, typed FKs, case links and stage ordering passed')
 # HospitalFlow has explicit semantic types and subtype-union checks in its domain validator.
 subprocess.run([sys.executable,str(ROOT/'datasets/hospitalflow/validate.py')],check=True)
+
+# Carrier-based variant validates clean model inputs and completion-only extraction.
+subprocess.run([sys.executable,str(ROOT/'datasets/plateflow_new/validate.py')],check=True)

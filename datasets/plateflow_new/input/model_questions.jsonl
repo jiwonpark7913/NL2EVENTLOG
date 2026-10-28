@@ -1,0 +1,54 @@
+{"question_id": "N01", "text": "For each slab, extract Slab Received, Slab Verified and Slab Released events."}
+{"question_id": "N01P", "text": "Build a timeline for each slab showing its receipt, verification and release."}
+{"question_id": "N02", "text": "For each rolling plan, extract Rolling Plan Submitted, Rolling Plan Approved and Rolling Plan Released events."}
+{"question_id": "N02P", "text": "For every rolling plan, show when it was submitted, approved and released."}
+{"question_id": "N03", "text": "For each rolling instruction, extract Rolling Instruction Issued, Heating Completed and Finish Rolling Completed events."}
+{"question_id": "N03P", "text": "For every rolling instruction, show its issue, the completion of heating and the completion of finish rolling."}
+{"question_id": "N04", "text": "For each mother material, extract Furnace Charged, Heating Completed, Furnace Discharged, Rough Rolling Completed and Finish Rolling Completed events."}
+{"question_id": "N04P", "text": "For each mother material, show the completion of charging into the furnace, heating, discharge from the furnace, rough rolling and finish rolling."}
+{"question_id": "N05", "text": "For each mother material, extract Heat Treatment Completed, Surface Finishing Completed and Dimensional Inspection Completed events, including those of its descendant plate pieces."}
+{"question_id": "N05P", "text": "For every mother material, show when heat treatment, surface finishing and dimensional inspection were completed, including work on all plate pieces derived from it."}
+{"question_id": "N06", "text": "For each plate piece, extract Leveling Completed, Heat Treatment Completed and Surface Finishing Completed events, retaining repeated occurrences."}
+{"question_id": "N06P", "text": "For each plate piece, show every completed leveling, heat-treatment and surface-finishing operation, including repeat work."}
+{"question_id": "N07", "text": "For each plate piece, extract Dimensional Inspection Completed and Plate Quality Review Completed events."}
+{"question_id": "N07P", "text": "For every plate piece, show when its dimensional inspections and quality reviews finished."}
+{"question_id": "N08", "text": "For each plate piece, extract Plate Identified, Plate Released and Plate Packed events."}
+{"question_id": "N08P", "text": "For each plate piece, show when it was identified, released and packed."}
+{"question_id": "N09", "text": "For each dimension inspection record, extract Dimensional Inspection Completed events."}
+{"question_id": "N09P", "text": "For each individual dimensional inspection record, show when the inspection finished."}
+{"question_id": "N10", "text": "For each quality review record, extract Plate Quality Review Completed events."}
+{"question_id": "N10P", "text": "For each individual quality review record, show when the review finished."}
+{"question_id": "N11", "text": "For each equipment unit, extract Heating Completed and Heat Treatment Completed events."}
+{"question_id": "N11P", "text": "For each equipment unit, show the completion of heating and of heat treatment."}
+{"question_id": "N12", "text": "For each furnace operation record, extract Furnace Charged, Heating Completed and Furnace Discharged events."}
+{"question_id": "N12P", "text": "For every furnace operation record, show the recorded completion of furnace charging, heating or furnace discharge, as applicable."}
+{"question_id": "N13", "text": "For each rolling operation record, extract Rough Rolling Completed and Finish Rolling Completed events."}
+{"question_id": "N13P", "text": "For every rolling operation record, show the recorded completion of rough rolling or finish rolling, as applicable."}
+{"question_id": "N14", "text": "For each finishing operation record, extract Leveling Completed, Heat Treatment Completed and Surface Finishing Completed events."}
+{"question_id": "N14P", "text": "For every finishing operation record, show the recorded completion of leveling, heat treatment or surface finishing, as applicable."}
+{"question_id": "N15", "text": "For each slab, extract Steel Cast events."}
+{"question_id": "N15P", "text": "For each slab, show when the steel was cast."}
+{"question_id": "N16", "text": "For each plate piece, extract Truck Dispatched events."}
+{"question_id": "N16P", "text": "For each plate piece, show when its truck was dispatched."}
+{"question_id": "NF01", "text": "Extract the full recorded lifecycle for each slab."}
+{"question_id": "NF01P", "text": "Show the complete recorded history of each slab."}
+{"question_id": "NF02", "text": "Extract the full recorded lifecycle for each rolling plan."}
+{"question_id": "NF02P", "text": "Build the entire recorded timeline for every rolling plan."}
+{"question_id": "NF03", "text": "Extract the full recorded lifecycle for each rolling instruction."}
+{"question_id": "NF03P", "text": "Trace each rolling instruction through its full recorded history."}
+{"question_id": "NF04", "text": "Extract the full recorded lifecycle for each mother material."}
+{"question_id": "NF04P", "text": "Show the whole recorded lifecycle of every mother material."}
+{"question_id": "NF05", "text": "Extract the full recorded lifecycle for each plate piece."}
+{"question_id": "NF05P", "text": "Build a complete timeline of the recorded history of each plate piece."}
+{"question_id": "NF06", "text": "Extract the full recorded lifecycle for each dimension inspection record."}
+{"question_id": "NF06P", "text": "Show the entire recorded history of every individual dimensional inspection record."}
+{"question_id": "NF07", "text": "Extract the full recorded lifecycle for each quality review record."}
+{"question_id": "NF07P", "text": "Trace each individual quality review record through its complete recorded history."}
+{"question_id": "NF08", "text": "Extract the full recorded lifecycle for each equipment unit."}
+{"question_id": "NF08P", "text": "Show the full recorded history associated with every equipment unit."}
+{"question_id": "NF09", "text": "Extract the full recorded lifecycle for each furnace operation record."}
+{"question_id": "NF09P", "text": "Build the complete recorded timeline of each individual furnace operation record."}
+{"question_id": "NF10", "text": "Extract the full recorded lifecycle for each rolling operation record."}
+{"question_id": "NF10P", "text": "Show the whole recorded history of each individual rolling operation record."}
+{"question_id": "NF11", "text": "Extract the full recorded lifecycle for each finishing operation record."}
+{"question_id": "NF11P", "text": "Trace the entire recorded history of every individual finishing operation record."}

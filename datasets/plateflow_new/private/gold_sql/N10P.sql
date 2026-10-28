@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT e.event_id,'REV:'||s.review_id case_id,e.activity,e.timestamp FROM (SELECT 'REV:'||review_id event_id,'Plate Quality Review Completed' activity,finished_at timestamp,review_id source_key FROM plate_quality_review WHERE finished_at IS NOT NULL AND (1=1)) e JOIN plate_quality_review s ON s.review_id=e.source_key) ORDER BY case_id,timestamp,event_id;
