@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT e.event_id,'R:'||s.receipt_id case_id,e.activity,e.timestamp FROM (SELECT 'R:'||receipt_id event_id,'Receipt Registered' activity,received_at timestamp,receipt_id source_key FROM goods_receipt WHERE received_at IS NOT NULL AND (1=1)) e JOIN goods_receipt s ON s.receipt_id=e.source_key WHERE s.receipt_id IS NOT NULL) ORDER BY case_id,timestamp,event_id;

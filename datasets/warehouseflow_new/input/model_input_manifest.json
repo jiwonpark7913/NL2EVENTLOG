@@ -1,0 +1,5 @@
+{
+ "purpose":"Allowlisted model input for warehouse event-source discovery and query-specific extraction",
+ "paths":["input/database.sqlite","input/schema.sql","input/data_dictionary.json","input/task_context.md","input/model_questions.jsonl"],
+ "policy":"Supply only these files. All other dataset files are construction or evaluation material. The dictionary contains ordinary business semantics and declared constraints."
+}

@@ -1,0 +1,114 @@
+{
+  "timestamp_columns": 15,
+  "event_timestamp_columns": 12,
+  "other_timestamp_columns": 3,
+  "baseline_timestamp_columns": 15,
+  "date_only_columns": [],
+  "columns": [
+    {
+      "table": "warehouse",
+      "column": "created_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 4
+    },
+    {
+      "table": "warehouse",
+      "column": "updated_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 4
+    },
+    {
+      "table": "worker",
+      "column": "updated_at",
+      "role": "Technical maintenance instant",
+      "used_as_event_time": false,
+      "non_null_rows": 7
+    },
+    {
+      "table": "receiving_request",
+      "column": "submitted_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 26
+    },
+    {
+      "table": "goods_receipt",
+      "column": "received_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 23
+    },
+    {
+      "table": "dispatch_order",
+      "column": "requested_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 20
+    },
+    {
+      "table": "dispatch_order",
+      "column": "approved_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 18
+    },
+    {
+      "table": "warehouse_audit",
+      "column": "started_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 9
+    },
+    {
+      "table": "warehouse_audit",
+      "column": "completed_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 8
+    },
+    {
+      "table": "goods_movement",
+      "column": "occurred_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 39
+    },
+    {
+      "table": "request_action",
+      "column": "occurred_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 56
+    },
+    {
+      "table": "warehouse_task_history",
+      "column": "started_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 63
+    },
+    {
+      "table": "warehouse_task_history",
+      "column": "completed_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 60
+    },
+    {
+      "table": "handling_history",
+      "column": "started_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 41
+    },
+    {
+      "table": "handling_history",
+      "column": "completed_at",
+      "role": "Selected actual business instant",
+      "used_as_event_time": true,
+      "non_null_rows": 39
+    }
+  ]
+}

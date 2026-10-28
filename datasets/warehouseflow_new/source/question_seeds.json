@@ -1,0 +1,221 @@
+[
+  {
+    "id": "W01",
+    "view": "Receiving Request",
+    "activities": [
+      "Receiving Request Submitted"
+    ],
+    "question": "For each receiving request, extract Receiving Request Submitted events."
+  },
+  {
+    "id": "W02",
+    "view": "Receipt",
+    "activities": [
+      "Receipt Registered"
+    ],
+    "question": "For each receipt record, extract Receipt Registered events."
+  },
+  {
+    "id": "W03",
+    "view": "Dispatch Order",
+    "activities": [
+      "Dispatch Requested",
+      "Dispatch Approved"
+    ],
+    "question": "For each dispatch order, extract Dispatch Requested and Dispatch Approved events."
+  },
+  {
+    "id": "W04",
+    "view": "Stock Audit",
+    "activities": [
+      "Stock Audit Started",
+      "Stock Audit Completed"
+    ],
+    "question": "For each stock audit, extract Stock Audit Started and Stock Audit Completed events."
+  },
+  {
+    "id": "W05",
+    "view": "Stock Movement",
+    "activities": [
+      "Goods Received",
+      "Goods Dispatched"
+    ],
+    "question": "For each stock movement record, extract Goods Received and Goods Dispatched events."
+  },
+  {
+    "id": "W06",
+    "view": "Request Action",
+    "activities": [
+      "Request Checked",
+      "Request Held",
+      "Request Released"
+    ],
+    "question": "For each request action record, extract Request Checked, Request Held and Request Released events."
+  },
+  {
+    "id": "W07",
+    "view": "Warehouse Task",
+    "activities": [
+      "Putaway Started",
+      "Putaway Completed",
+      "Picking Started",
+      "Picking Completed",
+      "Packing Started",
+      "Packing Completed"
+    ],
+    "question": "For each warehouse task, extract Putaway Started, Putaway Completed, Picking Started, Picking Completed, Packing Started and Packing Completed events."
+  },
+  {
+    "id": "W08",
+    "view": "Handling Record",
+    "activities": [
+      "Unloading Started",
+      "Unloading Completed",
+      "Loading Started",
+      "Loading Completed"
+    ],
+    "question": "For each handling record, extract Unloading Started, Unloading Completed, Loading Started and Loading Completed events."
+  },
+  {
+    "id": "W09",
+    "view": "Warehouse",
+    "activities": [
+      "Stock Audit Started",
+      "Stock Audit Completed",
+      "Putaway Started",
+      "Putaway Completed",
+      "Loading Started",
+      "Loading Completed"
+    ],
+    "question": "For each warehouse, extract Stock Audit Started, Stock Audit Completed, Putaway Started, Putaway Completed, Loading Started and Loading Completed events."
+  },
+  {
+    "id": "W10",
+    "view": "Receiving Request",
+    "activities": [
+      "Unloading Started",
+      "Unloading Completed",
+      "Receipt Registered",
+      "Goods Received",
+      "Putaway Started",
+      "Putaway Completed"
+    ],
+    "question": "For each receiving request, extract Unloading Started, Unloading Completed, Receipt Registered, Goods Received, Putaway Started and Putaway Completed events."
+  },
+  {
+    "id": "W11",
+    "view": "Dispatch Order",
+    "activities": [
+      "Picking Started",
+      "Picking Completed",
+      "Packing Started",
+      "Packing Completed",
+      "Loading Started",
+      "Loading Completed",
+      "Goods Dispatched"
+    ],
+    "question": "For each dispatch order, extract Picking Started, Picking Completed, Packing Started, Packing Completed, Loading Started, Loading Completed and Goods Dispatched events."
+  },
+  {
+    "id": "W12",
+    "view": "Worker",
+    "activities": [
+      "Stock Audit Started",
+      "Stock Audit Completed",
+      "Picking Started",
+      "Picking Completed"
+    ],
+    "question": "For each worker, extract Stock Audit Started, Stock Audit Completed, Picking Started and Picking Completed events."
+  },
+  {
+    "id": "W13",
+    "view": "Goods",
+    "activities": [
+      "Goods Received",
+      "Goods Dispatched"
+    ],
+    "question": "For each goods type, extract Goods Received and Goods Dispatched events."
+  },
+  {
+    "id": "W14",
+    "view": "Receipt",
+    "activities": [
+      "Receipt Registered",
+      "Goods Received"
+    ],
+    "question": "For each receipt record, extract Receipt Registered and Goods Received events."
+  },
+  {
+    "id": "W15",
+    "view": "Warehouse",
+    "activities": [
+      "Invoice Paid"
+    ],
+    "answerable": false,
+    "question": "For each warehouse, extract Invoice Paid events."
+  },
+  {
+    "id": "W16",
+    "view": "Dispatch Order",
+    "activities": [
+      "Customer Delivery Completed"
+    ],
+    "answerable": false,
+    "question": "For each dispatch order, extract Customer Delivery Completed events."
+  },
+  {
+    "id": "WF01",
+    "view": "Warehouse",
+    "question": "Extract the full recorded lifecycle for each warehouse."
+  },
+  {
+    "id": "WF02",
+    "view": "Goods",
+    "question": "Extract the full recorded lifecycle for each goods type."
+  },
+  {
+    "id": "WF03",
+    "view": "Worker",
+    "question": "Extract the full recorded lifecycle for each worker."
+  },
+  {
+    "id": "WF04",
+    "view": "Receiving Request",
+    "question": "Extract the full recorded lifecycle for each receiving request."
+  },
+  {
+    "id": "WF05",
+    "view": "Receipt",
+    "question": "Extract the full recorded lifecycle for each receipt record."
+  },
+  {
+    "id": "WF06",
+    "view": "Dispatch Order",
+    "question": "Extract the full recorded lifecycle for each dispatch order."
+  },
+  {
+    "id": "WF07",
+    "view": "Stock Audit",
+    "question": "Extract the full recorded lifecycle for each stock audit."
+  },
+  {
+    "id": "WF08",
+    "view": "Stock Movement",
+    "question": "Extract the full recorded lifecycle for each stock movement record."
+  },
+  {
+    "id": "WF09",
+    "view": "Request Action",
+    "question": "Extract the full recorded lifecycle for each request action record."
+  },
+  {
+    "id": "WF10",
+    "view": "Warehouse Task",
+    "question": "Extract the full recorded lifecycle for each warehouse task."
+  },
+  {
+    "id": "WF11",
+    "view": "Handling Record",
+    "question": "Extract the full recorded lifecycle for each handling record."
+  }
+]

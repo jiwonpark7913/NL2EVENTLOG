@@ -1,6 +1,6 @@
 # Timestamp column inventory
 
-- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.
+- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
 
 | Table | Column | Role | Used as event time | Non-null rows |
 |---|---|---|---|---:|

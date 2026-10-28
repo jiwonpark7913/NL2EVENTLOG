@@ -69,7 +69,7 @@
 | Q3 | 9 | 9 | 0 | 17.33 |
 | Q4 | 9 | 9 | 0 | 17.33 |
 
-- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
+- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - [All question texts, types, pairs and answerability](docs/questions.md)
 
@@ -98,7 +98,7 @@
 
 ## Timestamp columns
 
-- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.
+- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
 - [Timestamp inventory and roles](docs/timestamp_columns.md)
 - [Milestone-column extraction questions and Gold activity counts](docs/questions.md)
 - Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.

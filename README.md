@@ -1,18 +1,19 @@
 # NL2EventLog synthetic development datasets
 
-- Five English relational datasets support natural-language event-log extraction.
+- Six English relational datasets support natural-language event-log extraction.
 - Original source definitions are retained; typed business-action histories extend the domains with explicitly authored lifecycles.
 - Each dataset includes an executable DB, requirements, data dictionary, square-table draw.io/PNG ERDs, questions, ES, SQL and Gold CSVs.
 
 | Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 6 | 6 | 394 | 34 | 32 |
+| [WarehouseFlow New](datasets/warehouseflow_new/README.md) | 12 | 11 | 15 | 15 | 12 | 402 | 54 | 50 |
 | [UniversityFlow](datasets/universityflow/README.md) | 11 | 11 | 41 | 40 | 40 | 808 | 70 | 66 |
 | [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 39 | 39 | 31 | 1108 | 44 | 42 |
 | [HospitalFlow](datasets/hospitalflow/README.md) | 11 | 9 | 20 | 19 | 17 | 372 | 40 | 38 |
 | [PlateFlow New](datasets/plateflow_new/README.md) | 12 | 11 | 20 | 24 | 15 | 620 | 54 | 50 |
 
-- **Activity types:** distinct recorded business labels across the whole database, counted once across all objects.
+- **Activity types:** distinct recorded business labels across the database, counted once across objects. WarehouseFlow New reports 15 base work identities in this column; its 21 phase-specific display labels and requested-label counts are listed separately.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. History-only storage, extraction indexes and reference tables are generally excluded; HospitalFlow explicitly includes independently keyed history/occurrence cases for identity-separation tests.
 - **HospitalFlow counting:** 11 physical table/PK representations form 9 expected identity-compatible groups. Two pairs split the same patient/admission across tables; occurrence records retain their own identities. Gold membership is private evaluation data.
 - **Case:** the object used to group a timeline, such as a transaction, student or plate piece.
@@ -31,6 +32,14 @@
 
 ![WarehouseFlow schema](datasets/warehouseflow/docs/schema.png)
 
+## WarehouseFlow New
+
+- [Activity identity × timestamp phase variant](datasets/warehouseflow_new/README.md)
+- Two tables for each A–D case. Gold includes actual starts and completions; 15 base activity types correspond to 21 phase-specific display labels. Table and carrier answers stay outside the business dictionary.
+- [Model input allowlist](datasets/warehouseflow_new/input/model_input_manifest.json) · [Questions](datasets/warehouseflow_new/docs/questions.md)
+
+![WarehouseFlow New schema](datasets/warehouseflow_new/docs/schema.png)
+
 ## UniversityFlow
 
 - [Objects, activities, scenarios and files](datasets/universityflow/README.md)
@@ -46,7 +55,7 @@
 ## PlateFlow New
 
 - [Carrier-based variant: table answers and model-input boundary](datasets/plateflow_new/README.md)
-- An additional independent manufacturing simulation with 3 row tables, 6 column tables and 3 contextual/reference tables. Encoding and carrier answers are excluded from its business dictionaries.
+- A completion-only manufacturing variant with 3 row tables, 6 column tables and 3 context/reference tables. Its README audits A–D coverage: no physical row-carrier/one-timestamp case and no paired start/completion Gold. Encoding and carrier answers are excluded from its business dictionaries.
 - [Input allowlist](datasets/plateflow_new/input/model_input_manifest.json) · [Questions](datasets/plateflow_new/docs/questions.md)
 
 ![PlateFlow New schema](datasets/plateflow_new/docs/schema.png)
@@ -67,6 +76,7 @@
 - `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
 - Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
 - [warehouseflow question list](datasets/warehouseflow/docs/questions.md)
+- [warehouseflow_new question list](datasets/warehouseflow_new/docs/questions.md)
 - [universityflow question list](datasets/universityflow/docs/questions.md)
 - [plateflow question list](datasets/plateflow/docs/questions.md)
 - [plateflow_new question list](datasets/plateflow_new/docs/questions.md)
@@ -80,6 +90,10 @@
 | WarehouseFlow | Q2 | 10 | 9 | 1 | 2.50 |
 | WarehouseFlow | Q3 | 7 | 7 | 0 | 10.00 |
 | WarehouseFlow | Q4 | 7 | 7 | 0 | 10.00 |
+| WarehouseFlow New | Q1 | 16 | 14 | 2 | 3.12 |
+| WarehouseFlow New | Q2 | 16 | 14 | 2 | 3.12 |
+| WarehouseFlow New | Q3 | 11 | 11 | 0 | 8.55 |
+| WarehouseFlow New | Q4 | 11 | 11 | 0 | 8.55 |
 | UniversityFlow | Q1 | 23 | 21 | 2 | 2.35 |
 | UniversityFlow | Q2 | 23 | 21 | 2 | 2.35 |
 | UniversityFlow | Q3 | 12 | 12 | 0 | 9.92 |
@@ -97,7 +111,7 @@
 | PlateFlow New | Q3 | 11 | 11 | 0 | 7.00 |
 | PlateFlow New | Q4 | 11 | 11 | 0 | 7.00 |
 
-- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
+- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - All pairs are one-to-one: Q1 ↔ Q2 and Q3 ↔ Q4. Missing originals/paraphrases are repaired during question construction.
 - Process View already includes activity scope; activities are not a separate concept added to it.
@@ -109,7 +123,7 @@
 
 - HospitalFlow tests identity-compatible grouping of patients/patient_profile and admissions/admission_detail. Different order types and history records stay separate; grouping answers are private.
 - Q1/Q3 seeds are frozen before the assistant LLM creates Q2/Q4 paraphrases. Saved prompts and outputs document this process; no external model/API call is claimed.
-- Existing datasets retain their prior questions. Frozen assistant-LLM paraphrase provenance is recorded for HospitalFlow and PlateFlow New.
+- Existing datasets retain their prior questions. Frozen assistant-LLM paraphrase provenance is recorded for HospitalFlow, PlateFlow New and WarehouseFlow New.
 - Run `python datasets/hospitalflow/build.py`, `python make_docs.py`, `python question_summary.py`, `python validate_lifecycles.py` and `python validate_timestamp_columns.py` from the repository root.
 - HospitalFlow uses 19 timestamp columns in the corrected business-table design; its baseline count is the count before any further milestone expansion.
 
@@ -119,13 +133,20 @@
 - Use only its model_input_manifest.json allowlist for model evaluation. This variant excludes event-table, row/column and carrier annotations from all business dictionaries. Existing datasets retain their previously authored dictionary formats.
 - The standalone builder generates its structural PNG/draw.io and three-part dictionary. Documentation refresh preserves the clean input boundary.
 
+## WarehouseFlow New build and phase coverage
+
+- Run `python datasets/warehouseflow_new/build.py` and `python datasets/warehouseflow_new/validate.py`. Global dictionary/documentation and validation entry points preserve its clean model-input boundary.
+- A–D describe base activity identity and timestamp phase separately. WarehouseFlow New has physical and Gold coverage for all four; PlateFlow New keeps its agreed completion-only contract and documents the missing/partial cases.
+- The business dictionary describes actual code/time meanings without classification, carrier or phase-selection answers. README and private phase bindings are evaluation material.
+
 ## Timestamp columns
 
-- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; plans, technical times, snapshots, interval starts and copied key timestamps are listed separately.
+- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
 
 | Dataset | Baseline timestamp columns before milestone expansion | Current timestamp columns | Current event timestamp columns |
 |---|---:|---:|---:|
 | WarehouseFlow | 2 | 6 | 6 |
+| WarehouseFlow New | 15 | 15 | 12 |
 | UniversityFlow | 14 | 40 | 40 |
 | PlateFlow | 37 | 39 | 31 |
 | HospitalFlow | 19 | 19 | 17 |

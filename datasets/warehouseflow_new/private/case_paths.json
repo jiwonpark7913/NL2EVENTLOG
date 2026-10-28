@@ -1,0 +1,184 @@
+{
+  "Warehouse": {
+    "warehouse": {
+      "case_key": "s.warehouse_id",
+      "joins": ""
+    },
+    "receiving_request": {
+      "case_key": "s.warehouse_id",
+      "joins": ""
+    },
+    "dispatch_order": {
+      "case_key": "s.warehouse_id",
+      "joins": ""
+    },
+    "goods_movement": {
+      "case_key": "s.warehouse_id",
+      "joins": ""
+    },
+    "goods_receipt": {
+      "case_key": "q.warehouse_id",
+      "joins": " JOIN receiving_request q ON q.request_id=s.request_id"
+    },
+    "warehouse_audit": {
+      "case_key": "s.warehouse_id",
+      "joins": ""
+    },
+    "request_action": {
+      "case_key": "q.warehouse_id",
+      "joins": " JOIN receiving_request q ON q.request_id=s.request_id"
+    },
+    "warehouse_task_history": {
+      "case_key": "COALESCE(q.warehouse_id,d.warehouse_id)",
+      "joins": " LEFT JOIN receiving_request q ON q.request_id=s.request_id LEFT JOIN dispatch_order d ON d.dispatch_id=s.dispatch_id"
+    },
+    "handling_history": {
+      "case_key": "COALESCE(q.warehouse_id,d.warehouse_id)",
+      "joins": " LEFT JOIN receiving_request q ON q.request_id=s.request_id LEFT JOIN dispatch_order d ON d.dispatch_id=s.dispatch_id"
+    }
+  },
+  "Goods": {
+    "goods": {
+      "case_key": "s.goods_id",
+      "joins": ""
+    },
+    "receiving_request": {
+      "case_key": "s.goods_id",
+      "joins": ""
+    },
+    "dispatch_order": {
+      "case_key": "s.goods_id",
+      "joins": ""
+    },
+    "goods_movement": {
+      "case_key": "s.goods_id",
+      "joins": ""
+    },
+    "goods_receipt": {
+      "case_key": "q.goods_id",
+      "joins": " JOIN receiving_request q ON q.request_id=s.request_id"
+    },
+    "request_action": {
+      "case_key": "q.goods_id",
+      "joins": " JOIN receiving_request q ON q.request_id=s.request_id"
+    },
+    "warehouse_task_history": {
+      "case_key": "COALESCE(q.goods_id,d.goods_id)",
+      "joins": " LEFT JOIN receiving_request q ON q.request_id=s.request_id LEFT JOIN dispatch_order d ON d.dispatch_id=s.dispatch_id"
+    },
+    "handling_history": {
+      "case_key": "COALESCE(q.goods_id,d.goods_id)",
+      "joins": " LEFT JOIN receiving_request q ON q.request_id=s.request_id LEFT JOIN dispatch_order d ON d.dispatch_id=s.dispatch_id"
+    }
+  },
+  "Worker": {
+    "worker": {
+      "case_key": "s.worker_id",
+      "joins": ""
+    },
+    "goods_receipt": {
+      "case_key": "s.receiver_id",
+      "joins": ""
+    },
+    "warehouse_audit": {
+      "case_key": "s.worker_id",
+      "joins": ""
+    },
+    "request_action": {
+      "case_key": "s.worker_id",
+      "joins": ""
+    },
+    "warehouse_task_history": {
+      "case_key": "s.worker_id",
+      "joins": ""
+    },
+    "handling_history": {
+      "case_key": "s.worker_id",
+      "joins": ""
+    }
+  },
+  "Receiving Request": {
+    "receiving_request": {
+      "case_key": "s.request_id",
+      "joins": ""
+    },
+    "goods_receipt": {
+      "case_key": "s.request_id",
+      "joins": ""
+    },
+    "request_action": {
+      "case_key": "s.request_id",
+      "joins": ""
+    },
+    "warehouse_task_history": {
+      "case_key": "s.request_id",
+      "joins": ""
+    },
+    "handling_history": {
+      "case_key": "s.request_id",
+      "joins": ""
+    },
+    "goods_movement": {
+      "case_key": "r.request_id",
+      "joins": " JOIN goods_receipt r ON r.receipt_id=s.receipt_id"
+    }
+  },
+  "Receipt": {
+    "goods_receipt": {
+      "case_key": "s.receipt_id",
+      "joins": ""
+    },
+    "goods_movement": {
+      "case_key": "s.receipt_id",
+      "joins": ""
+    }
+  },
+  "Dispatch Order": {
+    "dispatch_order": {
+      "case_key": "s.dispatch_id",
+      "joins": ""
+    },
+    "warehouse_task_history": {
+      "case_key": "s.dispatch_id",
+      "joins": ""
+    },
+    "handling_history": {
+      "case_key": "s.dispatch_id",
+      "joins": ""
+    },
+    "goods_movement": {
+      "case_key": "s.dispatch_id",
+      "joins": ""
+    }
+  },
+  "Stock Audit": {
+    "warehouse_audit": {
+      "case_key": "s.audit_id",
+      "joins": ""
+    }
+  },
+  "Stock Movement": {
+    "goods_movement": {
+      "case_key": "s.movement_id",
+      "joins": ""
+    }
+  },
+  "Request Action": {
+    "request_action": {
+      "case_key": "s.action_id",
+      "joins": ""
+    }
+  },
+  "Warehouse Task": {
+    "warehouse_task_history": {
+      "case_key": "s.task_id",
+      "joins": ""
+    }
+  },
+  "Handling Record": {
+    "handling_history": {
+      "case_key": "s.handling_id",
+      "joins": ""
+    }
+  }
+}

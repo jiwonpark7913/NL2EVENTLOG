@@ -1,0 +1,299 @@
+[
+  {
+    "table": "receiving_request",
+    "primary_key": "request_id",
+    "base_activity": "Receiving Request Submitted",
+    "lifecycle_phase": "point",
+    "timestamp_column": "submitted_at",
+    "activity": "Receiving Request Submitted",
+    "occurrence_prefix": "receiving_request:",
+    "occurrence_suffix": "",
+    "row_filter": null,
+    "event_sql": "SELECT 'Q:'||request_id event_id,'Receiving Request Submitted' activity,submitted_at timestamp,request_id source_key FROM receiving_request WHERE submitted_at IS NOT NULL AND (1=1)"
+  },
+  {
+    "table": "goods_receipt",
+    "primary_key": "receipt_id",
+    "base_activity": "Receipt Registered",
+    "lifecycle_phase": "point",
+    "timestamp_column": "received_at",
+    "activity": "Receipt Registered",
+    "occurrence_prefix": "goods_receipt:",
+    "occurrence_suffix": "",
+    "row_filter": null,
+    "event_sql": "SELECT 'R:'||receipt_id event_id,'Receipt Registered' activity,received_at timestamp,receipt_id source_key FROM goods_receipt WHERE received_at IS NOT NULL AND (1=1)"
+  },
+  {
+    "table": "dispatch_order",
+    "primary_key": "dispatch_id",
+    "base_activity": "Dispatch Requested",
+    "lifecycle_phase": "point",
+    "timestamp_column": "requested_at",
+    "activity": "Dispatch Requested",
+    "occurrence_prefix": "dispatch_order:",
+    "occurrence_suffix": ":requested",
+    "row_filter": null,
+    "event_sql": "SELECT 'D:'||dispatch_id||':requested' event_id,'Dispatch Requested' activity,requested_at timestamp,dispatch_id source_key FROM dispatch_order WHERE requested_at IS NOT NULL AND (1=1)"
+  },
+  {
+    "table": "dispatch_order",
+    "primary_key": "dispatch_id",
+    "base_activity": "Dispatch Approved",
+    "lifecycle_phase": "point",
+    "timestamp_column": "approved_at",
+    "activity": "Dispatch Approved",
+    "occurrence_prefix": "dispatch_order:",
+    "occurrence_suffix": ":approved",
+    "row_filter": null,
+    "event_sql": "SELECT 'D:'||dispatch_id||':approved' event_id,'Dispatch Approved' activity,approved_at timestamp,dispatch_id source_key FROM dispatch_order WHERE approved_at IS NOT NULL AND (1=1)"
+  },
+  {
+    "table": "warehouse_audit",
+    "primary_key": "audit_id",
+    "base_activity": "Stock Audit",
+    "lifecycle_phase": "start",
+    "timestamp_column": "started_at",
+    "activity": "Stock Audit Started",
+    "occurrence_prefix": "warehouse_audit:",
+    "occurrence_suffix": "",
+    "row_filter": null,
+    "event_sql": "SELECT 'A:'||audit_id||':start' event_id,'Stock Audit Started' activity,started_at timestamp,audit_id source_key FROM warehouse_audit WHERE started_at IS NOT NULL AND (1=1)"
+  },
+  {
+    "table": "warehouse_audit",
+    "primary_key": "audit_id",
+    "base_activity": "Stock Audit",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "completed_at",
+    "activity": "Stock Audit Completed",
+    "occurrence_prefix": "warehouse_audit:",
+    "occurrence_suffix": "",
+    "row_filter": null,
+    "event_sql": "SELECT 'A:'||audit_id||':complete' event_id,'Stock Audit Completed' activity,completed_at timestamp,audit_id source_key FROM warehouse_audit WHERE completed_at IS NOT NULL AND (1=1)"
+  },
+  {
+    "table": "goods_movement",
+    "primary_key": "movement_id",
+    "base_activity": "Goods Received",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "occurred_at",
+    "activity": "Goods Received",
+    "occurrence_prefix": "goods_movement:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "movement_code",
+      "value": "IN"
+    },
+    "event_sql": "SELECT 'M:'||movement_id event_id,'Goods Received' activity,occurred_at timestamp,movement_id source_key FROM goods_movement WHERE occurred_at IS NOT NULL AND (movement_code='IN')"
+  },
+  {
+    "table": "goods_movement",
+    "primary_key": "movement_id",
+    "base_activity": "Goods Dispatched",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "occurred_at",
+    "activity": "Goods Dispatched",
+    "occurrence_prefix": "goods_movement:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "movement_code",
+      "value": "OUT"
+    },
+    "event_sql": "SELECT 'M:'||movement_id event_id,'Goods Dispatched' activity,occurred_at timestamp,movement_id source_key FROM goods_movement WHERE occurred_at IS NOT NULL AND (movement_code='OUT')"
+  },
+  {
+    "table": "request_action",
+    "primary_key": "action_id",
+    "base_activity": "Request Checked",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "occurred_at",
+    "activity": "Request Checked",
+    "occurrence_prefix": "request_action:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "action_code",
+      "value": "CHECK"
+    },
+    "event_sql": "SELECT 'C:'||action_id event_id,'Request Checked' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='CHECK')"
+  },
+  {
+    "table": "request_action",
+    "primary_key": "action_id",
+    "base_activity": "Request Held",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "occurred_at",
+    "activity": "Request Held",
+    "occurrence_prefix": "request_action:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "action_code",
+      "value": "HOLD"
+    },
+    "event_sql": "SELECT 'C:'||action_id event_id,'Request Held' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='HOLD')"
+  },
+  {
+    "table": "request_action",
+    "primary_key": "action_id",
+    "base_activity": "Request Released",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "occurred_at",
+    "activity": "Request Released",
+    "occurrence_prefix": "request_action:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "action_code",
+      "value": "RELEASE"
+    },
+    "event_sql": "SELECT 'C:'||action_id event_id,'Request Released' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='RELEASE')"
+  },
+  {
+    "table": "warehouse_task_history",
+    "primary_key": "task_id",
+    "base_activity": "Putaway",
+    "lifecycle_phase": "start",
+    "timestamp_column": "started_at",
+    "activity": "Putaway Started",
+    "occurrence_prefix": "warehouse_task_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "task_code",
+      "value": "PUTAWAY"
+    },
+    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Putaway Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='PUTAWAY')"
+  },
+  {
+    "table": "warehouse_task_history",
+    "primary_key": "task_id",
+    "base_activity": "Putaway",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "completed_at",
+    "activity": "Putaway Completed",
+    "occurrence_prefix": "warehouse_task_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "task_code",
+      "value": "PUTAWAY"
+    },
+    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Putaway Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='PUTAWAY')"
+  },
+  {
+    "table": "warehouse_task_history",
+    "primary_key": "task_id",
+    "base_activity": "Picking",
+    "lifecycle_phase": "start",
+    "timestamp_column": "started_at",
+    "activity": "Picking Started",
+    "occurrence_prefix": "warehouse_task_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "task_code",
+      "value": "PICK"
+    },
+    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Picking Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='PICK')"
+  },
+  {
+    "table": "warehouse_task_history",
+    "primary_key": "task_id",
+    "base_activity": "Picking",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "completed_at",
+    "activity": "Picking Completed",
+    "occurrence_prefix": "warehouse_task_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "task_code",
+      "value": "PICK"
+    },
+    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Picking Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='PICK')"
+  },
+  {
+    "table": "warehouse_task_history",
+    "primary_key": "task_id",
+    "base_activity": "Packing",
+    "lifecycle_phase": "start",
+    "timestamp_column": "started_at",
+    "activity": "Packing Started",
+    "occurrence_prefix": "warehouse_task_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "task_code",
+      "value": "PACK"
+    },
+    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Packing Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='PACK')"
+  },
+  {
+    "table": "warehouse_task_history",
+    "primary_key": "task_id",
+    "base_activity": "Packing",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "completed_at",
+    "activity": "Packing Completed",
+    "occurrence_prefix": "warehouse_task_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "task_code",
+      "value": "PACK"
+    },
+    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Packing Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='PACK')"
+  },
+  {
+    "table": "handling_history",
+    "primary_key": "handling_id",
+    "base_activity": "Unloading",
+    "lifecycle_phase": "start",
+    "timestamp_column": "started_at",
+    "activity": "Unloading Started",
+    "occurrence_prefix": "handling_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "handling_code",
+      "value": "UNLOAD"
+    },
+    "event_sql": "SELECT 'H:'||handling_id||':start' event_id,'Unloading Started' activity,started_at timestamp,handling_id source_key FROM handling_history WHERE started_at IS NOT NULL AND (handling_code='UNLOAD')"
+  },
+  {
+    "table": "handling_history",
+    "primary_key": "handling_id",
+    "base_activity": "Unloading",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "completed_at",
+    "activity": "Unloading Completed",
+    "occurrence_prefix": "handling_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "handling_code",
+      "value": "UNLOAD"
+    },
+    "event_sql": "SELECT 'H:'||handling_id||':complete' event_id,'Unloading Completed' activity,completed_at timestamp,handling_id source_key FROM handling_history WHERE completed_at IS NOT NULL AND (handling_code='UNLOAD')"
+  },
+  {
+    "table": "handling_history",
+    "primary_key": "handling_id",
+    "base_activity": "Loading",
+    "lifecycle_phase": "start",
+    "timestamp_column": "started_at",
+    "activity": "Loading Started",
+    "occurrence_prefix": "handling_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "handling_code",
+      "value": "LOAD"
+    },
+    "event_sql": "SELECT 'H:'||handling_id||':start' event_id,'Loading Started' activity,started_at timestamp,handling_id source_key FROM handling_history WHERE started_at IS NOT NULL AND (handling_code='LOAD')"
+  },
+  {
+    "table": "handling_history",
+    "primary_key": "handling_id",
+    "base_activity": "Loading",
+    "lifecycle_phase": "complete",
+    "timestamp_column": "completed_at",
+    "activity": "Loading Completed",
+    "occurrence_prefix": "handling_history:",
+    "occurrence_suffix": "",
+    "row_filter": {
+      "column": "handling_code",
+      "value": "LOAD"
+    },
+    "event_sql": "SELECT 'H:'||handling_id||':complete' event_id,'Loading Completed' activity,completed_at timestamp,handling_id source_key FROM handling_history WHERE completed_at IS NOT NULL AND (handling_code='LOAD')"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "source": "Original WarehouseFlow adaptation of a supplied SchemaAgent/RSchema warehouse example",
+  "reference_record_id": "67552f0a13602ec03b41a78e",
+  "source_copy_present": true,
+  "source_policy": "Warehouse, goods, worker and stock-movement business roles inform this independent synthetic variant. The new schema is not claimed to preserve every original table or attribute.",
+  "retained_domain_roles": {
+    "warehouse": "Warehouse",
+    "goods": "Goods",
+    "worker": "Loader",
+    "goods_movement": "Inbound/outbound transaction role"
+  },
+  "authored_extensions": [
+    "Receiving requests, receipt registrations and dispatch approvals",
+    "One-timestamp coded request actions and stock movements",
+    "Fixed-kind stock audits with start/completion phases",
+    "Coded warehouse tasks and handling with start/completion phases",
+    "Code context, actual time definitions, phase scope, complete PK/FK/CHECK constraints, all data and Gold questions/logs"
+  ],
+  "all_rows_synthetic": true
+}

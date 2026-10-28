@@ -14,23 +14,23 @@
 - Candidate discovery considers timestamp presence, then distinguishes actual business times from plans and database maintenance.
 - Row encoding means activity kind is selected by a carrier value. Having both start and finish times does not change that classification.
 - Column encoding means no activity-kind carrier exists; the table or timestamp-column business meaning determines the activity. Repeated records or a single timestamp do not make a table row encoded.
-- Start and finish columns for one work/review occurrence do not make a mixed table. This variant contains 3 row tables, 6 column tables and 3 tables with no direct business events.
+- Timestamp count alone does not establish a mixed representation. The table below classifies base activity identity and states the emitted phase profile separately. This variant contains 3 row tables, 6 column tables and 3 tables with no direct business events.
 - Only this README explicitly lists table classification and activity carriers. Dictionary JSON, Markdown and CSV have no such annotations or table-to-activity extraction answers.
 
-| Table | Expected event storage | Activity carrier | Gold time columns |
-| --- | --- | --- | --- |
-| slab_material | Column | — | received_at, released_at, verified_at |
-| planned_rolling_instruction | Column | — | approved_at, released_at, submitted_at |
-| rolling_instruction | Column | — | issued_at |
-| as_rolled_material | No business events | — | — |
-| process_code | No business events | — | — |
-| equipment | No business events | — | — |
-| furnace_operation_history | Row | operation_code | finished_at |
-| rolling_operation_history | Row | phase_code | finished_at |
-| plate_material | Column | — | identified_at, packed_at, released_at |
-| finishing_operation_history | Row | operation_code | finished_at |
-| dimension_inspection | Column | — | inspected_at |
-| plate_quality_review | Column | — | finished_at |
+| Table | Base activity identity | Activity carrier | Stored time columns | Gold time columns | Emitted phase profile |
+| --- | --- | --- | --- | --- | --- |
+| slab_material | Column | — | received_at, verified_at, released_at | received_at, released_at, verified_at | point milestones |
+| planned_rolling_instruction | Column | — | planned_reheat_at, submitted_at, approved_at, released_at | approved_at, released_at, submitted_at | point milestones |
+| rolling_instruction | Column | — | issued_at | issued_at | point milestones |
+| as_rolled_material | No business events | — | created_at, updated_at | — | none |
+| process_code | No business events | — | — | — | none |
+| equipment | No business events | — | created_at, updated_at | — | none |
+| furnace_operation_history | Row | operation_code | started_at, finished_at | finished_at | completion only |
+| rolling_operation_history | Row | phase_code | started_at, finished_at | finished_at | completion only |
+| plate_material | Column | — | identified_at, released_at, packed_at | identified_at, packed_at, released_at | point milestones |
+| finishing_operation_history | Row | operation_code | started_at, finished_at | finished_at | completion only |
+| dimension_inspection | Column | — | inspected_at | inspected_at | point milestones |
+| plate_quality_review | Column | — | started_at, finished_at | finished_at | completion only |
 
 - `operation_code=HT` means furnace heating in FURNACE and heat treatment in FINISHING. Process context resolves the meaning; it is not a globally unique activity code.
 - `equipment_code` identifies a machine, and `steel_grade` identifies a grade. Neither selects an activity kind.
@@ -74,7 +74,7 @@
 | Q3 | 11 | 11 | 0 | 7.00 |
 | Q4 | 11 | 11 | 0 | 7.00 |
 
-- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
+- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
 - Q1 seeds are paraphrased by the assistant LLM into Q2; Q3 seeds are paraphrased into Q4. Prompts, outputs and author review notes are saved in source/llm_paraphrases.json; no separate model/API call is claimed.
 - Pairs share exactly the same Process View, ES, case population and Gold CSV content. Q3/Q4 mention only their case concept and use its fixed default recorded scope.
@@ -105,3 +105,18 @@
 
 - Independent generation-time histories are compared with all SQL results and Gold CSVs. Checks cover completion-only times, group-qualified codes, outcome/machine-code distractors, genealogy, repetition, unfinished/empty cases, PK/FK integrity, dictionary leakage and exact question pairs.
 - Tests establish dataset consistency. They do not measure an LLM's event-table discovery or classification accuracy. The separate NL2EventLog classifier must still be evaluated using the allowlisted inputs.
+
+## Activity identity × timestamp phase audit
+
+- Classification has two axes: how base activity identity is represented, and which occurrence phases are stored/emitted. A code is an activity carrier only when it selects the work kind; outcome, grade and machine codes are not carriers.
+- This dataset retains the previously agreed completion-only Gold policy. It is not an all-four-cases phase benchmark.
+
+| Requested case | Physical representation in PlateFlow New | Current Gold coverage |
+|---|---|---|
+| A: no carrier, one timestamp | rolling_instruction and dimension_inspection | Covered: one fixed milestone/completion |
+| B: no carrier, multiple timestamps | slab/plan/plate milestones; plate_quality_review start/finish | Multiple point milestones are covered, but quality-review start is not emitted; paired-phase coverage is partial |
+| C: activity carrier, one timestamp | None: each coded work history stores both start and finish | Not physically covered; selecting finish alone does not make a one-timestamp table |
+| D: activity carrier, multiple timestamps | All three coded work-history tables | Base activity is row-carried, but only completion is emitted; paired-phase coverage is partial |
+
+- The history tables are **Row activity identity × stored start/complete phases × completion-only extraction**. Their two timestamps do not imply two different base activities. A mixed representation label is acceptable only when these two axes remain explicit.
+- WarehouseFlow New provides all four cases with phased Gold. PlateFlow New retains its DB, occurrence IDs and completion logs.

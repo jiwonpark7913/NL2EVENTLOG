@@ -1,0 +1,364 @@
+{
+  "table_count": 12,
+  "tables": {
+    "warehouse": {
+      "rows": 4,
+      "columns": 5,
+      "primary_key": [
+        "warehouse_id"
+      ]
+    },
+    "goods": {
+      "rows": 7,
+      "columns": 3,
+      "primary_key": [
+        "goods_id"
+      ]
+    },
+    "worker": {
+      "rows": 7,
+      "columns": 4,
+      "primary_key": [
+        "worker_id"
+      ]
+    },
+    "work_code": {
+      "rows": 10,
+      "columns": 3,
+      "primary_key": [
+        "code_family",
+        "code"
+      ]
+    },
+    "receiving_request": {
+      "rows": 26,
+      "columns": 5,
+      "primary_key": [
+        "request_id"
+      ]
+    },
+    "goods_receipt": {
+      "rows": 23,
+      "columns": 5,
+      "primary_key": [
+        "receipt_id"
+      ]
+    },
+    "dispatch_order": {
+      "rows": 20,
+      "columns": 7,
+      "primary_key": [
+        "dispatch_id"
+      ]
+    },
+    "warehouse_audit": {
+      "rows": 9,
+      "columns": 6,
+      "primary_key": [
+        "audit_id"
+      ]
+    },
+    "goods_movement": {
+      "rows": 39,
+      "columns": 9,
+      "primary_key": [
+        "movement_id"
+      ]
+    },
+    "request_action": {
+      "rows": 56,
+      "columns": 6,
+      "primary_key": [
+        "action_id"
+      ]
+    },
+    "warehouse_task_history": {
+      "rows": 63,
+      "columns": 9,
+      "primary_key": [
+        "task_id"
+      ]
+    },
+    "handling_history": {
+      "rows": 41,
+      "columns": 8,
+      "primary_key": [
+        "handling_id"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "parent": "goods",
+      "child": "receiving_request",
+      "columns": [
+        "goods_id"
+      ],
+      "parent_columns": [
+        "goods_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "warehouse",
+      "child": "receiving_request",
+      "columns": [
+        "warehouse_id"
+      ],
+      "parent_columns": [
+        "warehouse_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "worker",
+      "child": "goods_receipt",
+      "columns": [
+        "receiver_id"
+      ],
+      "parent_columns": [
+        "worker_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "receiving_request",
+      "child": "goods_receipt",
+      "columns": [
+        "request_id"
+      ],
+      "parent_columns": [
+        "request_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "goods",
+      "child": "dispatch_order",
+      "columns": [
+        "goods_id"
+      ],
+      "parent_columns": [
+        "goods_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "warehouse",
+      "child": "dispatch_order",
+      "columns": [
+        "warehouse_id"
+      ],
+      "parent_columns": [
+        "warehouse_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "worker",
+      "child": "warehouse_audit",
+      "columns": [
+        "worker_id"
+      ],
+      "parent_columns": [
+        "worker_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "warehouse",
+      "child": "warehouse_audit",
+      "columns": [
+        "warehouse_id"
+      ],
+      "parent_columns": [
+        "warehouse_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "work_code",
+      "child": "goods_movement",
+      "columns": [
+        "code_family",
+        "movement_code"
+      ],
+      "parent_columns": [
+        "code_family",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "dispatch_order",
+      "child": "goods_movement",
+      "columns": [
+        "dispatch_id"
+      ],
+      "parent_columns": [
+        "dispatch_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "goods_receipt",
+      "child": "goods_movement",
+      "columns": [
+        "receipt_id"
+      ],
+      "parent_columns": [
+        "receipt_id"
+      ],
+      "cardinality": "1 : 0..1"
+    },
+    {
+      "parent": "goods",
+      "child": "goods_movement",
+      "columns": [
+        "goods_id"
+      ],
+      "parent_columns": [
+        "goods_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "warehouse",
+      "child": "goods_movement",
+      "columns": [
+        "warehouse_id"
+      ],
+      "parent_columns": [
+        "warehouse_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "work_code",
+      "child": "request_action",
+      "columns": [
+        "code_family",
+        "action_code"
+      ],
+      "parent_columns": [
+        "code_family",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "worker",
+      "child": "request_action",
+      "columns": [
+        "worker_id"
+      ],
+      "parent_columns": [
+        "worker_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "receiving_request",
+      "child": "request_action",
+      "columns": [
+        "request_id"
+      ],
+      "parent_columns": [
+        "request_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "work_code",
+      "child": "warehouse_task_history",
+      "columns": [
+        "code_family",
+        "task_code"
+      ],
+      "parent_columns": [
+        "code_family",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "worker",
+      "child": "warehouse_task_history",
+      "columns": [
+        "worker_id"
+      ],
+      "parent_columns": [
+        "worker_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "dispatch_order",
+      "child": "warehouse_task_history",
+      "columns": [
+        "dispatch_id"
+      ],
+      "parent_columns": [
+        "dispatch_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "receiving_request",
+      "child": "warehouse_task_history",
+      "columns": [
+        "request_id"
+      ],
+      "parent_columns": [
+        "request_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "work_code",
+      "child": "handling_history",
+      "columns": [
+        "code_family",
+        "handling_code"
+      ],
+      "parent_columns": [
+        "code_family",
+        "code"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "worker",
+      "child": "handling_history",
+      "columns": [
+        "worker_id"
+      ],
+      "parent_columns": [
+        "worker_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "dispatch_order",
+      "child": "handling_history",
+      "columns": [
+        "dispatch_id"
+      ],
+      "parent_columns": [
+        "dispatch_id"
+      ],
+      "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "receiving_request",
+      "child": "handling_history",
+      "columns": [
+        "request_id"
+      ],
+      "parent_columns": [
+        "request_id"
+      ],
+      "cardinality": "1 : 0..N"
+    }
+  ]
+}

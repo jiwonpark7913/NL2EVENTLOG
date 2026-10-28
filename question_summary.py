@@ -2,9 +2,9 @@
 import json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-NOTE='- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.\n'
+NOTE='- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.\n'
 def stats(p):
- f=p/('private/questions.jsonl' if p.name=='plateflow_new' else 'input/questions.jsonl');questions=[json.loads(l) for l in f.read_text().splitlines()];out=[]
+ f=p/('private/questions.jsonl' if p.name in ['plateflow_new','warehouseflow_new'] else 'input/questions.jsonl');questions=[json.loads(l) for l in f.read_text().splitlines()];out=[]
  for typ in ['Q1','Q2','Q3','Q4']:
   qs=[q for q in questions if q['question_type']==typ];answerable=sum(q['answerability']=='answerable' for q in qs);total=sum(q['requested_activity_count'] for q in qs);assert qs
   out.append((typ,len(qs),answerable,len(qs)-answerable,total/len(qs)))
@@ -12,11 +12,11 @@ def stats(p):
  return out
 HEADER='| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |\n|---|---:|---:|---:|---:|\n'
 def refresh():
- for n in ['warehouseflow','universityflow','plateflow','hospitalflow','plateflow_new']:
-  f=ROOT/'datasets'/n/('private/questions.jsonl' if n=='plateflow_new' else 'input/questions.jsonl')
+ for n in ['warehouseflow','warehouseflow_new','universityflow','plateflow','hospitalflow','plateflow_new']:
+  f=ROOT/'datasets'/n/('private/questions.jsonl' if n in ['plateflow_new','warehouseflow_new'] else 'input/questions.jsonl')
   if not f.exists() or any('question_type' not in json.loads(x) for x in f.read_text().splitlines()):return []
  allrows=[]
- for name,title in [('warehouseflow','WarehouseFlow'),('universityflow','UniversityFlow'),('plateflow','PlateFlow'),('hospitalflow','HospitalFlow'),('plateflow_new','PlateFlow New')]:
+ for name,title in [('warehouseflow','WarehouseFlow'),('warehouseflow_new','WarehouseFlow New'),('universityflow','UniversityFlow'),('plateflow','PlateFlow'),('hospitalflow','HospitalFlow'),('plateflow_new','PlateFlow New')]:
   p=ROOT/'datasets'/name;rows=stats(p);table=HEADER+''.join(f'| {t} | {n} | {a} | {x} | {avg:.2f} |\n' for t,n,a,x,avg in rows);readme=p/'README.md';s=readme.read_text();start=s.index('## Question types and pairs');head=s[:start];tail=s[start:]
   tail=re.sub(r'\| Type \| Questions \|.*?(?=\n\n)',table.rstrip(),tail,count=1,flags=re.S);tail=re.sub(r'\n- Avg\. requested activity types =[^\n]*\n','\n',tail);tail=tail.replace(table.rstrip(),table.rstrip()+'\n\n'+NOTE.rstrip(),1);readme.write_text(re.sub(r"\n{3,}","\n\n",head+tail))
   allrows.extend((title,*r) for r in rows)

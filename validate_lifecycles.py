@@ -38,3 +38,6 @@ subprocess.run([sys.executable,str(ROOT/'datasets/hospitalflow/validate.py')],ch
 
 # Carrier-based variant validates clean model inputs and completion-only extraction.
 subprocess.run([sys.executable,str(ROOT/'datasets/plateflow_new/validate.py')],check=True)
+
+# Phase-aware warehouse variant exercises A–D with explicit occurrence phases.
+subprocess.run([sys.executable,str(ROOT/'datasets/warehouseflow_new/validate.py')],check=True)

@@ -1,0 +1,54 @@
+{"question_id": "W01", "text": "For each receiving request, extract Receiving Request Submitted events."}
+{"question_id": "W01P", "text": "For every receiving request, show when it was submitted."}
+{"question_id": "W02", "text": "For each receipt record, extract Receipt Registered events."}
+{"question_id": "W02P", "text": "For each individual receipt record, show when the receipt was registered."}
+{"question_id": "W03", "text": "For each dispatch order, extract Dispatch Requested and Dispatch Approved events."}
+{"question_id": "W03P", "text": "For every dispatch order, show when dispatch was requested and when it was approved."}
+{"question_id": "W04", "text": "For each stock audit, extract Stock Audit Started and Stock Audit Completed events."}
+{"question_id": "W04P", "text": "Show when each stock audit began and when it finished."}
+{"question_id": "W05", "text": "For each stock movement record, extract Goods Received and Goods Dispatched events."}
+{"question_id": "W05P", "text": "For every stock movement record, show the recorded receipt into stock or dispatch from stock, as applicable."}
+{"question_id": "W06", "text": "For each request action record, extract Request Checked, Request Held and Request Released events."}
+{"question_id": "W06P", "text": "For each individual request action record, show the checking, holding or releasing action that was recorded."}
+{"question_id": "W07", "text": "For each warehouse task, extract Putaway Started, Putaway Completed, Picking Started, Picking Completed, Packing Started and Packing Completed events."}
+{"question_id": "W07P", "text": "For every warehouse task, show the recorded beginnings and completions of putaway, picking or packing, as applicable."}
+{"question_id": "W08", "text": "For each handling record, extract Unloading Started, Unloading Completed, Loading Started and Loading Completed events."}
+{"question_id": "W08P", "text": "For each handling record, show when unloading or loading began and finished, as applicable."}
+{"question_id": "W09", "text": "For each warehouse, extract Stock Audit Started, Stock Audit Completed, Putaway Started, Putaway Completed, Loading Started and Loading Completed events."}
+{"question_id": "W09P", "text": "For each warehouse, show the beginnings and completions of its stock audits, putaway work and loading work."}
+{"question_id": "W10", "text": "For each receiving request, extract Unloading Started, Unloading Completed, Receipt Registered, Goods Received, Putaway Started and Putaway Completed events."}
+{"question_id": "W10P", "text": "For every receiving request, show the start and completion of unloading, registration of the receipt, receipt into warehouse stock, and the start and completion of putaway."}
+{"question_id": "W11", "text": "For each dispatch order, extract Picking Started, Picking Completed, Packing Started, Packing Completed, Loading Started, Loading Completed and Goods Dispatched events."}
+{"question_id": "W11P", "text": "For each dispatch order, show when picking, packing and loading began and finished, together with the dispatch of goods from stock."}
+{"question_id": "W12", "text": "For each worker, extract Stock Audit Started, Stock Audit Completed, Picking Started and Picking Completed events."}
+{"question_id": "W12P", "text": "For every worker, show when their stock audits and picking work began and finished."}
+{"question_id": "W13", "text": "For each goods type, extract Goods Received and Goods Dispatched events."}
+{"question_id": "W13P", "text": "For each goods type, show its recorded receipts into warehouse stock and dispatches from stock."}
+{"question_id": "W14", "text": "For each receipt record, extract Receipt Registered and Goods Received events."}
+{"question_id": "W14P", "text": "For every individual receipt record, show its registration and the corresponding receipt of goods into stock."}
+{"question_id": "W15", "text": "For each warehouse, extract Invoice Paid events."}
+{"question_id": "W15P", "text": "For every warehouse, show when its invoices were paid."}
+{"question_id": "W16", "text": "For each dispatch order, extract Customer Delivery Completed events."}
+{"question_id": "W16P", "text": "For each dispatch order, show when delivery to the customer was completed."}
+{"question_id": "WF01", "text": "Extract the full recorded lifecycle for each warehouse."}
+{"question_id": "WF01P", "text": "Show the complete recorded history of each warehouse."}
+{"question_id": "WF02", "text": "Extract the full recorded lifecycle for each goods type."}
+{"question_id": "WF02P", "text": "Build the entire recorded timeline associated with every goods type."}
+{"question_id": "WF03", "text": "Extract the full recorded lifecycle for each worker."}
+{"question_id": "WF03P", "text": "Show every worker's full recorded history."}
+{"question_id": "WF04", "text": "Extract the full recorded lifecycle for each receiving request."}
+{"question_id": "WF04P", "text": "Trace each receiving request through its complete recorded lifecycle."}
+{"question_id": "WF05", "text": "Extract the full recorded lifecycle for each receipt record."}
+{"question_id": "WF05P", "text": "Show the entire recorded history associated with each individual receipt record."}
+{"question_id": "WF06", "text": "Extract the full recorded lifecycle for each dispatch order."}
+{"question_id": "WF06P", "text": "Build a complete recorded timeline for every dispatch order."}
+{"question_id": "WF07", "text": "Extract the full recorded lifecycle for each stock audit."}
+{"question_id": "WF07P", "text": "Show the full recorded history of each stock audit."}
+{"question_id": "WF08", "text": "Extract the full recorded lifecycle for each stock movement record."}
+{"question_id": "WF08P", "text": "Trace each individual stock movement record through its entire recorded history."}
+{"question_id": "WF09", "text": "Extract the full recorded lifecycle for each request action record."}
+{"question_id": "WF09P", "text": "Show the complete recorded history of every individual request action record."}
+{"question_id": "WF10", "text": "Extract the full recorded lifecycle for each warehouse task."}
+{"question_id": "WF10P", "text": "Build the full recorded lifecycle of each warehouse task."}
+{"question_id": "WF11", "text": "Extract the full recorded lifecycle for each handling record."}
+{"question_id": "WF11P", "text": "Trace every individual handling record through its complete recorded history."}

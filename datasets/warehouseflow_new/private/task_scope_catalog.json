@@ -1,0 +1,219 @@
+{
+  "views": [
+    {
+      "case_concept": "Warehouse",
+      "case_table": "warehouse",
+      "case_count": 4,
+      "activity_count": 21,
+      "base_activity_count": 15,
+      "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
+        "Goods Dispatched",
+        "Goods Received",
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Receiving Request Submitted",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Stock Audit Completed",
+        "Stock Audit Started",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "event_rows": 402,
+      "cases_without_events": 1
+    },
+    {
+      "case_concept": "Goods",
+      "case_table": "goods",
+      "case_count": 7,
+      "activity_count": 19,
+      "base_activity_count": 14,
+      "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
+        "Goods Dispatched",
+        "Goods Received",
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Receiving Request Submitted",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "event_rows": 385,
+      "cases_without_events": 1
+    },
+    {
+      "case_concept": "Worker",
+      "case_table": "worker",
+      "case_count": 7,
+      "activity_count": 16,
+      "base_activity_count": 10,
+      "activities": [
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Stock Audit Completed",
+        "Stock Audit Started",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "event_rows": 299,
+      "cases_without_events": 1
+    },
+    {
+      "case_concept": "Receiving Request",
+      "case_table": "receiving_request",
+      "case_count": 26,
+      "activity_count": 10,
+      "base_activity_count": 8,
+      "activities": [
+        "Goods Received",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Receiving Request Submitted",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "event_rows": 219,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Receipt",
+      "case_table": "goods_receipt",
+      "case_count": 23,
+      "activity_count": 2,
+      "base_activity_count": 2,
+      "activities": [
+        "Goods Received",
+        "Receipt Registered"
+      ],
+      "event_rows": 46,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Dispatch Order",
+      "case_table": "dispatch_order",
+      "case_count": 20,
+      "activity_count": 9,
+      "base_activity_count": 6,
+      "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested",
+        "Goods Dispatched",
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started"
+      ],
+      "event_rows": 166,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Stock Audit",
+      "case_table": "warehouse_audit",
+      "case_count": 9,
+      "activity_count": 2,
+      "base_activity_count": 1,
+      "activities": [
+        "Stock Audit Completed",
+        "Stock Audit Started"
+      ],
+      "event_rows": 17,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Stock Movement",
+      "case_table": "goods_movement",
+      "case_count": 39,
+      "activity_count": 2,
+      "base_activity_count": 2,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "event_rows": 39,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Request Action",
+      "case_table": "request_action",
+      "case_count": 56,
+      "activity_count": 3,
+      "base_activity_count": 3,
+      "activities": [
+        "Request Checked",
+        "Request Held",
+        "Request Released"
+      ],
+      "event_rows": 56,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Warehouse Task",
+      "case_table": "warehouse_task_history",
+      "case_count": 63,
+      "activity_count": 6,
+      "base_activity_count": 3,
+      "activities": [
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started"
+      ],
+      "event_rows": 123,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Handling Record",
+      "case_table": "handling_history",
+      "case_count": 41,
+      "activity_count": 4,
+      "base_activity_count": 2,
+      "activities": [
+        "Loading Completed",
+        "Loading Started",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "event_rows": 80,
+      "cases_without_events": 0
+    }
+  ]
+}
