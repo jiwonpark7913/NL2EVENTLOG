@@ -35,7 +35,7 @@
 | --- | --- | --- | --- | --- |
 | stay_minutes | 13 | 2160.0 | 10533.0 | 13 |
 | ed_to_admission_minutes | 8 | 22.0 | 216.0 | 8 |
-| lab_turnaround_minutes | 62 | 32.0 | 238.0 | 49 |
+| lab_turnaround_minutes | 62 | 84.0 | 309.0 | 55 |
 | authorization_to_discharge_minutes | 13 | 47.0 | 220.0 | 13 |
 | readmission_gap_minutes | 4 | 8762.0 | 11476.0 | 4 |
 
@@ -51,3 +51,5 @@
 - Passing these probes demonstrates detection of these specified errors, not every possible wrong SQL statement. Integrity, case membership and independent-history comparisons are checked separately.
 - The independent generation history is emitted while simulating events; ES SQL reconstructs rows from persisted business tables. Simulation collision resolution updates both representations before comparison and has its own audit.
 - [Machine-readable results](realism_validation.json) · [Business dictionary](data_dictionary.md) · [Questions](questions.md) · [Construction plan](../design/plan.md)
+
+- Subsequent semantic corrections: [clinical-time and dictionary review](semantic_review.md). Specimen collection now precedes receipt and summaries are signed after discharge.

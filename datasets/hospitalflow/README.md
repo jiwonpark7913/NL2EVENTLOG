@@ -24,13 +24,13 @@
 
 | Object Type | Instances | Activity types | Activity scope |
 | --- | --- | --- | --- |
-| Patient | 12 | 20 | Discharge Authorized, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Measurement Charted, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Patient Profile Verified, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Received |
-| Hospital Admission | 15 | 19 | Discharge Authorized, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Measurement Charted, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Received |
-| Laboratory Order | 34 | 6 | Lab Measurement Charted, Lab Result Available, Lab Results Verified, Order Entered, Order Reviewed, Specimen Received |
+| Patient | 12 | 20 | Discharge Authorized, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Patient Profile Verified, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received |
+| Hospital Admission | 15 | 19 | Discharge Authorized, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received |
+| Laboratory Order | 34 | 6 | Lab Result Available, Lab Results Verified, Order Entered, Order Reviewed, Specimen Collected, Specimen Received |
 | Medication Order | 29 | 6 | Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Entered, Order Reviewed |
 | Procedure Order | 17 | 6 | Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started |
 | Order History Record | 203 | 3 | Order Cancelled, Order Entered, Order Reviewed |
-| Lab Measurement | 62 | 2 | Lab Measurement Charted, Lab Result Available |
+| Lab Measurement | 62 | 2 | Lab Result Available, Specimen Collected |
 | Medication Administration | 67 | 2 | Medication Administered, Medication Not Given |
 | Procedure Episode | 23 | 2 | Procedure Completed, Procedure Started |
 | Pharmacy Dispensing | 34 | 3 | Medication Administered, Medication Dispensed, Medication Not Given |
@@ -80,6 +80,14 @@
 - design/, docs/ and this README include construction explanations and answers; exclude them from model inputs. The data dictionary is legitimate input evidence and explicitly describes identifier semantics without supplying final MERGE/SEPARATE labels.
 - Main-schema gold pairs cover two positive split-storage cases and distinct-identity negatives. UNRESOLVED and group-conflict scenarios are separately specified in private/identity_edge_cases.json; these are not claimed live-table cases or executed semantic-judge tests.
 
+## Dictionary conditions
+
+- [Dictionary semantics review](docs/semantic_review.md) · [Dictionary ablation setup](docs/dictionary_ablation.md)
+- Full, concise and no-dictionary conditions share exactly the same DB, schema, questions and Gold. Detailed identifier evidence is retained in the full condition; the concise condition omits repeated identity explanations and documentation references. No model performance result is claimed.
+- Missing clinical timestamp means no time is recorded and occurrence status is unknown. NULL admission associations and non-applicable history references have separately documented structural meanings.
+- Laboratory charttime is specimen collection; result availability is storetime. Collection → receipt → result availability → verification are checked against persisted data.
+- Discharge summaries are signed after discharge. The constant summary_status column was removed; drafts are outside this table.
+
 ## Realism revision
 
 - [Changes, distributions and negative JOIN controls](docs/realism_review.md)
@@ -101,7 +109,7 @@
 
 - [Revised business dictionary](docs/data_dictionary.md) follows Harvard HMS/OSF variable guidance with relational schema extensions; basic information is context rather than a mandatory variable field.
 - [Field checklist and documentation basis](docs/data_dictionary_profile.md) · [Before/after review and remaining questions](docs/data_dictionary_review.md)
-- All 12 tables and 53 variables have readable names, definitions, value domains, NULL meanings and storage metadata. The 19 datetime variables have explicit representation and timezone.
+- All 12 tables and 52 variables have readable names, definitions, value domains, NULL meanings and storage metadata. The 19 datetime variables have explicit representation and timezone.
 - The dictionary excludes event classifications, extraction-time selection counts, query scopes and model/Ground-truth instructions. Code meanings and documented identifier relationships remain legitimate business metadata.
 - Use input/model_input_manifest.json for the default model inputs. task_scope_catalog.json remains an optional separate catalog-assisted condition because it supplies explicit activity scopes.
 - Reviewed definitions live in source/dictionary_profile.json. Regenerate with `python hospital_dictionary.py datasets/hospitalflow`; check with `python datasets/hospitalflow/validate_dictionary.py`.

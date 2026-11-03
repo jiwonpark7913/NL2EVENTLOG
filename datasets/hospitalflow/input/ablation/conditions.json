@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "id": "full_dictionary",
+      "paths": [
+        "input/database.sqlite",
+        "input/schema.sql",
+        "input/model_questions.jsonl",
+        "input/data_dictionary.json"
+      ]
+    },
+    {
+      "id": "concise_dictionary",
+      "paths": [
+        "input/database.sqlite",
+        "input/schema.sql",
+        "input/model_questions.jsonl",
+        "input/ablation/data_dictionary.concise.json"
+      ]
+    },
+    {
+      "id": "no_dictionary",
+      "paths": [
+        "input/database.sqlite",
+        "input/schema.sql",
+        "input/model_questions.jsonl"
+      ]
+    }
+  ]
+}

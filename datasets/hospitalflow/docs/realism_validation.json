@@ -26,7 +26,17 @@
     "variable_zero_to_many_cardinalities": true,
     "minute_scale_nonconstant_time_intervals": true,
     "no_unintended_event_ties": true,
-    "pharmacy_doses_follow_dispensing_and_precede_stop": true
+    "pharmacy_doses_follow_dispensing_and_precede_stop": true,
+    "collection_receipt_result_verification_order": {
+      "checked_rows": 62,
+      "valid_rows": 62
+    },
+    "summaries_signed_after_discharge": {
+      "checked_rows": 5,
+      "valid_rows": 5
+    },
+    "nullable_authorization_check_unknown_branch_verified": true,
+    "constant_summary_status_removed": true
   },
   "count_distributions": {
     "lab_order_per_admission": {
@@ -93,10 +103,10 @@
     },
     "lab_turnaround_minutes": {
       "n": 62,
-      "distinct": 49,
-      "minimum": 32.0,
-      "maximum": 238.0,
-      "mean": 136.44
+      "distinct": 55,
+      "minimum": 84.0,
+      "maximum": 309.0,
+      "mean": 185.14
     },
     "authorization_to_discharge_minutes": {
       "n": 13,

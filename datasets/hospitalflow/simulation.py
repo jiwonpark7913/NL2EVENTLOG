@@ -33,14 +33,15 @@ def populate(ins,event,hist,time,counts):
   if serial%4==0:hist(kind+':'+str(oid),'REVIEWED',reviewed+minute(7,39),objs)
   milestone=reviewed+minute(19,116)
   if kind=='LAB':
+   milestone+=3 # receipt follows collection; no extra random draw
    latest=milestone
    if not pending:
     event('LAB:'+str(oid)+':received','Specimen Received',milestone,objs)
     for j in range(rng.choice([1,1,2,3,5])):
-     counts['lab']+=1;i=counts['lab'];h=milestone+minute(6,55)+j*minute(7,21);stored=h+minute(30,240);latest=max(latest,stored)
+     counts['lab']+=1;i=counts['lab'];h=milestone-minute(6,55)-j*minute(7,21);stored=milestone+minute(30,240);latest=max(latest,stored)
      item,label,unit,val=rng.choice([(1001,'Creatinine','mg/dL',round(rng.uniform(.5,2.3),2)),(1002,'Sodium','mmol/L',round(rng.uniform(130,146),1)),(1003,'Hemoglobin','g/dL',round(rng.uniform(9,16),1))])
      ins('labevents',labevent_id=i,order_id=oid,itemid=item,charttime=time(h),storetime=time(stored),valuenum=val,valueuom=unit)
-     event('LABEV:'+str(i)+':chart','Lab Measurement Charted',h,objs);event('LABEV:'+str(i)+':result','Lab Result Available',stored,objs)
+     event('LABEV:'+str(i)+':chart','Specimen Collected',h,objs);event('LABEV:'+str(i)+':result','Lab Result Available',stored,objs)
    verified=latest+minute(13,127)
    ins('lab_order',order_id=oid,subject_id=subject,hadm_id=a,specimen_received_at=None if pending else time(milestone),results_verified_at=None if pending else time(verified))
    if not pending:event('LAB:'+str(oid)+':verified','Lab Results Verified',verified,objs)
@@ -99,7 +100,7 @@ def populate(ins,event,hist,time,counts):
     ah=(datetime.fromisoformat(auth.replace('Z','+00:00'))-datetime.fromisoformat('2026-01-01T00:00:00+00:00')).total_seconds()/3600
     event('ADM:'+str(a)+':auth','Discharge Authorized',ah,[po,ao]);event('ADM:'+str(a)+':out','Hospital Discharged',end,[po,ao])
    if idx%3==1:
-    signed=end-minute(7,19);ins('admission_detail',hadm_id=a,discharge_summary_signed_at=time(signed),summary_status='SIGNED');event('ADM:'+str(a)+':summary','Discharge Summary Signed',signed,[po,ao])
+    signed=end+12*minute(7,19);ins('admission_detail',hadm_id=a,discharge_summary_signed_at=time(signed));event('ADM:'+str(a)+':summary','Discharge Summary Signed',signed,[po,ao])
    for kind in ['LAB','MED','PROC']:
     for serial in range(sizes[kind][idx-1]):add_order(kind,next(ids[kind]),subject,a,base,end,serial)
  # Authored outpatient requests: patient is known, hospital admission is absent.

@@ -50,4 +50,6 @@ def update_profile(p,con,roles,descs):
  rules=['Laboratory, medication and procedure requests retain separate identifier namespaces; equal local values identify different requests.', 'lab_order.subject_id identifies its patient even when hadm_id is NULL. When hadm_id is present its patient must agree with admissions.subject_id; this is a documented cross-table rule checked by the construction validator.', 'medication_order represents a prescription; pharmacy represents a dispensing record; emar represents an administration or omission associated with one dispensing record.', 'Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.', 'Hospital-level procedure_episode is authored and does not reproduce the ICU procedureevents table.', 'The three order tables are an intentional alternative to MIMIC poe; laboratory-request and dispensing-milestone structures are authored simplifications.']
  for rule in rules:
   if rule not in d['business_rules']:d['business_rules'].append(rule)
+ from semantic_metadata import revise
+ d=revise(d)
  (p/'source/dictionary_profile.json').write_text(json.dumps(d,indent=2)+'\n')

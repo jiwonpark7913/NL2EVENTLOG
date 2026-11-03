@@ -69,3 +69,14 @@
 - [Harvard HMS Data Dictionary](https://datamanagement.hms.harvard.edu/collect-analyze/documentation-metadata/data-dictionary)
 - [OSF How to Make a Data Dictionary](https://help.osf.io/article/217-how-to-make-a-data-dictionary)
 - [SQLite CREATE TABLE](https://www.sqlite.org/lang_createtable.html)
+
+## Author notes moved out of model inputs
+
+- Basic information is document context, not a mandatory per-variable field in a universal standard. Harvard/OSF guidance does not certify the dictionary.
+- UTC is a timezone, not a measurement unit. Identifier and datetime units are Not applicable; numeric results use the corresponding valueuom.
+- Unset minimum/maximum does not remove underlying datatype/key rules. Observed sample minima/maxima are not allowed-value constraints.
+- The DB is not declared STRICT. Documented types and RFC 3339 datetime conventions are not complete SQL format validators. Foreign-key enforcement requires PRAGMA foreign_keys=ON.
+- SQL CHECK accepts TRUE or UNKNOWN. Specifically, NULL discharge authorization does not prevent recording discharge; this interpretation remains with the relevant table definition because it affects business data.
+- No special missing-value sentinel is defined. Clinical timestamp NULL means occurrence status unknown; structural reference NULL has its column-specific non-applicable/no-association meaning.
+- Full model JSON omits documentation_basis and document-maintainer/provenance commentary. The reviewed author profile retains that material separately. The business MD contains no guidance-method introduction or documentation-reference appendix.
+- [Current clinical-time and NULL review](semantic_review.md) · [Dictionary input conditions](dictionary_ablation.md)

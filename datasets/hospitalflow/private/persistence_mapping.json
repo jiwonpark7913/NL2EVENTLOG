@@ -99,10 +99,10 @@
   },
   {
     "table": "labevents",
-    "activity": "Lab Measurement Charted",
+    "activity": "Specimen Collected",
     "timestamp_column": "charttime",
     "encoding": "Column encoding",
-    "event_sql": "SELECT 'LABEV:'||e.labevent_id||':chart' event_id,'LAB:'||o.order_id object_id,'Lab Measurement Charted' activity,e.charttime timestamp FROM labevents e JOIN lab_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (1=1)"
+    "event_sql": "SELECT 'LABEV:'||e.labevent_id||':chart' event_id,'LAB:'||o.order_id object_id,'Specimen Collected' activity,e.charttime timestamp FROM labevents e JOIN lab_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (1=1)"
   },
   {
     "table": "labevents",

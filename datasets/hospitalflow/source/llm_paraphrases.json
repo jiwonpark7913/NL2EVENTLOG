@@ -7,7 +7,7 @@
   "outputs": {
     "H01": "For every hospital stay, build a timeline of when its orders were placed, checked and, if applicable, cancelled.",
     "H02": "For every hospital stay, show when laboratory findings became available, medicines were given and procedures finished.",
-    "H03": "For every laboratory order, show when each measurement was charted, when its findings became accessible and when the order's results were verified.",
+    "H03": "For every laboratory request, show when specimens were collected, when results became available and when those results were verified.",
     "H04": "Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication.",
     "H05": "For every procedure order, show when preparation finished and when each procedure occurrence began and ended.",
     "H06": "For every hospital stay, show arrival registration in the emergency department, admission, authorization to leave and actual discharge.",
@@ -40,6 +40,15 @@
       "generator": "Assistant LLM in this conversation; no external API or exact model version claimed.",
       "prompt": "Paraphrase each frozen Q1/Q3 seed in question_seeds.json. Preserve its case grain, activity scope and answerability; do not add activities or narrow the lifecycle.",
       "review": "Pharmacy case grain and all three explicit medication outcomes retained."
+    },
+    {
+      "date": "2026-11-03",
+      "seed_ids": [
+        "H03"
+      ],
+      "generator": "Assistant LLM in this conversation; no external API or exact model version claimed.",
+      "prompt": "Paraphrase the revised H03 seed: For each laboratory order, extract Specimen Collected, Lab Result Available and Lab Results Verified events. Preserve all three activities and the laboratory-order case grain.",
+      "review": "The seed was revised before this paraphrase. Collection replaces ambiguous measurement charting; availability and verification are retained."
     }
   ]
 }

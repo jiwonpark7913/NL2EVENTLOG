@@ -9,14 +9,14 @@ import sys
 
 P = Path(__file__).resolve().parent
 sys.path.insert(0, str(P.parents[1]))
-from hospital_dictionary import artifacts, validate_schema
+from hospital_dictionary import artifacts, validate_schema, model_dictionary
 
 def main():
     dictionary = json.loads((P / "input/data_dictionary.json").read_text())
     profile = json.loads((P / "source/dictionary_profile.json").read_text())
-    assert dictionary == profile
+    assert dictionary == model_dictionary(profile)
     assert len(dictionary["tables"]) == 12
-    assert sum(len(t["columns"]) for t in dictionary["tables"]) == 53
+    assert sum(len(t["columns"]) for t in dictionary["tables"]) == 52
     validate_schema(P / "input/database.sqlite", dictionary)
     forbidden = {"event_encoding", "encoding_detail", "carrier_column", "is_event_table",
                  "event_timestamp_columns", "activity_sources", "event_bindings",
@@ -40,7 +40,7 @@ def main():
             actual = list(csv.DictReader(stream))
         expected = [{key: str(value) for key, value in row.items()} for row in rows]
         assert actual == expected, filename
-    assert len(column_rows) == 53
+    assert len(column_rows) == 52
     banned = re.compile(r"row[ _-]+encoding|column[ _-]+encoding|mixed[ _-]+encoding|carrier_column|event_bindings|used_as_event_time|compiled_sql", re.I)
     files = ["input/data_dictionary.json", "input/data_dictionary.md",
              "docs/data_dictionary.md", "docs/data_dictionary.csv",
@@ -74,7 +74,28 @@ def main():
                     instant = datetime.fromisoformat(value.replace("Z", "+00:00"))
                     assert instant.microsecond == 0
                 datetime_count += 1
-    assert datetime_count == 19 and enum_count == 4
+    assert datetime_count == 19 and enum_count == 3
+    assert 'documentation_basis' not in dictionary
+    assert not any('the simulation' in json.dumps(c).lower() for t in dictionary['tables'] for c in t['columns'])
+    assert 'summary_status' not in {c['name'] for t in dictionary['tables'] for c in t['columns']}
+    for t in dictionary['tables']:
+        for c in t['columns']:
+            if c['nullable'] and c['representation_class']=='Date-time':
+                assert c['null_interpretation']=='Unknown occurrence; timestamp not recorded'
+    from hospital_ablation import concise_dictionary, COMMON
+    concise=json.loads((P/'input/ablation/data_dictionary.concise.json').read_text())
+    assert concise==concise_dictionary(dictionary)
+    assert 'same patient' not in json.dumps(concise).lower()
+    assert 'same identifier namespace' not in json.dumps(concise).lower()
+    conditions=json.loads((P/'input/ablation/conditions.json').read_text())['conditions']
+    assert len(conditions)==3
+    assert {c['id'] for c in conditions}=={'full_dictionary','concise_dictionary','no_dictionary'}
+    for condition in conditions:
+        assert set(COMMON)<=set(condition['paths'])
+        assert all((P/path).is_file() and path.startswith('input/') for path in condition['paths'])
+        assert not any('scope_catalog' in path or 'conditions.json' in path or 'manifest' in path for path in condition['paths'])
+        if condition['id']=='no_dictionary':assert condition['paths']==COMMON
+        else:assert len(condition['paths'])==4
     assert not list(con.execute("PRAGMA foreign_key_list(patient_profile)"))
     profile_table = next(t for t in dictionary["tables"] if t["table"] == "patient_profile")
     assert profile_table["foreign_keys"] == [] and len(profile_table["logical_relationships"]) == 1
@@ -87,7 +108,7 @@ def main():
     render(P)
     assert before == {path: (P / path).read_bytes() for path in files}
     assert db_hash == hashlib.sha256((P / "input/database.sqlite").read_bytes()).hexdigest()
-    print("HospitalFlow dictionary: 12 tables, 53 variables, 19 datetime variables and 4 coded variables; schema/artifacts/input boundaries verified.")
+    print("HospitalFlow dictionary: 12 tables, 52 variables, 19 datetime variables and 3 coded variables; schema/artifacts/input boundaries verified.")
 
 if __name__ == "__main__":
     main()

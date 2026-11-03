@@ -1,5 +1,7 @@
 # HospitalFlow dictionary review — 2026-11-03
 
+- Historical metadata review; the current definitions and executed checks are in [semantic_review.md](semantic_review.md). The current schema has 12 tables, 52 variables and 19 datetime variables.
+
 - **Baseline commit:** bb57d37e01cf60870f5f56e27e3a3d73bfc936fd.
 - **Scope:** business metadata and its generation paths. The database, declared SQL schema, questions and private Gold artifacts are preserved.
 - **Sources:** Harvard HMS/OSF variable-documentation guidance; existing HospitalFlow schema and author conventions; official MIMIC references for selected clinical-record time meanings.
@@ -70,8 +72,8 @@
 - [MIMIC emar](https://mimic.mit.edu/docs/iv/modules/hosp/emar.html)
 - [MIMIC procedureevents](https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html)
 
-## Subsequent schema revision — 2026-11-03
+## Earlier realism schema revision — 2026-11-03
 
 - The metadata-only review above describes the previous 11-table, 50-variable version. It is historical, not the current schema inventory.
-- The current schema has 12 tables, 53 variables and 19 datetime variables. Business metadata validation, schema round-trip and all 42 Gold CSV comparisons have now run in Python.
+- The earlier realism revision had 12 tables, 53 variables and 19 datetime variables. Business metadata validation, schema round-trip and all 42 Gold CSV comparisons have now run in Python.
 - [Current schema/data revision and evaluation controls](realism_review.md)

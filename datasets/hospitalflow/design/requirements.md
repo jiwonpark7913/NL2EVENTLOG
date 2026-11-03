@@ -13,3 +13,7 @@
 - Compare every persisted SQL/CSV with a separately emitted generation-time history; verify own/FK links and outpatient exclusion from admission views. Probe intentionally wrong ID joins and unrelated fan-out, rather than only testing correct SQL.
 - Rebuild business definitions, all HospitalFlow Gold outputs and PNG/draw.io ERD together. Other datasets and their Gold records are outside this revision.
 - Wholly synthetic records and illustrative parameters are used. No actual MIMIC records, fitted population distributions or measured identity-classifier accuracy are claimed.
+
+- Clinical-time revision: charttime means specimen collection; record collection → receipt → result availability → verification. Rename the associated activity Specimen Collected and regenerate affected Q1/Q2/Gold.
+- Clinical timestamp NULL always means no time recorded and unknown occurrence; structural reference NULL is documented separately. Summary signing follows discharge; remove the constant summary_status field.
+- Generate full, concise and absent dictionary input conditions with a shared DB, questions and Gold; documentation guidance remains author-only.

@@ -1,7 +1,7 @@
 [
   {
     "table": "patients",
-    "definition": "Synthetic patient identity, inspired by MIMIC subject_id.",
+    "definition": "Patient identifiers and demographic categories.",
     "columns": [
       {
         "name": "subject_id",
@@ -45,7 +45,7 @@
         "name": "edregtime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Actual emergency department registration time; NULL for admissions without ED registration.",
+        "definition": "Emergency department registration time associated with this admission; NULL means the time is not recorded and registration occurrence is unknown.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -59,14 +59,14 @@
         "name": "discharge_authorized_at",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Authored actual discharge authorization time; NULL if not occurred.",
+        "definition": "Recorded discharge authorization time; NULL means no time is recorded and authorization occurrence is unknown.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
         "name": "dischtime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Actual hospital discharge time; NULL for an ongoing stay.",
+        "definition": "Actual hospital discharge time; NULL means the time is not recorded and discharge occurrence is unknown.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
@@ -83,7 +83,7 @@
   },
   {
     "table": "patient_profile",
-    "definition": "Optional additional information for the SAME patient identified by patients.subject_id, in the SAME identifier namespace. A matching subject_id denotes the same actual patient. No FK is declared; this identity relationship is explicitly documented. Authored split-storage extension.",
+    "definition": "Supplementary patient information keyed by patients.subject_id. Matching subject_id refers to the patient in patients; no SQL foreign key is declared.",
     "columns": [
       {
         "name": "subject_id",
@@ -114,7 +114,7 @@
   },
   {
     "table": "admission_detail",
-    "definition": "Optional additional information for the SAME hospital stay identified by admissions.hadm_id. A matching hadm_id denotes the same actual admission. Only a subset of admissions has a signed summary. Authored split-storage extension.",
+    "definition": "Signed discharge summaries keyed by admissions.hadm_id.",
     "columns": [
       {
         "name": "hadm_id",
@@ -128,13 +128,6 @@
         "type": "TEXT",
         "constraints": "See executable table DDL",
         "definition": "Actual signing time of the summary for the same hospital admission; not a separate admission instance.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "summary_status",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "SIGNED; a recorded signed summary is present.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
@@ -151,7 +144,7 @@
   },
   {
     "table": "lab_order",
-    "definition": "Authored laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.",
+    "definition": "Laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.",
     "columns": [
       {
         "name": "order_id",
@@ -234,7 +227,7 @@
         "name": "stopped_at",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Authored actual stop time; NULL if not stopped.",
+        "definition": "Recorded prescription stop time; NULL means no stop time is recorded and stop status is unknown.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
@@ -295,7 +288,7 @@
   },
   {
     "table": "order_history",
-    "definition": "Repeated order actions, inspired by provider order transaction semantics; not a copy of poe.",
+    "definition": "Recorded actions on laboratory, medication or procedure requests, including repeated reviews.",
     "columns": [
       {
         "name": "history_id",
@@ -363,7 +356,7 @@
   },
   {
     "table": "labevents",
-    "definition": "Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents.",
+    "definition": "Laboratory measurement results with specimen collection and result-availability times. charttime denotes specimen collection, not measurement execution.",
     "columns": [
       {
         "name": "labevent_id",
@@ -390,7 +383,7 @@
         "name": "charttime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
+        "definition": "Specimen collection time in labevents; administration or omission time in emar.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -428,7 +421,7 @@
   },
   {
     "table": "emar",
-    "definition": "Medication administration or omission occurrences, inspired by MIMIC emar.",
+    "definition": "Medication administration or omission records associated with pharmacy dispensing records.",
     "columns": [
       {
         "name": "emar_id",
@@ -448,7 +441,7 @@
         "name": "charttime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
+        "definition": "Specimen collection time in labevents; administration or omission time in emar.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -479,7 +472,7 @@
   },
   {
     "table": "procedure_episode",
-    "definition": "Authored hospital-level procedure execution episode; not the MIMIC ICU procedureevents table.",
+    "definition": "Hospital-level procedure execution episodes; the ICU stay_id hierarchy is excluded.",
     "columns": [
       {
         "name": "procedureevent_id",
@@ -506,7 +499,7 @@
         "name": "endtime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Actual procedure episode completion; NULL if ongoing.",
+        "definition": "Actual procedure episode completion; NULL means no completion time is recorded and completion status is unknown.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -550,7 +543,7 @@
         "name": "dispensed_at",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Authored actual dispensing time.",
+        "definition": "Time of this individual dispensing record, not the first dispensing time of its prescription.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],

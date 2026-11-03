@@ -19,8 +19,8 @@
 | H01P | Q2 | H01 | Answerable | 3 | 3 | For every hospital stay, build a timeline of when its orders were placed, checked and, if applicable, cancelled. |
 | H02 | Q1 | H02P | Answerable | 3 | 3 | For each hospital admission, extract Lab Result Available, Medication Administered and Procedure Completed events. |
 | H02P | Q2 | H02 | Answerable | 3 | 3 | For every hospital stay, show when laboratory findings became available, medicines were given and procedures finished. |
-| H03 | Q1 | H03P | Answerable | 3 | 3 | For each laboratory order, extract Lab Measurement Charted, Lab Result Available and Lab Results Verified events. |
-| H03P | Q2 | H03 | Answerable | 3 | 3 | For every laboratory order, show when each measurement was charted, when its findings became accessible and when the order's results were verified. |
+| H03 | Q1 | H03P | Answerable | 3 | 3 | For each laboratory order, extract Specimen Collected, Lab Result Available and Lab Results Verified events. |
+| H03P | Q2 | H03 | Answerable | 3 | 3 | For every laboratory request, show when specimens were collected, when results became available and when those results were verified. |
 | H04 | Q1 | H04P | Answerable | 4 | 4 | For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events. |
 | H04P | Q2 | H04 | Answerable | 4 | 4 | Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication. |
 | H05 | Q1 | H05P | Answerable | 3 | 3 | For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events. |

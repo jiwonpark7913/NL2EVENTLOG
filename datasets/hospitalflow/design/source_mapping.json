@@ -63,7 +63,9 @@
     "lab_order is authored. Its required subject_id preserves outpatient attribution when hadm_id is NULL; no direct replication of MIMIC specimen structure is claimed.",
     "procedure_episode uses familiar start/end timing but is hospital-level authored storage; original ICU procedureevents/stay_id is not reproduced.",
     "Synthetic subject IDs use 1xxxxxxx, admission IDs 2xxxxxxx; shuffled independent order IDs use 3xxxxxxx, with deliberate partial inter-order namespace overlap.",
-    "Prescription/dispensing/administration joins follow authored declared keys, not original MIMIC join identities."
+    "Prescription/dispensing/administration joins follow authored declared keys, not original MIMIC join identities.",
+    "labevents.charttime is specimen collection time; the authored clean pathway enforces collection before receipt, result availability and verification. Measurement execution time is not recorded.",
+    "Constant summary_status removed. The signed-summary table excludes drafts and records post-discharge signing."
   ],
   "reference_urls": [
     "https://mimic.mit.edu/docs/iv/modules/hosp/patients.html",

@@ -5,7 +5,7 @@
   "dictionary_basic_information": {
     "dictionary_id": "NL2EVENTLOG:hospitalflow",
     "name": "HospitalFlow",
-    "version": "2026-11-03-realism-revision",
+    "version": "2026-11-03-semantics-revision",
     "description": "Business definitions for synthetic patient, hospital-stay, order and clinical-record data.",
     "language": "en",
     "dbms": "SQLite",
@@ -55,7 +55,7 @@
       "table": "patients",
       "metadata_id": "hospitalflow.patients",
       "readable_name": "Patients",
-      "definition": "Synthetic patient identity, inspired by MIMIC subject_id.",
+      "definition": "Patient identifiers and demographic categories.",
       "row_grain": "One row per patient.",
       "primary_key": [
         "subject_id"
@@ -94,7 +94,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.patients.gender",
@@ -131,9 +132,11 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "admissions",
@@ -188,7 +191,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.admissions.subject_id",
@@ -225,7 +229,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.admissions.edregtime",
@@ -245,7 +250,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No emergency department registration time is recorded; the simulation also uses this for admissions without ED registration.",
+          "null_meaning": "No emergency department registration time is recorded. Whether an ED registration occurred is unknown.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -257,7 +262,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         },
         {
           "metadata_id": "hospitalflow.admissions.admittime",
@@ -289,7 +295,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.admissions.discharge_authorized_at",
@@ -309,7 +316,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No discharge authorization time is recorded.",
+          "null_meaning": "No discharge authorization time is recorded. Whether authorization occurred is unknown.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -320,7 +327,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         },
         {
           "metadata_id": "hospitalflow.admissions.dischtime",
@@ -340,7 +348,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No discharge time is recorded; used for an ongoing stay in this simulation.",
+          "null_meaning": "No discharge time is recorded. Whether discharge occurred is unknown; an ongoing stay cannot be inferred from NULL alone.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -352,15 +360,19 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         }
+      ],
+      "constraint_notes": [
+        "CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime) rejects a known authorization time later than discharge. When discharge_authorized_at is NULL and dischtime is present, the expression evaluates to UNKNOWN and SQLite permits the row. Authorization is not mandatory for a recorded discharge."
       ]
     },
     {
       "table": "patient_profile",
       "metadata_id": "hospitalflow.patient_profile",
       "readable_name": "Patient profile",
-      "definition": "Optional additional information for the SAME patient identified by patients.subject_id, in the SAME identifier namespace. A matching subject_id denotes the same actual patient. No FK is declared; this identity relationship is explicitly documented. Authored split-storage extension.",
+      "definition": "Supplementary patient information keyed by patients.subject_id. Matching subject_id refers to the patient in patients; no SQL foreign key is declared.",
       "row_grain": "At most one supplementary profile per patient.",
       "primary_key": [
         "subject_id"
@@ -410,7 +422,8 @@
           "description": "This logical patient reference is intentionally not a declared SQL FK; keep documented relationships separate from enforced relationships.",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.patient_profile.profile_verified_at",
@@ -441,7 +454,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.patient_profile.preferred_language",
@@ -472,16 +486,18 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "admission_detail",
       "metadata_id": "hospitalflow.admission_detail",
       "readable_name": "Admission detail",
-      "definition": "Optional additional information for the SAME hospital stay identified by admissions.hadm_id. A matching hadm_id denotes the same actual admission. Only a subset of admissions has a signed summary. Authored split-storage extension.",
-      "row_grain": "At most one signed-summary record per hospital admission.",
+      "definition": "Recorded signed discharge summaries associated with hospital admissions.",
+      "row_grain": "One recorded signed discharge summary per admission represented in this table. Draft documents are outside this table.",
       "primary_key": [
         "hadm_id"
       ],
@@ -494,7 +510,7 @@
       ],
       "logical_relationships": [],
       "table_checks": [],
-      "sql_definition": "CREATE TABLE admission_detail(hadm_id INTEGER PRIMARY KEY NOT NULL REFERENCES admissions(hadm_id), discharge_summary_signed_at TEXT NOT NULL, summary_status TEXT NOT NULL CHECK(summary_status='SIGNED'))",
+      "sql_definition": "CREATE TABLE admission_detail(hadm_id INTEGER PRIMARY KEY NOT NULL REFERENCES admissions(hadm_id), discharge_summary_signed_at TEXT NOT NULL)",
       "columns": [
         {
           "metadata_id": "hospitalflow.admission_detail.hadm_id",
@@ -530,13 +546,14 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.admission_detail.discharge_summary_signed_at",
           "name": "discharge_summary_signed_at",
           "readable_name": "Discharge summary signing time",
-          "definition": "Time when the discharge summary for this hospital stay was signed.",
+          "definition": "Time when the discharge summary for this admission was signed; signing may occur after the patient has left the hospital.",
           "type": "TEXT",
           "representation_class": "Date-time",
           "unit": "Not applicable",
@@ -561,50 +578,17 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
-        },
-        {
-          "metadata_id": "hospitalflow.admission_detail.summary_status",
-          "name": "summary_status",
-          "readable_name": "Discharge summary status",
-          "definition": "Recorded signing status of this discharge summary.",
-          "type": "TEXT",
-          "representation_class": "Text",
-          "unit": "Not applicable",
-          "format": "Text",
-          "timezone": null,
-          "allowed_values": "SIGNED",
-          "allowed_codes": [
-            "SIGNED"
           ],
-          "code_meanings": {
-            "SIGNED": "The discharge summary has been signed"
-          },
-          "minimum": null,
-          "maximum": null,
-          "value_domain_basis": "SQL CHECK",
-          "nullable": false,
-          "required": true,
-          "null_meaning": "NULL is not allowed by the declared schema.",
-          "primary_key_position": 0,
-          "unique": false,
-          "foreign_keys": [],
-          "default_value": null,
-          "length": "No maximum length declared",
-          "constraints": "NOT NULL CHECK(summary_status='SIGNED')",
-          "synonyms": [],
-          "description": "",
-          "source_references": [
-            "HospitalFlow authored business convention and declared schema"
-          ]
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "lab_order",
       "metadata_id": "hospitalflow.lab_order",
       "readable_name": "Lab order",
-      "definition": "Authored laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.",
+      "definition": "Laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.",
       "row_grain": "One authored laboratory request for one patient, optionally associated with an admission.",
       "primary_key": [
         "order_id"
@@ -651,10 +635,11 @@
           "length": "Not applicable",
           "constraints": "PRIMARY KEY NOT NULL",
           "synonyms": [],
-          "description": "Equal integer values in the three order tables do not establish the same request identity.",
+          "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.lab_order.subject_id",
@@ -690,7 +675,8 @@
           "description": "This logical patient reference is intentionally not a declared SQL FK; keep documented relationships separate from enforced relationships.",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.lab_order.hadm_id",
@@ -726,13 +712,14 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "No associated admission"
         },
         {
           "metadata_id": "hospitalflow.lab_order.specimen_received_at",
           "name": "specimen_received_at",
           "readable_name": "Specimen receipt time",
-          "definition": "Time when the specimen associated with this laboratory order was received.",
+          "definition": "Time when specimens associated with this laboratory request were received by the laboratory.",
           "type": "TEXT",
           "representation_class": "Date-time",
           "unit": "Not applicable",
@@ -746,7 +733,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No specimen receipt time is recorded.",
+          "null_meaning": "No specimen receipt time is recorded. Whether receipt occurred is unknown.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -757,7 +744,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         },
         {
           "metadata_id": "hospitalflow.lab_order.results_verified_at",
@@ -777,7 +765,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No results-verification time is recorded.",
+          "null_meaning": "No results-verification time is recorded. Whether verification occurred is unknown.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -788,9 +776,11 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "medication_order",
@@ -838,10 +828,11 @@
           "length": "Not applicable",
           "constraints": "PRIMARY KEY NOT NULL",
           "synonyms": [],
-          "description": "Equal integer values in the three order tables do not establish the same request identity.",
+          "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.medication_order.hadm_id",
@@ -877,7 +868,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.medication_order.medication",
@@ -908,7 +900,8 @@
           "description": "Illustrative generic drug labels; these records do not represent treatment recommendations.",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.medication_order.stopped_at",
@@ -928,7 +921,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No medication stopping time is recorded.",
+          "null_meaning": "No prescription stop time is recorded. Whether stopping occurred is unknown.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -939,9 +932,11 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "procedure_order",
@@ -989,10 +984,11 @@
           "length": "Not applicable",
           "constraints": "PRIMARY KEY NOT NULL",
           "synonyms": [],
-          "description": "Equal integer values in the three order tables do not establish the same request identity.",
+          "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.procedure_order.hadm_id",
@@ -1028,7 +1024,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.procedure_order.procedure_name",
@@ -1059,7 +1056,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.procedure_order.preparation_completed_at",
@@ -1079,7 +1077,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No preparation completion time is recorded.",
+          "null_meaning": "No preparation completion time is recorded. Whether completion occurred is unknown.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -1090,15 +1088,17 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "order_history",
       "metadata_id": "hospitalflow.order_history",
       "readable_name": "Order history",
-      "definition": "Repeated order actions, inspired by provider order transaction semantics; not a copy of poe.",
+      "definition": "Recorded actions on laboratory, medication or procedure requests, including repeated reviews.",
       "row_grain": "One row per order-action occurrence, including repeated reviews.",
       "primary_key": [
         "history_id"
@@ -1155,7 +1155,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.order_history.lab_order_id",
@@ -1191,7 +1192,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not applicable to this order category"
         },
         {
           "metadata_id": "hospitalflow.order_history.medication_order_id",
@@ -1227,7 +1229,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not applicable to this order category"
         },
         {
           "metadata_id": "hospitalflow.order_history.procedure_order_id",
@@ -1263,7 +1266,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not applicable to this order category"
         },
         {
           "metadata_id": "hospitalflow.order_history.action",
@@ -1302,7 +1306,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.order_history.occurred_at",
@@ -1333,16 +1338,18 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "labevents",
       "metadata_id": "hospitalflow.labevents",
       "readable_name": "Labevents",
-      "definition": "Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents.",
-      "row_grain": "One row per measurement occurrence; repeated measurements have different labevent_id values.",
+      "definition": "Laboratory measurement results with specimen collection and result-availability times. charttime denotes specimen collection, not measurement execution.",
+      "row_grain": "One laboratory measurement result associated with a collected specimen and a laboratory request; collection and result availability have separate timestamps.",
       "primary_key": [
         "labevent_id"
       ],
@@ -1389,7 +1396,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.labevents.order_id",
@@ -1425,7 +1433,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.labevents.itemid",
@@ -1457,13 +1466,14 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.labevents.charttime",
           "name": "charttime",
-          "readable_name": "Laboratory measurement charting time",
-          "definition": "Time assigned to the charted laboratory measurement; distinct from the time the result became available.",
+          "readable_name": "Specimen collection time",
+          "definition": "Time when the specimen used for this laboratory measurement was collected. This column does not store measurement execution time.",
           "type": "TEXT",
           "representation_class": "Date-time",
           "unit": "Not applicable",
@@ -1487,9 +1497,10 @@
           "synonyms": [],
           "description": "",
           "source_references": [
-            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
-            "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html#charttime",
+            "HospitalFlow records specimen collection in charttime; measurement execution is not represented."
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.labevents.storetime",
@@ -1521,13 +1532,14 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.labevents.valuenum",
           "name": "valuenum",
           "readable_name": "Numeric measurement result",
-          "definition": "Numeric result recorded for this synthetic laboratory measurement.",
+          "definition": "Numeric result recorded for this laboratory measurement.",
           "type": "REAL",
           "representation_class": "Numeric measurement",
           "unit": "As specified by valueuom for the corresponding test.",
@@ -1553,7 +1565,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Value not recorded"
         },
         {
           "metadata_id": "hospitalflow.labevents.valueuom",
@@ -1585,15 +1598,17 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Value not recorded"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "emar",
       "metadata_id": "hospitalflow.emar",
       "readable_name": "Emar",
-      "definition": "Medication administration or omission occurrences, inspired by MIMIC emar.",
+      "definition": "Medication administration or omission records associated with pharmacy dispensing records.",
       "row_grain": "One administration or omission record referring to one pharmacy dispensing record.",
       "primary_key": [
         "emar_id"
@@ -1640,7 +1655,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.emar.pharmacy_id",
@@ -1676,7 +1692,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.emar.charttime",
@@ -1708,7 +1725,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.emar.event_txt",
@@ -1746,7 +1764,8 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.emar.storetime",
@@ -1778,15 +1797,17 @@
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "procedure_episode",
       "metadata_id": "hospitalflow.procedure_episode",
       "readable_name": "Procedure episode",
-      "definition": "Authored hospital-level procedure execution episode; not the MIMIC ICU procedureevents table.",
+      "definition": "Hospital-level procedure execution episodes; the ICU stay_id hierarchy is excluded.",
       "row_grain": "One hospital-level procedure execution episode, not an ICU stay.",
       "primary_key": [
         "procedureevent_id"
@@ -1832,8 +1853,9 @@
           "synonyms": [],
           "description": "",
           "source_references": [
-            "HospitalFlow authored hospital-level procedure schema; unlike MIMIC ICU procedureevents"
-          ]
+            "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.order_id",
@@ -1868,8 +1890,9 @@
           "synonyms": [],
           "description": "",
           "source_references": [
-            "HospitalFlow authored hospital-level procedure schema; unlike MIMIC ICU procedureevents"
-          ]
+            "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.starttime",
@@ -1899,8 +1922,9 @@
           "synonyms": [],
           "description": "",
           "source_references": [
-            "HospitalFlow authored hospital-level procedure schema; unlike MIMIC ICU procedureevents"
-          ]
+            "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.endtime",
@@ -1920,7 +1944,7 @@
           "value_domain_basis": "Documented representation; SQL checks below apply when present.",
           "nullable": true,
           "required": false,
-          "null_meaning": "No completion time is recorded; used for an ongoing episode in this simulation.",
+          "null_meaning": "No procedure completion time is recorded. Whether completion occurred is unknown; an ongoing procedure cannot be inferred from NULL alone.",
           "primary_key_position": 0,
           "unique": false,
           "foreign_keys": [],
@@ -1930,8 +1954,9 @@
           "synonyms": [],
           "description": "",
           "source_references": [
-            "HospitalFlow authored hospital-level procedure schema; unlike MIMIC ICU procedureevents"
-          ]
+            "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
+          ],
+          "null_interpretation": "Unknown occurrence; timestamp not recorded"
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.storetime",
@@ -1961,10 +1986,12 @@
           "synonyms": [],
           "description": "",
           "source_references": [
-            "HospitalFlow authored hospital-level procedure schema; unlike MIMIC ICU procedureevents"
-          ]
+            "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
+          ],
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     },
     {
       "table": "pharmacy",
@@ -2015,7 +2042,8 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.pharmacy.order_id",
@@ -2051,13 +2079,14 @@
           "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         },
         {
           "metadata_id": "hospitalflow.pharmacy.dispensed_at",
           "name": "dispensed_at",
-          "readable_name": "Medication dispensing time",
-          "definition": "Time when medication for this request was dispensed.",
+          "readable_name": "Dispensing record time",
+          "definition": "Time of the individual dispensing represented by this pharmacy record. This is not the first dispensing time for the prescription; each additional dispensing has its own pharmacy_id and row.",
           "type": "TEXT",
           "representation_class": "Date-time",
           "unit": "Not applicable",
@@ -2079,30 +2108,27 @@
           "length": "No maximum length declared",
           "constraints": "NOT NULL",
           "synonyms": [],
-          "description": "Authored dispensing milestone; not an original MIMIC pharmacy column.",
+          "description": "",
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
-          ]
+          ],
+          "null_interpretation": "Not allowed"
         }
-      ]
+      ],
+      "constraint_notes": []
     }
   ],
   "business_rules": [
     "A patient can have multiple hospital admissions; hadm_id identifies an admission and subject_id identifies a patient.",
     "Supplementary profile rows use the patient identifier documented in patients; their logical relationship is not enforced by an SQL foreign key.",
-    "A signed-summary row uses the identifier of its hospital admission.",
-    "Laboratory, medication and procedure requests have separate local identifier namespaces.",
+    "A signed discharge summary uses the identifier of its hospital admission. Draft documents are not stored in admission_detail.",
+    "Laboratory, medication and procedure requests use separate local identifier namespaces.",
     "An order-action history row has exactly one populated order-reference column; repeated reviews are separate records.",
-    "A laboratory order can have multiple measurements; a medication order can have multiple dose records; a procedure order can have multiple execution episodes.",
-    "Laboratory charting and result availability are different recorded times. Medication/procedure documentation times describe system recording.",
-    "Missing timestamps describe unrecorded times according to the column definition; NULL does not universally establish that an action never happened.",
-    "Identifiers, text lengths and numeric ranges have no extra restrictions inferred from the current sample. SQL constraints and documented representation conventions are distinguished.",
-    "All rows are synthetic. MIMIC documentation informs selected meanings, not a claim of original MIMIC identifiers, full schema coverage or patient-record reuse.",
-    "Laboratory, medication and procedure requests retain separate identifier namespaces; equal local values identify different requests.",
-    "lab_order.subject_id identifies its patient even when hadm_id is NULL. When hadm_id is present its patient must agree with admissions.subject_id; this is a documented cross-table rule checked by the construction validator.",
-    "medication_order represents a prescription; pharmacy represents a dispensing record; emar represents an administration or omission associated with one dispensing record.",
-    "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.",
-    "The three order tables are an intentional alternative to MIMIC poe; laboratory-request and dispensing-milestone structures are authored simplifications.",
-    "Hospital-level procedure_episode is authored and does not reproduce the ICU procedureevents table."
+    "A laboratory request can cover several specimens or measurements. For a recorded result the collection time precedes laboratory receipt, which precedes result availability; verification follows the available results.",
+    "When a laboratory request has an associated admission, lab_order.subject_id must equal admissions.subject_id for that hadm_id. NULL hadm_id means no associated admission.",
+    "A medication prescription can have multiple pharmacy dispensing records; each dispensing can have multiple administration or omission records.",
+    "NULL is interpreted by the column-specific rule: an unrecorded clinical timestamp gives unknown occurrence status; a non-applicable order-reference column and an absent admission association have their separately defined structural meanings.",
+    "Laboratory charttime represents specimen collection; storetime represents result availability. Medication and procedure storetime values represent system documentation times.",
+    "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively."
   ]
 }

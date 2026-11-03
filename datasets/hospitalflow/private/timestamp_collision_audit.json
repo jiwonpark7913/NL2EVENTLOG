@@ -24,15 +24,15 @@
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "LAB:31007932:received",
-    "sampled_timestamp": "2026-03-08T20:31:00Z",
-    "stored_timestamp": "2026-03-08T20:31:00Z",
+    "event_id": "EMAR:25",
+    "sampled_timestamp": "2026-03-09T02:26:00Z",
+    "stored_timestamp": "2026-03-09T02:26:00Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "PROC:30000691:prep",
-    "sampled_timestamp": "2026-03-08T20:31:00Z",
-    "stored_timestamp": "2026-03-08T20:31:01Z",
+    "event_id": "LABEV:17:result",
+    "sampled_timestamp": "2026-03-09T02:26:00Z",
+    "stored_timestamp": "2026-03-09T02:26:01Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
@@ -84,27 +84,15 @@
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "EMAR:38",
-    "sampled_timestamp": "2026-03-25T16:52:00Z",
-    "stored_timestamp": "2026-03-25T16:52:00Z",
+    "event_id": "LABEV:19:result",
+    "sampled_timestamp": "2026-03-19T03:27:00Z",
+    "stored_timestamp": "2026-03-19T03:27:00Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "LABEV:27:result",
-    "sampled_timestamp": "2026-03-25T16:52:00Z",
-    "stored_timestamp": "2026-03-25T16:52:01Z",
-    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
-  },
-  {
-    "event_id": "LABEV:29:chart",
-    "sampled_timestamp": "2026-03-25T15:29:00Z",
-    "stored_timestamp": "2026-03-25T15:29:00Z",
-    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
-  },
-  {
-    "event_id": "OH:97",
-    "sampled_timestamp": "2026-03-25T15:29:00Z",
-    "stored_timestamp": "2026-03-25T15:29:01Z",
+    "event_id": "LABEV:21:result",
+    "sampled_timestamp": "2026-03-19T03:27:00Z",
+    "stored_timestamp": "2026-03-19T03:27:01Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
@@ -117,6 +105,18 @@
     "event_id": "OH:98",
     "sampled_timestamp": "2026-03-25T15:54:00Z",
     "stored_timestamp": "2026-03-25T15:54:01Z",
+    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
+  },
+  {
+    "event_id": "LAB:30000117:verified",
+    "sampled_timestamp": "2026-03-25T20:41:00Z",
+    "stored_timestamp": "2026-03-25T20:41:00Z",
+    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
+  },
+  {
+    "event_id": "LABEV:35:chart",
+    "sampled_timestamp": "2026-03-25T20:41:00Z",
+    "stored_timestamp": "2026-03-25T20:41:01Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
@@ -144,15 +144,39 @@
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "LABEV:45:result",
-    "sampled_timestamp": "2026-05-31T08:23:00Z",
-    "stored_timestamp": "2026-05-31T08:23:00Z",
+    "event_id": "LABEV:40:chart",
+    "sampled_timestamp": "2026-04-27T22:13:00Z",
+    "stored_timestamp": "2026-04-27T22:13:00Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "PHARM:40000030:dispense",
-    "sampled_timestamp": "2026-05-31T08:23:00Z",
-    "stored_timestamp": "2026-05-31T08:23:01Z",
+    "event_id": "PROCEV:12:end",
+    "sampled_timestamp": "2026-04-27T22:13:00Z",
+    "stored_timestamp": "2026-04-27T22:13:01Z",
+    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
+  },
+  {
+    "event_id": "EMAR:61",
+    "sampled_timestamp": "2026-05-31T07:17:00Z",
+    "stored_timestamp": "2026-05-31T07:17:00Z",
+    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
+  },
+  {
+    "event_id": "LABEV:44:chart",
+    "sampled_timestamp": "2026-05-31T07:17:00Z",
+    "stored_timestamp": "2026-05-31T07:17:01Z",
+    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
+  },
+  {
+    "event_id": "LABEV:51:result",
+    "sampled_timestamp": "2026-06-17T01:26:00Z",
+    "stored_timestamp": "2026-06-17T01:26:00Z",
+    "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
+  },
+  {
+    "event_id": "PHARM:40000034:dispense",
+    "sampled_timestamp": "2026-06-17T01:26:00Z",
+    "stored_timestamp": "2026-06-17T01:26:01Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
@@ -168,27 +192,27 @@
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "LABEV:54:chart",
-    "sampled_timestamp": "2026-07-03T15:20:00Z",
-    "stored_timestamp": "2026-07-03T15:20:00Z",
+    "event_id": "LAB:31057986:received",
+    "sampled_timestamp": "2026-07-03T17:46:00Z",
+    "stored_timestamp": "2026-07-03T17:46:00Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
-    "event_id": "OH:180",
-    "sampled_timestamp": "2026-07-03T15:20:00Z",
-    "stored_timestamp": "2026-07-03T15:20:01Z",
+    "event_id": "LABEV:56:chart",
+    "sampled_timestamp": "2026-07-03T17:46:00Z",
+    "stored_timestamp": "2026-07-03T17:46:01Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
     "event_id": "LABEV:57:chart",
-    "sampled_timestamp": "2026-07-28T10:21:00Z",
-    "stored_timestamp": "2026-07-28T10:21:00Z",
+    "sampled_timestamp": "2026-07-28T12:11:00Z",
+    "stored_timestamp": "2026-07-28T12:11:00Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   },
   {
     "event_id": "LABEV:58:chart",
-    "sampled_timestamp": "2026-07-28T10:21:00Z",
-    "stored_timestamp": "2026-07-28T10:21:01Z",
+    "sampled_timestamp": "2026-07-28T12:11:00Z",
+    "stored_timestamp": "2026-07-28T12:11:01Z",
     "reason": "Avoid incidental simulation collision; no simultaneous clinical occurrence intended."
   }
 ]

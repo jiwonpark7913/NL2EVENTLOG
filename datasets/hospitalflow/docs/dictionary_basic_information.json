@@ -1,12 +1,9 @@
 {
   "dictionary_id": "NL2EVENTLOG:hospitalflow",
   "name": "HospitalFlow",
-  "version": "2026-11-03-realism-revision",
-  "description": "Business definitions for synthetic patient, hospital-stay, order and clinical-record data.",
+  "version": "2026-11-03-semantics-revision",
   "language": "en",
   "dbms": "SQLite",
   "timezone": "UTC",
-  "datetime_representation": "RFC 3339 text with UTC Z suffix and second precision; a documented convention, not a SQL format CHECK.",
-  "source_summary": "MIMIC-IV-inspired meanings with authored table adaptations, identifiers, constraints and wholly synthetic records.",
-  "maintainer": "NL2EVENTLOG project maintainers"
+  "datetime_representation": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ"
 }

@@ -4,6 +4,7 @@ import csv
 import json
 import re
 import sqlite3
+import copy
 
 def _json(value):
     return json.dumps(value, indent=2) + "\n"
@@ -28,6 +29,14 @@ def _format(column):
 def _logical(table):
     return "; ".join(",".join(r["columns"]) + " -> " + r["referenced_table"] + "(" + ",".join(r["referenced_columns"]) + "): " + r["enforcement"] for r in table["logical_relationships"]) or "None additionally documented"
 
+def model_dictionary(profile):
+    dictionary = copy.deepcopy(profile)
+    dictionary.pop("documentation_basis", None)
+    keep = {"dictionary_id", "name", "version", "language", "dbms", "timezone", "datetime_representation"}
+    dictionary["dictionary_basic_information"] = {k: v for k, v in dictionary["dictionary_basic_information"].items() if k in keep}
+    dictionary["dictionary_basic_information"]["datetime_representation"] = "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ"
+    return dictionary
+
 def artifacts(dictionary):
     basic = dictionary["dictionary_basic_information"]
     table_rows = []
@@ -40,7 +49,7 @@ def artifacts(dictionary):
             foreign_keys="; ".join(f["column"] + " -> " + f["parent_table"] + "." + f["parent_column"] for f in table["foreign_keys"]) or "None declared",
             logical_relationships=_logical(table),
             declared_checks="; ".join(table["table_checks"]) or "None at table level",
-            sql_definition=table["sql_definition"]))
+            sql_definition=table["sql_definition"], constraint_notes="; ".join(table.get("constraint_notes", []))))
         for ordinal, column in enumerate(table["columns"], 1):
             column_rows.append(dict(
                 metadata_id=column["metadata_id"], table=table["table"], ordinal=ordinal,
@@ -60,17 +69,11 @@ def artifacts(dictionary):
                 source_references="; ".join(column["source_references"])))
     doc = "# HospitalFlow — business data dictionary\n\n## 1. Dictionary basic information\n\n"
     doc += _table(["Field", "Value"], basic.items())
-    doc += (
-        "\n- This is a variable-level business dictionary, following Harvard HMS/OSF guidance and extended with relational schema metadata. Those guides do not prescribe one mandatory universal template.\n"
-        "- Measurement units apply to measured quantities. A timestamp is an instant: its format and timezone are documented separately rather than treating UTC as a measurement unit.\n"
-        "- Allowed codes and meanings are explicit. Unset minimum/maximum means no additional business bound is declared; observed sample minima/maxima are not allowed-value constraints.\n"
-        "- SQL constraints and documented conventions are distinct. This schema is not declared STRICT; a business numeric/datetime definition must not be mistaken for complete SQL format/type validation. Foreign-key enforcement requires PRAGMA foreign_keys=ON.\n"
-        "- NULL meanings are column-specific. No special numeric/text missing-value sentinel is defined. Synonyms are optional and are left empty rather than invented.\n"
-        "\n## 2. Table definitions\n\n")
+    doc += "\n## 2. Table definitions\n\n"
     doc += _table(["Table", "Readable name", "One row represents", "Primary key", "Declared SQL foreign keys"],
                   [[t["table"], t["readable_name"], t["row_grain"], ", ".join(t["primary_key"]),
                     "; ".join(f["column"] + " -> " + f["parent_table"] + "." + f["parent_column"] for f in t["foreign_keys"]) or "None declared"] for t in dictionary["tables"]])
-    doc += "\n- A declared SQL relationship and a documented identifier relationship are different metadata. In particular, patient_profile.subject_id uses the patients identifier by convention without a declared SQL FK.\n\n## 3. Column definitions\n"
+    doc += "\n## 3. Column definitions\n"
     for table in dictionary["tables"]:
         doc += "\n### " + table["table"] + " — " + table["readable_name"] + "\n\n"
         doc += "- **Business definition:** " + table["definition"] + "\n"
@@ -88,13 +91,11 @@ def artifacts(dictionary):
                 doc += "\n- **" + column["name"] + " synonyms:** " + ", ".join(column["synonyms"]) + "\n"
         refs = sorted({r for c in table["columns"] for r in c["source_references"] if r.startswith("https://")})
         if refs:
-            doc += "\n- **Definition references:** " + "; ".join("[" + r + "](" + r + ")" for r in refs) + ". Local SQL constraints and synthetic adaptations remain HospitalFlow conventions.\n"
+            doc += "\n- **Definition references:** " + "; ".join("[" + r + "](" + r + ")" for r in refs) + ".\n"
+        doc += "".join("\n- **Constraint interpretation:** " + note + "\n" for note in table.get("constraint_notes", []))
         doc += "\n" + chr(96)*3 + "sql\n" + table["sql_definition"] + ";\n" + chr(96)*3 + "\n"
     doc += "\n### Cross-table business conventions\n\n"
     doc += "".join("- " + rule + "\n" for rule in dictionary["business_rules"])
-    doc += "\n### Documentation references\n\n"
-    doc += "".join("- [" + r["title"] + "](" + r["url"] + ")\n" for r in dictionary["documentation_basis"]["references"])
-    doc += "- [SQLite CREATE TABLE and declared constraints](https://www.sqlite.org/lang_createtable.html)\n"
     return doc, table_rows, column_rows, basic
 
 def validate_schema(path, dictionary):
@@ -127,7 +128,7 @@ def validate_schema(path, dictionary):
 
 def render(p):
     p = Path(p)
-    dictionary = json.loads((p / "source/dictionary_profile.json").read_text())
+    dictionary = model_dictionary(json.loads((p / "source/dictionary_profile.json").read_text()))
     validate_schema(p / "input/database.sqlite", dictionary)
     doc, tables, columns, basic = artifacts(dictionary)
     (p / "input/data_dictionary.json").write_text(_json(dictionary))
@@ -139,6 +140,8 @@ def render(p):
             writer.writeheader()
             writer.writerows(rows)
     (p / "docs/dictionary_basic_information.json").write_text(_json(basic))
+    from hospital_ablation import render as render_ablation
+    render_ablation(p, dictionary)
     return dictionary
 
 if __name__ == "__main__":

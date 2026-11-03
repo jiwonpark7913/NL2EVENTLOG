@@ -3,7 +3,7 @@
 {"event_id": "ADM:20000001:in", "activity": "Hospital Admitted", "timestamp": "2026-01-17T16:12:00Z"}
 {"event_id": "ADM:20000001:auth", "activity": "Discharge Authorized", "timestamp": "2026-01-19T13:33:00Z"}
 {"event_id": "ADM:20000001:out", "activity": "Hospital Discharged", "timestamp": "2026-01-19T15:01:00Z"}
-{"event_id": "ADM:20000001:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-01-19T14:45:00Z"}
+{"event_id": "ADM:20000001:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-01-19T18:13:00Z"}
 {"event_id": "OH:1", "activity": "Order Entered", "timestamp": "2026-01-17T17:00:00Z"}
 {"event_id": "OH:2", "activity": "Order Reviewed", "timestamp": "2026-01-17T17:22:00Z"}
 {"event_id": "OH:3", "activity": "Order Reviewed", "timestamp": "2026-01-17T17:39:00Z"}
@@ -28,10 +28,10 @@
 {"event_id": "OH:6", "activity": "Order Entered", "timestamp": "2026-01-27T14:03:00Z"}
 {"event_id": "OH:7", "activity": "Order Reviewed", "timestamp": "2026-01-27T15:14:00Z"}
 {"event_id": "OH:8", "activity": "Order Reviewed", "timestamp": "2026-01-27T15:23:00Z"}
-{"event_id": "LAB:31070762:received", "activity": "Specimen Received", "timestamp": "2026-01-27T16:52:00Z"}
-{"event_id": "LABEV:1:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-01-27T17:06:00Z"}
-{"event_id": "LABEV:1:result", "activity": "Lab Result Available", "timestamp": "2026-01-27T20:23:00Z"}
-{"event_id": "LAB:31070762:verified", "activity": "Lab Results Verified", "timestamp": "2026-01-27T21:46:00Z"}
+{"event_id": "LAB:31070762:received", "activity": "Specimen Received", "timestamp": "2026-01-27T19:52:00Z"}
+{"event_id": "LABEV:1:chart", "activity": "Specimen Collected", "timestamp": "2026-01-27T19:38:00Z"}
+{"event_id": "LABEV:1:result", "activity": "Lab Result Available", "timestamp": "2026-01-27T23:09:00Z"}
+{"event_id": "LAB:31070762:verified", "activity": "Lab Results Verified", "timestamp": "2026-01-28T00:32:00Z"}
 {"event_id": "OH:9", "activity": "Order Entered", "timestamp": "2026-01-27T13:55:00Z"}
 {"event_id": "OH:10", "activity": "Order Reviewed", "timestamp": "2026-01-27T15:11:00Z"}
 {"event_id": "OH:11", "activity": "Order Reviewed", "timestamp": "2026-01-27T15:39:00Z"}
@@ -45,18 +45,18 @@
 {"event_id": "OH:12", "activity": "Order Entered", "timestamp": "2026-02-03T10:24:00Z"}
 {"event_id": "OH:13", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:20:00Z"}
 {"event_id": "OH:14", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:46:00Z"}
-{"event_id": "LAB:31079248:received", "activity": "Specimen Received", "timestamp": "2026-02-03T13:16:00Z"}
-{"event_id": "LABEV:2:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-03T13:23:00Z"}
-{"event_id": "LABEV:2:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T16:07:00Z"}
-{"event_id": "LABEV:3:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-03T14:16:00Z"}
-{"event_id": "LABEV:3:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T17:38:00Z"}
-{"event_id": "LAB:31079248:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-03T18:48:00Z"}
+{"event_id": "LAB:31079248:received", "activity": "Specimen Received", "timestamp": "2026-02-03T16:16:00Z"}
+{"event_id": "LABEV:2:chart", "activity": "Specimen Collected", "timestamp": "2026-02-03T16:09:00Z"}
+{"event_id": "LABEV:2:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T19:00:00Z"}
+{"event_id": "LABEV:3:chart", "activity": "Specimen Collected", "timestamp": "2026-02-03T15:16:00Z"}
+{"event_id": "LABEV:3:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T19:38:00Z"}
+{"event_id": "LAB:31079248:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-03T20:48:00Z"}
 {"event_id": "OH:15", "activity": "Order Entered", "timestamp": "2026-02-03T11:12:00Z"}
 {"event_id": "OH:16", "activity": "Order Reviewed", "timestamp": "2026-02-03T12:07:00Z"}
-{"event_id": "LAB:31073704:received", "activity": "Specimen Received", "timestamp": "2026-02-03T13:24:00Z"}
-{"event_id": "LABEV:4:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-03T14:02:00Z"}
-{"event_id": "LABEV:4:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T15:06:00Z"}
-{"event_id": "LAB:31073704:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-03T16:12:00Z"}
+{"event_id": "LAB:31073704:received", "activity": "Specimen Received", "timestamp": "2026-02-03T16:24:00Z"}
+{"event_id": "LABEV:4:chart", "activity": "Specimen Collected", "timestamp": "2026-02-03T15:46:00Z"}
+{"event_id": "LABEV:4:result", "activity": "Lab Result Available", "timestamp": "2026-02-03T17:28:00Z"}
+{"event_id": "LAB:31073704:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-03T18:34:00Z"}
 {"event_id": "OH:17", "activity": "Order Entered", "timestamp": "2026-02-03T10:21:00Z"}
 {"event_id": "OH:18", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:38:00Z"}
 {"event_id": "OH:19", "activity": "Order Reviewed", "timestamp": "2026-02-03T11:53:00Z"}
@@ -64,14 +64,14 @@
 {"event_id": "ADM:20000004:in", "activity": "Hospital Admitted", "timestamp": "2026-02-14T22:40:00Z"}
 {"event_id": "ADM:20000004:auth", "activity": "Discharge Authorized", "timestamp": "2026-02-19T12:53:00Z"}
 {"event_id": "ADM:20000004:out", "activity": "Hospital Discharged", "timestamp": "2026-02-19T13:40:00Z"}
-{"event_id": "ADM:20000004:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-02-19T13:23:00Z"}
+{"event_id": "ADM:20000004:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-02-19T17:04:00Z"}
 {"event_id": "OH:20", "activity": "Order Entered", "timestamp": "2026-02-14T23:15:00Z"}
 {"event_id": "OH:21", "activity": "Order Reviewed", "timestamp": "2026-02-14T23:44:00Z"}
 {"event_id": "OH:22", "activity": "Order Reviewed", "timestamp": "2026-02-15T00:04:00Z"}
-{"event_id": "LAB:31096075:received", "activity": "Specimen Received", "timestamp": "2026-02-15T00:03:00Z"}
-{"event_id": "LABEV:5:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-02-15T00:12:00Z"}
-{"event_id": "LABEV:5:result", "activity": "Lab Result Available", "timestamp": "2026-02-15T03:03:00Z"}
-{"event_id": "LAB:31096075:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-15T03:55:00Z"}
+{"event_id": "LAB:31096075:received", "activity": "Specimen Received", "timestamp": "2026-02-15T03:03:00Z"}
+{"event_id": "LABEV:5:chart", "activity": "Specimen Collected", "timestamp": "2026-02-15T02:54:00Z"}
+{"event_id": "LABEV:5:result", "activity": "Lab Result Available", "timestamp": "2026-02-15T05:54:00Z"}
+{"event_id": "LAB:31096075:verified", "activity": "Lab Results Verified", "timestamp": "2026-02-15T06:46:00Z"}
 {"event_id": "OH:23", "activity": "Order Entered", "timestamp": "2026-02-14T23:34:00Z"}
 {"event_id": "OH:24", "activity": "Order Reviewed", "timestamp": "2026-02-15T00:40:00Z"}
 {"event_id": "OH:25", "activity": "Order Reviewed", "timestamp": "2026-02-15T01:00:00Z"}
@@ -132,52 +132,52 @@
 {"event_id": "OH:42", "activity": "Order Entered", "timestamp": "2026-03-06T05:54:00Z"}
 {"event_id": "OH:43", "activity": "Order Reviewed", "timestamp": "2026-03-06T06:45:00Z"}
 {"event_id": "OH:44", "activity": "Order Reviewed", "timestamp": "2026-03-06T07:09:00Z"}
-{"event_id": "LAB:30000691:received", "activity": "Specimen Received", "timestamp": "2026-03-06T07:37:00Z"}
-{"event_id": "LABEV:6:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T08:05:00Z"}
-{"event_id": "LABEV:6:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T11:40:00Z"}
-{"event_id": "LABEV:7:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T08:19:00Z"}
-{"event_id": "LABEV:7:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T09:25:00Z"}
-{"event_id": "LABEV:8:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T09:01:00Z"}
-{"event_id": "LABEV:8:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T12:12:00Z"}
-{"event_id": "LABEV:9:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T08:21:00Z"}
-{"event_id": "LABEV:9:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T11:05:00Z"}
-{"event_id": "LABEV:10:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T09:37:00Z"}
-{"event_id": "LABEV:10:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T10:15:00Z"}
-{"event_id": "LAB:30000691:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-06T13:06:00Z"}
+{"event_id": "LAB:30000691:received", "activity": "Specimen Received", "timestamp": "2026-03-06T10:37:00Z"}
+{"event_id": "LABEV:6:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T10:09:00Z"}
+{"event_id": "LABEV:6:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T14:12:00Z"}
+{"event_id": "LABEV:7:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T09:55:00Z"}
+{"event_id": "LABEV:7:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T11:43:00Z"}
+{"event_id": "LABEV:8:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T09:13:00Z"}
+{"event_id": "LABEV:8:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T13:48:00Z"}
+{"event_id": "LABEV:9:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T09:53:00Z"}
+{"event_id": "LABEV:9:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T13:21:00Z"}
+{"event_id": "LABEV:10:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T08:37:00Z"}
+{"event_id": "LABEV:10:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T11:15:00Z"}
+{"event_id": "LAB:30000691:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-06T15:06:00Z"}
 {"event_id": "OH:45", "activity": "Order Entered", "timestamp": "2026-03-06T07:33:00Z"}
 {"event_id": "OH:46", "activity": "Order Reviewed", "timestamp": "2026-03-06T08:44:00Z"}
-{"event_id": "LAB:31023611:received", "activity": "Specimen Received", "timestamp": "2026-03-06T10:06:00Z"}
-{"event_id": "LABEV:11:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T10:49:00Z"}
-{"event_id": "LABEV:11:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T12:24:00Z"}
-{"event_id": "LAB:31023611:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-06T14:23:00Z"}
+{"event_id": "LAB:31023611:received", "activity": "Specimen Received", "timestamp": "2026-03-06T13:06:00Z"}
+{"event_id": "LABEV:11:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T12:23:00Z"}
+{"event_id": "LABEV:11:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T14:41:00Z"}
+{"event_id": "LAB:31023611:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-06T16:40:00Z"}
 {"event_id": "OH:47", "activity": "Order Entered", "timestamp": "2026-03-06T08:43:00Z"}
 {"event_id": "OH:48", "activity": "Order Reviewed", "timestamp": "2026-03-06T09:21:00Z"}
-{"event_id": "LAB:31087483:received", "activity": "Specimen Received", "timestamp": "2026-03-06T10:26:00Z"}
-{"event_id": "LABEV:12:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T10:58:00Z"}
-{"event_id": "LABEV:12:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T13:39:00Z"}
-{"event_id": "LABEV:13:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T11:15:00Z"}
-{"event_id": "LABEV:13:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T12:21:00Z"}
-{"event_id": "LABEV:14:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T11:30:00Z"}
-{"event_id": "LABEV:14:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T12:26:00Z"}
-{"event_id": "LABEV:15:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T11:38:00Z"}
-{"event_id": "LABEV:15:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T15:35:00Z"}
-{"event_id": "LABEV:16:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-06T12:01:00Z"}
-{"event_id": "LABEV:16:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T14:27:00Z"}
-{"event_id": "LAB:31087483:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-06T17:36:00Z"}
+{"event_id": "LAB:31087483:received", "activity": "Specimen Received", "timestamp": "2026-03-06T13:26:00Z"}
+{"event_id": "LABEV:12:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T12:54:00Z"}
+{"event_id": "LABEV:12:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T16:07:00Z"}
+{"event_id": "LABEV:13:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T12:37:00Z"}
+{"event_id": "LABEV:13:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T14:32:00Z"}
+{"event_id": "LABEV:14:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T12:22:00Z"}
+{"event_id": "LABEV:14:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T14:22:00Z"}
+{"event_id": "LABEV:15:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T12:14:00Z"}
+{"event_id": "LABEV:15:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T17:23:00Z"}
+{"event_id": "LABEV:16:chart", "activity": "Specimen Collected", "timestamp": "2026-03-06T11:51:00Z"}
+{"event_id": "LABEV:16:result", "activity": "Lab Result Available", "timestamp": "2026-03-06T15:52:00Z"}
+{"event_id": "LAB:31087483:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-06T19:24:00Z"}
 {"event_id": "OH:49", "activity": "Order Entered", "timestamp": "2026-03-06T10:00:00Z"}
 {"event_id": "OH:50", "activity": "Order Reviewed", "timestamp": "2026-03-06T10:42:00Z"}
 {"event_id": "ADM:20000007:ed", "activity": "Emergency Department Registered", "timestamp": "2026-03-08T14:36:00Z"}
 {"event_id": "ADM:20000007:in", "activity": "Hospital Admitted", "timestamp": "2026-03-08T17:59:00Z"}
 {"event_id": "ADM:20000007:auth", "activity": "Discharge Authorized", "timestamp": "2026-03-11T12:15:00Z"}
 {"event_id": "ADM:20000007:out", "activity": "Hospital Discharged", "timestamp": "2026-03-11T13:09:00Z"}
-{"event_id": "ADM:20000007:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-03-11T12:56:00Z"}
+{"event_id": "ADM:20000007:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-03-11T15:45:00Z"}
 {"event_id": "OH:51", "activity": "Order Entered", "timestamp": "2026-03-08T19:02:00Z"}
 {"event_id": "OH:52", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:53:00Z"}
 {"event_id": "OH:53", "activity": "Order Reviewed", "timestamp": "2026-03-08T20:04:00Z"}
-{"event_id": "LAB:31007932:received", "activity": "Specimen Received", "timestamp": "2026-03-08T20:31:00Z"}
-{"event_id": "LABEV:17:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-08T21:23:00Z"}
-{"event_id": "LABEV:17:result", "activity": "Lab Result Available", "timestamp": "2026-03-09T00:18:00Z"}
-{"event_id": "LAB:31007932:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-09T01:32:00Z"}
+{"event_id": "LAB:31007932:received", "activity": "Specimen Received", "timestamp": "2026-03-08T23:31:00Z"}
+{"event_id": "LABEV:17:chart", "activity": "Specimen Collected", "timestamp": "2026-03-08T22:39:00Z"}
+{"event_id": "LABEV:17:result", "activity": "Lab Result Available", "timestamp": "2026-03-09T02:26:01Z"}
+{"event_id": "LAB:31007932:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-09T03:40:00Z"}
 {"event_id": "OH:54", "activity": "Order Entered", "timestamp": "2026-03-08T18:24:00Z"}
 {"event_id": "OH:55", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:46:00Z"}
 {"event_id": "OH:56", "activity": "Order Reviewed", "timestamp": "2026-03-08T20:02:00Z"}
@@ -216,7 +216,7 @@
 {"event_id": "OH:66", "activity": "Order Entered", "timestamp": "2026-03-08T18:27:00Z"}
 {"event_id": "OH:67", "activity": "Order Reviewed", "timestamp": "2026-03-08T18:51:00Z"}
 {"event_id": "OH:68", "activity": "Order Reviewed", "timestamp": "2026-03-08T19:08:00Z"}
-{"event_id": "PROC:30000691:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-03-08T20:31:01Z"}
+{"event_id": "PROC:30000691:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-03-08T20:31:00Z"}
 {"event_id": "PROCEV:6:start", "activity": "Procedure Started", "timestamp": "2026-03-08T21:46:00Z"}
 {"event_id": "PROCEV:6:end", "activity": "Procedure Completed", "timestamp": "2026-03-08T22:28:01Z"}
 {"event_id": "ADM:20000008:in", "activity": "Hospital Admitted", "timestamp": "2026-03-18T17:20:00Z"}
@@ -225,20 +225,20 @@
 {"event_id": "OH:69", "activity": "Order Entered", "timestamp": "2026-03-18T18:22:00Z"}
 {"event_id": "OH:70", "activity": "Order Reviewed", "timestamp": "2026-03-18T19:06:00Z"}
 {"event_id": "OH:71", "activity": "Order Reviewed", "timestamp": "2026-03-18T19:22:00Z"}
-{"event_id": "LAB:31065673:received", "activity": "Specimen Received", "timestamp": "2026-03-18T20:15:00Z"}
-{"event_id": "LABEV:18:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-18T20:26:00Z"}
-{"event_id": "LABEV:18:result", "activity": "Lab Result Available", "timestamp": "2026-03-18T23:56:00Z"}
-{"event_id": "LAB:31065673:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-19T00:11:00Z"}
+{"event_id": "LAB:31065673:received", "activity": "Specimen Received", "timestamp": "2026-03-18T23:15:00Z"}
+{"event_id": "LABEV:18:chart", "activity": "Specimen Collected", "timestamp": "2026-03-18T23:04:00Z"}
+{"event_id": "LABEV:18:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T02:45:00Z"}
+{"event_id": "LAB:31065673:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-19T03:00:00Z"}
 {"event_id": "OH:72", "activity": "Order Entered", "timestamp": "2026-03-18T19:33:00Z"}
 {"event_id": "OH:73", "activity": "Order Reviewed", "timestamp": "2026-03-18T20:55:00Z"}
-{"event_id": "LAB:31002204:received", "activity": "Specimen Received", "timestamp": "2026-03-18T22:49:00Z"}
-{"event_id": "LABEV:19:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-18T23:04:00Z"}
-{"event_id": "LABEV:19:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T00:42:00Z"}
-{"event_id": "LABEV:20:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-18T23:18:00Z"}
-{"event_id": "LABEV:20:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T02:58:00Z"}
-{"event_id": "LABEV:21:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-19T00:14:00Z"}
-{"event_id": "LABEV:21:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T01:52:00Z"}
-{"event_id": "LAB:31002204:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-19T04:45:00Z"}
+{"event_id": "LAB:31002204:received", "activity": "Specimen Received", "timestamp": "2026-03-19T01:49:00Z"}
+{"event_id": "LABEV:19:chart", "activity": "Specimen Collected", "timestamp": "2026-03-19T01:34:00Z"}
+{"event_id": "LABEV:19:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T03:27:00Z"}
+{"event_id": "LABEV:20:chart", "activity": "Specimen Collected", "timestamp": "2026-03-19T01:20:00Z"}
+{"event_id": "LABEV:20:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T05:29:00Z"}
+{"event_id": "LABEV:21:chart", "activity": "Specimen Collected", "timestamp": "2026-03-19T00:24:00Z"}
+{"event_id": "LABEV:21:result", "activity": "Lab Result Available", "timestamp": "2026-03-19T03:27:01Z"}
+{"event_id": "LAB:31002204:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-19T07:16:00Z"}
 {"event_id": "OH:74", "activity": "Order Entered", "timestamp": "2026-03-18T18:13:00Z"}
 {"event_id": "OH:75", "activity": "Order Reviewed", "timestamp": "2026-03-18T19:06:01Z"}
 {"event_id": "OH:76", "activity": "Order Reviewed", "timestamp": "2026-03-18T19:16:00Z"}
@@ -277,63 +277,63 @@
 {"event_id": "OH:87", "activity": "Order Entered", "timestamp": "2026-03-25T10:06:00Z"}
 {"event_id": "OH:88", "activity": "Order Reviewed", "timestamp": "2026-03-25T10:59:00Z"}
 {"event_id": "OH:89", "activity": "Order Reviewed", "timestamp": "2026-03-25T11:35:00Z"}
-{"event_id": "LAB:31037212:received", "activity": "Specimen Received", "timestamp": "2026-03-25T12:20:00Z"}
-{"event_id": "LABEV:22:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T13:12:00Z"}
-{"event_id": "LABEV:22:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T15:14:00Z"}
-{"event_id": "LABEV:23:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T13:22:00Z"}
-{"event_id": "LABEV:23:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T16:46:00Z"}
-{"event_id": "LABEV:24:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T13:31:00Z"}
-{"event_id": "LABEV:24:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T15:31:00Z"}
-{"event_id": "LABEV:25:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T13:50:00Z"}
-{"event_id": "LABEV:25:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T16:43:00Z"}
-{"event_id": "LABEV:26:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T13:33:00Z"}
-{"event_id": "LABEV:26:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T14:11:00Z"}
-{"event_id": "LAB:31037212:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T17:25:00Z"}
+{"event_id": "LAB:31037212:received", "activity": "Specimen Received", "timestamp": "2026-03-25T15:20:00Z"}
+{"event_id": "LABEV:22:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T14:28:00Z"}
+{"event_id": "LABEV:22:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T17:22:00Z"}
+{"event_id": "LABEV:23:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T14:18:00Z"}
+{"event_id": "LABEV:23:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T18:44:00Z"}
+{"event_id": "LABEV:24:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T14:09:00Z"}
+{"event_id": "LABEV:24:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T17:20:00Z"}
+{"event_id": "LABEV:25:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T13:50:00Z"}
+{"event_id": "LABEV:25:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T18:13:00Z"}
+{"event_id": "LABEV:26:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T14:07:00Z"}
+{"event_id": "LABEV:26:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T15:58:00Z"}
+{"event_id": "LAB:31037212:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T19:23:00Z"}
 {"event_id": "OH:90", "activity": "Order Entered", "timestamp": "2026-03-25T11:20:00Z"}
 {"event_id": "OH:91", "activity": "Order Reviewed", "timestamp": "2026-03-25T12:33:00Z"}
-{"event_id": "LAB:31008953:received", "activity": "Specimen Received", "timestamp": "2026-03-25T13:26:00Z"}
-{"event_id": "LABEV:27:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T14:18:00Z"}
-{"event_id": "LABEV:27:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T16:52:01Z"}
-{"event_id": "LAB:31008953:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T17:37:00Z"}
+{"event_id": "LAB:31008953:received", "activity": "Specimen Received", "timestamp": "2026-03-25T16:26:00Z"}
+{"event_id": "LABEV:27:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T15:34:00Z"}
+{"event_id": "LABEV:27:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T19:00:00Z"}
+{"event_id": "LAB:31008953:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T19:45:00Z"}
 {"event_id": "OH:92", "activity": "Order Entered", "timestamp": "2026-03-25T12:41:00Z"}
 {"event_id": "OH:93", "activity": "Order Reviewed", "timestamp": "2026-03-25T14:01:00Z"}
-{"event_id": "LAB:31099345:received", "activity": "Specimen Received", "timestamp": "2026-03-25T14:28:00Z"}
-{"event_id": "LABEV:28:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T14:47:00Z"}
-{"event_id": "LABEV:28:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T17:45:00Z"}
-{"event_id": "LABEV:29:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T15:29:00Z"}
-{"event_id": "LABEV:29:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T16:34:00Z"}
-{"event_id": "LABEV:30:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T15:51:00Z"}
-{"event_id": "LABEV:30:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T18:40:00Z"}
-{"event_id": "LABEV:31:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T15:39:00Z"}
-{"event_id": "LABEV:31:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T16:23:00Z"}
-{"event_id": "LABEV:32:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T15:19:00Z"}
-{"event_id": "LABEV:32:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T16:21:00Z"}
-{"event_id": "LAB:31099345:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T19:07:00Z"}
+{"event_id": "LAB:31099345:received", "activity": "Specimen Received", "timestamp": "2026-03-25T17:28:00Z"}
+{"event_id": "LABEV:28:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T17:09:00Z"}
+{"event_id": "LABEV:28:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T20:26:00Z"}
+{"event_id": "LABEV:29:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T16:27:00Z"}
+{"event_id": "LABEV:29:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T18:33:00Z"}
+{"event_id": "LABEV:30:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T16:05:00Z"}
+{"event_id": "LABEV:30:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T20:17:00Z"}
+{"event_id": "LABEV:31:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T16:17:00Z"}
+{"event_id": "LABEV:31:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T18:12:00Z"}
+{"event_id": "LABEV:32:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T16:37:00Z"}
+{"event_id": "LABEV:32:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T18:30:00Z"}
+{"event_id": "LAB:31099345:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T20:53:00Z"}
 {"event_id": "OH:94", "activity": "Order Entered", "timestamp": "2026-03-25T13:17:00Z"}
 {"event_id": "OH:95", "activity": "Order Reviewed", "timestamp": "2026-03-25T14:49:00Z"}
 {"event_id": "OH:96", "activity": "Order Entered", "timestamp": "2026-03-25T14:29:00Z"}
-{"event_id": "OH:97", "activity": "Order Reviewed", "timestamp": "2026-03-25T15:29:01Z"}
+{"event_id": "OH:97", "activity": "Order Reviewed", "timestamp": "2026-03-25T15:29:00Z"}
 {"event_id": "OH:98", "activity": "Order Reviewed", "timestamp": "2026-03-25T15:54:01Z"}
-{"event_id": "LAB:30000117:received", "activity": "Specimen Received", "timestamp": "2026-03-25T16:11:00Z"}
-{"event_id": "LABEV:33:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T17:03:00Z"}
-{"event_id": "LABEV:33:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T17:35:00Z"}
-{"event_id": "LAB:30000117:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T18:33:00Z"}
+{"event_id": "LAB:30000117:received", "activity": "Specimen Received", "timestamp": "2026-03-25T19:11:00Z"}
+{"event_id": "LABEV:33:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T18:19:00Z"}
+{"event_id": "LABEV:33:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T19:43:00Z"}
+{"event_id": "LAB:30000117:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T20:41:00Z"}
 {"event_id": "OH:99", "activity": "Order Entered", "timestamp": "2026-03-25T15:35:00Z"}
 {"event_id": "OH:100", "activity": "Order Reviewed", "timestamp": "2026-03-25T15:54:00Z"}
-{"event_id": "LAB:31007707:received", "activity": "Specimen Received", "timestamp": "2026-03-25T16:32:00Z"}
-{"event_id": "LABEV:34:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T17:21:00Z"}
-{"event_id": "LABEV:34:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T21:19:00Z"}
-{"event_id": "LAB:31007707:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T22:32:00Z"}
+{"event_id": "LAB:31007707:received", "activity": "Specimen Received", "timestamp": "2026-03-25T19:32:00Z"}
+{"event_id": "LABEV:34:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T18:43:00Z"}
+{"event_id": "LABEV:34:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T23:30:00Z"}
+{"event_id": "LAB:31007707:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-26T00:43:00Z"}
 {"event_id": "OH:101", "activity": "Order Entered", "timestamp": "2026-03-25T16:49:00Z"}
 {"event_id": "OH:102", "activity": "Order Reviewed", "timestamp": "2026-03-25T17:16:00Z"}
-{"event_id": "LAB:31038448:received", "activity": "Specimen Received", "timestamp": "2026-03-25T18:09:00Z"}
-{"event_id": "LABEV:35:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T18:37:00Z"}
-{"event_id": "LABEV:35:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T21:55:00Z"}
-{"event_id": "LABEV:36:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T18:54:00Z"}
-{"event_id": "LABEV:36:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T20:42:00Z"}
-{"event_id": "LABEV:37:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-03-25T18:36:00Z"}
-{"event_id": "LABEV:37:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T20:49:00Z"}
-{"event_id": "LAB:31038448:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-25T23:28:00Z"}
+{"event_id": "LAB:31038448:received", "activity": "Specimen Received", "timestamp": "2026-03-25T21:09:00Z"}
+{"event_id": "LABEV:35:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T20:41:01Z"}
+{"event_id": "LABEV:35:result", "activity": "Lab Result Available", "timestamp": "2026-03-26T00:27:00Z"}
+{"event_id": "LABEV:36:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T20:24:00Z"}
+{"event_id": "LABEV:36:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T22:57:00Z"}
+{"event_id": "LABEV:37:chart", "activity": "Specimen Collected", "timestamp": "2026-03-25T20:42:00Z"}
+{"event_id": "LABEV:37:result", "activity": "Lab Result Available", "timestamp": "2026-03-25T23:22:00Z"}
+{"event_id": "LAB:31038448:verified", "activity": "Lab Results Verified", "timestamp": "2026-03-26T02:00:00Z"}
 {"event_id": "OH:103", "activity": "Order Entered", "timestamp": "2026-03-25T09:41:00Z"}
 {"event_id": "OH:104", "activity": "Order Reviewed", "timestamp": "2026-03-25T10:45:00Z"}
 {"event_id": "OH:105", "activity": "Order Reviewed", "timestamp": "2026-03-25T10:57:00Z"}
@@ -346,14 +346,14 @@
 {"event_id": "ADM:20000010:in", "activity": "Hospital Admitted", "timestamp": "2026-04-11T01:01:00Z"}
 {"event_id": "ADM:20000010:auth", "activity": "Discharge Authorized", "timestamp": "2026-04-12T11:24:00Z"}
 {"event_id": "ADM:20000010:out", "activity": "Hospital Discharged", "timestamp": "2026-04-12T13:01:00Z"}
-{"event_id": "ADM:20000010:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-04-12T12:49:00Z"}
+{"event_id": "ADM:20000010:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-04-12T15:25:00Z"}
 {"event_id": "OH:106", "activity": "Order Entered", "timestamp": "2026-04-11T01:40:00Z"}
 {"event_id": "OH:107", "activity": "Order Reviewed", "timestamp": "2026-04-11T02:22:00Z"}
 {"event_id": "OH:108", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:01:00Z"}
-{"event_id": "LAB:31055690:received", "activity": "Specimen Received", "timestamp": "2026-04-11T04:13:00Z"}
-{"event_id": "LABEV:38:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-11T04:39:00Z"}
-{"event_id": "LABEV:38:result", "activity": "Lab Result Available", "timestamp": "2026-04-11T05:44:00Z"}
-{"event_id": "LAB:31055690:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-11T06:28:00Z"}
+{"event_id": "LAB:31055690:received", "activity": "Specimen Received", "timestamp": "2026-04-11T07:13:00Z"}
+{"event_id": "LABEV:38:chart", "activity": "Specimen Collected", "timestamp": "2026-04-11T06:47:00Z"}
+{"event_id": "LABEV:38:result", "activity": "Lab Result Available", "timestamp": "2026-04-11T08:18:00Z"}
+{"event_id": "LAB:31055690:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-11T09:02:00Z"}
 {"event_id": "OH:109", "activity": "Order Entered", "timestamp": "2026-04-11T01:27:00Z"}
 {"event_id": "OH:110", "activity": "Order Reviewed", "timestamp": "2026-04-11T02:56:00Z"}
 {"event_id": "OH:111", "activity": "Order Reviewed", "timestamp": "2026-04-11T03:14:00Z"}
@@ -420,30 +420,30 @@
 {"event_id": "OH:128", "activity": "Order Entered", "timestamp": "2026-04-27T18:40:00Z"}
 {"event_id": "OH:129", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:39:00Z"}
 {"event_id": "OH:130", "activity": "Order Reviewed", "timestamp": "2026-04-27T20:08:00Z"}
-{"event_id": "LAB:31039038:received", "activity": "Specimen Received", "timestamp": "2026-04-27T20:12:00Z"}
-{"event_id": "LABEV:39:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-27T21:04:00Z"}
-{"event_id": "LABEV:39:result", "activity": "Lab Result Available", "timestamp": "2026-04-27T23:55:00Z"}
-{"event_id": "LABEV:40:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-27T21:11:00Z"}
-{"event_id": "LABEV:40:result", "activity": "Lab Result Available", "timestamp": "2026-04-27T23:27:00Z"}
-{"event_id": "LAB:31039038:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-28T01:38:00Z"}
+{"event_id": "LAB:31039038:received", "activity": "Specimen Received", "timestamp": "2026-04-27T23:12:00Z"}
+{"event_id": "LABEV:39:chart", "activity": "Specimen Collected", "timestamp": "2026-04-27T22:20:00Z"}
+{"event_id": "LABEV:39:result", "activity": "Lab Result Available", "timestamp": "2026-04-28T02:03:00Z"}
+{"event_id": "LABEV:40:chart", "activity": "Specimen Collected", "timestamp": "2026-04-27T22:13:00Z"}
+{"event_id": "LABEV:40:result", "activity": "Lab Result Available", "timestamp": "2026-04-28T01:28:00Z"}
+{"event_id": "LAB:31039038:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-28T03:46:00Z"}
 {"event_id": "OH:131", "activity": "Order Entered", "timestamp": "2026-04-27T19:54:00Z"}
 {"event_id": "OH:132", "activity": "Order Reviewed", "timestamp": "2026-04-27T20:08:01Z"}
-{"event_id": "LAB:31075657:received", "activity": "Specimen Received", "timestamp": "2026-04-27T22:04:00Z"}
-{"event_id": "LABEV:41:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-27T22:50:00Z"}
-{"event_id": "LABEV:41:result", "activity": "Lab Result Available", "timestamp": "2026-04-28T00:50:00Z"}
-{"event_id": "LAB:31075657:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-28T02:30:00Z"}
+{"event_id": "LAB:31075657:received", "activity": "Specimen Received", "timestamp": "2026-04-28T01:04:00Z"}
+{"event_id": "LABEV:41:chart", "activity": "Specimen Collected", "timestamp": "2026-04-28T00:18:00Z"}
+{"event_id": "LABEV:41:result", "activity": "Lab Result Available", "timestamp": "2026-04-28T03:04:00Z"}
+{"event_id": "LAB:31075657:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-28T04:44:00Z"}
 {"event_id": "OH:133", "activity": "Order Entered", "timestamp": "2026-04-27T20:48:00Z"}
 {"event_id": "OH:134", "activity": "Order Reviewed", "timestamp": "2026-04-27T21:08:00Z"}
-{"event_id": "LAB:31070038:received", "activity": "Specimen Received", "timestamp": "2026-04-27T21:57:00Z"}
-{"event_id": "LABEV:42:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-04-27T22:41:00Z"}
-{"event_id": "LABEV:42:result", "activity": "Lab Result Available", "timestamp": "2026-04-27T23:37:00Z"}
-{"event_id": "LAB:31070038:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-28T00:37:00Z"}
+{"event_id": "LAB:31070038:received", "activity": "Specimen Received", "timestamp": "2026-04-28T00:57:00Z"}
+{"event_id": "LABEV:42:chart", "activity": "Specimen Collected", "timestamp": "2026-04-28T00:13:00Z"}
+{"event_id": "LABEV:42:result", "activity": "Lab Result Available", "timestamp": "2026-04-28T01:53:00Z"}
+{"event_id": "LAB:31070038:verified", "activity": "Lab Results Verified", "timestamp": "2026-04-28T02:53:00Z"}
 {"event_id": "OH:135", "activity": "Order Entered", "timestamp": "2026-04-27T18:19:00Z"}
 {"event_id": "OH:136", "activity": "Order Reviewed", "timestamp": "2026-04-27T18:43:00Z"}
 {"event_id": "OH:137", "activity": "Order Reviewed", "timestamp": "2026-04-27T19:15:00Z"}
 {"event_id": "PROC:33091192:prep", "activity": "Procedure Preparation Completed", "timestamp": "2026-04-27T20:26:00Z"}
 {"event_id": "PROCEV:12:start", "activity": "Procedure Started", "timestamp": "2026-04-27T21:31:00Z"}
-{"event_id": "PROCEV:12:end", "activity": "Procedure Completed", "timestamp": "2026-04-27T22:13:00Z"}
+{"event_id": "PROCEV:12:end", "activity": "Procedure Completed", "timestamp": "2026-04-27T22:13:01Z"}
 {"event_id": "PROCEV:13:start", "activity": "Procedure Started", "timestamp": "2026-04-27T23:40:00Z"}
 {"event_id": "PROCEV:13:end", "activity": "Procedure Completed", "timestamp": "2026-04-28T01:18:00Z"}
 {"event_id": "PROCEV:14:start", "activity": "Procedure Started", "timestamp": "2026-04-28T02:14:00Z"}
@@ -463,28 +463,28 @@
 {"event_id": "ADM:20000013:in", "activity": "Hospital Admitted", "timestamp": "2026-05-31T01:02:00Z"}
 {"event_id": "ADM:20000013:auth", "activity": "Discharge Authorized", "timestamp": "2026-06-03T06:40:00Z"}
 {"event_id": "ADM:20000013:out", "activity": "Hospital Discharged", "timestamp": "2026-06-03T09:20:00Z"}
-{"event_id": "ADM:20000013:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-06-03T09:03:00Z"}
+{"event_id": "ADM:20000013:summary", "activity": "Discharge Summary Signed", "timestamp": "2026-06-03T12:44:00Z"}
 {"event_id": "OH:144", "activity": "Order Entered", "timestamp": "2026-05-31T02:06:00Z"}
 {"event_id": "OH:145", "activity": "Order Reviewed", "timestamp": "2026-05-31T03:01:00Z"}
 {"event_id": "OH:146", "activity": "Order Reviewed", "timestamp": "2026-05-31T03:21:00Z"}
-{"event_id": "LAB:31060555:received", "activity": "Specimen Received", "timestamp": "2026-05-31T04:08:00Z"}
-{"event_id": "LABEV:43:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-31T04:51:00Z"}
-{"event_id": "LABEV:43:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T08:04:00Z"}
-{"event_id": "LAB:31060555:verified", "activity": "Lab Results Verified", "timestamp": "2026-05-31T10:04:00Z"}
+{"event_id": "LAB:31060555:received", "activity": "Specimen Received", "timestamp": "2026-05-31T07:08:00Z"}
+{"event_id": "LABEV:43:chart", "activity": "Specimen Collected", "timestamp": "2026-05-31T06:25:00Z"}
+{"event_id": "LABEV:43:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T10:21:00Z"}
+{"event_id": "LAB:31060555:verified", "activity": "Lab Results Verified", "timestamp": "2026-05-31T12:21:00Z"}
 {"event_id": "OH:147", "activity": "Order Entered", "timestamp": "2026-05-31T03:05:00Z"}
 {"event_id": "OH:148", "activity": "Order Reviewed", "timestamp": "2026-05-31T04:05:00Z"}
-{"event_id": "LAB:30000983:received", "activity": "Specimen Received", "timestamp": "2026-05-31T04:57:00Z"}
-{"event_id": "LABEV:44:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-31T05:37:00Z"}
-{"event_id": "LABEV:44:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T08:19:00Z"}
-{"event_id": "LABEV:45:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-31T05:39:00Z"}
-{"event_id": "LABEV:45:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T08:23:00Z"}
-{"event_id": "LABEV:46:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-31T05:57:00Z"}
-{"event_id": "LABEV:46:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T09:28:00Z"}
-{"event_id": "LABEV:47:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-31T06:40:00Z"}
-{"event_id": "LABEV:47:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T09:50:00Z"}
-{"event_id": "LABEV:48:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-05-31T05:59:00Z"}
-{"event_id": "LABEV:48:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T08:15:00Z"}
-{"event_id": "LAB:30000983:verified", "activity": "Lab Results Verified", "timestamp": "2026-05-31T11:54:00Z"}
+{"event_id": "LAB:30000983:received", "activity": "Specimen Received", "timestamp": "2026-05-31T07:57:00Z"}
+{"event_id": "LABEV:44:chart", "activity": "Specimen Collected", "timestamp": "2026-05-31T07:17:01Z"}
+{"event_id": "LABEV:44:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T10:39:00Z"}
+{"event_id": "LABEV:45:chart", "activity": "Specimen Collected", "timestamp": "2026-05-31T07:15:00Z"}
+{"event_id": "LABEV:45:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T10:41:00Z"}
+{"event_id": "LABEV:46:chart", "activity": "Specimen Collected", "timestamp": "2026-05-31T06:57:00Z"}
+{"event_id": "LABEV:46:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T11:28:00Z"}
+{"event_id": "LABEV:47:chart", "activity": "Specimen Collected", "timestamp": "2026-05-31T06:14:00Z"}
+{"event_id": "LABEV:47:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T11:07:00Z"}
+{"event_id": "LABEV:48:chart", "activity": "Specimen Collected", "timestamp": "2026-05-31T06:55:00Z"}
+{"event_id": "LABEV:48:result", "activity": "Lab Result Available", "timestamp": "2026-05-31T10:13:00Z"}
+{"event_id": "LAB:30000983:verified", "activity": "Lab Results Verified", "timestamp": "2026-05-31T13:32:00Z"}
 {"event_id": "OH:149", "activity": "Order Entered", "timestamp": "2026-05-31T01:44:00Z"}
 {"event_id": "OH:150", "activity": "Order Reviewed", "timestamp": "2026-05-31T02:58:00Z"}
 {"event_id": "OH:151", "activity": "Order Reviewed", "timestamp": "2026-05-31T03:13:00Z"}
@@ -493,7 +493,7 @@
 {"event_id": "OH:153", "activity": "Order Reviewed", "timestamp": "2026-05-31T04:17:00Z"}
 {"event_id": "PHARM:40000029:dispense", "activity": "Medication Dispensed", "timestamp": "2026-05-31T05:19:00Z"}
 {"event_id": "EMAR:58", "activity": "Medication Not Given", "timestamp": "2026-05-31T06:23:00Z"}
-{"event_id": "PHARM:40000030:dispense", "activity": "Medication Dispensed", "timestamp": "2026-05-31T08:23:01Z"}
+{"event_id": "PHARM:40000030:dispense", "activity": "Medication Dispensed", "timestamp": "2026-05-31T08:23:00Z"}
 {"event_id": "EMAR:59", "activity": "Medication Administered", "timestamp": "2026-05-31T10:12:00Z"}
 {"event_id": "EMAR:60", "activity": "Medication Administered", "timestamp": "2026-05-31T11:52:00Z"}
 {"event_id": "MED:32056173:stop", "activity": "Medication Stopped", "timestamp": "2026-05-31T20:27:00Z"}
@@ -516,14 +516,14 @@
 {"event_id": "OH:159", "activity": "Order Entered", "timestamp": "2026-06-16T18:04:00Z"}
 {"event_id": "OH:160", "activity": "Order Reviewed", "timestamp": "2026-06-16T18:56:00Z"}
 {"event_id": "OH:161", "activity": "Order Reviewed", "timestamp": "2026-06-16T19:19:00Z"}
-{"event_id": "LAB:31032754:received", "activity": "Specimen Received", "timestamp": "2026-06-16T20:14:00Z"}
-{"event_id": "LABEV:49:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-06-16T20:30:00Z"}
-{"event_id": "LABEV:49:result", "activity": "Lab Result Available", "timestamp": "2026-06-17T00:03:00Z"}
-{"event_id": "LABEV:50:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-06-16T20:50:00Z"}
-{"event_id": "LABEV:50:result", "activity": "Lab Result Available", "timestamp": "2026-06-17T00:14:00Z"}
-{"event_id": "LABEV:51:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-06-16T21:14:00Z"}
-{"event_id": "LABEV:51:result", "activity": "Lab Result Available", "timestamp": "2026-06-16T23:26:00Z"}
-{"event_id": "LAB:31032754:verified", "activity": "Lab Results Verified", "timestamp": "2026-06-17T01:08:00Z"}
+{"event_id": "LAB:31032754:received", "activity": "Specimen Received", "timestamp": "2026-06-16T23:14:00Z"}
+{"event_id": "LABEV:49:chart", "activity": "Specimen Collected", "timestamp": "2026-06-16T22:58:00Z"}
+{"event_id": "LABEV:49:result", "activity": "Lab Result Available", "timestamp": "2026-06-17T02:47:00Z"}
+{"event_id": "LABEV:50:chart", "activity": "Specimen Collected", "timestamp": "2026-06-16T22:38:00Z"}
+{"event_id": "LABEV:50:result", "activity": "Lab Result Available", "timestamp": "2026-06-17T02:38:00Z"}
+{"event_id": "LABEV:51:chart", "activity": "Specimen Collected", "timestamp": "2026-06-16T22:14:00Z"}
+{"event_id": "LABEV:51:result", "activity": "Lab Result Available", "timestamp": "2026-06-17T01:26:00Z"}
+{"event_id": "LAB:31032754:verified", "activity": "Lab Results Verified", "timestamp": "2026-06-17T03:41:00Z"}
 {"event_id": "OH:162", "activity": "Order Entered", "timestamp": "2026-06-16T18:20:00Z"}
 {"event_id": "OH:163", "activity": "Order Reviewed", "timestamp": "2026-06-16T18:48:00Z"}
 {"event_id": "OH:164", "activity": "Order Reviewed", "timestamp": "2026-06-16T19:14:00Z"}
@@ -536,7 +536,7 @@
 {"event_id": "EMAR:64", "activity": "Medication Not Given", "timestamp": "2026-06-16T22:48:00Z"}
 {"event_id": "EMAR:65", "activity": "Medication Administered", "timestamp": "2026-06-17T00:01:00Z"}
 {"event_id": "EMAR:66", "activity": "Medication Administered", "timestamp": "2026-06-17T02:25:00Z"}
-{"event_id": "PHARM:40000034:dispense", "activity": "Medication Dispensed", "timestamp": "2026-06-17T01:26:00Z"}
+{"event_id": "PHARM:40000034:dispense", "activity": "Medication Dispensed", "timestamp": "2026-06-17T01:26:01Z"}
 {"event_id": "EMAR:67", "activity": "Medication Administered", "timestamp": "2026-06-17T03:36:00Z"}
 {"event_id": "OH:167", "activity": "Order Entered", "timestamp": "2026-06-16T18:18:00Z"}
 {"event_id": "OH:168", "activity": "Order Reviewed", "timestamp": "2026-06-16T19:46:00Z"}
@@ -549,33 +549,33 @@
 {"event_id": "OH:170", "activity": "Order Entered", "timestamp": "2026-07-03T09:51:00Z"}
 {"event_id": "OH:171", "activity": "Order Reviewed", "timestamp": "2026-07-03T10:14:00Z"}
 {"event_id": "OH:172", "activity": "Order Reviewed", "timestamp": "2026-07-03T10:27:00Z"}
-{"event_id": "LAB:31015768:received", "activity": "Specimen Received", "timestamp": "2026-07-03T11:09:00Z"}
-{"event_id": "LABEV:52:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-03T11:29:00Z"}
-{"event_id": "LABEV:52:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T13:37:00Z"}
-{"event_id": "LAB:31015768:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T14:43:00Z"}
+{"event_id": "LAB:31015768:received", "activity": "Specimen Received", "timestamp": "2026-07-03T14:09:00Z"}
+{"event_id": "LABEV:52:chart", "activity": "Specimen Collected", "timestamp": "2026-07-03T13:49:00Z"}
+{"event_id": "LABEV:52:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T16:17:00Z"}
+{"event_id": "LAB:31015768:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T17:23:00Z"}
 {"event_id": "OH:173", "activity": "Order Entered", "timestamp": "2026-07-03T11:15:00Z"}
 {"event_id": "OH:174", "activity": "Order Reviewed", "timestamp": "2026-07-03T11:38:00Z"}
-{"event_id": "LAB:31040387:received", "activity": "Specimen Received", "timestamp": "2026-07-03T13:05:00Z"}
-{"event_id": "LABEV:53:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-03T14:00:00Z"}
-{"event_id": "LABEV:53:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T15:23:00Z"}
-{"event_id": "LAB:31040387:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T16:32:00Z"}
+{"event_id": "LAB:31040387:received", "activity": "Specimen Received", "timestamp": "2026-07-03T16:05:00Z"}
+{"event_id": "LABEV:53:chart", "activity": "Specimen Collected", "timestamp": "2026-07-03T15:10:00Z"}
+{"event_id": "LABEV:53:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T17:28:00Z"}
+{"event_id": "LAB:31040387:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T18:37:00Z"}
 {"event_id": "OH:175", "activity": "Order Entered", "timestamp": "2026-07-03T12:21:00Z"}
 {"event_id": "OH:176", "activity": "Order Reviewed", "timestamp": "2026-07-03T13:50:00Z"}
-{"event_id": "LAB:31057986:received", "activity": "Specimen Received", "timestamp": "2026-07-03T14:46:00Z"}
-{"event_id": "LABEV:54:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-03T15:20:00Z"}
-{"event_id": "LABEV:54:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T16:28:00Z"}
-{"event_id": "LAB:31057986:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T17:06:00Z"}
+{"event_id": "LAB:31057986:received", "activity": "Specimen Received", "timestamp": "2026-07-03T17:46:00Z"}
+{"event_id": "LABEV:54:chart", "activity": "Specimen Collected", "timestamp": "2026-07-03T17:12:00Z"}
+{"event_id": "LABEV:54:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T18:54:00Z"}
+{"event_id": "LAB:31057986:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T19:32:00Z"}
 {"event_id": "OH:177", "activity": "Order Entered", "timestamp": "2026-07-03T13:09:00Z"}
 {"event_id": "OH:178", "activity": "Order Reviewed", "timestamp": "2026-07-03T13:34:00Z"}
 {"event_id": "OH:179", "activity": "Order Entered", "timestamp": "2026-07-03T14:28:00Z"}
-{"event_id": "OH:180", "activity": "Order Reviewed", "timestamp": "2026-07-03T15:20:01Z"}
+{"event_id": "OH:180", "activity": "Order Reviewed", "timestamp": "2026-07-03T15:20:00Z"}
 {"event_id": "OH:181", "activity": "Order Reviewed", "timestamp": "2026-07-03T15:51:00Z"}
-{"event_id": "LAB:31015169:received", "activity": "Specimen Received", "timestamp": "2026-07-03T15:41:00Z"}
-{"event_id": "LABEV:55:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-03T16:09:00Z"}
-{"event_id": "LABEV:55:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T17:46:00Z"}
-{"event_id": "LABEV:56:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-03T16:36:00Z"}
-{"event_id": "LABEV:56:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T19:44:00Z"}
-{"event_id": "LAB:31015169:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T21:33:00Z"}
+{"event_id": "LAB:31015169:received", "activity": "Specimen Received", "timestamp": "2026-07-03T18:41:00Z"}
+{"event_id": "LABEV:55:chart", "activity": "Specimen Collected", "timestamp": "2026-07-03T18:13:00Z"}
+{"event_id": "LABEV:55:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T20:18:00Z"}
+{"event_id": "LABEV:56:chart", "activity": "Specimen Collected", "timestamp": "2026-07-03T17:46:01Z"}
+{"event_id": "LABEV:56:result", "activity": "Lab Result Available", "timestamp": "2026-07-03T21:49:00Z"}
+{"event_id": "LAB:31015169:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-03T23:38:00Z"}
 {"event_id": "OH:182", "activity": "Order Entered", "timestamp": "2026-07-03T09:49:00Z"}
 {"event_id": "OH:183", "activity": "Order Reviewed", "timestamp": "2026-07-03T10:21:00Z"}
 {"event_id": "OH:184", "activity": "Order Reviewed", "timestamp": "2026-07-03T10:40:00Z"}
@@ -602,27 +602,27 @@
 {"event_id": "OH:195", "activity": "Order Entered", "timestamp": "2026-07-28T08:35:00Z"}
 {"event_id": "OH:196", "activity": "Order Reviewed", "timestamp": "2026-07-28T09:06:00Z"}
 {"event_id": "OH:197", "activity": "Order Reviewed", "timestamp": "2026-07-28T09:39:00Z"}
-{"event_id": "LAB:35001904:received", "activity": "Specimen Received", "timestamp": "2026-07-28T09:46:00Z"}
-{"event_id": "LABEV:57:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-28T10:21:00Z"}
-{"event_id": "LABEV:57:result", "activity": "Lab Result Available", "timestamp": "2026-07-28T11:38:00Z"}
-{"event_id": "LABEV:58:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-28T10:21:01Z"}
-{"event_id": "LABEV:58:result", "activity": "Lab Result Available", "timestamp": "2026-07-28T13:06:00Z"}
-{"event_id": "LAB:35001904:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-28T15:13:00Z"}
+{"event_id": "LAB:35001904:received", "activity": "Specimen Received", "timestamp": "2026-07-28T12:46:00Z"}
+{"event_id": "LABEV:57:chart", "activity": "Specimen Collected", "timestamp": "2026-07-28T12:11:00Z"}
+{"event_id": "LABEV:57:result", "activity": "Lab Result Available", "timestamp": "2026-07-28T14:03:00Z"}
+{"event_id": "LABEV:58:chart", "activity": "Specimen Collected", "timestamp": "2026-07-28T12:11:01Z"}
+{"event_id": "LABEV:58:result", "activity": "Lab Result Available", "timestamp": "2026-07-28T15:31:00Z"}
+{"event_id": "LAB:35001904:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-28T17:38:00Z"}
 {"event_id": "OH:198", "activity": "Order Entered", "timestamp": "2026-07-29T15:58:00Z"}
 {"event_id": "OH:199", "activity": "Order Reviewed", "timestamp": "2026-07-29T16:19:00Z"}
-{"event_id": "LAB:35007472:received", "activity": "Specimen Received", "timestamp": "2026-07-29T16:42:00Z"}
-{"event_id": "LABEV:59:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-29T17:29:00Z"}
-{"event_id": "LABEV:59:result", "activity": "Lab Result Available", "timestamp": "2026-07-29T19:29:00Z"}
-{"event_id": "LAB:35007472:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-29T21:25:00Z"}
+{"event_id": "LAB:35007472:received", "activity": "Specimen Received", "timestamp": "2026-07-29T19:42:00Z"}
+{"event_id": "LABEV:59:chart", "activity": "Specimen Collected", "timestamp": "2026-07-29T18:55:00Z"}
+{"event_id": "LABEV:59:result", "activity": "Lab Result Available", "timestamp": "2026-07-29T21:42:00Z"}
+{"event_id": "LAB:35007472:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-29T23:38:00Z"}
 {"event_id": "OH:200", "activity": "Order Entered", "timestamp": "2026-07-30T23:24:00Z"}
 {"event_id": "OH:201", "activity": "Order Reviewed", "timestamp": "2026-07-30T23:47:00Z"}
-{"event_id": "LAB:35002633:received", "activity": "Specimen Received", "timestamp": "2026-07-31T00:36:00Z"}
-{"event_id": "LABEV:60:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-31T01:06:00Z"}
-{"event_id": "LABEV:60:result", "activity": "Lab Result Available", "timestamp": "2026-07-31T02:03:00Z"}
-{"event_id": "LABEV:61:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-31T01:36:00Z"}
-{"event_id": "LABEV:61:result", "activity": "Lab Result Available", "timestamp": "2026-07-31T04:02:00Z"}
-{"event_id": "LABEV:62:chart", "activity": "Lab Measurement Charted", "timestamp": "2026-07-31T01:29:00Z"}
-{"event_id": "LABEV:62:result", "activity": "Lab Result Available", "timestamp": "2026-07-31T03:14:00Z"}
-{"event_id": "LAB:35002633:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-31T05:50:00Z"}
+{"event_id": "LAB:35002633:received", "activity": "Specimen Received", "timestamp": "2026-07-31T03:36:00Z"}
+{"event_id": "LABEV:60:chart", "activity": "Specimen Collected", "timestamp": "2026-07-31T03:06:00Z"}
+{"event_id": "LABEV:60:result", "activity": "Lab Result Available", "timestamp": "2026-07-31T04:33:00Z"}
+{"event_id": "LABEV:61:chart", "activity": "Specimen Collected", "timestamp": "2026-07-31T02:36:00Z"}
+{"event_id": "LABEV:61:result", "activity": "Lab Result Available", "timestamp": "2026-07-31T06:02:00Z"}
+{"event_id": "LABEV:62:chart", "activity": "Specimen Collected", "timestamp": "2026-07-31T02:43:00Z"}
+{"event_id": "LABEV:62:result", "activity": "Lab Result Available", "timestamp": "2026-07-31T05:21:00Z"}
+{"event_id": "LAB:35002633:verified", "activity": "Lab Results Verified", "timestamp": "2026-07-31T07:50:00Z"}
 {"event_id": "OH:202", "activity": "Order Entered", "timestamp": "2026-08-01T06:17:00Z"}
 {"event_id": "OH:203", "activity": "Order Reviewed", "timestamp": "2026-08-01T06:29:00Z"}

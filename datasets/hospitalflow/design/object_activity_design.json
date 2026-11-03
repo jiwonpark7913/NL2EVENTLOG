@@ -10,7 +10,6 @@
       "Emergency Department Registered",
       "Hospital Admitted",
       "Hospital Discharged",
-      "Lab Measurement Charted",
       "Lab Result Available",
       "Lab Results Verified",
       "Medication Administered",
@@ -24,6 +23,7 @@
       "Procedure Completed",
       "Procedure Preparation Completed",
       "Procedure Started",
+      "Specimen Collected",
       "Specimen Received"
     ],
     "event_rows": 628,
@@ -40,7 +40,6 @@
       "Emergency Department Registered",
       "Hospital Admitted",
       "Hospital Discharged",
-      "Lab Measurement Charted",
       "Lab Result Available",
       "Lab Results Verified",
       "Medication Administered",
@@ -53,6 +52,7 @@
       "Procedure Completed",
       "Procedure Preparation Completed",
       "Procedure Started",
+      "Specimen Collected",
       "Specimen Received"
     ],
     "event_rows": 595,
@@ -64,11 +64,11 @@
     "case_count": 34,
     "activity_count": 6,
     "activities": [
-      "Lab Measurement Charted",
       "Lab Result Available",
       "Lab Results Verified",
       "Order Entered",
       "Order Reviewed",
+      "Specimen Collected",
       "Specimen Received"
     ],
     "event_rows": 267,
@@ -125,8 +125,8 @@
     "case_count": 62,
     "activity_count": 2,
     "activities": [
-      "Lab Measurement Charted",
-      "Lab Result Available"
+      "Lab Result Available",
+      "Specimen Collected"
     ],
     "event_rows": 124,
     "cases_without_events": 0

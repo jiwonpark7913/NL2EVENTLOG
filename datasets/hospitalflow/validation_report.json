@@ -29,7 +29,6 @@
         "Emergency Department Registered",
         "Hospital Admitted",
         "Hospital Discharged",
-        "Lab Measurement Charted",
         "Lab Result Available",
         "Lab Results Verified",
         "Medication Administered",
@@ -43,6 +42,7 @@
         "Procedure Completed",
         "Procedure Preparation Completed",
         "Procedure Started",
+        "Specimen Collected",
         "Specimen Received"
       ],
       "event_rows": 628,
@@ -59,7 +59,6 @@
         "Emergency Department Registered",
         "Hospital Admitted",
         "Hospital Discharged",
-        "Lab Measurement Charted",
         "Lab Result Available",
         "Lab Results Verified",
         "Medication Administered",
@@ -72,6 +71,7 @@
         "Procedure Completed",
         "Procedure Preparation Completed",
         "Procedure Started",
+        "Specimen Collected",
         "Specimen Received"
       ],
       "event_rows": 595,
@@ -83,11 +83,11 @@
       "case_count": 34,
       "activity_count": 6,
       "activities": [
-        "Lab Measurement Charted",
         "Lab Result Available",
         "Lab Results Verified",
         "Order Entered",
         "Order Reviewed",
+        "Specimen Collected",
         "Specimen Received"
       ],
       "event_rows": 267,
@@ -144,8 +144,8 @@
       "case_count": 62,
       "activity_count": 2,
       "activities": [
-        "Lab Measurement Charted",
-        "Lab Result Available"
+        "Lab Result Available",
+        "Specimen Collected"
       ],
       "event_rows": 124,
       "cases_without_events": 0
@@ -202,7 +202,7 @@
     "Medication Not Given": 18,
     "Medication Stopped": 25,
     "Specimen Received": 30,
-    "Lab Measurement Charted": 62,
+    "Specimen Collected": 62,
     "Lab Result Available": 62,
     "Lab Results Verified": 30,
     "Procedure Preparation Completed": 13,
@@ -241,10 +241,23 @@
     "frozen_llm_pairs_verified": true,
     "schema_round_trip": true
   },
-  "realism_review": "docs/realism_validation.json",
+  "semantic_validation": {
+    "laboratory_collection_receipt_result_verified_rows": 62,
+    "signed_summaries_after_discharge": 5,
+    "variable_count": 52,
+    "nullable_time_interpretation": "timestamp not recorded; occurrence unknown",
+    "dictionary_conditions_prepared": [
+      "full_dictionary",
+      "concise_dictionary",
+      "no_dictionary"
+    ],
+    "actual_model_ablation_run": false,
+    "details": "docs/realism_validation.json"
+  },
   "reproducibility_validation": {
     "rebuilt_twice": true,
-    "identical_database_dictionary_canonical_history_gold_csv_sql": true,
+    "identical_db_profile_dictionary_conditions_history_gold_csv_sql": true,
+    "validation_does_not_mutate_db_or_gold": true,
     "other_dataset_gold_csvs_unchanged": 240
   }
 }

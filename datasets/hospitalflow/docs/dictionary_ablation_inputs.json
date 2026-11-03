@@ -1,0 +1,23 @@
+{
+  "status": "Input conditions prepared and structurally validated; no model run or performance result.",
+  "common_inputs": {
+    "input/database.sqlite": "6a36c1dcef001368502e8337649a0163c6f23d99ea969729fdc33fae7edb6114",
+    "input/schema.sql": "416d4543c8f4e78a9db3fb6e21a29f4197b9af5f97bd3acfbdf163a3d9a5a3e0",
+    "input/model_questions.jsonl": "0360d8d831153712fbcbb23f9e555d9b990796c84fd98193ed5ca18e994bb85b"
+  },
+  "dictionary_sizes": {
+    "full_dictionary": {
+      "bytes": 90429,
+      "characters": 90429
+    },
+    "concise_dictionary": {
+      "bytes": 38241,
+      "characters": 38241
+    },
+    "no_dictionary": {
+      "bytes": 0,
+      "characters": 0
+    }
+  },
+  "gold_sha256": "259a5d1fa05f6414ee492ec40e7a8a7963d67fbca7301c54c31b3d7fa72d5775"
+}

@@ -2,8 +2,8 @@
 {"id": "H01P", "question": "For every hospital stay, build a timeline of when its orders were placed, checked and, if applicable, cancelled."}
 {"id": "H02", "question": "For each hospital admission, extract Lab Result Available, Medication Administered and Procedure Completed events."}
 {"id": "H02P", "question": "For every hospital stay, show when laboratory findings became available, medicines were given and procedures finished."}
-{"id": "H03", "question": "For each laboratory order, extract Lab Measurement Charted, Lab Result Available and Lab Results Verified events."}
-{"id": "H03P", "question": "For every laboratory order, show when each measurement was charted, when its findings became accessible and when the order's results were verified."}
+{"id": "H03", "question": "For each laboratory order, extract Specimen Collected, Lab Result Available and Lab Results Verified events."}
+{"id": "H03P", "question": "For every laboratory request, show when specimens were collected, when results became available and when those results were verified."}
 {"id": "H04", "question": "For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events."}
 {"id": "H04P", "question": "Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication."}
 {"id": "H05", "question": "For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events."}

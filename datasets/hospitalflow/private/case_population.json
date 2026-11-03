@@ -22,7 +22,6 @@
       "Emergency Department Registered",
       "Hospital Admitted",
       "Hospital Discharged",
-      "Lab Measurement Charted",
       "Lab Result Available",
       "Lab Results Verified",
       "Medication Administered",
@@ -36,6 +35,7 @@
       "Procedure Completed",
       "Procedure Preparation Completed",
       "Procedure Started",
+      "Specimen Collected",
       "Specimen Received"
     ],
     "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
@@ -66,7 +66,6 @@
       "Emergency Department Registered",
       "Hospital Admitted",
       "Hospital Discharged",
-      "Lab Measurement Charted",
       "Lab Result Available",
       "Lab Results Verified",
       "Medication Administered",
@@ -79,6 +78,7 @@
       "Procedure Completed",
       "Procedure Preparation Completed",
       "Procedure Started",
+      "Specimen Collected",
       "Specimen Received"
     ],
     "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
@@ -123,11 +123,11 @@
       "LAB:35007482"
     ],
     "activities": [
-      "Lab Measurement Charted",
       "Lab Result Available",
       "Lab Results Verified",
       "Order Entered",
       "Order Reviewed",
+      "Specimen Collected",
       "Specimen Received"
     ],
     "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
@@ -491,8 +491,8 @@
       "LM:62"
     ],
     "activities": [
-      "Lab Measurement Charted",
-      "Lab Result Available"
+      "Lab Result Available",
+      "Specimen Collected"
     ],
     "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
   },

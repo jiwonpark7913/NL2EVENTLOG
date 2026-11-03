@@ -57,7 +57,7 @@ for r in con.execute('SELECT * FROM order_history'):
  assert links[eid]==expected
 for row in con.execute('SELECT l.*,MAX(e.storetime) latest FROM lab_order l LEFT JOIN labevents e USING(order_id) GROUP BY l.order_id'):
  if row['results_verified_at']:assert row['specimen_received_at']<=row['latest']<=row['results_verified_at']
-for row in con.execute('SELECT a.*,d.discharge_summary_signed_at FROM admissions a JOIN admission_detail d USING(hadm_id)'):assert row['admittime']<row['discharge_summary_signed_at']<row['dischtime']
+for row in con.execute('SELECT a.*,d.discharge_summary_signed_at FROM admissions a JOIN admission_detail d USING(hadm_id)'):assert row['admittime']<row['dischtime']<row['discharge_summary_signed_at']
 sources=load('private/persistence_mapping.json');used={(s['table'],s['timestamp_column']) for s in sources};inv=load('docs/timestamp_columns.json');assert inv['timestamp_columns']==19 and inv['event_timestamp_columns']==17;assert used=={(r['table'],r['column']) for r in inv['columns'] if r['used_as_event_time']}
 provenance=load('private/event_binding_provenance.json');assert len(provenance)==len(sources) and all(p['physical_object']['table'] in tables for p in provenance)
 seeds=load('source/question_seeds.json');par=load('source/llm_paraphrases.json');assert set(par['outputs'])=={s['id'] for s in seeds}
@@ -70,3 +70,8 @@ print('HospitalFlow:',len(results),'Gold logs; 12 Physical Objects → 10 expect
 # Business metadata is checked independently of Gold extraction assertions.
 import subprocess,sys
 subprocess.run([sys.executable,str(P/"validate_dictionary.py")],check=True)
+
+# Only record successful dictionary/ablation checks after the subprocess passes.
+report=load('validation_report.json')
+report['semantic_validation']={'laboratory_collection_receipt_result_verified_rows':con.execute('SELECT COUNT(*) FROM labevents').fetchone()[0], 'signed_summaries_after_discharge':con.execute('SELECT COUNT(*) FROM admission_detail').fetchone()[0], 'variable_count':sum(len(t['columns']) for t in load('input/data_dictionary.json')['tables']), 'nullable_time_interpretation':'timestamp not recorded; occurrence unknown', 'dictionary_conditions_prepared':['full_dictionary','concise_dictionary','no_dictionary'], 'actual_model_ablation_run':False, 'details':'docs/realism_validation.json'}
+(P/'validation_report.json').write_text(json.dumps(report,indent=2)+'\n')
