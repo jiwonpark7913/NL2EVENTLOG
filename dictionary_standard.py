@@ -7,6 +7,9 @@ def mdtable(headers,rows):
  esc=lambda x:str(x).replace('|','\\|').replace('\n',' ')
  return '| '+' | '.join(headers)+' |\n| '+' | '.join('---' for _ in headers)+' |\n'+''.join('| '+' | '.join(esc(x) for x in row)+' |\n' for row in rows)
 def render(p):
+ if p.name=='hospitalflow':
+  from hospital_dictionary import render as render_hospital
+  return render_hospital(p)
  if p.name in ['plateflow_new','warehouseflow_new']:
   import runpy
   module=runpy.run_path(str(p/'documentation.py'));con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row

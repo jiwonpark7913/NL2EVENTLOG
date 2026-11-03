@@ -1,0 +1,30 @@
+{
+  "review_date": "2026-11-03",
+  "baseline_commit": "bb57d37e01cf60870f5f56e27e3a3d73bfc936fd",
+  "scope": "HospitalFlow dictionary metadata only",
+  "static_checks": {
+    "tables": 11,
+    "columns": 50,
+    "datetime_columns": 19,
+    "nullable_columns": 14,
+    "coded_variables": 4,
+    "protected_data_and_gold_paths": "Verified against baseline Git tree before branch update",
+    "declared_foreign_keys": 11,
+    "coded_values_with_meanings": 8,
+    "nullable_columns_with_specific_meanings": 14,
+    "dictionary_outputs_checked": 6,
+    "protected_blob_count": 92,
+    "python_source_check": "Lexical delimiter inspection only; no compilation or interpreter execution"
+  },
+  "runtime_checks": {
+    "status": "not_run",
+    "reason": "No usable execution environment available in this session",
+    "commands": [
+      "python hospital_dictionary.py datasets/hospitalflow",
+      "python datasets/hospitalflow/validate_dictionary.py",
+      "python datasets/hospitalflow/validate.py"
+    ]
+  },
+  "human_clinical_review": "pending",
+  "learnt_classifier_evaluation": "not_run"
+}

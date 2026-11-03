@@ -57,8 +57,8 @@ def write_docs(p,r,coverage,enc,stats):
 
 ## Model input and evaluation answers
 
-- Model inputs: input/database.sqlite, input/schema.sql, input/data_dictionary.json and input/model_questions.jsonl.
-- Optional input/task_scope_catalog.json declares default activity scopes only. It omits table memberships, namespace answers and instance populations. Evaluating identity without a scope catalog is also possible.
+- Default model inputs are allowlisted in input/model_input_manifest.json: DB, SQL schema, business dictionary and question text.
+- Optional input/task_scope_catalog.json supplies explicit default activity lists. It is excluded from the default allowlist; use it only in a separately declared catalog-assisted condition.
 - private/identity_gold.json contains author-assigned table/PK grouping answers and full-key statistics. It must not be provided to the identity judge.
 - private/event_binding_provenance.json records each source table, complete PK and own versus FK attribution. private/case_population.json and private/object_event_links.json are Gold annotations.
 - design/, docs/ and this README include construction explanations and answers; exclude them from model inputs. The data dictionary is legitimate input evidence and explicitly describes identifier semantics without supplying final MERGE/SEPARATE labels.
@@ -74,6 +74,7 @@ def write_docs(p,r,coverage,enc,stats):
 - [Source references](source/references.md)
 - [Object-specific Gold logs](docs/object_event_logs.md)
 '''
+ intro+="\n## Business dictionary review\n\n- [Revised business dictionary](docs/data_dictionary.md) follows Harvard HMS/OSF variable guidance with relational schema extensions; basic information is context rather than a mandatory variable field.\n- [Field checklist and documentation basis](docs/data_dictionary_profile.md) · [Before/after review and remaining questions](docs/data_dictionary_review.md)\n- All 11 tables and 50 variables have readable names, definitions, value domains, NULL meanings and storage metadata. The 19 datetime variables have explicit representation and timezone.\n- The dictionary excludes event classifications, extraction-time selection counts, query scopes and model/Ground-truth instructions. Code meanings and documented identifier relationships remain legitimate business metadata.\n- Use input/model_input_manifest.json for the default model inputs. task_scope_catalog.json remains an optional separate catalog-assisted condition because it supplies explicit activity scopes.\n- Reviewed definitions live in source/dictionary_profile.json. Regenerate with `python hospital_dictionary.py datasets/hospitalflow`; check with `python datasets/hospitalflow/validate_dictionary.py`.\n- This metadata revision does not change the DB, SQL schema or existing Gold event logs. The review report distinguishes static checks from runtime checks not executed during this edit.\n"
  (p/'README.md').write_text(intro)
  (p/'docs/object_type_verification.md').write_text('''# Physical Object → Object Type identity benchmark
 

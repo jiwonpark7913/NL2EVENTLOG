@@ -5,6 +5,8 @@ ROOT=Path(__file__).resolve().parent
 BASE={'warehouseflow':2,'universityflow':14,'plateflow':37,'hospitalflow':19}
 NOTE='- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.\n'
 def inventory(p):
+ if p.name=='hospitalflow':
+  out=json.loads((p/'docs/timestamp_columns.json').read_text());out.setdefault('baseline_timestamp_columns',BASE[p.name]);out.setdefault('other_timestamp_columns',out['timestamp_columns']-out['event_timestamp_columns']);out.setdefault('date_only_columns',[]);return out
  if p.name in ['plateflow_new','warehouseflow_new']:return json.loads((p/'docs/timestamp_columns.json').read_text())
  con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row;d=json.loads((p/'input/data_dictionary.json').read_text());rows=[];dates=[]
  for t in d['tables']:

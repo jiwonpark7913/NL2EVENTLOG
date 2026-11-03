@@ -2,121 +2,145 @@
   "name": "HospitalFlow",
   "language": "en",
   "timezone": "UTC",
+  "dictionary_basic_information": {
+    "dictionary_id": "NL2EVENTLOG:hospitalflow",
+    "name": "HospitalFlow",
+    "version": "2026-11-03",
+    "description": "Business definitions for synthetic patient, hospital-stay, order and clinical-record data.",
+    "language": "en",
+    "dbms": "SQLite",
+    "timezone": "UTC",
+    "datetime_representation": "RFC 3339 text with UTC Z suffix and second precision; a documented convention, not a SQL format CHECK.",
+    "source_summary": "MIMIC-IV-inspired meanings with authored table adaptations, identifiers, constraints and wholly synthetic records.",
+    "maintainer": "NL2EVENTLOG project maintainers"
+  },
+  "documentation_basis": {
+    "profile": "Variable-level business dictionary following Harvard HMS/OSF guidance, extended for relational schema documentation.",
+    "mandatory_standard_claim": false,
+    "core_fields": [
+      "Variable name",
+      "Human-readable name",
+      "Definition",
+      "Measurement unit where applicable",
+      "Allowed values and code meanings"
+    ],
+    "optional_fields": [
+      "Synonyms",
+      "Extended description",
+      "Definition source references"
+    ],
+    "relational_extensions": [
+      "Table and row grain",
+      "Declared SQL type",
+      "Datetime representation and timezone",
+      "NULL semantics",
+      "Primary/foreign keys",
+      "Uniqueness",
+      "Default",
+      "Declared constraints"
+    ],
+    "references": [
+      {
+        "title": "Harvard HMS Data Dictionary",
+        "url": "https://datamanagement.hms.harvard.edu/collect-analyze/documentation-metadata/data-dictionary"
+      },
+      {
+        "title": "OSF How to Make a Data Dictionary",
+        "url": "https://help.osf.io/article/217-how-to-make-a-data-dictionary"
+      }
+    ]
+  },
   "tables": [
     {
       "table": "patients",
-      "definition": "Synthetic patient identity, inspired by MIMIC subject_id.",
-      "columns": [
-        {
-          "name": "subject_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.patients.subject_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "gender",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic demographic category, F or M.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.patients.gender",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.patients",
+      "readable_name": "Patient",
+      "definition": "One patient identified by the local subject_id.",
+      "row_grain": "One row per patient.",
       "primary_key": [
         "subject_id"
       ],
       "foreign_keys": [],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Type, identity or context only; does not store an event.",
-      "metadata_id": "hospitalflow.patients"
+      "logical_relationships": [],
+      "table_checks": [],
+      "sql_definition": "CREATE TABLE patients(subject_id INTEGER PRIMARY KEY NOT NULL, gender TEXT NOT NULL CHECK(gender IN ('F','M')))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.patients.subject_id",
+          "name": "subject_id",
+          "readable_name": "Patient ID",
+          "definition": "Identifier of the patient represented by this row.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.patients.gender",
+          "name": "gender",
+          "readable_name": "Patient gender category",
+          "definition": "Synthetic demographic category recorded for the patient.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "F, M",
+          "allowed_codes": [
+            "F",
+            "M"
+          ],
+          "code_meanings": {
+            "F": "Female category in the synthetic dataset",
+            "M": "Male category in the synthetic dataset"
+          },
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "SQL CHECK",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL CHECK(gender IN ('F','M'))",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "admissions",
-      "definition": "Distinct hospital stays per patient with actual admission/discharge milestones.",
-      "columns": [
-        {
-          "name": "hadm_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic unique hospital admission identity.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admissions.hadm_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "subject_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admissions.subject_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "edregtime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual emergency department registration time; NULL for admissions without ED registration.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admissions.edregtime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "admittime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual hospital admission time.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admissions.admittime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "discharge_authorized_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Authored actual discharge authorization time; NULL if not occurred.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admissions.discharge_authorized_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "dischtime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual hospital discharge time; NULL for an ongoing stay.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admissions.dischtime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.admissions",
+      "readable_name": "Hospital admission",
+      "definition": "A distinct hospital stay of one patient; a patient can have multiple stays.",
+      "row_grain": "One row per hospital admission, identified by hadm_id.",
       "primary_key": [
         "hadm_id"
       ],
@@ -127,100 +151,337 @@
           "parent_column": "subject_id"
         }
       ],
-      "event_encoding": "Column encoding",
-      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
-      "metadata_id": "hospitalflow.admissions"
+      "logical_relationships": [],
+      "table_checks": [
+        "CHECK(edregtime IS NULL OR edregtime<=admittime)",
+        "CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime)"
+      ],
+      "sql_definition": "CREATE TABLE admissions(hadm_id INTEGER PRIMARY KEY NOT NULL, subject_id INTEGER NOT NULL REFERENCES patients(subject_id), edregtime TEXT, admittime TEXT NOT NULL, discharge_authorized_at TEXT, dischtime TEXT, CHECK(edregtime IS NULL OR edregtime<=admittime), CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.admissions.hadm_id",
+          "name": "hadm_id",
+          "readable_name": "Hospital admission ID",
+          "definition": "Identifier of this particular hospital admission, distinct from the patient identifier.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.subject_id",
+          "name": "subject_id",
+          "readable_name": "Patient ID",
+          "definition": "Patient to whom this hospital admission belongs.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing patients.subject_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "patients",
+              "column": "subject_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES patients(subject_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.edregtime",
+          "name": "edregtime",
+          "readable_name": "Emergency department registration time",
+          "definition": "Time of emergency department registration associated with this admission.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No emergency department registration time is recorded; the simulation also uses this for admissions without ED registration.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.admittime",
+          "name": "admittime",
+          "readable_name": "Hospital admission time",
+          "definition": "Time when the patient was admitted for this hospital stay.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.discharge_authorized_at",
+          "name": "discharge_authorized_at",
+          "readable_name": "Discharge authorization time",
+          "definition": "Time when discharge from this hospital stay was authorized.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No discharge authorization time is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.dischtime",
+          "name": "dischtime",
+          "readable_name": "Hospital discharge time",
+          "definition": "Time when the patient actually left this hospital stay.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No discharge time is recorded; used for an ongoing stay in this simulation.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        }
+      ]
     },
     {
       "table": "patient_profile",
-      "definition": "Optional additional information for the SAME patient identified by patients.subject_id, in the SAME identifier namespace. A matching subject_id denotes the same actual patient. No FK is declared; this identity relationship is explicitly documented. Authored split-storage extension.",
-      "columns": [
-        {
-          "name": "subject_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.patient_profile.subject_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "profile_verified_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual verification of supplementary patient information; one-time milestone for the same patient, not a separate profile object.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.patient_profile.profile_verified_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "preferred_language",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic preferred language.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.patient_profile.preferred_language",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.patient_profile",
+      "readable_name": "Patient profile",
+      "definition": "Optional supplementary information for the patient identified by patients.subject_id. Both tables use the same local patient identifier; no SQL foreign key is declared between them.",
+      "row_grain": "At most one supplementary profile per patient.",
       "primary_key": [
         "subject_id"
       ],
       "foreign_keys": [],
-      "event_encoding": "Column encoding",
-      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
-      "metadata_id": "hospitalflow.patient_profile"
+      "logical_relationships": [
+        {
+          "columns": [
+            "subject_id"
+          ],
+          "referenced_table": "patients",
+          "referenced_columns": [
+            "subject_id"
+          ],
+          "enforcement": "Documented identifier relationship; no declared SQL foreign key"
+        }
+      ],
+      "table_checks": [],
+      "sql_definition": "CREATE TABLE patient_profile(subject_id INTEGER PRIMARY KEY NOT NULL, profile_verified_at TEXT NOT NULL, preferred_language TEXT NOT NULL)",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.patient_profile.subject_id",
+          "name": "subject_id",
+          "readable_name": "Patient ID",
+          "definition": "Identifier of the same patient represented in patients.subject_id; this is a documented shared identifier, not a declared SQL foreign key.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Patient identifiers in patients.subject_id by documented convention; no SQL foreign key enforces that relationship.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Business identifier convention plus primary-key uniqueness.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "This logical patient reference is intentionally not a declared SQL FK; keep documented relationships separate from enforced relationships.",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.patient_profile.profile_verified_at",
+          "name": "profile_verified_at",
+          "readable_name": "Profile verification time",
+          "definition": "Time when the supplementary patient information was verified.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.patient_profile.preferred_language",
+          "name": "preferred_language",
+          "readable_name": "Preferred language",
+          "definition": "Language preference recorded in the supplementary patient information.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "Text; no controlled vocabulary or maximum text length is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared TEXT type and constraints below.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "admission_detail",
-      "definition": "Optional additional information for the SAME hospital stay identified by admissions.hadm_id. A matching hadm_id denotes the same actual admission. Only a subset of admissions has a signed summary. Authored split-storage extension.",
-      "columns": [
-        {
-          "name": "hadm_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic unique hospital admission identity.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admission_detail.hadm_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "discharge_summary_signed_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual signing time of the summary for the same hospital admission; not a separate admission instance.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admission_detail.discharge_summary_signed_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "summary_status",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "SIGNED; a recorded signed summary is present.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.admission_detail.summary_status",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.admission_detail",
+      "readable_name": "Admission summary",
+      "definition": "Optional signed-summary information for the hospital admission identified by admissions.hadm_id.",
+      "row_grain": "At most one signed-summary record per hospital admission.",
       "primary_key": [
         "hadm_id"
       ],
@@ -231,63 +492,120 @@
           "parent_column": "hadm_id"
         }
       ],
-      "event_encoding": "Column encoding",
-      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
-      "metadata_id": "hospitalflow.admission_detail"
+      "logical_relationships": [],
+      "table_checks": [],
+      "sql_definition": "CREATE TABLE admission_detail(hadm_id INTEGER PRIMARY KEY NOT NULL REFERENCES admissions(hadm_id), discharge_summary_signed_at TEXT NOT NULL, summary_status TEXT NOT NULL CHECK(summary_status='SIGNED'))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.admission_detail.hadm_id",
+          "name": "hadm_id",
+          "readable_name": "Hospital admission ID",
+          "definition": "Identifier of the same hospital stay represented in admissions.hadm_id.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing admissions.hadm_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [
+            {
+              "table": "admissions",
+              "column": "hadm_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL REFERENCES admissions(hadm_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admission_detail.discharge_summary_signed_at",
+          "name": "discharge_summary_signed_at",
+          "readable_name": "Discharge summary signing time",
+          "definition": "Time when the discharge summary for this hospital stay was signed.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.admission_detail.summary_status",
+          "name": "summary_status",
+          "readable_name": "Discharge summary status",
+          "definition": "Recorded signing status of this discharge summary.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "SIGNED",
+          "allowed_codes": [
+            "SIGNED"
+          ],
+          "code_meanings": {
+            "SIGNED": "The discharge summary has been signed"
+          },
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "SQL CHECK",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL CHECK(summary_status='SIGNED')",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "lab_order",
-      "definition": "Distinct laboratory order; several measurements may belong to one order.",
-      "columns": [
-        {
-          "name": "order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.lab_order.order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "hadm_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic unique hospital admission identity.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.lab_order.hadm_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "specimen_received_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Authored actual receipt of a specimen for this order.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.lab_order.specimen_received_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "results_verified_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Authored actual verification of results after all recorded measurements become available.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.lab_order.results_verified_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.lab_order",
+      "readable_name": "Laboratory order",
+      "definition": "A laboratory request associated with one hospital admission. Its identifiers are local to laboratory orders and do not identify medication or procedure requests.",
+      "row_grain": "One row per laboratory order; multiple measurements may belong to it.",
       "primary_key": [
         "order_id"
       ],
@@ -298,75 +616,147 @@
           "parent_column": "hadm_id"
         }
       ],
-      "event_encoding": "Column encoding",
-      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
-      "metadata_id": "hospitalflow.lab_order"
+      "logical_relationships": [],
+      "table_checks": [],
+      "sql_definition": "CREATE TABLE lab_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), specimen_received_at TEXT, results_verified_at TEXT)",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.lab_order.order_id",
+          "name": "order_id",
+          "readable_name": "Laboratory order ID",
+          "definition": "Identifier of this laboratory request in the laboratory-order identifier namespace.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "Equal integer values in the three order tables do not establish the same request identity.",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.lab_order.hadm_id",
+          "name": "hadm_id",
+          "readable_name": "Hospital admission ID",
+          "definition": "Hospital admission under which this laboratory request was made.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing admissions.hadm_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "admissions",
+              "column": "hadm_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES admissions(hadm_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.lab_order.specimen_received_at",
+          "name": "specimen_received_at",
+          "readable_name": "Specimen receipt time",
+          "definition": "Time when the specimen associated with this laboratory order was received.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No specimen receipt time is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.lab_order.results_verified_at",
+          "name": "results_verified_at",
+          "readable_name": "Laboratory results verification time",
+          "definition": "Time when the recorded results for this laboratory order were verified.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No results-verification time is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "medication_order",
-      "definition": "Distinct medication order; repeated doses belong to one order.",
-      "columns": [
-        {
-          "name": "order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.medication_order.order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "hadm_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic unique hospital admission identity.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.medication_order.hadm_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "medication",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Fictional medication label; no treatment recommendation.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.medication_order.medication",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "dispensed_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Authored actual dispensing time.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.medication_order.dispensed_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "stopped_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Authored actual stop time; NULL if not stopped.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.medication_order.stopped_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.medication_order",
+      "readable_name": "Medication order",
+      "definition": "A medication request associated with one hospital admission. Its identifiers are local to medication orders and do not identify laboratory or procedure requests.",
+      "row_grain": "One row per medication order; multiple dose records may belong to it.",
       "primary_key": [
         "order_id"
       ],
@@ -377,63 +767,178 @@
           "parent_column": "hadm_id"
         }
       ],
-      "event_encoding": "Column encoding",
-      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
-      "metadata_id": "hospitalflow.medication_order"
+      "logical_relationships": [],
+      "table_checks": [],
+      "sql_definition": "CREATE TABLE medication_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), medication TEXT NOT NULL, dispensed_at TEXT, stopped_at TEXT)",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.medication_order.order_id",
+          "name": "order_id",
+          "readable_name": "Medication order ID",
+          "definition": "Identifier of this medication request in the medication-order identifier namespace.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "Equal integer values in the three order tables do not establish the same request identity.",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.medication_order.hadm_id",
+          "name": "hadm_id",
+          "readable_name": "Hospital admission ID",
+          "definition": "Hospital admission under which this medication request was made.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing admissions.hadm_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "admissions",
+              "column": "hadm_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES admissions(hadm_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.medication_order.medication",
+          "name": "medication",
+          "readable_name": "Medication name",
+          "definition": "Fictional medication label associated with this synthetic medication request.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "Text; no controlled vocabulary or maximum text length is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared TEXT type and constraints below.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.medication_order.dispensed_at",
+          "name": "dispensed_at",
+          "readable_name": "Medication dispensing time",
+          "definition": "Time when medication for this request was dispensed.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No dispensing time is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.medication_order.stopped_at",
+          "name": "stopped_at",
+          "readable_name": "Medication stopping time",
+          "definition": "Time when medication under this request was stopped.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No medication stopping time is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "procedure_order",
-      "definition": "Distinct procedure order; repeated execution episodes belong to one order.",
-      "columns": [
-        {
-          "name": "order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedure_order.order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "hadm_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic unique hospital admission identity.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedure_order.hadm_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "procedure_name",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Fictional procedure label.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedure_order.procedure_name",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "preparation_completed_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Authored actual completion of preparation for this procedure order.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedure_order.preparation_completed_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.procedure_order",
+      "readable_name": "Procedure order",
+      "definition": "A procedure request associated with one hospital admission. Its identifiers are local to procedure orders and do not identify laboratory or medication requests.",
+      "row_grain": "One row per procedure order; multiple execution episodes may belong to it.",
       "primary_key": [
         "order_id"
       ],
@@ -444,94 +949,154 @@
           "parent_column": "hadm_id"
         }
       ],
-      "event_encoding": "Column encoding",
-      "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred.",
-      "metadata_id": "hospitalflow.procedure_order"
+      "logical_relationships": [],
+      "table_checks": [],
+      "sql_definition": "CREATE TABLE procedure_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), procedure_name TEXT NOT NULL, preparation_completed_at TEXT)",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.procedure_order.order_id",
+          "name": "order_id",
+          "readable_name": "Procedure order ID",
+          "definition": "Identifier of this procedure request in the procedure-order identifier namespace.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "Equal integer values in the three order tables do not establish the same request identity.",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedure_order.hadm_id",
+          "name": "hadm_id",
+          "readable_name": "Hospital admission ID",
+          "definition": "Hospital admission under which this procedure request was made.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing admissions.hadm_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "admissions",
+              "column": "hadm_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES admissions(hadm_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedure_order.procedure_name",
+          "name": "procedure_name",
+          "readable_name": "Procedure name",
+          "definition": "Fictional procedure label associated with this synthetic procedure request.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "Text; no controlled vocabulary or maximum text length is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared TEXT type and constraints below.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedure_order.preparation_completed_at",
+          "name": "preparation_completed_at",
+          "readable_name": "Procedure preparation completion time",
+          "definition": "Time when preparation for this procedure request was completed.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No preparation completion time is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "order_history",
-      "definition": "Repeated order actions, inspired by provider order transaction semantics; not a copy of poe.",
-      "columns": [
-        {
-          "name": "history_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Unique occurrence identity for a repeated order action.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.order_history.history_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "lab_order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "FK to a distinct laboratory order; exactly one order FK is non-null per history row.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.order_history.lab_order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "medication_order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "FK to a distinct medication order; exactly one order FK is non-null per history row.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.order_history.medication_order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "procedure_order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "FK to a distinct procedure order; exactly one order FK is non-null per history row.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.order_history.procedure_order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "action",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "ENTERED, REVIEWED or CANCELLED order action; repeated REVIEWED is permitted.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.order_history.action",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual UTC time of the order action.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.order_history.occurred_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.order_history",
+      "readable_name": "Order action history",
+      "definition": "A recorded action on one laboratory, medication or procedure order. Exactly one of the three order-reference columns is populated.",
+      "row_grain": "One row per order-action occurrence, including repeated reviews.",
       "primary_key": [
         "history_id"
       ],
       "foreign_keys": [
         {
-          "column": "procedure_order_id",
-          "parent_table": "procedure_order",
+          "column": "lab_order_id",
+          "parent_table": "lab_order",
           "parent_column": "order_id"
         },
         {
@@ -540,104 +1105,234 @@
           "parent_column": "order_id"
         },
         {
-          "column": "lab_order_id",
-          "parent_table": "lab_order",
+          "column": "procedure_order_id",
+          "parent_table": "procedure_order",
           "parent_column": "order_id"
         }
       ],
-      "event_encoding": "Row encoding",
-      "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded.",
-      "metadata_id": "hospitalflow.order_history"
+      "logical_relationships": [],
+      "table_checks": [
+        "CHECK((lab_order_id IS NOT NULL)+(medication_order_id IS NOT NULL)+(procedure_order_id IS NOT NULL)=1)"
+      ],
+      "sql_definition": "CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id INTEGER REFERENCES lab_order(order_id), medication_order_id INTEGER REFERENCES medication_order(order_id), procedure_order_id INTEGER REFERENCES procedure_order(order_id), action TEXT NOT NULL CHECK(action IN ('ENTERED','REVIEWED','CANCELLED')), occurred_at TEXT NOT NULL, CHECK((lab_order_id IS NOT NULL)+(medication_order_id IS NOT NULL)+(procedure_order_id IS NOT NULL)=1))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.order_history.history_id",
+          "name": "history_id",
+          "readable_name": "Order action record ID",
+          "definition": "Identifier of one order-action occurrence; separate reviews of an order have separate identifiers.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.order_history.lab_order_id",
+          "name": "lab_order_id",
+          "readable_name": "Referenced laboratory order ID",
+          "definition": "Laboratory order on which this action was performed, when the action concerns a laboratory request.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing lab_order.order_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "The action concerns another order category; exactly one order-reference column is non-NULL.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "lab_order",
+              "column": "order_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "REFERENCES lab_order(order_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.order_history.medication_order_id",
+          "name": "medication_order_id",
+          "readable_name": "Referenced medication order ID",
+          "definition": "Medication order on which this action was performed, when the action concerns a medication request.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing medication_order.order_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "The action concerns another order category; exactly one order-reference column is non-NULL.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "medication_order",
+              "column": "order_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "REFERENCES medication_order(order_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.order_history.procedure_order_id",
+          "name": "procedure_order_id",
+          "readable_name": "Referenced procedure order ID",
+          "definition": "Procedure order on which this action was performed, when the action concerns a procedure request.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing procedure_order.order_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "The action concerns another order category; exactly one order-reference column is non-NULL.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "procedure_order",
+              "column": "order_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "REFERENCES procedure_order(order_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.order_history.action",
+          "name": "action",
+          "readable_name": "Recorded order action",
+          "definition": "Kind of action performed on the referenced order.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "ENTERED, REVIEWED, CANCELLED",
+          "allowed_codes": [
+            "ENTERED",
+            "REVIEWED",
+            "CANCELLED"
+          ],
+          "code_meanings": {
+            "ENTERED": "The order was entered",
+            "REVIEWED": "The order was reviewed",
+            "CANCELLED": "The order was cancelled"
+          },
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "SQL CHECK",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL CHECK(action IN ('ENTERED','REVIEWED','CANCELLED'))",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.order_history.occurred_at",
+          "name": "occurred_at",
+          "readable_name": "Order action time",
+          "definition": "Time when this particular order action occurred.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        }
+      ]
     },
     {
       "table": "labevents",
-      "definition": "Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents.",
-      "columns": [
-        {
-          "name": "labevent_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Unique measurement occurrence identity; repeated item measurements remain distinct.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.labevent_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "itemid",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic laboratory concept ID; no original MIMIC item code is claimed.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.itemid",
-          "representation_class": "Number",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "charttime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.charttime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "storetime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.storetime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "valuenum",
-          "type": "REAL",
-          "constraints": "See executable table DDL",
-          "definition": "Synthetic measurement numeric value.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.valuenum",
-          "representation_class": "Number",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "valueuom",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Measurement unit; all current synthetic measurements use arbitrary units.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.labevents.valueuom",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.labevents",
+      "readable_name": "Laboratory measurement",
+      "definition": "A measurement belonging to one laboratory order, with separate charting and result-availability times.",
+      "row_grain": "One row per measurement occurrence; repeated measurements have different labevent_id values.",
       "primary_key": [
         "labevent_id"
       ],
@@ -648,75 +1343,248 @@
           "parent_column": "order_id"
         }
       ],
-      "event_encoding": "Mixed (row + column)",
-      "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence.",
-      "metadata_id": "hospitalflow.labevents"
+      "logical_relationships": [],
+      "table_checks": [
+        "CHECK(charttime<=storetime)"
+      ],
+      "sql_definition": "CREATE TABLE labevents(labevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES lab_order(order_id), itemid INTEGER NOT NULL, charttime TEXT NOT NULL, storetime TEXT NOT NULL, valuenum REAL, valueuom TEXT, CHECK(charttime<=storetime))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.labevents.labevent_id",
+          "name": "labevent_id",
+          "readable_name": "Laboratory measurement ID",
+          "definition": "Identifier of this individual laboratory measurement occurrence.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.labevents.order_id",
+          "name": "order_id",
+          "readable_name": "Referenced laboratory order ID",
+          "definition": "Laboratory order to which this measurement belongs.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing lab_order.order_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "lab_order",
+              "column": "order_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES lab_order(order_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.labevents.itemid",
+          "name": "itemid",
+          "readable_name": "Laboratory measurement category ID",
+          "definition": "Local synthetic identifier of a laboratory measurement category; original MIMIC item codes are not used.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "No measurement-category lookup table is included. Original MIMIC item definitions or ranges must not be assumed.",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.labevents.charttime",
+          "name": "charttime",
+          "readable_name": "Laboratory measurement charting time",
+          "definition": "Time assigned to the charted laboratory measurement; distinct from the time the result became available.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.labevents.storetime",
+          "name": "storetime",
+          "readable_name": "Laboratory result availability time",
+          "definition": "Time when this laboratory result became available in the laboratory system.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.labevents.valuenum",
+          "name": "valuenum",
+          "readable_name": "Numeric measurement result",
+          "definition": "Numeric result recorded for this synthetic laboratory measurement.",
+          "type": "REAL",
+          "representation_class": "Numeric measurement",
+          "unit": "As specified by valueuom in the same row",
+          "format": "Numeric value",
+          "timezone": null,
+          "allowed_values": "Numeric measurement value; no SQL min/max bound is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented numeric meaning and declared REAL affinity.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No numeric measurement result is recorded.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "Interpret the number using valueuom in the same row. Current synthetic rows use arbitrary units; that observation is not an allowed-value restriction.",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.labevents.valueuom",
+          "name": "valueuom",
+          "readable_name": "Measurement unit label",
+          "definition": "Unit applicable to valuenum in the same measurement record.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "Text; no controlled vocabulary or maximum text length is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared TEXT type and constraints below.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No measurement unit is specified.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "Current synthetic rows contain arbitrary units. The schema does not restrict the text to that example.",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        }
+      ]
     },
     {
       "table": "emar",
-      "definition": "Medication administration or omission occurrences, inspired by MIMIC emar.",
-      "columns": [
-        {
-          "name": "emar_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Unique synthetic dose occurrence ID; simplified from the MIMIC identity structure.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.emar.emar_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.emar.order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "charttime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual charted measurement time in labevents; medication administration/omission time in emar. Not lab result-availability time.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.emar.charttime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "event_txt",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Administered or Not Given; selects the activity of this dose occurrence.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.emar.event_txt",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "storetime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.emar.storetime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.emar",
+      "readable_name": "Medication administration record",
+      "definition": "An individual dose record documenting administration or omission for one medication order.",
+      "row_grain": "One row per administration or omission occurrence.",
       "primary_key": [
         "emar_id"
       ],
@@ -727,75 +1595,189 @@
           "parent_column": "order_id"
         }
       ],
-      "event_encoding": "Row encoding",
-      "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded.",
-      "metadata_id": "hospitalflow.emar"
+      "logical_relationships": [],
+      "table_checks": [
+        "CHECK(charttime<=storetime)"
+      ],
+      "sql_definition": "CREATE TABLE emar(emar_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES medication_order(order_id), charttime TEXT NOT NULL, event_txt TEXT NOT NULL CHECK(event_txt IN ('Administered','Not Given')), storetime TEXT NOT NULL, CHECK(charttime<=storetime))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.emar.emar_id",
+          "name": "emar_id",
+          "readable_name": "Dose record ID",
+          "definition": "Local integer identifier of this administration or omission record; it is not the original MIMIC formatted eMAR identifier.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.emar.order_id",
+          "name": "order_id",
+          "readable_name": "Referenced medication order ID",
+          "definition": "Medication order associated with this dose record.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing medication_order.order_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "medication_order",
+              "column": "order_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES medication_order(order_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.emar.charttime",
+          "name": "charttime",
+          "readable_name": "Administration or omission time",
+          "definition": "Time when the administration or omission documented by this dose record occurred.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.emar.event_txt",
+          "name": "event_txt",
+          "readable_name": "Administration disposition",
+          "definition": "Recorded disposition of this medication dose, indicating administration or omission.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "unit": "Not applicable",
+          "format": "Text",
+          "timezone": null,
+          "allowed_values": "Administered, Not Given",
+          "allowed_codes": [
+            "Administered",
+            "Not Given"
+          ],
+          "code_meanings": {
+            "Administered": "The medication dose was given",
+            "Not Given": "The medication dose was not given"
+          },
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "SQL CHECK",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL CHECK(event_txt IN ('Administered','Not Given'))",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.emar.storetime",
+          "name": "storetime",
+          "readable_name": "Dose documentation time",
+          "definition": "Time when the dose record was documented in the medication system.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        }
+      ]
     },
     {
       "table": "procedureevents",
-      "definition": "Procedure execution episodes with start/end times, inspired by MIMIC procedureevents.",
-      "columns": [
-        {
-          "name": "procedureevent_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Authored unique procedure episode identity; not an original MIMIC column.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedureevents.procedureevent_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "order_id",
-          "type": "INTEGER",
-          "constraints": "See executable table DDL",
-          "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedureevents.order_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "starttime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual procedure episode start.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedureevents.starttime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "endtime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "Actual procedure episode completion; NULL if ongoing.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedureevents.endtime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "storetime",
-          "type": "TEXT",
-          "constraints": "See executable table DDL",
-          "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
-          "source_origin": "mimic_inspired_synthetic_benchmark",
-          "metadata_id": "hospitalflow.procedureevents.storetime",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: See executable table DDL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        }
-      ],
+      "metadata_id": "hospitalflow.procedureevents",
+      "readable_name": "Procedure execution episode",
+      "definition": "An execution episode of a procedure order with its own actual start, optional end and documentation time.",
+      "row_grain": "One row per execution episode, including repeat episodes.",
       "primary_key": [
         "procedureevent_id"
       ],
@@ -806,60 +1788,188 @@
           "parent_column": "order_id"
         }
       ],
-      "event_encoding": "Mixed (row + column)",
-      "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence.",
-      "metadata_id": "hospitalflow.procedureevents"
+      "logical_relationships": [],
+      "table_checks": [
+        "CHECK(endtime IS NULL OR starttime<=endtime)"
+      ],
+      "sql_definition": "CREATE TABLE procedureevents(procedureevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES procedure_order(order_id), starttime TEXT NOT NULL, endtime TEXT, storetime TEXT NOT NULL, CHECK(endtime IS NULL OR starttime<=endtime))",
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.procedureevents.procedureevent_id",
+          "name": "procedureevent_id",
+          "readable_name": "Procedure episode ID",
+          "definition": "Local synthetic identifier of one procedure execution episode; repeat episodes have separate identifiers.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Integer identifier; no positive-only or business min/max CHECK is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared INTEGER type and applicable key constraints.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 1,
+          "unique": true,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "PRIMARY KEY NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedureevents.order_id",
+          "name": "order_id",
+          "readable_name": "Referenced procedure order ID",
+          "definition": "Procedure order executed in this episode.",
+          "type": "INTEGER",
+          "representation_class": "Identifier",
+          "unit": "Not applicable",
+          "format": "Integer identifier",
+          "timezone": null,
+          "allowed_values": "Existing procedure_order.order_id values.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Declared SQL foreign key; enforcement requires PRAGMA foreign_keys=ON.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [
+            {
+              "table": "procedure_order",
+              "column": "order_id"
+            }
+          ],
+          "default_value": null,
+          "length": "Not applicable",
+          "constraints": "NOT NULL REFERENCES procedure_order(order_id)",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "HospitalFlow authored business convention and declared schema"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedureevents.starttime",
+          "name": "starttime",
+          "readable_name": "Procedure episode start time",
+          "definition": "Time when this procedure execution episode began.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedureevents.endtime",
+          "name": "endtime",
+          "readable_name": "Procedure episode end time",
+          "definition": "Time when this procedure execution episode ended.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": true,
+          "required": false,
+          "null_meaning": "No completion time is recorded; used for an ongoing episode in this simulation.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "No additional column constraint",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        },
+        {
+          "metadata_id": "hospitalflow.procedureevents.storetime",
+          "name": "storetime",
+          "readable_name": "Procedure episode documentation time",
+          "definition": "Time when this episode was recorded in the procedure system.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "unit": "Not applicable",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
+          "allowed_codes": [],
+          "code_meanings": {},
+          "minimum": null,
+          "maximum": null,
+          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
+          "nullable": false,
+          "required": true,
+          "null_meaning": "NULL is not allowed by the declared schema.",
+          "primary_key_position": 0,
+          "unique": false,
+          "foreign_keys": [],
+          "default_value": null,
+          "length": "No maximum length declared",
+          "constraints": "NOT NULL",
+          "synonyms": [],
+          "description": "",
+          "source_references": [
+            "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html",
+            "HospitalFlow authored adaptation; local constraints and records are synthetic"
+          ]
+        }
+      ]
     }
   ],
   "business_rules": [
-    "Physical Objects are table/PK representations, not tables named object or object_type.",
-    "patients and patient_profile use the same patient identifier namespace; optional profile rows represent the SAME patient, with no declared FK.",
-    "admissions and admission_detail use the same admission namespace; the shared-PK FK corroborates the documented SAME-stay identity.",
-    "Laboratory, medication and procedure orders have distinct identities and namespaces. Overlapping local order_id integers do not establish identity.",
-    "order_history.history_id identifies a history occurrence, not the referenced order. Each row has exactly one declared order FK.",
-    "All timestamps and records are synthetic UTC; MIMIC-inspired fields and authored split-storage additions are distinguished.",
-    "labevents.charttime is charted measurement time; storetime is result availability. emar/procedureevents storetime is technical documentation time.",
-    "Physical source table/PK and own-versus-FK attribution remain available for every event binding.",
-    "Missing events do not prove care did not occur; full lifecycle means the recorded declared scope.",
-    "Model input comprises DB/schema, dictionary and input/model_questions.jsonl. private/identity_gold.json and private event history are evaluation answers, not model inputs."
-  ],
-  "value_domain": {
-    "action": "ENTERED / REVIEWED / CANCELLED"
-  },
-  "timestamp_summary": {
-    "timestamp_columns": 19,
-    "event_timestamp_columns": 17,
-    "other_timestamp_columns": 2,
-    "date_only_columns": [],
-    "baseline_timestamp_columns": 19
-  },
-  "dictionary_basic_information": {
-    "dictionary_id": "NL2EVENTLOG:hospitalflow",
-    "version": "2026-10-20",
-    "name": "HospitalFlow",
-    "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
-    "language": "en",
-    "timezone": "UTC",
-    "dbms": "SQLite",
-    "namespace": "hospitalflow",
-    "timestamp_columns": 19,
-    "event_timestamp_columns": 17,
-    "maintainer": "NL2EVENTLOG project maintainers",
-    "registration_status": "Project-maintained draft; not ISO-registered or certified",
-    "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
-    "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
-    "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
-  },
-  "standards_references": [
-    {
-      "standard": "ISO/IEC 11179-3:2023",
-      "url": "https://www.iso.org/standard/78915.html",
-      "application": "Registry identification, administration and definition concepts"
-    },
-    {
-      "standard": "ISO/IEC 11179-4:2004",
-      "url": "https://www.iso.org/standard/35346.html",
-      "application": "Semantic formulation of data definitions"
-    }
+    "A patient can have multiple hospital admissions; hadm_id identifies an admission and subject_id identifies a patient.",
+    "Supplementary profile rows use the patient identifier documented in patients; their logical relationship is not enforced by an SQL foreign key.",
+    "A signed-summary row uses the identifier of its hospital admission.",
+    "Laboratory, medication and procedure requests have separate local identifier namespaces.",
+    "An order-action history row has exactly one populated order-reference column; repeated reviews are separate records.",
+    "A laboratory order can have multiple measurements; a medication order can have multiple dose records; a procedure order can have multiple execution episodes.",
+    "Laboratory charting and result availability are different recorded times. Medication/procedure documentation times describe system recording.",
+    "Missing timestamps describe unrecorded times according to the column definition; NULL does not universally establish that an action never happened.",
+    "Identifiers, text lengths and numeric ranges have no extra restrictions inferred from the current sample. SQL constraints and documented representation conventions are distinguished.",
+    "All rows are synthetic. MIMIC documentation informs selected meanings, not a claim of original MIMIC identifiers, full schema coverage or patient-record reuse."
   ]
 }

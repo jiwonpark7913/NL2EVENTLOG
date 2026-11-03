@@ -9,6 +9,11 @@ def esc(s):return html.escape(str(s))
 def build(name,positions,title):
  p=ROOT/"datasets"/name;out=p/"docs";out.mkdir(exist_ok=True)
  d=annotate(p);tables=d["tables"]
+ # Author-only overview formatting; no classifications are added to the business JSON.
+ if name=="hospitalflow":
+  for t in tables:
+   t["event_encoding"]="See author README"
+   t["encoding_detail"]="Author reference only; not part of the business dictionary."
  con=sqlite3.connect(p/"input/database.sqlite");con.row_factory=sqlite3.Row
  info={t["table"]:dict(cols=list(con.execute("PRAGMA table_info("+t["table"]+")")),fk=list(con.execute("PRAGMA foreign_key_list("+t["table"]+")")),rows=con.execute("SELECT COUNT(*) FROM "+t["table"]).fetchone()[0]) for t in tables}
  docs="# "+title+" — table and column dictionary\n\nGenerated from the executable SQLite schema and English metadata.\n\n"
@@ -30,11 +35,13 @@ def build(name,positions,title):
  domain=d.get("value_domain",d.get("code_domain",{}))
  docs+="\n".join("- "+k+": "+v for k,v in domain.items())+"\n\n"+"\n".join("- "+r for r in d["business_rules"])+"\n"
  if (out/"object_activity_design.md").exists():docs+="\n"+(out/"object_activity_design.md").read_text()
- (p/"input/data_dictionary.md").write_text(docs)
- (out/"data_dictionary.md").write_text(docs)
+ if name!="hospitalflow":
+  (p/"input/data_dictionary.md").write_text(docs)
+  (out/"data_dictionary.md").write_text(docs)
  import csv
- with (out/"data_dictionary.csv").open("w",newline="") as f:
-  w=csv.DictWriter(f,fieldnames=list(flat[0]));w.writeheader();w.writerows(flat)
+ if name!="hospitalflow":
+  with (out/"data_dictionary.csv").open("w",newline="") as f:
+   w=csv.DictWriter(f,fieldnames=list(flat[0]));w.writeheader();w.writerows(flat)
  relationships=[]
  for n,i in info.items():
   for fk in i["fk"]:
@@ -153,6 +160,9 @@ def build(name,positions,title):
  (out/"schema_overview.md").write_text(overview)
  readme=p/"README.md";s=re.sub(r"\n## Schema and documentation\n.*?(?=\n## |\Z)","",readme.read_text(),flags=re.S);s+="\n## Schema and documentation\n\n"+("" if "![Schema](docs/schema.png)" in s else "![Schema](docs/schema.png)\n\n")+"- [Table inventory and relationships](docs/schema_overview.md)\n- [English column dictionary](docs/data_dictionary.md)\n- [CSV dictionary](docs/data_dictionary.csv)\n- [Editable draw.io diagram](docs/schema.drawio)\n- [Object-based Gold logs and coverage](docs/object_event_logs.md)\n";readme.write_text(s)
  con.close()
+ if name=="hospitalflow":
+  from hospital_dictionary import render as render_hospital
+  render_hospital(p)
 build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130),"transaction_record":(575,480),"goods_transaction_detail":(65,830),"loader_transaction":(1085,830)},"WarehouseFlow · RSchema")
 build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
 

@@ -59,3 +59,7 @@ seeds=load('source/question_seeds.json');par=load('source/llm_paraphrases.json')
 for s in seeds:assert qm[s['id']]['question']==s['question'] and qm[s['id']+'P']['question']==par['outputs'][s['id']]
 report=load('validation_report.json');report['persisted_artifact_validation']=dict(gold_csvs_verified=len(results),physical_objects=11,expected_identity_groups=9,expected_positive_pairs_verified=2,full_gold_pair_count=55,actual_identity_classifier_run=False,split_storage_events_preserve_sources_and_occurrences=True,own_and_fk_attribution_verified=True,physical_event_columns_covered=len(used),frozen_llm_pairs_verified=True,schema_round_trip=True);(P/'validation_report.json').write_text(json.dumps(report,indent=2)+'\n')
 print('HospitalFlow:',len(results),'Gold logs; 11 Physical Objects → 9 expected groups; 2 positive identity pairs; split-source, own/FK and occurrence checks passed. No identity classifier executed.')
+
+# Business metadata is checked independently of Gold extraction assertions.
+import subprocess,sys
+subprocess.run([sys.executable,str(P/"validate_dictionary.py")],check=True)

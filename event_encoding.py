@@ -8,7 +8,7 @@ def encoding(name,table):
  if table in COLUMN.get(name,{}):cols,meaning=COLUMN[name][table];return dict(event_encoding='Column encoding',encoding_detail=meaning+' Extracted event columns: '+cols+'.')
  return dict(event_encoding='No event encoding',encoding_detail='Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.')
 def annotate(p):
- if p.name in ['plateflow_new','warehouseflow_new']:return json.loads((p/'input/data_dictionary.json').read_text())
+ if p.name in ['plateflow_new','warehouseflow_new','hospitalflow']:return json.loads((p/'input/data_dictionary.json').read_text())
  d=json.loads((p/'input/data_dictionary.json').read_text())
  for t in d['tables']:
   if p.name=='hospitalflow':continue
