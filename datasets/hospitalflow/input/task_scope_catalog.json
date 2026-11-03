@@ -120,6 +120,15 @@
         "Procedure Started"
       ],
       "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
+    },
+    {
+      "case_concept": "Pharmacy Dispensing",
+      "activities": [
+        "Medication Administered",
+        "Medication Dispensed",
+        "Medication Not Given"
+      ],
+      "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
     }
   ]
 }

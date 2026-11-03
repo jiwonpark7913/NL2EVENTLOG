@@ -4,18 +4,19 @@
     "admissions": 15,
     "patient_profile": 6,
     "admission_detail": 5,
-    "lab_order": 15,
-    "medication_order": 15,
-    "procedure_order": 15,
-    "order_history": 102,
-    "labevents": 33,
-    "emar": 45,
-    "procedureevents": 15
+    "lab_order": 34,
+    "medication_order": 29,
+    "procedure_order": 17,
+    "order_history": 203,
+    "labevents": 62,
+    "emar": 67,
+    "procedure_episode": 23,
+    "pharmacy": 34
   },
-  "semantic_object_types": 9,
-  "physical_objects": 11,
-  "identity_groups": 9,
-  "object_instances": 267,
+  "semantic_object_types": 10,
+  "physical_objects": 12,
+  "identity_groups": 10,
+  "object_instances": 496,
   "object_view_coverage": [
     {
       "case_concept": "Patient",
@@ -44,7 +45,7 @@
         "Procedure Started",
         "Specimen Received"
       ],
-      "event_rows": 372,
+      "event_rows": 628,
       "cases_without_events": 1
     },
     {
@@ -73,13 +74,13 @@
         "Procedure Started",
         "Specimen Received"
       ],
-      "event_rows": 366,
+      "event_rows": 595,
       "cases_without_events": 0
     },
     {
       "case_concept": "Laboratory Order",
       "object_type": "Laboratory Order",
-      "case_count": 15,
+      "case_count": 34,
       "activity_count": 6,
       "activities": [
         "Lab Measurement Charted",
@@ -89,13 +90,13 @@
         "Order Reviewed",
         "Specimen Received"
       ],
-      "event_rows": 125,
+      "event_rows": 267,
       "cases_without_events": 0
     },
     {
       "case_concept": "Medication Order",
       "object_type": "Medication Order",
-      "case_count": 15,
+      "case_count": 29,
       "activity_count": 6,
       "activities": [
         "Medication Administered",
@@ -105,13 +106,13 @@
         "Order Entered",
         "Order Reviewed"
       ],
-      "event_rows": 107,
+      "event_rows": 198,
       "cases_without_events": 0
     },
     {
       "case_concept": "Procedure Order",
       "object_type": "Procedure Order",
-      "case_count": 15,
+      "case_count": 17,
       "activity_count": 6,
       "activities": [
         "Order Cancelled",
@@ -121,56 +122,69 @@
         "Procedure Preparation Completed",
         "Procedure Started"
       ],
-      "event_rows": 78,
+      "event_rows": 103,
       "cases_without_events": 0
     },
     {
       "case_concept": "Order History Record",
       "object_type": "Order History Record",
-      "case_count": 102,
+      "case_count": 203,
       "activity_count": 3,
       "activities": [
         "Order Cancelled",
         "Order Entered",
         "Order Reviewed"
       ],
-      "event_rows": 102,
+      "event_rows": 203,
       "cases_without_events": 0
     },
     {
       "case_concept": "Lab Measurement",
       "object_type": "Lab Measurement",
-      "case_count": 33,
+      "case_count": 62,
       "activity_count": 2,
       "activities": [
         "Lab Measurement Charted",
         "Lab Result Available"
       ],
-      "event_rows": 66,
+      "event_rows": 124,
       "cases_without_events": 0
     },
     {
       "case_concept": "Medication Administration",
       "object_type": "Medication Administration",
-      "case_count": 45,
+      "case_count": 67,
       "activity_count": 2,
       "activities": [
         "Medication Administered",
         "Medication Not Given"
       ],
-      "event_rows": 45,
+      "event_rows": 67,
       "cases_without_events": 0
     },
     {
       "case_concept": "Procedure Episode",
       "object_type": "Procedure Episode",
-      "case_count": 15,
+      "case_count": 23,
       "activity_count": 2,
       "activities": [
         "Procedure Completed",
         "Procedure Started"
       ],
-      "event_rows": 30,
+      "event_rows": 42,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Pharmacy Dispensing",
+      "object_type": "Pharmacy Dispensing",
+      "case_count": 34,
+      "activity_count": 3,
+      "activities": [
+        "Medication Administered",
+        "Medication Dispensed",
+        "Medication Not Given"
+      ],
+      "event_rows": 101,
       "cases_without_events": 0
     }
   ],
@@ -178,33 +192,30 @@
     "Patient Profile Verified": 6,
     "Emergency Department Registered": 8,
     "Hospital Admitted": 15,
-    "Discharge Authorized": 14,
-    "Hospital Discharged": 14,
+    "Discharge Authorized": 13,
+    "Hospital Discharged": 13,
     "Discharge Summary Signed": 5,
-    "Specimen Received": 13,
-    "Lab Measurement Charted": 33,
-    "Lab Result Available": 33,
-    "Lab Results Verified": 13,
-    "Order Entered": 45,
-    "Order Reviewed": 54,
-    "Medication Dispensed": 15,
-    "Medication Administered": 40,
-    "Medication Stopped": 14,
-    "Procedure Preparation Completed": 12,
-    "Procedure Started": 15,
-    "Procedure Completed": 15,
-    "Medication Not Given": 5,
-    "Order Cancelled": 3
+    "Order Entered": 80,
+    "Order Reviewed": 119,
+    "Medication Dispensed": 34,
+    "Medication Administered": 49,
+    "Medication Not Given": 18,
+    "Medication Stopped": 25,
+    "Specimen Received": 30,
+    "Lab Measurement Charted": 62,
+    "Lab Result Available": 62,
+    "Lab Results Verified": 30,
+    "Procedure Preparation Completed": 13,
+    "Procedure Started": 23,
+    "Procedure Completed": 19,
+    "Order Cancelled": 4
   },
-  "events": 372,
-  "total_questions": 40,
-  "answerable_questions": 38,
+  "events": 628,
+  "total_questions": 44,
+  "answerable_questions": 42,
   "timestamp_summary": {
     "timestamp_columns": 19,
-    "event_timestamp_columns": 17,
-    "other_timestamp_columns": 2,
-    "date_only_columns": [],
-    "baseline_timestamp_columns": 19
+    "event_timestamp_columns": 17
   },
   "checks": {
     "orphan_order": true,
@@ -218,16 +229,22 @@
   },
   "validation_scope": "Internal construction consistency, not model extraction accuracy or clinical realism evaluation.",
   "persisted_artifact_validation": {
-    "gold_csvs_verified": 38,
-    "physical_objects": 11,
-    "expected_identity_groups": 9,
+    "gold_csvs_verified": 42,
+    "physical_objects": 12,
+    "expected_identity_groups": 10,
     "expected_positive_pairs_verified": 2,
-    "full_gold_pair_count": 55,
+    "full_gold_pair_count": 66,
     "actual_identity_classifier_run": false,
     "split_storage_events_preserve_sources_and_occurrences": true,
     "own_and_fk_attribution_verified": true,
     "physical_event_columns_covered": 17,
     "frozen_llm_pairs_verified": true,
     "schema_round_trip": true
+  },
+  "realism_review": "docs/realism_validation.json",
+  "reproducibility_validation": {
+    "rebuilt_twice": true,
+    "identical_database_dictionary_canonical_history_gold_csv_sql": true,
+    "other_dataset_gold_csvs_unchanged": 240
   }
 }

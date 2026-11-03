@@ -21,9 +21,7 @@
     "primary_key": [
       "subject_id"
     ],
-    "foreign_keys": [],
-    "event_encoding": "No event encoding",
-    "encoding_detail": "Type, identity or context only; does not store an event."
+    "foreign_keys": []
   },
   {
     "table": "admissions",
@@ -81,9 +79,7 @@
         "parent_table": "patients",
         "parent_column": "subject_id"
       }
-    ],
-    "event_encoding": "Column encoding",
-    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+    ]
   },
   {
     "table": "patient_profile",
@@ -114,9 +110,7 @@
     "primary_key": [
       "subject_id"
     ],
-    "foreign_keys": [],
-    "event_encoding": "Column encoding",
-    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+    "foreign_keys": []
   },
   {
     "table": "admission_detail",
@@ -153,19 +147,24 @@
         "parent_table": "admissions",
         "parent_column": "hadm_id"
       }
-    ],
-    "event_encoding": "Column encoding",
-    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+    ]
   },
   {
     "table": "lab_order",
-    "definition": "Distinct laboratory order; several measurements may belong to one order.",
+    "definition": "Authored laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.",
     "columns": [
       {
         "name": "order_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
         "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "subject_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Synthetic patient identity; can occur in multiple hospital admissions.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -198,14 +197,17 @@
         "column": "hadm_id",
         "parent_table": "admissions",
         "parent_column": "hadm_id"
+      },
+      {
+        "column": "subject_id",
+        "parent_table": "patients",
+        "parent_column": "subject_id"
       }
-    ],
-    "event_encoding": "Column encoding",
-    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+    ]
   },
   {
     "table": "medication_order",
-    "definition": "Distinct medication order; repeated doses belong to one order.",
+    "definition": "One medication prescription, including its stop time. Dispensing is recorded separately in pharmacy.",
     "columns": [
       {
         "name": "order_id",
@@ -225,14 +227,7 @@
         "name": "medication",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Fictional medication label; no treatment recommendation.",
-        "source_origin": "mimic_inspired_synthetic_benchmark"
-      },
-      {
-        "name": "dispensed_at",
-        "type": "TEXT",
-        "constraints": "See executable table DDL",
-        "definition": "Authored actual dispensing time.",
+        "definition": "Generic medication name for synthetic records; not a treatment recommendation.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -252,9 +247,7 @@
         "parent_table": "admissions",
         "parent_column": "hadm_id"
       }
-    ],
-    "event_encoding": "Column encoding",
-    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+    ]
   },
   {
     "table": "procedure_order",
@@ -298,9 +291,7 @@
         "parent_table": "admissions",
         "parent_column": "hadm_id"
       }
-    ],
-    "event_encoding": "Column encoding",
-    "encoding_detail": "Actual one-time milestones are separate timestamp columns on the business object. NULL means not occurred."
+    ]
   },
   {
     "table": "order_history",
@@ -368,9 +359,7 @@
         "parent_table": "lab_order",
         "parent_column": "order_id"
       }
-    ],
-    "event_encoding": "Row encoding",
-    "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded."
+    ]
   },
   {
     "table": "labevents",
@@ -394,7 +383,7 @@
         "name": "itemid",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Synthetic laboratory concept ID; no original MIMIC item code is claimed.",
+        "definition": "Authored laboratory concept: 1001 Creatinine (mg/dL), 1002 Sodium (mmol/L), 1003 Hemoglobin (g/dL). Not original MIMIC codes.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -408,7 +397,7 @@
         "name": "storetime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+        "definition": "For labevents, time result becomes available; for emar/procedure_episode, system record time excluded as a separate business event.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -422,7 +411,7 @@
         "name": "valueuom",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "Measurement unit; all current synthetic measurements use arbitrary units.",
+        "definition": "Measurement unit; mg/dL for Creatinine, mmol/L for Sodium, g/dL for Hemoglobin.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
@@ -435,9 +424,7 @@
         "parent_table": "lab_order",
         "parent_column": "order_id"
       }
-    ],
-    "event_encoding": "Mixed (row + column)",
-    "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence."
+    ]
   },
   {
     "table": "emar",
@@ -451,10 +438,10 @@
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
-        "name": "order_id",
+        "name": "pharmacy_id",
         "type": "INTEGER",
         "constraints": "See executable table DDL",
-        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
+        "definition": "Identity of one dispensing record, distinct from its prescription and administration records.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       },
       {
@@ -475,7 +462,7 @@
         "name": "storetime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+        "definition": "For labevents, time result becomes available; for emar/procedure_episode, system record time excluded as a separate business event.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
@@ -484,17 +471,15 @@
     ],
     "foreign_keys": [
       {
-        "column": "order_id",
-        "parent_table": "medication_order",
-        "parent_column": "order_id"
+        "column": "pharmacy_id",
+        "parent_table": "pharmacy",
+        "parent_column": "pharmacy_id"
       }
-    ],
-    "event_encoding": "Row encoding",
-    "encoding_detail": "Each occurrence is a separate row; action/event_txt determines activity. Technical emar.storetime is excluded."
+    ]
   },
   {
-    "table": "procedureevents",
-    "definition": "Procedure execution episodes with start/end times, inspired by MIMIC procedureevents.",
+    "table": "procedure_episode",
+    "definition": "Authored hospital-level procedure execution episode; not the MIMIC ICU procedureevents table.",
     "columns": [
       {
         "name": "procedureevent_id",
@@ -528,7 +513,7 @@
         "name": "storetime",
         "type": "TEXT",
         "constraints": "See executable table DDL",
-        "definition": "For labevents, time result becomes available; for emar/procedureevents, system record time excluded as a separate business event.",
+        "definition": "For labevents, time result becomes available; for emar/procedure_episode, system record time excluded as a separate business event.",
         "source_origin": "mimic_inspired_synthetic_benchmark"
       }
     ],
@@ -541,8 +526,43 @@
         "parent_table": "procedure_order",
         "parent_column": "order_id"
       }
+    ]
+  },
+  {
+    "table": "pharmacy",
+    "definition": "One distinct dispensing record for a medication prescription; repeated dispensing records can fulfill the same prescription.",
+    "columns": [
+      {
+        "name": "pharmacy_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Identity of one dispensing record, distinct from its prescription and administration records.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "order_id",
+        "type": "INTEGER",
+        "constraints": "See executable table DDL",
+        "definition": "Identity of a distinct order within its own business table. The three order tables use independent namespaces; equal integers do not mean the same request.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      },
+      {
+        "name": "dispensed_at",
+        "type": "TEXT",
+        "constraints": "See executable table DDL",
+        "definition": "Authored actual dispensing time.",
+        "source_origin": "mimic_inspired_synthetic_benchmark"
+      }
     ],
-    "event_encoding": "Mixed (row + column)",
-    "encoding_detail": "Each row preserves a repeated occurrence; multiple timestamp columns emit distinct activity types within that occurrence."
+    "primary_key": [
+      "pharmacy_id"
+    ],
+    "foreign_keys": [
+      {
+        "column": "order_id",
+        "parent_table": "medication_order",
+        "parent_column": "order_id"
+      }
+    ]
   }
 ]

@@ -78,13 +78,6 @@
   },
   {
     "table": "medication_order",
-    "activity": "Medication Dispensed",
-    "timestamp_column": "dispensed_at",
-    "encoding": "Column encoding",
-    "event_sql": "SELECT 'MED:'||order_id||':dispense' event_id,'MED:'||order_id object_id,'Medication Dispensed' activity,dispensed_at timestamp FROM medication_order WHERE dispensed_at IS NOT NULL AND (1=1)"
-  },
-  {
-    "table": "medication_order",
     "activity": "Medication Stopped",
     "timestamp_column": "stopped_at",
     "encoding": "Column encoding",
@@ -98,17 +91,24 @@
     "event_sql": "SELECT 'PROC:'||order_id||':prep' event_id,'PROC:'||order_id object_id,'Procedure Preparation Completed' activity,preparation_completed_at timestamp FROM procedure_order WHERE preparation_completed_at IS NOT NULL AND (1=1)"
   },
   {
+    "table": "pharmacy",
+    "activity": "Medication Dispensed",
+    "timestamp_column": "dispensed_at",
+    "encoding": "Column encoding",
+    "event_sql": "SELECT 'PHARM:'||pharmacy_id||':dispense' event_id,'MED:'||order_id object_id,'Medication Dispensed' activity,dispensed_at timestamp FROM pharmacy WHERE dispensed_at IS NOT NULL AND (1=1)"
+  },
+  {
     "table": "labevents",
     "activity": "Lab Measurement Charted",
     "timestamp_column": "charttime",
-    "encoding": "Mixed (row + column)",
+    "encoding": "Column encoding",
     "event_sql": "SELECT 'LABEV:'||e.labevent_id||':chart' event_id,'LAB:'||o.order_id object_id,'Lab Measurement Charted' activity,e.charttime timestamp FROM labevents e JOIN lab_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (1=1)"
   },
   {
     "table": "labevents",
     "activity": "Lab Result Available",
     "timestamp_column": "storetime",
-    "encoding": "Mixed (row + column)",
+    "encoding": "Column encoding",
     "event_sql": "SELECT 'LABEV:'||e.labevent_id||':result' event_id,'LAB:'||o.order_id object_id,'Lab Result Available' activity,e.storetime timestamp FROM labevents e JOIN lab_order o ON o.order_id=e.order_id WHERE e.storetime IS NOT NULL AND (1=1)"
   },
   {
@@ -116,27 +116,27 @@
     "activity": "Medication Administered",
     "timestamp_column": "charttime",
     "encoding": "Row encoding",
-    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Administered' activity,e.charttime timestamp FROM emar e JOIN medication_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Administered')"
+    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Administered' activity,e.charttime timestamp FROM emar e JOIN pharmacy p ON p.pharmacy_id=e.pharmacy_id JOIN medication_order o ON o.order_id=p.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Administered')"
   },
   {
     "table": "emar",
     "activity": "Medication Not Given",
     "timestamp_column": "charttime",
     "encoding": "Row encoding",
-    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Not Given' activity,e.charttime timestamp FROM emar e JOIN medication_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Not Given')"
+    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Not Given' activity,e.charttime timestamp FROM emar e JOIN pharmacy p ON p.pharmacy_id=e.pharmacy_id JOIN medication_order o ON o.order_id=p.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Not Given')"
   },
   {
-    "table": "procedureevents",
+    "table": "procedure_episode",
     "activity": "Procedure Started",
     "timestamp_column": "starttime",
-    "encoding": "Mixed (row + column)",
-    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':start' event_id,'PROC:'||o.order_id object_id,'Procedure Started' activity,e.starttime timestamp FROM procedureevents e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.starttime IS NOT NULL AND (1=1)"
+    "encoding": "Column encoding",
+    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':start' event_id,'PROC:'||o.order_id object_id,'Procedure Started' activity,e.starttime timestamp FROM procedure_episode e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.starttime IS NOT NULL AND (1=1)"
   },
   {
-    "table": "procedureevents",
+    "table": "procedure_episode",
     "activity": "Procedure Completed",
     "timestamp_column": "endtime",
-    "encoding": "Mixed (row + column)",
-    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':end' event_id,'PROC:'||o.order_id object_id,'Procedure Completed' activity,e.endtime timestamp FROM procedureevents e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.endtime IS NOT NULL AND (1=1)"
+    "encoding": "Column encoding",
+    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':end' event_id,'PROC:'||o.order_id object_id,'Procedure Completed' activity,e.endtime timestamp FROM procedure_episode e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.endtime IS NOT NULL AND (1=1)"
   }
 ]

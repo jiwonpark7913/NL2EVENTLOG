@@ -10,12 +10,12 @@
 | [WarehouseFlow New](datasets/warehouseflow_new/README.md) | 12 | 11 | 15 | 15 | 12 | 402 | 54 | 50 |
 | [UniversityFlow](datasets/universityflow/README.md) | 11 | 11 | 41 | 40 | 40 | 808 | 70 | 66 |
 | [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 39 | 39 | 31 | 1108 | 44 | 42 |
-| [HospitalFlow](datasets/hospitalflow/README.md) | 11 | 9 | 20 | 19 | 17 | 372 | 40 | 38 |
+| [HospitalFlow](datasets/hospitalflow/README.md) | 12 | 10 | 20 | 19 | 17 | 628 | 44 | 42 |
 | [PlateFlow New](datasets/plateflow_new/README.md) | 12 | 11 | 20 | 24 | 15 | 620 | 54 | 50 |
 
 - **Activity types:** distinct recorded business labels across the database, counted once across objects. WarehouseFlow New reports 15 base work identities in this column; its 21 phase-specific display labels and requested-label counts are listed separately.
 - **Object / case types:** keyed tables with answerable object-specific logs, including auxiliary record cases; this counts types, not individual instances. History-only storage, extraction indexes and reference tables are generally excluded; HospitalFlow explicitly includes independently keyed history/occurrence cases for identity-separation tests.
-- **HospitalFlow counting:** 11 physical table/PK representations form 9 expected identity-compatible groups. Two pairs split the same patient/admission across tables; occurrence records retain their own identities. Gold membership is private evaluation data.
+- **HospitalFlow counting:** 12 physical table/PK representations form 10 expected identity-compatible groups. Two pairs split the same patient/admission across tables; occurrence records retain their own identities. Gold membership is private evaluation data.
 - **Case:** the object used to group a timeline, such as a transaction, student or plate piece.
 - **Event:** one actual recorded action with an event identity and occurrence time.
 - **Gold:** expected answer for one question; paraphrase pairs may have identical logs.
@@ -102,10 +102,10 @@
 | PlateFlow | Q2 | 13 | 12 | 1 | 2.77 |
 | PlateFlow | Q3 | 9 | 9 | 0 | 17.33 |
 | PlateFlow | Q4 | 9 | 9 | 0 | 17.33 |
-| HospitalFlow | Q1 | 11 | 10 | 1 | 2.73 |
-| HospitalFlow | Q2 | 11 | 10 | 1 | 2.73 |
-| HospitalFlow | Q3 | 9 | 9 | 0 | 7.33 |
-| HospitalFlow | Q4 | 9 | 9 | 0 | 7.33 |
+| HospitalFlow | Q1 | 12 | 11 | 1 | 2.75 |
+| HospitalFlow | Q2 | 12 | 11 | 1 | 2.75 |
+| HospitalFlow | Q3 | 10 | 10 | 0 | 6.90 |
+| HospitalFlow | Q4 | 10 | 10 | 0 | 6.90 |
 | PlateFlow New | Q1 | 16 | 14 | 2 | 2.44 |
 | PlateFlow New | Q2 | 16 | 14 | 2 | 2.44 |
 | PlateFlow New | Q3 | 11 | 11 | 0 | 7.00 |

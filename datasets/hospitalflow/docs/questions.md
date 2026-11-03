@@ -4,10 +4,10 @@
 
 | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
 | --- | --- | --- | --- | --- |
-| Q1 | 11 | 10 | 1 | 2.73 |
-| Q2 | 11 | 10 | 1 | 2.73 |
-| Q3 | 9 | 9 | 0 | 7.33 |
-| Q4 | 9 | 9 | 0 | 7.33 |
+| Q1 | 12 | 11 | 1 | 2.75 |
+| Q2 | 12 | 11 | 1 | 2.75 |
+| Q3 | 10 | 10 | 0 | 6.90 |
+| Q4 | 10 | 10 | 0 | 6.90 |
 
 - Average includes all requests in the type, including unsupported activity requests.
 - Process View includes the case concept and activity scope. Q3/Q4 leave the scope implicit via the catalog.
@@ -55,3 +55,7 @@
 | HF08P | Q4 | HF08 | Answerable | 2 | 2 | Build the complete recorded history of every individual medication administration record. |
 | HF09 | Q3 | HF09P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each procedure episode. |
 | HF09P | Q4 | HF09 | Answerable | 2 | 2 | Trace each individual procedure episode through its whole recorded lifecycle. |
+| HF10 | Q3 | HF10P | Answerable | 3 | 3 | Extract the full recorded lifecycle for each pharmacy dispensing record. |
+| HF10P | Q4 | HF10 | Answerable | 3 | 3 | Show the complete recorded course associated with each individual pharmacy dispensing record. |
+| H12 | Q1 | H12P | Answerable | 3 | 3 | For each pharmacy dispensing record, extract Medication Dispensed, Medication Administered and Medication Not Given events. |
+| H12P | Q2 | H12 | Answerable | 3 | 3 | Group the medication dispensing, subsequent doses given and doses not given by the pharmacy dispensing record they refer to. |

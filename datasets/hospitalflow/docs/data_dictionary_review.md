@@ -69,3 +69,9 @@
 - [MIMIC labevents](https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html)
 - [MIMIC emar](https://mimic.mit.edu/docs/iv/modules/hosp/emar.html)
 - [MIMIC procedureevents](https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html)
+
+## Subsequent schema revision — 2026-11-03
+
+- The metadata-only review above describes the previous 11-table, 50-variable version. It is historical, not the current schema inventory.
+- The current schema has 12 tables, 53 variables and 19 datetime variables. Business metadata validation, schema round-trip and all 42 Gold CSV comparisons have now run in Python.
+- [Current schema/data revision and evaluation controls](realism_review.md)

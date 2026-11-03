@@ -1,0 +1,119 @@
+{
+  "seed": 20261103,
+  "simulation": "Illustrative seeded skewed counts and lognormal stays; not fitted to MIMIC.",
+  "checks": {
+    "wrong_lab_order_order_id_to_hadm_id": {
+      "correct_rows": 30,
+      "wrong_rows": 0,
+      "detected": true
+    },
+    "wrong_medication_order_order_id_to_hadm_id": {
+      "correct_rows": 29,
+      "wrong_rows": 0,
+      "detected": true
+    },
+    "wrong_procedure_order_order_id_to_hadm_id": {
+      "correct_rows": 17,
+      "wrong_rows": 0,
+      "detected": true
+    },
+    "unrelated_lab_fanout": {
+      "correct_rows": 67,
+      "wrong_rows": 83,
+      "detected": true
+    },
+    "outpatient_patient_included_admission_excluded": true,
+    "variable_zero_to_many_cardinalities": true,
+    "minute_scale_nonconstant_time_intervals": true,
+    "no_unintended_event_ties": true,
+    "pharmacy_doses_follow_dispensing_and_precede_stop": true
+  },
+  "count_distributions": {
+    "lab_order_per_admission": {
+      "0": 3,
+      "1": 5,
+      "2": 3,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "7": 1
+    },
+    "medication_order_per_admission": {
+      "0": 3,
+      "1": 5,
+      "2": 3,
+      "3": 2,
+      "5": 1,
+      "7": 1
+    },
+    "procedure_order_per_admission": {
+      "0": 5,
+      "1": 6,
+      "2": 2,
+      "3": 1,
+      "4": 1
+    },
+    "dispensings_per_prescription": {
+      "0": 5,
+      "1": 14,
+      "2": 10
+    },
+    "doses_per_dispensing": {
+      "0": 6,
+      "1": 7,
+      "2": 9,
+      "3": 9,
+      "5": 3
+    },
+    "doses_per_prescription": {
+      "0": 9,
+      "1": 2,
+      "2": 5,
+      "3": 7,
+      "4": 2,
+      "5": 2,
+      "6": 1,
+      "10": 1
+    }
+  },
+  "duration_summaries": {
+    "stay_minutes": {
+      "n": 13,
+      "distinct": 13,
+      "minimum": 2160.0,
+      "maximum": 10533.0,
+      "mean": 5265.38
+    },
+    "ed_to_admission_minutes": {
+      "n": 8,
+      "distinct": 8,
+      "minimum": 22.0,
+      "maximum": 216.0,
+      "mean": 129.88
+    },
+    "lab_turnaround_minutes": {
+      "n": 62,
+      "distinct": 49,
+      "minimum": 32.0,
+      "maximum": 238.0,
+      "mean": 136.44
+    },
+    "authorization_to_discharge_minutes": {
+      "n": 13,
+      "distinct": 13,
+      "minimum": 47.0,
+      "maximum": 220.0,
+      "mean": 138.38
+    },
+    "readmission_gap_minutes": {
+      "n": 4,
+      "distinct": 4,
+      "minimum": 8762.0,
+      "maximum": 11476.0,
+      "mean": 10496.75
+    }
+  },
+  "outpatient_orders": 4,
+  "outpatient_events": 27,
+  "actual_identity_classifier_run": false
+}

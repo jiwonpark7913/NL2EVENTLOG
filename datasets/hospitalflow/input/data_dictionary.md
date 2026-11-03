@@ -6,7 +6,7 @@
 | --- | --- |
 | dictionary_id | NL2EVENTLOG:hospitalflow |
 | name | HospitalFlow |
-| version | 2026-11-03 |
+| version | 2026-11-03-realism-revision |
 | description | Business definitions for synthetic patient, hospital-stay, order and clinical-record data. |
 | language | en |
 | dbms | SQLite |
@@ -25,25 +25,26 @@
 
 | Table | Readable name | One row represents | Primary key | Declared SQL foreign keys |
 | --- | --- | --- | --- | --- |
-| patients | Patient | One row per patient. | subject_id | None declared |
-| admissions | Hospital admission | One row per hospital admission, identified by hadm_id. | hadm_id | subject_id -> patients.subject_id |
+| patients | Patients | One row per patient. | subject_id | None declared |
+| admissions | Admissions | One row per hospital admission, identified by hadm_id. | hadm_id | subject_id -> patients.subject_id |
 | patient_profile | Patient profile | At most one supplementary profile per patient. | subject_id | None declared |
-| admission_detail | Admission summary | At most one signed-summary record per hospital admission. | hadm_id | hadm_id -> admissions.hadm_id |
-| lab_order | Laboratory order | One row per laboratory order; multiple measurements may belong to it. | order_id | hadm_id -> admissions.hadm_id |
-| medication_order | Medication order | One row per medication order; multiple dose records may belong to it. | order_id | hadm_id -> admissions.hadm_id |
+| admission_detail | Admission detail | At most one signed-summary record per hospital admission. | hadm_id | hadm_id -> admissions.hadm_id |
+| lab_order | Lab order | One authored laboratory request for one patient, optionally associated with an admission. | order_id | hadm_id -> admissions.hadm_id; subject_id -> patients.subject_id |
+| medication_order | Medication order | One medication prescription; dispensing records and dose records have their own identities. | order_id | hadm_id -> admissions.hadm_id |
 | procedure_order | Procedure order | One row per procedure order; multiple execution episodes may belong to it. | order_id | hadm_id -> admissions.hadm_id |
-| order_history | Order action history | One row per order-action occurrence, including repeated reviews. | history_id | lab_order_id -> lab_order.order_id; medication_order_id -> medication_order.order_id; procedure_order_id -> procedure_order.order_id |
-| labevents | Laboratory measurement | One row per measurement occurrence; repeated measurements have different labevent_id values. | labevent_id | order_id -> lab_order.order_id |
-| emar | Medication administration record | One row per administration or omission occurrence. | emar_id | order_id -> medication_order.order_id |
-| procedureevents | Procedure execution episode | One row per execution episode, including repeat episodes. | procedureevent_id | order_id -> procedure_order.order_id |
+| order_history | Order history | One row per order-action occurrence, including repeated reviews. | history_id | procedure_order_id -> procedure_order.order_id; medication_order_id -> medication_order.order_id; lab_order_id -> lab_order.order_id |
+| labevents | Labevents | One row per measurement occurrence; repeated measurements have different labevent_id values. | labevent_id | order_id -> lab_order.order_id |
+| emar | Emar | One administration or omission record referring to one pharmacy dispensing record. | emar_id | pharmacy_id -> pharmacy.pharmacy_id |
+| procedure_episode | Procedure episode | One hospital-level procedure execution episode, not an ICU stay. | procedureevent_id | order_id -> procedure_order.order_id |
+| pharmacy | Pharmacy | One dispensing record for one medication prescription; a prescription may have zero or multiple dispensing records. | pharmacy_id | order_id -> medication_order.order_id |
 
 - A declared SQL relationship and a documented identifier relationship are different metadata. In particular, patient_profile.subject_id uses the patients identifier by convention without a declared SQL FK.
 
 ## 3. Column definitions
 
-### patients — Patient
+### patients — Patients
 
-- **Business definition:** One patient identified by the local subject_id.
+- **Business definition:** Synthetic patient identity, inspired by MIMIC subject_id.
 - **One row represents:** One row per patient.
 - **Additional documented relationships:** None additionally documented
 
@@ -63,9 +64,9 @@
 CREATE TABLE patients(subject_id INTEGER PRIMARY KEY NOT NULL, gender TEXT NOT NULL CHECK(gender IN ('F','M')));
 ```
 
-### admissions — Hospital admission
+### admissions — Admissions
 
-- **Business definition:** A distinct hospital stay of one patient; a patient can have multiple stays.
+- **Business definition:** Distinct hospital stays per patient with actual admission/discharge milestones.
 - **One row represents:** One row per hospital admission, identified by hadm_id.
 - **Additional documented relationships:** None additionally documented
 
@@ -97,7 +98,7 @@ CREATE TABLE admissions(hadm_id INTEGER PRIMARY KEY NOT NULL, subject_id INTEGER
 
 ### patient_profile — Patient profile
 
-- **Business definition:** Optional supplementary information for the patient identified by patients.subject_id. Both tables use the same local patient identifier; no SQL foreign key is declared between them.
+- **Business definition:** Optional additional information for the SAME patient identified by patients.subject_id, in the SAME identifier namespace. A matching subject_id denotes the same actual patient. No FK is declared; this identity relationship is explicitly documented. Authored split-storage extension.
 - **One row represents:** At most one supplementary profile per patient.
 - **Additional documented relationships:** subject_id -> patients(subject_id): Documented identifier relationship; no declared SQL foreign key
 
@@ -121,9 +122,9 @@ CREATE TABLE admissions(hadm_id INTEGER PRIMARY KEY NOT NULL, subject_id INTEGER
 CREATE TABLE patient_profile(subject_id INTEGER PRIMARY KEY NOT NULL, profile_verified_at TEXT NOT NULL, preferred_language TEXT NOT NULL);
 ```
 
-### admission_detail — Admission summary
+### admission_detail — Admission detail
 
-- **Business definition:** Optional signed-summary information for the hospital admission identified by admissions.hadm_id.
+- **Business definition:** Optional additional information for the SAME hospital stay identified by admissions.hadm_id. A matching hadm_id denotes the same actual admission. Only a subset of admissions has a signed summary. Authored split-storage extension.
 - **One row represents:** At most one signed-summary record per hospital admission.
 - **Additional documented relationships:** None additionally documented
 
@@ -145,16 +146,17 @@ CREATE TABLE patient_profile(subject_id INTEGER PRIMARY KEY NOT NULL, profile_ve
 CREATE TABLE admission_detail(hadm_id INTEGER PRIMARY KEY NOT NULL REFERENCES admissions(hadm_id), discharge_summary_signed_at TEXT NOT NULL, summary_status TEXT NOT NULL CHECK(summary_status='SIGNED'));
 ```
 
-### lab_order — Laboratory order
+### lab_order — Lab order
 
-- **Business definition:** A laboratory request associated with one hospital admission. Its identifiers are local to laboratory orders and do not identify medication or procedure requests.
-- **One row represents:** One row per laboratory order; multiple measurements may belong to it.
+- **Business definition:** Authored laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.
+- **One row represents:** One authored laboratory request for one patient, optionally associated with an admission.
 - **Additional documented relationships:** None additionally documented
 
 | Variable name | Readable name | Definition | Measurement unit | Allowed values / code meanings | NULL meaning | Format / timezone |
 | --- | --- | --- | --- | --- | --- | --- |
 | order_id | Laboratory order ID | Identifier of this laboratory request in the laboratory-order identifier namespace. | Not applicable | Integer identifier; no positive-only or business min/max CHECK is declared. | NULL is not allowed by the declared schema. | Integer identifier |
-| hadm_id | Hospital admission ID | Hospital admission under which this laboratory request was made. | Not applicable | Existing admissions.hadm_id values. | NULL is not allowed by the declared schema. | Integer identifier |
+| subject_id | Patient ID | Patient for this laboratory request, including requests not associated with a hospital admission. | Not applicable | Patient identifiers in patients.subject_id by documented convention; no SQL foreign key enforces that relationship. | NULL is not allowed by the declared schema. | Integer identifier |
+| hadm_id | Hospital admission ID | Optional hospital admission associated with this laboratory request. | Not applicable | Existing admissions.hadm_id values. | No hospital admission is associated with this request, as in outpatient testing. | Integer identifier |
 | specimen_received_at | Specimen receipt time | Time when the specimen associated with this laboratory order was received. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | No specimen receipt time is recorded. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
 | results_verified_at | Laboratory results verification time | Time when the recorded results for this laboratory order were verified. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | No results-verification time is recorded. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
 
@@ -163,28 +165,30 @@ CREATE TABLE admission_detail(hadm_id INTEGER PRIMARY KEY NOT NULL REFERENCES ad
 | Variable | SQL type | Required | PK position | Declared FK | Unique | Default | Column constraints |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | order_id | INTEGER | yes | 1 | None declared | yes | No SQL default | PRIMARY KEY NOT NULL |
-| hadm_id | INTEGER | yes |  | admissions.hadm_id | no | No SQL default | NOT NULL REFERENCES admissions(hadm_id) |
+| subject_id | INTEGER | yes |  | patients.subject_id | no | No SQL default | NOT NULL REFERENCES patients(subject_id) |
+| hadm_id | INTEGER | no |  | admissions.hadm_id | no | No SQL default | REFERENCES admissions(hadm_id) |
 | specimen_received_at | TEXT | no |  | None declared | no | No SQL default | No additional column constraint |
 | results_verified_at | TEXT | no |  | None declared | no | No SQL default | No additional column constraint |
 
 - **order_id:** Equal integer values in the three order tables do not establish the same request identity.
 
+- **subject_id:** This logical patient reference is intentionally not a declared SQL FK; keep documented relationships separate from enforced relationships.
+
 ```sql
-CREATE TABLE lab_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), specimen_received_at TEXT, results_verified_at TEXT);
+CREATE TABLE lab_order(order_id INTEGER PRIMARY KEY NOT NULL, subject_id INTEGER NOT NULL REFERENCES patients(subject_id), hadm_id INTEGER REFERENCES admissions(hadm_id), specimen_received_at TEXT, results_verified_at TEXT);
 ```
 
 ### medication_order — Medication order
 
-- **Business definition:** A medication request associated with one hospital admission. Its identifiers are local to medication orders and do not identify laboratory or procedure requests.
-- **One row represents:** One row per medication order; multiple dose records may belong to it.
+- **Business definition:** One medication prescription, including its stop time. Dispensing is recorded separately in pharmacy.
+- **One row represents:** One medication prescription; dispensing records and dose records have their own identities.
 - **Additional documented relationships:** None additionally documented
 
 | Variable name | Readable name | Definition | Measurement unit | Allowed values / code meanings | NULL meaning | Format / timezone |
 | --- | --- | --- | --- | --- | --- | --- |
 | order_id | Medication order ID | Identifier of this medication request in the medication-order identifier namespace. | Not applicable | Integer identifier; no positive-only or business min/max CHECK is declared. | NULL is not allowed by the declared schema. | Integer identifier |
 | hadm_id | Hospital admission ID | Hospital admission under which this medication request was made. | Not applicable | Existing admissions.hadm_id values. | NULL is not allowed by the declared schema. | Integer identifier |
-| medication | Medication name | Fictional medication label associated with this synthetic medication request. | Not applicable | Text; no controlled vocabulary or maximum text length is declared. | NULL is not allowed by the declared schema. | Text |
-| dispensed_at | Medication dispensing time | Time when medication for this request was dispensed. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | No dispensing time is recorded. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
+| medication | Medication name | Generic medication name for synthetic records; not a treatment recommendation. | Not applicable | Text; no controlled vocabulary or maximum text length is declared. | NULL is not allowed by the declared schema. | Text |
 | stopped_at | Medication stopping time | Time when medication under this request was stopped. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | No medication stopping time is recorded. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
 
 **Storage and declared constraints**
@@ -194,18 +198,19 @@ CREATE TABLE lab_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NO
 | order_id | INTEGER | yes | 1 | None declared | yes | No SQL default | PRIMARY KEY NOT NULL |
 | hadm_id | INTEGER | yes |  | admissions.hadm_id | no | No SQL default | NOT NULL REFERENCES admissions(hadm_id) |
 | medication | TEXT | yes |  | None declared | no | No SQL default | NOT NULL |
-| dispensed_at | TEXT | no |  | None declared | no | No SQL default | No additional column constraint |
 | stopped_at | TEXT | no |  | None declared | no | No SQL default | No additional column constraint |
 
 - **order_id:** Equal integer values in the three order tables do not establish the same request identity.
 
+- **medication:** Illustrative generic drug labels; these records do not represent treatment recommendations.
+
 ```sql
-CREATE TABLE medication_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), medication TEXT NOT NULL, dispensed_at TEXT, stopped_at TEXT);
+CREATE TABLE medication_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), medication TEXT NOT NULL, stopped_at TEXT);
 ```
 
 ### procedure_order — Procedure order
 
-- **Business definition:** A procedure request associated with one hospital admission. Its identifiers are local to procedure orders and do not identify laboratory or medication requests.
+- **Business definition:** Distinct procedure order; repeated execution episodes belong to one order.
 - **One row represents:** One row per procedure order; multiple execution episodes may belong to it.
 - **Additional documented relationships:** None additionally documented
 
@@ -231,9 +236,9 @@ CREATE TABLE medication_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INT
 CREATE TABLE procedure_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTEGER NOT NULL REFERENCES admissions(hadm_id), procedure_name TEXT NOT NULL, preparation_completed_at TEXT);
 ```
 
-### order_history — Order action history
+### order_history — Order history
 
-- **Business definition:** A recorded action on one laboratory, medication or procedure order. Exactly one of the three order-reference columns is populated.
+- **Business definition:** Repeated order actions, inspired by provider order transaction semantics; not a copy of poe.
 - **One row represents:** One row per order-action occurrence, including repeated reviews.
 - **Additional documented relationships:** None additionally documented
 
@@ -261,9 +266,9 @@ CREATE TABLE procedure_order(order_id INTEGER PRIMARY KEY NOT NULL, hadm_id INTE
 CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id INTEGER REFERENCES lab_order(order_id), medication_order_id INTEGER REFERENCES medication_order(order_id), procedure_order_id INTEGER REFERENCES procedure_order(order_id), action TEXT NOT NULL CHECK(action IN ('ENTERED','REVIEWED','CANCELLED')), occurred_at TEXT NOT NULL, CHECK((lab_order_id IS NOT NULL)+(medication_order_id IS NOT NULL)+(procedure_order_id IS NOT NULL)=1));
 ```
 
-### labevents — Laboratory measurement
+### labevents — Labevents
 
-- **Business definition:** A measurement belonging to one laboratory order, with separate charting and result-availability times.
+- **Business definition:** Measurement occurrences with separately charted and available-result times, inspired by MIMIC labevents.
 - **One row represents:** One row per measurement occurrence; repeated measurements have different labevent_id values.
 - **Additional documented relationships:** None additionally documented
 
@@ -271,11 +276,11 @@ CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id
 | --- | --- | --- | --- | --- | --- | --- |
 | labevent_id | Laboratory measurement ID | Identifier of this individual laboratory measurement occurrence. | Not applicable | Integer identifier; no positive-only or business min/max CHECK is declared. | NULL is not allowed by the declared schema. | Integer identifier |
 | order_id | Referenced laboratory order ID | Laboratory order to which this measurement belongs. | Not applicable | Existing lab_order.order_id values. | NULL is not allowed by the declared schema. | Integer identifier |
-| itemid | Laboratory measurement category ID | Local synthetic identifier of a laboratory measurement category; original MIMIC item codes are not used. | Not applicable | Integer identifier; no positive-only or business min/max CHECK is declared. | NULL is not allowed by the declared schema. | Integer identifier |
+| itemid | Laboratory measurement category ID | Authored laboratory concept: 1001 Creatinine (mg/dL), 1002 Sodium (mmol/L), 1003 Hemoglobin (g/dL). Not original MIMIC codes. | Not applicable | 1001 = Creatinine; 1002 = Sodium; 1003 = Hemoglobin. Authored concept codes. | NULL is not allowed by the declared schema. | Integer identifier |
 | charttime | Laboratory measurement charting time | Time assigned to the charted laboratory measurement; distinct from the time the result became available. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | NULL is not allowed by the declared schema. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
 | storetime | Laboratory result availability time | Time when this laboratory result became available in the laboratory system. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | NULL is not allowed by the declared schema. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
-| valuenum | Numeric measurement result | Numeric result recorded for this synthetic laboratory measurement. | As specified by valueuom in the same row | Numeric measurement value; no SQL min/max bound is declared. | No numeric measurement result is recorded. | Numeric value |
-| valueuom | Measurement unit label | Unit applicable to valuenum in the same measurement record. | Not applicable | Text; no controlled vocabulary or maximum text length is declared. | No measurement unit is specified. | Text |
+| valuenum | Numeric measurement result | Numeric result recorded for this synthetic laboratory measurement. | As specified by valueuom for the corresponding test. | Numeric measurement value; no SQL min/max bound is declared. | No numeric measurement result is recorded. | Numeric value |
+| valueuom | Measurement unit label | Measurement unit; mg/dL for Creatinine, mmol/L for Sodium, g/dL for Hemoglobin. | Not applicable | mg/dL, mmol/L or g/dL, as specified by itemid. | No measurement unit is specified. | Text |
 
 **Storage and declared constraints**
 
@@ -289,11 +294,11 @@ CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id
 | valuenum | REAL | no |  | None declared | no | No SQL default | No additional column constraint |
 | valueuom | TEXT | no |  | None declared | no | No SQL default | No additional column constraint |
 
-- **itemid:** No measurement-category lookup table is included. Original MIMIC item definitions or ranges must not be assumed.
+- **itemid:** Authored concept dictionary; no original MIMIC item IDs are claimed.
 
-- **valuenum:** Interpret the number using valueuom in the same row. Current synthetic rows use arbitrary units; that observation is not an allowed-value restriction.
+- **valuenum:** Synthetic illustrative values; not fitted to clinical distributions.
 
-- **valueuom:** Current synthetic rows contain arbitrary units. The schema does not restrict the text to that example.
+- **valueuom:** 1001 uses mg/dL; 1002 uses mmol/L; 1003 uses g/dL.
 
 - **Definition references:** [https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html](https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html). Local SQL constraints and synthetic adaptations remain HospitalFlow conventions.
 
@@ -301,16 +306,16 @@ CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id
 CREATE TABLE labevents(labevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES lab_order(order_id), itemid INTEGER NOT NULL, charttime TEXT NOT NULL, storetime TEXT NOT NULL, valuenum REAL, valueuom TEXT, CHECK(charttime<=storetime));
 ```
 
-### emar — Medication administration record
+### emar — Emar
 
-- **Business definition:** An individual dose record documenting administration or omission for one medication order.
-- **One row represents:** One row per administration or omission occurrence.
+- **Business definition:** Medication administration or omission occurrences, inspired by MIMIC emar.
+- **One row represents:** One administration or omission record referring to one pharmacy dispensing record.
 - **Additional documented relationships:** None additionally documented
 
 | Variable name | Readable name | Definition | Measurement unit | Allowed values / code meanings | NULL meaning | Format / timezone |
 | --- | --- | --- | --- | --- | --- | --- |
 | emar_id | Dose record ID | Local integer identifier of this administration or omission record; it is not the original MIMIC formatted eMAR identifier. | Not applicable | Integer identifier; no positive-only or business min/max CHECK is declared. | NULL is not allowed by the declared schema. | Integer identifier |
-| order_id | Referenced medication order ID | Medication order associated with this dose record. | Not applicable | Existing medication_order.order_id values. | NULL is not allowed by the declared schema. | Integer identifier |
+| pharmacy_id | Pharmacy dispensing ID | Dispensing record associated with this administration or omission. | Not applicable | Integer dispensing identifier; emar references an existing pharmacy record. | NULL is not allowed by the declared schema. | Integer identifier |
 | charttime | Administration or omission time | Time when the administration or omission documented by this dose record occurred. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | NULL is not allowed by the declared schema. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
 | event_txt | Administration disposition | Recorded disposition of this medication dose, indicating administration or omission. | Not applicable | Administered = The medication dose was given; Not Given = The medication dose was not given | NULL is not allowed by the declared schema. | Text |
 | storetime | Dose documentation time | Time when the dose record was documented in the medication system. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | NULL is not allowed by the declared schema. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
@@ -320,7 +325,7 @@ CREATE TABLE labevents(labevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGE
 | Variable | SQL type | Required | PK position | Declared FK | Unique | Default | Column constraints |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | emar_id | INTEGER | yes | 1 | None declared | yes | No SQL default | PRIMARY KEY NOT NULL |
-| order_id | INTEGER | yes |  | medication_order.order_id | no | No SQL default | NOT NULL REFERENCES medication_order(order_id) |
+| pharmacy_id | INTEGER | yes |  | pharmacy.pharmacy_id | no | No SQL default | NOT NULL REFERENCES pharmacy(pharmacy_id) |
 | charttime | TEXT | yes |  | None declared | no | No SQL default | NOT NULL |
 | event_txt | TEXT | yes |  | None declared | no | No SQL default | NOT NULL CHECK(event_txt IN ('Administered','Not Given')) |
 | storetime | TEXT | yes |  | None declared | no | No SQL default | NOT NULL |
@@ -328,13 +333,13 @@ CREATE TABLE labevents(labevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGE
 - **Definition references:** [https://mimic.mit.edu/docs/iv/modules/hosp/emar.html](https://mimic.mit.edu/docs/iv/modules/hosp/emar.html). Local SQL constraints and synthetic adaptations remain HospitalFlow conventions.
 
 ```sql
-CREATE TABLE emar(emar_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES medication_order(order_id), charttime TEXT NOT NULL, event_txt TEXT NOT NULL CHECK(event_txt IN ('Administered','Not Given')), storetime TEXT NOT NULL, CHECK(charttime<=storetime));
+CREATE TABLE emar(emar_id INTEGER PRIMARY KEY NOT NULL, pharmacy_id INTEGER NOT NULL REFERENCES pharmacy(pharmacy_id), charttime TEXT NOT NULL, event_txt TEXT NOT NULL CHECK(event_txt IN ('Administered','Not Given')), storetime TEXT NOT NULL, CHECK(charttime<=storetime));
 ```
 
-### procedureevents — Procedure execution episode
+### procedure_episode — Procedure episode
 
-- **Business definition:** An execution episode of a procedure order with its own actual start, optional end and documentation time.
-- **One row represents:** One row per execution episode, including repeat episodes.
+- **Business definition:** Authored hospital-level procedure execution episode; not the MIMIC ICU procedureevents table.
+- **One row represents:** One hospital-level procedure execution episode, not an ICU stay.
 - **Additional documented relationships:** None additionally documented
 
 | Variable name | Readable name | Definition | Measurement unit | Allowed values / code meanings | NULL meaning | Format / timezone |
@@ -355,10 +360,34 @@ CREATE TABLE emar(emar_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NUL
 | endtime | TEXT | no |  | None declared | no | No SQL default | No additional column constraint |
 | storetime | TEXT | yes |  | None declared | no | No SQL default | NOT NULL |
 
-- **Definition references:** [https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html](https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html). Local SQL constraints and synthetic adaptations remain HospitalFlow conventions.
+```sql
+CREATE TABLE procedure_episode(procedureevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES procedure_order(order_id), starttime TEXT NOT NULL, endtime TEXT, storetime TEXT NOT NULL, CHECK(endtime IS NULL OR starttime<=endtime));
+```
+
+### pharmacy — Pharmacy
+
+- **Business definition:** One distinct dispensing record for a medication prescription; repeated dispensing records can fulfill the same prescription.
+- **One row represents:** One dispensing record for one medication prescription; a prescription may have zero or multiple dispensing records.
+- **Additional documented relationships:** None additionally documented
+
+| Variable name | Readable name | Definition | Measurement unit | Allowed values / code meanings | NULL meaning | Format / timezone |
+| --- | --- | --- | --- | --- | --- | --- |
+| pharmacy_id | Pharmacy dispensing ID | Identifier of a single pharmacy dispensing record, distinct from prescription and administration identifiers. | Not applicable | Integer dispensing identifier; emar references an existing pharmacy record. | NULL is not allowed by the declared schema. | Integer identifier |
+| order_id | Medication order ID | Medication prescription fulfilled by this dispensing record. | Not applicable | Integer identifier; no positive-only or business min/max CHECK is declared. | NULL is not allowed by the declared schema. | Integer identifier |
+| dispensed_at | Medication dispensing time | Time when medication for this request was dispensed. | Not applicable | UTC timestamp text using the documented format; no additional date range is declared. | NULL is not allowed by the declared schema. | RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ; timezone UTC |
+
+**Storage and declared constraints**
+
+| Variable | SQL type | Required | PK position | Declared FK | Unique | Default | Column constraints |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| pharmacy_id | INTEGER | yes | 1 | None declared | yes | No SQL default | PRIMARY KEY NOT NULL |
+| order_id | INTEGER | yes |  | medication_order.order_id | no | No SQL default | NOT NULL REFERENCES medication_order(order_id) |
+| dispensed_at | TEXT | yes |  | None declared | no | No SQL default | NOT NULL |
+
+- **dispensed_at:** Authored dispensing milestone; not an original MIMIC pharmacy column.
 
 ```sql
-CREATE TABLE procedureevents(procedureevent_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES procedure_order(order_id), starttime TEXT NOT NULL, endtime TEXT, storetime TEXT NOT NULL, CHECK(endtime IS NULL OR starttime<=endtime));
+CREATE TABLE pharmacy(pharmacy_id INTEGER PRIMARY KEY NOT NULL, order_id INTEGER NOT NULL REFERENCES medication_order(order_id), dispensed_at TEXT NOT NULL);
 ```
 
 ### Cross-table business conventions
@@ -373,6 +402,12 @@ CREATE TABLE procedureevents(procedureevent_id INTEGER PRIMARY KEY NOT NULL, ord
 - Missing timestamps describe unrecorded times according to the column definition; NULL does not universally establish that an action never happened.
 - Identifiers, text lengths and numeric ranges have no extra restrictions inferred from the current sample. SQL constraints and documented representation conventions are distinguished.
 - All rows are synthetic. MIMIC documentation informs selected meanings, not a claim of original MIMIC identifiers, full schema coverage or patient-record reuse.
+- Laboratory, medication and procedure requests retain separate identifier namespaces; equal local values identify different requests.
+- lab_order.subject_id identifies its patient even when hadm_id is NULL. When hadm_id is present its patient must agree with admissions.subject_id; this is a documented cross-table rule checked by the construction validator.
+- medication_order represents a prescription; pharmacy represents a dispensing record; emar represents an administration or omission associated with one dispensing record.
+- Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.
+- The three order tables are an intentional alternative to MIMIC poe; laboratory-request and dispensing-milestone structures are authored simplifications.
+- Hospital-level procedure_episode is authored and does not reproduce the ICU procedureevents table.
 
 ### Documentation references
 

@@ -1,7 +1,7 @@
 {
   "meaning": "Multiple physical representations of the same instance, not a shared parent for distinct order kinds",
-  "physical_objects": 11,
-  "expected_groups": 9,
+  "physical_objects": 12,
+  "expected_groups": 10,
   "same_identity_examples": [
     [
       "patients",
@@ -20,8 +20,22 @@
     [
       "order_history",
       "lab_order"
+    ],
+    [
+      "medication_order",
+      "pharmacy"
+    ],
+    [
+      "pharmacy",
+      "emar"
     ]
   ],
   "gold_location": "private/identity_gold.json",
-  "classifier_executed": false
+  "classifier_executed": false,
+  "business_relationships": [
+    "patients \u2192 admissions",
+    "patients \u2192 lab_order (optional admission)",
+    "medication_order \u2192 pharmacy \u2192 emar",
+    "procedure_order \u2192 procedure_episode"
+  ]
 }

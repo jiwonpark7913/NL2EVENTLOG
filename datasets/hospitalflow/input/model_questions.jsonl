@@ -38,3 +38,7 @@
 {"id": "HF08P", "question": "Build the complete recorded history of every individual medication administration record."}
 {"id": "HF09", "question": "Extract the full recorded lifecycle for each procedure episode."}
 {"id": "HF09P", "question": "Trace each individual procedure episode through its whole recorded lifecycle."}
+{"id": "HF10", "question": "Extract the full recorded lifecycle for each pharmacy dispensing record."}
+{"id": "HF10P", "question": "Show the complete recorded course associated with each individual pharmacy dispensing record."}
+{"id": "H12", "question": "For each pharmacy dispensing record, extract Medication Dispensed, Medication Administered and Medication Not Given events."}
+{"id": "H12P", "question": "Group the medication dispensing, subsequent doses given and doses not given by the pharmacy dispensing record they refer to."}

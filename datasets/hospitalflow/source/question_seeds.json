@@ -151,5 +151,20 @@
     "id": "HF09",
     "view": "Procedure Episode",
     "question": "Extract the full recorded lifecycle for each procedure episode."
+  },
+  {
+    "id": "HF10",
+    "view": "Pharmacy Dispensing",
+    "question": "Extract the full recorded lifecycle for each pharmacy dispensing record."
+  },
+  {
+    "id": "H12",
+    "view": "Pharmacy Dispensing",
+    "activities": [
+      "Medication Dispensed",
+      "Medication Administered",
+      "Medication Not Given"
+    ],
+    "question": "For each pharmacy dispensing record, extract Medication Dispensed, Medication Administered and Medication Not Given events."
   }
 ]

@@ -24,8 +24,22 @@
     "H11": "Build a timeline for every patient showing verification of their supplementary personal information and their entries into hospital.",
     "HF07": "Show the entire recorded history of each individual laboratory measurement.",
     "HF08": "Build the complete recorded history of every individual medication administration record.",
-    "HF09": "Trace each individual procedure episode through its whole recorded lifecycle."
+    "HF09": "Trace each individual procedure episode through its whole recorded lifecycle.",
+    "HF10": "Show the complete recorded course associated with each individual pharmacy dispensing record.",
+    "H12": "Group the medication dispensing, subsequent doses given and doses not given by the pharmacy dispensing record they refer to."
   },
   "semantic_review": "Assistant reviewed each output against its frozen seed for case/population/activity/answerability equivalence; exact ES and Gold identity are additionally checked by code. This is an author review, not independent paraphrase-quality evaluation.",
-  "revision_note": "Identity-model correction: frozen seeds revised before authoring corresponding paraphrases; existing unchanged seed/output pairs retained."
+  "revision_note": "Identity-model correction: frozen seeds revised before authoring corresponding paraphrases; existing unchanged seed/output pairs retained.",
+  "revision_notes": [
+    {
+      "date": "2026-11-03",
+      "seed_ids": [
+        "HF10",
+        "H12"
+      ],
+      "generator": "Assistant LLM in this conversation; no external API or exact model version claimed.",
+      "prompt": "Paraphrase each frozen Q1/Q3 seed in question_seeds.json. Preserve its case grain, activity scope and answerability; do not add activities or narrow the lifecycle.",
+      "review": "Pharmacy case grain and all three explicit medication outcomes retained."
+    }
+  ]
 }

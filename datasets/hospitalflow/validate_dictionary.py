@@ -15,8 +15,8 @@ def main():
     dictionary = json.loads((P / "input/data_dictionary.json").read_text())
     profile = json.loads((P / "source/dictionary_profile.json").read_text())
     assert dictionary == profile
-    assert len(dictionary["tables"]) == 11
-    assert sum(len(t["columns"]) for t in dictionary["tables"]) == 50
+    assert len(dictionary["tables"]) == 12
+    assert sum(len(t["columns"]) for t in dictionary["tables"]) == 53
     validate_schema(P / "input/database.sqlite", dictionary)
     forbidden = {"event_encoding", "encoding_detail", "carrier_column", "is_event_table",
                  "event_timestamp_columns", "activity_sources", "event_bindings",
@@ -40,7 +40,7 @@ def main():
             actual = list(csv.DictReader(stream))
         expected = [{key: str(value) for key, value in row.items()} for row in rows]
         assert actual == expected, filename
-    assert len(column_rows) == 50
+    assert len(column_rows) == 53
     banned = re.compile(r"row[ _-]+encoding|column[ _-]+encoding|mixed[ _-]+encoding|carrier_column|event_bindings|used_as_event_time|compiled_sql", re.I)
     files = ["input/data_dictionary.json", "input/data_dictionary.md",
              "docs/data_dictionary.md", "docs/data_dictionary.csv",
@@ -87,7 +87,7 @@ def main():
     render(P)
     assert before == {path: (P / path).read_bytes() for path in files}
     assert db_hash == hashlib.sha256((P / "input/database.sqlite").read_bytes()).hexdigest()
-    print("HospitalFlow dictionary: 11 tables, 50 variables, 19 datetime variables and 4 coded variables; schema/artifacts/input boundaries verified.")
+    print("HospitalFlow dictionary: 12 tables, 53 variables, 19 datetime variables and 4 coded variables; schema/artifacts/input boundaries verified.")
 
 if __name__ == "__main__":
     main()

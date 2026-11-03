@@ -15,7 +15,7 @@ def write_identity_gold(p,con,physical,sources):
  # Exact physical own-object contracts, separate from downstream case attribution.
  bindings=[]
  for source in sources:
-  t=source['table'];bindings.append(dict(**source,physical_object=dict(table=t,primary_key=physical[t][2]),own_object_type=physical[t][0],own_path='Own physical row; grouping preserves complete PK and event occurrence identity.',fk_attribution='FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate.' if t in ['order_history','labevents','emar','procedureevents'] else 'Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace.'))
+  t=source['table'];bindings.append(dict(**source,physical_object=dict(table=t,primary_key=physical[t][2]),own_object_type=physical[t][0],own_path='Own physical row; grouping preserves complete PK and event occurrence identity.',fk_attribution={'emar':'emar.pharmacy_id → pharmacy.pharmacy_id → pharmacy.order_id → medication_order.order_id → admissions.hadm_id → patients.subject_id. Dose and dispensing identities remain separate.', 'pharmacy':'pharmacy.order_id → medication_order.order_id → admissions.hadm_id → patients.subject_id. Dispensing identity is distinct from prescription.', 'lab_order':'lab_order.subject_id → patients.subject_id; optional lab_order.hadm_id → admissions.hadm_id. NULL admission does not remove patient attribution.', 'labevents':'labevents.order_id → lab_order.order_id → patients.subject_id; optional admission via lab_order.hadm_id.'}.get(t,'Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace.')))
  js('private/event_binding_provenance.json',bindings)
  for old in ['docs/object_type_membership.json']:(p/old).unlink(missing_ok=True)
 
@@ -38,14 +38,14 @@ def write_docs(p,r,coverage,enc,stats):
 - Patient Profile Verified originates in patient_profile; admission events originate in admissions and Discharge Summary Signed originates in admission_detail. Grouping does not erase the physical source or collapse different events.
 - lab_order, medication_order and procedure_order identify different requests. Their local order_id values overlap deliberately; this does not justify grouping them as one identity-compatible type.
 - order_history.history_id identifies a history occurrence. Its order FK does not make it the same object as an order. Measurement, dose and procedure episode records also keep their own identities.
-- **Gold grouping:** 11 Physical Objects → 9 groups, with exactly two expected MERGE pairs. The pair labels are reference answers, not results of running the user's Step 2 implementation.
+- **Gold grouping:** 12 Physical Objects → 10 groups, with exactly two expected MERGE pairs. The pair labels are reference answers, not results of running the user's Step 2 implementation.
 - [Grouping examples and evaluation boundary](docs/object_type_verification.md)
 
 ## Scenarios and activities
 
 '''+(p/'docs/object_activity_design.md').read_text().split('\n\n',1)[1]
- intro+='\n## Event storage\n\n'+table(['Table','Encoding'],enc.items())+'''
-- Row tables preserve repeat actions. Column tables store actual one-time milestones. Mixed tables preserve repeat occurrences and distinct milestone times within each occurrence.
+ intro+='\n## Event storage\n\n'+table(['Table','Encoding','Activity carrier'],[[name,value,{'order_history':'action','emar':'event_txt'}.get(name,'None')] for name,value in enc.items()])+'''
+- Row identity is selected by action (order_history) or event_txt (emar). Column identity is selected by the timestamp meaning, including repeated lab measurements and procedure episodes. Repeated rows alone do not imply Row encoding. labevents.itemid names a measurement, not an activity carrier at the declared measurement/result activity granularity. pharmacy uses one timestamp and no activity carrier.
 - Only identical case/event occurrences are deduplicated; grouping never merges different event IDs.
 
 ## Question types and pairs
@@ -64,6 +64,13 @@ def write_docs(p,r,coverage,enc,stats):
 - design/, docs/ and this README include construction explanations and answers; exclude them from model inputs. The data dictionary is legitimate input evidence and explicitly describes identifier semantics without supplying final MERGE/SEPARATE labels.
 - Main-schema gold pairs cover two positive split-storage cases and distinct-identity negatives. UNRESOLVED and group-conflict scenarios are separately specified in private/identity_edge_cases.json; these are not claimed live-table cases or executed semantic-judge tests.
 
+## Realism revision
+
+- [Changes, distributions and negative JOIN controls](docs/realism_review.md)
+- Twelve tables keep the design compact: independent order tables are retained intentionally; pharmacy separates dispensing from prescriptions and doses. procedure_episode is authored hospital-level storage, not MIMIC ICU procedureevents.
+- Four outpatient laboratory requests have no hadm_id. Their events belong to the patient and laboratory order, but not to an admission.
+- UTC 2026 timestamps and clean integrity constraints are intentional. Simulation parameters are illustrative and not fitted to MIMIC patient records. ICU, transfers and a noisy variant are deferred.
+
 ## Build and validation
 
 - Run `python datasets/hospitalflow/build.py`, `python make_docs.py`, `python question_summary.py`, `python validate_lifecycles.py` and `python validate_timestamp_columns.py` from the repository root.
@@ -74,7 +81,7 @@ def write_docs(p,r,coverage,enc,stats):
 - [Source references](source/references.md)
 - [Object-specific Gold logs](docs/object_event_logs.md)
 '''
- intro+="\n## Business dictionary review\n\n- [Revised business dictionary](docs/data_dictionary.md) follows Harvard HMS/OSF variable guidance with relational schema extensions; basic information is context rather than a mandatory variable field.\n- [Field checklist and documentation basis](docs/data_dictionary_profile.md) · [Before/after review and remaining questions](docs/data_dictionary_review.md)\n- All 11 tables and 50 variables have readable names, definitions, value domains, NULL meanings and storage metadata. The 19 datetime variables have explicit representation and timezone.\n- The dictionary excludes event classifications, extraction-time selection counts, query scopes and model/Ground-truth instructions. Code meanings and documented identifier relationships remain legitimate business metadata.\n- Use input/model_input_manifest.json for the default model inputs. task_scope_catalog.json remains an optional separate catalog-assisted condition because it supplies explicit activity scopes.\n- Reviewed definitions live in source/dictionary_profile.json. Regenerate with `python hospital_dictionary.py datasets/hospitalflow`; check with `python datasets/hospitalflow/validate_dictionary.py`.\n- This metadata revision does not change the DB, SQL schema or existing Gold event logs. The review report distinguishes static checks from runtime checks not executed during this edit.\n"
+ intro+="\n## Business dictionary review\n\n- [Revised business dictionary](docs/data_dictionary.md) follows Harvard HMS/OSF variable guidance with relational schema extensions; basic information is context rather than a mandatory variable field.\n- [Field checklist and documentation basis](docs/data_dictionary_profile.md) · [Before/after review and remaining questions](docs/data_dictionary_review.md)\n- All 12 tables and 53 variables have readable names, definitions, value domains, NULL meanings and storage metadata. The 19 datetime variables have explicit representation and timezone.\n- The dictionary excludes event classifications, extraction-time selection counts, query scopes and model/Ground-truth instructions. Code meanings and documented identifier relationships remain legitimate business metadata.\n- Use input/model_input_manifest.json for the default model inputs. task_scope_catalog.json remains an optional separate catalog-assisted condition because it supplies explicit activity scopes.\n- Reviewed definitions live in source/dictionary_profile.json. Regenerate with `python hospital_dictionary.py datasets/hospitalflow`; check with `python datasets/hospitalflow/validate_dictionary.py`.\n- The current realism revision changes the DB and regenerates all dependent Gold records. Runtime dictionary, schema and Gold checks pass; the earlier metadata-only review is retained as historical context.\n"
  (p/'README.md').write_text(intro)
  (p/'docs/object_type_verification.md').write_text('''# Physical Object → Object Type identity benchmark
 

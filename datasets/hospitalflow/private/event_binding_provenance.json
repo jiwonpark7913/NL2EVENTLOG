@@ -11,7 +11,7 @@
     },
     "own_object_type": "Hospital Admission",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "admissions",
@@ -25,7 +25,7 @@
     },
     "own_object_type": "Hospital Admission",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "admissions",
@@ -39,7 +39,7 @@
     },
     "own_object_type": "Hospital Admission",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "admissions",
@@ -53,7 +53,7 @@
     },
     "own_object_type": "Hospital Admission",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "patient_profile",
@@ -67,7 +67,7 @@
     },
     "own_object_type": "Patient",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "admission_detail",
@@ -81,7 +81,7 @@
     },
     "own_object_type": "Hospital Admission",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "order_history",
@@ -95,7 +95,7 @@
     },
     "own_object_type": "Order History Record",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "order_history",
@@ -109,7 +109,7 @@
     },
     "own_object_type": "Order History Record",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "order_history",
@@ -123,7 +123,7 @@
     },
     "own_object_type": "Order History Record",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "lab_order",
@@ -137,7 +137,7 @@
     },
     "own_object_type": "Laboratory Order",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "lab_order.subject_id \u2192 patients.subject_id; optional lab_order.hadm_id \u2192 admissions.hadm_id. NULL admission does not remove patient attribution."
   },
   {
     "table": "lab_order",
@@ -151,21 +151,7 @@
     },
     "own_object_type": "Laboratory Order",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
-  },
-  {
-    "table": "medication_order",
-    "activity": "Medication Dispensed",
-    "timestamp_column": "dispensed_at",
-    "encoding": "Column encoding",
-    "event_sql": "SELECT 'MED:'||order_id||':dispense' event_id,'MED:'||order_id object_id,'Medication Dispensed' activity,dispensed_at timestamp FROM medication_order WHERE dispensed_at IS NOT NULL AND (1=1)",
-    "physical_object": {
-      "table": "medication_order",
-      "primary_key": "order_id"
-    },
-    "own_object_type": "Medication Order",
-    "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "lab_order.subject_id \u2192 patients.subject_id; optional lab_order.hadm_id \u2192 admissions.hadm_id. NULL admission does not remove patient attribution."
   },
   {
     "table": "medication_order",
@@ -179,7 +165,7 @@
     },
     "own_object_type": "Medication Order",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
     "table": "procedure_order",
@@ -193,13 +179,27 @@
     },
     "own_object_type": "Procedure Order",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "Own identity; orders use their declared admission FK, and admissions use subject_id. Split profile/admission detail share the explicitly documented parent namespace."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
+  },
+  {
+    "table": "pharmacy",
+    "activity": "Medication Dispensed",
+    "timestamp_column": "dispensed_at",
+    "encoding": "Column encoding",
+    "event_sql": "SELECT 'PHARM:'||pharmacy_id||':dispense' event_id,'MED:'||order_id object_id,'Medication Dispensed' activity,dispensed_at timestamp FROM pharmacy WHERE dispensed_at IS NOT NULL AND (1=1)",
+    "physical_object": {
+      "table": "pharmacy",
+      "primary_key": "pharmacy_id"
+    },
+    "own_object_type": "Pharmacy Dispensing",
+    "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
+    "fk_attribution": "pharmacy.order_id \u2192 medication_order.order_id \u2192 admissions.hadm_id \u2192 patients.subject_id. Dispensing identity is distinct from prescription."
   },
   {
     "table": "labevents",
     "activity": "Lab Measurement Charted",
     "timestamp_column": "charttime",
-    "encoding": "Mixed (row + column)",
+    "encoding": "Column encoding",
     "event_sql": "SELECT 'LABEV:'||e.labevent_id||':chart' event_id,'LAB:'||o.order_id object_id,'Lab Measurement Charted' activity,e.charttime timestamp FROM labevents e JOIN lab_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (1=1)",
     "physical_object": {
       "table": "labevents",
@@ -207,13 +207,13 @@
     },
     "own_object_type": "Lab Measurement",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "labevents.order_id \u2192 lab_order.order_id \u2192 patients.subject_id; optional admission via lab_order.hadm_id."
   },
   {
     "table": "labevents",
     "activity": "Lab Result Available",
     "timestamp_column": "storetime",
-    "encoding": "Mixed (row + column)",
+    "encoding": "Column encoding",
     "event_sql": "SELECT 'LABEV:'||e.labevent_id||':result' event_id,'LAB:'||o.order_id object_id,'Lab Result Available' activity,e.storetime timestamp FROM labevents e JOIN lab_order o ON o.order_id=e.order_id WHERE e.storetime IS NOT NULL AND (1=1)",
     "physical_object": {
       "table": "labevents",
@@ -221,62 +221,62 @@
     },
     "own_object_type": "Lab Measurement",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "labevents.order_id \u2192 lab_order.order_id \u2192 patients.subject_id; optional admission via lab_order.hadm_id."
   },
   {
     "table": "emar",
     "activity": "Medication Administered",
     "timestamp_column": "charttime",
     "encoding": "Row encoding",
-    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Administered' activity,e.charttime timestamp FROM emar e JOIN medication_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Administered')",
+    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Administered' activity,e.charttime timestamp FROM emar e JOIN pharmacy p ON p.pharmacy_id=e.pharmacy_id JOIN medication_order o ON o.order_id=p.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Administered')",
     "physical_object": {
       "table": "emar",
       "primary_key": "emar_id"
     },
     "own_object_type": "Medication Administration",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "emar.pharmacy_id \u2192 pharmacy.pharmacy_id \u2192 pharmacy.order_id \u2192 medication_order.order_id \u2192 admissions.hadm_id \u2192 patients.subject_id. Dose and dispensing identities remain separate."
   },
   {
     "table": "emar",
     "activity": "Medication Not Given",
     "timestamp_column": "charttime",
     "encoding": "Row encoding",
-    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Not Given' activity,e.charttime timestamp FROM emar e JOIN medication_order o ON o.order_id=e.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Not Given')",
+    "event_sql": "SELECT 'EMAR:'||e.emar_id event_id,'MED:'||o.order_id object_id,'Medication Not Given' activity,e.charttime timestamp FROM emar e JOIN pharmacy p ON p.pharmacy_id=e.pharmacy_id JOIN medication_order o ON o.order_id=p.order_id WHERE e.charttime IS NOT NULL AND (e.event_txt='Not Given')",
     "physical_object": {
       "table": "emar",
       "primary_key": "emar_id"
     },
     "own_object_type": "Medication Administration",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "emar.pharmacy_id \u2192 pharmacy.pharmacy_id \u2192 pharmacy.order_id \u2192 medication_order.order_id \u2192 admissions.hadm_id \u2192 patients.subject_id. Dose and dispensing identities remain separate."
   },
   {
-    "table": "procedureevents",
+    "table": "procedure_episode",
     "activity": "Procedure Started",
     "timestamp_column": "starttime",
-    "encoding": "Mixed (row + column)",
-    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':start' event_id,'PROC:'||o.order_id object_id,'Procedure Started' activity,e.starttime timestamp FROM procedureevents e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.starttime IS NOT NULL AND (1=1)",
+    "encoding": "Column encoding",
+    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':start' event_id,'PROC:'||o.order_id object_id,'Procedure Started' activity,e.starttime timestamp FROM procedure_episode e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.starttime IS NOT NULL AND (1=1)",
     "physical_object": {
-      "table": "procedureevents",
+      "table": "procedure_episode",
       "primary_key": "procedureevent_id"
     },
     "own_object_type": "Procedure Episode",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   },
   {
-    "table": "procedureevents",
+    "table": "procedure_episode",
     "activity": "Procedure Completed",
     "timestamp_column": "endtime",
-    "encoding": "Mixed (row + column)",
-    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':end' event_id,'PROC:'||o.order_id object_id,'Procedure Completed' activity,e.endtime timestamp FROM procedureevents e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.endtime IS NOT NULL AND (1=1)",
+    "encoding": "Column encoding",
+    "event_sql": "SELECT 'PROCEV:'||e.procedureevent_id||':end' event_id,'PROC:'||o.order_id object_id,'Procedure Completed' activity,e.endtime timestamp FROM procedure_episode e JOIN procedure_order o ON o.order_id=e.order_id WHERE e.endtime IS NOT NULL AND (1=1)",
     "physical_object": {
-      "table": "procedureevents",
+      "table": "procedure_episode",
       "primary_key": "procedureevent_id"
     },
     "own_object_type": "Procedure Episode",
     "own_path": "Own physical row; grouping preserves complete PK and event occurrence identity.",
-    "fk_attribution": "FK to the corresponding order, then its admission and patient. Own-row history/measurement/dose/episode identities remain separate."
+    "fk_attribution": "Own identity preserved. Declared order FKs lead to admissions and patients; patient_profile and admission_detail use the documented shared parent namespace."
   }
 ]

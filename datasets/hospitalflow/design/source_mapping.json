@@ -2,7 +2,7 @@
   "source": "MIMIC-IV public schema documentation",
   "patient_records_used": false,
   "source_policy": "Reference concepts only; no original schema or patient-record reuse claimed",
-  "accessed": "2026-10-20",
+  "accessed": "2026-11-03",
   "reference_tables": {
     "patients": [
       "subject_id"
@@ -34,6 +34,12 @@
       "starttime",
       "endtime",
       "storetime"
+    ],
+    "pharmacy": [
+      "separate medication pharmacy records; authored schema and dispensing milestone"
+    ],
+    "prescriptions": [
+      "prescription identity and stop-time meaning; medication_order is an authored representation"
     ]
   },
   "authored_tables": [
@@ -42,16 +48,22 @@
     "lab_order",
     "medication_order",
     "procedure_order",
-    "order_history"
+    "order_history",
+    "pharmacy",
+    "procedure_episode"
   ],
   "adaptations": [
     "All records, SQL types and constraints are authored",
     "patients/admissions retain MIMIC-inspired patient/stay grains; optional profile/detail split-storage tables are authored",
     "No generic object, object_type or clinical_order tables are present",
     "Laboratory, medication and procedure orders are distinct business identities with independent local ID namespaces",
-    "Occurrence records are normalized through the appropriate order FK; history uses exactly one of three declared FKs",
-    "emar integer identity and procedureevent_id are authored simplifications",
-    "Identity group answers are private evaluation annotations, not input DB tables"
+    "Identity group answers are private evaluation annotations, not input DB tables",
+    "Separate order tables intentionally replace the MIMIC poe organization; medication_order represents a prescription, not pharmacy dispensing.",
+    "pharmacy is a simplified authored dispensing object with dispensed_at, not a replica of MIMIC pharmacy columns. emar references pharmacy directly.",
+    "lab_order is authored. Its required subject_id preserves outpatient attribution when hadm_id is NULL; no direct replication of MIMIC specimen structure is claimed.",
+    "procedure_episode uses familiar start/end timing but is hospital-level authored storage; original ICU procedureevents/stay_id is not reproduced.",
+    "Synthetic subject IDs use 1xxxxxxx, admission IDs 2xxxxxxx; shuffled independent order IDs use 3xxxxxxx, with deliberate partial inter-order namespace overlap.",
+    "Prescription/dispensing/administration joins follow authored declared keys, not original MIMIC join identities."
   ],
   "reference_urls": [
     "https://mimic.mit.edu/docs/iv/modules/hosp/patients.html",
@@ -59,6 +71,8 @@
     "https://mimic.mit.edu/docs/iv/modules/hosp/poe.html",
     "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
     "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
-    "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html"
+    "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html",
+    "https://mimic.mit.edu/docs/iv/modules/hosp/pharmacy.html",
+    "https://mimic.mit.edu/docs/iv/modules/hosp/prescriptions.html"
   ]
 }

@@ -167,7 +167,7 @@ build("warehouseflow",{"warehouse":(575,130),"goods":(65,130),"loader":(1085,130
 build("plateflow",{"slab_material":(65,130),"planned_rolling_instruction":(575,130),"rolling_instruction":(1085,130),"furnace_charge_tracking":(65,480),"as_rolled_material":(575,480),"cutting_finishing_instruction":(1085,480),"plate_material":(65,830),"material_operation_history":(575,830),"operation_code":(1085,830)},"PlateFlow · Korean manufacturer")
 
 build("universityflow",{"student":(65,130),"course":(575,130),"instructor":(1085,130),"degree_examination_result":(65,480),"registration":(575,480),"assignment":(1085,480),"task":(65,830),"simulation_module":(575,830),"assignment_grading":(1085,830),"thesis":(65,1180),"student_simulation_experiment_result":(575,1180)},"UniversityFlow · combined RSchema examples")
-build("hospitalflow",{"patients":(65,130),"patient_profile":(575,130),"admissions":(1085,130),"lab_order":(65,480),"medication_order":(575,480),"procedure_order":(1085,480),"labevents":(65,830),"emar":(575,830),"procedureevents":(1085,830),"order_history":(65,1180),"admission_detail":(1085,1180)},"HospitalFlow · split business-object storage")
+build("hospitalflow",{"patients":(65,130),"patient_profile":(575,130),"admissions":(1085,130),"lab_order":(65,480),"medication_order":(575,480),"procedure_order":(1085,480),"labevents":(65,830),"emar":(575,830),"procedure_episode":(1085,830),"order_history":(65,1180),"pharmacy":(575,1180),"admission_detail":(1085,1180)},"HospitalFlow · split business-object storage")
 # This dataset has a clean business-dictionary renderer; do not apply legacy answer annotations.
 import subprocess,sys
 for variant in ["plateflow_new","warehouseflow_new"]:
