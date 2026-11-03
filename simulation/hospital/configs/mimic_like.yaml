@@ -1,0 +1,661 @@
+# =============================================================================
+# HospitalFlow simulator — MIMIC-IV-like configuration
+#
+#   0. run settings      seed, clock
+#   1. objects           object types, attributes, identifier rules
+#   2. variables         every tunable number / distribution ($name)
+#   3. process           patient arrivals and the care process (flows)
+#   4. recording         how the true history is stored in tables
+#   +  catalogs          reference lists (units, drugs, lab items, codes)
+#
+# Durations are in MINUTES unless a dist has `unit: h` or `unit: d`.
+# Default numbers are ILLUSTRATIVE, not calibrated to MIMIC. Calibrate them
+# (e.g. against MIMIC-IV Demo summary statistics) before reporting results.
+# =============================================================================
+
+seed: 42
+clock:
+  start: "2150-01-01T00:00:00"        # MIMIC-style shifted dates
+  observation_end_days: 400           # events after this are censored (ongoing stays)
+
+# =============================================================================
+# 1. OBJECTS
+#    links:      parent types this object is attached to when created
+#                (taken from what is bound in the current flow)
+#    attributes: generated once at creation (dist, {pick: catalog}, ...)
+#    id:         how the DB identifier is formed (see hospital_sim/ids.py)
+# =============================================================================
+objects:
+  patient:
+    attributes:
+      gender: {dist: choice, values: [F, M]}
+      anchor_age: {dist: triangular, low: 18, mode: 64, high: 91, round: 0}
+    id: {start: 10000000, step: {dist: int_uniform, low: 1, high: 900}, order: random}
+
+  admission:
+    links: [patient]
+    attributes:
+      admission_type: {dist: choice, values: [EW EMER., URGENT, ELECTIVE, OBSERVATION ADMIT], weights: [6, 2, 2, 1]}
+      discharge_location: {dist: choice, values: [HOME, HOME HEALTH CARE, SKILLED NURSING FACILITY, REHAB], weights: [6, 2, 2, 1]}
+    id: {start: 20000000, step: {dist: int_uniform, low: 1, high: 900}, order: random}
+
+  ed_stay:
+    links: [patient]                   # admission is linked later, only if admitted
+    attributes:
+      acuity: {dist: choice, values: [1, 2, 3, 4, 5], weights: [1, 8, 12, 4, 1]}
+      chiefcomplaint: {dist: choice, values: [Chest pain, Dyspnea, Abd pain, Fever, Fall, Weakness]}
+    id: {same_as: transfer, pick: first}     # stay_id = first transfer_id of the stay
+
+  transfer:
+    links: [patient, admission]        # ED / ICU parent added per flow with link_to
+    id: {start: 30000000, step: {dist: int_uniform, low: 1, high: 900}, order: random}
+
+  icu_stay:
+    links: [patient, admission]
+    id: {same_as: transfer, pick: first}
+
+  order:                               # provider order (MIMIC poe)
+    links: [patient, admission]
+    id: {from_row: {table: poe, activity: Order Entered}}
+
+  pharmacy_order:                      # one dispensing record, stored in TWO tables
+    links: [patient, admission, order]
+    attributes:
+      med: {pick: medications}
+    id: {start: 40000000, step: {dist: int_uniform, low: 1, high: 400}, order: random}
+
+  specimen:
+    links: [patient, admission]
+    attributes:
+      panel: {pick: lab_panels}
+    id: {start: 50000000, step: {dist: int_uniform, low: 1, high: 400}, order: random}
+
+  lab_result:
+    links: [specimen, patient, admission]
+    attributes:
+      item: {lookup: lab_items, key: itemid}       # current panel element
+      value: {sample: item.value, round: 2}
+    id: {start: 1, step: 1, order: creation}
+
+  icu_procedure:
+    links: [patient, admission, icu_stay]
+    attributes:
+      item: {pick: icu_procedures}
+    id: {start: 60000000, step: {dist: int_uniform, low: 1, high: 400}, order: random}
+
+  diagnosis:                           # billing code, no own identifier
+    links: [patient, admission]
+    attributes:
+      code: {pick: diagnoses}
+
+# =============================================================================
+# 2. VARIABLES   (referenced as $name; override with --set name=value)
+# =============================================================================
+variables:
+  # arrivals
+  n_patients: 60
+  arrival_window_days: 365
+  encounters_per_patient: {dist: geometric, p: 0.7}          # 1, 2, 3 ...
+  gap_between_encounters: {dist: lognormal, median: 45, sigma: 1.0, unit: d, min: 2}
+  p_outpatient_lab_only: 0.15
+  p_via_ed: 0.7
+
+  # emergency department
+  triage_delay: {dist: lognormal, median: 12, sigma: 0.6}
+  ed_los: {dist: lognormal, median: 5, sigma: 0.5, unit: h}
+  ed_vital_gap: {dist: lognormal, median: 90, sigma: 0.4, min: 15}
+  ed_vital_first: {dist: uniform, low: 5, high: 30}
+  p_ed_admit: 0.45
+  admit_decision_delay: {dist: lognormal, median: 40, sigma: 0.5}
+  ed_boarding: {dist: lognormal, median: 2.5, sigma: 0.6, unit: h}
+
+  # inpatient path
+  ward_los: {dist: lognormal, median: 40, sigma: 0.7, unit: h}
+  n_ward_moves: {dist: poisson, mean: 0.4}
+  p_icu: 0.25
+  icu_los: {dist: lognormal, median: 50, sigma: 0.7, unit: h}
+  n_icu_moves: {dist: poisson, mean: 0.2}
+  p_in_hospital_death: 0.03
+
+  # orders and medications
+  n_med_orders: {dist: poisson, mean: 6}
+  first_order_delay: {dist: lognormal, median: 2, sigma: 0.6, unit: h}
+  order_gap: {dist: exponential, mean: 10, unit: h}
+  pharmacy_entry_delay: {dist: lognormal, median: 20, sigma: 0.5}
+  pharmacy_verify_delay: {dist: lognormal, median: 25, sigma: 0.6}
+  med_start_delay: {dist: lognormal, median: 60, sigma: 0.5}
+  med_duration: {dist: lognormal, median: 48, sigma: 0.8, unit: h}
+  p_dose_not_given: 0.08
+  emar_store_delay: {dist: lognormal, median: 4, sigma: 0.7}
+  emar_schedule_offset: {dist: normal, mean: 0, sd: 20}
+
+  # laboratory
+  n_lab_draws: {dist: poisson, mean: 8}
+  first_lab_delay: {dist: lognormal, median: 1, sigma: 0.5, unit: h}
+  lab_gap: {dist: lognormal, median: 14, sigma: 0.5, unit: h}
+  lab_tat: {dist: lognormal, median: 50, sigma: 0.6}
+  n_outpatient_draws: {dist: int_uniform, low: 1, high: 2}
+
+  # ICU procedures
+  n_icu_procedures: {dist: poisson, mean: 2}
+  icu_proc_first: {dist: uniform, low: 0, high: 6, unit: h}
+  icu_proc_gap: {dist: lognormal, median: 12, sigma: 0.6, unit: h}
+  proc_store_delay: {dist: lognormal, median: 15, sigma: 0.7}
+
+  # diagnoses
+  n_diagnoses: {dist: int_uniform, low: 1, high: 6}
+
+# =============================================================================
+# 3. PROCESS
+#    arrivals: how many patients, when they first show up
+#    entry:    flow executed for each patient (patient bound as `patient`)
+#    flows:    named, reusable process fragments (see hospital_sim/engine.py)
+# =============================================================================
+process:
+  root_object: patient
+  arrivals:
+    patients: $n_patients
+    window_days: $arrival_window_days
+    #               00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+    hour_profile:   [3, 2, 2, 2, 2, 2, 3, 5, 7, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 7, 6, 5, 4, 3]
+    weekday_profile: [10, 9, 9, 9, 9, 7, 7]          # Mon..Sun
+  entry: patient_journey
+
+  flows:
+    patient_journey:
+      - repeat: encounter
+        count: $encounters_per_patient
+        gap: $gap_between_encounters
+        isolate: true                  # objects of one encounter never leak into the next
+
+    encounter:
+      - xor:
+          - p: $p_outpatient_lab_only
+            do: outpatient_labs
+          - else: true
+            do:
+              - xor:
+                  - p: $p_via_ed
+                    do: ed_visit
+                  - else: true
+                    do: direct_admission
+
+    # ---------------------------------------------------------------- ED
+    ed_visit:
+      - create: ed_stay
+        as: ed
+      - create: transfer
+        as: ed_tr
+        attrs: {eventtype: ED, careunit: Emergency Department}
+        link_to: [ed]
+      - act: ED Arrival
+        on: [ed, ed_tr, patient]
+      - act: Triage
+        on: [ed]
+        delay: $triage_delay
+      - during:
+          main: [{wait: $ed_los}]
+          background:
+            - spawn: [{act: ED Vital Signs, on: [ed], attrs: {heartrate: {dist: normal, mean: 88, sd: 16, round: 0}, sbp: {dist: normal, mean: 128, sd: 20, round: 0}, o2sat: {dist: normal, mean: 97, sd: 2, max: 100, round: 0}}}]
+              count: 30
+              start: $ed_vital_first
+              gap: $ed_vital_gap
+      - xor:
+          - p: $p_ed_admit
+            do:
+              - create: admission
+                as: adm
+                attrs: {admission_type: EW EMER.}
+              - link: {ed: [adm], ed_tr: [adm]}
+              - set: {ed: {disposition: ADMITTED}}
+              - act: Hospital Admitted
+                on: [adm, patient]
+                delay: $admit_decision_delay
+              - act: ED Departure
+                on: [ed, ed_tr]
+                delay: $ed_boarding
+              - inpatient_stay
+          - else: true
+            do:
+              - set: {ed: {disposition: HOME}}
+              - act: ED Departure
+                on: [ed, ed_tr]
+
+    direct_admission:
+      - create: admission
+        as: adm
+      - act: Hospital Admitted
+        on: [adm, patient]
+      - inpatient_stay
+
+    # ---------------------------------------------------------------- inpatient
+    inpatient_stay:
+      - during:
+          main: inpatient_path            # its end (discharge) bounds the background
+          background: [inpatient_orders]
+      - spawn: [{create: diagnosis}]      # coded after discharge, no event
+        count: $n_diagnoses
+
+    inpatient_path:
+      - create: transfer
+        as: tr
+        attrs: {eventtype: admit, careunit: {dist: choice, values: [Medicine, Cardiology, Surgery, Neurology]}}
+      - act: Unit Entered
+        on: [tr]
+      - wait: $ward_los
+      - xor:
+          - p: $p_icu
+            do:
+              - act: Unit Left
+                on: [tr]
+              - icu_episode
+              - ward_segment
+          - else: true
+            do:
+              - repeat: [{act: Unit Left, on: [tr]}, ward_segment]
+                count: $n_ward_moves
+      - xor:
+          - p: $p_in_hospital_death
+            do:
+              - set: {adm: {discharge_location: DIED}}
+              - act: Patient Died
+                on: [adm, patient]
+      - act: Unit Left
+        on: [tr]
+      - create: transfer
+        as: dtr
+        attrs: {eventtype: discharge}
+      - act: Hospital Discharged
+        on: [adm, patient, dtr]
+
+    ward_segment:
+      - create: transfer
+        as: tr
+        attrs: {eventtype: transfer, careunit: {dist: choice, values: [Medicine, Cardiology, Surgery, Neurology]}}
+      - act: Unit Entered
+        on: [tr]
+      - wait: $ward_los
+
+    icu_episode:
+      - create: icu_stay
+        as: icu
+      - during:
+          main:
+            - create: transfer
+              as: itr
+              attrs: {eventtype: transfer, careunit: {dist: choice, values: [MICU, SICU, CVICU]}}
+              link_to: [icu]
+            - act: Unit Entered
+              on: [itr, icu]
+            - wait: $icu_los
+            - repeat:                    # move between ICUs within ONE ICU stay
+                - act: Unit Left
+                  on: [itr, icu]
+                - create: transfer
+                  as: itr
+                  attrs: {eventtype: transfer, careunit: {dist: choice, values: [MICU, SICU, CVICU]}}
+                  link_to: [icu]
+                - act: Unit Entered
+                  on: [itr, icu]
+                - wait: $icu_los
+              count: $n_icu_moves
+            - act: Unit Left
+              on: [itr, icu]
+          background:
+            - spawn: icu_procedure_flow
+              count: $n_icu_procedures
+              start: $icu_proc_first
+              gap: $icu_proc_gap
+
+    icu_procedure_flow:
+      - create: icu_procedure
+        as: proc
+      - act: Procedure Started
+        on: [proc]
+      - act: Procedure Ended
+        on: [proc]
+        delay: {from_attr: proc.item.duration}
+        clip: true
+
+    # ---------------------------------------------------------------- orders
+    inpatient_orders:
+      - and:
+          - - spawn: medication_flow
+              count: $n_med_orders
+              start: $first_order_delay
+              gap: $order_gap
+          - - spawn: inpatient_lab_flow
+              count: $n_lab_draws
+              start: $first_lab_delay
+              gap: $lab_gap
+
+    medication_flow:
+      - create: order
+        as: ord
+        attrs: {order_type: Medications}
+      - act: Order Entered
+        on: [ord]
+      - create: pharmacy_order
+        as: rx
+      - act: Pharmacy Entered
+        on: [rx]
+        delay: $pharmacy_entry_delay
+      - act: Pharmacy Verified
+        on: [rx]
+        delay: $pharmacy_verify_delay
+      - act: Medication Started
+        on: [rx]
+        delay: $med_start_delay
+      - during:
+          main:
+            - act: Order Discontinued
+              on: [ord]
+              delay: $med_duration
+              clip: true                 # still running at discharge -> stopped then
+            - act: Medication Stopped
+              on: [rx]
+              clip: true
+          background:
+            - spawn:
+                - xor:
+                    - p: $p_dose_not_given
+                      do: [{act: Medication Not Given, on: [ord, rx]}]
+                    - else: true
+                      do: [{act: Medication Administered, on: [ord, rx]}]
+              count: 200
+              gap: {from_attr: rx.med.interval, unit: h}
+
+    inpatient_lab_flow:
+      - create: order
+        as: ord
+        attrs: {order_type: Lab}
+      - act: Order Entered
+        on: [ord]
+      - lab_draw
+
+    outpatient_labs:                    # no admission bound -> hadm_id stays NULL
+      - repeat: lab_draw
+        count: $n_outpatient_draws
+        gap: {dist: uniform, low: 1, high: 7, unit: d}
+
+    lab_draw:
+      - create: specimen
+        as: spec
+      - act: Specimen Collected
+        on: [spec]
+        delay: {dist: uniform, low: 5, high: 45}
+      - spawn:
+          - create: lab_result
+            as: res
+          - act: Result Available
+            on: [res]
+            delay: $lab_tat
+        foreach: spec.panel.items
+
+# =============================================================================
+# 4. RECORDING  — what the database looks like
+#    kind: object (row per object) | event (row per event) | static (catalog)
+#    Column sources and modifiers: see hospital_sim/recorder.py
+# =============================================================================
+recording:
+  time_format: "%Y-%m-%d %H:%M:%S"
+  date_format: "%Y-%m-%d"
+  time_precision: s
+
+  tables:
+    - name: patients
+      kind: object
+      object: patient
+      desc: One row per patient.
+      columns:
+        subject_id: {id: self, pk: true, desc: Patient identifier.}
+        gender: {attr: gender}
+        anchor_age: {attr: anchor_age}
+
+    - name: admissions
+      kind: object
+      object: admission
+      desc: One row per hospital admission. Milestones stored as columns.
+      columns:
+        hadm_id: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        admittime: {event_time: Hospital Admitted}
+        dischtime: {event_time: Hospital Discharged}
+        deathtime: {event_time: Patient Died}
+        admission_type: {attr: admission_type}
+        discharge_location: {attr: discharge_location}
+        edregtime: {event_time: ED Arrival, of: ed_stay}
+        edouttime: {event_time: ED Departure, of: ed_stay}
+
+    - name: transfers
+      kind: object
+      object: transfer
+      desc: One row per unit stay, including ED and the discharge pseudo-transfer.
+      columns:
+        transfer_id: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id, desc: NULL for ED visits without admission.}
+        eventtype: {attr: eventtype}
+        careunit: {attr: careunit}
+        intime: {event_time: [ED Arrival, Unit Entered, Hospital Discharged]}
+        outtime: {event_time: [ED Departure, Unit Left], pick: last}
+
+    - name: edstays
+      kind: object
+      object: ed_stay
+      columns:
+        stay_id: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        intime: {event_time: ED Arrival}
+        outtime: {event_time: ED Departure}
+        disposition: {attr: disposition}
+
+    - name: triage                      # no timestamp at all
+      kind: object
+      object: ed_stay
+      columns:
+        stay_id: {id: self, fk: edstays.stay_id}
+        subject_id: {id: patient}
+        acuity: {attr: acuity}
+        chiefcomplaint: {attr: chiefcomplaint}
+
+    - name: vitalsign
+      kind: event
+      activities: [ED Vital Signs]
+      columns:
+        stay_id: {id: ed_stay, fk: edstays.stay_id}
+        subject_id: {id: patient}
+        charttime: {time: event}
+        heartrate: {event_attr: heartrate}
+        sbp: {event_attr: sbp}
+        o2sat: {event_attr: o2sat}
+
+    - name: icustays
+      kind: object
+      object: icu_stay
+      columns:
+        stay_id: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        first_careunit: {attr: careunit, of: transfer}
+        intime: {event_time: Unit Entered}
+        outtime: {event_time: Unit Left, pick: last}
+
+    - name: poe                         # one row per order transaction
+      kind: event
+      activities: [Order Entered, Order Discontinued]
+      object: order
+      columns:
+        poe_id: {rowid: {format: "{patient}-{seq}", seq_per: patient}, pk: true}
+        poe_seq: {seq: patient}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        ordertime: {time: event}
+        order_type: {attr: order_type}
+        transaction_type: {activity_map: {Order Entered: New, Order Discontinued: D/C}}
+        discontinue_of_poe_id: {rowid_of: {table: poe, activity: Order Entered, of: order}, only_for: [Order Discontinued]}
+
+    - name: pharmacy
+      kind: object
+      object: pharmacy_order
+      columns:
+        pharmacy_id: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        poe_id: {rowid_of: {table: poe, activity: Order Entered, of: order}, fk: poe.poe_id}
+        medication: {attr: med.drug}
+        route: {attr: med.route}
+        entertime: {event_time: Pharmacy Entered}
+        verifiedtime: {event_time: Pharmacy Verified}
+        starttime: {event_time: Medication Started}
+        stoptime: {event_time: Medication Stopped}
+
+    - name: prescriptions               # SAME object as pharmacy, other columns
+      kind: object
+      object: pharmacy_order
+      columns:
+        pharmacy_id: {id: self, fk: pharmacy.pharmacy_id}
+        poe_id: {rowid_of: {table: poe, activity: Order Entered, of: order}}
+        subject_id: {id: patient}
+        hadm_id: {id: admission}
+        drug: {attr: med.drug}
+        dose_val_rx: {attr: med.dose}
+        dose_unit_rx: {attr: med.dose_unit}
+        starttime: {event_time: Medication Started}
+        stoptime: {event_time: Medication Stopped}
+
+    - name: emar
+      kind: event
+      activities: [Medication Administered, Medication Not Given]
+      object: pharmacy_order
+      columns:
+        emar_id: {rowid: {format: "{patient}-{seq}", seq_per: patient}, pk: true}
+        emar_seq: {seq: patient}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        poe_id: {rowid_of: {table: poe, activity: Order Entered, of: order}}
+        pharmacy_id: {id: pharmacy_order, fk: pharmacy.pharmacy_id}
+        charttime: {time: event}
+        scheduletime: {time: event, offset: $emar_schedule_offset, precision: h}
+        storetime: {time: event, offset: $emar_store_delay}
+        medication: {attr: med.drug, of: pharmacy_order}
+        event_txt: {activity_map: {Medication Administered: Administered, Medication Not Given: Not Given}}
+
+    - name: d_labitems
+      kind: static
+      catalog: lab_items
+      columns:
+        itemid: {field: itemid, pk: true}
+        label: {field: label}
+        fluid: {field: fluid}
+        category: {field: category}
+
+    - name: labevents
+      kind: object
+      object: lab_result
+      columns:
+        labevent_id: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id, desc: NULL for outpatient tests.}
+        specimen_id: {id: specimen}
+        itemid: {attr: item.itemid, fk: d_labitems.itemid}
+        charttime: {event_time: Specimen Collected, of: specimen, desc: Specimen collection time.}
+        storetime: {event_time: Result Available, desc: Result availability time.}
+        valuenum: {attr: value}
+        valueuom: {attr: item.unit}
+
+    - name: d_items
+      kind: static
+      catalog: icu_procedures
+      columns:
+        itemid: {field: itemid, pk: true}
+        label: {field: label}
+        category: {field: category}
+
+    - name: procedureevents
+      kind: object
+      object: icu_procedure
+      columns:
+        orderid: {id: self, pk: true}
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        stay_id: {id: icu_stay, fk: icustays.stay_id}
+        itemid: {attr: item.itemid, fk: d_items.itemid}
+        starttime: {event_time: Procedure Started}
+        endtime: {event_time: Procedure Ended}
+        storetime: {event_time: Procedure Ended, offset: $proc_store_delay}
+
+    - name: procedures_icd              # same procedures, billing view, DATE only
+      kind: object
+      object: icu_procedure
+      columns:
+        subject_id: {id: patient}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        chartdate: {event_time: Procedure Started, format: date}
+        icd_code: {attr: item.icd_code}
+        icd_version: {const: 10}
+
+    - name: diagnoses_icd               # no time; case attribute, not an event
+      kind: object
+      object: diagnosis
+      columns:
+        subject_id: {id: patient, fk: patients.subject_id}
+        hadm_id: {id: admission, fk: admissions.hadm_id}
+        seq_num: {seq: admission}
+        icd_code: {attr: code.icd_code}
+        icd_version: {const: 10}
+
+    - name: d_icd_diagnoses
+      kind: static
+      catalog: diagnoses
+      columns:
+        icd_code: {field: icd_code, pk: true}
+        long_title: {field: long_title}
+
+# =============================================================================
+# CATALOGS  (synthetic item ids — NOT MIMIC itemids)
+# =============================================================================
+catalogs:
+  medications:
+    - {drug: Heparin, route: SC, dose: 5000, dose_unit: UNIT, interval: 8, weight: 5}
+    - {drug: Acetaminophen, route: PO, dose: 650, dose_unit: mg, interval: 6, weight: 6}
+    - {drug: Ondansetron, route: IV, dose: 4, dose_unit: mg, interval: 8, weight: 3}
+    - {drug: Metoprolol Tartrate, route: PO, dose: 25, dose_unit: mg, interval: 12, weight: 3}
+    - {drug: Pantoprazole, route: IV, dose: 40, dose_unit: mg, interval: 24, weight: 3}
+    - {drug: Ceftriaxone, route: IV, dose: 1, dose_unit: g, interval: 24, weight: 2}
+    - {drug: Insulin, route: SC, dose: 4, dose_unit: UNIT, interval: 6, weight: 3}
+
+  lab_panels:
+    - {panel: BMP, items: [900001, 900002, 900003, 900004, 900005], weight: 6}
+    - {panel: CBC, items: [900011, 900012, 900013], weight: 6}
+    - {panel: Troponin, items: [900021], weight: 2}
+    - {panel: Lactate, items: [900031], weight: 1}
+
+  lab_items:
+    - {itemid: 900001, label: Sodium, fluid: Blood, category: Chemistry, unit: mEq/L, value: {dist: normal, mean: 139, sd: 4}}
+    - {itemid: 900002, label: Potassium, fluid: Blood, category: Chemistry, unit: mEq/L, value: {dist: normal, mean: 4.2, sd: 0.5}}
+    - {itemid: 900003, label: Creatinine, fluid: Blood, category: Chemistry, unit: mg/dL, value: {dist: lognormal, median: 1.0, sigma: 0.4}}
+    - {itemid: 900004, label: Glucose, fluid: Blood, category: Chemistry, unit: mg/dL, value: {dist: lognormal, median: 115, sigma: 0.3}}
+    - {itemid: 900005, label: Urea Nitrogen, fluid: Blood, category: Chemistry, unit: mg/dL, value: {dist: lognormal, median: 18, sigma: 0.5}}
+    - {itemid: 900011, label: Hemoglobin, fluid: Blood, category: Hematology, unit: g/dL, value: {dist: normal, mean: 11.5, sd: 2}}
+    - {itemid: 900012, label: White Blood Cells, fluid: Blood, category: Hematology, unit: K/uL, value: {dist: lognormal, median: 8, sigma: 0.4}}
+    - {itemid: 900013, label: Platelet Count, fluid: Blood, category: Hematology, unit: K/uL, value: {dist: normal, mean: 230, sd: 70, min: 10}}
+    - {itemid: 900021, label: Troponin T, fluid: Blood, category: Chemistry, unit: ng/mL, value: {dist: lognormal, median: 0.02, sigma: 1.0}}
+    - {itemid: 900031, label: Lactate, fluid: Blood, category: Blood Gas, unit: mmol/L, value: {dist: lognormal, median: 1.4, sigma: 0.5}}
+
+  icu_procedures:
+    - {itemid: 910001, label: Invasive Ventilation, category: Ventilation, icd_code: 5A1955Z, duration: {dist: lognormal, median: 30, sigma: 0.7, unit: h}, weight: 2}
+    - {itemid: 910002, label: Arterial Line, category: Access Lines, icd_code: 02HW33Z, duration: {dist: lognormal, median: 48, sigma: 0.6, unit: h}, weight: 3}
+    - {itemid: 910003, label: Chest X-Ray, category: Imaging, icd_code: BW03ZZZ, duration: {dist: uniform, low: 10, high: 30}, weight: 4}
+    - {itemid: 910004, label: Dialysis - CRRT, category: Dialysis, icd_code: 5A1D90Z, duration: {dist: lognormal, median: 20, sigma: 0.5, unit: h}, weight: 1}
+
+  diagnoses:
+    - {icd_code: I10, long_title: Essential (primary) hypertension, weight: 6}
+    - {icd_code: E119, long_title: Type 2 diabetes mellitus without complications, weight: 4}
+    - {icd_code: J189, long_title: "Pneumonia, unspecified organism", weight: 3}
+    - {icd_code: N179, long_title: "Acute kidney failure, unspecified", weight: 3}
+    - {icd_code: I4891, long_title: Unspecified atrial fibrillation, weight: 3}
+    - {icd_code: A419, long_title: "Sepsis, unspecified organism", weight: 2}
+    - {icd_code: I509, long_title: "Heart failure, unspecified", weight: 3}
+    - {icd_code: E871, long_title: Hypo-osmolality and hyponatremia, weight: 2}

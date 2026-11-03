@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HospitalFlow Simulator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --line:#e3e6ea; --line2:#cfd4da; --text:#1d232a; --muted:#6b7480;
+  --accent:#2563eb; --accent-bg:#e8efff; --warn:#b45309; --warn-bg:#fff4e0; --ok:#15803d; --ok-bg:#e7f6ec;
+  --chip:#f0f2f5; --mono: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:13px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR",sans-serif}
+header{height:48px;display:flex;align-items:center;gap:10px;padding:0 14px;background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:14px;margin:0 10px 0 0;font-weight:650}
+header select,header input{height:28px;border:1px solid var(--line2);border-radius:6px;padding:0 8px;background:#fff;font:inherit}
+header input#seed{width:70px}
+button{height:28px;border:1px solid var(--line2);border-radius:6px;padding:0 12px;background:#fff;font:inherit;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button:disabled{opacity:.5;cursor:default}
+#status{margin-left:auto;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45vw}
+#status.err{color:#b91c1c}
+#dirty{color:var(--warn);font-weight:600;display:none}
+main{display:grid;grid-template-columns:340px 1fr 420px;height:calc(100% - 48px)}
+section.panel{overflow:auto;border-right:1px solid var(--line);background:var(--panel)}
+section.panel:last-child{border-right:none}
+.ph{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 14px 8px}
+.ph h2{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ph .sub{color:var(--muted);font-size:12px;margin-top:2px}
+.pb{padding:10px 14px 40px}
+.search{width:100%;height:28px;margin-top:8px;border:1px solid var(--line2);border-radius:6px;padding:0 8px;font:inherit}
+
+/* ---------- variables */
+.group{margin:6px 0 14px}
+.group>.gh{font-weight:650;font-size:12px;color:var(--muted);cursor:pointer;user-select:none;padding:4px 0;border-bottom:1px solid var(--line)}
+.group.closed .var{display:none}
+.var{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:8px;background:#fff}
+.var.changed{border-color:var(--warn)}
+.var.hl{outline:2px solid var(--accent)}
+.vh{display:flex;align-items:center;gap:6px}
+.vname{font-family:var(--mono);font-weight:600;cursor:pointer}
+.vname:hover{color:var(--accent)}
+.uses{margin-left:auto;color:var(--muted);font-size:11px;text-align:right}
+.row{display:flex;gap:6px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.row label{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+.row input,.row select{height:26px;border:1px solid var(--line2);border-radius:5px;padding:0 6px;font:inherit;width:78px;background:#fff}
+.row input.wide{width:100%}
+.row select.dist{width:112px}
+.row input[type=range]{width:150px;padding:0}
+textarea.raw{width:100%;font-family:var(--mono);font-size:12px;border:1px solid var(--line2);border-radius:5px;padding:4px 6px;margin-top:6px}
+.prev{display:flex;gap:8px;align-items:center;margin-top:6px;color:var(--muted);font-size:11px}
+.prev canvas{width:120px;height:30px;border-bottom:1px solid var(--line2)}
+.err-inline{color:#b91c1c;font-size:11px;margin-top:4px}
+
+/* ---------- process */
+.arrivals{border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:14px;background:#fff}
+.hours{display:flex;align-items:flex-end;gap:2px;height:34px;margin-top:6px}
+.hours div{flex:1;background:var(--line2);border-radius:2px 2px 0 0}
+.flow{margin:0 0 18px}
+.flow>.fh{display:flex;align-items:center;gap:8px;margin:0 0 6px}
+.flow>.fh b{font-family:var(--mono);font-size:13px}
+.flow.flash>.body{animation:flash 1.2s}
+@keyframes flash{0%{background:var(--accent-bg)}100%{background:transparent}}
+.tag{font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:1px 6px;border-radius:10px;background:var(--chip);color:var(--muted)}
+.tag.entry{background:var(--accent-bg);color:var(--accent)}
+.seq{display:flex;flex-direction:column;align-items:flex-start}
+.seq>.n+.n{margin-top:14px;position:relative}
+.seq>.n+.n::before{content:"";position:absolute;left:18px;top:-14px;height:14px;border-left:1.5px solid var(--line2)}
+.act{border:1px solid var(--line2);border-radius:8px;background:#fff;padding:6px 10px;min-width:180px;max-width:420px;cursor:default}
+.act .t{font-weight:600}
+.act .m{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.chip{font-size:11px;padding:0 6px;border-radius:9px;background:var(--chip);color:#384049;font-family:var(--mono);white-space:nowrap}
+.chip.obj{cursor:pointer}
+.chip.var{cursor:pointer;background:#fff;border:1px solid var(--line2)}
+.chip.cnt{background:var(--ok-bg);color:var(--ok)}
+.chip.miss{background:var(--warn-bg);color:var(--warn)}
+.small{font-size:12px;color:var(--muted);padding:2px 8px;border:1px dashed var(--line2);border-radius:6px;background:#fff}
+.small .chip{margin-left:2px}
+.call{font-family:var(--mono);font-size:12px;padding:3px 10px;border:1px solid var(--line2);border-radius:14px;background:#fff;cursor:pointer}
+.call:hover{border-color:var(--accent);color:var(--accent)}
+.blk{border:1px solid var(--line);border-radius:10px;padding:8px 10px 10px;background:#fafbfc}
+.blk>.bh{font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.blk>.bh .sym{font-weight:700;color:#384049;font-size:12px}
+.branches{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.branch{border-left:2px solid var(--line2);padding-left:8px}
+.branch>.bl{font-size:11px;color:var(--muted);margin-bottom:6px;font-family:var(--mono)}
+.lanes{display:grid;grid-template-columns:auto auto;gap:12px;align-items:start}
+.lane>.bl{font-size:11px;color:var(--muted);margin-bottom:6px}
+.hl-act{outline:2px solid var(--accent);background:var(--accent-bg)}
+.hl-var{box-shadow:0 0 0 2px var(--warn)}
+.dim .act:not(.hl-act){opacity:.35}
+
+/* ---------- recording */
+.amap{margin-bottom:16px}
+.arow{display:flex;gap:6px;align-items:flex-start;padding:4px 6px;border-radius:6px;flex-wrap:wrap}
+.arow .an{min-width:150px;font-weight:600}
+.arow .stats{margin-left:auto;font-size:11px;color:var(--muted)}
+.arow.hl{background:var(--accent-bg)}
+.arow .chip{flex-shrink:0;display:inline-flex;align-items:center}
+.role{font-size:10px;padding:0 5px;border-radius:8px;margin-left:3px;background:var(--chip);color:var(--muted)}
+.role.row{background:#eef2ff;color:#3730a3}
+.role.column{background:#ecfdf5;color:#065f46}
+.role.derived,.role.label{background:var(--chip);color:var(--muted)}
+.role.date{background:var(--warn-bg);color:var(--warn)}
+.tbl{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;background:#fff}
+.tbl.hl{outline:2px solid var(--accent)}
+.tbl>.th{display:flex;gap:6px;align-items:center;padding:6px 10px;border-bottom:1px solid var(--line);cursor:pointer}
+.tbl>.th b{font-family:var(--mono)}
+.tbl>.th .rows{margin-left:auto;color:var(--muted);font-size:11px}
+.tbl .grain{padding:4px 10px;font-size:11px;color:var(--muted);border-bottom:1px solid var(--line)}
+.tbl table{width:100%;border-collapse:collapse}
+.tbl td{padding:3px 10px;border-top:1px solid #f1f3f5;vertical-align:top;font-size:12px}
+.tbl td:first-child{font-family:var(--mono);white-space:nowrap;width:1%}
+.tbl td .f{color:var(--muted);font-size:11px}
+.tbl tr.hl td{background:var(--accent-bg)}
+.tbl.closed table,.tbl.closed .grain{display:none}
+.k{font-size:10px;text-transform:uppercase;padding:1px 6px;border-radius:9px;background:var(--chip);color:var(--muted)}
+.legend{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.empty{color:var(--muted);padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>HospitalFlow Simulator</h1>
+  <select id="cfg"></select>
+  <label style="color:var(--muted)">seed <input id="seed" type="number"></label>
+  <button id="save">Save</button>
+  <button id="saveas">Save as…</button>
+  <button id="run" class="primary">Run</button>
+  <span id="dirty">● unsaved</span>
+  <span id="status"></span>
+</header>
+<main>
+  <section class="panel" id="left">
+    <div class="ph"><h2>1 · Variables</h2><div class="sub">Edit, preview, then Save (writes into the YAML, comments kept).</div>
+      <input class="search" id="q" placeholder="filter variables…"></div>
+    <div class="pb" id="vars"></div>
+  </section>
+  <section class="panel" id="mid">
+    <div class="ph"><h2>2 · Process model</h2><div class="sub">Hover an activity to see where it is stored. Click a flow call to jump. Click a variable chip to edit it.</div></div>
+    <div class="pb" id="proc"></div>
+  </section>
+  <section class="panel" id="right">
+    <div class="ph"><h2>3 · Recording (database)</h2><div class="sub">Which table / column keeps each activity, and how each table is built.</div>
+      <div class="legend"><span class="role row">row</span><span class="role column">column</span><span class="role derived">derived</span><span class="role date">date only</span><span class="role label">label</span><span class="chip miss">no timestamp</span></div></div>
+    <div class="pb" id="rec"></div>
+  </section>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const el = (tag, attrs = {}, ...kids) => {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === 'class') e.className = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else if (k === 'html') e.innerHTML = v;
+    else e.setAttribute(k, v);
+  }
+  for (const k of kids.flat()) if (k != null && k !== false) e.append(k.nodeType ? k : document.createTextNode(String(k)));
+  return e;
+};
+const api = async (path, body) => {
+  const r = await fetch(path, body ? {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)} : {});
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+};
+const status = (msg, err) => { const s = $('#status'); s.textContent = msg; s.className = err ? 'err' : ''; s.title = msg; };
+
+let M = null;            // model from server
+let vars = {};           // current variable values
+let orig = {};           // saved values
+let summary = null;      // last run summary
+const DISTS = {
+  const: ['value'], uniform: ['low', 'high'], exponential: ['mean'], lognormal: ['median', 'sigma'],
+  normal: ['mean', 'sd'], gamma: ['shape', 'scale'], triangular: ['low', 'mode', 'high'],
+  poisson: ['mean'], int_uniform: ['low', 'high'], geometric: ['p'], bernoulli: ['p'],
+  choice: ['values', 'weights'], empirical: ['values', 'weights'],
+};
+const CONTINUOUS = new Set(['const', 'uniform', 'exponential', 'lognormal', 'normal', 'gamma', 'triangular']);
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const parseNum = s => { if (typeof s !== 'string') return s; const t = s.trim(); if (t === '') return undefined; if (t.startsWith('$')) return t; const n = Number(t); return isNaN(n) ? t : n; };
+const fmt = v => typeof v === 'number' ? (Math.abs(v) >= 100 ? v.toFixed(0) : Math.abs(v) >= 1 ? v.toFixed(1) : v.toPrecision(2)) : v;
+const short = v => typeof v === 'string' ? v : (v && v.dist ? `${v.dist}(${(DISTS[v.dist] || []).filter(k => v[k] != null && typeof v[k] !== 'object').map(k => fmt(v[k])).join(', ')}${v.unit ? ' ' + v.unit : ''})` : JSON.stringify(v));
+
+function markDirty() {
+  const d = Object.keys(vars).some(k => !same(vars[k], orig[k])) || String(M.seed) !== $('#seed').value;
+  $('#dirty').style.display = d ? 'inline' : 'none';
+  for (const c of document.querySelectorAll('.var')) c.classList.toggle('changed', !same(vars[c.dataset.name], orig[c.dataset.name]));
+  return d;
+}
+
+// ============================================================ LEFT: variables
+function renderVars() {
+  const box = $('#vars'); box.innerHTML = '';
+  const seen = new Set();
+  const groups = M.groups.length ? M.groups.map(g => ({...g})) : [{name: 'variables', vars: Object.keys(vars)}];
+  const rest = Object.keys(vars).filter(k => !groups.some(g => g.vars.includes(k)));
+  if (rest.length) groups.push({name: 'other', vars: rest});
+  for (const g of groups) {
+    const ge = el('div', {class: 'group'}, el('div', {class: 'gh', onclick: () => ge.classList.toggle('closed')}, g.name));
+    for (const name of g.vars) { if (seen.has(name) || !(name in vars)) continue; seen.add(name); ge.append(varCard(name)); }
+    box.append(ge);
+  }
+  filterVars();
+}
+function varCard(name) {
+  const card = el('div', {class: 'var', 'data-name': name});
+  const used = [...(M.var_use[name] || []), ...(M.var_use_recording[name] || []).map(t => 'table ' + t)];
+  card.append(el('div', {class: 'vh'},
+    el('span', {class: 'vname', title: 'highlight where it is used', onclick: () => highlightVar(name)}, name),
+    el('span', {class: 'uses', title: used.join(', ')}, used.length ? 'used in ' + [...new Set(used)].slice(0, 3).join(', ') + (used.length > 3 ? '…' : '') : 'unused')));
+  const body = el('div'); card.append(body);
+  const prev = el('div', {class: 'prev'}); card.append(prev);
+  const draw = () => { body.innerHTML = ''; editor(name, body, () => { markDirty(); preview(name, prev); }); };
+  draw(); card._redraw = draw;
+  preview(name, prev);
+  return card;
+}
+function editor(name, box, changed) {
+  const v = vars[name];
+  if (typeof v === 'number') {
+    const isP = /^p_/.test(name) && v >= 0 && v <= 1;
+    const num = el('input', {type: 'number', step: isP ? '0.01' : 'any', value: v});
+    const row = el('div', {class: 'row'});
+    if (isP) {
+      const rng = el('input', {type: 'range', min: 0, max: 1, step: 0.01, value: v,
+        oninput: e => { num.value = e.target.value; vars[name] = Number(e.target.value); changed(); }});
+      num.oninput = e => { rng.value = e.target.value; vars[name] = Number(e.target.value); changed(); };
+      row.append(rng, num);
+    } else {
+      num.oninput = e => { vars[name] = Number(e.target.value); changed(); };
+      row.append(num);
+    }
+    box.append(row); return;
+  }
+  if (v && typeof v === 'object' && !Array.isArray(v) && v.dist) {
+    const row = el('div', {class: 'row'});
+    const sel = el('select', {class: 'dist', onchange: e => {
+      const d = e.target.value, nv = {dist: d};
+      for (const p of DISTS[d]) nv[p] = v[p] != null ? v[p] : (p === 'values' ? [1, 2] : (p === 'p' ? 0.5 : 1));
+      if (CONTINUOUS.has(d) && v.unit) nv.unit = v.unit;
+      for (const k of ['min', 'max']) if (v[k] != null) nv[k] = v[k];
+      vars[name] = nv; box.innerHTML = ''; editor(name, box, changed); changed();
+    }}, ...Object.keys(DISTS).map(d => el('option', {value: d, selected: d === v.dist}, d)));
+    row.append(el('label', {}, 'dist', sel));
+    for (const p of DISTS[v.dist] || []) {
+      const cur = v[p];
+      const isList = p === 'values' || p === 'weights';
+      const inp = el('input', {class: isList ? 'wide' : '', value: cur == null ? '' : (isList ? (cur || []).join(', ') : cur),
+        oninput: e => {
+          const t = e.target.value;
+          if (isList) vars[name] = {...vars[name], [p]: t.split(',').map(s => parseNum(s)).filter(x => x !== undefined)};
+          else { const n = parseNum(t); const o = {...vars[name]}; if (n === undefined) delete o[p]; else o[p] = n; vars[name] = o; }
+          changed();
+        }});
+      row.append(el('label', {style: isList ? 'flex:1 1 100%' : ''}, p, inp));
+    }
+    if (CONTINUOUS.has(v.dist)) {
+      row.append(el('label', {}, 'unit', el('select', {onchange: e => { const o = {...vars[name]}; if (e.target.value === 'min') delete o.unit; else o.unit = e.target.value; vars[name] = o; changed(); }},
+        ...['min', 'h', 'd'].map(u => el('option', {value: u, selected: (v.unit || 'min') === u}, u)))));
+    }
+    if (!['choice', 'empirical', 'bernoulli'].includes(v.dist)) for (const k of ['min', 'max']) {
+      row.append(el('label', {}, k, el('input', {value: v[k] ?? '', placeholder: '—', oninput: e => {
+        const o = {...vars[name]}; const n = parseNum(e.target.value); if (n === undefined) delete o[k]; else o[k] = n; vars[name] = o; changed(); }})));
+    }
+    box.append(row); return;
+  }
+  // anything else: raw YAML
+  const ta = el('textarea', {class: 'raw', rows: 2});
+  ta.value = typeof v === 'string' ? v : JSON.stringify(v);
+  const err = el('div', {class: 'err-inline'});
+  ta.onchange = async () => {
+    try { vars[name] = (await api('/api/parse', {text: ta.value})).value; err.textContent = ''; changed(); }
+    catch (e) { err.textContent = e.message; }
+  };
+  box.append(ta, err);
+}
+const prevTimers = {};
+function preview(name, box) {
+  clearTimeout(prevTimers[name]);
+  prevTimers[name] = setTimeout(async () => {
+    const v = vars[name];
+    if (typeof v === 'number') { box.textContent = ''; return; }
+    try {
+      const r = await api('/api/sample', {variables: vars, spec: v});
+      box.innerHTML = '';
+      if (r.type === 'numeric') {
+        const c = el('canvas', {width: 240, height: 60}); box.append(c);
+        const ctx = c.getContext('2d'), mx = Math.max(...r.hist, 1), w = 240 / r.hist.length;
+        ctx.fillStyle = '#9aa4b1';
+        r.hist.forEach((h, i) => ctx.fillRect(i * w + 0.5, 60 - h / mx * 58, Math.max(1, w - 1), h / mx * 58));
+        const u = r.unit ? ' ' + r.unit : '';
+        box.append(el('span', {}, `p10 ${fmt(r.p10)} · p50 ${fmt(r.p50)} · p90 ${fmt(r.p90)}${u}  (mean ${fmt(r.mean)})`));
+      } else if (r.type === 'bool') box.append(el('span', {}, `P(true) ≈ ${r.p_true.toFixed(2)}`));
+      else box.append(el('span', {}, r.counts.map(([k, n]) => `${k} ${(100 * n / r.n).toFixed(0)}%`).join(' · ')));
+    } catch (e) { box.innerHTML = ''; box.append(el('span', {class: 'err-inline'}, e.message)); }
+  }, 250);
+}
+function filterVars() {
+  const q = $('#q').value.trim().toLowerCase();
+  for (const c of document.querySelectorAll('.var')) c.style.display = !q || c.dataset.name.toLowerCase().includes(q) ? '' : 'none';
+  for (const g of document.querySelectorAll('#vars .group')) g.style.display = [...g.querySelectorAll('.var')].some(c => c.style.display !== 'none') ? '' : 'none';
+}
+function highlightVar(name) {
+  document.querySelectorAll('.hl-var').forEach(e => e.classList.remove('hl-var'));
+  const hits = [...document.querySelectorAll('#proc [data-vars]')].filter(e => e.dataset.vars.split(' ').includes(name));
+  hits.forEach(e => e.classList.add('hl-var'));
+  if (hits[0]) hits[0].scrollIntoView({behavior: 'smooth', block: 'center'});
+  status(hits.length ? `${name}: used in ${hits.length} place(s) in the process` : `${name}: not used in the process (maybe in arrivals or recording)`);
+}
+function focusVar(name) {
+  const c = document.querySelector(`.var[data-name="${CSS.escape(name)}"]`);
+  if (!c) return;
+  $('#q').value = ''; filterVars();
+  c.closest('.group')?.classList.remove('closed');
+  c.scrollIntoView({behavior: 'smooth', block: 'center'});
+  c.classList.add('hl'); setTimeout(() => c.classList.remove('hl'), 1500);
+}
+
+// ============================================================ MIDDLE: process
+const varsOf = node => { const s = new Set(); (function walk(n) { if (typeof n === 'string') { if (n.startsWith('$')) s.add(n.slice(1)); } else if (Array.isArray(n)) n.forEach(walk); else if (n && typeof n === 'object') Object.values(n).forEach(walk); })(node); return s; };
+const vchip = spec => {
+  if (spec == null) return null;
+  if (typeof spec === 'string' && spec.startsWith('$')) return el('span', {class: 'chip var', title: 'edit variable', onclick: () => focusVar(spec.slice(1))}, spec);
+  if (spec && spec.from_attr) return el('span', {class: 'chip'}, `from ${spec.from_attr}${spec.unit ? ' ' + spec.unit : ''}`);
+  return el('span', {class: 'chip'}, short(spec));
+};
+const shallowVars = (node, keys) => keys.flatMap(k => [...varsOf(node[k] ?? null)]).join(' ');
+function renderNode(node) {
+  if (Array.isArray(node)) return el('div', {class: 'seq'}, node.map(n => { const r = renderNode(n); r.classList.add('n'); return r; }));
+  if (typeof node === 'string') return el('span', {class: 'call', title: 'jump to flow', onclick: () => jump(node)}, '→ ' + node);
+  if (!node || typeof node !== 'object') return el('span', {}, String(node));
+  if ('act' in node) {
+    const on = [].concat(node.on || []);
+    const st = (M.storage[node.act] || []);
+    const cnt = summary && summary.activities[node.act];
+    const box = el('div', {class: 'act', 'data-act': node.act, 'data-vars': shallowVars(node, ['delay', 'attrs']),
+        onmouseenter: () => hoverAct(node.act, true), onmouseleave: () => hoverAct(node.act, false)},
+      el('div', {class: 't'}, node.act),
+      el('div', {class: 'm'},
+        on.map(o => el('span', {class: 'chip obj', title: 'object ' + o, onmouseenter: () => hoverObj(o, true), onmouseleave: () => hoverObj(o, false)}, o)),
+        node.delay != null ? [el('span', {class: 'chip'}, 'after'), vchip(node.delay)] : null,
+        node.attrs ? el('span', {class: 'chip', title: JSON.stringify(node.attrs)}, 'attrs: ' + Object.keys(node.attrs).join(', ')) : null,
+        node.clip ? el('span', {class: 'chip', title: 'emitted at the deadline instead of dropped'}, 'clip') : null,
+        st.length === 0 ? el('span', {class: 'chip miss', title: 'no table keeps the time of this activity'}, 'no timestamp in DB') : null,
+        cnt ? el('span', {class: 'chip cnt', title: 'events in last run / with timestamp in DB'}, `n=${cnt.events} · db ${cnt.timestamp_in_db}`) : null));
+    return box;
+  }
+  if ('create' in node) return el('div', {class: 'small', 'data-vars': shallowVars(node, ['attrs'])}, '＋ create ',
+    el('span', {class: 'chip obj', onmouseenter: () => hoverObj(node.as || node.create, true), onmouseleave: () => hoverObj(node.as || node.create, false)}, node.create),
+    node.as ? [' as ', el('b', {}, node.as)] : null,
+    node.link_to ? [' · link to ', node.link_to.join(', ')] : null,
+    node.attrs ? el('span', {class: 'chip', title: JSON.stringify(node.attrs)}, Object.keys(node.attrs).join(', ')) : null);
+  if ('wait' in node) return el('div', {class: 'small', 'data-vars': shallowVars(node, ['wait'])}, '⏱ wait ', vchip(node.wait));
+  if ('set' in node) return el('div', {class: 'small'}, '✎ set ', Object.entries(node.set).map(([a, kv]) => `${a}.${Object.keys(kv).join(',')}`).join('; '));
+  if ('link' in node) return el('div', {class: 'small'}, '⛓ link ', Object.entries(node.link).map(([a, p]) => `${a} → ${[].concat(p).join(', ')}`).join('; '));
+  if ('call' in node) return renderNode(node.call);
+  if ('xor' in node) return el('div', {class: 'blk', 'data-vars': node.xor.map(o => [...varsOf(o.p ?? null)].join(' ')).join(' ')},
+    el('div', {class: 'bh'}, el('span', {class: 'sym'}, '◇ ×'), 'exclusive choice'),
+    el('div', {class: 'branches'}, node.xor.map(o => el('div', {class: 'branch'},
+      el('div', {class: 'bl'}, o.else ? 'else' : ['p = ', vchip(o.p)]), o.do == null ? el('span', {class: 'chip'}, 'nothing') : renderNode(o.do)))));
+  if ('and' in node) return el('div', {class: 'blk'},
+    el('div', {class: 'bh'}, el('span', {class: 'sym'}, '◇ +'), 'parallel, continue after all'),
+    el('div', {class: 'branches'}, node.and.map(b => el('div', {class: 'branch'}, renderNode(b)))));
+  if ('repeat' in node) return el('div', {class: 'blk', 'data-vars': shallowVars(node, ['count', 'gap'])},
+    el('div', {class: 'bh'}, el('span', {class: 'sym'}, '↻'), 'repeat ×', vchip(node.count ?? 1), node.gap != null ? ['gap', vchip(node.gap)] : null, node.isolate ? el('span', {class: 'tag'}, 'fresh scope') : null),
+    renderNode(node.repeat));
+  if ('spawn' in node) return el('div', {class: 'blk', 'data-vars': shallowVars(node, ['count', 'start', 'gap'])},
+    el('div', {class: 'bh'}, el('span', {class: 'sym'}, '⫴'),
+      node.foreach ? ['for each ', el('span', {class: 'chip'}, node.foreach)] : ['spawn ×', vchip(node.count ?? 1)],
+      node.start != null ? ['start', vchip(node.start)] : null, node.gap != null ? ['gap', vchip(node.gap)] : null,
+      node.wait ? el('span', {class: 'tag'}, 'parent waits') : el('span', {class: 'tag'}, 'concurrent')),
+    renderNode(node.spawn));
+  if ('during' in node) {
+    const bg = [].concat(node.during.background || []);
+    return el('div', {class: 'blk'},
+      el('div', {class: 'bh'}, el('span', {class: 'sym'}, '⧉'), 'background work stops when the main path ends'),
+      el('div', {class: 'lanes'},
+        el('div', {class: 'lane'}, el('div', {class: 'bl'}, 'main'), renderNode(node.during.main)),
+        el('div', {class: 'lane'}, el('div', {class: 'bl'}, 'background'), bg.map(renderNode))));
+  }
+  return el('pre', {}, JSON.stringify(node, null, 1));
+}
+function flowOrder() {
+  const order = [], seen = new Set();
+  const walk = n => { if (typeof n === 'string') { if (!n.startsWith('$') && M.flows[n] && !seen.has(n)) { seen.add(n); order.push(n); walk(M.flows[n]); } }
+    else if (Array.isArray(n)) n.forEach(walk); else if (n && typeof n === 'object') { if (n.call) walk(n.call); Object.values(n).forEach(walk); } };
+  walk(M.entry);
+  for (const f of M.flow_order) if (!seen.has(f)) order.push(f);
+  return order;
+}
+function renderProcess() {
+  const box = $('#proc'); box.innerHTML = '';
+  const a = M.arrivals || {};
+  const prof = a.hour_profile || Array(24).fill(1), mx = Math.max(...prof);
+  box.append(el('div', {class: 'arrivals', 'data-vars': [...varsOf(a)].join(' ')},
+    el('div', {}, el('b', {}, 'Arrivals  '), 'patients ', vchip(a.patients), '  over ', vchip(a.window_days ?? 365), ' days → entry flow ',
+      el('span', {class: 'call', onclick: () => jump(M.entry)}, '→ ' + M.entry)),
+    el('div', {class: 'hours', title: 'arrival weight by hour of day'}, prof.map((h, i) => el('div', {style: `height:${4 + 30 * h / mx}px`, title: `${i}:00  weight ${h}`})))));
+  for (const f of flowOrder()) {
+    box.append(el('div', {class: 'flow', id: 'flow-' + f},
+      el('div', {class: 'fh'}, el('b', {}, f), f === M.entry ? el('span', {class: 'tag entry'}, 'entry') : null),
+      el('div', {class: 'body'}, renderNode(M.flows[f]))));
+  }
+}
+function jump(f) { const e = document.getElementById('flow-' + f); if (!e) return; e.scrollIntoView({behavior: 'smooth', block: 'start'}); e.classList.remove('flash'); void e.offsetWidth; e.classList.add('flash'); }
+function hoverAct(act, on) {
+  document.querySelectorAll(`#proc .act[data-act="${CSS.escape(act)}"]`).forEach(e => e.classList.toggle('hl-act', on));
+  document.querySelectorAll(`#rec [data-acts]`).forEach(e => {
+    if (!e.dataset.acts.split('|').includes(act)) return;
+    e.classList.toggle('hl', on);
+    if (e.classList.contains('tbl')) {          // expand matching tables while hovering
+      if (on) { e.dataset.wasClosed = e.classList.contains('closed') ? '1' : ''; e.classList.remove('closed'); }
+      else if (e.dataset.wasClosed) e.classList.add('closed');
+    }
+  });
+  if (on) { const first = [...document.querySelectorAll('#rec tr[data-acts]')].find(e => e.dataset.acts.split('|').includes(act)); first?.scrollIntoView({block: 'nearest'}); }
+}
+function hoverObj(alias, on) {
+  // alias -> type: aliases equal to a type, otherwise look up `create ... as alias` in flows
+  let type = M.objects[alias] ? alias : null;
+  if (!type) (function walk(n) { if (type) return; if (Array.isArray(n)) n.forEach(walk); else if (n && typeof n === 'object') { if (n.create && n.as === alias) type = n.create; Object.values(n).forEach(walk); } })(M.flows);
+  if (!type) return;
+  document.querySelectorAll(`#rec .tbl[data-object="${CSS.escape(type)}"]`).forEach(e => e.classList.toggle('hl', on));
+}
+
+// ============================================================ RIGHT: recording
+function renderRecording() {
+  const box = $('#rec'); box.innerHTML = '';
+  const amap = el('div', {class: 'amap'}, el('div', {class: 'gh', style: 'font-weight:650;color:var(--muted);font-size:12px;margin-bottom:4px'}, 'Activity → where its time is stored'));
+  for (const a of M.activities) {
+    const st = M.storage[a] || [];
+    const s = summary && summary.activities[a];
+    amap.append(el('div', {class: 'arow', 'data-acts': a, onmouseenter: () => hoverAct(a, true), onmouseleave: () => hoverAct(a, false)},
+      el('span', {class: 'an'}, a),
+      st.length ? st.map(x => el('span', {class: 'chip', title: x.role}, `${x.table}.${x.column}`, el('span', {class: 'role ' + roleClass(x.role)}, x.role))) : el('span', {class: 'chip miss'}, 'no timestamp in DB'),
+      s ? el('span', {class: 'stats'}, `${s.timestamp_in_db}/${s.events} in DB`) : null));
+  }
+  box.append(amap);
+  box.append(el('div', {style: 'font-weight:650;color:var(--muted);font-size:12px;margin:6px 0'}, `Tables (${M.tables.length})`));
+  for (const t of M.tables) {
+    const grain = t.kind === 'object' ? `one row per ${t.object} object — events stored as columns` :
+      t.kind === 'event' ? `one row per event: ${t.activities.join(', ')}` + (t.object ? ` (row object: ${t.object})` : '') :
+      `one row per entry of catalog ${t.catalog}`;
+    const rows = summary && summary.tables[t.name];
+    const card = el('div', {class: 'tbl closed', 'data-object': t.object || '', 'data-acts': t.columns.flatMap(c => c.activities || []).join('|')},
+      el('div', {class: 'th', onclick: () => card.classList.toggle('closed')},
+        el('b', {}, t.name), el('span', {class: 'k'}, t.kind),
+        el('span', {class: 'rows'}, rows != null ? `${rows} rows` : `${t.columns.length} cols`)),
+      el('div', {class: 'grain'}, grain, t.desc ? ' · ' + t.desc : ''),
+      el('table', {}, t.columns.map(c => el('tr', {'data-acts': (c.activities || []).join('|') || null},
+        el('td', {}, c.name),
+        el('td', {}, c.kind === 'time' ? el('span', {}, '⏱ ', c.text, el('span', {class: 'role ' + roleClass(c.role)}, c.role)) : c.text,
+          c.flags.length ? el('div', {class: 'f'}, c.flags.join(' · ')) : null,
+          c.desc ? el('div', {class: 'f'}, c.desc) : null)))));
+    box.append(card);
+  }
+}
+const roleClass = r => r === 'date only' ? 'date' : (r || '');
+
+// ============================================================ load / save / run
+async function load(name) {
+  status('loading ' + name + '…');
+  M = await api('/api/model?config=' + encodeURIComponent(name));
+  vars = JSON.parse(JSON.stringify(M.variables)); orig = JSON.parse(JSON.stringify(M.variables));
+  summary = null;
+  $('#seed').value = M.seed;
+  renderVars(); renderProcess(); renderRecording(); markDirty();
+  status(`${name}: ${Object.keys(vars).length} variables · ${M.flow_order.length} flows · ${M.tables.length} tables`);
+}
+function changedVars() { const o = {}; for (const k of Object.keys(vars)) if (!same(vars[k], orig[k])) o[k] = vars[k]; return o; }
+async function save(asName) {
+  try {
+    const r = await api('/api/save', {config: $('#cfg').value, save_as: asName || null, variables: changedVars(), seed: Number($('#seed').value)});
+    status('saved → configs/' + r.saved);
+    await refreshConfigs(r.saved);
+  } catch (e) { status(e.message, true); }
+}
+async function refreshConfigs(select) {
+  const list = await api('/api/configs');
+  const s = $('#cfg'); s.innerHTML = '';
+  if (!select) select = list.includes('mimic_like.yaml') ? 'mimic_like.yaml' : list[0];
+  for (const n of list) s.append(el('option', {value: n, selected: n === select}, n));
+  await load(s.value);
+}
+$('#save').onclick = () => save();
+$('#saveas').onclick = () => {
+  let n = prompt('Save as (file name in configs/):', $('#cfg').value.replace(/\.ya?ml$/, '') + '_v2.yaml');
+  if (!n) return; if (!/\.ya?ml$/.test(n)) n += '.yaml'; save(n);
+};
+$('#run').onclick = async () => {
+  const b = $('#run'); b.disabled = true; status('running simulation…');
+  try {
+    const t0 = performance.now();
+    summary = await api('/api/run', {config: $('#cfg').value, variables: vars, seed: Number($('#seed').value)});
+    renderProcess(); renderRecording();
+    const lost = Object.entries(summary.activities).filter(([, s]) => s.not_recoverable > 0).map(([a]) => a);
+    status(`ran in ${((performance.now() - t0) / 1000).toFixed(1)}s · ${summary.events} events · FK violations ${summary.foreign_key_violations}` +
+      (lost.length ? ` · not fully in DB: ${lost.join(', ')}` : '') + ` · output ${summary.out}`);
+  } catch (e) { status(e.message, true); }
+  b.disabled = false;
+};
+$('#cfg').onchange = e => { if (markDirty() && !confirm('Discard unsaved changes?')) return; load(e.target.value); };
+$('#seed').oninput = markDirty;
+$('#q').oninput = filterVars;
+window.addEventListener('beforeunload', e => { if (M && markDirty()) { e.preventDefault(); e.returnValue = ''; } });
+refreshConfigs().catch(e => status(e.message, true));
+</script>
+</body>
+</html>
