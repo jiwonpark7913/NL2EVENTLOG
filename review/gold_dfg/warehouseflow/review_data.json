@@ -1,0 +1,3356 @@
+[
+  {
+    "dataset": "warehouseflow",
+    "id": "R01",
+    "type": "Q1",
+    "question": "Extract Goods Received events for each warehouse.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "0eef3810ef4f7c3321a733f123bad1307ac08ee77d3932d598af1d563434e138",
+    "chart": "graphs/R01.svg",
+    "stats": {
+      "events": 45,
+      "observed_cases": 4,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Goods Received": 45
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 41,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R02",
+    "type": "Q2",
+    "question": "For each warehouse, build a timeline of goods arriving at the warehouse.",
+    "answerable": true,
+    "pair_of": "R01",
+    "gold_sha256": "0eef3810ef4f7c3321a733f123bad1307ac08ee77d3932d598af1d563434e138",
+    "chart": "graphs/R01.svg",
+    "stats": {
+      "events": 45,
+      "observed_cases": 4,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Goods Received": 45
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 41,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R03",
+    "type": "Q1",
+    "question": "Extract Goods Dispatched events for each warehouse.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "a5cb657d3bbd8f919947317de4f4cf0ec823a0d10a219d12d90fbbfe177616cf",
+    "chart": "graphs/R03.svg",
+    "stats": {
+      "events": 35,
+      "observed_cases": 4,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Dispatched",
+        "count": 31,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R04",
+    "type": "Q2",
+    "question": "For each warehouse, build a timeline of goods leaving the warehouse.",
+    "answerable": true,
+    "pair_of": "R03",
+    "gold_sha256": "a5cb657d3bbd8f919947317de4f4cf0ec823a0d10a219d12d90fbbfe177616cf",
+    "chart": "graphs/R03.svg",
+    "stats": {
+      "events": 35,
+      "observed_cases": 4,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Dispatched",
+        "count": 31,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R05",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each warehouse.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "d11b961eab6417200b9434c1eadbd99c6ebd044e0b8dc40b145d0df91392761a",
+    "chart": "graphs/R05.svg",
+    "stats": {
+      "events": 394,
+      "observed_cases": 4,
+      "activities": 10,
+      "dfg_edges": 17,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 115,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Goods Received": 45,
+      "Receiving Inspection Completed": 45,
+      "Goods Put Away": 39,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35,
+      "Goods Picked": 35,
+      "Goods Packed": 35,
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 35,
+        "tie_affected": 31
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 45,
+        "tie_affected": 45
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 39
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Scheduled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 10,
+        "tie_affected": 10
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R06",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each warehouse.",
+    "answerable": true,
+    "pair_of": "R05",
+    "gold_sha256": "d11b961eab6417200b9434c1eadbd99c6ebd044e0b8dc40b145d0df91392761a",
+    "chart": "graphs/R05.svg",
+    "stats": {
+      "events": 394,
+      "observed_cases": 4,
+      "activities": 10,
+      "dfg_edges": 17,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 115,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Goods Received": 45,
+      "Receiving Inspection Completed": 45,
+      "Goods Put Away": 39,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35,
+      "Goods Picked": 35,
+      "Goods Packed": 35,
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 35,
+        "tie_affected": 31
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 45,
+        "tie_affected": 45
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 39
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Scheduled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 10,
+        "tie_affected": 10
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R07",
+    "type": "Q1",
+    "question": "Extract Warehouse Task Started events for each warehouse.",
+    "answerable": false,
+    "pair_of": null,
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "Only one task time is stored, defined as completion. Task start times are not recorded."
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW01",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each warehouse.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "d11b961eab6417200b9434c1eadbd99c6ebd044e0b8dc40b145d0df91392761a",
+    "chart": "graphs/R05.svg",
+    "stats": {
+      "events": 394,
+      "observed_cases": 4,
+      "activities": 10,
+      "dfg_edges": 17,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 115,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Goods Received": 45,
+      "Receiving Inspection Completed": 45,
+      "Goods Put Away": 39,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35,
+      "Goods Picked": 35,
+      "Goods Packed": 35,
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 35,
+        "tie_affected": 31
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 45,
+        "tie_affected": 45
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 39
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Scheduled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 10,
+        "tie_affected": 10
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW02",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each goods.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "dbd4b3c005f36161d3e4114fe44da76b93da16adce956dd54d2870cc0ed40655",
+    "chart": "graphs/OW02.svg",
+    "stats": {
+      "events": 679,
+      "observed_cases": 6,
+      "activities": 10,
+      "dfg_edges": 53,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 172,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Receiving Scheduled": 79,
+      "Goods Received": 79,
+      "Receiving Inspection Completed": 79,
+      "Goods Put Away": 68,
+      "Dispatch Requested": 59,
+      "Dispatch Approved": 59,
+      "Goods Picked": 59,
+      "Goods Packed": 59,
+      "Goods Dispatched": 59
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Dispatch Requested",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Packed",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 30,
+        "tie_affected": 23
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Received",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Receiving Requested",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 28,
+        "tie_affected": 15
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Packed",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Picked",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 23,
+        "tie_affected": 23
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Dispatch Requested",
+        "count": 9,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Packed",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Picked",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Received",
+        "count": 8,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Requested",
+        "count": 14,
+        "tie_affected": 2
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Approved",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Requested",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 22,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Picked",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Scheduled",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Approved",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Requested",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 19,
+        "tie_affected": 9
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Received",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Requested",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 14,
+        "tie_affected": 14
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Requested",
+        "count": 15,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Packed",
+        "count": 11,
+        "tie_affected": 11
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Picked",
+        "count": 9,
+        "tie_affected": 9
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 9,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 8,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 79,
+        "tie_affected": 53
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 3,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Requested",
+        "count": 5,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Packed",
+        "count": 2,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 55
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Received",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 11,
+        "tie_affected": 11
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Packed",
+        "count": 11,
+        "tie_affected": 11
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Picked",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 53,
+        "tie_affected": 36
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Dispatched",
+        "count": 14,
+        "tie_affected": 14
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Packed",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 21,
+        "tie_affected": 8
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 30,
+        "tie_affected": 21
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW03",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each worker.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "63731da9858e64bf95575b925e804c816c8e42c1dda70aa6354cd19d5fcdc55c",
+    "chart": "graphs/OW03.svg",
+    "stats": {
+      "events": 823,
+      "observed_cases": 5,
+      "activities": 10,
+      "dfg_edges": 56,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 234,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Receiving Scheduled": 96,
+      "Dispatch Requested": 71,
+      "Goods Received": 96,
+      "Receiving Inspection Completed": 96,
+      "Goods Put Away": 84,
+      "Dispatch Approved": 71,
+      "Goods Picked": 71,
+      "Goods Packed": 71,
+      "Goods Dispatched": 71
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Dispatch Requested",
+        "count": 19,
+        "tie_affected": 19
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Dispatched",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Packed",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 21,
+        "tie_affected": 16
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Received",
+        "count": 15,
+        "tie_affected": 15
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Receiving Requested",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 19,
+        "tie_affected": 14
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Packed",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Picked",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 37,
+        "tie_affected": 37
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Dispatch Requested",
+        "count": 8,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Dispatched",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Packed",
+        "count": 14,
+        "tie_affected": 14
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Picked",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Received",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Requested",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 18,
+        "tie_affected": 18
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Approved",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Requested",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 14,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Picked",
+        "count": 19,
+        "tie_affected": 19
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Received",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Scheduled",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Approved",
+        "count": 19,
+        "tie_affected": 19
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Requested",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Dispatched",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 17,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Received",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Requested",
+        "count": 9,
+        "tie_affected": 9
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Scheduled",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 24,
+        "tie_affected": 24
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Requested",
+        "count": 12,
+        "tie_affected": 11
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Dispatched",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Packed",
+        "count": 17,
+        "tie_affected": 17
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Picked",
+        "count": 17,
+        "tie_affected": 17
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 5,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 4,
+        "tie_affected": 2
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 96,
+        "tie_affected": 82
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 2,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Requested",
+        "count": 4,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Packed",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 79
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Received",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Requested",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Scheduled",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 22,
+        "tie_affected": 22
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Packed",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Picked",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 54,
+        "tie_affected": 46
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 18,
+        "tie_affected": 14
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Dispatched",
+        "count": 15,
+        "tie_affected": 15
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 18,
+        "tie_affected": 13
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 45,
+        "tie_affected": 41
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW04",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each warehouse transaction.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "63e084074188bbfb26e2fd716d531d8d3c7e3366dfa717870fe50402e4dad7f4",
+    "chart": "graphs/OW04.svg",
+    "stats": {
+      "events": 394,
+      "observed_cases": 80,
+      "activities": 10,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Goods Received": 45,
+      "Receiving Inspection Completed": 45,
+      "Goods Put Away": 39,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35,
+      "Goods Picked": 35,
+      "Goods Packed": 35,
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 45,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 45,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 45,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW05",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each goods transaction line.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "6dfc82b31555d8ab544d2935e9ae7f0ba4b89c13f641ca0b4dda8d013546d55c",
+    "chart": "graphs/OW05.svg",
+    "stats": {
+      "events": 679,
+      "observed_cases": 138,
+      "activities": 10,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Receiving Scheduled": 79,
+      "Goods Received": 79,
+      "Receiving Inspection Completed": 79,
+      "Goods Put Away": 68,
+      "Dispatch Requested": 59,
+      "Dispatch Approved": 59,
+      "Goods Picked": 59,
+      "Goods Packed": 59,
+      "Goods Dispatched": 59
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 79,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 79,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 79,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW06",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each worker transaction assignment.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "e27c9bff1341fcfe4e776b492fc83d9e7432fdbe09ca6531d7ee8b438e279cf0",
+    "chart": "graphs/OW06.svg",
+    "stats": {
+      "events": 823,
+      "observed_cases": 167,
+      "activities": 10,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Receiving Scheduled": 96,
+      "Goods Received": 96,
+      "Receiving Inspection Completed": 96,
+      "Goods Put Away": 84,
+      "Dispatch Requested": 71,
+      "Dispatch Approved": 71,
+      "Goods Picked": 71,
+      "Goods Packed": 71,
+      "Goods Dispatched": 71
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 96,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 96,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 96,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "TS01",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Receiving Scheduled, Dispatch Requested, Dispatch Approved events for each warehouse transaction.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "59af4530c6d7ad420f29973686f9f54971300a99b0b423439363f47c0762a2d1",
+    "chart": "graphs/TS01.svg",
+    "stats": {
+      "events": 160,
+      "observed_cases": 80,
+      "activities": 4,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 45,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "R07P",
+    "type": "Q2",
+    "question": "For each warehouse, build a timeline of the beginning of warehouse handling jobs.",
+    "answerable": false,
+    "pair_of": "R07",
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "Only one task time is stored, defined as completion. Task start times are not recorded."
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "TS01P",
+    "type": "Q2",
+    "question": "For each warehouse transaction, build a timeline of a request to take goods into storage, an inbound handling appointment being arranged, a request to send goods out, permission being granted to send goods out.",
+    "answerable": true,
+    "pair_of": "TS01",
+    "gold_sha256": "59af4530c6d7ad420f29973686f9f54971300a99b0b423439363f47c0762a2d1",
+    "chart": "graphs/TS01.svg",
+    "stats": {
+      "events": 160,
+      "observed_cases": 80,
+      "activities": 4,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 45,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW01P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each warehouse.",
+    "answerable": true,
+    "pair_of": "OW01",
+    "gold_sha256": "d11b961eab6417200b9434c1eadbd99c6ebd044e0b8dc40b145d0df91392761a",
+    "chart": "graphs/R05.svg",
+    "stats": {
+      "events": 394,
+      "observed_cases": 4,
+      "activities": 10,
+      "dfg_edges": 17,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 115,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Goods Received": 45,
+      "Receiving Inspection Completed": 45,
+      "Goods Put Away": 39,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35,
+      "Goods Picked": 35,
+      "Goods Packed": 35,
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 35,
+        "tie_affected": 31
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 45,
+        "tie_affected": 45
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 39
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Scheduled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 31,
+        "tie_affected": 31
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 35,
+        "tie_affected": 35
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 10,
+        "tie_affected": 10
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW01E",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Goods Received, Goods Put Away events for each warehouse.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "30cb4b42e303fa95ab9d3405eb0633ac453c19e5c98e8ea1ec3de34b13754f0d",
+    "chart": "graphs/OW01E.svg",
+    "stats": {
+      "events": 129,
+      "observed_cases": 4,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 10,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Goods Received": 45,
+      "Goods Put Away": 39
+    },
+    "edges": [
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 31,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 40,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 5
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW01EP",
+    "type": "Q2",
+    "question": "For each warehouse, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations.",
+    "answerable": true,
+    "pair_of": "OW01E",
+    "gold_sha256": "30cb4b42e303fa95ab9d3405eb0633ac453c19e5c98e8ea1ec3de34b13754f0d",
+    "chart": "graphs/OW01E.svg",
+    "stats": {
+      "events": 129,
+      "observed_cases": 4,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 10,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Goods Received": 45,
+      "Goods Put Away": 39
+    },
+    "edges": [
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 31,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 40,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 5
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW02P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each goods.",
+    "answerable": true,
+    "pair_of": "OW02",
+    "gold_sha256": "dbd4b3c005f36161d3e4114fe44da76b93da16adce956dd54d2870cc0ed40655",
+    "chart": "graphs/OW02.svg",
+    "stats": {
+      "events": 679,
+      "observed_cases": 6,
+      "activities": 10,
+      "dfg_edges": 53,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 172,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Receiving Scheduled": 79,
+      "Goods Received": 79,
+      "Receiving Inspection Completed": 79,
+      "Goods Put Away": 68,
+      "Dispatch Requested": 59,
+      "Dispatch Approved": 59,
+      "Goods Picked": 59,
+      "Goods Packed": 59,
+      "Goods Dispatched": 59
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Dispatch Requested",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Packed",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 30,
+        "tie_affected": 23
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Received",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Receiving Requested",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 28,
+        "tie_affected": 15
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Packed",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Picked",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 23,
+        "tie_affected": 23
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Dispatch Requested",
+        "count": 9,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Packed",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Picked",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Received",
+        "count": 8,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Requested",
+        "count": 14,
+        "tie_affected": 2
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Approved",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Requested",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 22,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Picked",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Scheduled",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Approved",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Requested",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Dispatched",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 19,
+        "tie_affected": 9
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Received",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Requested",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 14,
+        "tie_affected": 14
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Requested",
+        "count": 15,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Packed",
+        "count": 11,
+        "tie_affected": 11
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Picked",
+        "count": 9,
+        "tie_affected": 9
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 9,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 8,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 79,
+        "tie_affected": 53
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 3,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Requested",
+        "count": 5,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Packed",
+        "count": 2,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 55
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Received",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 11,
+        "tie_affected": 11
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Packed",
+        "count": 11,
+        "tie_affected": 11
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Picked",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 53,
+        "tie_affected": 36
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Dispatched",
+        "count": 14,
+        "tie_affected": 14
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Packed",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 21,
+        "tie_affected": 8
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 30,
+        "tie_affected": 21
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW02E",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Goods Received, Goods Put Away events for each goods.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "f778fa2af5daecf6b048b5275d21b40aedf6d4a3edc3c134a9da49fc5e09d74c",
+    "chart": "graphs/OW02E.svg",
+    "stats": {
+      "events": 226,
+      "observed_cases": 6,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 23,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Goods Received": 79,
+      "Goods Put Away": 68
+    },
+    "edges": [
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 27,
+        "tie_affected": 16
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 35,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 33
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 2
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 46,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Requested",
+        "count": 33,
+        "tie_affected": 6
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW02EP",
+    "type": "Q2",
+    "question": "For each goods, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations.",
+    "answerable": true,
+    "pair_of": "OW02E",
+    "gold_sha256": "f778fa2af5daecf6b048b5275d21b40aedf6d4a3edc3c134a9da49fc5e09d74c",
+    "chart": "graphs/OW02E.svg",
+    "stats": {
+      "events": 226,
+      "observed_cases": 6,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 23,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Goods Received": 79,
+      "Goods Put Away": 68
+    },
+    "edges": [
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 27,
+        "tie_affected": 16
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 35,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 33
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 2
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 46,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Requested",
+        "count": 33,
+        "tie_affected": 6
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW03P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each worker.",
+    "answerable": true,
+    "pair_of": "OW03",
+    "gold_sha256": "63731da9858e64bf95575b925e804c816c8e42c1dda70aa6354cd19d5fcdc55c",
+    "chart": "graphs/OW03.svg",
+    "stats": {
+      "events": 823,
+      "observed_cases": 5,
+      "activities": 10,
+      "dfg_edges": 56,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 234,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Receiving Scheduled": 96,
+      "Dispatch Requested": 71,
+      "Goods Received": 96,
+      "Receiving Inspection Completed": 96,
+      "Goods Put Away": 84,
+      "Dispatch Approved": 71,
+      "Goods Picked": 71,
+      "Goods Packed": 71,
+      "Goods Dispatched": 71
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Dispatch Requested",
+        "count": 19,
+        "tie_affected": 19
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Dispatched",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Packed",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 21,
+        "tie_affected": 16
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Received",
+        "count": 15,
+        "tie_affected": 15
+      },
+      {
+        "source": "Dispatch Approved",
+        "target": "Receiving Requested",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 19,
+        "tie_affected": 14
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Packed",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Picked",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Goods Received",
+        "count": 37,
+        "tie_affected": 37
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Dispatch Requested",
+        "count": 8,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Dispatched",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Packed",
+        "count": 14,
+        "tie_affected": 14
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Picked",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Goods Received",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Requested",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Dispatched",
+        "target": "Receiving Scheduled",
+        "count": 18,
+        "tie_affected": 18
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Approved",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Dispatch Requested",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 14,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Picked",
+        "count": 19,
+        "tie_affected": 19
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Received",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Requested",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Receiving Scheduled",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Approved",
+        "count": 19,
+        "tie_affected": 19
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Dispatch Requested",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Dispatched",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 17,
+        "tie_affected": 13
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Received",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Requested",
+        "count": 9,
+        "tie_affected": 9
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Receiving Scheduled",
+        "count": 6,
+        "tie_affected": 6
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Approved",
+        "count": 24,
+        "tie_affected": 24
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Dispatch Requested",
+        "count": 12,
+        "tie_affected": 11
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Dispatched",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Packed",
+        "count": 17,
+        "tie_affected": 17
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Picked",
+        "count": 17,
+        "tie_affected": 17
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 5,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 4,
+        "tie_affected": 2
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Scheduled",
+        "count": 4,
+        "tie_affected": 4
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 96,
+        "tie_affected": 82
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Approved",
+        "count": 2,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Dispatch Requested",
+        "count": 4,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Packed",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 79
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Received",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Requested",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Receiving Scheduled",
+        "count": 1,
+        "tie_affected": 1
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Dispatched",
+        "count": 22,
+        "tie_affected": 22
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Packed",
+        "count": 10,
+        "tie_affected": 10
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Picked",
+        "count": 3,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 54,
+        "tie_affected": 46
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Dispatch Requested",
+        "count": 18,
+        "tie_affected": 14
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Dispatched",
+        "count": 15,
+        "tie_affected": 15
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 18,
+        "tie_affected": 13
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Receiving Requested",
+        "count": 45,
+        "tie_affected": 41
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW03E",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Goods Received, Goods Put Away events for each worker.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "66d2e71ca39036ddc902e8a1216d4ea1305fcbd47a2a2b6f7a239d8365825dd3",
+    "chart": "graphs/OW03E.svg",
+    "stats": {
+      "events": 276,
+      "observed_cases": 5,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 52,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Goods Received": 96,
+      "Goods Put Away": 84
+    },
+    "edges": [
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 45,
+        "tie_affected": 34
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 34,
+        "tie_affected": 12
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 64
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 7,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 44,
+        "tie_affected": 7
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Requested",
+        "count": 52,
+        "tie_affected": 15
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW03EP",
+    "type": "Q2",
+    "question": "For each worker, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations.",
+    "answerable": true,
+    "pair_of": "OW03E",
+    "gold_sha256": "66d2e71ca39036ddc902e8a1216d4ea1305fcbd47a2a2b6f7a239d8365825dd3",
+    "chart": "graphs/OW03E.svg",
+    "stats": {
+      "events": 276,
+      "observed_cases": 5,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 52,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Goods Received": 96,
+      "Goods Put Away": 84
+    },
+    "edges": [
+      {
+        "source": "Goods Put Away",
+        "target": "Goods Received",
+        "count": 45,
+        "tie_affected": 34
+      },
+      {
+        "source": "Goods Put Away",
+        "target": "Receiving Requested",
+        "count": 34,
+        "tie_affected": 12
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 64
+      },
+      {
+        "source": "Goods Received",
+        "target": "Goods Received",
+        "count": 7,
+        "tie_affected": 3
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Requested",
+        "count": 5,
+        "tie_affected": 3
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 44,
+        "tie_affected": 7
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Requested",
+        "count": 52,
+        "tie_affected": 15
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW04P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each warehouse transaction.",
+    "answerable": true,
+    "pair_of": "OW04",
+    "gold_sha256": "63e084074188bbfb26e2fd716d531d8d3c7e3366dfa717870fe50402e4dad7f4",
+    "chart": "graphs/OW04.svg",
+    "stats": {
+      "events": 394,
+      "observed_cases": 80,
+      "activities": 10,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Receiving Scheduled": 45,
+      "Goods Received": 45,
+      "Receiving Inspection Completed": 45,
+      "Goods Put Away": 39,
+      "Dispatch Requested": 35,
+      "Dispatch Approved": 35,
+      "Goods Picked": 35,
+      "Goods Packed": 35,
+      "Goods Dispatched": 35
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 45,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 45,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 45,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW04E",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Goods Received, Goods Put Away events for each warehouse transaction.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "d4c6e6456ca568c37197cbe8259acf1c9dab24adbef3c40e1654be3e7881592f",
+    "chart": "graphs/OW04E.svg",
+    "stats": {
+      "events": 129,
+      "observed_cases": 45,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Goods Received": 45,
+      "Goods Put Away": 39
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 45,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW04EP",
+    "type": "Q2",
+    "question": "For each warehouse transaction, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations.",
+    "answerable": true,
+    "pair_of": "OW04E",
+    "gold_sha256": "d4c6e6456ca568c37197cbe8259acf1c9dab24adbef3c40e1654be3e7881592f",
+    "chart": "graphs/OW04E.svg",
+    "stats": {
+      "events": 129,
+      "observed_cases": 45,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 45,
+      "Goods Received": 45,
+      "Goods Put Away": 39
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 39,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 45,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW05P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each goods transaction line.",
+    "answerable": true,
+    "pair_of": "OW05",
+    "gold_sha256": "6dfc82b31555d8ab544d2935e9ae7f0ba4b89c13f641ca0b4dda8d013546d55c",
+    "chart": "graphs/OW05.svg",
+    "stats": {
+      "events": 679,
+      "observed_cases": 138,
+      "activities": 10,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Receiving Scheduled": 79,
+      "Goods Received": 79,
+      "Receiving Inspection Completed": 79,
+      "Goods Put Away": 68,
+      "Dispatch Requested": 59,
+      "Dispatch Approved": 59,
+      "Goods Picked": 59,
+      "Goods Packed": 59,
+      "Goods Dispatched": 59
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 59,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 79,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 79,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 79,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW05E",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Goods Received, Goods Put Away events for each goods transaction line.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "1d10991d1e486674cd87ff06596fa22f793dc7743a5745ed35c9e145e075903a",
+    "chart": "graphs/OW05E.svg",
+    "stats": {
+      "events": 226,
+      "observed_cases": 79,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Goods Received": 79,
+      "Goods Put Away": 68
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 79,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW05EP",
+    "type": "Q2",
+    "question": "For each goods transaction line, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations.",
+    "answerable": true,
+    "pair_of": "OW05E",
+    "gold_sha256": "1d10991d1e486674cd87ff06596fa22f793dc7743a5745ed35c9e145e075903a",
+    "chart": "graphs/OW05E.svg",
+    "stats": {
+      "events": 226,
+      "observed_cases": 79,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 79,
+      "Goods Received": 79,
+      "Goods Put Away": 68
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 68,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 79,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW06P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each worker transaction assignment.",
+    "answerable": true,
+    "pair_of": "OW06",
+    "gold_sha256": "e27c9bff1341fcfe4e776b492fc83d9e7432fdbe09ca6531d7ee8b438e279cf0",
+    "chart": "graphs/OW06.svg",
+    "stats": {
+      "events": 823,
+      "observed_cases": 167,
+      "activities": 10,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Receiving Scheduled": 96,
+      "Goods Received": 96,
+      "Receiving Inspection Completed": 96,
+      "Goods Put Away": 84,
+      "Dispatch Requested": 71,
+      "Dispatch Approved": 71,
+      "Goods Picked": 71,
+      "Goods Packed": 71,
+      "Goods Dispatched": 71
+    },
+    "edges": [
+      {
+        "source": "Dispatch Approved",
+        "target": "Goods Picked",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Dispatch Requested",
+        "target": "Dispatch Approved",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Packed",
+        "target": "Goods Dispatched",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Picked",
+        "target": "Goods Packed",
+        "count": 71,
+        "tie_affected": 0
+      },
+      {
+        "source": "Goods Received",
+        "target": "Receiving Inspection Completed",
+        "count": 96,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Inspection Completed",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Receiving Scheduled",
+        "count": 96,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Scheduled",
+        "target": "Goods Received",
+        "count": 96,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW06E",
+    "type": "Q1",
+    "question": "Extract Receiving Requested, Goods Received, Goods Put Away events for each worker transaction assignment.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "672b9ba5627e99d087b3eb34247a3a25027c09d4a3a152633b3e150b9856d554",
+    "chart": "graphs/OW06E.svg",
+    "stats": {
+      "events": 276,
+      "observed_cases": 96,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Goods Received": 96,
+      "Goods Put Away": 84
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 96,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "warehouseflow",
+    "id": "OW06EP",
+    "type": "Q2",
+    "question": "For each worker transaction assignment, build a timeline of a request to take goods into storage, goods arriving at the warehouse, goods being placed into their storage locations.",
+    "answerable": true,
+    "pair_of": "OW06E",
+    "gold_sha256": "672b9ba5627e99d087b3eb34247a3a25027c09d4a3a152633b3e150b9856d554",
+    "chart": "graphs/OW06E.svg",
+    "stats": {
+      "events": 276,
+      "observed_cases": 96,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Receiving Requested": 96,
+      "Goods Received": 96,
+      "Goods Put Away": 84
+    },
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Goods Put Away",
+        "count": 84,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Requested",
+        "target": "Goods Received",
+        "count": 96,
+        "tie_affected": 0
+      }
+    ]
+  }
+]

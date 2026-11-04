@@ -1,0 +1,5036 @@
+[
+  {
+    "dataset": "universityflow",
+    "id": "U01",
+    "type": "Q1",
+    "question": "Extract Degree Examination Taken events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "4d22ea3e3826dd870068158c538e09dc09711dc74b9e6fe2e485620d4599b3c0",
+    "chart": "graphs/U01.svg",
+    "stats": {
+      "events": 40,
+      "observed_cases": 30,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Degree Examination Taken": 40
+    },
+    "edges": [
+      {
+        "source": "Degree Examination Taken",
+        "target": "Degree Examination Taken",
+        "count": 10,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U02",
+    "type": "Q2",
+    "question": "For each student, build a timeline of the student sitting the degree examination.",
+    "answerable": true,
+    "pair_of": "U01",
+    "gold_sha256": "4d22ea3e3826dd870068158c538e09dc09711dc74b9e6fe2e485620d4599b3c0",
+    "chart": "graphs/U01.svg",
+    "stats": {
+      "events": 40,
+      "observed_cases": 30,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Degree Examination Taken": 40
+    },
+    "edges": [
+      {
+        "source": "Degree Examination Taken",
+        "target": "Degree Examination Taken",
+        "count": 10,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U03",
+    "type": "Q1",
+    "question": "Extract Course Registered events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "b446e50d48200a12dcb418bd7aea0f3903abeca7f006164dc7b4cfedf424f9a5",
+    "chart": "graphs/U03.svg",
+    "stats": {
+      "events": 47,
+      "observed_cases": 20,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Course Registered": 47
+    },
+    "edges": [
+      {
+        "source": "Course Registered",
+        "target": "Course Registered",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U04",
+    "type": "Q2",
+    "question": "For each student, build a timeline of a successful course sign-up.",
+    "answerable": true,
+    "pair_of": "U03",
+    "gold_sha256": "b446e50d48200a12dcb418bd7aea0f3903abeca7f006164dc7b4cfedf424f9a5",
+    "chart": "graphs/U03.svg",
+    "stats": {
+      "events": 47,
+      "observed_cases": 20,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Course Registered": 47
+    },
+    "edges": [
+      {
+        "source": "Course Registered",
+        "target": "Course Registered",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U05",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "5170280c567945ee89bac9afa4effabeabe7fd55d28a74e1aa5536b8247c9294",
+    "chart": "graphs/U05.svg",
+    "stats": {
+      "events": 763,
+      "observed_cases": 30,
+      "activities": 29,
+      "dfg_edges": 62,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 60,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34,
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Assignment Assigned": 20,
+      "Course Started": 47,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7,
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Thesis Draft Registered": 16,
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Revision Requested": 6,
+      "Thesis Resubmitted": 6,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40,
+      "Assignment Grade Finalized": 15,
+      "Simulation Result Accepted": 23,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Course Registered",
+        "count": 11,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Examination Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Registration Approved",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Simulation Run Started",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Thesis Draft Registered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Simulation Run Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Simulation Run Scheduled",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Simulation Run Scheduled",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Course Started",
+        "count": 16,
+        "tie_affected": 8
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Assessment Completed",
+        "count": 27,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 21,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Submitted",
+        "count": 3,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 17,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Approved",
+        "count": 9,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Submitted",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Started",
+        "count": 14,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Simulation Run Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Checked In",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Examination Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Registration Requested",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Scheduled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Registration Requested",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 3
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 16,
+        "tie_affected": 13
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Approved",
+        "count": 6,
+        "tie_affected": 5
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Requested",
+        "count": 18,
+        "tie_affected": 16
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Assignment Assigned",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 8
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 27,
+        "tie_affected": 14
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Requested",
+        "count": 8,
+        "tie_affected": 1
+      },
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Thesis Draft Registered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Assignment Regraded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Course Assessment Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Scheduled",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Thesis Draft Registered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Assignment Grade Finalized",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 14,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 13
+      },
+      {
+        "source": "Thesis Accepted",
+        "target": "Course Grade Finalized",
+        "count": 12,
+        "tie_affected": 3
+      },
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Resubmitted",
+        "target": "Course Assessment Completed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Course Assessment Completed",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Revision Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Revision Requested",
+        "target": "Thesis Resubmitted",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U06",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each student.",
+    "answerable": true,
+    "pair_of": "U05",
+    "gold_sha256": "5170280c567945ee89bac9afa4effabeabe7fd55d28a74e1aa5536b8247c9294",
+    "chart": "graphs/U05.svg",
+    "stats": {
+      "events": 763,
+      "observed_cases": 30,
+      "activities": 29,
+      "dfg_edges": 62,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 60,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34,
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Assignment Assigned": 20,
+      "Course Started": 47,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7,
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Thesis Draft Registered": 16,
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Revision Requested": 6,
+      "Thesis Resubmitted": 6,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40,
+      "Assignment Grade Finalized": 15,
+      "Simulation Result Accepted": 23,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Course Registered",
+        "count": 11,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Examination Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Registration Approved",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Simulation Run Started",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Thesis Draft Registered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Simulation Run Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Simulation Run Scheduled",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Simulation Run Scheduled",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Course Started",
+        "count": 16,
+        "tie_affected": 8
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Assessment Completed",
+        "count": 27,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 21,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Submitted",
+        "count": 3,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 17,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Approved",
+        "count": 9,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Submitted",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Started",
+        "count": 14,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Simulation Run Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Checked In",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Examination Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Registration Requested",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Scheduled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Registration Requested",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 3
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 16,
+        "tie_affected": 13
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Approved",
+        "count": 6,
+        "tie_affected": 5
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Requested",
+        "count": 18,
+        "tie_affected": 16
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Assignment Assigned",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 8
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 27,
+        "tie_affected": 14
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Requested",
+        "count": 8,
+        "tie_affected": 1
+      },
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Thesis Draft Registered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Assignment Regraded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Course Assessment Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Scheduled",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Thesis Draft Registered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Assignment Grade Finalized",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 14,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 13
+      },
+      {
+        "source": "Thesis Accepted",
+        "target": "Course Grade Finalized",
+        "count": 12,
+        "tie_affected": 3
+      },
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Resubmitted",
+        "target": "Course Assessment Completed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Course Assessment Completed",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Revision Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Revision Requested",
+        "target": "Thesis Resubmitted",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U07",
+    "type": "Q1",
+    "question": "Extract Registration Success Notification Sent events for each student.",
+    "answerable": false,
+    "pair_of": null,
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "The requirements mention notifications, but no notification records or times are stored."
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U08",
+    "type": "Q1",
+    "question": "Extract Course Withdrawn events for each student.",
+    "answerable": false,
+    "pair_of": null,
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "No withdrawal times or registration-status history are recorded."
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U09",
+    "type": "Q1",
+    "question": "Extract Assignment Graded events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "8ddf3783f7a07f90ae680be19ff16f9b0ae95b184263b99bd74e32ea5164939a",
+    "chart": "graphs/U09.svg",
+    "stats": {
+      "events": 18,
+      "observed_cases": 16,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U10",
+    "type": "Q2",
+    "question": "For each student, build a timeline of an instructor assessing the assignment.",
+    "answerable": true,
+    "pair_of": "U09",
+    "gold_sha256": "8ddf3783f7a07f90ae680be19ff16f9b0ae95b184263b99bd74e32ea5164939a",
+    "chart": "graphs/U09.svg",
+    "stats": {
+      "events": 18,
+      "observed_cases": 16,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U11",
+    "type": "Q1",
+    "question": "Extract Simulation Experiment Completed events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "95d0a9c82182286ecf9a2b7902f1cf27e9388f639145e27941ed8b7821f9d107",
+    "chart": "graphs/U11.svg",
+    "stats": {
+      "events": 27,
+      "observed_cases": 20,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Experiment Completed": 27
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Experiment Completed",
+        "count": 7,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U12",
+    "type": "Q2",
+    "question": "For each student, build a timeline of a simulation run finishing.",
+    "answerable": true,
+    "pair_of": "U11",
+    "gold_sha256": "95d0a9c82182286ecf9a2b7902f1cf27e9388f639145e27941ed8b7821f9d107",
+    "chart": "graphs/U11.svg",
+    "stats": {
+      "events": 27,
+      "observed_cases": 20,
+      "activities": 1,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Experiment Completed": 27
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Experiment Completed",
+        "count": 7,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U13",
+    "type": "Q1",
+    "question": "Extract Thesis Submitted events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "e7e2af2ae6e7378f485e076b0950d2960415ffe486cd460e54178f5555fe7c10",
+    "chart": "graphs/U13.svg",
+    "stats": {
+      "events": 16,
+      "observed_cases": 16,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Submitted": 16
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U14",
+    "type": "Q2",
+    "question": "For each student, build a timeline of the student handing in a thesis.",
+    "answerable": true,
+    "pair_of": "U13",
+    "gold_sha256": "e7e2af2ae6e7378f485e076b0950d2960415ffe486cd460e54178f5555fe7c10",
+    "chart": "graphs/U13.svg",
+    "stats": {
+      "events": 16,
+      "observed_cases": 16,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Submitted": 16
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U15",
+    "type": "Q1",
+    "question": "Extract Assignment Submitted events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "cc5e64d7b258f97b72c12dca6cbee98ea3f17971f39509ae45d4dbe8464490ca",
+    "chart": "graphs/U15.svg",
+    "stats": {
+      "events": 16,
+      "observed_cases": 16,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Submitted": 16
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU01",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "5170280c567945ee89bac9afa4effabeabe7fd55d28a74e1aa5536b8247c9294",
+    "chart": "graphs/U05.svg",
+    "stats": {
+      "events": 763,
+      "observed_cases": 30,
+      "activities": 29,
+      "dfg_edges": 62,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 60,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34,
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Assignment Assigned": 20,
+      "Course Started": 47,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7,
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Thesis Draft Registered": 16,
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Revision Requested": 6,
+      "Thesis Resubmitted": 6,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40,
+      "Assignment Grade Finalized": 15,
+      "Simulation Result Accepted": 23,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Course Registered",
+        "count": 11,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Examination Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Registration Approved",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Simulation Run Started",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Thesis Draft Registered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Simulation Run Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Simulation Run Scheduled",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Simulation Run Scheduled",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Course Started",
+        "count": 16,
+        "tie_affected": 8
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Assessment Completed",
+        "count": 27,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 21,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Submitted",
+        "count": 3,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 17,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Approved",
+        "count": 9,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Submitted",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Started",
+        "count": 14,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Simulation Run Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Checked In",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Examination Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Registration Requested",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Scheduled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Registration Requested",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 3
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 16,
+        "tie_affected": 13
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Approved",
+        "count": 6,
+        "tie_affected": 5
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Requested",
+        "count": 18,
+        "tie_affected": 16
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Assignment Assigned",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 8
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 27,
+        "tie_affected": 14
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Requested",
+        "count": 8,
+        "tie_affected": 1
+      },
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Thesis Draft Registered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Assignment Regraded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Course Assessment Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Scheduled",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Thesis Draft Registered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Assignment Grade Finalized",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 14,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 13
+      },
+      {
+        "source": "Thesis Accepted",
+        "target": "Course Grade Finalized",
+        "count": 12,
+        "tie_affected": 3
+      },
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Resubmitted",
+        "target": "Course Assessment Completed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Course Assessment Completed",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Revision Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Revision Requested",
+        "target": "Thesis Resubmitted",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU02",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each course.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "12cbba3e2aeab26c4ca391e4cb8e6762a173a316853e7a527e5925674838f85a",
+    "chart": "graphs/OU02.svg",
+    "stats": {
+      "events": 298,
+      "observed_cases": 6,
+      "activities": 10,
+      "dfg_edges": 24,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 15,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Course Offering Proposed": 6,
+      "Course Offering Approved": 6,
+      "Course Offering Published": 6,
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Course Started": 47,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40,
+      "Course Offering Closed": 5
+    },
+    "edges": [
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Assessment Completed",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 24,
+        "tie_affected": 1
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Registered",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Started",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Registration Requested",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Assessment Completed",
+        "count": 14,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Offering Closed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Started",
+        "count": 8,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Registration Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Offering Approved",
+        "target": "Course Offering Published",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Offering Proposed",
+        "target": "Course Offering Approved",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Offering Published",
+        "target": "Registration Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Assessment Completed",
+        "count": 4,
+        "tie_affected": 1
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Grade Finalized",
+        "count": 5,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 28,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 10,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Assessment Completed",
+        "count": 12,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Grade Finalized",
+        "count": 6,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Started",
+        "count": 8,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Started",
+        "target": "Registration Requested",
+        "count": 21,
+        "tie_affected": 2
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Assessment Completed",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 39,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU03",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each student-course registration.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "6ba15dd91c3e736dd7547ca7b560fb82bcf230989a0de77307dc2ef9d9634e50",
+    "chart": "graphs/OU03.svg",
+    "stats": {
+      "events": 275,
+      "observed_cases": 47,
+      "activities": 6,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Course Started": 47,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Assessment Completed",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU04",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each examination result record.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "41616a5a42423f790a4be9a76f687349247d3da030ffa377a45f54d3c27fec1e",
+    "chart": "graphs/OU04.svg",
+    "stats": {
+      "events": 194,
+      "observed_cases": 40,
+      "activities": 5,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34
+    },
+    "edges": [
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Checked In",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU05",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each simulation module.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "4351d78024dda8e06fb0e3cf59b1c1e5183c49933f5c86be2fbd297607e09449",
+    "chart": "graphs/OU05.svg",
+    "stats": {
+      "events": 142,
+      "observed_cases": 3,
+      "activities": 9,
+      "dfg_edges": 10,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Module Published": 3,
+      "Simulation Module Validated": 3,
+      "Simulation Module Released": 3,
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Simulation Result Accepted": 23,
+      "Simulation Module Retired": 2
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Module Published",
+        "target": "Simulation Module Validated",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Module Released",
+        "target": "Simulation Run Scheduled",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Module Validated",
+        "target": "Simulation Module Released",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Run Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Module Retired",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Scheduled",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU06",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each thesis.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "1f3e57b64013a69122792ad107c60a7f3862982ae22975e67d7fb907fde60bc1",
+    "chart": "graphs/OU06.svg",
+    "stats": {
+      "events": 73,
+      "observed_cases": 16,
+      "activities": 6,
+      "dfg_edges": 6,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Draft Registered": 16,
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Revision Requested": 6,
+      "Thesis Resubmitted": 6,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Resubmitted",
+        "target": "Thesis Accepted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Accepted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Revision Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Revision Requested",
+        "target": "Thesis Resubmitted",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU07",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each simulation experiment result record.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "ffe704a09bfae41142aa97f14fc28e60774426fe144b0fe197c4da13a0f597f1",
+    "chart": "graphs/OU07.svg",
+    "stats": {
+      "events": 131,
+      "observed_cases": 27,
+      "activities": 5,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Simulation Result Accepted": 23
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU08",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each assignment.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "c6b68fc184c39fe22406d75faf0a6b02d5123c38bc2e4c0b8a7df36fdb132ff8",
+    "chart": "graphs/OU08.svg",
+    "stats": {
+      "events": 90,
+      "observed_cases": 20,
+      "activities": 7,
+      "dfg_edges": 9,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 2,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7,
+      "Assignment Grade Finalized": 15
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Grade Finalized",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 7,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU09",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each instructor.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "f72c813fe522d79058ba4bbc0952fad8574bda4d1bf9d85ebe0194e99dac6628",
+    "chart": "graphs/OU09.svg",
+    "stats": {
+      "events": 86,
+      "observed_cases": 3,
+      "activities": 7,
+      "dfg_edges": 18,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 4,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 16,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Grade Finalized": 15,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Graded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 11,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Assignment Graded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Grade Finalized",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Submitted",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Assigned",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 5,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Submitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Assigned",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Grade Finalized",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Regraded",
+        "count": 2,
+        "tie_affected": 2
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU10",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each assignment grading record.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "86780522189342a9d0a37bef9a8659c7e1c0924d05a6d352fec7610b355a1256",
+    "chart": "graphs/OU10.svg",
+    "stats": {
+      "events": 25,
+      "observed_cases": 25,
+      "activities": 2,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Graded": 18,
+      "Assignment Regraded": 7
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU11",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle event log for each course-design task.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "9fe9244271ce249dae9d80760efc0227ea1151f78706e88443aa56299c160708",
+    "chart": "graphs/OU11.svg",
+    "stats": {
+      "events": 11,
+      "observed_cases": 3,
+      "activities": 4,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Design Task Created": 3,
+      "Design Task Approved": 3,
+      "Design Task Published": 3,
+      "Design Task Closed": 2
+    },
+    "edges": [
+      {
+        "source": "Design Task Approved",
+        "target": "Design Task Published",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Design Task Created",
+        "target": "Design Task Approved",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Design Task Published",
+        "target": "Design Task Closed",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS01",
+    "type": "Q1",
+    "question": "Extract Examination Scheduled, Examination Checked In, Examination Score Published, Examination Result Reviewed events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "c72cb9e6bcd61ca33f0b35d3537e6867fad774643f522e6972bb5e88f2b1827e",
+    "chart": "graphs/TS01.svg",
+    "stats": {
+      "events": 154,
+      "observed_cases": 30,
+      "activities": 4,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34
+    },
+    "edges": [
+      {
+        "source": "Examination Checked In",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Examination Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Scheduled",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS02",
+    "type": "Q1",
+    "question": "Extract Registration Requested, Registration Approved, Course Started, Course Assessment Completed, Course Grade Finalized events for each student-course registration.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "2001001fab6484bbe2d8aaa9e195e3d551e01ad75540f9fc7a65cfbcaac39581",
+    "chart": "graphs/TS02.svg",
+    "stats": {
+      "events": 228,
+      "observed_cases": 47,
+      "activities": 5,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Started": 47,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Assessment Completed",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Started",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS03",
+    "type": "Q1",
+    "question": "Extract Assignment Assigned, Assignment Submitted, Assignment Grade Finalized events for each assignment.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "3d7e8de57b19ed3326ecdea311b1363ce69966f46ddb7bbca4d3ca417301c58e",
+    "chart": "graphs/TS03.svg",
+    "stats": {
+      "events": 51,
+      "observed_cases": 20,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Grade Finalized": 15
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Grade Finalized",
+        "count": 15,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS04",
+    "type": "Q1",
+    "question": "Extract Thesis Draft Registered, Thesis Review Started, Thesis Accepted events for each thesis.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "45211a827f97c7ee846bb7d32198b87c54f00cdfd9f8ccf963a4920ce555df15",
+    "chart": "graphs/TS04.svg",
+    "stats": {
+      "events": 45,
+      "observed_cases": 16,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Draft Registered": 16,
+      "Thesis Review Started": 16,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U07P",
+    "type": "Q2",
+    "question": "For each student, build a timeline of confirmation messages being sent after a course sign-up.",
+    "answerable": false,
+    "pair_of": "U07",
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "The requirements mention notifications, but no notification records or times are stored."
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U08P",
+    "type": "Q2",
+    "question": "For each student, build a timeline of the student leaving a course after signing up.",
+    "answerable": false,
+    "pair_of": "U08",
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "No withdrawal times or registration-status history are recorded."
+  },
+  {
+    "dataset": "universityflow",
+    "id": "U15P",
+    "type": "Q2",
+    "question": "For each student, build a timeline of the student handing in coursework.",
+    "answerable": true,
+    "pair_of": "U15",
+    "gold_sha256": "cc5e64d7b258f97b72c12dca6cbee98ea3f17971f39509ae45d4dbe8464490ca",
+    "chart": "graphs/U15.svg",
+    "stats": {
+      "events": 16,
+      "observed_cases": 16,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Submitted": 16
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS01P",
+    "type": "Q2",
+    "question": "For each student, build a timeline of an examination sitting being arranged, the candidate checking in for the examination, the examination mark being released, the examination result being reviewed.",
+    "answerable": true,
+    "pair_of": "TS01",
+    "gold_sha256": "c72cb9e6bcd61ca33f0b35d3537e6867fad774643f522e6972bb5e88f2b1827e",
+    "chart": "graphs/TS01.svg",
+    "stats": {
+      "events": 154,
+      "observed_cases": 30,
+      "activities": 4,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34
+    },
+    "edges": [
+      {
+        "source": "Examination Checked In",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Examination Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Scheduled",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS02P",
+    "type": "Q2",
+    "question": "For each student-course registration, build a timeline of the student requesting a place on a course, the request for a course place being accepted, teaching beginning for the enrolled course, the course assessment finishing, the course mark being made final.",
+    "answerable": true,
+    "pair_of": "TS02",
+    "gold_sha256": "2001001fab6484bbe2d8aaa9e195e3d551e01ad75540f9fc7a65cfbcaac39581",
+    "chart": "graphs/TS02.svg",
+    "stats": {
+      "events": 228,
+      "observed_cases": 47,
+      "activities": 5,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Started": 47,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Assessment Completed",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Started",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS03P",
+    "type": "Q2",
+    "question": "For each assignment, build a timeline of coursework being set for the student, the student handing in coursework, the coursework mark being made final.",
+    "answerable": true,
+    "pair_of": "TS03",
+    "gold_sha256": "3d7e8de57b19ed3326ecdea311b1363ce69966f46ddb7bbca4d3ca417301c58e",
+    "chart": "graphs/TS03.svg",
+    "stats": {
+      "events": 51,
+      "observed_cases": 20,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Grade Finalized": 15
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Grade Finalized",
+        "count": 15,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "TS04P",
+    "type": "Q2",
+    "question": "For each thesis, build a timeline of a thesis draft being registered for review, the review of a thesis beginning, a thesis receiving final approval.",
+    "answerable": true,
+    "pair_of": "TS04",
+    "gold_sha256": "45211a827f97c7ee846bb7d32198b87c54f00cdfd9f8ccf963a4920ce555df15",
+    "chart": "graphs/TS04.svg",
+    "stats": {
+      "events": 45,
+      "observed_cases": 16,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Draft Registered": 16,
+      "Thesis Review Started": 16,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU01P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each student.",
+    "answerable": true,
+    "pair_of": "OU01",
+    "gold_sha256": "5170280c567945ee89bac9afa4effabeabe7fd55d28a74e1aa5536b8247c9294",
+    "chart": "graphs/U05.svg",
+    "stats": {
+      "events": 763,
+      "observed_cases": 30,
+      "activities": 29,
+      "dfg_edges": 62,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 60,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34,
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Assignment Assigned": 20,
+      "Course Started": 47,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7,
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Thesis Draft Registered": 16,
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Revision Requested": 6,
+      "Thesis Resubmitted": 6,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40,
+      "Assignment Grade Finalized": 15,
+      "Simulation Result Accepted": 23,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Course Registered",
+        "count": 11,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Examination Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Registration Approved",
+        "count": 5,
+        "tie_affected": 5
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Simulation Run Started",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Thesis Draft Registered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Simulation Run Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Simulation Run Scheduled",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Simulation Run Scheduled",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Course Started",
+        "count": 16,
+        "tie_affected": 8
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Assessment Completed",
+        "count": 27,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 21,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Assignment Submitted",
+        "count": 3,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 17,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Approved",
+        "count": 9,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Assignment Submitted",
+        "count": 13,
+        "tie_affected": 6
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Started",
+        "count": 14,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Started",
+        "target": "Simulation Run Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Checked In",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Examination Scheduled",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Result Reviewed",
+        "target": "Registration Requested",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Scheduled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Registration Requested",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 3
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 16,
+        "tie_affected": 13
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Approved",
+        "count": 6,
+        "tie_affected": 5
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Registration Requested",
+        "count": 18,
+        "tie_affected": 16
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Assignment Assigned",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 10,
+        "tie_affected": 8
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 27,
+        "tie_affected": 14
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Requested",
+        "count": 8,
+        "tie_affected": 1
+      },
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Thesis Draft Registered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Assignment Regraded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Course Assessment Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Scheduled",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Thesis Draft Registered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Assignment Grade Finalized",
+        "count": 13,
+        "tie_affected": 13
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 14,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 13
+      },
+      {
+        "source": "Thesis Accepted",
+        "target": "Course Grade Finalized",
+        "count": 12,
+        "tie_affected": 3
+      },
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Resubmitted",
+        "target": "Course Assessment Completed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Course Assessment Completed",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Revision Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Revision Requested",
+        "target": "Thesis Resubmitted",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU01E",
+    "type": "Q1",
+    "question": "Extract Assignment Assigned, Assignment Submitted, Assignment Graded events for each student.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "ca875380711d3d1b3db898fbd1085e7cff0db9f3bf38ce850bbc063a4b87c411",
+    "chart": "graphs/OU01E.svg",
+    "stats": {
+      "events": 54,
+      "observed_cases": 20,
+      "activities": 3,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU01EP",
+    "type": "Q2",
+    "question": "For each student, build a timeline of coursework being set for the student, the student handing in coursework, an instructor assessing the assignment.",
+    "answerable": true,
+    "pair_of": "OU01E",
+    "gold_sha256": "ca875380711d3d1b3db898fbd1085e7cff0db9f3bf38ce850bbc063a4b87c411",
+    "chart": "graphs/OU01E.svg",
+    "stats": {
+      "events": 54,
+      "observed_cases": 20,
+      "activities": 3,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU02P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each course.",
+    "answerable": true,
+    "pair_of": "OU02",
+    "gold_sha256": "12cbba3e2aeab26c4ca391e4cb8e6762a173a316853e7a527e5925674838f85a",
+    "chart": "graphs/OU02.svg",
+    "stats": {
+      "events": 298,
+      "observed_cases": 6,
+      "activities": 10,
+      "dfg_edges": 24,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 15,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Course Offering Proposed": 6,
+      "Course Offering Approved": 6,
+      "Course Offering Published": 6,
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Course Started": 47,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40,
+      "Course Offering Closed": 5
+    },
+    "edges": [
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Assessment Completed",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 24,
+        "tie_affected": 1
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Registered",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Started",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Assessment Completed",
+        "target": "Registration Requested",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Assessment Completed",
+        "count": 14,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Offering Closed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Started",
+        "count": 8,
+        "tie_affected": 7
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Registration Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Offering Approved",
+        "target": "Course Offering Published",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Offering Proposed",
+        "target": "Course Offering Approved",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Offering Published",
+        "target": "Registration Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Assessment Completed",
+        "count": 4,
+        "tie_affected": 1
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Grade Finalized",
+        "count": 5,
+        "tie_affected": 4
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 28,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 10,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Assessment Completed",
+        "count": 12,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Grade Finalized",
+        "count": 6,
+        "tie_affected": 3
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Started",
+        "count": 8,
+        "tie_affected": 2
+      },
+      {
+        "source": "Course Started",
+        "target": "Registration Requested",
+        "count": 21,
+        "tie_affected": 2
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Assessment Completed",
+        "count": 8,
+        "tie_affected": 8
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 39,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU02E",
+    "type": "Q1",
+    "question": "Extract Registration Requested, Course Registered, Course Grade Finalized events for each course.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "f15204b5e7a60b6008fb86382e7e48be8a52b2667c0a07d72aed9a8f8762359b",
+    "chart": "graphs/OU02E.svg",
+    "stats": {
+      "events": 134,
+      "observed_cases": 6,
+      "activities": 3,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Course Registered": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Registration Requested",
+        "count": 11,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Grade Finalized",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU02EP",
+    "type": "Q2",
+    "question": "For each course, build a timeline of the student requesting a place on a course, a successful course sign-up, the course mark being made final.",
+    "answerable": true,
+    "pair_of": "OU02E",
+    "gold_sha256": "f15204b5e7a60b6008fb86382e7e48be8a52b2667c0a07d72aed9a8f8762359b",
+    "chart": "graphs/OU02E.svg",
+    "stats": {
+      "events": 134,
+      "observed_cases": 6,
+      "activities": 3,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Course Registered": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Grade Finalized",
+        "target": "Course Grade Finalized",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Grade Finalized",
+        "target": "Registration Requested",
+        "count": 11,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Grade Finalized",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Registration Requested",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU03P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each student-course registration.",
+    "answerable": true,
+    "pair_of": "OU03",
+    "gold_sha256": "6ba15dd91c3e736dd7547ca7b560fb82bcf230989a0de77307dc2ef9d9634e50",
+    "chart": "graphs/OU03.svg",
+    "stats": {
+      "events": 275,
+      "observed_cases": 47,
+      "activities": 6,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Registration Approved": 47,
+      "Course Registered": 47,
+      "Course Started": 47,
+      "Course Assessment Completed": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Assessment Completed",
+        "target": "Course Grade Finalized",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Registered",
+        "target": "Course Started",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Course Started",
+        "target": "Course Assessment Completed",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Approved",
+        "target": "Course Registered",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Registration Approved",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU03E",
+    "type": "Q1",
+    "question": "Extract Registration Requested, Course Registered, Course Grade Finalized events for each student-course registration.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "139083525926e0521963c0ab513b2a6af925b4d38b85d2623050eb7d0e55e895",
+    "chart": "graphs/OU03E.svg",
+    "stats": {
+      "events": 134,
+      "observed_cases": 47,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Course Registered": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Registered",
+        "target": "Course Grade Finalized",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU03EP",
+    "type": "Q2",
+    "question": "For each student-course registration, build a timeline of the student requesting a place on a course, a successful course sign-up, the course mark being made final.",
+    "answerable": true,
+    "pair_of": "OU03E",
+    "gold_sha256": "139083525926e0521963c0ab513b2a6af925b4d38b85d2623050eb7d0e55e895",
+    "chart": "graphs/OU03E.svg",
+    "stats": {
+      "events": 134,
+      "observed_cases": 47,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Registration Requested": 47,
+      "Course Registered": 47,
+      "Course Grade Finalized": 40
+    },
+    "edges": [
+      {
+        "source": "Course Registered",
+        "target": "Course Grade Finalized",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Registration Requested",
+        "target": "Course Registered",
+        "count": 47,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU04P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each examination result record.",
+    "answerable": true,
+    "pair_of": "OU04",
+    "gold_sha256": "41616a5a42423f790a4be9a76f687349247d3da030ffa377a45f54d3c27fec1e",
+    "chart": "graphs/OU04.svg",
+    "stats": {
+      "events": 194,
+      "observed_cases": 40,
+      "activities": 5,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Examination Checked In": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40,
+      "Examination Result Reviewed": 34
+    },
+    "edges": [
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Checked In",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Examination Checked In",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Score Published",
+        "target": "Examination Result Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU04E",
+    "type": "Q1",
+    "question": "Extract Examination Scheduled, Degree Examination Taken, Examination Score Published events for each examination result record.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "e7a7a3269140d53ff5a3d8e5d6734b6fa079f71efb9ae0691b3937b48dff7cbb",
+    "chart": "graphs/OU04E.svg",
+    "stats": {
+      "events": 120,
+      "observed_cases": 40,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40
+    },
+    "edges": [
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU04EP",
+    "type": "Q2",
+    "question": "For each examination result record, build a timeline of an examination sitting being arranged, the student sitting the degree examination, the examination mark being released.",
+    "answerable": true,
+    "pair_of": "OU04E",
+    "gold_sha256": "e7a7a3269140d53ff5a3d8e5d6734b6fa079f71efb9ae0691b3937b48dff7cbb",
+    "chart": "graphs/OU04E.svg",
+    "stats": {
+      "events": 120,
+      "observed_cases": 40,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Examination Scheduled": 40,
+      "Degree Examination Taken": 40,
+      "Examination Score Published": 40
+    },
+    "edges": [
+      {
+        "source": "Degree Examination Taken",
+        "target": "Examination Score Published",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Examination Scheduled",
+        "target": "Degree Examination Taken",
+        "count": 40,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU05P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each simulation module.",
+    "answerable": true,
+    "pair_of": "OU05",
+    "gold_sha256": "4351d78024dda8e06fb0e3cf59b1c1e5183c49933f5c86be2fbd297607e09449",
+    "chart": "graphs/OU05.svg",
+    "stats": {
+      "events": 142,
+      "observed_cases": 3,
+      "activities": 9,
+      "dfg_edges": 10,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Module Published": 3,
+      "Simulation Module Validated": 3,
+      "Simulation Module Released": 3,
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Simulation Result Accepted": 23,
+      "Simulation Module Retired": 2
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Module Published",
+        "target": "Simulation Module Validated",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Module Released",
+        "target": "Simulation Run Scheduled",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Module Validated",
+        "target": "Simulation Module Released",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Run Scheduled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Module Retired",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Scheduled",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU05E",
+    "type": "Q1",
+    "question": "Extract Simulation Run Started, Simulation Experiment Completed, Simulation Result Accepted events for each simulation module.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "ff239346055887cdc60750d635642edd9d836a6bcb9b88580cab979d5190cd81",
+    "chart": "graphs/OU05E.svg",
+    "stats": {
+      "events": 77,
+      "observed_cases": 3,
+      "activities": 3,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Result Accepted": 23
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Run Started",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Started",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU05EP",
+    "type": "Q2",
+    "question": "For each simulation module, build a timeline of a simulation run beginning, a simulation run finishing, the simulation results receiving approval.",
+    "answerable": true,
+    "pair_of": "OU05E",
+    "gold_sha256": "ff239346055887cdc60750d635642edd9d836a6bcb9b88580cab979d5190cd81",
+    "chart": "graphs/OU05E.svg",
+    "stats": {
+      "events": 77,
+      "observed_cases": 3,
+      "activities": 3,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Result Accepted": 23
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Run Started",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Result Accepted",
+        "target": "Simulation Run Started",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU06P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each thesis.",
+    "answerable": true,
+    "pair_of": "OU06",
+    "gold_sha256": "1f3e57b64013a69122792ad107c60a7f3862982ae22975e67d7fb907fde60bc1",
+    "chart": "graphs/OU06.svg",
+    "stats": {
+      "events": 73,
+      "observed_cases": 16,
+      "activities": 6,
+      "dfg_edges": 6,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Draft Registered": 16,
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Revision Requested": 6,
+      "Thesis Resubmitted": 6,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Thesis Draft Registered",
+        "target": "Thesis Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Resubmitted",
+        "target": "Thesis Accepted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Accepted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Revision Requested",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Revision Requested",
+        "target": "Thesis Resubmitted",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU06E",
+    "type": "Q1",
+    "question": "Extract Thesis Submitted, Thesis Review Started, Thesis Accepted events for each thesis.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "a797e3b2577b3275d0a4d512e7a79a3ffb8caf6d6aa14a77058a23ce1a3c6737",
+    "chart": "graphs/OU06E.svg",
+    "stats": {
+      "events": 45,
+      "observed_cases": 16,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU06EP",
+    "type": "Q2",
+    "question": "For each thesis, build a timeline of the student handing in a thesis, the review of a thesis beginning, a thesis receiving final approval.",
+    "answerable": true,
+    "pair_of": "OU06E",
+    "gold_sha256": "a797e3b2577b3275d0a4d512e7a79a3ffb8caf6d6aa14a77058a23ce1a3c6737",
+    "chart": "graphs/OU06E.svg",
+    "stats": {
+      "events": 45,
+      "observed_cases": 16,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Thesis Submitted": 16,
+      "Thesis Review Started": 16,
+      "Thesis Accepted": 13
+    },
+    "edges": [
+      {
+        "source": "Thesis Review Started",
+        "target": "Thesis Accepted",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Thesis Submitted",
+        "target": "Thesis Review Started",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU07P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each simulation experiment result record.",
+    "answerable": true,
+    "pair_of": "OU07",
+    "gold_sha256": "ffe704a09bfae41142aa97f14fc28e60774426fe144b0fe197c4da13a0f597f1",
+    "chart": "graphs/OU07.svg",
+    "stats": {
+      "events": 131,
+      "observed_cases": 27,
+      "activities": 5,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Run Scheduled": 27,
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Output Reviewed": 27,
+      "Simulation Result Accepted": 23
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Output Reviewed",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Output Reviewed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Scheduled",
+        "target": "Simulation Run Started",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU07E",
+    "type": "Q1",
+    "question": "Extract Simulation Run Started, Simulation Experiment Completed, Simulation Result Accepted events for each simulation experiment result record.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "234fe2e9e61c365318dade78780619fc30ab679ddcfd986083297d36ddb4945d",
+    "chart": "graphs/OU07E.svg",
+    "stats": {
+      "events": 77,
+      "observed_cases": 27,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Result Accepted": 23
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU07EP",
+    "type": "Q2",
+    "question": "For each simulation experiment result record, build a timeline of a simulation run beginning, a simulation run finishing, the simulation results receiving approval.",
+    "answerable": true,
+    "pair_of": "OU07E",
+    "gold_sha256": "234fe2e9e61c365318dade78780619fc30ab679ddcfd986083297d36ddb4945d",
+    "chart": "graphs/OU07E.svg",
+    "stats": {
+      "events": 77,
+      "observed_cases": 27,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Simulation Run Started": 27,
+      "Simulation Experiment Completed": 27,
+      "Simulation Result Accepted": 23
+    },
+    "edges": [
+      {
+        "source": "Simulation Experiment Completed",
+        "target": "Simulation Result Accepted",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Simulation Run Started",
+        "target": "Simulation Experiment Completed",
+        "count": 27,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU08P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each assignment.",
+    "answerable": true,
+    "pair_of": "OU08",
+    "gold_sha256": "c6b68fc184c39fe22406d75faf0a6b02d5123c38bc2e4c0b8a7df36fdb132ff8",
+    "chart": "graphs/OU08.svg",
+    "stats": {
+      "events": 90,
+      "observed_cases": 20,
+      "activities": 7,
+      "dfg_edges": 9,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 2,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7,
+      "Assignment Grade Finalized": 15
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Grade Finalized",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 7,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU08E",
+    "type": "Q1",
+    "question": "Extract Assignment Assigned, Assignment Submitted, Assignment Graded events for each assignment.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "61dd8b2fc42f3aca6a8ca4dffd9b2dd5aad7513b95f39a98f939933df8584df6",
+    "chart": "graphs/OU08E.svg",
+    "stats": {
+      "events": 54,
+      "observed_cases": 20,
+      "activities": 3,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU08EP",
+    "type": "Q2",
+    "question": "For each assignment, build a timeline of coursework being set for the student, the student handing in coursework, an instructor assessing the assignment.",
+    "answerable": true,
+    "pair_of": "OU08E",
+    "gold_sha256": "61dd8b2fc42f3aca6a8ca4dffd9b2dd5aad7513b95f39a98f939933df8584df6",
+    "chart": "graphs/OU08E.svg",
+    "stats": {
+      "events": 54,
+      "observed_cases": 20,
+      "activities": 3,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 20,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 16,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU09P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each instructor.",
+    "answerable": true,
+    "pair_of": "OU09",
+    "gold_sha256": "f72c813fe522d79058ba4bbc0952fad8574bda4d1bf9d85ebe0194e99dac6628",
+    "chart": "graphs/OU09.svg",
+    "stats": {
+      "events": 86,
+      "observed_cases": 3,
+      "activities": 7,
+      "dfg_edges": 18,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 4,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 16,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18,
+      "Assignment Grade Finalized": 15,
+      "Assignment Revision Requested": 7,
+      "Assignment Resubmitted": 7,
+      "Assignment Regraded": 7
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Graded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 11,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Assignment Assigned",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Grade Finalized",
+        "target": "Assignment Graded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Grade Finalized",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Resubmitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Revision Requested",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Submitted",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Assigned",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Grade Finalized",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Regraded",
+        "count": 5,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Resubmitted",
+        "target": "Assignment Submitted",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Revision Requested",
+        "target": "Assignment Resubmitted",
+        "count": 5,
+        "tie_affected": 2
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Assigned",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Grade Finalized",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Regraded",
+        "count": 2,
+        "tie_affected": 2
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU09E",
+    "type": "Q1",
+    "question": "Extract Assignment Assigned, Assignment Submitted, Assignment Graded events for each instructor.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "029e6f3645f82d2522d0f90ac398d5d4b6b9a416cba4a736956ebf1d61349da2",
+    "chart": "graphs/OU09E.svg",
+    "stats": {
+      "events": 50,
+      "observed_cases": 3,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 16,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Graded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 11,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Assigned",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Submitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Assigned",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 11,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU09EP",
+    "type": "Q2",
+    "question": "For each instructor, build a timeline of coursework being set for the student, the student handing in coursework, an instructor assessing the assignment.",
+    "answerable": true,
+    "pair_of": "OU09E",
+    "gold_sha256": "029e6f3645f82d2522d0f90ac398d5d4b6b9a416cba4a736956ebf1d61349da2",
+    "chart": "graphs/OU09E.svg",
+    "stats": {
+      "events": 50,
+      "observed_cases": 3,
+      "activities": 3,
+      "dfg_edges": 7,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Assigned": 16,
+      "Assignment Submitted": 16,
+      "Assignment Graded": 18
+    },
+    "edges": [
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Graded",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Assigned",
+        "target": "Assignment Submitted",
+        "count": 11,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Assigned",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Submitted",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Assigned",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Submitted",
+        "target": "Assignment Graded",
+        "count": 11,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU10P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each assignment grading record.",
+    "answerable": true,
+    "pair_of": "OU10",
+    "gold_sha256": "86780522189342a9d0a37bef9a8659c7e1c0924d05a6d352fec7610b355a1256",
+    "chart": "graphs/OU10.svg",
+    "stats": {
+      "events": 25,
+      "observed_cases": 25,
+      "activities": 2,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Graded": 18,
+      "Assignment Regraded": 7
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU10E",
+    "type": "Q1",
+    "question": "Extract Assignment Graded events for each assignment grading record.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "38f2d04917a88d2df30d5632b63d6b3bad52524da7085912da7211299544cf9a",
+    "chart": "graphs/OU10E.svg",
+    "stats": {
+      "events": 18,
+      "observed_cases": 18,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Graded": 18
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU10EP",
+    "type": "Q2",
+    "question": "For each assignment grading record, build a timeline of an instructor assessing the assignment.",
+    "answerable": true,
+    "pair_of": "OU10E",
+    "gold_sha256": "38f2d04917a88d2df30d5632b63d6b3bad52524da7085912da7211299544cf9a",
+    "chart": "graphs/OU10E.svg",
+    "stats": {
+      "events": 18,
+      "observed_cases": 18,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Assignment Graded": 18
+    },
+    "edges": []
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU11P",
+    "type": "Q4",
+    "question": "Show the complete recorded history associated with each course-design task.",
+    "answerable": true,
+    "pair_of": "OU11",
+    "gold_sha256": "9fe9244271ce249dae9d80760efc0227ea1151f78706e88443aa56299c160708",
+    "chart": "graphs/OU11.svg",
+    "stats": {
+      "events": 11,
+      "observed_cases": 3,
+      "activities": 4,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Design Task Created": 3,
+      "Design Task Approved": 3,
+      "Design Task Published": 3,
+      "Design Task Closed": 2
+    },
+    "edges": [
+      {
+        "source": "Design Task Approved",
+        "target": "Design Task Published",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Design Task Created",
+        "target": "Design Task Approved",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Design Task Published",
+        "target": "Design Task Closed",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU11E",
+    "type": "Q1",
+    "question": "Extract Design Task Approved, Design Task Closed, Design Task Created events for each course-design task.",
+    "answerable": true,
+    "pair_of": null,
+    "gold_sha256": "4bd43fd56ac5b256695ac51af74ae1cf2910c4d6cbcccc93fd730af216104ead",
+    "chart": "graphs/OU11E.svg",
+    "stats": {
+      "events": 8,
+      "observed_cases": 3,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Design Task Created": 3,
+      "Design Task Approved": 3,
+      "Design Task Closed": 2
+    },
+    "edges": [
+      {
+        "source": "Design Task Approved",
+        "target": "Design Task Closed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Design Task Created",
+        "target": "Design Task Approved",
+        "count": 3,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "universityflow",
+    "id": "OU11EP",
+    "type": "Q2",
+    "question": "For each course-design task, build a timeline of a design exercise receiving approval, a design exercise being closed, a design exercise being prepared.",
+    "answerable": true,
+    "pair_of": "OU11E",
+    "gold_sha256": "4bd43fd56ac5b256695ac51af74ae1cf2910c4d6cbcccc93fd730af216104ead",
+    "chart": "graphs/OU11E.svg",
+    "stats": {
+      "events": 8,
+      "observed_cases": 3,
+      "activities": 3,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Design Task Created": 3,
+      "Design Task Approved": 3,
+      "Design Task Closed": 2
+    },
+    "edges": [
+      {
+        "source": "Design Task Approved",
+        "target": "Design Task Closed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Design Task Created",
+        "target": "Design Task Approved",
+        "count": 3,
+        "tie_affected": 0
+      }
+    ]
+  }
+]

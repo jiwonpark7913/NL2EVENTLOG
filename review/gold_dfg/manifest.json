@@ -1,0 +1,99 @@
+{
+  "evaluation_only": true,
+  "model_input": false,
+  "source_commit": "ed132438b2a634a39da997e733751ccf1aa6322c",
+  "input_files_unchanged": true,
+  "input_file_sha256": {
+    "datasets/hospitalflow/input/ablation/conditions.json": "8141b995b418745f50be767ace49ccc69f46a4e1537b083ef22fdfefe6e04ddc",
+    "datasets/hospitalflow/input/ablation/data_dictionary.concise.json": "6fff61176cd36c1d2a51f6ead55300eef0e2d5b64ab3831abe42a2180585eb2a",
+    "datasets/hospitalflow/input/data_dictionary.json": "638b93660c09c48f9084594e2b6be320500575a6d648413220b2ba7bba64ecb7",
+    "datasets/hospitalflow/input/data_dictionary.md": "1af9cdc03631196c4e990b89414fd0951c769eda19dc6cef4c27f7767efc9040",
+    "datasets/hospitalflow/input/database.sqlite": "6a36c1dcef001368502e8337649a0163c6f23d99ea969729fdc33fae7edb6114",
+    "datasets/hospitalflow/input/model_input_manifest.json": "e0dcd290780a936b0996898e143e2aa8cfb64554391ddec80840aa311414c953",
+    "datasets/hospitalflow/input/model_questions.jsonl": "0360d8d831153712fbcbb23f9e555d9b990796c84fd98193ed5ca18e994bb85b",
+    "datasets/hospitalflow/input/questions.jsonl": "1e92288b1c44d1290749495ec22d4fca866a0368c19bb1f4a980a4cb6a07349e",
+    "datasets/hospitalflow/input/schema.sql": "416d4543c8f4e78a9db3fb6e21a29f4197b9af5f97bd3acfbdf163a3d9a5a3e0",
+    "datasets/hospitalflow/input/task_scope_catalog.json": "8883ed5aad9346c827bdd09cbd2ae57ec704c160d0cdc50798fe5541a5ff4374",
+    "datasets/plateflow/input/data_dictionary.json": "377b100762063ae8d5b7a4c89e614d3640f4b70dc48b86d1dc665bfd2578dc89",
+    "datasets/plateflow/input/data_dictionary.md": "f887915afa6adab67189103918065d07cdc0c33814aac183652958896af5e5f2",
+    "datasets/plateflow/input/database.sqlite": "f3ea6a7b360db8060c77ce3589f0659a4820ea03a887ca4edb3c85f091ac9049",
+    "datasets/plateflow/input/questions.jsonl": "134111eec918c2269d5030b20855ff9bfea7afbbb3951720a78491d27756c6c4",
+    "datasets/plateflow/input/schema.sql": "4c7f332e96cde97435384fd0a73b822e6e001d2de1247434eb801bf30a378af0",
+    "datasets/plateflow/input/task_scope_catalog.json": "31461851624fc4de95b9edfce6c44e5ec1ecf232a91a9c226fd0012d1e008f28",
+    "datasets/plateflow_new/input/data_dictionary.json": "63fc7755cc65a3ced86168f16a418ce1929cc853b0ef8c7d7206fb89db6a943b",
+    "datasets/plateflow_new/input/data_dictionary.md": "039c14b746b791b8bae8ed37e83e67a63f43451c2da5ec8861d7170974991652",
+    "datasets/plateflow_new/input/database.sqlite": "fcf63243cbb6db8d2cd7320c05d14915783b89f305c110c04a2b3b6a3e614d43",
+    "datasets/plateflow_new/input/model_input_manifest.json": "83b7e3d04c6602495f9825d2a64365718ed3ee3312395b7f4650e39506b07287",
+    "datasets/plateflow_new/input/model_questions.jsonl": "02753592750dd56fe96fff1fea3b09285c87483d45c5ccc5876a404a07e3a2d3",
+    "datasets/plateflow_new/input/schema.sql": "065f48abc7fb4fb12329afb42f3ff3f0249efc90532cb4e6f7285667c6cf6cfb",
+    "datasets/plateflow_new/input/task_context.md": "104cfbf55b67fe9ad9922bb84029142024ee6dbfcffb8fd8028d9141ade9248a",
+    "datasets/universityflow/input/data_dictionary.json": "20e9a063ef09d2d88a9b4b378c778b0712a5619a32d489c17cec4a4c0a89c449",
+    "datasets/universityflow/input/data_dictionary.md": "07e5fbdd45197bf8cb0b2ae5186a13be0e64e54780948693b8c4000b04844858",
+    "datasets/universityflow/input/database.sqlite": "d6921d8093038c4a26f2feafbd6a17a1a232abfabd270f48aefe9121d0a8fc72",
+    "datasets/universityflow/input/questions.jsonl": "f954d0175b21d47062e803f32c08acab4477e281e3d0b85a8ae80a01c2679ca5",
+    "datasets/universityflow/input/schema.sql": "bfb7ce4fddbe90e832500773e781f8f9686bb63fae3033f3e838c66dafe6fafb",
+    "datasets/universityflow/input/task_scope_catalog.json": "d19fd4a9bc7844161b45c7e31a19e89e56a6277eb9edd1368d51ab440330959f",
+    "datasets/warehouseflow/input/data_dictionary.json": "1b4e67380e614c17a56fafa2db668a88e9ca65fb1fe0219a92ed3391d8c73104",
+    "datasets/warehouseflow/input/data_dictionary.md": "4cd4ab84090abb059bf96862940ab42e803c1fd6d0a46437c4b6502435288b46",
+    "datasets/warehouseflow/input/database.sqlite": "114089740c830759b532d5a7c9d23ef6825803981a86e88fc3355df3be3f5340",
+    "datasets/warehouseflow/input/questions.jsonl": "d545d35ad5d909b81cf222c86380ab70316a832339b8f20967a5510354baac0a",
+    "datasets/warehouseflow/input/schema.sql": "9caf799642e0115cecf07de0578f11c3f7b998d619915533e63390a57ced1104",
+    "datasets/warehouseflow/input/task_scope_catalog.json": "ebcfd7e37bfc9a5800b2dedccf36709f57c47099fa918d8040683042f0988040",
+    "datasets/warehouseflow_new/input/data_dictionary.json": "2dfacc80197debb0da15685c96877ae0f9208e95c2f50481dea07ada92cc637f",
+    "datasets/warehouseflow_new/input/data_dictionary.md": "3160031b8d9558052b702e51126303cc82c42ee67e1f3c33913833ab521424be",
+    "datasets/warehouseflow_new/input/database.sqlite": "8e34019943ede7e235669690ac0d9ab77cf9addfdf8215e4faec72a02754baf1",
+    "datasets/warehouseflow_new/input/model_input_manifest.json": "5e7da54b1ce5f00deb924524b230c7389216785a1f0a63c6bd3ea6ed64f54a77",
+    "datasets/warehouseflow_new/input/model_questions.jsonl": "8299af85f8fe4585ec9a39b5895098300b5379facfde85ba8b900b9dc90140d4",
+    "datasets/warehouseflow_new/input/schema.sql": "de2e05a01e98ec7c712318179f3d087e80f85d16e5e81c2a2f8b4b3db8e57c07",
+    "datasets/warehouseflow_new/input/task_context.md": "7d600f209710027f8dd51f09022d6ae7a1ab5034d9a0e1a5c925de78f548d800"
+  },
+  "datasets": [
+    {
+      "dataset": "warehouseflow",
+      "questions": 34,
+      "gold_logs": 32,
+      "graphs": 15
+    },
+    {
+      "dataset": "warehouseflow_new",
+      "questions": 54,
+      "gold_logs": 50,
+      "graphs": 19
+    },
+    {
+      "dataset": "universityflow",
+      "questions": 70,
+      "gold_logs": 66,
+      "graphs": 32
+    },
+    {
+      "dataset": "plateflow",
+      "questions": 44,
+      "gold_logs": 42,
+      "graphs": 20
+    },
+    {
+      "dataset": "hospitalflow",
+      "questions": 44,
+      "gold_logs": 42,
+      "graphs": 20
+    },
+    {
+      "dataset": "plateflow_new",
+      "questions": 54,
+      "gold_logs": 50,
+      "graphs": 20
+    }
+  ],
+  "counts": {
+    "Q1": 90,
+    "gold_logs": 282,
+    "Q2": 90,
+    "Q3": 60,
+    "logs_with_ties": 32,
+    "Q4": 60,
+    "unsupported": 18
+  },
+  "tie_policy": "Per case sort by parsed timestamp, event_id, CSV row index. Mark transitions touching tied timestamp groups as ambiguous. Start/end counts also use this linearization.",
+  "scope": "Actual Gold CSVs from the stated Git commit; no Gold is corrected by this renderer."
+}
