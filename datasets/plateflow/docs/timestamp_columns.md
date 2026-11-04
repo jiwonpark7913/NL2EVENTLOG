@@ -45,4 +45,4 @@
 | material_operation_history | created_at | technical record timestamp | No | 216 |
 
 - Date-only fields excluded: None.
-- New timestamp questions TS01/TS02/... and their P counterparts explicitly test milestone-column extraction.
+- Timestamp questions TS01/TS02/... and their P counterparts test the named milestones. WarehouseFlow stores these in carrier-driven history rows; other datasets may use milestone columns.

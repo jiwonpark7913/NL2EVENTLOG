@@ -2,7 +2,7 @@
 import json,sqlite3,csv,importlib.util
 from pathlib import Path
 MIGRATE={
- 'warehouseflow':{'transaction_record':['Receiving Requested','Receiving Scheduled','Dispatch Requested','Dispatch Approved']},
+ 'warehouseflow':{},
  'universityflow':{'registration':['Registration Requested','Registration Approved','Course Started','Course Assessment Completed','Course Grade Finalized'],'degree_examination_result':['Examination Scheduled','Examination Checked In','Examination Score Published','Examination Result Reviewed'],'assignment':['Assignment Assigned','Assignment Submitted','Assignment Grade Finalized'],'thesis':['Thesis Draft Registered','Thesis Review Started','Thesis Accepted']}}
 def readjl(p):return [json.loads(x) for x in p.read_text().splitlines()]
 def writejl(p,rs):p.write_text(''.join(json.dumps(r)+'\n' for r in rs))
@@ -60,7 +60,9 @@ def migrate(p):
    plan['milestone_columns']=[dict(activity=x['activity'],column=x['column']) for x in moved];plan['row_activities']=[a for a in plan['activities'] if a not in {x['activity'] for x in moved}];plan['storage']='Actual milestone columns on '+obj+'; remaining repeatable actions stay in '+obj+'_activity' if plan['row_activities'] else 'Actual milestone columns on '+obj
    if obj+'_activity' in removed:plan.pop('activity_table',None)
  (p/'design/object_activity_design.json').write_text(json.dumps(plans,indent=2)+'\n');catalog=json.loads((p/'input/task_scope_catalog.json').read_text());catalog['object_activity_design']=plans;(p/'input/task_scope_catalog.json').write_text(json.dumps(catalog,indent=2)+'\n');d['object_activity_design']=plans;(p/'input/data_dictionary.json').write_text(json.dumps(d,indent=2)+'\n')
- doc='# Object activity storage\n\n- Actual one-time milestone columns and retained row histories are used together. Events are extracted once, not mirrored in two places.\n- Original event IDs and occurrence times are preserved. All added fields are authored synthetic extensions.\n\n| Object | Activities | Storage |\n|---|---|---|\n'+''.join('| '+x['object_table']+' | '+'; '.join(x['activities'])+' | '+x.get('storage',x.get('activity_table','Row history'))+' |\n' for x in plans)
+ if p.name=='warehouseflow':
+  d['business_rules']=[r for r in d['business_rules'] if not any(x in r for x in ['One-time milestone events','Repeated review/revision/grading/experiment'])];d['business_rules'].append('The transaction header uses transaction_type and occurred_at only; all added actions use activity and occurred_at in transaction_record_activity. No table mixes activity values with independent milestone meanings.');(p/'input/data_dictionary.json').write_text(json.dumps(d,indent=2)+'\n')
+ doc='# Object activity storage\n\n- Activity values and milestone-column meanings are kept in separate tables. Warehouse extensions remain in the single-carrier action history. Events are extracted once, not mirrored in two places.\n- Original event IDs and occurrence times are preserved. All added fields are authored synthetic extensions.\n\n| Object | Activities | Storage |\n|---|---|---|\n'+''.join('| '+x['object_table']+' | '+'; '.join(x['activities'])+' | '+x.get('storage',x.get('activity_table','Row history'))+' |\n' for x in plans)
  (p/'docs/object_activity_design.md').write_text(doc)
  assert not list(con.execute('PRAGMA foreign_key_check'));con.commit();con.close()
 

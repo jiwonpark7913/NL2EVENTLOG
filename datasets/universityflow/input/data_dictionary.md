@@ -33,12 +33,12 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | universityflow.student | Student | student | 40 | student_id | None declared | No event encoding | Unified student information from the three university examples |
 | universityflow.course | Course | course | 6 | course_id | None declared | Column encoding | Course offerings and planned teaching schedules |
-| universityflow.registration | Registration | registration | 47 | student_id, course_id | course_id → course.course_id; student_id → student.student_id | Mixed (row + column) | Successful registrations; one retained row per student and course |
-| universityflow.degree_examination_result | Degree Examination Result | degree_examination_result | 40 | result_id | student_id → student.student_id | Mixed (row + column) | Examination results including retakes |
+| universityflow.registration | Registration | registration | 47 | student_id, course_id | course_id → course.course_id; student_id → student.student_id | Column encoding | Successful registrations; one retained row per student and course |
+| universityflow.degree_examination_result | Degree Examination Result | degree_examination_result | 40 | result_id | student_id → student.student_id | Column encoding | Examination results including retakes |
 | universityflow.task | Task | task | 3 | task_id | None declared | Column encoding | Course-design task descriptions and scheduled task periods |
 | universityflow.simulation_module | Simulation Module | simulation_module | 3 | module_id | None declared | Column encoding | Simulation module descriptions and example code |
 | universityflow.thesis | Thesis | thesis | 16 | thesis_id | student_id → student.student_id | Column encoding | Student theses with actual submission times |
-| universityflow.student_simulation_experiment_result | Student Simulation Experiment Result | student_simulation_experiment_result | 27 | student_id, module_id, simulation_date | module_id → simulation_module.module_id; student_id → student.student_id | Mixed (row + column) | Student simulation results with actual experiment-completion times |
+| universityflow.student_simulation_experiment_result | Student Simulation Experiment Result | student_simulation_experiment_result | 27 | student_id, module_id, simulation_date | module_id → simulation_module.module_id; student_id → student.student_id | Column encoding | Student simulation results with actual experiment-completion times |
 | universityflow.assignment | Assignment | assignment | 20 | assignment_id | student_id → student.student_id | Column encoding | Student assignment content; submission time is not recorded |
 | universityflow.instructor | Instructor | instructor | 3 | instructor_id | None declared | No event encoding | Instructor information from the assignment-management example |
 | universityflow.assignment_grading | Assignment Grading | assignment_grading | 25 | assignment_id, instructor_id, grading_time | instructor_id → instructor.instructor_id; assignment_id → assignment.assignment_id | Row encoding | Every recorded grading action, including regrading |
@@ -56,7 +56,7 @@
 - **student_simulation_experiment_result:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: simulation_run_scheduled_at, simulation_run_started_at, simulation_output_reviewed_at, simulation_result_accepted_at.
 - **assignment:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: assignment_assigned_at, assignment_submitted_at, assignment_grade_finalized_at, assignment_revision_requested_at, assignment_resubmitted_at.
 - **instructor:** Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.
-- **assignment_grading:** One grading occurrence per composite-key row.
+- **assignment_grading:** grading_kind selects Assignment Graded (ORIGINAL) or Assignment Regraded (REASSESSMENT); grading_time is local to the same row.
 
 ## 3. Column definitions
 

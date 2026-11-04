@@ -8,12 +8,12 @@
 |---|---:|---:|---|---|---|
 | student | 40 | 8 | No event encoding | student_id | Unified student information from the three university examples |
 | course | 6 | 10 | Column encoding | course_id | Course offerings and planned teaching schedules |
-| registration | 47 | 9 | Mixed (row + column) | student_id, course_id | Successful registrations; one retained row per student and course |
-| degree_examination_result | 40 | 9 | Mixed (row + column) | result_id | Examination results including retakes |
+| registration | 47 | 9 | Column encoding | student_id, course_id | Successful registrations; one retained row per student and course |
+| degree_examination_result | 40 | 9 | Column encoding | result_id | Examination results including retakes |
 | task | 3 | 10 | Column encoding | task_id | Course-design task descriptions and scheduled task periods |
 | simulation_module | 3 | 9 | Column encoding | module_id | Simulation module descriptions and example code |
 | thesis | 16 | 10 | Column encoding | thesis_id | Student theses with actual submission times |
-| student_simulation_experiment_result | 27 | 9 | Mixed (row + column) | student_id, module_id, simulation_date | Student simulation results with actual experiment-completion times |
+| student_simulation_experiment_result | 27 | 9 | Column encoding | student_id, module_id, simulation_date | Student simulation results with actual experiment-completion times |
 | assignment | 20 | 8 | Column encoding | assignment_id | Student assignment content; submission time is not recorded |
 | instructor | 3 | 3 | No event encoding | instructor_id | Instructor information from the assignment-management example |
 | assignment_grading | 25 | 7 | Row encoding | assignment_id, instructor_id, grading_time | Every recorded grading action, including regrading |

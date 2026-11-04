@@ -25,7 +25,7 @@
     "transaction_record": 80,
     "goods_transaction_detail": 138,
     "loader_transaction": 167,
-    "transaction_record_activity": 154,
+    "transaction_record_activity": 314,
     "lifecycle_case_link": 3022
   },
   "naive_detail_worker_join_rows": 289,
@@ -437,7 +437,7 @@
     }
   },
   "timestamp_migration": {
-    "added_columns": 4,
+    "added_columns": 0,
     "removed_empty_history_tables": [],
     "original_event_identity_and_time": "preserved",
     "duplicate_event_storage": "none"
@@ -450,8 +450,8 @@
   },
   "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
   "timestamp_summary": {
-    "timestamp_columns": 6,
-    "event_timestamp_columns": 6,
+    "timestamp_columns": 2,
+    "event_timestamp_columns": 2,
     "other_timestamp_columns": 0,
     "date_only_columns": [],
     "baseline_timestamp_columns": 2

@@ -6,7 +6,7 @@
 
 | Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 6 | 6 | 394 | 34 | 32 |
+| [WarehouseFlow](datasets/warehouseflow/README.md) | 8 | 6 | 10 | 2 | 2 | 394 | 34 | 32 |
 | [WarehouseFlow New](datasets/warehouseflow_new/README.md) | 12 | 11 | 15 | 15 | 12 | 402 | 54 | 50 |
 | [UniversityFlow](datasets/universityflow/README.md) | 11 | 11 | 41 | 40 | 40 | 808 | 70 | 66 |
 | [PlateFlow](datasets/plateflow/README.md) | 9 | 8 | 39 | 39 | 31 | 1108 | 44 | 42 |
@@ -139,13 +139,20 @@
 - A–D describe base activity identity and timestamp phase separately. WarehouseFlow New has physical and Gold coverage for all four; PlateFlow New keeps its agreed completion-only contract and documents the missing/partial cases.
 - The business dictionary describes actual code/time meanings without classification, carrier or phase-selection answers. README and private phase bindings are evaluation material.
 
+## Restricted event-table scope
+
+- [Full table audit and storage repair](EVENT_TABLE_SCOPE.md) · [Machine-readable author audit](event_scope_audit.json).
+- Event tables use one local activity carrier or table/time-column meanings. Composite carriers, multiple carriers, mixed encoding and split activity/time event storage are excluded. Code dictionaries and case-attribution joins remain allowed.
+- WarehouseFlow lifecycle milestones remain in transaction_record_activity; transaction_record uses only transaction_type/occurred_at for its events.
+- Run `python validate_event_scope.py` after rebuilding or changing event sources.
+
 ## Timestamp columns
 
 - Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
 
 | Dataset | Baseline timestamp columns before milestone expansion | Current timestamp columns | Current event timestamp columns |
 |---|---:|---:|---:|
-| WarehouseFlow | 2 | 6 | 6 |
+| WarehouseFlow | 2 | 2 | 2 |
 | WarehouseFlow New | 15 | 15 | 12 |
 | UniversityFlow | 14 | 40 | 40 |
 | PlateFlow | 37 | 39 | 31 |

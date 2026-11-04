@@ -5,11 +5,7 @@
 | Table | Column | Role | Used as event time | Non-null rows |
 |---|---|---|---|---:|
 | transaction_record | occurred_at | actual event time | Yes | 80 |
-| transaction_record | receiving_requested_at | actual event time | Yes | 45 |
-| transaction_record | receiving_scheduled_at | actual event time | Yes | 45 |
-| transaction_record | dispatch_requested_at | actual event time | Yes | 35 |
-| transaction_record | dispatch_approved_at | actual event time | Yes | 35 |
-| transaction_record_activity | occurred_at | actual event time | Yes | 154 |
+| transaction_record_activity | occurred_at | actual event time | Yes | 314 |
 
 - Date-only fields excluded: None.
-- New timestamp questions TS01/TS02/... and their P counterparts explicitly test milestone-column extraction.
+- Timestamp questions TS01/TS02/... and their P counterparts test the named milestones. WarehouseFlow stores these in carrier-driven history rows; other datasets may use milestone columns.
