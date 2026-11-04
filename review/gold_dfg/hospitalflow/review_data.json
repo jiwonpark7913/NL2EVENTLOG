@@ -1,0 +1,5558 @@
+[
+  {
+    "dataset": "hospitalflow",
+    "id": "H01",
+    "type": "Q1",
+    "question": "For each hospital admission, extract Order Entered, Order Reviewed and Order Cancelled events.",
+    "answerable": true,
+    "pair_of": "H01P",
+    "gold_sha256": "ca3914ca01efdb2dade8dd295f34eac11d294687d48c1a1639b9e7e773ee5e1f",
+    "chart": "graphs/H01.svg",
+    "stats": {
+      "events": 194,
+      "observed_cases": 15,
+      "activities": 3,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 76,
+      "Order Reviewed": 114,
+      "Order Cancelled": 4
+    },
+    "edges": [
+      {
+        "source": "Order Cancelled",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Reviewed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Entered",
+        "count": 28,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Entered",
+        "count": 31,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 65,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H01P",
+    "type": "Q2",
+    "question": "For every hospital stay, build a timeline of when its orders were placed, checked and, if applicable, cancelled.",
+    "answerable": true,
+    "pair_of": "H01",
+    "gold_sha256": "ca3914ca01efdb2dade8dd295f34eac11d294687d48c1a1639b9e7e773ee5e1f",
+    "chart": "graphs/H01.svg",
+    "stats": {
+      "events": 194,
+      "observed_cases": 15,
+      "activities": 3,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 76,
+      "Order Reviewed": 114,
+      "Order Cancelled": 4
+    },
+    "edges": [
+      {
+        "source": "Order Cancelled",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Reviewed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Entered",
+        "count": 28,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 47,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Entered",
+        "count": 31,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 65,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H02",
+    "type": "Q1",
+    "question": "For each hospital admission, extract Lab Result Available, Medication Administered and Procedure Completed events.",
+    "answerable": true,
+    "pair_of": "H02P",
+    "gold_sha256": "eb1c88ad11c06c2fcd8388582797ce861e76359af8bb4b571234cbf7f640a4bb",
+    "chart": "graphs/H02.svg",
+    "stats": {
+      "events": 124,
+      "observed_cases": 14,
+      "activities": 3,
+      "dfg_edges": 9,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Administered": 49,
+      "Procedure Completed": 19,
+      "Lab Result Available": 56
+    },
+    "edges": [
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H02P",
+    "type": "Q2",
+    "question": "For every hospital stay, show when laboratory findings became available, medicines were given and procedures finished.",
+    "answerable": true,
+    "pair_of": "H02",
+    "gold_sha256": "eb1c88ad11c06c2fcd8388582797ce861e76359af8bb4b571234cbf7f640a4bb",
+    "chart": "graphs/H02.svg",
+    "stats": {
+      "events": 124,
+      "observed_cases": 14,
+      "activities": 3,
+      "dfg_edges": 9,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Administered": 49,
+      "Procedure Completed": 19,
+      "Lab Result Available": 56
+    },
+    "edges": [
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 40,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H03",
+    "type": "Q1",
+    "question": "For each laboratory order, extract Specimen Collected, Lab Result Available and Lab Results Verified events.",
+    "answerable": true,
+    "pair_of": "H03P",
+    "gold_sha256": "73768898828f68174b590c36e53a3d9160b78d68227755b30046918e8c1d72c5",
+    "chart": "graphs/H03.svg",
+    "stats": {
+      "events": 154,
+      "observed_cases": 30,
+      "activities": 3,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Specimen Collected": 62,
+      "Lab Result Available": 62,
+      "Lab Results Verified": 30
+    },
+    "edges": [
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 32,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 32,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H03P",
+    "type": "Q2",
+    "question": "For every laboratory request, show when specimens were collected, when results became available and when those results were verified.",
+    "answerable": true,
+    "pair_of": "H03",
+    "gold_sha256": "73768898828f68174b590c36e53a3d9160b78d68227755b30046918e8c1d72c5",
+    "chart": "graphs/H03.svg",
+    "stats": {
+      "events": 154,
+      "observed_cases": 30,
+      "activities": 3,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Specimen Collected": 62,
+      "Lab Result Available": 62,
+      "Lab Results Verified": 30
+    },
+    "edges": [
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 32,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 32,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H04",
+    "type": "Q1",
+    "question": "For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events.",
+    "answerable": true,
+    "pair_of": "H04P",
+    "gold_sha256": "e6c5ab181500062117dc7222d359f888dbdd8dabe8070e37a83d496474983a9f",
+    "chart": "graphs/H04.svg",
+    "stats": {
+      "events": 126,
+      "observed_cases": 28,
+      "activities": 4,
+      "dfg_edges": 11,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Dispensed": 34,
+      "Medication Stopped": 25,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H04P",
+    "type": "Q2",
+    "question": "Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication.",
+    "answerable": true,
+    "pair_of": "H04",
+    "gold_sha256": "e6c5ab181500062117dc7222d359f888dbdd8dabe8070e37a83d496474983a9f",
+    "chart": "graphs/H04.svg",
+    "stats": {
+      "events": 126,
+      "observed_cases": 28,
+      "activities": 4,
+      "dfg_edges": 11,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Dispensed": 34,
+      "Medication Stopped": 25,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H05",
+    "type": "Q1",
+    "question": "For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events.",
+    "answerable": true,
+    "pair_of": "H05P",
+    "gold_sha256": "88490acda4689bd306773421b083828a74cb511015918d2b5efd5c198a765d3e",
+    "chart": "graphs/H05.svg",
+    "stats": {
+      "events": 55,
+      "observed_cases": 13,
+      "activities": 3,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19
+    },
+    "edges": [
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H05P",
+    "type": "Q2",
+    "question": "For every procedure order, show when preparation finished and when each procedure occurrence began and ended.",
+    "answerable": true,
+    "pair_of": "H05",
+    "gold_sha256": "88490acda4689bd306773421b083828a74cb511015918d2b5efd5c198a765d3e",
+    "chart": "graphs/H05.svg",
+    "stats": {
+      "events": 55,
+      "observed_cases": 13,
+      "activities": 3,
+      "dfg_edges": 4,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19
+    },
+    "edges": [
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H06",
+    "type": "Q1",
+    "question": "For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Discharge Authorized and Hospital Discharged events.",
+    "answerable": true,
+    "pair_of": "H06P",
+    "gold_sha256": "2c15fe153200db694b508d2d08a42716f614c041a3ef76e7dc6e319cf0356d51",
+    "chart": "graphs/H06.svg",
+    "stats": {
+      "events": 49,
+      "observed_cases": 15,
+      "activities": 4,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Emergency Department Registered": 8,
+      "Hospital Admitted": 15,
+      "Discharge Authorized": 13,
+      "Hospital Discharged": 13
+    },
+    "edges": [
+      {
+        "source": "Discharge Authorized",
+        "target": "Hospital Discharged",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Emergency Department Registered",
+        "target": "Hospital Admitted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Discharge Authorized",
+        "count": 13,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H06P",
+    "type": "Q2",
+    "question": "For every hospital stay, show arrival registration in the emergency department, admission, authorization to leave and actual discharge.",
+    "answerable": true,
+    "pair_of": "H06",
+    "gold_sha256": "2c15fe153200db694b508d2d08a42716f614c041a3ef76e7dc6e319cf0356d51",
+    "chart": "graphs/H06.svg",
+    "stats": {
+      "events": 49,
+      "observed_cases": 15,
+      "activities": 4,
+      "dfg_edges": 3,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Emergency Department Registered": 8,
+      "Hospital Admitted": 15,
+      "Discharge Authorized": 13,
+      "Hospital Discharged": 13
+    },
+    "edges": [
+      {
+        "source": "Discharge Authorized",
+        "target": "Hospital Discharged",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Emergency Department Registered",
+        "target": "Hospital Admitted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Discharge Authorized",
+        "count": 13,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H07",
+    "type": "Q1",
+    "question": "For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events.",
+    "answerable": true,
+    "pair_of": "H07P",
+    "gold_sha256": "fee8a6355b2a4bada4f21374f7d381c2dd644071f3afe01c2f88fa6526a3ce83",
+    "chart": "graphs/H07.svg",
+    "stats": {
+      "events": 158,
+      "observed_cases": 11,
+      "activities": 5,
+      "dfg_edges": 18,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Hospital Admitted": 15,
+      "Medication Administered": 49,
+      "Hospital Discharged": 13,
+      "Procedure Completed": 19,
+      "Lab Result Available": 62
+    },
+    "edges": [
+      {
+        "source": "Hospital Admitted",
+        "target": "Hospital Discharged",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Procedure Completed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Hospital Admitted",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Hospital Discharged",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 43,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Hospital Discharged",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Hospital Discharged",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H07P",
+    "type": "Q2",
+    "question": "For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures.",
+    "answerable": true,
+    "pair_of": "H07",
+    "gold_sha256": "fee8a6355b2a4bada4f21374f7d381c2dd644071f3afe01c2f88fa6526a3ce83",
+    "chart": "graphs/H07.svg",
+    "stats": {
+      "events": 158,
+      "observed_cases": 11,
+      "activities": 5,
+      "dfg_edges": 18,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Hospital Admitted": 15,
+      "Medication Administered": 49,
+      "Hospital Discharged": 13,
+      "Procedure Completed": 19,
+      "Lab Result Available": 62
+    },
+    "edges": [
+      {
+        "source": "Hospital Admitted",
+        "target": "Hospital Discharged",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Procedure Completed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Hospital Admitted",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Hospital Discharged",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 43,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Hospital Discharged",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Hospital Discharged",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H08",
+    "type": "Q1",
+    "question": "For each hospital admission, extract Insurance Claim Paid events.",
+    "answerable": false,
+    "pair_of": "H08P",
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "No claim or payment records/timestamps exist in this DB; no Gold CSV is emitted."
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H08P",
+    "type": "Q2",
+    "question": "For each hospital stay, show when its insurance claim was settled by payment.",
+    "answerable": false,
+    "pair_of": "H08",
+    "gold_sha256": null,
+    "chart": null,
+    "reason": "No claim or payment records/timestamps exist in this DB; no Gold CSV is emitted."
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF01",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each patient.",
+    "answerable": true,
+    "pair_of": "HF01P",
+    "gold_sha256": "9a409a638f63a6b12b0b68eee81ab03faa42b92b2a29373cbf0fd33fc28b1164",
+    "chart": "graphs/HF01.svg",
+    "stats": {
+      "events": 628,
+      "observed_cases": 11,
+      "activities": 20,
+      "dfg_edges": 132,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Patient Profile Verified": 6,
+      "Emergency Department Registered": 8,
+      "Hospital Admitted": 15,
+      "Order Entered": 80,
+      "Order Reviewed": 119,
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18,
+      "Medication Stopped": 25,
+      "Discharge Authorized": 13,
+      "Hospital Discharged": 13,
+      "Discharge Summary Signed": 5,
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19,
+      "Specimen Collected": 62,
+      "Specimen Received": 30,
+      "Lab Result Available": 62,
+      "Lab Results Verified": 30,
+      "Order Cancelled": 4
+    },
+    "edges": [
+      {
+        "source": "Discharge Authorized",
+        "target": "Hospital Discharged",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Authorized",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Summary Signed",
+        "target": "Hospital Admitted",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Summary Signed",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Emergency Department Registered",
+        "target": "Hospital Admitted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Order Entered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Discharge Summary Signed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Hospital Admitted",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Started",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Discharge Authorized",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Result Available",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Administered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Stopped",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Received",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Results Verified",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Preparation Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Specimen Collected",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Discharge Authorized",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Hospital Discharged",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Stopped",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Reviewed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Dispensed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Entered",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Preparation Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Dispensed",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Entered",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 56,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Preparation Completed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Collected",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Patient Profile Verified",
+        "target": "Emergency Department Registered",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Dispensed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Reviewed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Lab Results Verified",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Collected",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Entered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Reviewed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Received",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Result Available",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF01P",
+    "type": "Q4",
+    "question": "Build a complete timeline of all recorded care events for every patient.",
+    "answerable": true,
+    "pair_of": "HF01",
+    "gold_sha256": "9a409a638f63a6b12b0b68eee81ab03faa42b92b2a29373cbf0fd33fc28b1164",
+    "chart": "graphs/HF01.svg",
+    "stats": {
+      "events": 628,
+      "observed_cases": 11,
+      "activities": 20,
+      "dfg_edges": 132,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Patient Profile Verified": 6,
+      "Emergency Department Registered": 8,
+      "Hospital Admitted": 15,
+      "Order Entered": 80,
+      "Order Reviewed": 119,
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18,
+      "Medication Stopped": 25,
+      "Discharge Authorized": 13,
+      "Hospital Discharged": 13,
+      "Discharge Summary Signed": 5,
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19,
+      "Specimen Collected": 62,
+      "Specimen Received": 30,
+      "Lab Result Available": 62,
+      "Lab Results Verified": 30,
+      "Order Cancelled": 4
+    },
+    "edges": [
+      {
+        "source": "Discharge Authorized",
+        "target": "Hospital Discharged",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Authorized",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Summary Signed",
+        "target": "Hospital Admitted",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Summary Signed",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Emergency Department Registered",
+        "target": "Hospital Admitted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Order Entered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Discharge Summary Signed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Hospital Admitted",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 27,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Started",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Discharge Authorized",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Result Available",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Administered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Stopped",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Received",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Results Verified",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Preparation Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Specimen Collected",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Discharge Authorized",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Hospital Discharged",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Stopped",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Reviewed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Dispensed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Entered",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Preparation Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Dispensed",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Entered",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 56,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Preparation Completed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Collected",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Patient Profile Verified",
+        "target": "Emergency Department Registered",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Dispensed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Reviewed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Lab Results Verified",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Collected",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Entered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Reviewed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Received",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Result Available",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF02",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each hospital admission.",
+    "answerable": true,
+    "pair_of": "HF02P",
+    "gold_sha256": "7adc95728017e972d508fbcc661deeb090ac9a2e85303dbd6d142fb16407db65",
+    "chart": "graphs/HF02.svg",
+    "stats": {
+      "events": 595,
+      "observed_cases": 15,
+      "activities": 19,
+      "dfg_edges": 127,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Emergency Department Registered": 8,
+      "Hospital Admitted": 15,
+      "Order Entered": 76,
+      "Order Reviewed": 114,
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18,
+      "Medication Stopped": 25,
+      "Discharge Authorized": 13,
+      "Hospital Discharged": 13,
+      "Discharge Summary Signed": 5,
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19,
+      "Specimen Collected": 56,
+      "Specimen Received": 27,
+      "Lab Result Available": 56,
+      "Lab Results Verified": 27,
+      "Order Cancelled": 4
+    },
+    "edges": [
+      {
+        "source": "Discharge Authorized",
+        "target": "Hospital Discharged",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Authorized",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Emergency Department Registered",
+        "target": "Hospital Admitted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Order Entered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Discharge Summary Signed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Started",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Discharge Authorized",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Result Available",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Administered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Stopped",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Received",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Results Verified",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Preparation Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Specimen Collected",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Discharge Authorized",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Hospital Discharged",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Stopped",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Reviewed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Dispensed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Entered",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Preparation Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Dispensed",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Entered",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 55,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Preparation Completed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Collected",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Dispensed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Reviewed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Lab Results Verified",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Collected",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Entered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Reviewed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Received",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Result Available",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF02P",
+    "type": "Q4",
+    "question": "Show the entire recorded history of each individual hospital stay.",
+    "answerable": true,
+    "pair_of": "HF02",
+    "gold_sha256": "7adc95728017e972d508fbcc661deeb090ac9a2e85303dbd6d142fb16407db65",
+    "chart": "graphs/HF02.svg",
+    "stats": {
+      "events": 595,
+      "observed_cases": 15,
+      "activities": 19,
+      "dfg_edges": 127,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Emergency Department Registered": 8,
+      "Hospital Admitted": 15,
+      "Order Entered": 76,
+      "Order Reviewed": 114,
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18,
+      "Medication Stopped": 25,
+      "Discharge Authorized": 13,
+      "Hospital Discharged": 13,
+      "Discharge Summary Signed": 5,
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19,
+      "Specimen Collected": 56,
+      "Specimen Received": 27,
+      "Lab Result Available": 56,
+      "Lab Results Verified": 27,
+      "Order Cancelled": 4
+    },
+    "edges": [
+      {
+        "source": "Discharge Authorized",
+        "target": "Hospital Discharged",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Discharge Authorized",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Emergency Department Registered",
+        "target": "Hospital Admitted",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Admitted",
+        "target": "Order Entered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Hospital Discharged",
+        "target": "Discharge Summary Signed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Procedure Started",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Discharge Authorized",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Result Available",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Administered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Medication Stopped",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Results Verified",
+        "target": "Specimen Received",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Result Available",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Lab Results Verified",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Completed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Preparation Completed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Specimen Collected",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Discharge Authorized",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Hospital Discharged",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Stopped",
+        "target": "Medication Stopped",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Order Reviewed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Cancelled",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Dispensed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Entered",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Preparation Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Specimen Collected",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Lab Result Available",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Administered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Dispensed",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Entered",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 55,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Preparation Completed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Collected",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Received",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Result Available",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Administered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Dispensed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Entered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Order Reviewed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Cancelled",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Order Reviewed",
+        "count": 6,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Specimen Collected",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Lab Results Verified",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Order Entered",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Preparation Completed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Collected",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Results Verified",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Administered",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Medication Not Given",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Entered",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Order Reviewed",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Procedure Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Received",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Result Available",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Results Verified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Administered",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Dispensed",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Entered",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Order Reviewed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Completed",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Collected",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Specimen Received",
+        "count": 2,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF03",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each order history record.",
+    "answerable": true,
+    "pair_of": "HF03P",
+    "gold_sha256": "1a37b6a718268caf26adf759304616ccf7c4d95ea37e797e83d11a5b9fd023ba",
+    "chart": "graphs/HF03.svg",
+    "stats": {
+      "events": 203,
+      "observed_cases": 203,
+      "activities": 3,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 80,
+      "Order Reviewed": 119,
+      "Order Cancelled": 4
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF03P",
+    "type": "Q4",
+    "question": "Show the complete recorded history of every individual order history record.",
+    "answerable": true,
+    "pair_of": "HF03",
+    "gold_sha256": "1a37b6a718268caf26adf759304616ccf7c4d95ea37e797e83d11a5b9fd023ba",
+    "chart": "graphs/HF03.svg",
+    "stats": {
+      "events": 203,
+      "observed_cases": 203,
+      "activities": 3,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 80,
+      "Order Reviewed": 119,
+      "Order Cancelled": 4
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF04",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each laboratory order.",
+    "answerable": true,
+    "pair_of": "HF04P",
+    "gold_sha256": "437504e94bf3c1b19d279be02141f5af0098fe06d49cd83dfa0d3230443850e8",
+    "chart": "graphs/HF04.svg",
+    "stats": {
+      "events": 267,
+      "observed_cases": 34,
+      "activities": 6,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 34,
+      "Order Reviewed": 49,
+      "Specimen Collected": 62,
+      "Specimen Received": 30,
+      "Lab Result Available": 62,
+      "Lab Results Verified": 30
+    },
+    "edges": [
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 32,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Collected",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 32,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Received",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Result Available",
+        "count": 30,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF04P",
+    "type": "Q4",
+    "question": "Show everything recorded over the life of each laboratory order.",
+    "answerable": true,
+    "pair_of": "HF04",
+    "gold_sha256": "437504e94bf3c1b19d279be02141f5af0098fe06d49cd83dfa0d3230443850e8",
+    "chart": "graphs/HF04.svg",
+    "stats": {
+      "events": 267,
+      "observed_cases": 34,
+      "activities": 6,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 34,
+      "Order Reviewed": 49,
+      "Specimen Collected": 62,
+      "Specimen Received": 30,
+      "Lab Result Available": 62,
+      "Lab Results Verified": 30
+    },
+    "edges": [
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Result Available",
+        "count": 32,
+        "tie_affected": 0
+      },
+      {
+        "source": "Lab Result Available",
+        "target": "Lab Results Verified",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 34,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Specimen Collected",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Collected",
+        "count": 32,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Collected",
+        "target": "Specimen Received",
+        "count": 30,
+        "tie_affected": 0
+      },
+      {
+        "source": "Specimen Received",
+        "target": "Lab Result Available",
+        "count": 30,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF05",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each medication order.",
+    "answerable": true,
+    "pair_of": "HF05P",
+    "gold_sha256": "e3659ca517925010ce4654f20b10000e306079bcd5824e94ed7fde170c8652ca",
+    "chart": "graphs/HF05.svg",
+    "stats": {
+      "events": 198,
+      "observed_cases": 29,
+      "activities": 6,
+      "dfg_edges": 15,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 29,
+      "Order Reviewed": 43,
+      "Medication Dispensed": 34,
+      "Medication Stopped": 25,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 29,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Dispensed",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Stopped",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 14,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF05P",
+    "type": "Q4",
+    "question": "Build the complete recorded history of each medication order.",
+    "answerable": true,
+    "pair_of": "HF05",
+    "gold_sha256": "e3659ca517925010ce4654f20b10000e306079bcd5824e94ed7fde170c8652ca",
+    "chart": "graphs/HF05.svg",
+    "stats": {
+      "events": 198,
+      "observed_cases": 29,
+      "activities": 6,
+      "dfg_edges": 15,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 29,
+      "Order Reviewed": 43,
+      "Medication Dispensed": 34,
+      "Medication Stopped": 25,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Dispensed",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Stopped",
+        "count": 15,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Stopped",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Dispensed",
+        "count": 3,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Not Given",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Stopped",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 29,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Dispensed",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Medication Stopped",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 14,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF06",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each procedure order.",
+    "answerable": true,
+    "pair_of": "HF06P",
+    "gold_sha256": "cf8fa859934b69f3d8efd9a651cee956146000fc1da2450b0f37b8a28e97e417",
+    "chart": "graphs/HF06.svg",
+    "stats": {
+      "events": 103,
+      "observed_cases": 17,
+      "activities": 6,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 17,
+      "Order Reviewed": 27,
+      "Order Cancelled": 4,
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19
+    },
+    "edges": [
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Preparation Completed",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF06P",
+    "type": "Q4",
+    "question": "Trace the whole recorded lifecycle of every procedure order.",
+    "answerable": true,
+    "pair_of": "HF06",
+    "gold_sha256": "cf8fa859934b69f3d8efd9a651cee956146000fc1da2450b0f37b8a28e97e417",
+    "chart": "graphs/HF06.svg",
+    "stats": {
+      "events": 103,
+      "observed_cases": 17,
+      "activities": 6,
+      "dfg_edges": 8,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Order Entered": 17,
+      "Order Reviewed": 27,
+      "Order Cancelled": 4,
+      "Procedure Preparation Completed": 13,
+      "Procedure Started": 23,
+      "Procedure Completed": 19
+    },
+    "edges": [
+      {
+        "source": "Order Entered",
+        "target": "Order Reviewed",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Cancelled",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Order Reviewed",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Order Reviewed",
+        "target": "Procedure Preparation Completed",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Completed",
+        "target": "Procedure Started",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Preparation Completed",
+        "target": "Procedure Started",
+        "count": 13,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 19,
+        "tie_affected": 0
+      },
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Started",
+        "count": 1,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H09",
+    "type": "Q1",
+    "question": "For each patient, extract Patient Profile Verified events.",
+    "answerable": true,
+    "pair_of": "H09P",
+    "gold_sha256": "392f5d9e55b8e7ff7d794fd73c03c61faad0c1904e38f488aac8284f2eeadd7a",
+    "chart": "graphs/H09.svg",
+    "stats": {
+      "events": 6,
+      "observed_cases": 6,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Patient Profile Verified": 6
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H09P",
+    "type": "Q2",
+    "question": "For each patient, show when their supplementary personal information was verified.",
+    "answerable": true,
+    "pair_of": "H09",
+    "gold_sha256": "392f5d9e55b8e7ff7d794fd73c03c61faad0c1904e38f488aac8284f2eeadd7a",
+    "chart": "graphs/H09.svg",
+    "stats": {
+      "events": 6,
+      "observed_cases": 6,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Patient Profile Verified": 6
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H10",
+    "type": "Q1",
+    "question": "For each hospital admission, extract Discharge Summary Signed events.",
+    "answerable": true,
+    "pair_of": "H10P",
+    "gold_sha256": "d18d0845c86d799c5b2bf64873db86e4b2f0e527fe7d138862668e898a16c177",
+    "chart": "graphs/H10.svg",
+    "stats": {
+      "events": 5,
+      "observed_cases": 5,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Discharge Summary Signed": 5
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H10P",
+    "type": "Q2",
+    "question": "For each hospital stay, show when its discharge summary was signed.",
+    "answerable": true,
+    "pair_of": "H10",
+    "gold_sha256": "d18d0845c86d799c5b2bf64873db86e4b2f0e527fe7d138862668e898a16c177",
+    "chart": "graphs/H10.svg",
+    "stats": {
+      "events": 5,
+      "observed_cases": 5,
+      "activities": 1,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Discharge Summary Signed": 5
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H11",
+    "type": "Q1",
+    "question": "For each patient, extract Patient Profile Verified and Hospital Admitted events.",
+    "answerable": true,
+    "pair_of": "H11P",
+    "gold_sha256": "3b042c3953c7e1bd40936f999c53384cf996c3eb0b6c663bd05454452e476154",
+    "chart": "graphs/H11.svg",
+    "stats": {
+      "events": 21,
+      "observed_cases": 11,
+      "activities": 2,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Patient Profile Verified": 6,
+      "Hospital Admitted": 15
+    },
+    "edges": [
+      {
+        "source": "Hospital Admitted",
+        "target": "Hospital Admitted",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Patient Profile Verified",
+        "target": "Hospital Admitted",
+        "count": 6,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H11P",
+    "type": "Q2",
+    "question": "Build a timeline for every patient showing verification of their supplementary personal information and their entries into hospital.",
+    "answerable": true,
+    "pair_of": "H11",
+    "gold_sha256": "3b042c3953c7e1bd40936f999c53384cf996c3eb0b6c663bd05454452e476154",
+    "chart": "graphs/H11.svg",
+    "stats": {
+      "events": 21,
+      "observed_cases": 11,
+      "activities": 2,
+      "dfg_edges": 2,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Patient Profile Verified": 6,
+      "Hospital Admitted": 15
+    },
+    "edges": [
+      {
+        "source": "Hospital Admitted",
+        "target": "Hospital Admitted",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Patient Profile Verified",
+        "target": "Hospital Admitted",
+        "count": 6,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF07",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each lab measurement.",
+    "answerable": true,
+    "pair_of": "HF07P",
+    "gold_sha256": "7fe5b8554ffad6c77fc1ef5a907bb0882228fa6baf309a6cbf0c19d0d6e0939b",
+    "chart": "graphs/HF07.svg",
+    "stats": {
+      "events": 124,
+      "observed_cases": 62,
+      "activities": 2,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Specimen Collected": 62,
+      "Lab Result Available": 62
+    },
+    "edges": [
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 62,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF07P",
+    "type": "Q4",
+    "question": "Show the entire recorded history of each individual laboratory measurement.",
+    "answerable": true,
+    "pair_of": "HF07",
+    "gold_sha256": "7fe5b8554ffad6c77fc1ef5a907bb0882228fa6baf309a6cbf0c19d0d6e0939b",
+    "chart": "graphs/HF07.svg",
+    "stats": {
+      "events": 124,
+      "observed_cases": 62,
+      "activities": 2,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Specimen Collected": 62,
+      "Lab Result Available": 62
+    },
+    "edges": [
+      {
+        "source": "Specimen Collected",
+        "target": "Lab Result Available",
+        "count": 62,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF08",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each medication administration.",
+    "answerable": true,
+    "pair_of": "HF08P",
+    "gold_sha256": "d5b2c86c6c7ba08ceec38c606af918bdd4a9dbb0bbda32c222cad42ea2c267c3",
+    "chart": "graphs/HF08.svg",
+    "stats": {
+      "events": 67,
+      "observed_cases": 67,
+      "activities": 2,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF08P",
+    "type": "Q4",
+    "question": "Build the complete recorded history of every individual medication administration record.",
+    "answerable": true,
+    "pair_of": "HF08",
+    "gold_sha256": "d5b2c86c6c7ba08ceec38c606af918bdd4a9dbb0bbda32c222cad42ea2c267c3",
+    "chart": "graphs/HF08.svg",
+    "stats": {
+      "events": 67,
+      "observed_cases": 67,
+      "activities": 2,
+      "dfg_edges": 0,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": []
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF09",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each procedure episode.",
+    "answerable": true,
+    "pair_of": "HF09P",
+    "gold_sha256": "3646457600ebb9cb525634513f7fd6395b3fea0b520a066985d75cae2d7006f6",
+    "chart": "graphs/HF09.svg",
+    "stats": {
+      "events": 42,
+      "observed_cases": 23,
+      "activities": 2,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Procedure Started": 23,
+      "Procedure Completed": 19
+    },
+    "edges": [
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 19,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF09P",
+    "type": "Q4",
+    "question": "Trace each individual procedure episode through its whole recorded lifecycle.",
+    "answerable": true,
+    "pair_of": "HF09",
+    "gold_sha256": "3646457600ebb9cb525634513f7fd6395b3fea0b520a066985d75cae2d7006f6",
+    "chart": "graphs/HF09.svg",
+    "stats": {
+      "events": 42,
+      "observed_cases": 23,
+      "activities": 2,
+      "dfg_edges": 1,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Procedure Started": 23,
+      "Procedure Completed": 19
+    },
+    "edges": [
+      {
+        "source": "Procedure Started",
+        "target": "Procedure Completed",
+        "count": 19,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF10",
+    "type": "Q3",
+    "question": "Extract the full recorded lifecycle for each pharmacy dispensing record.",
+    "answerable": true,
+    "pair_of": "HF10P",
+    "gold_sha256": "ee40df16ed4734ecb208bbbfa2f6decca214933a52ba5b756648ebde8bb5bc43",
+    "chart": "graphs/HF10.svg",
+    "stats": {
+      "events": 101,
+      "observed_cases": 34,
+      "activities": 3,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "HF10P",
+    "type": "Q4",
+    "question": "Show the complete recorded course associated with each individual pharmacy dispensing record.",
+    "answerable": true,
+    "pair_of": "HF10",
+    "gold_sha256": "ee40df16ed4734ecb208bbbfa2f6decca214933a52ba5b756648ebde8bb5bc43",
+    "chart": "graphs/HF10.svg",
+    "stats": {
+      "events": 101,
+      "observed_cases": 34,
+      "activities": 3,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H12",
+    "type": "Q1",
+    "question": "For each pharmacy dispensing record, extract Medication Dispensed, Medication Administered and Medication Not Given events.",
+    "answerable": true,
+    "pair_of": "H12P",
+    "gold_sha256": "ee40df16ed4734ecb208bbbfa2f6decca214933a52ba5b756648ebde8bb5bc43",
+    "chart": "graphs/HF10.svg",
+    "stats": {
+      "events": 101,
+      "observed_cases": 34,
+      "activities": 3,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      }
+    ]
+  },
+  {
+    "dataset": "hospitalflow",
+    "id": "H12P",
+    "type": "Q2",
+    "question": "Group the medication dispensing, subsequent doses given and doses not given by the pharmacy dispensing record they refer to.",
+    "answerable": true,
+    "pair_of": "H12",
+    "gold_sha256": "ee40df16ed4734ecb208bbbfa2f6decca214933a52ba5b756648ebde8bb5bc43",
+    "chart": "graphs/HF10.svg",
+    "stats": {
+      "events": 101,
+      "observed_cases": 34,
+      "activities": 3,
+      "dfg_edges": 5,
+      "duplicate_case_event_pairs": 0,
+      "tied_timestamp_groups": 0,
+      "requested_but_not_observed": [],
+      "observed_outside_gold_scope": []
+    },
+    "activity_counts": {
+      "Medication Dispensed": 34,
+      "Medication Administered": 49,
+      "Medication Not Given": 18
+    },
+    "edges": [
+      {
+        "source": "Medication Administered",
+        "target": "Medication Administered",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Administered",
+        "target": "Medication Not Given",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Administered",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Dispensed",
+        "target": "Medication Not Given",
+        "count": 10,
+        "tie_affected": 0
+      },
+      {
+        "source": "Medication Not Given",
+        "target": "Medication Administered",
+        "count": 15,
+        "tie_affected": 0
+      }
+    ]
+  }
+]
