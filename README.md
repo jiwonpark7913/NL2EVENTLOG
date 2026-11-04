@@ -158,3 +158,8 @@
 | PlateFlow | 37 | 39 | 31 |
 | HospitalFlow | 19 | 19 | 17 |
 | PlateFlow New | 24 | 24 | 15 |
+
+## GPT 6.1 question paraphrases
+
+- [Local API setup, Q2/Q4 removal, generation, resume and validation](PARAPHRASE_GENERATION.md).
+- Run `python paraphrase_questions.py prepare` followed by `python paraphrase_questions.py generate` in your own environment. API credentials are read only from an environment variable.
