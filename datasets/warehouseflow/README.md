@@ -3,7 +3,7 @@
 - **Situation:** Goods enter a warehouse and complete inspection and putaway, or leave through approval, picking, packing and dispatch. Goods and workers are linked to each transaction.
 - **Source:** One preserved RSchema warehouse requirement and logical schema. Original source columns and keys are preserved.
 - **Extension:** Milestone columns, retained action histories and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 8 tables; 6 object / case types; 10 activity types; 6 timestamp columns (6 event timestamp columns); 394 distinct events.
+- **Database:** 8 tables; 6 object / case types; 10 activity types; 2 timestamp columns (2 event timestamp columns); 394 distinct events.
 - **Gold:** 30 answerable question-specific CSV logs out of 32 questions. Paired requests share the same expected content.
 - **Execution:** Run `python datasets/warehouseflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
 
@@ -11,7 +11,7 @@
 
 | Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| WarehouseFlow | 8 | 6 | 10 | 6 | 6 | 394 | 34 | 32 |
+| WarehouseFlow | 8 | 6 | 10 | 2 | 2 | 394 | 34 | 32 |
 
 - **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
 - **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
@@ -95,5 +95,5 @@
 
 - Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
 - [Timestamp inventory and roles](docs/timestamp_columns.md)
-- [Milestone-column extraction questions and Gold activity counts](docs/questions.md)
-- Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.
+- [Milestone extraction questions and Gold activity counts](docs/questions.md)
+- The transaction header and its action history each use one local activity carrier and one event-time column. All additional lifecycle milestones remain history rows to avoid mixed encoding.

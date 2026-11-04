@@ -1,0 +1,1294 @@
+{
+  "scope": "One local carrier column, or table/time-column semantics; no composite/multiple carriers, mixed encoding or split activity/time storage.",
+  "method": "Manual carrier contracts plus executable source-binding, canonical-history and Gold SQL/CSV checks. Not a general SQL semantic proof or model evaluation.",
+  "table_count": 64,
+  "event_table_count": 47,
+  "gold_logs_verified": 282,
+  "violations": [],
+  "datasets": [
+    {
+      "dataset": "warehouseflow",
+      "tables": [
+        {
+          "table": "goods",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "goods_transaction_detail",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "lifecycle_case_link",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "loader",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "loader_transaction",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "transaction_record",
+          "pattern": [
+            "a"
+          ],
+          "carrier": "transaction_type",
+          "selected_timestamp_columns": [
+            "occurred_at"
+          ],
+          "physical_timestamp_columns": [
+            "occurred_at"
+          ],
+          "activities": [
+            "Goods Dispatched",
+            "Goods Received"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "transaction_record_activity",
+          "pattern": [
+            "a"
+          ],
+          "carrier": "activity",
+          "selected_timestamp_columns": [
+            "occurred_at"
+          ],
+          "physical_timestamp_columns": [
+            "occurred_at"
+          ],
+          "activities": [
+            "Dispatch Approved",
+            "Dispatch Requested",
+            "Goods Packed",
+            "Goods Picked",
+            "Goods Put Away",
+            "Receiving Inspection Completed",
+            "Receiving Requested",
+            "Receiving Scheduled"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "warehouse",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        }
+      ],
+      "event_tables": 2,
+      "events": 394,
+      "gold_logs_verified": 32
+    },
+    {
+      "dataset": "universityflow",
+      "tables": [
+        {
+          "table": "assignment",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "assignment_assigned_at",
+            "assignment_grade_finalized_at",
+            "assignment_resubmitted_at",
+            "assignment_revision_requested_at",
+            "assignment_submitted_at"
+          ],
+          "physical_timestamp_columns": [
+            "assignment_assigned_at",
+            "assignment_grade_finalized_at",
+            "assignment_resubmitted_at",
+            "assignment_revision_requested_at",
+            "assignment_submitted_at"
+          ],
+          "activities": [
+            "Assignment Assigned",
+            "Assignment Grade Finalized",
+            "Assignment Resubmitted",
+            "Assignment Revision Requested",
+            "Assignment Submitted"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "assignment_grading",
+          "pattern": [
+            "a"
+          ],
+          "carrier": "grading_kind",
+          "selected_timestamp_columns": [
+            "grading_time"
+          ],
+          "physical_timestamp_columns": [
+            "grading_time"
+          ],
+          "activities": [
+            "Assignment Graded",
+            "Assignment Regraded"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "course",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "course_offering_approved_at",
+            "course_offering_closed_at",
+            "course_offering_proposed_at",
+            "course_offering_published_at"
+          ],
+          "physical_timestamp_columns": [
+            "course_offering_approved_at",
+            "course_offering_closed_at",
+            "course_offering_proposed_at",
+            "course_offering_published_at"
+          ],
+          "activities": [
+            "Course Offering Approved",
+            "Course Offering Closed",
+            "Course Offering Proposed",
+            "Course Offering Published"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "degree_examination_result",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "examination_checked_in_at",
+            "examination_date",
+            "examination_result_reviewed_at",
+            "examination_scheduled_at",
+            "examination_score_published_at"
+          ],
+          "physical_timestamp_columns": [
+            "examination_checked_in_at",
+            "examination_date",
+            "examination_result_reviewed_at",
+            "examination_scheduled_at",
+            "examination_score_published_at"
+          ],
+          "activities": [
+            "Degree Examination Taken",
+            "Examination Checked In",
+            "Examination Result Reviewed",
+            "Examination Scheduled",
+            "Examination Score Published"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "instructor",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "registration",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "course_assessment_completed_at",
+            "course_grade_finalized_at",
+            "course_started_at",
+            "registration_approved_at",
+            "registration_requested_at",
+            "registration_time"
+          ],
+          "physical_timestamp_columns": [
+            "course_assessment_completed_at",
+            "course_grade_finalized_at",
+            "course_started_at",
+            "registration_approved_at",
+            "registration_requested_at",
+            "registration_time"
+          ],
+          "activities": [
+            "Course Assessment Completed",
+            "Course Grade Finalized",
+            "Course Registered",
+            "Course Started",
+            "Registration Approved",
+            "Registration Requested"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "simulation_module",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "simulation_module_published_at",
+            "simulation_module_released_at",
+            "simulation_module_retired_at",
+            "simulation_module_validated_at"
+          ],
+          "physical_timestamp_columns": [
+            "simulation_module_published_at",
+            "simulation_module_released_at",
+            "simulation_module_retired_at",
+            "simulation_module_validated_at"
+          ],
+          "activities": [
+            "Simulation Module Published",
+            "Simulation Module Released",
+            "Simulation Module Retired",
+            "Simulation Module Validated"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "student",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "student_simulation_experiment_result",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "simulation_date",
+            "simulation_output_reviewed_at",
+            "simulation_result_accepted_at",
+            "simulation_run_scheduled_at",
+            "simulation_run_started_at"
+          ],
+          "physical_timestamp_columns": [
+            "simulation_date",
+            "simulation_output_reviewed_at",
+            "simulation_result_accepted_at",
+            "simulation_run_scheduled_at",
+            "simulation_run_started_at"
+          ],
+          "activities": [
+            "Simulation Experiment Completed",
+            "Simulation Output Reviewed",
+            "Simulation Result Accepted",
+            "Simulation Run Scheduled",
+            "Simulation Run Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "task",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "design_task_approved_at",
+            "design_task_closed_at",
+            "design_task_created_at",
+            "design_task_published_at"
+          ],
+          "physical_timestamp_columns": [
+            "design_task_approved_at",
+            "design_task_closed_at",
+            "design_task_created_at",
+            "design_task_published_at"
+          ],
+          "activities": [
+            "Design Task Approved",
+            "Design Task Closed",
+            "Design Task Created",
+            "Design Task Published"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "thesis",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "submission_date",
+            "thesis_accepted_at",
+            "thesis_draft_registered_at",
+            "thesis_resubmitted_at",
+            "thesis_review_started_at",
+            "thesis_revision_requested_at"
+          ],
+          "physical_timestamp_columns": [
+            "submission_date",
+            "thesis_accepted_at",
+            "thesis_draft_registered_at",
+            "thesis_resubmitted_at",
+            "thesis_review_started_at",
+            "thesis_revision_requested_at"
+          ],
+          "activities": [
+            "Thesis Accepted",
+            "Thesis Draft Registered",
+            "Thesis Resubmitted",
+            "Thesis Review Started",
+            "Thesis Revision Requested",
+            "Thesis Submitted"
+          ],
+          "constant_namespaces": {}
+        }
+      ],
+      "event_tables": 9,
+      "events": 808,
+      "gold_logs_verified": 66
+    },
+    {
+      "dataset": "plateflow",
+      "tables": [
+        {
+          "table": "as_rolled_material",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "crop_shear_passed_at",
+            "furnace_charged_at"
+          ],
+          "physical_timestamp_columns": [
+            "created_at",
+            "crop_shear_passed_at",
+            "furnace_charged_at",
+            "latest_operation_completed_at",
+            "updated_at"
+          ],
+          "activities": [
+            "Crop Shear Passed",
+            "Reheating Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "cutting_finishing_instruction",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "cutting_instruction_acknowledged_at",
+            "cutting_instruction_closed_at",
+            "cutting_setup_verified_at",
+            "cutting_work_started_at",
+            "released_at"
+          ],
+          "physical_timestamp_columns": [
+            "cutting_instruction_acknowledged_at",
+            "cutting_instruction_closed_at",
+            "cutting_setup_verified_at",
+            "cutting_work_started_at",
+            "released_at"
+          ],
+          "activities": [
+            "Cutting Instruction Acknowledged",
+            "Cutting Instruction Closed",
+            "Cutting Instruction Released",
+            "Cutting Setup Verified",
+            "Cutting Work Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "furnace_charge_tracking",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "furnace_charge_assigned_at",
+            "furnace_charge_confirmed_at",
+            "furnace_discharge_confirmed_at",
+            "yard_instruction_received_at"
+          ],
+          "physical_timestamp_columns": [
+            "furnace_charge_assigned_at",
+            "furnace_charge_confirmed_at",
+            "furnace_discharge_confirmed_at",
+            "lot_charging_started_at",
+            "yard_instruction_received_at"
+          ],
+          "activities": [
+            "Furnace Charge Assigned",
+            "Furnace Charge Confirmed",
+            "Furnace Discharge Confirmed",
+            "Yard Instruction Received"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "material_operation_history",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "operation_code",
+          "selected_timestamp_columns": [
+            "completed_at"
+          ],
+          "physical_timestamp_columns": [
+            "completed_at",
+            "created_at",
+            "started_at"
+          ],
+          "activities": [
+            "Cooling Completed",
+            "Heat Treatment Completed",
+            "Heating Completed",
+            "Inspection Failed",
+            "Inspection Passed",
+            "Leveling Completed",
+            "Plate Surface Checked",
+            "Rolling Completed",
+            "Split Cutting Completed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "operation_code",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "planned_rolling_instruction",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "rolling_plan_approved_at",
+            "rolling_plan_created_at",
+            "rolling_plan_released_at",
+            "rolling_plan_reviewed_at"
+          ],
+          "physical_timestamp_columns": [
+            "planned_reheat_at",
+            "rolling_plan_approved_at",
+            "rolling_plan_created_at",
+            "rolling_plan_released_at",
+            "rolling_plan_reviewed_at"
+          ],
+          "activities": [
+            "Rolling Plan Approved",
+            "Rolling Plan Created",
+            "Rolling Plan Released",
+            "Rolling Plan Reviewed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "plate_material",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "dimension_inspected_at",
+            "plate_packed_at",
+            "plate_packing_started_at",
+            "plate_piece_identified_at",
+            "plate_quality_released_at",
+            "plate_quality_review_started_at"
+          ],
+          "physical_timestamp_columns": [
+            "dimension_inspected_at",
+            "latest_operation_completed_at",
+            "plate_packed_at",
+            "plate_packing_started_at",
+            "plate_piece_identified_at",
+            "plate_quality_released_at",
+            "plate_quality_review_started_at"
+          ],
+          "activities": [
+            "Dimensional Inspection Completed",
+            "Plate Packed",
+            "Plate Packing Started",
+            "Plate Piece Identified",
+            "Plate Quality Released",
+            "Plate Quality Review Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "rolling_instruction",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "released_at",
+            "rolling_instruction_acknowledged_at",
+            "rolling_instruction_closed_at",
+            "rolling_setup_verified_at",
+            "rolling_work_started_at"
+          ],
+          "physical_timestamp_columns": [
+            "released_at",
+            "rolling_instruction_acknowledged_at",
+            "rolling_instruction_closed_at",
+            "rolling_setup_verified_at",
+            "rolling_work_started_at"
+          ],
+          "activities": [
+            "Rolling Instruction Acknowledged",
+            "Rolling Instruction Closed",
+            "Rolling Instruction Released",
+            "Rolling Setup Verified",
+            "Rolling Work Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "slab_material",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "slab_identity_verified_at",
+            "slab_quality_checked_at",
+            "slab_received_at",
+            "slab_released_for_rolling_at"
+          ],
+          "physical_timestamp_columns": [
+            "slab_identity_verified_at",
+            "slab_quality_checked_at",
+            "slab_received_at",
+            "slab_released_for_rolling_at"
+          ],
+          "activities": [
+            "Slab Identity Verified",
+            "Slab Quality Checked",
+            "Slab Received",
+            "Slab Released for Rolling"
+          ],
+          "constant_namespaces": {}
+        }
+      ],
+      "event_tables": 8,
+      "events": 1108,
+      "gold_logs_verified": 42
+    },
+    {
+      "dataset": "hospitalflow",
+      "tables": [
+        {
+          "table": "admission_detail",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "discharge_summary_signed_at"
+          ],
+          "physical_timestamp_columns": [
+            "discharge_summary_signed_at"
+          ],
+          "activities": [
+            "Discharge Summary Signed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "admissions",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "admittime",
+            "discharge_authorized_at",
+            "dischtime",
+            "edregtime"
+          ],
+          "physical_timestamp_columns": [
+            "admittime",
+            "discharge_authorized_at",
+            "dischtime",
+            "edregtime"
+          ],
+          "activities": [
+            "Discharge Authorized",
+            "Emergency Department Registered",
+            "Hospital Admitted",
+            "Hospital Discharged"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "emar",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "event_txt",
+          "selected_timestamp_columns": [
+            "charttime"
+          ],
+          "physical_timestamp_columns": [
+            "charttime",
+            "storetime"
+          ],
+          "activities": [
+            "Medication Administered",
+            "Medication Not Given"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "lab_order",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "results_verified_at",
+            "specimen_received_at"
+          ],
+          "physical_timestamp_columns": [
+            "results_verified_at",
+            "specimen_received_at"
+          ],
+          "activities": [
+            "Lab Results Verified",
+            "Specimen Received"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "labevents",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "charttime",
+            "storetime"
+          ],
+          "physical_timestamp_columns": [
+            "charttime",
+            "storetime"
+          ],
+          "activities": [
+            "Lab Result Available",
+            "Specimen Collected"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "medication_order",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "stopped_at"
+          ],
+          "physical_timestamp_columns": [
+            "stopped_at"
+          ],
+          "activities": [
+            "Medication Stopped"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "order_history",
+          "pattern": [
+            "a"
+          ],
+          "carrier": "action",
+          "selected_timestamp_columns": [
+            "occurred_at"
+          ],
+          "physical_timestamp_columns": [
+            "occurred_at"
+          ],
+          "activities": [
+            "Order Cancelled",
+            "Order Entered",
+            "Order Reviewed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "patient_profile",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "profile_verified_at"
+          ],
+          "physical_timestamp_columns": [
+            "profile_verified_at"
+          ],
+          "activities": [
+            "Patient Profile Verified"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "patients",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "pharmacy",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "dispensed_at"
+          ],
+          "physical_timestamp_columns": [
+            "dispensed_at"
+          ],
+          "activities": [
+            "Medication Dispensed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "procedure_episode",
+          "pattern": [
+            "d"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "endtime",
+            "starttime"
+          ],
+          "physical_timestamp_columns": [
+            "endtime",
+            "starttime",
+            "storetime"
+          ],
+          "activities": [
+            "Procedure Completed",
+            "Procedure Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "procedure_order",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "preparation_completed_at"
+          ],
+          "physical_timestamp_columns": [
+            "preparation_completed_at"
+          ],
+          "activities": [
+            "Procedure Preparation Completed"
+          ],
+          "constant_namespaces": {}
+        }
+      ],
+      "event_tables": 11,
+      "events": 628,
+      "gold_logs_verified": 42
+    },
+    {
+      "dataset": "plateflow_new",
+      "tables": [
+        {
+          "table": "as_rolled_material",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [
+            "created_at",
+            "updated_at"
+          ],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "dimension_inspection",
+          "pattern": [
+            "d"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "inspected_at"
+          ],
+          "physical_timestamp_columns": [
+            "inspected_at"
+          ],
+          "activities": [
+            "Dimensional Inspection Completed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "equipment",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [
+            "created_at",
+            "updated_at"
+          ],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "finishing_operation_history",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "operation_code",
+          "selected_timestamp_columns": [
+            "finished_at"
+          ],
+          "physical_timestamp_columns": [
+            "finished_at",
+            "started_at"
+          ],
+          "activities": [
+            "Heat Treatment Completed",
+            "Leveling Completed",
+            "Surface Finishing Completed"
+          ],
+          "constant_namespaces": {
+            "process_group": "FINISHING"
+          }
+        },
+        {
+          "table": "furnace_operation_history",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "operation_code",
+          "selected_timestamp_columns": [
+            "finished_at"
+          ],
+          "physical_timestamp_columns": [
+            "finished_at",
+            "started_at"
+          ],
+          "activities": [
+            "Furnace Charged",
+            "Furnace Discharged",
+            "Heating Completed"
+          ],
+          "constant_namespaces": {
+            "process_group": "FURNACE"
+          }
+        },
+        {
+          "table": "planned_rolling_instruction",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "approved_at",
+            "released_at",
+            "submitted_at"
+          ],
+          "physical_timestamp_columns": [
+            "approved_at",
+            "planned_reheat_at",
+            "released_at",
+            "submitted_at"
+          ],
+          "activities": [
+            "Rolling Plan Approved",
+            "Rolling Plan Released",
+            "Rolling Plan Submitted"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "plate_material",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "identified_at",
+            "packed_at",
+            "released_at"
+          ],
+          "physical_timestamp_columns": [
+            "identified_at",
+            "packed_at",
+            "released_at"
+          ],
+          "activities": [
+            "Plate Identified",
+            "Plate Packed",
+            "Plate Released"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "plate_quality_review",
+          "pattern": [
+            "d"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "finished_at"
+          ],
+          "physical_timestamp_columns": [
+            "finished_at",
+            "started_at"
+          ],
+          "activities": [
+            "Plate Quality Review Completed"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "process_code",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "rolling_instruction",
+          "pattern": [
+            "d"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "issued_at"
+          ],
+          "physical_timestamp_columns": [
+            "issued_at"
+          ],
+          "activities": [
+            "Rolling Instruction Issued"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "rolling_operation_history",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "phase_code",
+          "selected_timestamp_columns": [
+            "finished_at"
+          ],
+          "physical_timestamp_columns": [
+            "finished_at",
+            "started_at"
+          ],
+          "activities": [
+            "Finish Rolling Completed",
+            "Rough Rolling Completed"
+          ],
+          "constant_namespaces": {
+            "process_group": "ROLLING"
+          }
+        },
+        {
+          "table": "slab_material",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "received_at",
+            "released_at",
+            "verified_at"
+          ],
+          "physical_timestamp_columns": [
+            "received_at",
+            "released_at",
+            "verified_at"
+          ],
+          "activities": [
+            "Slab Received",
+            "Slab Released",
+            "Slab Verified"
+          ],
+          "constant_namespaces": {}
+        }
+      ],
+      "event_tables": 9,
+      "events": 620,
+      "gold_logs_verified": 50
+    },
+    {
+      "dataset": "warehouseflow_new",
+      "tables": [
+        {
+          "table": "dispatch_order",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "approved_at",
+            "requested_at"
+          ],
+          "physical_timestamp_columns": [
+            "approved_at",
+            "requested_at"
+          ],
+          "activities": [
+            "Dispatch Approved",
+            "Dispatch Requested"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "goods",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "goods_movement",
+          "pattern": [
+            "a"
+          ],
+          "carrier": "movement_code",
+          "selected_timestamp_columns": [
+            "occurred_at"
+          ],
+          "physical_timestamp_columns": [
+            "occurred_at"
+          ],
+          "activities": [
+            "Goods Dispatched",
+            "Goods Received"
+          ],
+          "constant_namespaces": {
+            "code_family": "MOVEMENT"
+          }
+        },
+        {
+          "table": "goods_receipt",
+          "pattern": [
+            "d"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "received_at"
+          ],
+          "physical_timestamp_columns": [
+            "received_at"
+          ],
+          "activities": [
+            "Receipt Registered"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "handling_history",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "handling_code",
+          "selected_timestamp_columns": [
+            "completed_at",
+            "started_at"
+          ],
+          "physical_timestamp_columns": [
+            "completed_at",
+            "started_at"
+          ],
+          "activities": [
+            "Loading Completed",
+            "Loading Started",
+            "Unloading Completed",
+            "Unloading Started"
+          ],
+          "constant_namespaces": {
+            "code_family": "HANDLING"
+          }
+        },
+        {
+          "table": "receiving_request",
+          "pattern": [
+            "c"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "submitted_at"
+          ],
+          "physical_timestamp_columns": [
+            "submitted_at"
+          ],
+          "activities": [
+            "Receiving Request Submitted"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "request_action",
+          "pattern": [
+            "a"
+          ],
+          "carrier": "action_code",
+          "selected_timestamp_columns": [
+            "occurred_at"
+          ],
+          "physical_timestamp_columns": [
+            "occurred_at"
+          ],
+          "activities": [
+            "Request Checked",
+            "Request Held",
+            "Request Released"
+          ],
+          "constant_namespaces": {
+            "code_family": "REQUEST"
+          }
+        },
+        {
+          "table": "warehouse",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [
+            "created_at",
+            "updated_at"
+          ],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "warehouse_audit",
+          "pattern": [
+            "d"
+          ],
+          "carrier": null,
+          "selected_timestamp_columns": [
+            "completed_at",
+            "started_at"
+          ],
+          "physical_timestamp_columns": [
+            "completed_at",
+            "started_at"
+          ],
+          "activities": [
+            "Stock Audit Completed",
+            "Stock Audit Started"
+          ],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "warehouse_task_history",
+          "pattern": [
+            "b"
+          ],
+          "carrier": "task_code",
+          "selected_timestamp_columns": [
+            "completed_at",
+            "started_at"
+          ],
+          "physical_timestamp_columns": [
+            "completed_at",
+            "started_at"
+          ],
+          "activities": [
+            "Packing Completed",
+            "Packing Started",
+            "Picking Completed",
+            "Picking Started",
+            "Putaway Completed",
+            "Putaway Started"
+          ],
+          "constant_namespaces": {
+            "code_family": "TASK"
+          }
+        },
+        {
+          "table": "work_code",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [],
+          "activities": [],
+          "constant_namespaces": {}
+        },
+        {
+          "table": "worker",
+          "pattern": [],
+          "carrier": null,
+          "selected_timestamp_columns": [],
+          "physical_timestamp_columns": [
+            "updated_at"
+          ],
+          "activities": [],
+          "constant_namespaces": {}
+        }
+      ],
+      "event_tables": 8,
+      "events": 402,
+      "gold_logs_verified": 50
+    }
+  ]
+}

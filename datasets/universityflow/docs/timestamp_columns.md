@@ -46,4 +46,4 @@
 | assignment_grading | grading_time | actual event time | Yes | 25 |
 
 - Date-only fields excluded: student.date_of_birth, task.task_start_date, task.task_end_date.
-- New timestamp questions TS01/TS02/... and their P counterparts explicitly test milestone-column extraction.
+- Timestamp questions TS01/TS02/... and their P counterparts test the named milestones. WarehouseFlow stores these in carrier-driven history rows; other datasets may use milestone columns.
