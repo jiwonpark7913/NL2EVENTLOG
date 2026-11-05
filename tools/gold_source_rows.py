@@ -98,32 +98,59 @@ class SourceRows:
         return related
 
 
-def render_compact_source_panel(tables, reads, missing, related, *, carrier_columns, primary_keys):
-    """Keep GitHub's right column narrow so the adjacent DFG stays visible."""
-    out = ['<h4>Original tables</h4><p>Up to 3 matched rows per table. Shows keys, event times and carrier values.</p>']
+def render_review_evidence(tables, missing, related, *, dataset_path, question_id):
+    """Put original database values beside the corresponding Gold output."""
+    def cell(value):
+        return '<em>NULL</em>' if value is None else html.escape(str(value))
+
+    def field_table(fields, rows):
+        head = '<tr><th>Column</th>'+''.join(f'<th>Row {i}</th>' for i in range(1, len(rows)+1))+'</tr>'
+        body = ''.join(
+            '<tr><th>'+cell(field)+'</th>'+''.join('<td>'+cell(row[index])+'</td>' for row in rows)+'</tr>'
+            for index, field in enumerate(fields)
+        )
+        return '<table>'+head+body+'</table>'
+
+    out = [
+        f'<p><a href="{dataset_path}/private/gold_sql/{question_id}.sql">Gold SQL</a> · '
+        f'<a href="{dataset_path}/private/gold_logs/{question_id}.csv">Gold CSV</a> · '
+        f'<a href="{dataset_path}/input/database.sqlite">Full source database (SQLite)</a></p>',
+    ]
     if missing:
-        out.append(f'<p>{missing} Gold event rows have no matched source row.</p>')
+        out.append(f'<p><strong>{missing} Gold event rows could not be matched to an original row.</strong></p>')
     for table, columns, rows in tables:
-        sample = rows[:3]
-        times = {event[2] for _, events in sample for event in events}
-        fields = set(primary_keys[table]) | times | {carrier_columns.get(table)}
-        selected = [(idx, col) for idx, col in enumerate(columns) if col in fields]
-        out.append(f'<p><strong>{html.escape(table)}</strong> · {len(rows)} matched rows</p>')
-        out.append('<table><tr><th>Row</th><th>Source values</th></tr>')
-        for number, (values, _) in enumerate(sample, 1):
-            cells = '<br>'.join(
-                f'{html.escape(col)} = {html.escape(str(values[idx]) if values[idx] is not None else "NULL")}'
-                for idx, col in selected
+        # Prefer different activities so rare branches are represented in the preview.
+        selected = []
+        seen = set()
+        for idx, (_, labels) in enumerate(rows):
+            activities = {label[1] for label in labels}
+            if activities - seen:
+                selected.append(idx)
+                seen.update(activities)
+                if len(selected) == 3:
+                    break
+        selected.extend(idx for idx in range(min(3, len(rows))) if idx not in selected)
+        sample = [rows[idx] for idx in selected[:3]]
+        out.append(f'<details><summary><code>{cell(table)}</code> · {len(rows)} matched source rows</summary>')
+        out.append(field_table(columns, [values for values, _ in sample]))
+        out.append('<p><strong>Gold output for the same source rows</strong></p><ul>')
+        for idx, (_, events) in enumerate(sample, 1):
+            for eid, activity, timestamp, case in events:
+                out.append(f'<li>Row {idx} → {cell(activity)} · event {cell(eid)} · case {cell(case)} · time from <code>{cell(timestamp)}</code></li>')
+        out.append('</ul></details>')
+    if related:
+        out.append('<details><summary>FK-linked case and join evidence</summary><ul>')
+        for table, examples in sorted(related.items()):
+            row, child, keys = examples[0]
+            join_values = ', '.join(
+                f'{key.split(" → ")[-1]} = {row[key.split(" → ")[-1]]}' for key in keys
             )
-            out.append(f'<tr><td>{number}</td><td>{cells}</td></tr>')
-        out.append('</table>')
-    context = sorted(set(reads) - {table for table, _, _ in tables})
-    if context:
-        out.append('<details><summary>Other SQL tables</summary><p>'+html.escape(', '.join(context))+'</p></details>')
+            out.append(f'<li><code>{cell(child)}</code> → <code>{cell(table)}</code> · {cell(", ".join(keys))} · {cell(join_values)}</li>')
+        out.append('</ul></details>')
     return ''.join(out)
 
 
-def render_source_panel(tables, reads, missing, related):
+def render_source_panel(tables, missing, related):
     escape = html.escape
     def cell(value):
         return '<td><em>NULL</em></td>' if value is None else '<td>'+escape(str(value))+'</td>'
@@ -160,10 +187,4 @@ def render_source_panel(tables, reads, missing, related):
                 for row, child, keys in examples
             )))
         out.append('</details>')
-    others = {table: cols for table, cols in reads.items() if table not in {t[0] for t in tables}}
-    if others:
-        out.append('<details><summary>Other tables referenced by Gold SQL</summary><p>Includes case joins and branches of shared CTEs.</p><ul>')
-        for table, cols in sorted(others.items()):
-            out.append('<li><code>'+escape(table)+'</code> · '+escape(', '.join(sorted(c for c in cols if c)))+'</li>')
-        out.append('</ul></details>')
     return ''.join(out)

@@ -21,7 +21,7 @@ Download and extract [review_bundle.zip](review_bundle.zip), then open index.htm
 
 ## Reading the graph
 
-- The right panel shows original SQLite rows matched to Gold events. GitHub displays up to three matches per table, with keys, selected event times and carrier values. The HTML bundle shows all columns, remaining matches and FK-linked examples.
+- The right panel shows original SQLite rows matched to Gold events. On GitHub, open a source table to compare up to three original rows (all columns) with their Gold events. The links above each preview open the exact SQL, Gold CSV and full SQLite database.
 - Nodes: activity label, event occurrences, observed start/end case counts. Blue fill = starts; green outline = ends.
 - Edges: adjacent selected events per case, with transition counts. All observed edges and activities are included; no frequency threshold hides rare behavior. Identical paired logs reuse the same DFG asset.
 - Order: timestamp, then event_id (then original row index). Dashed amber edges touch tied timestamp groups and depend on tie-breaking. Start/end assignments at tied boundaries are also ambiguous. This is a display convention, not proof of order.
