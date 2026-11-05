@@ -98,7 +98,32 @@ class SourceRows:
         return related
 
 
-def render_source_panel(tables, reads, missing, related, *, preview_only=False):
+def render_compact_source_panel(tables, reads, missing, related, *, carrier_columns, primary_keys):
+    """Keep GitHub's right column narrow so the adjacent DFG stays visible."""
+    out = ['<h4>Original tables</h4><p>Up to 3 matched rows per table. Shows keys, event times and carrier values.</p>']
+    if missing:
+        out.append(f'<p>{missing} Gold event rows have no matched source row.</p>')
+    for table, columns, rows in tables:
+        sample = rows[:3]
+        times = {event[2] for _, events in sample for event in events}
+        fields = set(primary_keys[table]) | times | {carrier_columns.get(table)}
+        selected = [(idx, col) for idx, col in enumerate(columns) if col in fields]
+        out.append(f'<p><strong>{html.escape(table)}</strong> · {len(rows)} matched rows</p>')
+        out.append('<table><tr><th>Row</th><th>Source values</th></tr>')
+        for number, (values, _) in enumerate(sample, 1):
+            cells = '<br>'.join(
+                f'{html.escape(col)} = {html.escape(str(values[idx]) if values[idx] is not None else "NULL")}'
+                for idx, col in selected
+            )
+            out.append(f'<tr><td>{number}</td><td>{cells}</td></tr>')
+        out.append('</table>')
+    context = sorted(set(reads) - {table for table, _, _ in tables})
+    if context:
+        out.append('<details><summary>Other SQL tables</summary><p>'+html.escape(', '.join(context))+'</p></details>')
+    return ''.join(out)
+
+
+def render_source_panel(tables, reads, missing, related):
     escape = html.escape
     def cell(value):
         return '<td><em>NULL</em></td>' if value is None else '<td>'+escape(str(value))+'</td>'
@@ -123,7 +148,7 @@ def render_source_panel(tables, reads, missing, related, *, preview_only=False):
 
         out.append(f'<p><strong><code>{escape(table)}</code></strong> · {len(rows)} source rows</p>')
         out.append(table_html(rows[:3]))
-        if len(rows) > 3 and not preview_only:
+        if len(rows) > 3:
             out.append(f'<details><summary>Remaining {len(rows)-3} source rows</summary>'+table_html(rows[3:])+'</details>')
     if related:
         out.append('<details><summary>FK-linked row examples for case and join context</summary>')
