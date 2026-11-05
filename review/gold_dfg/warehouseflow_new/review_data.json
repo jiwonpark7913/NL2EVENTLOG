@@ -21,7 +21,11 @@
     "activity_counts": {
       "Receiving Request Submitted": 26
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "receiving_request": 26
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -45,7 +49,11 @@
     "activity_counts": {
       "Receiving Request Submitted": 26
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "receiving_request": 26
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -69,7 +77,11 @@
     "activity_counts": {
       "Receipt Registered": 23
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "goods_receipt": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -93,7 +105,11 @@
     "activity_counts": {
       "Receipt Registered": 23
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "goods_receipt": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -125,7 +141,11 @@
         "count": 18,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -157,7 +177,11 @@
         "count": 18,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -189,7 +213,11 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_audit": 9
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -221,7 +249,11 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_audit": 9
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -246,7 +278,11 @@
       "Goods Received": 23,
       "Goods Dispatched": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "goods_movement": 39
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -271,7 +307,11 @@
       "Goods Received": 23,
       "Goods Dispatched": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "goods_movement": 39
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -297,7 +337,11 @@
       "Request Released": 24,
       "Request Held": 4
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "request_action": 56
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -323,7 +367,11 @@
       "Request Released": 24,
       "Request Held": 4
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "request_action": 56
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -371,7 +419,11 @@
         "count": 21,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -419,7 +471,11 @@
         "count": 21,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -459,7 +515,11 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "handling_history": 41
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -499,7 +559,11 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "handling_history": 41
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -589,7 +653,13 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "handling_history": 17,
+      "warehouse_audit": 9,
+      "warehouse_task_history": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -679,7 +749,13 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "handling_history": 17,
+      "warehouse_audit": 9,
+      "warehouse_task_history": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -739,7 +815,14 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23,
+      "handling_history": 24,
+      "warehouse_task_history": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -799,7 +882,14 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23,
+      "handling_history": 24,
+      "warehouse_task_history": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -872,7 +962,13 @@
         "count": 22,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 16,
+      "handling_history": 17,
+      "warehouse_task_history": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -945,7 +1041,13 @@
         "count": 22,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 16,
+      "handling_history": 17,
+      "warehouse_task_history": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1003,7 +1105,12 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_audit": 9,
+      "warehouse_task_history": 22
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1061,7 +1168,12 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_audit": 9,
+      "warehouse_task_history": 22
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1105,7 +1217,11 @@
         "count": 17,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 39
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1149,7 +1265,11 @@
         "count": 17,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 39
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1181,7 +1301,12 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1213,7 +1338,12 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1476,7 +1606,18 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20,
+      "goods_movement": 39,
+      "goods_receipt": 23,
+      "handling_history": 41,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_audit": 9,
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1695,7 +1836,18 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20,
+      "goods_movement": 39,
+      "goods_receipt": 23,
+      "handling_history": 41,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_audit": 9,
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -1888,7 +2040,17 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20,
+      "goods_movement": 39,
+      "goods_receipt": 23,
+      "handling_history": 41,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2081,7 +2243,17 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20,
+      "goods_movement": 39,
+      "goods_receipt": 23,
+      "handling_history": 41,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2265,7 +2437,15 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_receipt": 23,
+      "handling_history": 41,
+      "request_action": 56,
+      "warehouse_audit": 9,
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2449,7 +2629,15 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_receipt": 23,
+      "handling_history": 41,
+      "request_action": 56,
+      "warehouse_audit": 9,
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2543,7 +2731,16 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23,
+      "handling_history": 24,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_task_history": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2637,7 +2834,16 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23,
+      "handling_history": 24,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_task_history": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2669,7 +2875,12 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2701,7 +2912,12 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "goods_movement": 23,
+      "goods_receipt": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2788,7 +3004,14 @@
         "count": 22,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20,
+      "goods_movement": 16,
+      "handling_history": 17,
+      "warehouse_task_history": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2875,7 +3098,14 @@
         "count": 22,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dispatch_order": 20,
+      "goods_movement": 16,
+      "handling_history": 17,
+      "warehouse_task_history": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2907,7 +3137,11 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_audit": 9
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2939,7 +3173,11 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_audit": 9
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2964,7 +3202,11 @@
       "Goods Received": 23,
       "Goods Dispatched": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "goods_movement": 39
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -2989,7 +3231,11 @@
       "Goods Received": 23,
       "Goods Dispatched": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "goods_movement": 39
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -3015,7 +3261,11 @@
       "Request Released": 24,
       "Request Held": 4
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "request_action": 56
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -3041,7 +3291,11 @@
       "Request Released": 24,
       "Request Held": 4
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "request_action": 56
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -3089,7 +3343,11 @@
         "count": 21,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -3137,7 +3395,11 @@
         "count": 21,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "warehouse_task_history": 63
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -3177,7 +3439,11 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "handling_history": 41
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "warehouseflow_new",
@@ -3217,6 +3483,10 @@
         "count": 23,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "handling_history": 41
+    },
+    "unmatched_gold_rows": 0
   }
 ]

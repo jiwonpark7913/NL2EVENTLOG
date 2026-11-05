@@ -28,7 +28,11 @@
         "count": 10,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -59,7 +63,11 @@
         "count": 10,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -90,7 +98,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -121,7 +133,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -546,7 +562,16 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 25,
+      "degree_examination_result": 40,
+      "registration": 47,
+      "student_simulation_experiment_result": 27,
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -971,7 +996,16 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 25,
+      "degree_examination_result": 40,
+      "registration": 47,
+      "student_simulation_experiment_result": 27,
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1024,7 +1058,11 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1055,7 +1093,11 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1086,7 +1128,11 @@
         "count": 7,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1117,7 +1163,11 @@
         "count": 7,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1141,7 +1191,11 @@
     "activity_counts": {
       "Thesis Submitted": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1165,7 +1219,11 @@
     "activity_counts": {
       "Thesis Submitted": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1189,7 +1247,11 @@
     "activity_counts": {
       "Assignment Submitted": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "assignment": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1614,7 +1676,16 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 25,
+      "degree_examination_result": 40,
+      "registration": 47,
+      "student_simulation_experiment_result": 27,
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1792,7 +1863,12 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "course": 6,
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1852,7 +1928,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1905,7 +1985,11 @@
         "count": 34,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -1998,7 +2082,12 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "simulation_module": 3,
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2064,7 +2153,11 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2117,7 +2210,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2202,7 +2299,12 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 25
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2341,7 +2443,12 @@
         "count": 2,
         "tie_affected": 2
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 16,
+      "assignment_grading": 25
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2366,7 +2473,11 @@
       "Assignment Graded": 18,
       "Assignment Regraded": 7
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "assignment_grading": 25
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2412,7 +2523,11 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "task": 3
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2470,7 +2585,11 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2523,7 +2642,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2562,7 +2685,11 @@
         "count": 15,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2601,7 +2728,11 @@
         "count": 13,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2647,7 +2778,11 @@
     "activity_counts": {
       "Assignment Submitted": 16
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "assignment": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2705,7 +2840,11 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2758,7 +2897,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2797,7 +2940,11 @@
         "count": 15,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -2836,7 +2983,11 @@
         "count": 13,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3261,7 +3412,16 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 25,
+      "degree_examination_result": 40,
+      "registration": 47,
+      "student_simulation_experiment_result": 27,
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3306,7 +3466,12 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3351,7 +3516,12 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3529,7 +3699,12 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "course": 6,
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3586,7 +3761,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3643,7 +3822,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3703,7 +3886,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3742,7 +3929,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3781,7 +3972,11 @@
         "count": 47,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "registration": 47
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3834,7 +4029,11 @@
         "count": 34,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3873,7 +4072,11 @@
         "count": 40,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -3912,7 +4115,11 @@
         "count": 40,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "degree_examination_result": 40
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4005,7 +4212,12 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "simulation_module": 3,
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4056,7 +4268,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4107,7 +4323,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4173,7 +4393,11 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4212,7 +4436,11 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4251,7 +4479,11 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "thesis": 16
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4304,7 +4536,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4343,7 +4579,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4382,7 +4622,11 @@
         "count": 27,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "student_simulation_experiment_result": 27
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4467,7 +4711,12 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 25
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4512,7 +4761,12 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4557,7 +4811,12 @@
         "count": 16,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 20,
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4696,7 +4955,12 @@
         "count": 2,
         "tie_affected": 2
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 16,
+      "assignment_grading": 25
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4765,7 +5029,12 @@
         "count": 11,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 16,
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4834,7 +5103,12 @@
         "count": 11,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "assignment": 16,
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4859,7 +5133,11 @@
       "Assignment Graded": 18,
       "Assignment Regraded": 7
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "assignment_grading": 25
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4883,7 +5161,11 @@
     "activity_counts": {
       "Assignment Graded": 18
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4907,7 +5189,11 @@
     "activity_counts": {
       "Assignment Graded": 18
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "assignment_grading": 18
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4953,7 +5239,11 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "task": 3
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -4992,7 +5282,11 @@
         "count": 3,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "task": 3
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "universityflow",
@@ -5031,6 +5325,10 @@
         "count": 3,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "task": 3
+    },
+    "unmatched_gold_rows": 0
   }
 ]

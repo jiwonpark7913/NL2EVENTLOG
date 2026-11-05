@@ -72,7 +72,11 @@
         "count": 65,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "order_history": 194
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -147,7 +151,11 @@
         "count": 65,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "order_history": 194
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -228,7 +236,13 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 49,
+      "labevents": 56,
+      "procedure_episode": 19
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -309,7 +323,13 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 49,
+      "labevents": 56,
+      "procedure_episode": 19
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -360,7 +380,12 @@
         "count": 32,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "lab_order": 30,
+      "labevents": 62
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -411,7 +436,12 @@
         "count": 32,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "lab_order": 30,
+      "labevents": 62
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -505,7 +535,13 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "medication_order": 25,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -599,7 +635,13 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "medication_order": 25,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -650,7 +692,12 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -701,7 +748,12 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -747,7 +799,11 @@
         "count": 13,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admissions": 15
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -793,7 +849,11 @@
         "count": 13,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admissions": 15
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -930,7 +990,14 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admissions": 15,
+      "emar": 49,
+      "labevents": 62,
+      "procedure_episode": 19
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -1067,7 +1134,14 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admissions": 15,
+      "emar": 49,
+      "labevents": 62,
+      "procedure_episode": 19
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -1925,7 +1999,21 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admission_detail": 5,
+      "admissions": 15,
+      "emar": 67,
+      "lab_order": 30,
+      "labevents": 62,
+      "medication_order": 25,
+      "order_history": 203,
+      "patient_profile": 6,
+      "pharmacy": 34,
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -2761,7 +2849,21 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admission_detail": 5,
+      "admissions": 15,
+      "emar": 67,
+      "lab_order": 30,
+      "labevents": 62,
+      "medication_order": 25,
+      "order_history": 203,
+      "patient_profile": 6,
+      "pharmacy": 34,
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -3566,7 +3668,20 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admission_detail": 5,
+      "admissions": 15,
+      "emar": 67,
+      "lab_order": 27,
+      "labevents": 56,
+      "medication_order": 25,
+      "order_history": 194,
+      "pharmacy": 34,
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4371,7 +4486,20 @@
         "count": 2,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admission_detail": 5,
+      "admissions": 15,
+      "emar": 67,
+      "lab_order": 27,
+      "labevents": 56,
+      "medication_order": 25,
+      "order_history": 194,
+      "pharmacy": 34,
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4397,7 +4525,11 @@
       "Order Reviewed": 119,
       "Order Cancelled": 4
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "order_history": 203
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4423,7 +4555,11 @@
       "Order Reviewed": 119,
       "Order Cancelled": 4
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "order_history": 203
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4501,7 +4637,13 @@
         "count": 30,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "lab_order": 30,
+      "labevents": 62,
+      "order_history": 83
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4579,7 +4721,13 @@
         "count": 30,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "lab_order": 30,
+      "labevents": 62,
+      "order_history": 83
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4699,7 +4847,14 @@
         "count": 14,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "medication_order": 25,
+      "order_history": 72,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4819,7 +4974,14 @@
         "count": 14,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "medication_order": 25,
+      "order_history": 72,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4897,7 +5059,13 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "order_history": 48,
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4975,7 +5143,13 @@
         "count": 1,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "order_history": 48,
+      "procedure_episode": 23,
+      "procedure_order": 13
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -4999,7 +5173,11 @@
     "activity_counts": {
       "Patient Profile Verified": 6
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "patient_profile": 6
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5023,7 +5201,11 @@
     "activity_counts": {
       "Patient Profile Verified": 6
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "patient_profile": 6
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5047,7 +5229,11 @@
     "activity_counts": {
       "Discharge Summary Signed": 5
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "admission_detail": 5
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5071,7 +5257,11 @@
     "activity_counts": {
       "Discharge Summary Signed": 5
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "admission_detail": 5
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5109,7 +5299,12 @@
         "count": 6,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admissions": 15,
+      "patient_profile": 6
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5147,7 +5342,12 @@
         "count": 6,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "admissions": 15,
+      "patient_profile": 6
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5179,7 +5379,11 @@
         "count": 62,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "labevents": 62
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5211,7 +5415,11 @@
         "count": 62,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "labevents": 62
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5236,7 +5444,11 @@
       "Medication Administered": 49,
       "Medication Not Given": 18
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "emar": 67
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5261,7 +5473,11 @@
       "Medication Administered": 49,
       "Medication Not Given": 18
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "emar": 67
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5293,7 +5509,11 @@
         "count": 19,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "procedure_episode": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5325,7 +5545,11 @@
         "count": 19,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "procedure_episode": 23
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5382,7 +5606,12 @@
         "count": 15,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5439,7 +5668,12 @@
         "count": 15,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5496,7 +5730,12 @@
         "count": 15,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "hospitalflow",
@@ -5553,6 +5792,11 @@
         "count": 15,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "emar": 67,
+      "pharmacy": 34
+    },
+    "unmatched_gold_rows": 0
   }
 ]

@@ -36,7 +36,11 @@
         "count": 28,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "slab_material": 30
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -75,7 +79,11 @@
         "count": 28,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "slab_material": 30
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -114,7 +122,11 @@
         "count": 26,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "planned_rolling_instruction": 28
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -153,7 +165,11 @@
         "count": 26,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "planned_rolling_instruction": 28
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -192,7 +208,13 @@
         "count": 22,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "furnace_operation_history": 22,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 20
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -231,7 +253,13 @@
         "count": 22,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "furnace_operation_history": 22,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 20
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -284,7 +312,12 @@
         "count": 20,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "furnace_operation_history": 68,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -337,7 +370,12 @@
         "count": 20,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "furnace_operation_history": 68,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -382,7 +420,12 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 92
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -427,7 +470,12 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 92
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -472,7 +520,11 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "finishing_operation_history": 130
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -517,7 +569,11 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "finishing_operation_history": 130
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -555,7 +611,12 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -593,7 +654,12 @@
         "count": 8,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -632,7 +698,11 @@
         "count": 26,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "plate_material": 38
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -671,7 +741,11 @@
         "count": 26,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "plate_material": 38
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -695,7 +769,11 @@
     "activity_counts": {
       "Dimensional Inspection Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "dimension_inspection": 46
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -719,7 +797,11 @@
     "activity_counts": {
       "Dimensional Inspection Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "dimension_inspection": 46
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -743,7 +825,11 @@
     "activity_counts": {
       "Plate Quality Review Completed": 43
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -767,7 +853,11 @@
     "activity_counts": {
       "Plate Quality Review Completed": 43
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -805,7 +895,12 @@
         "count": 20,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "finishing_operation_history": 46,
+      "furnace_operation_history": 22
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -843,7 +938,12 @@
         "count": 20,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "finishing_operation_history": 46,
+      "furnace_operation_history": 22
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -869,7 +969,11 @@
       "Heating Completed": 22,
       "Furnace Discharged": 22
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "furnace_operation_history": 68
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -895,7 +999,11 @@
       "Heating Completed": 22,
       "Furnace Discharged": 22
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "furnace_operation_history": 68
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -920,7 +1028,11 @@
       "Rough Rolling Completed": 22,
       "Finish Rolling Completed": 20
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -945,7 +1057,11 @@
       "Rough Rolling Completed": 22,
       "Finish Rolling Completed": 20
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -971,7 +1087,11 @@
       "Heat Treatment Completed": 46,
       "Surface Finishing Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "finishing_operation_history": 130
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -997,7 +1117,11 @@
       "Heat Treatment Completed": 46,
       "Surface Finishing Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "finishing_operation_history": 130
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1223,7 +1347,19 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "planned_rolling_instruction": 28,
+      "plate_material": 38,
+      "plate_quality_review": 43,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 42,
+      "slab_material": 30
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1405,7 +1541,19 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "planned_rolling_instruction": 28,
+      "plate_material": 38,
+      "plate_quality_review": 43,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 42,
+      "slab_material": 30
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1451,7 +1599,12 @@
         "count": 26,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "planned_rolling_instruction": 28,
+      "rolling_instruction": 26
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1497,7 +1650,12 @@
         "count": 26,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "planned_rolling_instruction": 28,
+      "rolling_instruction": 26
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1637,7 +1795,17 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "plate_material": 38,
+      "plate_quality_review": 43,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1777,7 +1945,17 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "plate_material": 38,
+      "plate_quality_review": 43,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -1910,7 +2088,16 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "plate_material": 38,
+      "plate_quality_review": 43,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2043,7 +2230,16 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "plate_material": 38,
+      "plate_quality_review": 43,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2123,7 +2319,14 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "plate_material": 38,
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2203,7 +2406,14 @@
         "count": 46,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "plate_material": 38,
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2227,7 +2437,11 @@
     "activity_counts": {
       "Dimensional Inspection Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "dimension_inspection": 46
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2251,7 +2465,11 @@
     "activity_counts": {
       "Dimensional Inspection Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "dimension_inspection": 46
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2275,7 +2493,11 @@
     "activity_counts": {
       "Plate Quality Review Completed": 43
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2299,7 +2521,11 @@
     "activity_counts": {
       "Plate Quality Review Completed": 43
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "plate_quality_review": 43
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2397,7 +2623,13 @@
         "count": 36,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2495,7 +2727,13 @@
         "count": 36,
         "tie_affected": 0
       }
-    ]
+    ],
+    "source_tables": {
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 68,
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2521,7 +2759,11 @@
       "Heating Completed": 22,
       "Furnace Discharged": 22
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "furnace_operation_history": 68
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2547,7 +2789,11 @@
       "Heating Completed": 22,
       "Furnace Discharged": 22
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "furnace_operation_history": 68
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2572,7 +2818,11 @@
       "Rough Rolling Completed": 22,
       "Finish Rolling Completed": 20
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2597,7 +2847,11 @@
       "Rough Rolling Completed": 22,
       "Finish Rolling Completed": 20
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "rolling_operation_history": 42
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2623,7 +2877,11 @@
       "Heat Treatment Completed": 46,
       "Surface Finishing Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "finishing_operation_history": 130
+    },
+    "unmatched_gold_rows": 0
   },
   {
     "dataset": "plateflow_new",
@@ -2649,6 +2907,10 @@
       "Heat Treatment Completed": 46,
       "Surface Finishing Completed": 46
     },
-    "edges": []
+    "edges": [],
+    "source_tables": {
+      "finishing_operation_history": 130
+    },
+    "unmatched_gold_rows": 0
   }
 ]

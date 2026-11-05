@@ -4,7 +4,7 @@
 
 This folder is separate from datasets/*/input and is absent from every model-input allowlist. No model-input bytes or manifests were changed. Keep it out of repository-wide retrieval/RAG/evaluation prompts.
 
-Source commit: `ed132438b2a634a39da997e733751ccf1aa6322c`. The current remote snapshot still includes Q2/Q4; each HTML page defaults to Q1/Q3 and optionally reveals those existing pairs. This renderer does not delete or regenerate questions.
+Source commit: `a0ba4c9631d12730d60bf7720d783a3a827b88dc`. The current remote snapshot still includes Q2/Q4; each HTML page defaults to Q1/Q3 and optionally reveals those existing pairs. This renderer does not delete or regenerate questions.
 
 | Dataset | Questions | Gold logs | Distinct DFGs | GitHub view |
 |---|---:|---:|---:|---|
@@ -21,6 +21,7 @@ Download and extract [review_bundle.zip](review_bundle.zip), then open index.htm
 
 ## Reading the graph
 
+- The right panel shows original SQLite rows matched to Gold events. GitHub displays the first three matches per table and the HTML bundle lets you expand the remainder. Other SQL-referenced tables are listed separately.
 - Nodes: activity label, event occurrences, observed start/end case counts. Blue fill = starts; green outline = ends.
 - Edges: adjacent selected events per case, with transition counts. All observed edges and activities are included; no frequency threshold hides rare behavior. Identical paired logs reuse the same DFG asset.
 - Order: timestamp, then event_id (then original row index). Dashed amber edges touch tied timestamp groups and depend on tie-breaking. Start/end assignments at tied boundaries are also ambiguous. This is a display convention, not proof of order.
