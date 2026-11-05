@@ -98,47 +98,42 @@ class SourceRows:
         return related
 
 
-def render_source_panel(tables, reads, missing, related, limit=None):
+def render_source_panel(tables, reads, missing, related, *, preview_only=False):
     escape = html.escape
     def cell(value):
-        return '<td><em>NULL</em></td>' if value is None else '<td><code>'+escape(str(value))+'</code></td>'
+        return '<td><em>NULL</em></td>' if value is None else '<td>'+escape(str(value))+'</td>'
 
-    out = ['<h4>Original tables</h4><p>Rows matched by event ID, activity and timestamp using the authored source bindings.</p>']
+    def render_table(columns, rows):
+        heads = ''.join('<th>'+escape(col)+'</th>' for col in columns)
+        body = ''.join('<tr>'+''.join(cell(v) for v in row)+'</tr>' for row in rows)
+        return '<div class="source-scroll"><table><thead><tr>'+heads+'</tr></thead><tbody>'+body+'</tbody></table></div>'
+
+    out = ['<h4>Original tables</h4><p>First 3 matched rows per table, in Gold log order. Matching uses event ID, activity and timestamp.</p>']
     if missing:
         out.append(f'<p>{missing} Gold event rows have no matched source row.</p>')
     for table, columns, rows in tables:
-        selected = []
-        represented = set()
-        for index, (_, labels) in enumerate(rows):
-            activities = {label[1] for label in labels}
-            if activities - represented:
-                selected.append(index)
-                represented.update(activities)
-            if len(selected) == 3:
-                break
-        selected.extend(index for index in range(min(3,len(rows))) if index not in selected)
-        selected = set(selected[:3])
-        sample = [row for index,row in enumerate(rows) if index in selected]
         def table_html(records):
-            heads = ''.join('<th>'+escape(col)+'</th>' for col in columns)
-            body = ''.join('<tr>'+''.join(cell(v) for v in values)+cell(' | '.join(
-                f'{eid} · {activity} · {stamp_col} · {case}' for eid, activity, stamp_col, case in events
-            ))+'</tr>' for values, events in records)
-            return '<div class="source-scroll"><table><thead><tr>'+heads+'<th>Gold event · timestamp column · case</th></tr></thead><tbody>'+body+'</tbody></table></div>'
+            return render_table([*columns, 'Gold event · timestamp column · case'], (
+                [*values, ' | '.join(
+                    f'{eid} · {activity} · {stamp_col} · {case}'
+                    for eid, activity, stamp_col, case in events
+                )]
+                for values, events in records
+            ))
+
         out.append(f'<p><strong><code>{escape(table)}</code></strong> · {len(rows)} source rows</p>')
-        if limit is None:
-            out.append(table_html(sample))
-        else:
-            for values, events in sample:
-                out.append('<p>'+', '.join('<code>'+escape(c)+'</code> = '+escape(str(v) if v is not None else 'NULL') for c,v in zip(columns,values))+'<br>'+escape(' | '.join(f'{eid} · {activity} · {col} · {case}' for eid,activity,col,case in events))+'</p>')
-        if len(rows) > 3 and limit is None:
-            out.append(f'<details><summary>Remaining {len(rows)-3} source rows</summary>'+table_html([row for index,row in enumerate(rows) if index not in selected])+'</details>')
+        out.append(table_html(rows[:3]))
+        if len(rows) > 3 and not preview_only:
+            out.append(f'<details><summary>Remaining {len(rows)-3} source rows</summary>'+table_html(rows[3:])+'</details>')
     if related:
         out.append('<details><summary>FK-linked row examples for case and join context</summary>')
         for table, examples in sorted(related.items()):
             out.append('<p><strong>'+escape(table)+'</strong></p>')
-            for row, child, keys in examples:
-                out.append('<p>'+escape(child+' ('+', '.join(keys)+')')+'<br>'+', '.join('<code>'+escape(k)+'</code> = '+escape(str(v) if v is not None else 'NULL') for k,v in row.items())+'</p>')
+            columns = list(examples[0][0])
+            out.append(render_table([*columns, 'Join from'], (
+                [*(row[col] for col in columns), child+' ('+', '.join(keys)+')']
+                for row, child, keys in examples
+            )))
         out.append('</details>')
     others = {table: cols for table, cols in reads.items() if table not in {t[0] for t in tables}}
     if others:

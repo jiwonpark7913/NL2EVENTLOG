@@ -35,6 +35,31 @@ def identity(q):
     return q.get('question_id',q.get('id'))
 
 
+
+def dataset_overview(name, questions):
+    rows = []
+    for q in questions:
+        ident = identity(q)
+        typ = q['question_type']
+        question = html.escape(q.get('text', q.get('question')))
+        anchor = f'{ident.lower()}--{typ.lower()}'
+        rows.append(f'<tr><td><a href="#{anchor}">{ident}</a></td><td>{typ}</td><td>{question}</td></tr>')
+
+    dataset = f'../../../datasets/{name}'
+    schema = (
+        f'<h3>Database schema</h3><p><a href="{dataset}/docs/schema.png">'
+        f'<img src="{dataset}/docs/schema.png" alt="{name} database schema"></a></p>'
+        f'<p><a href="{dataset}/docs/schema.png">Full-size diagram</a> · '
+        f'<a href="{dataset}/input/schema.sql">Full SQL schema</a></p>'
+    )
+    return (
+        '\n## Dataset overview\n\n'
+        f'<table><tr><td width="50%" valign="top"><h3>All questions ({len(rows)})</h3>'
+        '<table><thead><tr><th>ID</th><th>Type</th><th>Question</th></tr></thead>'
+        f'<tbody>{"".join(rows)}</tbody></table></td>'
+        f'<td width="50%" valign="top">{schema}</td></tr></table>\n'
+    )
+
 def stamp(s):
     return datetime.fromisoformat(s.replace('Z','+00:00'))
 
@@ -160,6 +185,13 @@ def main():
         qpath=p/('private/questions.jsonl' if name.endswith('_new') else 'input/questions.jsonl')
         questions=loadjl(qpath);gold={identity(g):g for g in loadjl(p/'private/gold.jsonl')}
         cards=[];markdown=[f'# {name}: questions and Gold DFGs\n\n**EVALUATION ONLY — NEVER PROVIDE TO A MODEL.**\n\nSource commit: `{commit}`. Open index.html for search, review notes and complete case traces.\n\nNode counts = event occurrences. Edge counts = adjacent selected events within a case. Dashed amber edges touch timestamp ties and depend on the tie-break rule. DFGs are projections of the selected log, not causal models.\n']
+        if name == 'hospitalflow':
+            markdown.append(
+                '\nAll HospitalFlow records and row examples are synthetic. See the '
+                '[dataset provenance](../../../datasets/hospitalflow/README.md) and '
+                '[simulation code](../../../datasets/hospitalflow/simulation.py).\n'
+            )
+        markdown.append(dataset_overview(name, questions))
         cache={};records=[]
         sources = SourceRows(p)
         for q in questions:
@@ -196,7 +228,7 @@ def main():
                 for trace in d['traces']:
                     body+='<details><summary>'+html.escape(trace['case_id'])+f' · {len(trace["events"])} events</summary><table><tr><th>Time</th><th>Activity</th><th>Event ID</th></tr>'+''.join('<tr><td>'+html.escape(r['timestamp'])+'</td><td>'+html.escape(r['activity'])+'</td><td>'+html.escape(r['event_id'])+'</td></tr>' for r in trace['events'])+'</table></details>'
                 body+='</div></details>'
-                markdown.append(f'\nEvents: **{len(rows)}** · Cases with events: **{cases}** · Activities: **{len(activities)}** · Edges: **{len(d["edges"])}**\n\n<table><tr><td width="50%"><img src="graphs/{filename}" alt="{ident} Gold DFG"></td><td width="50%">{render_source_panel(*source_data, limit=3)}</td></tr></table>\n\n[Gold CSV](../../../datasets/{name}/private/gold_logs/{ident}.csv)\n')
+                markdown.append(f'\nEvents: **{len(rows)}** · Cases with events: **{cases}** · Activities: **{len(activities)}** · Edges: **{len(d["edges"])}**\n\n<table><tr><td width="50%" valign="top"><img src="graphs/{filename}" alt="{ident} Gold DFG"></td><td width="50%" valign="top">{render_source_panel(*source_data, preview_only=True)}</td></tr></table>\n\n[Gold CSV](../../../datasets/{name}/private/gold_logs/{ident}.csv)\n')
                 total['gold_logs']+=1
                 if d['tied_timestamp_groups']:total['logs_with_ties']+=1
             else:
