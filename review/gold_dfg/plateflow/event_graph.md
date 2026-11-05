@@ -4,7 +4,8 @@
 
 This page shows the authored benchmark graph. Table bindings identify where events are recorded. Object links identify which activities are attributed to an object, including activities recorded in other tables.
 
-Each documented object view is listed as a singleton OT for review. Tables without a documented object view have no assigned OT here.
+Documented object views supply the names of their singleton OTs.
+Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.
 
 ## Tables and event sources
 
@@ -14,7 +15,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | `cutting_finishing_instruction` | Event · non-carrier | — | `cutting_instruction_acknowledged_at`, `cutting_instruction_closed_at`, `cutting_setup_verified_at`, `cutting_work_started_at`, `released_at` | `cutting_finishing_instruction` · `instruction_id` | Cutting instruction | Cutting Instruction Acknowledged, Cutting Instruction Closed, Cutting Instruction Released, Cutting Setup Verified, Cutting Work Started |
 | `furnace_charge_tracking` | Event · non-carrier | — | `furnace_charge_assigned_at`, `furnace_charge_confirmed_at`, `furnace_discharge_confirmed_at`, `yard_instruction_received_at` | `furnace_charge_tracking` · `tracking_id` | Furnace tracking record | Furnace Charge Assigned, Furnace Charge Confirmed, Furnace Discharge Confirmed, Yard Instruction Received |
 | `material_operation_history` | Event · carrier | `operation_code` | `completed_at` | `material_operation_history` · `transaction_id` | Material operation record | Cooling Completed, Heat Treatment Completed, Heating Completed, Inspection Failed, Inspection Passed, Leveling Completed, Plate Surface Checked, Rolling Completed, Split Cutting Completed |
-| `operation_code` | Non-event | — | — | `operation_code` · `code` | — | — |
+| `operation_code` | Non-event | — | — | `operation_code` · `code` | `operation_code` (singleton) | — |
 | `planned_rolling_instruction` | Event · non-carrier | — | `rolling_plan_approved_at`, `rolling_plan_created_at`, `rolling_plan_released_at`, `rolling_plan_reviewed_at` | `planned_rolling_instruction` · `plan_id` | Rolling plan | Rolling Plan Approved, Rolling Plan Created, Rolling Plan Released, Rolling Plan Reviewed |
 | `plate_material` | Event · non-carrier | — | `dimension_inspected_at`, `plate_packed_at`, `plate_packing_started_at`, `plate_piece_identified_at`, `plate_quality_released_at`, `plate_quality_review_started_at` | `plate_material` · `plate_material_id` | Cut plate piece | Dimensional Inspection Completed, Plate Packed, Plate Packing Started, Plate Piece Identified, Plate Quality Released, Plate Quality Review Started |
 | `rolling_instruction` | Event · non-carrier | — | `released_at`, `rolling_instruction_acknowledged_at`, `rolling_instruction_closed_at`, `rolling_setup_verified_at`, `rolling_work_started_at` | `rolling_instruction` · `instruction_id` | Rolling instruction | Rolling Instruction Acknowledged, Rolling Instruction Closed, Rolling Instruction Released, Rolling Setup Verified, Rolling Work Started |
@@ -32,6 +33,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | Cutting instruction | `cutting_finishing_instruction` | Cutting Instruction Acknowledged, Cutting Instruction Closed, Cutting Instruction Released, Cutting Setup Verified, Cutting Work Started |
 | Cut plate piece | `plate_material` | Dimensional Inspection Completed, Heat Treatment Completed, Inspection Failed, Inspection Passed, Plate Packed, Plate Packing Started, Plate Piece Identified, Plate Quality Released, Plate Quality Review Started, Plate Surface Checked |
 | Material operation record | `material_operation_history` | Cooling Completed, Heat Treatment Completed, Heating Completed, Inspection Failed, Inspection Passed, Leveling Completed, Plate Surface Checked, Rolling Completed, Split Cutting Completed |
+| `operation_code` (singleton) | `operation_code` | No authored event-to-object links |
 
 ## Physical objects and attributed activities
 
@@ -41,7 +43,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | `cutting_finishing_instruction` | Cutting instruction | Cutting Instruction Acknowledged, Cutting Instruction Closed, Cutting Instruction Released, Cutting Setup Verified, Cutting Work Started |
 | `furnace_charge_tracking` | Furnace tracking record | Furnace Charge Assigned, Furnace Charge Confirmed, Furnace Discharge Confirmed, Heating Completed, Yard Instruction Received |
 | `material_operation_history` | Material operation record | Cooling Completed, Heat Treatment Completed, Heating Completed, Inspection Failed, Inspection Passed, Leveling Completed, Plate Surface Checked, Rolling Completed, Split Cutting Completed |
-| `operation_code` | — | No authored object view |
+| `operation_code` | `operation_code` (singleton) | No authored event-to-object links |
 | `planned_rolling_instruction` | Rolling plan | Rolling Instruction Released, Rolling Plan Approved, Rolling Plan Created, Rolling Plan Released, Rolling Plan Reviewed |
 | `plate_material` | Cut plate piece | Dimensional Inspection Completed, Heat Treatment Completed, Inspection Failed, Inspection Passed, Plate Packed, Plate Packing Started, Plate Piece Identified, Plate Quality Released, Plate Quality Review Started, Plate Surface Checked |
 | `rolling_instruction` | Rolling instruction | Rolling Instruction Acknowledged, Rolling Instruction Closed, Rolling Instruction Released, Rolling Setup Verified, Rolling Work Started |

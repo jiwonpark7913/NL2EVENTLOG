@@ -5,6 +5,7 @@
 This page shows the authored benchmark graph. Table bindings identify where events are recorded. Object links identify which activities are attributed to an object, including activities recorded in other tables.
 
 OT groups use the authored identity annotations. For each split-table member, the object section projects canonical event links onto the keys present in that table.
+Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.
 
 ## Tables and event sources
 

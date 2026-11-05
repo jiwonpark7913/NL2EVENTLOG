@@ -36,8 +36,22 @@ def render_event_graph(dataset, db, table_audit):
     else:
         for row in coverage:
             members[row['case_concept']].append(row['case_table'])
-        group_rule = 'Each documented object view is listed as a singleton OT for review. Tables without a documented object view have no assigned OT here.'
+        group_rule = 'Documented object views supply the names of their singleton OTs.'
     table_types = {table: ot for ot, tables in members.items() for table in tables}
+    keys = {}
+    for row in table_audit:
+        table = row['table']
+        info = db.execute('PRAGMA table_info('+quote(table)+')').fetchall()
+        keys[table] = [col['name'] for col in sorted(info, key=lambda col: col['pk']) if col['pk']]
+        if keys[table] and table not in table_types:
+            ot = f'`{table}` (singleton)'
+            members[ot].append(table)
+            table_types[table] = ot
+
+    def linked_to_ot(ot):
+        if ot not in activities:
+            return 'No authored event-to-object links'
+        return listing(activities[ot])
 
     def listing(values):
         return ', '.join(values) or '—'
@@ -54,17 +68,15 @@ def render_event_graph(dataset, db, table_audit):
         'Object links identify which activities are attributed to an object, including activities recorded in other tables.',
         '',
         group_rule,
+        'Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.',
         '',
         '## Tables and event sources',
         '',
         '| Table | Event classification | Carrier column | Selected event timestamps | Physical object (table · PK) | OT group | Events produced |',
         '|---|---|---|---|---|---|---|',
     ]
-    keys = {}
     for row in table_audit:
         table = row['table']
-        info = db.execute('PRAGMA table_info('+quote(table)+')').fetchall()
-        keys[table] = [col['name'] for col in sorted(info, key=lambda col: col['pk']) if col['pk']]
         if row['carrier']:
             classification = 'Event · carrier'
         elif row['selected_timestamp_columns']:
@@ -86,7 +98,7 @@ def render_event_graph(dataset, db, table_audit):
         '|---|---|---|',
     ])
     for ot, tables in members.items():
-        page.append(f'| {ot} | {code(tables)} | {listing(activities[ot])} |')
+        page.append(f'| {ot} | {code(tables)} | {linked_to_ot(ot)} |')
 
     page.extend([
         '',
@@ -99,12 +111,7 @@ def render_event_graph(dataset, db, table_audit):
         table = row['table']
         if not keys[table]:
             continue
-        ot = table_types.get(table)
-        if ot and len(members[ot]) == 1:
-            linked = listing(activities[ot])
-        elif ot:
-            linked = listing(split_activities[table])
-        else:
-            linked = 'No authored object view'
-        page.append(f'| `{table}` | {ot or "—"} | {linked} |')
+        ot = table_types[table]
+        linked = listing(split_activities[table]) if table in split_activities else linked_to_ot(ot)
+        page.append(f'| `{table}` | {ot} | {linked} |')
     return '\n'.join(page)+'\n'

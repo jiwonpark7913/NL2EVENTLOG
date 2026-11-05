@@ -4,7 +4,8 @@
 
 This page shows the authored benchmark graph. Table bindings identify where events are recorded. Object links identify which activities are attributed to an object, including activities recorded in other tables.
 
-Each documented object view is listed as a singleton OT for review. Tables without a documented object view have no assigned OT here.
+Documented object views supply the names of their singleton OTs.
+Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.
 
 ## Tables and event sources
 
@@ -18,7 +19,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | `planned_rolling_instruction` | Event · non-carrier | — | `approved_at`, `released_at`, `submitted_at` | `planned_rolling_instruction` · `plan_id` | Rolling Plan | Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted |
 | `plate_material` | Event · non-carrier | — | `identified_at`, `packed_at`, `released_at` | `plate_material` · `plate_id` | Plate Piece | Plate Identified, Plate Packed, Plate Released |
 | `plate_quality_review` | Event · non-carrier | — | `finished_at` | `plate_quality_review` · `review_id` | Quality Review | Plate Quality Review Completed |
-| `process_code` | Non-event | — | — | `process_code` · `process_group`, `code` | — | — |
+| `process_code` | Non-event | — | — | `process_code` · `process_group`, `code` | `process_code` (singleton) | — |
 | `rolling_instruction` | Event · non-carrier | — | `issued_at` | `rolling_instruction` · `instruction_id` | Rolling Instruction | Rolling Instruction Issued |
 | `rolling_operation_history` | Event · carrier | `phase_code` | `finished_at` | `rolling_operation_history` · `operation_id` | Rolling Operation Record | Finish Rolling Completed, Rough Rolling Completed |
 | `slab_material` | Event · non-carrier | — | `received_at`, `released_at`, `verified_at` | `slab_material` · `slab_id` | Slab | Slab Received, Slab Released, Slab Verified |
@@ -38,6 +39,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | Furnace Operation Record | `furnace_operation_history` | Furnace Charged, Furnace Discharged, Heating Completed |
 | Rolling Operation Record | `rolling_operation_history` | Finish Rolling Completed, Rough Rolling Completed |
 | Finishing Operation Record | `finishing_operation_history` | Heat Treatment Completed, Leveling Completed, Surface Finishing Completed |
+| `process_code` (singleton) | `process_code` | No authored event-to-object links |
 
 ## Physical objects and attributed activities
 
@@ -51,7 +53,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | `planned_rolling_instruction` | Rolling Plan | Rolling Instruction Issued, Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted |
 | `plate_material` | Plate Piece | Dimensional Inspection Completed, Heat Treatment Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Surface Finishing Completed |
 | `plate_quality_review` | Quality Review | Plate Quality Review Completed |
-| `process_code` | — | No authored object view |
+| `process_code` | `process_code` (singleton) | No authored event-to-object links |
 | `rolling_instruction` | Rolling Instruction | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rolling Instruction Issued, Rough Rolling Completed, Surface Finishing Completed |
 | `rolling_operation_history` | Rolling Operation Record | Finish Rolling Completed, Rough Rolling Completed |
 | `slab_material` | Slab | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rolling Instruction Issued, Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted, Rough Rolling Completed, Slab Received, Slab Released, Slab Verified, Surface Finishing Completed |

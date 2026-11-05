@@ -4,7 +4,8 @@
 
 This page shows the authored benchmark graph. Table bindings identify where events are recorded. Object links identify which activities are attributed to an object, including activities recorded in other tables.
 
-Each documented object view is listed as a singleton OT for review. Tables without a documented object view have no assigned OT here.
+Documented object views supply the names of their singleton OTs.
+Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.
 
 ## Tables and event sources
 
@@ -12,11 +13,11 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 |---|---|---|---|---|---|---|
 | `goods` | Non-event | — | — | `goods` · `goods_id` | Goods | — |
 | `goods_transaction_detail` | Non-event | — | — | `goods_transaction_detail` · `goods_id`, `transaction_id` | Goods transaction line | — |
-| `lifecycle_case_link` | Non-event | — | — | `lifecycle_case_link` · `event_id`, `case_table`, `case_id` | — | — |
+| `lifecycle_case_link` | Non-event | — | — | `lifecycle_case_link` · `event_id`, `case_table`, `case_id` | `lifecycle_case_link` (singleton) | — |
 | `loader` | Non-event | — | — | `loader` · `loader_id` | Worker | — |
 | `loader_transaction` | Non-event | — | — | `loader_transaction` · `loader_id`, `transaction_id` | Worker transaction assignment | — |
 | `transaction_record` | Event · carrier | `transaction_type` | `occurred_at` | `transaction_record` · `transaction_id` | Warehouse transaction | Goods Dispatched, Goods Received |
-| `transaction_record_activity` | Event · carrier | `activity` | `occurred_at` | `transaction_record_activity` · `event_id` | — | Dispatch Approved, Dispatch Requested, Goods Packed, Goods Picked, Goods Put Away, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
+| `transaction_record_activity` | Event · carrier | `activity` | `occurred_at` | `transaction_record_activity` · `event_id` | `transaction_record_activity` (singleton) | Dispatch Approved, Dispatch Requested, Goods Packed, Goods Picked, Goods Put Away, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
 | `warehouse` | Non-event | — | — | `warehouse` · `warehouse_number` | Warehouse | — |
 
 ## Object types and attributed activities
@@ -29,6 +30,8 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | Warehouse transaction | `transaction_record` | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
 | Goods transaction line | `goods_transaction_detail` | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
 | Worker transaction assignment | `loader_transaction` | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
+| `lifecycle_case_link` (singleton) | `lifecycle_case_link` | No authored event-to-object links |
+| `transaction_record_activity` (singleton) | `transaction_record_activity` | No authored event-to-object links |
 
 ## Physical objects and attributed activities
 
@@ -36,9 +39,9 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 |---|---|---|
 | `goods` | Goods | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
 | `goods_transaction_detail` | Goods transaction line | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
-| `lifecycle_case_link` | — | No authored object view |
+| `lifecycle_case_link` | `lifecycle_case_link` (singleton) | No authored event-to-object links |
 | `loader` | Worker | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
 | `loader_transaction` | Worker transaction assignment | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
 | `transaction_record` | Warehouse transaction | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |
-| `transaction_record_activity` | — | No authored object view |
+| `transaction_record_activity` | `transaction_record_activity` (singleton) | No authored event-to-object links |
 | `warehouse` | Warehouse | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Packed, Goods Picked, Goods Put Away, Goods Received, Receiving Inspection Completed, Receiving Requested, Receiving Scheduled |

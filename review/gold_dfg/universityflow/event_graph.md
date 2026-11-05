@@ -4,7 +4,8 @@
 
 This page shows the authored benchmark graph. Table bindings identify where events are recorded. Object links identify which activities are attributed to an object, including activities recorded in other tables.
 
-Each documented object view is listed as a singleton OT for review. Tables without a documented object view have no assigned OT here.
+Documented object views supply the names of their singleton OTs.
+Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.
 
 ## Tables and event sources
 

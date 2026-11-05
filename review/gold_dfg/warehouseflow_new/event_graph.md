@@ -4,7 +4,8 @@
 
 This page shows the authored benchmark graph. Table bindings identify where events are recorded. Object links identify which activities are attributed to an object, including activities recorded in other tables.
 
-Each documented object view is listed as a singleton OT for review. Tables without a documented object view have no assigned OT here.
+Documented object views supply the names of their singleton OTs.
+Every physical object without an explicit group gets a singleton OT. Table-named singletons have no authored object-view attribution. See Events produced for their source activities.
 
 ## Tables and event sources
 
@@ -20,7 +21,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | `warehouse` | Non-event | — | — | `warehouse` · `warehouse_id` | Warehouse | — |
 | `warehouse_audit` | Event · non-carrier | — | `completed_at`, `started_at` | `warehouse_audit` · `audit_id` | Stock Audit | Stock Audit Completed, Stock Audit Started |
 | `warehouse_task_history` | Event · carrier | `task_code` | `completed_at`, `started_at` | `warehouse_task_history` · `task_id` | Warehouse Task | Packing Completed, Packing Started, Picking Completed, Picking Started, Putaway Completed, Putaway Started |
-| `work_code` | Non-event | — | — | `work_code` · `code_family`, `code` | — | — |
+| `work_code` | Non-event | — | — | `work_code` · `code_family`, `code` | `work_code` (singleton) | — |
 | `worker` | Non-event | — | — | `worker` · `worker_id` | Worker | — |
 
 ## Object types and attributed activities
@@ -38,6 +39,7 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | Request Action | `request_action` | Request Checked, Request Held, Request Released |
 | Warehouse Task | `warehouse_task_history` | Packing Completed, Packing Started, Picking Completed, Picking Started, Putaway Completed, Putaway Started |
 | Handling Record | `handling_history` | Loading Completed, Loading Started, Unloading Completed, Unloading Started |
+| `work_code` (singleton) | `work_code` | No authored event-to-object links |
 
 ## Physical objects and attributed activities
 
@@ -53,5 +55,5 @@ Each documented object view is listed as a singleton OT for review. Tables witho
 | `warehouse` | Warehouse | Dispatch Approved, Dispatch Requested, Goods Dispatched, Goods Received, Loading Completed, Loading Started, Packing Completed, Packing Started, Picking Completed, Picking Started, Putaway Completed, Putaway Started, Receipt Registered, Receiving Request Submitted, Request Checked, Request Held, Request Released, Stock Audit Completed, Stock Audit Started, Unloading Completed, Unloading Started |
 | `warehouse_audit` | Stock Audit | Stock Audit Completed, Stock Audit Started |
 | `warehouse_task_history` | Warehouse Task | Packing Completed, Packing Started, Picking Completed, Picking Started, Putaway Completed, Putaway Started |
-| `work_code` | — | No authored object view |
+| `work_code` | `work_code` (singleton) | No authored event-to-object links |
 | `worker` | Worker | Loading Completed, Loading Started, Packing Completed, Packing Started, Picking Completed, Picking Started, Putaway Completed, Putaway Started, Receipt Registered, Request Checked, Request Held, Request Released, Stock Audit Completed, Stock Audit Started, Unloading Completed, Unloading Started |
