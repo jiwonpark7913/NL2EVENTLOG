@@ -52,12 +52,24 @@ def dataset_overview(name, questions):
         f'<p><a href="{dataset}/docs/schema.png">Full-size diagram</a> · '
         f'<a href="{dataset}/input/schema.sql">Full SQL schema</a></p>'
     )
+    provenance = ''
+    generators = {'hospitalflow': 'simulation.py', 'universityflow': 'build.py'}
+    if name in generators:
+        provenance = (
+            f'Row examples in this review come from the [synthetic dataset generator]'
+            f'({dataset}/{generators[name]}).\n\n'
+        )
     return (
         '\n## Dataset overview\n\n'
+        f'[Full DB schema]({dataset}/docs/schema_overview.md) · '
+        f'[Full-size ER diagram]({dataset}/docs/schema.png) · '
+        f'[SQL DDL]({dataset}/input/schema.sql)\n\n'
+        f'{provenance}'
+        f'<details><summary>Show all {len(rows)} questions and the schema preview</summary>\n\n'
         f'<table><tr><td width="50%" valign="top"><h3>All questions ({len(rows)})</h3>'
         '<table><thead><tr><th>ID</th><th>Type</th><th>Question</th></tr></thead>'
         f'<tbody>{"".join(rows)}</tbody></table></td>'
-        f'<td width="50%" valign="top">{schema}</td></tr></table>\n'
+        f'<td width="50%" valign="top">{schema}</td></tr></table>\n\n</details>\n'
     )
 
 def stamp(s):
