@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'review/gold_dfg'
-DATASETS = ('warehouseflow','warehouseflow_new','universityflow','plateflow','hospitalflow','plateflow_new')
+DATASETS = ('warehouseflow','universityflow','plateflow','hospitalflow')
 
 
 def digest(path):
@@ -191,7 +191,7 @@ def main():
     sys.path.insert(0, str(ROOT))
     from gold_source_rows import SourceRows, render_review_evidence, render_source_panel
     from gold_event_graph_overview import render_event_graph
-    audit = {row["dataset"]: row["tables"] for row in json.loads((ROOT/'event_scope_audit.json').read_text())['datasets']}
+    audit = {row["dataset"]: row["tables"] for row in json.loads((ROOT/'docs/system/event_scope_audit.json').read_text())['datasets']}
     before=input_snapshot();OUT.mkdir(parents=True,exist_ok=True)
     all_data=[];all_changes=[];index=[];total=Counter()
     for name in DATASETS:

@@ -3,7 +3,7 @@ import json,sqlite3,csv
 from pathlib import Path
 from datetime import datetime,timedelta,timezone
 from collections import Counter
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 CONFIG={
 'warehouseflow':{
  'transaction_record':(['Receiving Requested','Receiving Scheduled','Receiving Inspection Completed','Goods Put Away'],['Dispatch Requested','Dispatch Approved','Goods Picked','Goods Packed'])},

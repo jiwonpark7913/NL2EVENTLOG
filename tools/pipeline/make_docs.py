@@ -4,7 +4,7 @@ import sqlite3,json,html,re,xml.etree.ElementTree as ET
 from event_encoding import annotate
 import fitz
 from readability import format_documents
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 def esc(s):return html.escape(str(s))
 def build(name,positions,title):
  p=ROOT/"datasets"/name;out=p/"docs";out.mkdir(exist_ok=True)
@@ -170,7 +170,7 @@ build("universityflow",{"student":(65,130),"course":(575,130),"instructor":(1085
 build("hospitalflow",{"patients":(65,130),"patient_profile":(575,130),"admissions":(1085,130),"lab_order":(65,480),"medication_order":(575,480),"procedure_order":(1085,480),"labevents":(65,830),"emar":(575,830),"procedure_episode":(1085,830),"order_history":(65,1180),"pharmacy":(575,1180),"admission_detail":(1085,1180)},"HospitalFlow · split business-object storage")
 # This dataset has a clean business-dictionary renderer; do not apply legacy answer annotations.
 import subprocess,sys
-for variant in ["plateflow_new","warehouseflow_new"]:
+for variant in ["plateflow","warehouseflow"]:
  subprocess.run([sys.executable,str(ROOT/"datasets"/variant/"documentation.py")],check=True)
 format_documents(ROOT)
 

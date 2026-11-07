@@ -4,6 +4,7 @@ from datetime import datetime,timedelta,timezone
 from collections import Counter,defaultdict
 import json,sqlite3,csv,sys
 P=Path(__file__).resolve().parent
+sys.path.insert(0,str(P.parents[1]/'tools'/'pipeline'))
 sys.path.insert(0,str(P.parents[1]))
 def js(n,v):
  f=P/n;f.parent.mkdir(parents=True,exist_ok=True);f.write_text(json.dumps(v,indent=2)+'\n')

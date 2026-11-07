@@ -1,7 +1,7 @@
 """Business-only dictionary and structural ERD; author answers live in README."""
 from pathlib import Path
 import json,runpy,sqlite3,csv
-SHARED=runpy.run_path(str(Path(__file__).resolve().parents[1]/'plateflow_new/documentation.py'))
+SHARED=runpy.run_path(str(Path(__file__).resolve().parents[1]/'plateflow/documentation.py'))
 mdtable=SHARED['mdtable']
 render_dictionary=SHARED['render_dictionary']
 

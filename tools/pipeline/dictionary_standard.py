@@ -1,7 +1,7 @@
 """Project dictionary profile informed by ISO/IEC 11179 public scope statements."""
 import json,csv,sqlite3,re
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 SOURCES=[('ISO/IEC 11179-3:2023','https://www.iso.org/standard/78915.html','Registry identification, administration and definition concepts'),('ISO/IEC 11179-4:2004','https://www.iso.org/standard/35346.html','Semantic formulation of data definitions')]
 def mdtable(headers,rows):
  esc=lambda x:str(x).replace('|','\\|').replace('\n',' ')

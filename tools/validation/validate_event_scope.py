@@ -11,7 +11,7 @@ import sqlite3
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 # One activity-selecting column per carrier table. Other codes are attributes.
 CARRIERS = {
     'warehouseflow': {'transaction_record': 'transaction_type', 'transaction_record_activity': 'activity'},
@@ -114,7 +114,7 @@ def main():
                   method='Manual carrier contracts plus executable source-binding, canonical-history and Gold SQL/CSV checks. Not a general SQL semantic proof or model evaluation.',
                   table_count=sum(len(r['tables']) for r in reports), event_table_count=sum(r['event_tables'] for r in reports),
                   gold_logs_verified=sum(r['gold_logs_verified'] for r in reports), violations=[], datasets=reports)
-    (ROOT/'event_scope_audit.json').write_text(json.dumps(report,indent=2)+'\n')
+    (ROOT/'docs/system/event_scope_audit.json').write_text(json.dumps(report,indent=2)+'\n')
     doc = '# Event-table scope audit\n\n'
     doc += 'All six datasets are audited. (a) one physical timestamp column with one carrier; (b) multiple physical timestamp columns with one carrier; (c) activity from time-column meaning; (d) activity from table meaning. These are representative, non-exclusive patterns. The (a)/(b) distinction uses the physical timestamp inventory. Only selected business-event times produce events; plans, technical timestamps and snapshots may coexist without becoming activities. The selected-time column is listed separately below.\n\n'
     doc += '## Findings and repair\n\n'
@@ -129,7 +129,7 @@ def main():
         for t in r['tables']:
             doc += '| '+t['table']+' | '+(', '.join(t['pattern']) or 'No selected events')+' | '+(t['carrier'] or '—')+' | '+(', '.join(t['selected_timestamp_columns']) or '—')+' |\n'
         doc += '\n'
-    (ROOT/'EVENT_TABLE_SCOPE.md').write_text(doc.rstrip()+'\n')
+    (ROOT/'docs/system/EVENT_TABLE_SCOPE.md').write_text(doc.rstrip()+'\n')
     print(json.dumps({k:report[k] for k in ('table_count','event_table_count','gold_logs_verified','violations')}))
 
 if __name__=='__main__':

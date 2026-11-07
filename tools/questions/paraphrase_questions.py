@@ -19,8 +19,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-DATASETS = ('warehouseflow', 'warehouseflow_new', 'universityflow', 'plateflow', 'hospitalflow', 'plateflow_new')
+ROOT = Path(__file__).resolve().parents[2]
+DATASETS = ('warehouseflow', 'universityflow', 'plateflow', 'hospitalflow')
 TARGET = {'Q1': 'Q2', 'Q3': 'Q4'}
 NAMES = {'Q1': 'Explicit', 'Q2': 'Paraphrased', 'Q3': 'Full Lifecycle', 'Q4': 'Full Lifecycle Paraphrased'}
 PROMPT_VERSION = 'gpt61-question-paraphrase-v1'
@@ -84,7 +84,7 @@ def write_transaction(changes):
 
 
 def question_file(p):
-    return p/('private/questions.jsonl' if p.name.endswith('_new') else 'input/questions.jsonl')
+    return p/'private/questions.jsonl'
 
 
 def qid(q):

@@ -1,7 +1,7 @@
 """Persist PlateFlow lifecycle simulation in existing business tables, not generic activity tables."""
 import json,sqlite3,csv
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 ROW_ACTIONS={'Heating Completed':'HF','Plate Surface Checked':'SF'}
 def convert(p):
  p=Path(p);con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row;con.execute('PRAGMA foreign_keys=ON');d=json.loads((p/'input/data_dictionary.json').read_text());hist=[json.loads(x) for x in (p/'private/canonical_history.jsonl').read_text().splitlines()];links=json.loads((p/'private/lifecycle_links.json').read_text());plans=json.loads((p/'design/object_activity_design.json').read_text());sources=[];union=[];mapping_by_object={};newcolumns=[]

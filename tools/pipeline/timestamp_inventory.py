@@ -1,7 +1,7 @@
 """Count physical timestamp columns once per table.column; distinguish dates and non-event times."""
 import json,sqlite3,re
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 BASE={'warehouseflow':2,'universityflow':14,'plateflow':37,'hospitalflow':19}
 NOTE='- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.\n'
 def inventory(p):

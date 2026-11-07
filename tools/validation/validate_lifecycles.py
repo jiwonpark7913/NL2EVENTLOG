@@ -1,7 +1,7 @@
 """Verify regenerated schemas, every Gold SQL/CSV, case identities and lifecycle order."""
 import csv,json,sqlite3,hashlib,subprocess,sys
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 for name in ['warehouseflow','universityflow','plateflow']:
  p=ROOT/'datasets'/name;con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row
  assert not list(con.execute('PRAGMA foreign_key_check'))

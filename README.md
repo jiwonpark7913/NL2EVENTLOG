@@ -36,3 +36,14 @@ The generator does **not** change SQLite data or dictionaries. Existing `docs/sc
 ### Caution
 
 This refactor deliberately separates inspection data from model inputs. The original generation scripts and old paths may need their imports and references updated before full dataset rebuilding or evaluation. Do not treat moving the files as a validated end-to-end migration.
+
+## Code organization
+
+- `datasets/<name>/build.py` and `validate.py` contain dataset-specific building and checks.
+- `tools/pipeline/` contains shared data-generation utilities previously located at repository root.
+- `tools/questions/` contains question paraphrasing scripts.
+- `tools/validation/` contains cross-dataset checks (legacy path dependencies may require updates).
+- `tools/experiments/` contains ablation preparation.
+- `tools/` contains human-review generators.
+
+Python helper scripts are grouped by purpose; the repository root contains only README and Git configuration. The four current databases remain the benchmark source of truth. Generated data and Gold files are unchanged by this structural refactor.

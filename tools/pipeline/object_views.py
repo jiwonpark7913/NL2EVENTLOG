@@ -2,7 +2,7 @@
 import json,csv,sqlite3
 from pathlib import Path
 from collections import defaultdict
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 FIELDS=['event_id','case_id','activity','timestamp']
 def readjl(p):return [json.loads(l) for l in p.read_text().splitlines()]
 def writejson(p,v):p.write_text(json.dumps(v,indent=2)+'\n')

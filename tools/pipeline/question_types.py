@@ -2,7 +2,7 @@
 import json,csv,copy,sqlite3,importlib.util,re
 from pathlib import Path
 from collections import Counter
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 TYPES={'Q1':'Explicit','Q2':'Paraphrased','Q3':'Full Lifecycle','Q4':'Full Lifecycle Paraphrased'}
 PHRASES={
 'Plate Quality Review Started':'a finished plate quality review beginning','Plate Packing Started':'packaging of a finished plate beginning','Receiving Scheduled':'an inbound handling appointment being arranged','Goods Received':'goods arriving at the warehouse','Goods Dispatched':'goods leaving the warehouse','Receiving Requested':'a request to take goods into storage','Goods Put Away':'goods being placed into their storage locations','Dispatch Approved':'permission being granted to send goods out','Dispatch Requested':'a request to send goods out','Goods Picked':'goods being retrieved for an outgoing job','Goods Packed':'outgoing goods being packaged',

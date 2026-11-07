@@ -1,7 +1,7 @@
 """Refresh README query statistics from question-level annotations."""
 import json,re
 from pathlib import Path
-ROOT=Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 NOTE='- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.\n'
 def stats(p):
  f=p/('private/questions.jsonl' if p.name in ['plateflow_new','warehouseflow_new'] else 'input/questions.jsonl');questions=[json.loads(l) for l in f.read_text().splitlines()];out=[]

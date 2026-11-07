@@ -4,6 +4,7 @@ from pathlib import Path
 from datetime import datetime,timedelta,timezone
 from collections import Counter
 P=Path(__file__).resolve().parent
+sys.path.insert(0,str(P.parents[1]/'tools'/'pipeline'))
 sys.path.insert(0,str(P.parents[1]))
 from readability import bullet_prose
 TABLE_MAP={'Student':'student','Course':'course','Registration':'registration','Degree Examination Result':'degree_examination_result','Task':'task','Simulation Module':'simulation_module','Thesis':'thesis','Student Simulation Experiment Result':'student_simulation_experiment_result','Assignment':'assignment','Instructor':'instructor','Assignment Grading':'assignment_grading'}
