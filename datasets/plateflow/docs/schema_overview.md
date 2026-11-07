@@ -1,38 +1,37 @@
-# PlateFlow · Korean manufacturer — Schema overview
+# PlateFlow New — schema overview
 
-![Entity relationship diagram](schema.png)
+- [Editable draw.io diagram](schema.drawio) · [Data dictionary](data_dictionary.md)
 
-- [Editable draw.io diagram](schema.drawio) · [Column dictionary](data_dictionary.md) · [CSV dictionary](data_dictionary.csv)
+| Table | Rows | Columns | Business role |
+| --- | --- | --- | --- |
+| slab_material | 30 | 6 | Slab identity, steel grade and actual receipt, verification and release times. |
+| planned_rolling_instruction | 28 | 6 | One rolling plan per slab, its scheduled reheating time and actual submission, approval and release times. |
+| rolling_instruction | 26 | 3 | An issued rolling instruction for an approved plan. |
+| as_rolled_material | 26 | 6 | Allocated mother-material identity and genealogy for a rolling instruction; created_at and updated_at describe database maintenance, not production completion. |
+| process_code | 8 | 3 | Business code meanings within each manufacturing process group. The same code text can have a different meaning in another group. |
+| equipment | 7 | 5 | Equipment identifiers, names and system-maintenance times. Each equipment_code identifies a machine, not a manufacturing step. |
+| furnace_operation_history | 70 | 7 | Actual furnace work occurrences for mother materials, retaining repeat work and unfinished intervals. |
+| rolling_operation_history | 44 | 7 | Actual rolling phase occurrences for mother materials, retaining repeat work and unfinished intervals. |
+| plate_material | 38 | 6 | Individual plate-piece identity and mother-material genealogy, with actual identification, release and packing times. |
+| finishing_operation_history | 130 | 7 | Actual finishing work occurrences for individual plate pieces, including repeated heat treatment after rework. |
+| dimension_inspection | 46 | 5 | One dimensional inspection record per inspection occurrence. Reinspection has a new inspection_id; PASS/FAIL describes its result. |
+| plate_quality_review | 46 | 5 | One quality review record per review round. APPROVED/REWORK describes its outcome; PENDING means the review has not finished. |
 
-| Table | Rows | Columns | Event encoding | Primary key | Role |
-|---|---:|---:|---|---|---|
-| slab_material | 36 | 6 | Column encoding | slab_id | Slab material and charge genealogy; no upstream operation timestamps in this subset |
-| planned_rolling_instruction | 36 | 7 | Column encoding | plan_id | Scheduled rolling instruction; plan times do not prove execution |
-| rolling_instruction | 36 | 7 | Column encoding | instruction_id | Released rolling work instruction, separate from planning |
-| as_rolled_material | 36 | 9 | Column encoding | material_id | As-rolled mother material with milestone columns and latest-operation snapshot |
-| furnace_charge_tracking | 30 | 7 | Column encoding | tracking_id | Furnace charge tracking record separated from material lifecycle snapshot |
-| cutting_finishing_instruction | 18 | 8 | Column encoding | instruction_id | Cutting/finishing work instruction for mother material |
-| plate_material | 39 | 10 | Column encoding | plate_material_id | Individual cut Plate material, distinct from mother as-rolled material |
-| operation_code | 9 | 2 | No event encoding | code | Synthetic operation process-code meanings; codes are newly authored |
-| material_operation_history | 216 | 6 | Row encoding | transaction_id | Immutable operation history for mother and piece material identities |
-
-- Row encoding: each occurrence is a separate row; its activity comes from a code, label or the table meaning.
-- Column encoding: an object row stores actual milestone times in dedicated columns. It can contain one or several milestones.
-- No event encoding: the table supplies context, plans, identities or links rather than direct events.
-- Planned dates, snapshots and technical timestamps do not automatically become events.
-
-
-## Relationships
-
-| Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |
-|---|---|---|---|---|---|
-| slab_material | planned_rolling_instruction | slab_id | slab_id | 1 : 0..N | declared |
-| planned_rolling_instruction | rolling_instruction | plan_id | plan_id | 1 : 0..1 | declared |
-| rolling_instruction | as_rolled_material | instruction_id | instruction_id | 1 : 0..1 | declared |
-| slab_material | as_rolled_material | slab_id | slab_id | 1 : 0..1 | declared |
-| as_rolled_material | furnace_charge_tracking | material_id | material_id | 1 : 0..1 | declared |
-| as_rolled_material | cutting_finishing_instruction | material_id | material_id | 1 : 0..1 | declared |
-| as_rolled_material | plate_material | parent_as_rolled_plate_no | as_rolled_plate_no | 1 : 0..N | declared |
-| operation_code | material_operation_history | operation_code | code | 1 : 0..N | declared |
-| as_rolled_material | material_operation_history | material_id | material_id | logical 1 : 0..N | logical |
-| plate_material | material_operation_history | material_id | plate_material_id | logical 1 : 0..N | logical |
+| Parent | Child | FK columns | Referenced columns | Cardinality |
+| --- | --- | --- | --- | --- |
+| slab_material | planned_rolling_instruction | slab_id | slab_id | 1 : 0..1 |
+| planned_rolling_instruction | rolling_instruction | plan_id | plan_id | 1 : 0..1 |
+| rolling_instruction | as_rolled_material | instruction_id | instruction_id | 1 : 0..1 |
+| slab_material | as_rolled_material | slab_id | slab_id | 1 : 0..1 |
+| process_code | furnace_operation_history | process_group, operation_code | process_group, code | 1 : 0..N |
+| equipment | furnace_operation_history | equipment_id | equipment_id | 1 : 0..N |
+| as_rolled_material | furnace_operation_history | material_id | material_id | 1 : 0..N |
+| process_code | rolling_operation_history | process_group, phase_code | process_group, code | 1 : 0..N |
+| equipment | rolling_operation_history | equipment_id | equipment_id | 1 : 0..N |
+| as_rolled_material | rolling_operation_history | material_id | material_id | 1 : 0..N |
+| as_rolled_material | plate_material | mother_material_id | material_id | 1 : 0..N |
+| process_code | finishing_operation_history | process_group, operation_code | process_group, code | 1 : 0..N |
+| equipment | finishing_operation_history | equipment_id | equipment_id | 1 : 0..N |
+| plate_material | finishing_operation_history | plate_id | plate_id | 1 : 0..N |
+| plate_material | dimension_inspection | plate_id | plate_id | 1 : 0..N |
+| plate_material | plate_quality_review | plate_id | plate_id | 1 : 0..N |

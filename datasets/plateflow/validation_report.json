@@ -1,637 +1,255 @@
 {
-  "seed": 20261013,
-  "mother_materials": 36,
-  "plate_materials": 39,
-  "events": 1108,
-  "tables": {
-    "slab_material": 36,
-    "planned_rolling_instruction": 36,
-    "rolling_instruction": 36,
-    "as_rolled_material": 36,
-    "furnace_charge_tracking": 30,
-    "cutting_finishing_instruction": 18,
-    "plate_material": 39,
-    "operation_code": 7,
-    "material_operation_history": 153
+  "table_rows": {
+    "slab_material": 30,
+    "planned_rolling_instruction": 28,
+    "rolling_instruction": 26,
+    "as_rolled_material": 26,
+    "process_code": 8,
+    "equipment": 7,
+    "furnace_operation_history": 70,
+    "rolling_operation_history": 44,
+    "plate_material": 38,
+    "finishing_operation_history": 130,
+    "dimension_inspection": 46,
+    "plate_quality_review": 46
   },
-  "scenario_counts": {
-    "planned": 6,
-    "reheating": 6,
-    "rolled": 6,
-    "normal": 6,
-    "treated": 6,
-    "rework": 6
-  },
-  "questions": [
-    {
-      "question_id": "V01",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 72
-    },
-    {
-      "question_id": "V02",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 72
-    },
-    {
-      "question_id": "V03",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 75
-    },
-    {
-      "question_id": "V04",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 75
-    },
-    {
-      "question_id": "V05",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 1108
-    },
-    {
-      "question_id": "V06",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 1108
-    },
-    {
-      "question_id": "V07",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 75
-    },
-    {
-      "question_id": "V08",
-      "question_type": "Q1",
-      "status": "unsupported_by_design"
-    },
-    {
-      "question_id": "OPV01",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 1108
-    },
-    {
-      "question_id": "OPV02",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 174
-    },
-    {
-      "question_id": "OPV03",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 150
-    },
-    {
-      "question_id": "OPV04",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 1108
-    },
-    {
-      "question_id": "OPV05",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 133
-    },
-    {
-      "question_id": "OPV06",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 87
-    },
-    {
-      "question_id": "OPV07",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 336
-    },
-    {
-      "question_id": "OPV08",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 216
-    },
-    {
-      "question_id": "TS01",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 72
-    },
-    {
-      "question_id": "V07P",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 75
-    },
-    {
-      "question_id": "V08P",
-      "question_type": "Q2",
-      "status": "unsupported_by_design"
-    },
-    {
-      "question_id": "TS01P",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 72
-    },
-    {
-      "question_id": "OPV01P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 1108
-    },
-    {
-      "question_id": "OPV01E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 102
-    },
-    {
-      "question_id": "OPV01EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 102
-    },
-    {
-      "question_id": "OPV02P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 174
-    },
-    {
-      "question_id": "OPV02E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 108
-    },
-    {
-      "question_id": "OPV02EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 108
-    },
-    {
-      "question_id": "OPV03P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 150
-    },
-    {
-      "question_id": "OPV03E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 92
-    },
-    {
-      "question_id": "OPV03EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 92
-    },
-    {
-      "question_id": "OPV04P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 1108
-    },
-    {
-      "question_id": "OPV04E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 102
-    },
-    {
-      "question_id": "OPV04EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 102
-    },
-    {
-      "question_id": "OPV05P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 133
-    },
-    {
-      "question_id": "OPV05E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 79
-    },
-    {
-      "question_id": "OPV05EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 79
-    },
-    {
-      "question_id": "OPV06P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 87
-    },
-    {
-      "question_id": "OPV06E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 51
-    },
-    {
-      "question_id": "OPV06EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 51
-    },
-    {
-      "question_id": "OPV07P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 336
-    },
-    {
-      "question_id": "OPV07E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 75
-    },
-    {
-      "question_id": "OPV07EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 75
-    },
-    {
-      "question_id": "OPV08P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 216
-    },
-    {
-      "question_id": "OPV08E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 66
-    },
-    {
-      "question_id": "OPV08EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 66
-    }
-  ],
-  "checks": {
-    "gold_sql_exact_equality": "pass",
-    "foreign_keys": "pass",
-    "sqlite_integrity": "pass",
-    "metadata_columns_types": "pass",
-    "event_id_uniqueness": "pass",
-    "history_start_before_completion": "pass"
-  },
-  "limitations": [
-    "Selected English schema-informed subset, not complete Korean manufacturer schema.",
-    "Original CSV supplies names/descriptions only; types, keys, process-code meanings and relationship counts are authored.",
-    "No real production rows or fitted process distributions.",
-    "Classic mother-case log, not OCEL.",
-    "Dataset-specific ES; existing NL2EventLog compatibility untested.",
-    "No extraction-model accuracy measured.",
-    "Atomic operation/grading records remain auxiliary single-occurrence cases. New actions are synthetic domain design, not real production observations."
-  ],
-  "object_view_checks": {
-    "sql_equals_canonical_events": "pass",
-    "unique_event_per_case": "pass",
-    "case_population_coverage": "pass"
-  },
+  "semantic_object_types": 11,
   "object_view_coverage": [
     {
-      "question_id": "OPV01",
-      "case_table": "slab_material",
       "case_concept": "Slab",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this slab.",
-      "case_count": 36,
-      "cases_with_events": 36,
-      "cases_without_events": 0,
-      "event_rows": 1108,
-      "activities": [
-        "Cooling Completed",
-        "Crop Shear Passed",
-        "Cutting Instruction Acknowledged",
-        "Cutting Instruction Closed",
-        "Cutting Instruction Released",
-        "Cutting Setup Verified",
-        "Cutting Work Started",
-        "Dimensional Inspection Completed",
-        "Furnace Charge Assigned",
-        "Furnace Charge Confirmed",
-        "Furnace Discharge Confirmed",
-        "Heat Treatment Completed",
-        "Heating Completed",
-        "Inspection Failed",
-        "Inspection Passed",
-        "Leveling Completed",
-        "Plate Packed",
-        "Plate Packing Started",
-        "Plate Piece Identified",
-        "Plate Quality Released",
-        "Plate Quality Review Started",
-        "Plate Surface Checked",
-        "Reheating Started",
-        "Rolling Completed",
-        "Rolling Instruction Acknowledged",
-        "Rolling Instruction Closed",
-        "Rolling Instruction Released",
-        "Rolling Plan Approved",
-        "Rolling Plan Created",
-        "Rolling Plan Released",
-        "Rolling Plan Reviewed",
-        "Rolling Setup Verified",
-        "Rolling Work Started",
-        "Slab Identity Verified",
-        "Slab Quality Checked",
-        "Slab Received",
-        "Slab Released for Rolling",
-        "Split Cutting Completed",
-        "Yard Instruction Received"
-      ],
-      "log_path": "private/gold_logs/OPV01.csv"
-    },
-    {
-      "question_id": "OPV02",
-      "case_table": "planned_rolling_instruction",
-      "case_concept": "Rolling plan",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this rolling plan.",
-      "case_count": 36,
-      "cases_with_events": 36,
-      "cases_without_events": 0,
-      "event_rows": 174,
-      "activities": [
-        "Rolling Instruction Released",
-        "Rolling Plan Approved",
-        "Rolling Plan Created",
-        "Rolling Plan Released",
-        "Rolling Plan Reviewed"
-      ],
-      "log_path": "private/gold_logs/OPV02.csv"
-    },
-    {
-      "question_id": "OPV03",
-      "case_table": "rolling_instruction",
-      "case_concept": "Rolling instruction",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this rolling instruction.",
-      "case_count": 36,
-      "cases_with_events": 36,
-      "cases_without_events": 0,
-      "event_rows": 150,
-      "activities": [
-        "Rolling Instruction Acknowledged",
-        "Rolling Instruction Closed",
-        "Rolling Instruction Released",
-        "Rolling Setup Verified",
-        "Rolling Work Started"
-      ],
-      "log_path": "private/gold_logs/OPV03.csv"
-    },
-    {
-      "question_id": "OPV04",
-      "case_table": "as_rolled_material",
-      "case_concept": "Mother material",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this mother material.",
-      "case_count": 36,
-      "cases_with_events": 36,
-      "cases_without_events": 0,
-      "event_rows": 1108,
-      "activities": [
-        "Cooling Completed",
-        "Crop Shear Passed",
-        "Cutting Instruction Acknowledged",
-        "Cutting Instruction Closed",
-        "Cutting Instruction Released",
-        "Cutting Setup Verified",
-        "Cutting Work Started",
-        "Dimensional Inspection Completed",
-        "Furnace Charge Assigned",
-        "Furnace Charge Confirmed",
-        "Furnace Discharge Confirmed",
-        "Heat Treatment Completed",
-        "Heating Completed",
-        "Inspection Failed",
-        "Inspection Passed",
-        "Leveling Completed",
-        "Plate Packed",
-        "Plate Packing Started",
-        "Plate Piece Identified",
-        "Plate Quality Released",
-        "Plate Quality Review Started",
-        "Plate Surface Checked",
-        "Reheating Started",
-        "Rolling Completed",
-        "Rolling Instruction Acknowledged",
-        "Rolling Instruction Closed",
-        "Rolling Instruction Released",
-        "Rolling Plan Approved",
-        "Rolling Plan Created",
-        "Rolling Plan Released",
-        "Rolling Plan Reviewed",
-        "Rolling Setup Verified",
-        "Rolling Work Started",
-        "Slab Identity Verified",
-        "Slab Quality Checked",
-        "Slab Received",
-        "Slab Released for Rolling",
-        "Split Cutting Completed",
-        "Yard Instruction Received"
-      ],
-      "log_path": "private/gold_logs/OPV04.csv"
-    },
-    {
-      "question_id": "OPV05",
-      "case_table": "furnace_charge_tracking",
-      "case_concept": "Furnace tracking record",
-      "kind": "tracking_record",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record.",
+      "case_table": "slab_material",
       "case_count": 30,
-      "cases_with_events": 30,
-      "cases_without_events": 0,
-      "event_rows": 133,
+      "activity_count": 20,
       "activities": [
-        "Furnace Charge Assigned",
-        "Furnace Charge Confirmed",
-        "Furnace Discharge Confirmed",
+        "Dimensional Inspection Completed",
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
         "Heating Completed",
-        "Yard Instruction Received"
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Rolling Instruction Issued",
+        "Rolling Plan Approved",
+        "Rolling Plan Released",
+        "Rolling Plan Submitted",
+        "Rough Rolling Completed",
+        "Slab Received",
+        "Slab Released",
+        "Slab Verified",
+        "Surface Finishing Completed"
       ],
-      "log_path": "private/gold_logs/OPV05.csv"
+      "event_rows": 620,
+      "cases_without_events": 0
     },
     {
-      "question_id": "OPV06",
-      "case_table": "cutting_finishing_instruction",
-      "case_concept": "Cutting instruction",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction.",
-      "case_count": 18,
-      "cases_with_events": 18,
-      "cases_without_events": 0,
-      "event_rows": 87,
+      "case_concept": "Rolling Plan",
+      "case_table": "planned_rolling_instruction",
+      "case_count": 28,
+      "activity_count": 4,
       "activities": [
-        "Cutting Instruction Acknowledged",
-        "Cutting Instruction Closed",
-        "Cutting Instruction Released",
-        "Cutting Setup Verified",
-        "Cutting Work Started"
+        "Rolling Instruction Issued",
+        "Rolling Plan Approved",
+        "Rolling Plan Released",
+        "Rolling Plan Submitted"
       ],
-      "log_path": "private/gold_logs/OPV06.csv"
+      "event_rows": 106,
+      "cases_without_events": 0
     },
     {
-      "question_id": "OPV07",
+      "case_concept": "Rolling Instruction",
+      "case_table": "rolling_instruction",
+      "case_count": 26,
+      "activity_count": 14,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
+        "Heating Completed",
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Rolling Instruction Issued",
+        "Rough Rolling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 454,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Mother Material",
+      "case_table": "as_rolled_material",
+      "case_count": 26,
+      "activity_count": 13,
+      "activities": [
+        "Dimensional Inspection Completed",
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heat Treatment Completed",
+        "Heating Completed",
+        "Leveling Completed",
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Rough Rolling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 428,
+      "cases_without_events": 2
+    },
+    {
+      "case_concept": "Plate Piece",
       "case_table": "plate_material",
-      "case_concept": "Cut plate piece",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece.",
-      "case_count": 39,
-      "cases_with_events": 39,
-      "cases_without_events": 0,
-      "event_rows": 336,
+      "case_count": 38,
+      "activity_count": 8,
       "activities": [
         "Dimensional Inspection Completed",
         "Heat Treatment Completed",
-        "Inspection Failed",
-        "Inspection Passed",
+        "Leveling Completed",
+        "Plate Identified",
         "Plate Packed",
-        "Plate Packing Started",
-        "Plate Piece Identified",
-        "Plate Quality Released",
-        "Plate Quality Review Started",
-        "Plate Surface Checked"
+        "Plate Quality Review Completed",
+        "Plate Released",
+        "Surface Finishing Completed"
       ],
-      "log_path": "private/gold_logs/OPV07.csv"
+      "event_rows": 318,
+      "cases_without_events": 0
     },
     {
-      "question_id": "OPV08",
-      "case_table": "material_operation_history",
-      "case_concept": "Material operation record",
-      "kind": "event_record",
-      "status": "answerable",
-      "scope_rule": "The operation-completion event represented by this transaction ID, preserving its process-code meaning.",
-      "case_count": 216,
-      "cases_with_events": 216,
-      "cases_without_events": 0,
-      "event_rows": 216,
+      "case_concept": "Dimension Inspection",
+      "case_table": "dimension_inspection",
+      "case_count": 46,
+      "activity_count": 1,
       "activities": [
-        "Cooling Completed",
+        "Dimensional Inspection Completed"
+      ],
+      "event_rows": 46,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Quality Review",
+      "case_table": "plate_quality_review",
+      "case_count": 46,
+      "activity_count": 1,
+      "activities": [
+        "Plate Quality Review Completed"
+      ],
+      "event_rows": 43,
+      "cases_without_events": 3
+    },
+    {
+      "case_concept": "Equipment",
+      "case_table": "equipment",
+      "case_count": 7,
+      "activity_count": 8,
+      "activities": [
+        "Finish Rolling Completed",
+        "Furnace Charged",
+        "Furnace Discharged",
         "Heat Treatment Completed",
         "Heating Completed",
-        "Inspection Failed",
-        "Inspection Passed",
         "Leveling Completed",
-        "Plate Surface Checked",
-        "Rolling Completed",
-        "Split Cutting Completed"
+        "Rough Rolling Completed",
+        "Surface Finishing Completed"
       ],
-      "log_path": "private/gold_logs/OPV08.csv"
-    }
-  ],
-  "unavailable_object_views": [
-    {
-      "case_table": "operation_code",
-      "status": "reference_table",
-      "reason": "Operation codes define activity meanings. They are not business-object instances or cases."
-    }
-  ],
-  "total_questions": 44,
-  "answerable_questions": 42,
-  "activity_counts": {
-    "Rolling Instruction Released": 36,
-    "Yard Instruction Received": 30,
-    "Reheating Started": 30,
-    "Rolling Completed": 24,
-    "Cooling Completed": 18,
-    "Leveling Completed": 18,
-    "Crop Shear Passed": 18,
-    "Cutting Instruction Released": 18,
-    "Split Cutting Completed": 18,
-    "Inspection Passed": 39,
-    "Dimensional Inspection Completed": 39,
-    "Heat Treatment Completed": 24,
-    "Inspection Failed": 12,
-    "Slab Received": 36,
-    "Slab Identity Verified": 36,
-    "Slab Quality Checked": 36,
-    "Slab Released for Rolling": 30,
-    "Rolling Plan Created": 36,
-    "Rolling Plan Reviewed": 36,
-    "Rolling Plan Approved": 36,
-    "Rolling Plan Released": 30,
-    "Rolling Instruction Acknowledged": 36,
-    "Rolling Setup Verified": 34,
-    "Rolling Work Started": 24,
-    "Rolling Instruction Closed": 20,
-    "Furnace Charge Assigned": 30,
-    "Furnace Charge Confirmed": 29,
-    "Heating Completed": 24,
-    "Furnace Discharge Confirmed": 20,
-    "Cutting Instruction Acknowledged": 18,
-    "Cutting Setup Verified": 18,
-    "Cutting Work Started": 18,
-    "Cutting Instruction Closed": 15,
-    "Plate Piece Identified": 39,
-    "Plate Surface Checked": 39,
-    "Plate Quality Released": 39,
-    "Plate Packed": 33,
-    "Plate Quality Review Started": 39,
-    "Plate Packing Started": 33
-  },
-  "table_rows": {
-    "slab_material": 36,
-    "planned_rolling_instruction": 36,
-    "rolling_instruction": 36,
-    "as_rolled_material": 36,
-    "furnace_charge_tracking": 30,
-    "cutting_finishing_instruction": 18,
-    "plate_material": 39,
-    "operation_code": 9,
-    "material_operation_history": 216
-  },
-  "lifecycle_extensions": {
-    "added_tables": 0,
-    "added_events": 712,
-    "source_origin": "authored",
-    "checks": {
-      "typed_foreign_keys": "pass",
-      "actual_action_order": "pass",
-      "full_sql_equals_history": "pass"
+      "event_rows": 240,
+      "cases_without_events": 1
     },
-    "added_columns": 24,
-    "storage_policy": "native business columns plus existing operation history"
+    {
+      "case_concept": "Furnace Operation Record",
+      "case_table": "furnace_operation_history",
+      "case_count": 70,
+      "activity_count": 3,
+      "activities": [
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heating Completed"
+      ],
+      "event_rows": 68,
+      "cases_without_events": 2
+    },
+    {
+      "case_concept": "Rolling Operation Record",
+      "case_table": "rolling_operation_history",
+      "case_count": 44,
+      "activity_count": 2,
+      "activities": [
+        "Finish Rolling Completed",
+        "Rough Rolling Completed"
+      ],
+      "event_rows": 42,
+      "cases_without_events": 2
+    },
+    {
+      "case_concept": "Finishing Operation Record",
+      "case_table": "finishing_operation_history",
+      "case_count": 130,
+      "activity_count": 3,
+      "activities": [
+        "Heat Treatment Completed",
+        "Leveling Completed",
+        "Surface Finishing Completed"
+      ],
+      "event_rows": 130,
+      "cases_without_events": 0
+    }
+  ],
+  "activity_counts": {
+    "Slab Received": 30,
+    "Slab Verified": 28,
+    "Slab Released": 28,
+    "Rolling Plan Submitted": 28,
+    "Rolling Plan Approved": 26,
+    "Rolling Plan Released": 26,
+    "Rolling Instruction Issued": 26,
+    "Furnace Charged": 24,
+    "Heating Completed": 22,
+    "Furnace Discharged": 22,
+    "Rough Rolling Completed": 22,
+    "Finish Rolling Completed": 20,
+    "Plate Identified": 38,
+    "Leveling Completed": 38,
+    "Heat Treatment Completed": 46,
+    "Surface Finishing Completed": 46,
+    "Dimensional Inspection Completed": 46,
+    "Plate Quality Review Completed": 43,
+    "Plate Released": 35,
+    "Plate Packed": 26
   },
-  "question_type_counts": {
-    "Q1": 13,
-    "Q2": 13,
-    "Q3": 9,
-    "Q4": 9
-  },
-  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
+  "events": 620,
+  "total_questions": 54,
+  "answerable_questions": 50,
   "timestamp_summary": {
-    "timestamp_columns": 39,
-    "event_timestamp_columns": 31,
-    "other_timestamp_columns": 8,
-    "date_only_columns": [],
-    "baseline_timestamp_columns": 37
+    "timestamp_columns": 24,
+    "event_timestamp_columns": 15,
+    "other_timestamp_columns": 9,
+    "baseline_timestamp_columns": 24,
+    "date_only_columns": []
+  },
+  "validation_scope": "Construction consistency and Gold extraction; no model classification/extraction accuracy is claimed.",
+  "checks": {
+    "gold_sql_csv_oracle_match": true,
+    "gold_csvs_verified": 50,
+    "schema_round_trip": true,
+    "foreign_keys_and_checks": true,
+    "completion_only": true,
+    "group_qualified_codes": true,
+    "repeat_work_retained": true,
+    "outcomes_and_machine_codes_not_activities": true,
+    "source_keys_and_genealogy": true,
+    "empty_cases_retained": true,
+    "exact_frozen_question_pairs": true,
+    "dictionary_files_without_encoding_or_carrier_labels": 6,
+    "model_input_allowlist_checked": true,
+    "actual_llm_discovery_or_classification_run": false
   }
 }

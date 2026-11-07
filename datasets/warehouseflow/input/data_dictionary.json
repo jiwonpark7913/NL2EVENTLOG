@@ -1,522 +1,1088 @@
 {
-  "name": "WarehouseFlow RSchema v1",
+  "name": "WarehouseFlow New",
   "language": "en",
   "timezone": "UTC",
+  "dbms": "SQLite",
+  "description": "Synthetic warehouse receiving, dispatch, stock-audit and handling records.",
   "tables": [
     {
       "table": "warehouse",
-      "source_table": "Warehouse",
-      "definition": "Warehouse master",
+      "definition": "Warehouse identity, capacity and database maintenance times. These maintenance times do not document warehouse work.",
       "columns": [
         {
-          "name": "warehouse_number",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Warehouse identity",
-          "source_attribute": "Warehouse number",
-          "metadata_id": "warehouseflow.warehouse.warehouse_number",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "warehouse_id",
+          "sql_type": "TEXT",
+          "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "address",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Warehouse postal address",
-          "source_attribute": "Address",
-          "metadata_id": "warehouseflow.warehouse.address",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "warehouse_name",
+          "sql_type": "TEXT",
+          "definition": "English warehouse name.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
           "name": "capacity",
-          "type": "INTEGER",
-          "constraints": "NOT NULL CHECK(capacity > 0)",
-          "definition": "Maximum total stock units; synthetic unit convention",
-          "source_attribute": "Capacity",
-          "metadata_id": "warehouseflow.warehouse.capacity",
-          "representation_class": "Number",
-          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(capacity > 0)",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
+          "sql_type": "INTEGER",
+          "definition": "Maximum stored stock units for the simulated warehouse.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "stock units"
+        },
+        {
+          "name": "created_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database record-creation time, not a warehouse business action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "updated_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database maintenance time, not a warehouse business action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
         }
       ],
       "primary_key": [
-        "warehouse_number"
+        "warehouse_id"
       ],
-      "foreign_keys": [],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
-      "metadata_id": "warehouseflow.warehouse"
+      "sql_definition": "CREATE TABLE warehouse(warehouse_id TEXT PRIMARY KEY NOT NULL, warehouse_name TEXT NOT NULL, capacity INTEGER NOT NULL CHECK(capacity>0), created_at TEXT NOT NULL, updated_at TEXT NOT NULL)"
     },
     {
       "table": "goods",
-      "source_table": "Goods",
-      "definition": "Goods master",
+      "definition": "Goods identity and product category; NORMAL/FRAGILE describe the goods.",
       "columns": [
         {
           "name": "goods_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Goods identity",
-          "source_attribute": "Goods ID",
-          "metadata_id": "warehouseflow.goods.goods_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "sql_type": "TEXT",
+          "definition": "Unique goods identity; foreign references identify the goods concerned.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
           "name": "goods_name",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Goods business name",
-          "source_attribute": "Goods name",
-          "metadata_id": "warehouseflow.goods.goods_name",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "sql_type": "TEXT",
+          "definition": "English goods name.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "category_code",
+          "sql_type": "TEXT",
+          "definition": "NORMAL or FRAGILE product category, not an action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         }
       ],
       "primary_key": [
         "goods_id"
       ],
-      "foreign_keys": [],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
-      "metadata_id": "warehouseflow.goods"
+      "sql_definition": "CREATE TABLE goods(goods_id TEXT PRIMARY KEY NOT NULL, goods_name TEXT NOT NULL, category_code TEXT NOT NULL CHECK(category_code IN ('NORMAL','FRAGILE')))"
     },
     {
-      "table": "loader",
-      "source_table": "Loader",
-      "definition": "Loading/unloading worker master",
+      "table": "worker",
+      "definition": "Worker identity and job role. role_code identifies a role, not an action performed.",
       "columns": [
         {
-          "name": "name",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Worker name",
-          "source_attribute": "Name",
-          "metadata_id": "warehouseflow.loader.name",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "worker_id",
+          "sql_type": "TEXT",
+          "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "phone",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Worker contact phone",
-          "source_attribute": "Phone",
-          "metadata_id": "warehouseflow.loader.phone",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "worker_name",
+          "sql_type": "TEXT",
+          "definition": "English worker name.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "loader_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Worker identity",
-          "source_attribute": "Loader ID",
-          "metadata_id": "warehouseflow.loader.loader_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "role_code",
+          "sql_type": "TEXT",
+          "definition": "HANDLER or SUPERVISOR worker role, not the action performed.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "updated_at",
+          "sql_type": "TEXT",
+          "definition": "UTC database maintenance time, not a warehouse business action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
         }
       ],
       "primary_key": [
-        "loader_id"
+        "worker_id"
       ],
-      "foreign_keys": [],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
-      "metadata_id": "warehouseflow.loader"
+      "sql_definition": "CREATE TABLE worker(worker_id TEXT PRIMARY KEY NOT NULL, worker_name TEXT NOT NULL, role_code TEXT NOT NULL CHECK(role_code IN ('HANDLER','SUPERVISOR')), updated_at TEXT NOT NULL)"
     },
     {
-      "table": "transaction_record",
-      "source_table": "transaction record",
-      "definition": "Inbound/outbound task header, one business occurrence per row",
+      "table": "work_code",
+      "definition": "Business meanings of codes within the specified code family.",
       "columns": [
         {
-          "name": "transaction_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Inbound/outbound transaction identity",
-          "source_attribute": "transaction ID",
-          "metadata_id": "warehouseflow.transaction_record.transaction_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "code_family",
+          "sql_type": "TEXT",
+          "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual UTC completion time of recorded task; instant-event convention",
-          "source_attribute": "time",
-          "metadata_id": "warehouseflow.transaction_record.occurred_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "code",
+          "sql_type": "TEXT",
+          "definition": "Business code within the stated family.",
+          "required": true,
+          "primary_key_position": 2,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "warehouse_number",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Warehouse identity",
-          "source_attribute": "warehouse number",
-          "metadata_id": "warehouseflow.transaction_record.warehouse_number",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "transaction_type",
-          "type": "TEXT",
-          "constraints": "NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
-          "definition": "IN = Goods Received; OUT = Goods Dispatched",
-          "source_attribute": "transaction type",
-          "metadata_id": "warehouseflow.transaction_record.transaction_type",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(transaction_type IN ('IN','OUT'))",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "meaning",
+          "sql_type": "TEXT",
+          "definition": "English business meaning of the code in its family.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         }
       ],
       "primary_key": [
-        "transaction_id"
+        "code_family",
+        "code"
       ],
-      "foreign_keys": [
-        {
-          "column": "warehouse_number",
-          "parent_table": "warehouse",
-          "parent_column": "warehouse_number"
-        }
-      ],
-      "event_encoding": "Row encoding",
-      "encoding_detail": "transaction_type selects IN/OUT; one transaction occurrence per row.",
-      "metadata_id": "warehouseflow.transaction_record"
+      "sql_definition": "CREATE TABLE work_code(code_family TEXT NOT NULL CHECK(code_family IN ('MOVEMENT','REQUEST','TASK','HANDLING')), code TEXT NOT NULL, meaning TEXT NOT NULL, PRIMARY KEY(code_family,code))"
     },
     {
-      "table": "goods_transaction_detail",
-      "source_table": "good transaction record details",
-      "definition": "Goods lines per transaction; composite key prevents repeated goods within one task",
+      "table": "receiving_request",
+      "definition": "One submitted request for receipt of one goods type into a warehouse.",
       "columns": [
+        {
+          "name": "request_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receiving-request identity; foreign references identify the same request.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "warehouse_id",
+          "sql_type": "TEXT",
+          "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "warehouse",
+              "column": "warehouse_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
         {
           "name": "goods_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Goods identity",
-          "source_attribute": "goods ID",
-          "metadata_id": "warehouseflow.goods_transaction_detail.goods_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "transaction_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Inbound/outbound transaction identity",
-          "source_attribute": "transaction ID",
-          "metadata_id": "warehouseflow.goods_transaction_detail.transaction_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "sql_type": "TEXT",
+          "definition": "Unique goods identity; foreign references identify the goods concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "goods",
+              "column": "goods_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
         },
         {
           "name": "quantity",
-          "type": "INTEGER",
-          "constraints": "NOT NULL CHECK(quantity > 0)",
-          "definition": "Positive number of units of this goods type moved by the transaction",
-          "source_attribute": "quantity",
-          "metadata_id": "warehouseflow.goods_transaction_detail.quantity",
-          "representation_class": "Number",
-          "value_domain": "SQL type and declared constraints: NOT NULL CHECK(quantity > 0)",
-          "declared_length": "Not applicable",
-          "default_value": "No SQL default"
+          "sql_type": "INTEGER",
+          "definition": "Positive number of goods units requested or moved.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "stock units"
+        },
+        {
+          "name": "submitted_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC receiving-request submission time.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
         }
       ],
       "primary_key": [
-        "goods_id",
-        "transaction_id"
+        "request_id"
       ],
-      "foreign_keys": [
-        {
-          "column": "goods_id",
-          "parent_table": "goods",
-          "parent_column": "goods_id"
-        },
-        {
-          "column": "transaction_id",
-          "parent_table": "transaction_record",
-          "parent_column": "transaction_id"
-        }
-      ],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
-      "metadata_id": "warehouseflow.goods_transaction_detail"
+      "sql_definition": "CREATE TABLE receiving_request(request_id TEXT PRIMARY KEY NOT NULL, warehouse_id TEXT NOT NULL REFERENCES warehouse(warehouse_id), goods_id TEXT NOT NULL REFERENCES goods(goods_id), quantity INTEGER NOT NULL CHECK(quantity>0), submitted_at TEXT NOT NULL)"
     },
     {
-      "table": "loader_transaction",
-      "source_table": "stevedore-transaction record",
-      "definition": "Worker assignment bridge; multiple workers may share one task",
+      "table": "goods_receipt",
+      "definition": "One actual receipt registration for a receiving request. condition_code describes goods condition, not the receipt action kind.",
       "columns": [
         {
-          "name": "loader_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Worker identity",
-          "source_attribute": "Loader ID",
-          "metadata_id": "warehouseflow.loader_transaction.loader_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "receipt_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receipt-registration identity; on a stock movement, references its receipt registration.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "transaction_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Inbound/outbound transaction identity",
-          "source_attribute": "transaction ID",
-          "metadata_id": "warehouseflow.loader_transaction.transaction_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "request_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receiving-request identity; foreign references identify the same request.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "receiving_request",
+              "column": "request_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "receiver_id",
+          "sql_type": "TEXT",
+          "definition": "Worker who registered the actual receipt.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "worker",
+              "column": "worker_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "received_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC receipt-registration time.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "condition_code",
+          "sql_type": "TEXT",
+          "definition": "GOOD or DAMAGED condition observed when goods were received. Either value denotes the same kind of receipt registration.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         }
       ],
       "primary_key": [
-        "loader_id",
-        "transaction_id"
+        "receipt_id"
       ],
-      "foreign_keys": [
-        {
-          "column": "loader_id",
-          "parent_table": "loader",
-          "parent_column": "loader_id"
-        },
-        {
-          "column": "transaction_id",
-          "parent_table": "transaction_record",
-          "parent_column": "transaction_id"
-        }
-      ],
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
-      "metadata_id": "warehouseflow.loader_transaction"
+      "sql_definition": "CREATE TABLE goods_receipt(receipt_id TEXT PRIMARY KEY NOT NULL, request_id TEXT NOT NULL UNIQUE REFERENCES receiving_request(request_id), receiver_id TEXT NOT NULL REFERENCES worker(worker_id), received_at TEXT NOT NULL, condition_code TEXT NOT NULL CHECK(condition_code IN ('GOOD','DAMAGED')))"
     },
     {
-      "table": "transaction_record_activity",
-      "definition": "Authored actual-action history for transaction_record",
+      "table": "dispatch_order",
+      "definition": "One request to dispatch one goods type, with separate actual request and approval times. Priority describes urgency.",
       "columns": [
         {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "PRIMARY KEY",
-          "definition": "Stable identity of this actual business action; authored extension",
-          "metadata_id": "warehouseflow.transaction_record_activity.event_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: PRIMARY KEY",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "dispatch_id",
+          "sql_type": "TEXT",
+          "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "transaction_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Explicit parent object key; FK to transaction_record.transaction_id",
-          "metadata_id": "warehouseflow.transaction_record_activity.transaction_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "warehouse_id",
+          "sql_type": "TEXT",
+          "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "warehouse",
+              "column": "warehouse_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
         },
         {
-          "name": "activity",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled business activity label; not a technical database update",
-          "metadata_id": "warehouseflow.transaction_record_activity.activity",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "goods_id",
+          "sql_type": "TEXT",
+          "definition": "Unique goods identity; foreign references identify the goods concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "goods",
+              "column": "goods_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "quantity",
+          "sql_type": "INTEGER",
+          "definition": "Positive number of goods units requested or moved.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "stock units"
+        },
+        {
+          "name": "priority_code",
+          "sql_type": "TEXT",
+          "definition": "NORMAL or URGENT dispatch urgency; does not identify the action performed.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "requested_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC dispatch-request submission time.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "approved_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC dispatch-approval time; NULL if not yet approved.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "dispatch_id"
+      ],
+      "sql_definition": "CREATE TABLE dispatch_order(dispatch_id TEXT PRIMARY KEY NOT NULL, warehouse_id TEXT NOT NULL REFERENCES warehouse(warehouse_id), goods_id TEXT NOT NULL REFERENCES goods(goods_id), quantity INTEGER NOT NULL CHECK(quantity>0), priority_code TEXT NOT NULL CHECK(priority_code IN ('NORMAL','URGENT')), requested_at TEXT NOT NULL, approved_at TEXT, CHECK(approved_at IS NULL OR requested_at<approved_at))"
+    },
+    {
+      "table": "warehouse_audit",
+      "definition": "One stock-audit occurrence, its actual start and completion, and its outcome. PASS/RECOUNT describes the result of the same audit kind.",
+      "columns": [
+        {
+          "name": "audit_id",
+          "sql_type": "TEXT",
+          "definition": "Unique stock-audit occurrence identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "warehouse_id",
+          "sql_type": "TEXT",
+          "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "warehouse",
+              "column": "warehouse_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "worker_id",
+          "sql_type": "TEXT",
+          "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "worker",
+              "column": "worker_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start time of this audit or work occurrence.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "completed_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC completion time of this audit or work occurrence; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "result_code",
+          "sql_type": "TEXT",
+          "definition": "PASS or RECOUNT outcome of a completed stock audit, or PENDING for an unfinished audit.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        }
+      ],
+      "primary_key": [
+        "audit_id"
+      ],
+      "sql_definition": "CREATE TABLE warehouse_audit(audit_id TEXT PRIMARY KEY NOT NULL, warehouse_id TEXT NOT NULL REFERENCES warehouse(warehouse_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), started_at TEXT NOT NULL, completed_at TEXT, result_code TEXT NOT NULL CHECK(result_code IN ('PASS','RECOUNT','PENDING')), CHECK((completed_at IS NULL AND result_code='PENDING') OR (completed_at IS NOT NULL AND started_at<completed_at AND result_code IN ('PASS','RECOUNT'))))"
+    },
+    {
+      "table": "goods_movement",
+      "definition": "One completed inbound or outbound stock movement; each row records when the movement actually occurred.",
+      "columns": [
+        {
+          "name": "movement_id",
+          "sql_type": "TEXT",
+          "definition": "Unique stock-movement occurrence identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "warehouse_id",
+          "sql_type": "TEXT",
+          "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "warehouse",
+              "column": "warehouse_id",
+              "constraint_id": 4,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "goods_id",
+          "sql_type": "TEXT",
+          "definition": "Unique goods identity; foreign references identify the goods concerned.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "goods",
+              "column": "goods_id",
+              "constraint_id": 3,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "quantity",
+          "sql_type": "INTEGER",
+          "definition": "Positive number of goods units requested or moved.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "stock units"
+        },
+        {
+          "name": "receipt_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receipt-registration identity; on a stock movement, references its receipt registration.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "goods_receipt",
+              "column": "receipt_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "dispatch_id",
+          "sql_type": "TEXT",
+          "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "dispatch_order",
+              "column": "dispatch_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "code_family",
+          "sql_type": "TEXT",
+          "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'MOVEMENT'",
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code_family",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "movement_code",
+          "sql_type": "TEXT",
+          "definition": "IN means actual receipt into warehouse stock; OUT means actual dispatch from warehouse stock.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
         },
         {
           "name": "occurred_at",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Actual occurrence time in UTC, distinct from planned dates",
-          "metadata_id": "warehouseflow.transaction_record_activity.occurred_at",
-          "representation_class": "Date/time text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
-        },
-        {
-          "name": "outcome",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Recorded action outcome: COMPLETED, APPROVED or REVISION_REQUIRED",
-          "metadata_id": "warehouseflow.transaction_record_activity.outcome",
-          "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "sql_type": "TEXT",
+          "definition": "Actual UTC time of this completed stock movement or request action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
         }
       ],
       "primary_key": [
-        "event_id"
+        "movement_id"
       ],
-      "foreign_keys": [
-        {
-          "column": "transaction_id",
-          "parent_table": "transaction_record",
-          "parent_column": "transaction_id"
-        }
-      ],
-      "source_origin": "authored_lifecycle_extension",
-      "event_encoding": "Row encoding",
-      "encoding_detail": "Each action is a separate row; activity selects its meaning and occurred_at is its actual time.",
-      "metadata_id": "warehouseflow.transaction_record_activity"
+      "sql_definition": "CREATE TABLE goods_movement(movement_id TEXT PRIMARY KEY NOT NULL, warehouse_id TEXT NOT NULL REFERENCES warehouse(warehouse_id), goods_id TEXT NOT NULL REFERENCES goods(goods_id), quantity INTEGER NOT NULL CHECK(quantity>0), receipt_id TEXT UNIQUE REFERENCES goods_receipt(receipt_id), dispatch_id TEXT UNIQUE REFERENCES dispatch_order(dispatch_id), code_family TEXT NOT NULL DEFAULT 'MOVEMENT' CHECK(code_family='MOVEMENT'), movement_code TEXT NOT NULL, occurred_at TEXT NOT NULL, FOREIGN KEY(code_family,movement_code) REFERENCES work_code(code_family,code), CHECK((movement_code='IN' AND receipt_id IS NOT NULL AND dispatch_id IS NULL) OR (movement_code='OUT' AND receipt_id IS NULL AND dispatch_id IS NOT NULL)))"
     },
     {
-      "table": "lifecycle_case_link",
-      "definition": "Explicit case attribution across typed action histories; auxiliary extraction index, not a business case",
-      "primary_key": [
-        "event_id",
-        "case_table",
-        "case_id"
-      ],
-      "foreign_keys": [],
+      "table": "request_action",
+      "definition": "One checking, holding or releasing action performed on a receiving request; repeated checking actions retain separate records.",
       "columns": [
         {
-          "name": "event_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Validated identity in a typed activity table; polymorphic reference",
-          "metadata_id": "warehouseflow.lifecycle_case_link.event_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "action_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receiving-request action occurrence identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         },
         {
-          "name": "case_table",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Controlled existing business table name",
-          "metadata_id": "warehouseflow.lifecycle_case_link.case_table",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "request_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receiving-request identity; foreign references identify the same request.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "receiving_request",
+              "column": "request_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
         },
         {
-          "name": "case_id",
-          "type": "TEXT",
-          "constraints": "NOT NULL",
-          "definition": "Serialized primary key of the declared case table; composite parts separated by colon",
-          "metadata_id": "warehouseflow.lifecycle_case_link.case_id",
-          "representation_class": "Identifier",
-          "value_domain": "SQL type and declared constraints: NOT NULL",
-          "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "No SQL default"
+          "name": "worker_id",
+          "sql_type": "TEXT",
+          "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "worker",
+              "column": "worker_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "code_family",
+          "sql_type": "TEXT",
+          "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'REQUEST'",
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code_family",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "action_code",
+          "sql_type": "TEXT",
+          "definition": "CHECK, HOLD or RELEASE action actually performed on the referenced request, as defined in work_code.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "occurred_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC time of this completed stock movement or request action.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
         }
       ],
-      "source_origin": "authored_lifecycle_extension",
-      "event_encoding": "No event encoding",
-      "encoding_detail": "Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.",
-      "metadata_id": "warehouseflow.lifecycle_case_link"
-    }
-  ],
-  "value_domain": {
-    "IN": "Goods Received",
-    "OUT": "Goods Dispatched"
-  },
-  "business_rules": [
-    "Original source layer: One transaction header is one warehouse business event, regardless of goods-line or worker counts.",
-    "Original source layer: IN adds quantity; OUT removes quantity. Stock is never negative, and total stock stays within warehouse capacity.",
-    "Original source layer: Transactions have at least one goods line and one worker assignment.",
-    "Original source layer: Goods details and worker assignments enrich events; joining them must not multiply header events.",
-    "Original source layer: A transaction ID does not link an inbound task to a later outbound task as a shipment lifecycle.",
-    "Original source layer: The default warehouse view contains all recorded IN/OUT transactions for that warehouse.",
-    "Original source layer: Only completion instants are recorded. Task start times and durations cannot be inferred.",
-    "Original source layer: Master records and worker assignments are not additional business events.",
-    "Original source rows are preserved. Added typed activity histories are authored synthetic domain extensions, not claimed source fields.",
-    "Only actual occurred_at times generate lifecycle events. Planned dates and technical timestamps remain excluded.",
-    "Lifecycle case links use exact typed object identity. Related cases may share an event; uniqueness is (case_id,event_id).",
-    "Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case.",
-    "The transaction header uses transaction_type and occurred_at only; all added actions use activity and occurred_at in transaction_record_activity. No table mixes activity values with independent milestone meanings."
-  ],
-  "object_activity_design": [
-    {
-      "object_table": "transaction_record",
-      "activity_table": "transaction_record_activity",
-      "activities": [
-        "Receiving Requested",
-        "Receiving Scheduled",
-        "Receiving Inspection Completed",
-        "Goods Put Away",
-        "Dispatch Requested",
-        "Dispatch Approved",
-        "Goods Picked",
-        "Goods Packed"
+      "primary_key": [
+        "action_id"
       ],
-      "scenario": "Actual ordered actions; every seventh object stops before closure. Assignment/thesis revision branches occur in one third of objects.",
-      "origin": "Authored domain extension; absent from original RSchema/manufacturer metadata"
-    }
-  ],
-  "timestamp_summary": {
-    "timestamp_columns": 2,
-    "event_timestamp_columns": 2,
-    "other_timestamp_columns": 0,
-    "date_only_columns": [],
-    "baseline_timestamp_columns": 2
-  },
-  "dictionary_basic_information": {
-    "dictionary_id": "NL2EVENTLOG:warehouseflow",
-    "version": "2026-10-12",
-    "name": "WarehouseFlow RSchema v1",
-    "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
-    "language": "en",
-    "timezone": "UTC",
-    "dbms": "SQLite",
-    "namespace": "warehouseflow",
-    "timestamp_columns": 2,
-    "event_timestamp_columns": 2,
-    "maintainer": "NL2EVENTLOG project maintainers",
-    "registration_status": "Project-maintained draft; not ISO-registered or certified",
-    "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
-    "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
-    "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
-  },
-  "standards_references": [
-    {
-      "standard": "ISO/IEC 11179-3:2023",
-      "url": "https://www.iso.org/standard/78915.html",
-      "application": "Registry identification, administration and definition concepts"
+      "sql_definition": "CREATE TABLE request_action(action_id TEXT PRIMARY KEY NOT NULL, request_id TEXT NOT NULL REFERENCES receiving_request(request_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'REQUEST' CHECK(code_family='REQUEST'), action_code TEXT NOT NULL, occurred_at TEXT NOT NULL, FOREIGN KEY(code_family,action_code) REFERENCES work_code(code_family,code))"
     },
     {
-      "standard": "ISO/IEC 11179-4:2004",
-      "url": "https://www.iso.org/standard/35346.html",
-      "application": "Semantic formulation of data definitions"
+      "table": "warehouse_task_history",
+      "definition": "One putaway, picking or packing work occurrence, with actual start and optional completion. A repeated attempt has a new task_id.",
+      "columns": [
+        {
+          "name": "task_id",
+          "sql_type": "TEXT",
+          "definition": "Unique task-attempt identifier; repeat work has a new identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "request_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receiving-request identity; foreign references identify the same request.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "receiving_request",
+              "column": "request_id",
+              "constraint_id": 3,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "dispatch_id",
+          "sql_type": "TEXT",
+          "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "dispatch_order",
+              "column": "dispatch_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "worker_id",
+          "sql_type": "TEXT",
+          "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "worker",
+              "column": "worker_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "code_family",
+          "sql_type": "TEXT",
+          "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'TASK'",
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code_family",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "task_code",
+          "sql_type": "TEXT",
+          "definition": "PUTAWAY, PICK or PACK work actually performed, as defined in work_code.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start time of this audit or work occurrence.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "completed_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC completion time of this audit or work occurrence; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "outcome_code",
+          "sql_type": "TEXT",
+          "definition": "OK or RETRY result of a completed task attempt, or PENDING while unfinished; the outcome does not change the kind of work.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        }
+      ],
+      "primary_key": [
+        "task_id"
+      ],
+      "sql_definition": "CREATE TABLE warehouse_task_history(task_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'TASK' CHECK(code_family='TASK'), task_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, outcome_code TEXT NOT NULL CHECK(outcome_code IN ('OK','RETRY','PENDING')), FOREIGN KEY(code_family,task_code) REFERENCES work_code(code_family,code), CHECK((task_code='PUTAWAY' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (task_code IN ('PICK','PACK') AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK((completed_at IS NULL AND outcome_code='PENDING') OR (completed_at IS NOT NULL AND started_at<completed_at AND outcome_code IN ('OK','RETRY'))))"
+    },
+    {
+      "table": "handling_history",
+      "definition": "One unloading or loading occurrence, with actual start and optional completion. A repeated attempt has a new handling_id.",
+      "columns": [
+        {
+          "name": "handling_id",
+          "sql_type": "TEXT",
+          "definition": "Unique handling-attempt identifier.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        },
+        {
+          "name": "request_id",
+          "sql_type": "TEXT",
+          "definition": "Unique receiving-request identity; foreign references identify the same request.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "receiving_request",
+              "column": "request_id",
+              "constraint_id": 3,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "dispatch_id",
+          "sql_type": "TEXT",
+          "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "dispatch_order",
+              "column": "dispatch_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "worker_id",
+          "sql_type": "TEXT",
+          "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "worker",
+              "column": "worker_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "code_family",
+          "sql_type": "TEXT",
+          "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": "'HANDLING'",
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code_family",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "handling_code",
+          "sql_type": "TEXT",
+          "definition": "UNLOAD or LOAD work actually performed, as defined in work_code.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "work_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC start time of this audit or work occurrence.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        },
+        {
+          "name": "completed_at",
+          "sql_type": "TEXT",
+          "definition": "Actual UTC completion time of this audit or work occurrence; NULL if unfinished.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": "UTC"
+        }
+      ],
+      "primary_key": [
+        "handling_id"
+      ],
+      "sql_definition": "CREATE TABLE handling_history(handling_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'HANDLING' CHECK(code_family='HANDLING'), handling_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, FOREIGN KEY(code_family,handling_code) REFERENCES work_code(code_family,code), CHECK((handling_code='UNLOAD' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (handling_code='LOAD' AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK(completed_at IS NULL OR started_at<completed_at))"
     }
+  ],
+  "code_values": [
+    {
+      "code_family": "MOVEMENT",
+      "code": "IN",
+      "meaning": "Receipt into warehouse stock"
+    },
+    {
+      "code_family": "MOVEMENT",
+      "code": "OUT",
+      "meaning": "Dispatch from warehouse stock"
+    },
+    {
+      "code_family": "REQUEST",
+      "code": "CHECK",
+      "meaning": "Check receiving request"
+    },
+    {
+      "code_family": "REQUEST",
+      "code": "HOLD",
+      "meaning": "Hold receiving request"
+    },
+    {
+      "code_family": "REQUEST",
+      "code": "RELEASE",
+      "meaning": "Release receiving request"
+    },
+    {
+      "code_family": "TASK",
+      "code": "PUTAWAY",
+      "meaning": "Putaway work"
+    },
+    {
+      "code_family": "TASK",
+      "code": "PICK",
+      "meaning": "Picking work"
+    },
+    {
+      "code_family": "TASK",
+      "code": "PACK",
+      "meaning": "Packing work"
+    },
+    {
+      "code_family": "HANDLING",
+      "code": "UNLOAD",
+      "meaning": "Unloading work"
+    },
+    {
+      "code_family": "HANDLING",
+      "code": "LOAD",
+      "meaning": "Loading work"
+    }
+  ],
+  "business_rules": [
+    "Each receiving request and dispatch order concerns one goods type in one warehouse; quantities are positive. This sample does not model multi-line orders.",
+    "One actual receipt registration can exist for each receiving request. Actual stock posting is recorded separately.",
+    "Each movement refers either to an inbound receipt or an outbound dispatch, with the same warehouse and goods context.",
+    "Every work attempt and audit retains its own start and optional completion times. Unfinished work has no completion time.",
+    "Repeated task attempts and request checks retain separate occurrence identifiers.",
+    "Goods category, dispatch urgency, goods condition, worker role, audit result and task outcome describe their respective business contexts rather than different kinds of action.",
+    "A handling/task occurrence refers either to a receiving request or to a dispatch order as constrained by its work kind.",
+    "All rows, code conventions, times and quantities are synthetic."
   ]
 }

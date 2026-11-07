@@ -1,0 +1,32 @@
+name: Build dataset inspection pages
+on:
+  push:
+    branches: [refactor/four-datasets-review]
+    paths:
+      - 'tools/build_dataset_review.py'
+      - 'datasets/**/input/database.sqlite'
+      - '.github/workflows/build-dataset-review.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate ERD and table previews
+        run: python tools/build_dataset_review.py
+      - name: Commit generated review pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/*/review/database datasets/*/docs/schema.drawio
+          git diff --cached --quiet || git commit -m 'docs: regenerate clickable ERDs and real table previews'
+          git push

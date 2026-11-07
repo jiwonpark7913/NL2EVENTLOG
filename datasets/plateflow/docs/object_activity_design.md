@@ -1,17 +1,17 @@
-# PlateFlow activity storage in existing business tables
+# Objects, activities and situations
 
-- Nine original table roles are retained. Generic activity tables and the persisted case-link index are removed.
-- Actual one-time milestones use nullable timestamp columns on their existing business objects.
-- Repeatable heating completions and surface checks use HF/SF rows in material_operation_history, with meanings in operation_code.
-- Technical timestamps, planned times and latest-operation snapshots remain excluded as separate events.
-- Milestone additions and code meanings are authored assumptions, not claimed original source fields.
-- Existing FK and material-genealogy paths derive event-to-case links directly in SQL.
+| Object / case type | Cases | Activity types | Cases without events | Recorded activity scope |
+| --- | --- | --- | --- | --- |
+| Slab | 30 | 20 | 0 | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rolling Instruction Issued, Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted, Rough Rolling Completed, Slab Received, Slab Released, Slab Verified, Surface Finishing Completed |
+| Rolling Plan | 28 | 4 | 0 | Rolling Instruction Issued, Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted |
+| Rolling Instruction | 26 | 14 | 0 | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rolling Instruction Issued, Rough Rolling Completed, Surface Finishing Completed |
+| Mother Material | 26 | 13 | 2 | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rough Rolling Completed, Surface Finishing Completed |
+| Plate Piece | 38 | 8 | 0 | Dimensional Inspection Completed, Heat Treatment Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Surface Finishing Completed |
+| Dimension Inspection | 46 | 1 | 0 | Dimensional Inspection Completed |
+| Quality Review | 46 | 1 | 3 | Plate Quality Review Completed |
+| Equipment | 7 | 8 | 1 | Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Rough Rolling Completed, Surface Finishing Completed |
+| Furnace Operation Record | 70 | 3 | 2 | Furnace Charged, Furnace Discharged, Heating Completed |
+| Rolling Operation Record | 44 | 2 | 2 | Finish Rolling Completed, Rough Rolling Completed |
+| Finishing Operation Record | 130 | 3 | 0 | Heat Treatment Completed, Leveling Completed, Surface Finishing Completed |
 
-| Object | Activities | Storage |
-|---|---|---|
-| slab_material | Slab Received; Slab Identity Verified; Slab Quality Checked; Slab Released for Rolling | Existing slab_material milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| planned_rolling_instruction | Rolling Plan Created; Rolling Plan Reviewed; Rolling Plan Approved; Rolling Plan Released | Existing planned_rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| rolling_instruction | Rolling Instruction Acknowledged; Rolling Setup Verified; Rolling Work Started; Rolling Instruction Closed | Existing rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Heating Completed; Furnace Discharge Confirmed | Existing furnace_charge_tracking milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Setup Verified; Cutting Work Started; Cutting Instruction Closed | Existing cutting_finishing_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| plate_material | Plate Piece Identified; Plate Surface Checked; Plate Quality Released; Plate Packed; Plate Quality Review Started; Plate Packing Started | Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable |
+- Main material cases follow genealogy and actual business-key paths. Auxiliary occurrence cases retain a single completion per completed record. Equipment timelines aggregate its completed work, not its maintenance times.

@@ -1,197 +1,253 @@
-"""English, schema-informed PlateFlow. Python 3.10+, standard library."""
-import json,csv,sqlite3,random
+"""Deterministic English manufacturing simulation. Author answers never enter the dictionary."""
 from pathlib import Path
-import sys
-sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
-from readability import bullet_prose
 from datetime import datetime,timedelta,timezone
-from collections import Counter
+from collections import Counter,defaultdict
+import json,csv,sqlite3,sys
 P=Path(__file__).resolve().parent
+sys.path.insert(0,str(P))
+
 def write(n,s):
- p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(bullet_prose(s) if p.suffix=='.md' else s,encoding="utf-8")
-def js(n,o):write(n,json.dumps(o,indent=2)+"\n")
-def jl(n,o):write(n,"".join(json.dumps(r)+"\n" for r in o))
-def c(n,ty,co,d,orig=None):return dict(name=n,type=ty,constraints=co,definition=d,source_column=orig)
-T={}
-def table(n,source,definition,cols):T[n]=dict(table=n,source_table=source,definition=definition,columns=cols)
-table("slab_material","TB_M2EA08_C_MTL060","Slab material and charge genealogy; no upstream operation timestamps in this subset",[
- c("slab_id","TEXT","PRIMARY KEY","Synthetic slab identity","MTL_NO"),
- c("charge_id","TEXT","NOT NULL","Upstream charge identity, contextual attribute","CHARGE_NO")])
-table("planned_rolling_instruction","TB_M2LB01_D_PLANINST010","Scheduled rolling instruction; plan times do not prove execution",[
- c("plan_id","TEXT","PRIMARY KEY","Plan identity","PLATE_HR_WORK_DIR_ID"),
- c("slab_id","TEXT","NOT NULL REFERENCES slab_material(slab_id)","Planned input slab","SLAB_NO"),
- c("planned_reheat_at","TEXT","NOT NULL","Scheduled furnace charging time","PLT_RF_CH_SCHE_DT")])
-table("rolling_instruction","TB_M2LM01_D_INST010","Released rolling work instruction, separate from planning",[
- c("instruction_id","TEXT","PRIMARY KEY","Synthetic row identity","WIP_ENTITY_ID"),
- c("plan_id","TEXT","NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id)","Synthetic explicit link to plan"),
- c("released_at","TEXT","NOT NULL","Actual instruction release time","OP_INDI_RELEASE_DT")])
-table("as_rolled_material","TB_M2LM01_E_MTRL010","As-rolled mother material with milestone columns and latest-operation snapshot",[
- c("material_id","TEXT","PRIMARY KEY","Mother material identity","MTL_NO"),
- c("as_rolled_plate_no","TEXT","NOT NULL UNIQUE","Mother as-rolled plate number","AS_ROLLED_PLATE_NO"),
- c("slab_id","TEXT","NOT NULL UNIQUE REFERENCES slab_material(slab_id)","Source slab","SLAB_NO"),
- c("instruction_id","TEXT","NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id)","Synthetic explicit link to released instruction"),
- c("furnace_charged_at","TEXT","","Actual furnace material charging","RF_CH_DT"),
- c("crop_shear_passed_at","TEXT","","Actual crop-shear passage","PLT_CS_PPLT_DT"),
- c("latest_operation_completed_at","TEXT","","Snapshot of latest mother-material operation, not always rolling completion","PLT_AC_OP_END_OP_DT"),
- c("created_at","TEXT","NOT NULL","Technical database creation timestamp","CREATION_TIMESTAMP"),
- c("updated_at","TEXT","NOT NULL","Technical database update timestamp","LAST_UPDATE_TIMESTAMP")])
-table("furnace_charge_tracking","TB_M2EA05_E_RF_IN060","Furnace charge tracking record separated from material lifecycle snapshot",[
- c("tracking_id","TEXT","PRIMARY KEY","Tracking occurrence ID","TRACKING_CODE"),
- c("material_id","TEXT","NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)","Tracked material","MTL_NO"),
- c("yard_instruction_received_at","TEXT","NOT NULL","Actual yard instruction receipt","YD_INDI_RCP_DT"),
- c("lot_charging_started_at","TEXT","NOT NULL","Furnace lot charging start; different event granularity from material entry","HT_FCE_CH_LOT_CH_SAT_DT")])
-table("cutting_finishing_instruction","TB_M2LM01_D_INST020","Cutting/finishing work instruction for mother material",[
- c("instruction_id","TEXT","PRIMARY KEY","Synthetic instruction ID","WIP_ENTITY_ID"),
- c("material_id","TEXT","NOT NULL UNIQUE REFERENCES as_rolled_material(material_id)","Directed mother material","MTL_NO"),
- c("released_at","TEXT","NOT NULL","Actual cutting/finishing instruction release","OP_INDI_RELEASE_DT"),
- c("cut_method","TEXT","NOT NULL CHECK(cut_method='SPLIT')","Synthetic split-cut method code","PL_CUT_METH")])
-table("plate_material","TB_M2LM01_E_MTRL020","Individual cut Plate material, distinct from mother as-rolled material",[
- c("plate_material_id","TEXT","PRIMARY KEY","Finished-piece material identity","MTL_NO"),
- c("plate_no","TEXT","NOT NULL UNIQUE","Individual Plate number","PLATE_NO"),
- c("parent_as_rolled_plate_no","TEXT","NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no)","Mother as-rolled plate number; synthetic FK policy","AS_ROLLED_PLATE_NO"),
- c("dimension_inspected_at","TEXT","","Actual dimensional inspection timestamp","SIZE_INSP_DATE"),
- c("latest_operation_completed_at","TEXT","","Latest piece operation snapshot","PLT_AC_OP_END_OP_DT")])
-table("operation_code",None,"Synthetic operation process-code meanings; codes are newly authored",[
- c("code","TEXT","PRIMARY KEY","Synthetic process code"),
- c("meaning","TEXT","NOT NULL UNIQUE","English operation meaning")])
-table("material_operation_history","TB_M2LM01_T_OPERHIST","Immutable operation history for mother and piece material identities",[
- c("transaction_id","TEXT","PRIMARY KEY","Operation occurrence ID","TRANSACTION_ID"),
- c("material_id","TEXT","NOT NULL","Mother or piece material identity; validated against both material tables","MTL_NO"),
- c("operation_code","TEXT","NOT NULL REFERENCES operation_code(code)","Synthetic factory/process code","FAC_OP_CD_N"),
- c("started_at","TEXT","NOT NULL","Actual operation start time","OP_SAT_DT"),
- c("completed_at","TEXT","NOT NULL CHECK(completed_at > started_at)","Actual operation completion time","OP_DN_DT"),
- c("created_at","TEXT","NOT NULL","Technical record insertion time","CREATION_TIMESTAMP")])
-CODES={"RL":"Rolling Completed","CO":"Cooling Completed","LE":"Leveling Completed","SC":"Split Cutting Completed","HT":"Heat Treatment Completed","IF":"Inspection Failed","IP":"Inspection Passed"}
-def source(a,frm,case,ts,eid,pred=None):return dict(activity=a,from_expression=frm,case_id_expression=case,timestamp_expression=ts,event_id_expression=eid,predicate=pred)
-S=[
- source("Rolling Instruction Released","rolling_instruction i JOIN as_rolled_material m ON i.instruction_id=m.instruction_id","m.material_id","i.released_at","'RI:' || i.instruction_id"),
- source("Yard Instruction Received","furnace_charge_tracking","material_id","yard_instruction_received_at","'YD:' || tracking_id"),
- source("Reheating Started","as_rolled_material","material_id","furnace_charged_at","'RH:' || material_id","furnace_charged_at IS NOT NULL"),
- source("Crop Shear Passed","as_rolled_material","material_id","crop_shear_passed_at","'CS:' || material_id","crop_shear_passed_at IS NOT NULL"),
- source("Cutting Instruction Released","cutting_finishing_instruction","material_id","released_at","'CI:' || instruction_id")]
-# Resolve polymorphic history identity once to a mother case, with no mother-to-piece fanout.
-RESOLVE="(SELECT material_id AS recorded_id, material_id AS case_id FROM as_rolled_material UNION ALL SELECT p.plate_material_id, m.material_id FROM plate_material p JOIN as_rolled_material m ON p.parent_as_rolled_plate_no=m.as_rolled_plate_no)"
-S += [source(a,"material_operation_history h JOIN "+RESOLVE+" r ON h.material_id=r.recorded_id","r.case_id","h.completed_at","'OP:' || h.transaction_id","h.operation_code='"+co+"'") for co,a in CODES.items()]
-S += [source("Dimensional Inspection Completed","plate_material p JOIN as_rolled_material m ON p.parent_as_rolled_plate_no=m.as_rolled_plate_no","m.material_id","p.dimension_inspected_at","'DIM:' || p.plate_material_id","p.dimension_inspected_at IS NOT NULL")]
-def compile_es(es):
- if es.get("compiled_sql"):return es["compiled_sql"]
- parts=["SELECT "+s["event_id_expression"]+" event_id, "+s["case_id_expression"]+" case_id, '"+s["activity"]+"' activity, "+s["timestamp_expression"]+" timestamp FROM "+s["from_expression"]+(" WHERE "+s["predicate"] if s["predicate"] else "") for s in es["sources"]]
- return "SELECT * FROM ("+" UNION ALL ".join(parts)+") ORDER BY case_id,timestamp,event_id;"
+ f=P/n;f.parent.mkdir(parents=True,exist_ok=True);f.write_text(s,encoding='utf-8')
+def js(n,v):write(n,json.dumps(v,indent=2)+'\n')
+def jl(n,v):write(n,''.join(json.dumps(x)+'\n' for x in v))
+def stamp(minute):return (datetime(2026,1,1,tzinfo=timezone.utc)+timedelta(minutes=minute)).isoformat().replace('+00:00','Z')
+
+DDL='''PRAGMA foreign_keys=ON;
+CREATE TABLE slab_material(slab_id TEXT PRIMARY KEY NOT NULL, charge_id TEXT NOT NULL, steel_grade TEXT NOT NULL CHECK(steel_grade IN ('G1','G2')), received_at TEXT NOT NULL, verified_at TEXT, released_at TEXT, CHECK(verified_at IS NULL OR received_at<=verified_at), CHECK(released_at IS NULL OR (verified_at IS NOT NULL AND verified_at<=released_at)));
+CREATE TABLE planned_rolling_instruction(plan_id TEXT PRIMARY KEY NOT NULL, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), planned_reheat_at TEXT NOT NULL, submitted_at TEXT NOT NULL, approved_at TEXT, released_at TEXT, CHECK(approved_at IS NULL OR submitted_at<=approved_at), CHECK(released_at IS NULL OR (approved_at IS NOT NULL AND approved_at<=released_at)));
+CREATE TABLE rolling_instruction(instruction_id TEXT PRIMARY KEY NOT NULL, plan_id TEXT NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id), issued_at TEXT NOT NULL);
+CREATE TABLE as_rolled_material(material_id TEXT PRIMARY KEY NOT NULL, plate_no TEXT NOT NULL UNIQUE, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), instruction_id TEXT NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id), created_at TEXT NOT NULL, updated_at TEXT NOT NULL, CHECK(created_at<=updated_at));
+CREATE TABLE process_code(process_group TEXT NOT NULL CHECK(process_group IN ('FURNACE','ROLLING','FINISHING')), code TEXT NOT NULL, meaning TEXT NOT NULL, PRIMARY KEY(process_group,code));
+CREATE TABLE equipment(equipment_id TEXT PRIMARY KEY NOT NULL, equipment_code TEXT NOT NULL UNIQUE, equipment_name TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, CHECK(created_at<=updated_at));
+CREATE TABLE furnace_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), process_group TEXT NOT NULL DEFAULT 'FURNACE' CHECK(process_group='FURNACE'), operation_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,operation_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at));
+CREATE TABLE rolling_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), process_group TEXT NOT NULL DEFAULT 'ROLLING' CHECK(process_group='ROLLING'), phase_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,phase_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at));
+CREATE TABLE plate_material(plate_id TEXT PRIMARY KEY NOT NULL, plate_no TEXT NOT NULL UNIQUE, mother_material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), identified_at TEXT NOT NULL, released_at TEXT, packed_at TEXT, CHECK(released_at IS NULL OR identified_at<=released_at), CHECK(packed_at IS NULL OR (released_at IS NOT NULL AND released_at<=packed_at)));
+CREATE TABLE finishing_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), process_group TEXT NOT NULL DEFAULT 'FINISHING' CHECK(process_group='FINISHING'), operation_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,operation_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at));
+CREATE TABLE dimension_inspection(inspection_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), inspected_at TEXT NOT NULL, result_code TEXT NOT NULL CHECK(result_code IN ('PASS','FAIL')), thickness_mm REAL NOT NULL CHECK(thickness_mm>0));
+CREATE TABLE plate_quality_review(review_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), started_at TEXT NOT NULL, finished_at TEXT, review_status TEXT NOT NULL CHECK(review_status IN ('APPROVED','REWORK','PENDING')), CHECK((review_status='PENDING' AND finished_at IS NULL) OR (review_status IN ('APPROVED','REWORK') AND finished_at IS NOT NULL AND started_at<finished_at)));
+'''
+TABLES={
+ 'slab_material':'Slab identity, steel grade and actual receipt, verification and release times.',
+ 'planned_rolling_instruction':'One rolling plan per slab, its scheduled reheating time and actual submission, approval and release times.',
+ 'rolling_instruction':'An issued rolling instruction for an approved plan.',
+ 'as_rolled_material':'Allocated mother-material identity and genealogy for a rolling instruction; created_at and updated_at describe database maintenance, not production completion.',
+ 'process_code':'Business code meanings within each manufacturing process group. The same code text can have a different meaning in another group.',
+ 'equipment':'Equipment identifiers, names and system-maintenance times. Each equipment_code identifies a machine, not a manufacturing step.',
+ 'furnace_operation_history':'Actual furnace work occurrences for mother materials, retaining repeat work and unfinished intervals.',
+ 'rolling_operation_history':'Actual rolling phase occurrences for mother materials, retaining repeat work and unfinished intervals.',
+ 'plate_material':'Individual plate-piece identity and mother-material genealogy, with actual identification, release and packing times.',
+ 'finishing_operation_history':'Actual finishing work occurrences for individual plate pieces, including repeated heat treatment after rework.',
+ 'dimension_inspection':'One dimensional inspection record per inspection occurrence. Reinspection has a new inspection_id; PASS/FAIL describes its result.',
+ 'plate_quality_review':'One quality review record per review round. APPROVED/REWORK describes its outcome; PENDING means the review has not finished.'}
+DEFS={
+ 'slab_id':'Unique slab identifier; on a plan or mother record, identifies its source slab.',
+ 'charge_id':'Steelmaking charge identifier recorded for material genealogy; no casting time is recorded here.',
+ 'steel_grade':'Synthetic steel-grade category G1 or G2.',
+ 'received_at':'Actual UTC time at which the slab was received.',
+ 'verified_at':'Actual UTC time at which the slab identity was verified; NULL if not yet verified.',
+ 'released_at':'Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.',
+ 'plan_id':'Unique rolling-plan identifier; on an instruction, references its plan.',
+ 'planned_reheat_at':'Scheduled UTC reheating time; a schedule does not establish that reheating occurred.',
+ 'submitted_at':'Actual UTC rolling-plan submission time.',
+ 'approved_at':'Actual UTC rolling-plan approval time; NULL if not yet approved.',
+ 'instruction_id':'Unique rolling-instruction identifier; on a mother record, references the instruction allocating it.',
+ 'issued_at':'Actual UTC rolling-instruction issue time.',
+ 'material_id':'Unique mother-material identifier; on a work record, references the mother material processed.',
+ 'plate_no':'Unique business plate number within this table; mother and piece numbers have separate ranges.',
+ 'mother_material_id':'Mother material from which the individual plate piece was derived.',
+ 'created_at':'UTC database record-creation time; this field does not document a production action.',
+ 'updated_at':'UTC database maintenance time; this field does not document a production action.',
+ 'process_group':'Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.',
+ 'code':'Business code within a process group; the pair (process_group,code) uniquely identifies its meaning.',
+ 'meaning':'English business meaning of the code in the specified process group.',
+ 'equipment_id':'Unique equipment-unit identifier; on a work record, references the unit that performed the work.',
+ 'equipment_code':'Human-readable machine code; identifies the machine, not the work performed.',
+ 'equipment_name':'English equipment-unit name.',
+ 'operation_id':'Unique work-occurrence identifier within this table; repeat work receives a new identifier.',
+ 'operation_code':'Kind of manufacturing work performed, as defined by the matching process_group/code entry.',
+ 'phase_code':'Rolling phase performed, as defined by the matching process_group/code entry.',
+ 'started_at':'Actual UTC start of this manufacturing work occurrence or quality-review round.',
+ 'finished_at':'Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.',
+ 'plate_id':'Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.',
+ 'identified_at':'Actual UTC time at which the plate piece was identified after rolling.',
+ 'packed_at':'Actual UTC packing-completion time; NULL if not yet packed.',
+ 'inspection_id':'Unique dimensional-inspection occurrence identifier; distinct for each reinspection.',
+ 'inspected_at':'Actual UTC dimensional-inspection completion time.',
+ 'result_code':'Inspection outcome PASS or FAIL; either value represents a completed dimensional inspection.',
+ 'thickness_mm':'Synthetic measured thickness in millimetres.',
+ 'review_id':'Unique quality-review round identifier; distinct for each subsequent review.',
+ 'review_status':'APPROVED or REWORK for a finished quality review, PENDING for an unfinished review.'}
+CODES=[('FURNACE','CH','Furnace charging','Furnace Charged'),('FURNACE','HT','Furnace heating','Heating Completed'),('FURNACE','DS','Furnace discharge','Furnace Discharged'),('ROLLING','RR','Rough rolling','Rough Rolling Completed'),('ROLLING','FR','Finish rolling','Finish Rolling Completed'),('FINISHING','LEV','Leveling','Leveling Completed'),('FINISHING','HT','Heat treatment','Heat Treatment Completed'),('FINISHING','SF','Surface finishing','Surface Finishing Completed')]
+# Author-only metadata used for README generation and validation; never exported to input dictionaries.
+ENCODING={n:('Row',c) for n,c in [('furnace_operation_history','operation_code'),('rolling_operation_history','phase_code'),('finishing_operation_history','operation_code')]}
+ENCODING.update({n:('Column',None) for n in ['slab_material','planned_rolling_instruction','rolling_instruction','plate_material','dimension_inspection','plate_quality_review']})
+ENCODING.update({n:('No business events',None) for n in ['as_rolled_material','process_code','equipment']})
+VIEWS={
+ 'Slab':('slab_material','slab_id','S:'),
+ 'Rolling Plan':('planned_rolling_instruction','plan_id','PLAN:'),
+ 'Rolling Instruction':('rolling_instruction','instruction_id','INST:'),
+ 'Mother Material':('as_rolled_material','material_id','M:'),
+ 'Plate Piece':('plate_material','plate_id','P:'),
+ 'Dimension Inspection':('dimension_inspection','inspection_id','DIM:'),
+ 'Quality Review':('plate_quality_review','review_id','REV:'),
+ 'Equipment':('equipment','equipment_id','E:'),
+ 'Furnace Operation Record':('furnace_operation_history','operation_id','FOP:'),
+ 'Rolling Operation Record':('rolling_operation_history','operation_id','ROP:'),
+ 'Finishing Operation Record':('finishing_operation_history','operation_id','TOP:')}
+
 def main():
- (P/"private/lifecycle_links.json").unlink(missing_ok=True)
- rng=random.Random(20261013)
- ddl="PRAGMA foreign_keys=ON;\n"+"\n".join("CREATE TABLE "+t+" ("+", ".join(c["name"]+" "+c["type"]+" "+c["constraints"] for c in d["columns"])+");" for t,d in T.items())
- # Two-domain material reference is a synthetic policy, not a declared source FK.
- ddl+="\nCREATE TRIGGER validate_history_material BEFORE INSERT ON material_operation_history WHEN NOT EXISTS(SELECT 1 FROM as_rolled_material WHERE material_id=NEW.material_id) AND NOT EXISTS(SELECT 1 FROM plate_material WHERE plate_material_id=NEW.material_id) BEGIN SELECT RAISE(ABORT,'Unknown material'); END;"
- write("input/schema.sql",ddl+"\n")
- rules=[
- "Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.",
- "One slab supplies one mother material in this dataset. A completed mother material yields one to three individual Plate materials.",
- "Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.",
- "Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this dataset.",
- "Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.",
- "Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.",
- "Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.",
- "Factory codes and relationship counts are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.",
- "A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number identifies the mother-to-piece relationship.",
- "No upstream casting or shipping timestamps are recorded."]
- d=dict(name="PlateFlow",language="en",timezone="UTC",tables=list(T.values()),code_domain=CODES,business_rules=rules)
- js("input/data_dictionary.json",d)
- md="# PlateFlow English Data Dictionary\n\nSchema-informed synthetic subset; custom metadata profile.\n"
- for t in T.values():
-  md+="\n## "+t["table"]+"\n\n"+t["definition"]+"\n\n| Column | Type | Constraints | Definition |\n|---|---|---|---|\n"
-  md+="".join("| "+c["name"]+" | "+c["type"]+" | "+c["constraints"]+" | "+c["definition"]+" |\n" for c in t["columns"])
- md+="\n## Synthetic process-code meanings\n\n"+"\n".join("- "+k+": "+v for k,v in CODES.items())
- md+="\n\n## Business rules\n\n"+"\n".join("- "+r for r in rules)+"\n";write("input/data_dictionary.md",md)
- js("design/logical_schema.json",list(T.values()))
- js("design/conceptual_model.json",dict(entities=list(T),relations=["Slab → Plan → Released rolling instruction → Mother material","Mother material → furnace tracking","Mother material → cutting instruction","Mother as-rolled plate number → many Plate materials","Mother/Plate material identity → many operation-history rows"]))
- write("design/requirements.md","# PlateFlow Requirements\n\nA fictional steelworks maintains distinct records for slab materials, planned rolling instructions, released rolling instructions, furnace-charge tracking, as-rolled mother materials, cutting/finishing instructions, individual cut Plate materials and operation history. Preserve milestone timestamps on material records and repeated operation occurrences with start/completion times in history. Separate planned, actual and technical times. Model one-to-many mother-to-piece relationships. Extract mother-material lifecycle logs including descendant-piece operations exactly once. Use a table that defines the synthetic process-code meanings.\n\nThe physical separation follows selected tables in the supplied Korean manufacturer metadata. Relationship counts, keys, types, code values and execution rules are newly specified assumptions.\n")
- js("design/source_mapping.json",dict(source="Uploaded data schema MAS CSV",profile="English schema-informed subset, not full Korean manufacturer database replica",tables=[dict(synthetic_table=t,source_table=v["source_table"],columns=[dict(synthetic=c["name"],source=c["source_column"]) for c in v["columns"]]) for t,v in T.items()],assumptions=rules))
- path=P/"input/database.sqlite";path.unlink(missing_ok=True);con=sqlite3.connect(path);con.row_factory=sqlite3.Row;con.executescript(ddl)
- con.executemany("INSERT INTO operation_code VALUES (?,?)",CODES.items())
- history=[];ops=[];payload=[];modes=["planned","reheating","rolled","normal","treated","rework"]
- for i in range(1,37):
-  mid=f"M{i:03}";sid=f"SL{i:03}";plan=f"PLAN{i:03}";ri=f"RI{i:03}";mother=f"AR{i:03}";mode=modes[(i-1)%6]
-  base=datetime(2026,3,1,tzinfo=timezone.utc)+timedelta(hours=i*24)
-  stamp=lambda x:(base+timedelta(hours=x)).isoformat().replace("+00:00","Z")
-  own=[];pieces=[]
-  def event(a,h,eid,recorded):
-   e=dict(event_id=eid,case_id=mid,activity=a,timestamp=stamp(h));history.append(e)
-   if recorded==mid:own.append(e)
-  def op(co,h,recorded,suffix):
-   oid=recorded+"-"+suffix
-   event(CODES[co],h,"OP:"+oid,recorded);ops.append((oid,recorded,co,stamp(h-.5),stamp(h),stamp(h+.1)))
-  event("Rolling Instruction Released",0,"RI:"+ri,mid)
-  charged=None;crop=None;tracking=None;cut=None
-  if mode!="planned":
-   event("Yard Instruction Received",1,"YD:TR"+mid,mid)
-   charge_hour=rng.choice([2,3,4]);charged=stamp(charge_hour);event("Reheating Started",charge_hour,"RH:"+mid,mid)
-   tracking=("TR"+mid,mid,stamp(1),stamp(1.5))
-  if mode not in ("planned","reheating"):op("RL",6,mid,"RL")
-  if mode in ("normal","treated","rework"):
-   op("CO",7,mid,"CO");op("LE",8,mid,"LE")
-   crop=stamp(9);event("Crop Shear Passed",9,"CS:"+mid,mid)
-   cut=("CI"+mid,mid,stamp(10),"SPLIT");event("Cutting Instruction Released",10,"CI:CI"+mid,mid)
-   op("SC",11,mid,"SC")
-   for j in range(1,1+rng.randint(1,3)):
-    pid=f"P{i:03}-{j}";latest=13+j/10
-    if mode=="treated":op("HT",12,pid,"HT1")
-    if mode=="rework" and j==1:
-     op("IF",12,pid,"IF1");op("HT",14,pid,"HT1");op("IF",15,pid,"IF2");op("HT",17,pid,"HT2");latest=18
-    op("IP",latest,pid,"IP")
-    event("Dimensional Inspection Completed",latest+.5,"DIM:"+pid,pid)
-    pieces.append((pid,"PL"+pid,mother,stamp(latest+.5),stamp(latest+.5)))
-  latest=max([e["timestamp"] for e in own if e["activity"] in CODES.values()],default=None)
-  payload.append((sid,plan,ri,mid,mother,mode,stamp,charged,crop,latest,tracking,cut,pieces))
- # Every timestamp stored below originates in canonical events or explicitly marked plan/technical context.
- for sid,plan,ri,mid,mother,mode,stamp,charged,crop,latest,tracking,cut,pieces in payload:
-  # Stored stamp closures are not used for identity/event timestamps; recover from instruction event.
-  released=next(e["timestamp"] for e in history if e["event_id"]=="RI:"+ri)
-  dt=datetime.fromisoformat(released.replace("Z","+00:00"))
-  st=lambda h:(dt+timedelta(hours=h)).isoformat().replace("+00:00","Z")
-  con.execute("INSERT INTO slab_material VALUES (?,?)",(sid,"CH"+sid[2:]))
-  con.execute("INSERT INTO planned_rolling_instruction VALUES (?,?,?)",(plan,sid,st(2)))
-  con.execute("INSERT INTO rolling_instruction VALUES (?,?,?)",(ri,plan,released))
-  con.execute("INSERT INTO as_rolled_material VALUES (?,?,?,?,?,?,?,?,?)",(mid,mother,sid,ri,charged,crop,latest,st(-1),st(22)))
-  if tracking:con.execute("INSERT INTO furnace_charge_tracking VALUES (?,?,?,?)",tracking)
-  if cut:con.execute("INSERT INTO cutting_finishing_instruction VALUES (?,?,?,?)",cut)
-  con.executemany("INSERT INTO plate_material VALUES (?,?,?,?,?)",pieces)
- con.executemany("INSERT INTO material_operation_history VALUES (?,?,?,?,?,?)",ops);con.commit()
- jl("private/canonical_history.jsonl",history);js("private/persistence_mapping.json",S)
- allacts=[s["activity"] for s in S]
- catalog=dict(case_concept="As-rolled mother material",default_scope=rules[2],activities=allacts,case_population="all as_rolled_material rows",setting="Catalog-assisted; source bindings withheld")
- js("input/task_scope_catalog.json",catalog)
- specs=[
- ("V01","explicit","Extract Reheating Started, Rolling Completed and Crop Shear Passed for each as-rolled mother material.",["Reheating Started","Rolling Completed","Crop Shear Passed"],None),
- ("V02","paraphrase","For each mother material, show actual furnace entry, rolling completion and crop-shear passage.",["Reheating Started","Rolling Completed","Crop Shear Passed"],"V01"),
- ("V03","explicit","Extract Inspection Failed, Heat Treatment Completed and Inspection Passed for each mother material, including all its descendant Plate materials.",["Inspection Failed","Heat Treatment Completed","Inspection Passed"],None),
- ("V04","paraphrase","Trace every failed inspection, thermal treatment and passing inspection of pieces originating from each mother material.",["Inspection Failed","Heat Treatment Completed","Inspection Passed"],"V03"),
- ("V05","full_lifecycle","Extract the complete recorded manufacturing lifecycle for each as-rolled mother material, including its descendant Plate materials.",allacts,None),
- ("V06","paraphrase","Build a mother-material log covering all recorded actual production steps and downstream operations on its cut pieces.",allacts,"V05"),
- ("V07","explicit","Extract Cutting Instruction Released, Split Cutting Completed and Dimensional Inspection Completed for each mother material and its cut pieces.",["Cutting Instruction Released","Split Cutting Completed","Dimensional Inspection Completed"],None),
- ("V08","unsupported","Extract continuous-casting start and completion for each slab.",[],None)]
- questions=[];gold=[];results=[]
- for qid,kind,q,acts,pair in specs:
-  questions.append(dict(question_id=qid,text=q,pair_of=pair))
-  if kind=="unsupported":gold.append(dict(question_id=qid,answerability="unsupported",reason="No casting event times in this selected schema.",es=None,process_view=None));results.append(dict(question_id=qid,status="unsupported_by_design"));continue
-  es=dict(version="plateflow-es-2",case_population_query="SELECT material_id FROM as_rolled_material",sources=[s for s in S if s["activity"] in acts])
-  gold.append(dict(question_id=qid,category=kind,answerability="answerable",process_view=dict(case_concept=catalog["case_concept"],activities=acts,scope_rule=catalog["default_scope"]),es=es))
-  expected=sorted([e for e in history if e["activity"] in acts],key=lambda e:(e["case_id"],e["timestamp"],e["event_id"]))
-  sql=compile_es(es);actual=[dict(r) for r in con.execute(sql)];assert expected==actual,qid
-  p=P/("private/gold_logs/"+qid+".csv");p.parent.mkdir(parents=True,exist_ok=True)
-  with p.open("w",newline="") as f:
-   w=csv.DictWriter(f,fieldnames=["event_id","case_id","activity","timestamp"]);w.writeheader();w.writerows(expected)
-  write("private/gold_sql/"+qid+".sql",sql+"\n");results.append(dict(question_id=qid,status="pass",event_count=len(expected)))
- jl("input/questions.jsonl",questions);jl("private/gold.jsonl",gold)
- assert not list(con.execute("PRAGMA foreign_key_check"))
- assert con.execute("PRAGMA integrity_check").fetchone()[0]=="ok"
- assert len({e["event_id"] for e in history})==len(history)
- assert con.execute("SELECT COUNT(*) FROM material_operation_history h WHERE NOT EXISTS(SELECT 1 FROM as_rolled_material m WHERE m.material_id=h.material_id) AND NOT EXISTS(SELECT 1 FROM plate_material p WHERE p.plate_material_id=h.material_id)").fetchone()[0]==0
- assert con.execute("SELECT COUNT(*) FROM as_rolled_material m JOIN plate_material p ON m.material_id=p.plate_material_id").fetchone()[0]==0
- for t,d in T.items():
-  rows=list(con.execute("PRAGMA table_info("+t+")"))
-  assert [(r["name"],r["type"]) for r in rows]==[(c["name"],c["type"]) for c in d["columns"]]
- assert con.execute("SELECT COUNT(*) FROM material_operation_history WHERE completed_at<=started_at").fetchone()[0]==0
- report=dict(seed=20261013,mother_materials=36,plate_materials=con.execute("SELECT COUNT(*) FROM plate_material").fetchone()[0],events=len(history),tables={t:con.execute("SELECT COUNT(*) FROM "+t).fetchone()[0] for t in T},scenario_counts=dict(Counter(r[5] for r in payload)),questions=results,checks=dict(gold_sql_exact_equality="pass",foreign_keys="pass",sqlite_integrity="pass",metadata_columns_types="pass",event_id_uniqueness="pass",history_start_before_completion="pass"),limitations=["Selected English schema-informed subset, not complete Korean manufacturer schema.","Original CSV supplies names/descriptions only; types, keys, process-code meanings and relationship counts are authored.","No real production rows or fitted process distributions.","Classic mother-case log, not OCEL.","Dataset-specific ES; existing NL2EventLog compatibility untested.","No extraction-model accuracy measured."])
- js("validation_report.json",report);con.close();from object_views import extend_dataset;extend_dataset(P);from lifecycle import extend;extend(P);from plate_native import convert;convert(P);extend_dataset(P);from timestamp_columns import add_queries;add_queries(P);from question_types import construct;construct(P);report=json.loads((P/"validation_report.json").read_text());print(json.dumps(report,indent=2))
-if __name__=="__main__":main()
+ for n in ['input','private/gold_logs','private/gold_sql','docs','design','source']:(P/n).mkdir(parents=True,exist_ok=True)
+ db=P/'input/database.sqlite';db.unlink(missing_ok=True)
+ con=sqlite3.connect(db);con.row_factory=sqlite3.Row;con.executescript(DDL);write('input/schema.sql',DDL)
+ def ins(t,**row):con.execute('INSERT INTO '+t+'('+','.join(row)+') VALUES ('+','.join('?' for _ in row)+')',list(row.values()))
+ for group,code,meaning,_ in CODES:ins('process_code',process_group=group,code=code,meaning=meaning)
+ equipment={}
+ for group in ['FURNACE','ROLLING','FINISHING']:
+  equipment[group]=[]
+  for j in range(2):
+   eid=group[:2]+str(j+1);equipment[group].append(eid);ins('equipment',equipment_id=eid,equipment_code=group+'-UNIT-'+str(j+1),equipment_name=group.title()+' unit '+str(j+1),created_at=stamp(-1000),updated_at=stamp(500000))
+ # An idle machine has technical times but no completed business work.
+ ins('equipment',equipment_id='IDLE',equipment_code='SPARE-UNIT',equipment_name='Idle spare unit',created_at=stamp(-900),updated_at=stamp(500100))
+ history=[];links=[];counter=Counter();lookup={}
+ def event(eid,activity,t,table,pk,oids):
+  history.append(dict(event_id=eid,activity=activity,timestamp=stamp(t),source_table=table,source_key=pk))
+  links.extend(dict(event_id=eid,case_concept=v,case_id=k,attribution='own' if table==VIEWS[v][0] else 'business-key path') for v,k in sorted(set(oids)))
+ def op(group,parent,code,start,end,oidlinks,sequence):
+  table={'FURNACE':'furnace_operation_history','ROLLING':'rolling_operation_history','FINISHING':'finishing_operation_history'}[group];counter[table]+=1;opid=str(counter[table]).zfill(4)
+  eq=equipment[group][sequence%2];key='phase_code' if group=='ROLLING' else 'operation_code';parentcol='plate_id' if group=='FINISHING' else 'material_id'
+  ins(table,operation_id=opid,**{parentcol:parent,'process_group':group,key:code,'equipment_id':eq,'started_at':stamp(start),'finished_at':None if end is None else stamp(end)})
+  if end is not None:
+   activity=next(a for g,c,_,a in CODES if g==group and c==code);view={'FURNACE':'Furnace Operation Record','ROLLING':'Rolling Operation Record','FINISHING':'Finishing Operation Record'}[group];prefix=VIEWS[view][2]
+   event(prefix+opid,activity,end,table,opid,oidlinks+[(view,prefix+opid),('Equipment','E:'+eq)])
+  return opid
+ for i in range(1,31):
+  slab='S'+str(i).zfill(3);plan='L'+str(i).zfill(3);instruction='I'+str(i).zfill(3);material='M'+str(i).zfill(3);base=i*5000
+  sv=('Slab','S:'+slab);pv=('Rolling Plan','PLAN:'+plan);iv=('Rolling Instruction','INST:'+instruction);mv=('Mother Material','M:'+material)
+  verified=None if i<=2 else base+10;released=None if i<=2 else base+20
+  ins('slab_material',slab_id=slab,charge_id='C'+str((i-1)//3+1).zfill(3),steel_grade='G1' if i%2 else 'G2',received_at=stamp(base),verified_at=None if verified is None else stamp(verified),released_at=None if released is None else stamp(released))
+  for col,act,t in [('received_at','Slab Received',base),('verified_at','Slab Verified',verified),('released_at','Slab Released',released)]:
+   if t is not None:event('SLAB:'+slab+':'+col,act,t,'slab_material',slab,[sv])
+  if i<=2:continue
+  approved=None if i<=4 else base+40;planrelease=None if approved is None else base+50
+  ins('planned_rolling_instruction',plan_id=plan,slab_id=slab,planned_reheat_at=stamp(base+500),submitted_at=stamp(base+30),approved_at=None if approved is None else stamp(approved),released_at=None if planrelease is None else stamp(planrelease))
+  for col,act,t in [('submitted_at','Rolling Plan Submitted',base+30),('approved_at','Rolling Plan Approved',approved),('released_at','Rolling Plan Released',planrelease)]:
+   if t is not None:event('PLAN:'+plan+':'+col,act,t,'planned_rolling_instruction',plan,[sv,pv])
+  if approved is None:continue
+  ins('rolling_instruction',instruction_id=instruction,plan_id=plan,issued_at=stamp(base+60));event('INST:'+instruction,'Rolling Instruction Issued',base+60,'rolling_instruction',instruction,[sv,pv,iv])
+  ins('as_rolled_material',material_id=material,plate_no='MOTHER-'+str(i),slab_id=slab,instruction_id=instruction,created_at=stamp(base+61),updated_at=stamp(base+4000));work=[sv,iv,mv]
+  if i<=6:continue
+  op('FURNACE',material,'CH',base+70,base+80,work,i)
+  if i%11==0:op('FURNACE',material,'HT',base+85,None,work,i);continue
+  op('FURNACE',material,'HT',base+85,base+120,work,i);op('FURNACE',material,'DS',base+125,base+130,work,i)
+  op('ROLLING',material,'RR',base+140,base+160,work,i)
+  if i%13==0:op('ROLLING',material,'FR',base+170,None,work,i);continue
+  op('ROLLING',material,'FR',base+170,base+195,work,i)
+  for j in range(1,2+i%3):
+   plate='P'+str(i).zfill(3)+'-'+str(j);platev=('Plate Piece','P:'+plate);start=base+230+j*500;rework=(i+j)%4==0;pending=(i+j)%7==0;pack=(i+j)%5!=0
+   identified=start;release=None if pending else start+(180 if rework else 100);packed=None if release is None or not pack else release+20
+   ins('plate_material',plate_id=plate,plate_no='PIECE-'+str(i)+'-'+str(j),mother_material_id=material,identified_at=stamp(identified),released_at=None if release is None else stamp(release),packed_at=None if packed is None else stamp(packed))
+   pw=work+[platev];event('PLATE:'+plate+':identified','Plate Identified',identified,'plate_material',plate,pw)
+   op('FINISHING',plate,'LEV',start+5,start+15,pw,i+j);op('FINISHING',plate,'HT',start+20,start+40,pw,i+j);op('FINISHING',plate,'SF',start+45,start+55,pw,i+j)
+   def inspection(roundno,t,result):
+    did=plate+'-'+str(roundno);ins('dimension_inspection',inspection_id=did,plate_id=plate,inspected_at=stamp(t),result_code=result,thickness_mm=20.1 if result=='PASS' else 22.5);event('DIM:'+did,'Dimensional Inspection Completed',t,'dimension_inspection',did,pw+[('Dimension Inspection','DIM:'+did)])
+   def review(roundno,t,end,status):
+    rid=plate+'-'+str(roundno);ins('plate_quality_review',review_id=rid,plate_id=plate,started_at=stamp(t),finished_at=None if end is None else stamp(end),review_status=status)
+    if end is not None:event('REV:'+rid,'Plate Quality Review Completed',end,'plate_quality_review',rid,pw+[('Quality Review','REV:'+rid)])
+   inspection(1,start+65,'FAIL' if rework else 'PASS')
+   review(1,start+70,None if pending else start+80,'PENDING' if pending else 'REWORK' if rework else 'APPROVED')
+   if rework and not pending:
+    op('FINISHING',plate,'HT',start+90,start+120,pw,i+j);op('FINISHING',plate,'SF',start+125,start+135,pw,i+j);inspection(2,start+145,'PASS');review(2,start+150,start+165,'APPROVED')
+   if release is not None:event('PLATE:'+plate+':released','Plate Released',release,'plate_material',plate,pw)
+   if packed is not None:event('PLATE:'+plate+':packed','Plate Packed',packed,'plate_material',plate,pw)
+ con.commit()
+ assert not list(con.execute('PRAGMA foreign_key_check'));assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+ jl('private/canonical_history.jsonl',history);js('private/object_event_links.json',links)
+ sources=[]
+ def source(table,activity,col,idexpr,key,where='1=1',**selector):
+  sql=f"SELECT {idexpr} event_id,'{activity}' activity,{col} timestamp,{key} source_key FROM {table} WHERE {col} IS NOT NULL AND ({where})"
+  sources.append(dict(table=table,activity=activity,timestamp_column=col,event_sql=sql,**selector))
+ for col,act in [('received_at','Slab Received'),('verified_at','Slab Verified'),('released_at','Slab Released')]:source('slab_material',act,col,"'SLAB:'||slab_id||':"+col+"'",'slab_id')
+ for col,act in [('submitted_at','Rolling Plan Submitted'),('approved_at','Rolling Plan Approved'),('released_at','Rolling Plan Released')]:source('planned_rolling_instruction',act,col,"'PLAN:'||plan_id||':"+col+"'",'plan_id')
+ source('rolling_instruction','Rolling Instruction Issued','issued_at',"'INST:'||instruction_id",'instruction_id')
+ for group,code,_,act in CODES:
+  table={'FURNACE':'furnace_operation_history','ROLLING':'rolling_operation_history','FINISHING':'finishing_operation_history'}[group];field='phase_code' if group=='ROLLING' else 'operation_code';prefix={'FURNACE':'FOP:','ROLLING':'ROP:','FINISHING':'TOP:'}[group]
+  source(table,act,'finished_at',"'"+prefix+"'||operation_id",'operation_id',field+"='"+code+"'",row_filter=dict(column=field,value=code,process_group=group))
+ for col,act,suffix in [('identified_at','Plate Identified','identified'),('released_at','Plate Released','released'),('packed_at','Plate Packed','packed')]:source('plate_material',act,col,"'PLATE:'||plate_id||':"+suffix+"'",'plate_id')
+ source('dimension_inspection','Dimensional Inspection Completed','inspected_at',"'DIM:'||inspection_id",'inspection_id')
+ source('plate_quality_review','Plate Quality Review Completed','finished_at',"'REV:'||review_id",'review_id')
+ js('private/persistence_mapping.json',sources)
+ # Direct key-based SQL paths; no persisted event-to-case index is present in the DB.
+ case_paths={v:{} for v in VIEWS}
+ def path(v,t,key,joins='',distinct=False):case_paths[v][t]=dict(case_key=key,joins=joins,distinct=distinct)
+ path('Slab','slab_material','s.slab_id')
+ path('Slab','planned_rolling_instruction','s.slab_id');path('Rolling Plan','planned_rolling_instruction','s.plan_id')
+ path('Slab','rolling_instruction','p.slab_id',' JOIN planned_rolling_instruction p ON p.plan_id=s.plan_id');path('Rolling Plan','rolling_instruction','s.plan_id');path('Rolling Instruction','rolling_instruction','s.instruction_id')
+ for t in ['furnace_operation_history','rolling_operation_history']:
+  join=' JOIN as_rolled_material m ON m.material_id=s.material_id'
+  for v,key in [('Slab','m.slab_id'),('Rolling Instruction','m.instruction_id'),('Mother Material','s.material_id')]:path(v,t,key,join)
+  path('Equipment',t,'s.equipment_id');path('Furnace Operation Record' if t.startswith('furnace') else 'Rolling Operation Record',t,'s.operation_id')
+ for t in ['plate_material','finishing_operation_history','dimension_inspection','plate_quality_review']:
+  join='' if t=='plate_material' else ' JOIN plate_material piece ON piece.plate_id=s.plate_id';mothercol='s.mother_material_id' if t=='plate_material' else 'piece.mother_material_id';join+=' JOIN as_rolled_material m ON m.material_id='+mothercol
+  for v,key in [('Slab','m.slab_id'),('Rolling Instruction','m.instruction_id'),('Mother Material','m.material_id'),('Plate Piece','s.plate_id')]:path(v,t,key,join)
+ path('Equipment','finishing_operation_history','s.equipment_id');path('Finishing Operation Record','finishing_operation_history','s.operation_id');path('Dimension Inspection','dimension_inspection','s.inspection_id');path('Quality Review','plate_quality_review','s.review_id')
+ js('private/case_paths.json',case_paths)
+ def compile_es(view,activities):
+  parts=[];bindings=[];prefix=VIEWS[view][2]
+  for source in sources:
+   t=source['table'];route=case_paths[view].get(t)
+   if source['activity'] not in activities or route is None:continue
+   # Source filtering occurs before joins; per-source key is still tied to its physical row.
+   key=VIEWS.get(view,(None,None,None))[1];pk=con.execute('PRAGMA table_info('+t+')').fetchall();source_pk=next(c['name'] for c in pk if c['pk'])
+   parts.append("SELECT e.event_id,'"+prefix+"'||"+route['case_key']+" case_id,e.activity,e.timestamp FROM ("+source['event_sql']+") e JOIN "+t+" s ON s."+source_pk+"=e.source_key"+route['joins'])
+   bindings.append(dict(source_table=t,source_pk=source_pk,activity=source['activity'],timestamp_column=source['timestamp_column'],row_filter=source.get('row_filter'),case_path=route))
+  assert parts,view
+  return 'SELECT * FROM ('+' UNION ALL '.join(parts)+') ORDER BY case_id,timestamp,event_id;',bindings
+ linked=defaultdict(set)
+ for r in links:linked[r['event_id']].add((r['case_concept'],r['case_id']))
+ coverage=[];populations={}
+ for view,(table,key,prefix) in VIEWS.items():
+  pop=[prefix+r[0] for r in con.execute('SELECT '+key+' FROM '+table+' ORDER BY '+key)];populations[view]=pop
+  acts=sorted({e['activity'] for e in history if any(v==view for v,_ in linked[e['event_id']])});casecount=Counter(cid for e in history for v,cid in linked[e['event_id']] if v==view)
+  coverage.append(dict(case_concept=view,case_table=table,case_count=len(pop),activity_count=len(acts),activities=acts,event_rows=sum(casecount.values()),cases_without_events=len(set(pop)-set(casecount))))
+ js('private/case_population.json',populations);js('private/task_scope_catalog.json',dict(views=coverage,completion_policy='Use completed occurrences and actual point milestones only; start times do not create extra labels.'))
+ seeds=json.loads((P/'source/question_seeds.json').read_text());paraphrases=json.loads((P/'source/llm_paraphrases.json').read_text());questions=[];gold=[]
+ for seed in seeds:
+  qid=seed['id'];view=seed['view'];full='activities' not in seed;activities=next(r['activities'] for r in coverage if r['case_concept']==view) if full else seed['activities'];answerable=seed.get('answerable',True)
+  if answerable:
+   sql,bindings=compile_es(view,activities);es=dict(version='plateflow-new-es-1',case_concept=view,activities=activities,case_population=populations[view],event_bindings=bindings,compiled_sql=sql)
+   expected=sorted([dict(event_id=e['event_id'],case_id=cid,activity=e['activity'],timestamp=e['timestamp']) for e in history if e['activity'] in activities for v,cid in linked[e['event_id']] if v==view],key=lambda e:(e['case_id'],e['timestamp'],e['event_id']))
+   actual=[dict(r) for r in con.execute(sql)];assert actual==expected,qid
+   assert len({(r['case_id'],r['event_id']) for r in actual})==len(actual)
+  else:es=None
+  for ident,text,typ,pair in [(qid,seed['question'],'Q3' if full else 'Q1',qid+'P'),(qid+'P',paraphrases['outputs'][qid],'Q4' if full else 'Q2',qid)]:
+   q=dict(question_id=ident,text=text,question_type=typ,question_type_name={'Q1':'Explicit','Q2':'Paraphrased','Q3':'Full Lifecycle','Q4':'Full Lifecycle Paraphrased'}[typ],pair_of=pair,pair_group_id=qid,answerability='answerable' if answerable else 'non_answerable',included_information='Process View: case concept only' if full else 'Process View: case concept and explicit activity scope',requested_activity_count=len(activities),extractable_activity_count=len(activities) if answerable else 0,activity_scope_explicit=not full,case_concept=view)
+   questions.append(q);g=dict(**q,process_view=dict(case_concept=view,case_table=VIEWS[view][0],activities=activities),es=es)
+   if answerable:
+    csvpath='private/gold_logs/'+ident+'.csv';sqlpath='private/gold_sql/'+ident+'.sql'
+    with (P/csvpath).open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=['event_id','case_id','activity','timestamp']);w.writeheader();w.writerows(expected)
+    write(sqlpath,sql+'\n');g.update(csv=csvpath,sql=sqlpath,event_count=len(expected))
+   else:g['reason']='No corresponding casting or dispatch records or actual times are stored.'
+   gold.append(g)
+ jl('input/model_questions.jsonl',[dict(question_id=q['question_id'],text=q['text']) for q in questions]);jl('private/questions.jsonl',questions);jl('private/gold.jsonl',gold)
+ # Dictionary has only schema/business semantics. No benchmark event-selection answers are exported.
+ metadata=[]
+ for table in TABLES:
+  info=list(con.execute('PRAGMA table_info('+table+')'));cols=[];fks=[dict(r) for r in con.execute('PRAGMA foreign_key_list('+table+')')]
+  for r in info:
+   definition=DEFS[r['name']]
+   cols.append(dict(name=r['name'],sql_type=r['type'],definition=definition,required=bool(r['notnull'] or r['pk']),primary_key_position=r['pk'],default=r['dflt_value'],foreign_keys=[dict(table=f['table'],column=f['to'],constraint_id=f['id'],position=f['seq']) for f in fks if f['from']==r['name']],unit='mm' if r['name']=='thickness_mm' else 'UTC' if r['name'].endswith('_at') else None))
+  metadata.append(dict(table=table,definition=TABLES[table],columns=cols,primary_key=[r['name'] for r in sorted(info,key=lambda r:r['pk']) if r['pk']],sql_definition=con.execute('SELECT sql FROM sqlite_master WHERE name=?',(table,)).fetchone()[0]))
+ dictionary=dict(name='PlateFlow New',language='en',timezone='UTC',dbms='SQLite',description='Synthetic plate-manufacturing business records with explicitly declared identifiers and relationships.',tables=metadata,code_values=[dict(process_group=g,code=c,meaning=m) for g,c,m,_ in CODES],business_rules=['Each plan concerns one slab. Each issued instruction refers to one plan. Mother and plate-piece identifiers refer to distinct physical materials.','A mother-material identity can be allocated before work finishes. Database creation and maintenance times are not evidence of production completion.','Every work occurrence retains its own identifier. Repeat work, reinspection and later review rounds retain separate records.','Each work-history table is restricted to its declared process group. Code meanings are resolved within that group.','Review outcome and inspection result describe the result of the same kind of business record; they do not change its business purpose.','Actual start times may exist without finish times. NULL finish means unfinished work; NULL release/packing means not yet released/packed.','Scheduled reheating time is a plan and may differ from actual heating time.','An approved quality review is required before piece release; packing follows release.','All business records, identifiers, times and measurements are synthetic.'])
+ js('input/data_dictionary.json',dictionary)
+ timestamps=[];used={(s['table'],s['timestamp_column']) for s in sources}
+ for t in metadata:
+  for c in t['columns']:
+   if not c['name'].endswith('_at'):continue
+   name=c['name'];role='Completed work or actual milestone' if (t['table'],name) in used else 'Actual interval start; not separately emitted' if name=='started_at' else 'Scheduled instant' if name.startswith('planned_') else 'Technical maintenance instant'
+   timestamps.append(dict(table=t['table'],column=name,role=role,used_as_event_time=(t['table'],name) in used,non_null_rows=con.execute('SELECT COUNT('+name+') FROM '+t['table']).fetchone()[0]))
+ inv=dict(timestamp_columns=len(timestamps),event_timestamp_columns=len(used),other_timestamp_columns=len(timestamps)-len(used),baseline_timestamp_columns=len(timestamps),columns=timestamps,date_only_columns=[]);js('docs/timestamp_columns.json',inv)
+ report=dict(table_rows={t:con.execute('SELECT COUNT(*) FROM '+t).fetchone()[0] for t in TABLES},semantic_object_types=len(VIEWS),object_view_coverage=coverage,activity_counts=dict(Counter(e['activity'] for e in history)),events=len(history),total_questions=len(questions),answerable_questions=sum(q['answerability']=='answerable' for q in questions),timestamp_summary={k:v for k,v in inv.items() if k!='columns'},validation_scope='Construction consistency and Gold extraction; no model classification/extraction accuracy is claimed.');js('validation_report.json',report)
+ from documentation import render
+ render(P,con,dictionary,report,questions,coverage,ENCODING)
+ con.close();print(json.dumps({k:report[k] for k in ['events','total_questions','answerable_questions','semantic_object_types','timestamp_summary']},indent=2))
+if __name__=='__main__':main()

@@ -1,1 +1,0 @@
-SELECT * FROM (SELECT 'TX:' || t.transaction_id event_id, t.warehouse_number case_id, 'Goods Dispatched' activity, t.occurred_at timestamp FROM transaction_record t WHERE t.transaction_type='OUT') ORDER BY case_id,timestamp,event_id;
