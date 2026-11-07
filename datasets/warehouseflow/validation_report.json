@@ -1,459 +1,309 @@
 {
-  "seed": 20261014,
-  "source_record_id": "67552f0a13602ec03b41a78e",
-  "original_tables_retained": "6/6",
-  "original_attributes_retained": "17/17",
-  "original_fk_relationships_retained": "5/5",
-  "warehouses": 4,
-  "events": 394,
-  "activity_counts": {
-    "Goods Received": 45,
-    "Goods Dispatched": 35,
-    "Receiving Requested": 45,
-    "Receiving Scheduled": 45,
-    "Receiving Inspection Completed": 45,
-    "Goods Put Away": 39,
-    "Dispatch Requested": 35,
-    "Dispatch Approved": 35,
-    "Goods Picked": 35,
-    "Goods Packed": 35
-  },
   "table_rows": {
     "warehouse": 4,
-    "goods": 6,
-    "loader": 5,
-    "transaction_record": 80,
-    "goods_transaction_detail": 138,
-    "loader_transaction": 167,
-    "transaction_record_activity": 314,
-    "lifecycle_case_link": 3022
+    "goods": 7,
+    "worker": 7,
+    "work_code": 10,
+    "receiving_request": 26,
+    "goods_receipt": 23,
+    "dispatch_order": 20,
+    "warehouse_audit": 9,
+    "goods_movement": 39,
+    "request_action": 56,
+    "warehouse_task_history": 63,
+    "handling_history": 41
   },
-  "naive_detail_worker_join_rows": 289,
-  "correct_event_rows": 80,
-  "peak_inventory_units": {
-    "W1": 67,
-    "W2": 68,
-    "W3": 53,
-    "W4": 38
-  },
-  "questions": [
-    {
-      "question_id": "R01",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 45
-    },
-    {
-      "question_id": "R02",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 45
-    },
-    {
-      "question_id": "R03",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 35
-    },
-    {
-      "question_id": "R04",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 35
-    },
-    {
-      "question_id": "R05",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 394
-    },
-    {
-      "question_id": "R06",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 394
-    },
-    {
-      "question_id": "R07",
-      "question_type": "Q1",
-      "status": "unsupported_by_design"
-    },
-    {
-      "question_id": "OW01",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 394
-    },
-    {
-      "question_id": "OW02",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 679
-    },
-    {
-      "question_id": "OW03",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 823
-    },
-    {
-      "question_id": "OW04",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 394
-    },
-    {
-      "question_id": "OW05",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 679
-    },
-    {
-      "question_id": "OW06",
-      "question_type": "Q3",
-      "status": "pass",
-      "event_count": 823
-    },
-    {
-      "question_id": "TS01",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 160
-    },
-    {
-      "question_id": "R07P",
-      "question_type": "Q2",
-      "status": "unsupported_by_design"
-    },
-    {
-      "question_id": "TS01P",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 160
-    },
-    {
-      "question_id": "OW01P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 394
-    },
-    {
-      "question_id": "OW01E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 129
-    },
-    {
-      "question_id": "OW01EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 129
-    },
-    {
-      "question_id": "OW02P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 679
-    },
-    {
-      "question_id": "OW02E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 226
-    },
-    {
-      "question_id": "OW02EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 226
-    },
-    {
-      "question_id": "OW03P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 823
-    },
-    {
-      "question_id": "OW03E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 276
-    },
-    {
-      "question_id": "OW03EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 276
-    },
-    {
-      "question_id": "OW04P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 394
-    },
-    {
-      "question_id": "OW04E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 129
-    },
-    {
-      "question_id": "OW04EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 129
-    },
-    {
-      "question_id": "OW05P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 679
-    },
-    {
-      "question_id": "OW05E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 226
-    },
-    {
-      "question_id": "OW05EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 226
-    },
-    {
-      "question_id": "OW06P",
-      "question_type": "Q4",
-      "status": "pass",
-      "event_count": 823
-    },
-    {
-      "question_id": "OW06E",
-      "question_type": "Q1",
-      "status": "pass",
-      "event_count": 276
-    },
-    {
-      "question_id": "OW06EP",
-      "question_type": "Q2",
-      "status": "pass",
-      "event_count": 276
-    }
-  ],
-  "checks": {
-    "gold_sql_exact_equality": "pass",
-    "foreign_keys": "pass",
-    "source_pk_fk_structure": "pass",
-    "stock_capacity": "pass",
-    "task_detail_worker_coverage": "pass"
-  },
-  "limitations": [
-    "Original schema records two instant task types; no approval or order lifecycle.",
-    "Warehouse cases group independent tasks, not one shipment lifecycle.",
-    "Codes, SQL types and timestamp convention are adaptations.",
-    "Dataset-specific ES; no model accuracy measured.",
-    "No held-out generalization claim.",
-    "Atomic operation/grading records remain auxiliary single-occurrence cases. New actions are synthetic domain design, not real production observations."
-  ],
-  "object_view_checks": {
-    "sql_equals_canonical_events": "pass",
-    "unique_event_per_case": "pass",
-    "case_population_coverage": "pass"
-  },
+  "semantic_object_types": 11,
   "object_view_coverage": [
     {
-      "question_id": "OW01",
-      "case_table": "warehouse",
       "case_concept": "Warehouse",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this warehouse.",
+      "case_table": "warehouse",
       "case_count": 4,
-      "cases_with_events": 4,
-      "cases_without_events": 0,
-      "event_rows": 394,
+      "activity_count": 21,
+      "base_activity_count": 15,
       "activities": [
         "Dispatch Approved",
         "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Packed",
-        "Goods Picked",
-        "Goods Put Away",
         "Goods Received",
-        "Receiving Inspection Completed",
-        "Receiving Requested",
-        "Receiving Scheduled"
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Receiving Request Submitted",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Stock Audit Completed",
+        "Stock Audit Started",
+        "Unloading Completed",
+        "Unloading Started"
       ],
-      "log_path": "private/gold_logs/OW01.csv"
+      "event_rows": 402,
+      "cases_without_events": 1
     },
     {
-      "question_id": "OW02",
-      "case_table": "goods",
       "case_concept": "Goods",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this goods.",
-      "case_count": 6,
-      "cases_with_events": 6,
-      "cases_without_events": 0,
-      "event_rows": 679,
+      "case_table": "goods",
+      "case_count": 7,
+      "activity_count": 19,
+      "base_activity_count": 14,
       "activities": [
         "Dispatch Approved",
         "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Packed",
-        "Goods Picked",
-        "Goods Put Away",
         "Goods Received",
-        "Receiving Inspection Completed",
-        "Receiving Requested",
-        "Receiving Scheduled"
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Receiving Request Submitted",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Unloading Completed",
+        "Unloading Started"
       ],
-      "log_path": "private/gold_logs/OW02.csv"
+      "event_rows": 385,
+      "cases_without_events": 1
     },
     {
-      "question_id": "OW03",
-      "case_table": "loader",
       "case_concept": "Worker",
-      "kind": "business_object",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this worker.",
-      "case_count": 5,
-      "cases_with_events": 5,
-      "cases_without_events": 0,
-      "event_rows": 823,
+      "case_table": "worker",
+      "case_count": 7,
+      "activity_count": 16,
+      "base_activity_count": 10,
       "activities": [
-        "Dispatch Approved",
-        "Dispatch Requested",
-        "Goods Dispatched",
-        "Goods Packed",
-        "Goods Picked",
-        "Goods Put Away",
-        "Goods Received",
-        "Receiving Inspection Completed",
-        "Receiving Requested",
-        "Receiving Scheduled"
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Stock Audit Completed",
+        "Stock Audit Started",
+        "Unloading Completed",
+        "Unloading Started"
       ],
-      "log_path": "private/gold_logs/OW03.csv"
+      "event_rows": 299,
+      "cases_without_events": 1
     },
     {
-      "question_id": "OW04",
-      "case_table": "transaction_record",
-      "case_concept": "Warehouse transaction",
-      "kind": "event_record",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this warehouse transaction.",
-      "case_count": 80,
-      "cases_with_events": 80,
-      "cases_without_events": 0,
-      "event_rows": 394,
+      "case_concept": "Receiving Request",
+      "case_table": "receiving_request",
+      "case_count": 26,
+      "activity_count": 10,
+      "base_activity_count": 8,
       "activities": [
-        "Dispatch Approved",
-        "Dispatch Requested",
-        "Goods Dispatched",
-        "Goods Packed",
-        "Goods Picked",
-        "Goods Put Away",
         "Goods Received",
-        "Receiving Inspection Completed",
-        "Receiving Requested",
-        "Receiving Scheduled"
+        "Putaway Completed",
+        "Putaway Started",
+        "Receipt Registered",
+        "Receiving Request Submitted",
+        "Request Checked",
+        "Request Held",
+        "Request Released",
+        "Unloading Completed",
+        "Unloading Started"
       ],
-      "log_path": "private/gold_logs/OW04.csv"
+      "event_rows": 219,
+      "cases_without_events": 0
     },
     {
-      "question_id": "OW05",
-      "case_table": "goods_transaction_detail",
-      "case_concept": "Goods transaction line",
-      "kind": "association_record",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this goods transaction line.",
-      "case_count": 138,
-      "cases_with_events": 138,
-      "cases_without_events": 0,
-      "event_rows": 679,
+      "case_concept": "Receipt",
+      "case_table": "goods_receipt",
+      "case_count": 23,
+      "activity_count": 2,
+      "base_activity_count": 2,
       "activities": [
-        "Dispatch Approved",
-        "Dispatch Requested",
-        "Goods Dispatched",
-        "Goods Packed",
-        "Goods Picked",
-        "Goods Put Away",
         "Goods Received",
-        "Receiving Inspection Completed",
-        "Receiving Requested",
-        "Receiving Scheduled"
+        "Receipt Registered"
       ],
-      "log_path": "private/gold_logs/OW05.csv"
+      "event_rows": 46,
+      "cases_without_events": 0
     },
     {
-      "question_id": "OW06",
-      "case_table": "loader_transaction",
-      "case_concept": "Worker transaction assignment",
-      "kind": "association_record",
-      "status": "answerable",
-      "scope_rule": "Original recorded actions and authored lifecycle actions explicitly linked to this worker transaction assignment.",
-      "case_count": 167,
-      "cases_with_events": 167,
-      "cases_without_events": 0,
-      "event_rows": 823,
+      "case_concept": "Dispatch Order",
+      "case_table": "dispatch_order",
+      "case_count": 20,
+      "activity_count": 9,
+      "base_activity_count": 6,
       "activities": [
         "Dispatch Approved",
         "Dispatch Requested",
         "Goods Dispatched",
-        "Goods Packed",
-        "Goods Picked",
-        "Goods Put Away",
-        "Goods Received",
-        "Receiving Inspection Completed",
-        "Receiving Requested",
-        "Receiving Scheduled"
+        "Loading Completed",
+        "Loading Started",
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started"
       ],
-      "log_path": "private/gold_logs/OW06.csv"
+      "event_rows": 166,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Stock Audit",
+      "case_table": "warehouse_audit",
+      "case_count": 9,
+      "activity_count": 2,
+      "base_activity_count": 1,
+      "activities": [
+        "Stock Audit Completed",
+        "Stock Audit Started"
+      ],
+      "event_rows": 17,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Stock Movement",
+      "case_table": "goods_movement",
+      "case_count": 39,
+      "activity_count": 2,
+      "base_activity_count": 2,
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "event_rows": 39,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Request Action",
+      "case_table": "request_action",
+      "case_count": 56,
+      "activity_count": 3,
+      "base_activity_count": 3,
+      "activities": [
+        "Request Checked",
+        "Request Held",
+        "Request Released"
+      ],
+      "event_rows": 56,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Warehouse Task",
+      "case_table": "warehouse_task_history",
+      "case_count": 63,
+      "activity_count": 6,
+      "base_activity_count": 3,
+      "activities": [
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started"
+      ],
+      "event_rows": 123,
+      "cases_without_events": 0
+    },
+    {
+      "case_concept": "Handling Record",
+      "case_table": "handling_history",
+      "case_count": 41,
+      "activity_count": 4,
+      "base_activity_count": 2,
+      "activities": [
+        "Loading Completed",
+        "Loading Started",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "event_rows": 80,
+      "cases_without_events": 0
     }
   ],
-  "unavailable_object_views": [
-    {
-      "case_table": "transaction_record_activity",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    },
-    {
-      "case_table": "lifecycle_case_link",
-      "status": "supporting_history",
-      "reason": "Activity storage/index for its parent-object log; not an independent business case."
-    }
-  ],
-  "total_questions": 34,
-  "answerable_questions": 32,
-  "lifecycle_extensions": {
-    "added_tables": 2,
-    "added_events": 314,
-    "source_origin": "authored",
-    "checks": {
-      "typed_foreign_keys": "pass",
-      "actual_action_order": "pass",
-      "full_sql_equals_history": "pass"
-    }
+  "activity_counts": {
+    "Receiving Request Submitted": 26,
+    "Request Checked": 28,
+    "Request Released": 24,
+    "Unloading Started": 24,
+    "Unloading Completed": 23,
+    "Receipt Registered": 23,
+    "Goods Received": 23,
+    "Putaway Started": 23,
+    "Putaway Completed": 21,
+    "Request Held": 4,
+    "Dispatch Requested": 20,
+    "Dispatch Approved": 18,
+    "Picking Started": 22,
+    "Picking Completed": 22,
+    "Packing Started": 18,
+    "Packing Completed": 17,
+    "Loading Started": 17,
+    "Loading Completed": 16,
+    "Goods Dispatched": 16,
+    "Stock Audit Started": 9,
+    "Stock Audit Completed": 8
   },
-  "timestamp_migration": {
-    "added_columns": 0,
-    "removed_empty_history_tables": [],
-    "original_event_identity_and_time": "preserved",
-    "duplicate_event_storage": "none"
+  "base_activity_counts": {
+    "Receiving Request Submitted": 26,
+    "Request Checked": 28,
+    "Request Released": 24,
+    "Unloading": 47,
+    "Receipt Registered": 23,
+    "Goods Received": 23,
+    "Putaway": 44,
+    "Request Held": 4,
+    "Dispatch Requested": 20,
+    "Dispatch Approved": 18,
+    "Picking": 44,
+    "Packing": 35,
+    "Loading": 33,
+    "Goods Dispatched": 16,
+    "Stock Audit": 17
   },
-  "question_type_counts": {
-    "Q1": 10,
-    "Q2": 10,
-    "Q3": 7,
-    "Q4": 7
+  "activity_type_count": 15,
+  "activity_display_label_count": 21,
+  "phase_counts": {
+    "point": 87,
+    "complete": 202,
+    "start": 113
   },
-  "question_pair_checks": "one-to-one Q1/Q2 and Q3/Q4; equal type counts; identical ES, process view, answerability and CSV verified",
+  "events": 402,
+  "total_questions": 54,
+  "answerable_questions": 50,
   "timestamp_summary": {
-    "timestamp_columns": 2,
-    "event_timestamp_columns": 2,
-    "other_timestamp_columns": 0,
-    "date_only_columns": [],
-    "baseline_timestamp_columns": 2
+    "timestamp_columns": 15,
+    "event_timestamp_columns": 12,
+    "other_timestamp_columns": 3,
+    "baseline_timestamp_columns": 15,
+    "date_only_columns": []
+  },
+  "validation_scope": "Dataset construction and Gold consistency, not a measured classifier result.",
+  "checks": {
+    "gold_csvs_verified": 50,
+    "all_four_patterns_physically_present": true,
+    "base_activity_and_phase_preserved": true,
+    "same_occurrence_start_completion_pairs": true,
+    "unfinished_starts_without_completion": true,
+    "repeat_attempts_distinct": true,
+    "result_role_priority_condition_not_carriers": true,
+    "stock_nonnegative_within_capacity": true,
+    "source_keys_and_business_paths": true,
+    "technical_times_excluded": true,
+    "foreign_keys_checks_and_schema_round_trip": true,
+    "dictionary_files_without_classification_annotations": 6,
+    "model_input_allowlist_verified": true,
+    "exact_frozen_question_pairs": true,
+    "actual_llm_classifier_run": false
   }
 }

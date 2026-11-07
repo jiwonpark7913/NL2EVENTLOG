@@ -1,219 +1,238 @@
-# PlateFlow — data dictionary
+# PlateFlow New — data dictionary
 
 ## 1. Dictionary basic information
 
 | Field | Value |
 | --- | --- |
-| dictionary_id | NL2EVENTLOG:plateflow |
-| version | 2026-10-12 |
-| name | PlateFlow |
-| description | English synthetic relational database for query-conditioned process-view and event-log extraction. |
+| dictionary_id | NL2EVENTLOG:plateflow_new |
+| name | PlateFlow New |
+| version | 2026-10-29 |
 | language | en |
-| timezone | UTC |
 | dbms | SQLite |
-| namespace | plateflow |
-| timestamp_columns | 39 |
-| event_timestamp_columns | 31 |
-| maintainer | NL2EVENTLOG project maintainers |
-| registration_status | Project-maintained draft; not ISO-registered or certified |
-| source_policy | Source definitions are retained and authored lifecycle additions are identified in source/design documents. |
-| standards_profile | Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment. |
-| layout | 1 Dictionary basic information; 2 Table definitions; 3 Column definitions |
+| timezone | UTC |
+| description | Synthetic plate-manufacturing business records with explicitly declared identifiers and relationships. |
+| status | Project-maintained synthetic business-data definitions |
+| standards_profile | Three-part project profile informed by public ISO/IEC 11179-3 and 11179-4 scope statements; not a certification or full conformance assessment. |
+| source_policy | Schema-informed manufacturing simulation; authored additions are documented separately. |
 
-- A table has at most one PRIMARY KEY constraint. Multiple PK-marked columns are members of that single composite key; they are not independent primary keys. FK marks can overlap with those PK columns.
-- The three-part layout is a project documentation choice, not a mandated ISO/IEC template.
-- ISO/IEC 11179-4 addresses semantic definitions rather than prescribing their formatting. Only public standard scope descriptions were consulted.
-- SQL keys and constraints are taken from the executable DB. SQLite TEXT has no declared maximum length unless an explicit constraint says otherwise. Examples are observed synthetic values, not additional allowed-value constraints.
-- [ISO/IEC 11179-3:2023](https://www.iso.org/standard/78915.html): Registry identification, administration and definition concepts.
-- [ISO/IEC 11179-4:2004](https://www.iso.org/standard/35346.html): Semantic formulation of data definitions.
+- The three-part layout is a project choice. ISO/IEC 11179-3 concerns registry facilities and 11179-4 concerns semantic definitions; the public scope statements do not mandate this template.
+- A composite primary key is one key over its full tuple. All SQL constraints below are taken from the executable schema.
+- References: [ISO/IEC 11179-3](https://www.iso.org/standard/78915.html), [ISO/IEC 11179-4](https://www.iso.org/standard/35346.html).
 
 ## 2. Table definitions
 
-| Metadata ID | Logical name | Physical name | Rows | PK | FK | Event encoding | Definition |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.slab_material | Slab Material | slab_material | 36 | slab_id | None declared | Column encoding | Slab material and charge genealogy; no upstream operation timestamps in this subset |
-| plateflow.planned_rolling_instruction | Planned Rolling Instruction | planned_rolling_instruction | 36 | plan_id | slab_id → slab_material.slab_id | Column encoding | Scheduled rolling instruction; plan times do not prove execution |
-| plateflow.rolling_instruction | Rolling Instruction | rolling_instruction | 36 | instruction_id | plan_id → planned_rolling_instruction.plan_id | Column encoding | Released rolling work instruction, separate from planning |
-| plateflow.as_rolled_material | As Rolled Material | as_rolled_material | 36 | material_id | instruction_id → rolling_instruction.instruction_id; slab_id → slab_material.slab_id | Column encoding | As-rolled mother material with milestone columns and latest-operation snapshot |
-| plateflow.furnace_charge_tracking | Furnace Charge Tracking | furnace_charge_tracking | 30 | tracking_id | material_id → as_rolled_material.material_id | Column encoding | Furnace charge tracking record separated from material lifecycle snapshot |
-| plateflow.cutting_finishing_instruction | Cutting Finishing Instruction | cutting_finishing_instruction | 18 | instruction_id | material_id → as_rolled_material.material_id | Column encoding | Cutting/finishing work instruction for mother material |
-| plateflow.plate_material | Plate Material | plate_material | 39 | plate_material_id | parent_as_rolled_plate_no → as_rolled_material.as_rolled_plate_no | Column encoding | Individual cut Plate material, distinct from mother as-rolled material |
-| plateflow.operation_code | Operation Code | operation_code | 9 | code | None declared | No event encoding | Synthetic operation process-code meanings; codes are newly authored |
-| plateflow.material_operation_history | Material Operation History | material_operation_history | 216 | transaction_id | operation_code → operation_code.code | Row encoding | Immutable operation history for mother and piece material identities |
-
-- Row encoding: an event occurrence is represented by a row.
-- Column encoding: an object row stores one or more actual business milestone timestamps in dedicated columns.
-- No event encoding: contextual, reference, planned or relationship/index data; this does not mean the related business object lacks an event log.
-- **slab_material:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: slab_received_at, slab_identity_verified_at, slab_quality_checked_at, slab_released_for_rolling_at.
-- **planned_rolling_instruction:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: rolling_plan_created_at, rolling_plan_reviewed_at, rolling_plan_approved_at, rolling_plan_released_at.
-- **rolling_instruction:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: rolling_instruction_acknowledged_at, rolling_setup_verified_at, rolling_work_started_at, rolling_instruction_closed_at.
-- **as_rolled_material:** One material object row contains two different extracted business milestones. Extracted event columns: furnace_charged_at, crop_shear_passed_at.
-- **furnace_charge_tracking:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: furnace_charge_assigned_at, furnace_charge_confirmed_at, furnace_discharge_confirmed_at.
-- **cutting_finishing_instruction:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: cutting_instruction_acknowledged_at, cutting_setup_verified_at, cutting_work_started_at, cutting_instruction_closed_at.
-- **plate_material:** Actual milestone columns on the existing business object; NULL means not yet occurred. Authored added event columns: plate_piece_identified_at, plate_quality_released_at, plate_packed_at, plate_quality_review_started_at, plate_packing_started_at.
-- **operation_code:** Master, plan, reference or relationship/index data; this table does not directly produce an event in the current ES. Related objects can still have logs from other tables.
-- **material_operation_history:** operation_code selects the action; one completed operation per history row. started_at is not currently extracted as a second event.
+| Table ID | Logical / physical name | PK | FK | Business definition |
+| --- | --- | --- | --- | --- |
+| plateflow_new.slab_material | Slab Material / slab_material | slab_id | None declared | Slab identity, steel grade and actual receipt, verification and release times. |
+| plateflow_new.planned_rolling_instruction | Planned Rolling Instruction / planned_rolling_instruction | plan_id | (slab_id) → slab_material(slab_id) | One rolling plan per slab, its scheduled reheating time and actual submission, approval and release times. |
+| plateflow_new.rolling_instruction | Rolling Instruction / rolling_instruction | instruction_id | (plan_id) → planned_rolling_instruction(plan_id) | An issued rolling instruction for an approved plan. |
+| plateflow_new.as_rolled_material | As Rolled Material / as_rolled_material | material_id | (instruction_id) → rolling_instruction(instruction_id); (slab_id) → slab_material(slab_id) | Allocated mother-material identity and genealogy for a rolling instruction; created_at and updated_at describe database maintenance, not production completion. |
+| plateflow_new.process_code | Process Code / process_code | process_group, code | None declared | Business code meanings within each manufacturing process group. The same code text can have a different meaning in another group. |
+| plateflow_new.equipment | Equipment / equipment | equipment_id | None declared | Equipment identifiers, names and system-maintenance times. Each equipment_code identifies a machine, not a manufacturing step. |
+| plateflow_new.furnace_operation_history | Furnace Operation History / furnace_operation_history | operation_id | (process_group,operation_code) → process_code(process_group,code); (equipment_id) → equipment(equipment_id); (material_id) → as_rolled_material(material_id) | Actual furnace work occurrences for mother materials, retaining repeat work and unfinished intervals. |
+| plateflow_new.rolling_operation_history | Rolling Operation History / rolling_operation_history | operation_id | (process_group,phase_code) → process_code(process_group,code); (equipment_id) → equipment(equipment_id); (material_id) → as_rolled_material(material_id) | Actual rolling phase occurrences for mother materials, retaining repeat work and unfinished intervals. |
+| plateflow_new.plate_material | Plate Material / plate_material | plate_id | (mother_material_id) → as_rolled_material(material_id) | Individual plate-piece identity and mother-material genealogy, with actual identification, release and packing times. |
+| plateflow_new.finishing_operation_history | Finishing Operation History / finishing_operation_history | operation_id | (process_group,operation_code) → process_code(process_group,code); (equipment_id) → equipment(equipment_id); (plate_id) → plate_material(plate_id) | Actual finishing work occurrences for individual plate pieces, including repeated heat treatment after rework. |
+| plateflow_new.dimension_inspection | Dimension Inspection / dimension_inspection | inspection_id | (plate_id) → plate_material(plate_id) | One dimensional inspection record per inspection occurrence. Reinspection has a new inspection_id; PASS/FAIL describes its result. |
+| plateflow_new.plate_quality_review | Plate Quality Review / plate_quality_review | review_id | (plate_id) → plate_material(plate_id) | One quality review record per review round. APPROVED/REWORK describes its outcome; PENDING means the review has not finished. |
 
 ## 3. Column definitions
 
 ### slab_material
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.slab_material.slab_id | Slab Id / slab_id | Synthetic slab identity | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["SL001", "SL002", "SL003"] |
-| plateflow.slab_material.charge_id | Charge Id / charge_id | Upstream charge identity, contextual attribute | Text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | See column definition; no implicit unit | ["CH001", "CH002", "CH003"] |
-| plateflow.slab_material.slab_received_at | Slab Received At / slab_received_at | Actual UTC time of Slab Received. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T14:00:00Z", "2026-03-02T14:00:00Z", "2026-03-03T14:00:00Z"] |
-| plateflow.slab_material.slab_identity_verified_at | Slab Identity Verified At / slab_identity_verified_at | Actual UTC time of Slab Identity Verified. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T15:00:00Z", "2026-03-02T15:00:00Z", "2026-03-03T15:00:00Z"] |
-| plateflow.slab_material.slab_quality_checked_at | Slab Quality Checked At / slab_quality_checked_at | Actual UTC time of Slab Quality Checked. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T16:00:00Z", "2026-03-02T16:00:00Z", "2026-03-03T16:00:00Z"] |
-| plateflow.slab_material.slab_released_for_rolling_at | Slab Released For Rolling At / slab_released_for_rolling_at | Actual UTC time of Slab Released for Rolling. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-02T17:00:00Z", "2026-03-03T17:00:00Z", "2026-03-04T17:00:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.slab_material.slab_id | slab_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique slab identifier; on a plan or mother record, identifies its source slab. |
+| plateflow_new.slab_material.charge_id | charge_id | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Steelmaking charge identifier recorded for material genealogy; no casting time is recorded here. |
+| plateflow_new.slab_material.steel_grade | steel_grade | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Synthetic steel-grade category G1 or G2. |
+| plateflow_new.slab_material.received_at | received_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC time at which the slab was received. |
+| plateflow_new.slab_material.verified_at | verified_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC time at which the slab identity was verified; NULL if not yet verified. |
+| plateflow_new.slab_material.released_at | released_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released. |
 
-- **Declared table constraints:** `CREATE TABLE slab_material (slab_id TEXT PRIMARY KEY, charge_id TEXT NOT NULL, slab_received_at TEXT, slab_identity_verified_at TEXT, slab_quality_checked_at TEXT, slab_released_for_rolling_at TEXT)`
+```sql
+CREATE TABLE slab_material(slab_id TEXT PRIMARY KEY NOT NULL, charge_id TEXT NOT NULL, steel_grade TEXT NOT NULL CHECK(steel_grade IN ('G1','G2')), received_at TEXT NOT NULL, verified_at TEXT, released_at TEXT, CHECK(verified_at IS NULL OR received_at<=verified_at), CHECK(released_at IS NULL OR (verified_at IS NOT NULL AND verified_at<=released_at)));
+```
 
 ### planned_rolling_instruction
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.planned_rolling_instruction.plan_id | Plan Id / plan_id | Plan identity | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["PLAN001", "PLAN002", "PLAN003"] |
-| plateflow.planned_rolling_instruction.slab_id | Slab Id / slab_id | Planned input slab | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / slab_material.slab_id | No SQL default | SQL type and declared constraints: NOT NULL REFERENCES slab_material(slab_id) | See column definition; no implicit unit | ["SL001", "SL002", "SL003"] |
-| plateflow.planned_rolling_instruction.planned_reheat_at | Planned Reheat At / planned_reheat_at | Scheduled furnace charging time | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-02T02:00:00Z", "2026-03-03T02:00:00Z", "2026-03-04T02:00:00Z"] |
-| plateflow.planned_rolling_instruction.rolling_plan_created_at | Rolling Plan Created At / rolling_plan_created_at | Actual UTC time of Rolling Plan Created. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T14:00:00Z", "2026-03-02T14:00:00Z", "2026-03-03T14:00:00Z"] |
-| plateflow.planned_rolling_instruction.rolling_plan_reviewed_at | Rolling Plan Reviewed At / rolling_plan_reviewed_at | Actual UTC time of Rolling Plan Reviewed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T15:00:00Z", "2026-03-02T15:00:00Z", "2026-03-03T15:00:00Z"] |
-| plateflow.planned_rolling_instruction.rolling_plan_approved_at | Rolling Plan Approved At / rolling_plan_approved_at | Actual UTC time of Rolling Plan Approved. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T16:00:00Z", "2026-03-02T16:00:00Z", "2026-03-03T16:00:00Z"] |
-| plateflow.planned_rolling_instruction.rolling_plan_released_at | Rolling Plan Released At / rolling_plan_released_at | Actual UTC time of Rolling Plan Released. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-02T17:00:00Z", "2026-03-03T17:00:00Z", "2026-03-04T17:00:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.planned_rolling_instruction.plan_id | plan_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique rolling-plan identifier; on an instruction, references its plan. |
+| plateflow_new.planned_rolling_instruction.slab_id | slab_id | TEXT | True |  | slab_material.slab_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique slab identifier; on a plan or mother record, identifies its source slab. |
+| plateflow_new.planned_rolling_instruction.planned_reheat_at | planned_reheat_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Scheduled UTC reheating time; a schedule does not establish that reheating occurred. |
+| plateflow_new.planned_rolling_instruction.submitted_at | submitted_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC rolling-plan submission time. |
+| plateflow_new.planned_rolling_instruction.approved_at | approved_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC rolling-plan approval time; NULL if not yet approved. |
+| plateflow_new.planned_rolling_instruction.released_at | released_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released. |
 
-- **Declared table constraints:** `CREATE TABLE planned_rolling_instruction (plan_id TEXT PRIMARY KEY, slab_id TEXT NOT NULL REFERENCES slab_material(slab_id), planned_reheat_at TEXT NOT NULL, rolling_plan_created_at TEXT, rolling_plan_reviewed_at TEXT, rolling_plan_approved_at TEXT, rolling_plan_released_at TEXT)`
+```sql
+CREATE TABLE planned_rolling_instruction(plan_id TEXT PRIMARY KEY NOT NULL, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), planned_reheat_at TEXT NOT NULL, submitted_at TEXT NOT NULL, approved_at TEXT, released_at TEXT, CHECK(approved_at IS NULL OR submitted_at<=approved_at), CHECK(released_at IS NULL OR (approved_at IS NOT NULL AND approved_at<=released_at)));
+```
 
 ### rolling_instruction
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.rolling_instruction.instruction_id | Instruction Id / instruction_id | Synthetic row identity | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["RI001", "RI002", "RI003"] |
-| plateflow.rolling_instruction.plan_id | Plan Id / plan_id | Synthetic explicit link to plan | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / planned_rolling_instruction.plan_id | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id) | See column definition; no implicit unit | ["PLAN001", "PLAN002", "PLAN003"] |
-| plateflow.rolling_instruction.released_at | Released At / released_at | Actual instruction release time | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-02T00:00:00Z", "2026-03-03T00:00:00Z", "2026-03-04T00:00:00Z"] |
-| plateflow.rolling_instruction.rolling_instruction_acknowledged_at | Rolling Instruction Acknowledged At / rolling_instruction_acknowledged_at | Actual UTC time of Rolling Instruction Acknowledged. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-02T00:05:00Z", "2026-03-03T00:05:00Z", "2026-03-04T00:05:00Z"] |
-| plateflow.rolling_instruction.rolling_setup_verified_at | Rolling Setup Verified At / rolling_setup_verified_at | Actual UTC time of Rolling Setup Verified. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-03T00:10:00Z", "2026-03-04T00:10:00Z", "2026-03-05T00:10:00Z"] |
-| plateflow.rolling_instruction.rolling_work_started_at | Rolling Work Started At / rolling_work_started_at | Actual UTC time of Rolling Work Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T05:55:00Z", "2026-03-05T05:55:00Z", "2026-03-06T05:55:00Z"] |
-| plateflow.rolling_instruction.rolling_instruction_closed_at | Rolling Instruction Closed At / rolling_instruction_closed_at | Actual UTC time of Rolling Instruction Closed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T06:05:00Z", "2026-03-05T06:05:00Z", "2026-03-06T06:05:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.rolling_instruction.instruction_id | instruction_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique rolling-instruction identifier; on a mother record, references the instruction allocating it. |
+| plateflow_new.rolling_instruction.plan_id | plan_id | TEXT | True |  | planned_rolling_instruction.plan_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique rolling-plan identifier; on an instruction, references its plan. |
+| plateflow_new.rolling_instruction.issued_at | issued_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC rolling-instruction issue time. |
 
-- **Declared table constraints:** `CREATE TABLE rolling_instruction (instruction_id TEXT PRIMARY KEY, plan_id TEXT NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id), released_at TEXT NOT NULL, rolling_instruction_acknowledged_at TEXT, rolling_setup_verified_at TEXT, rolling_work_started_at TEXT, rolling_instruction_closed_at TEXT)`
+```sql
+CREATE TABLE rolling_instruction(instruction_id TEXT PRIMARY KEY NOT NULL, plan_id TEXT NOT NULL UNIQUE REFERENCES planned_rolling_instruction(plan_id), issued_at TEXT NOT NULL);
+```
 
 ### as_rolled_material
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.as_rolled_material.material_id | Material Id / material_id | Mother material identity | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["M001", "M002", "M003"] |
-| plateflow.as_rolled_material.as_rolled_plate_no | As Rolled Plate No / as_rolled_plate_no | Mother as-rolled plate number | Text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE | See column definition; no implicit unit | ["AR001", "AR002", "AR003"] |
-| plateflow.as_rolled_material.slab_id | Slab Id / slab_id | Source slab | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / slab_material.slab_id | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE REFERENCES slab_material(slab_id) | See column definition; no implicit unit | ["SL001", "SL002", "SL003"] |
-| plateflow.as_rolled_material.instruction_id | Instruction Id / instruction_id | Synthetic explicit link to released instruction | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / rolling_instruction.instruction_id | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id) | See column definition; no implicit unit | ["RI001", "RI002", "RI003"] |
-| plateflow.as_rolled_material.furnace_charged_at | Furnace Charged At / furnace_charged_at | Actual furnace material charging | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-03T04:00:00Z", "2026-03-04T03:00:00Z", "2026-03-05T02:00:00Z"] |
-| plateflow.as_rolled_material.crop_shear_passed_at | Crop Shear Passed At / crop_shear_passed_at | Actual crop-shear passage | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T09:00:00Z", "2026-03-06T09:00:00Z", "2026-03-07T09:00:00Z"] |
-| plateflow.as_rolled_material.latest_operation_completed_at | Latest Operation Completed At / latest_operation_completed_at | Snapshot of latest mother-material operation, not always rolling completion | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T06:00:00Z", "2026-03-05T11:00:00Z", "2026-03-06T11:00:00Z"] |
-| plateflow.as_rolled_material.created_at | Created At / created_at | Technical database creation timestamp | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-01T23:00:00Z", "2026-03-02T23:00:00Z", "2026-03-03T23:00:00Z"] |
-| plateflow.as_rolled_material.updated_at | Updated At / updated_at | Technical database update timestamp | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-02T22:00:00Z", "2026-03-03T22:00:00Z", "2026-03-04T22:00:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.as_rolled_material.material_id | material_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique mother-material identifier; on a work record, references the mother material processed. |
+| plateflow_new.as_rolled_material.plate_no | plate_no | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique business plate number within this table; mother and piece numbers have separate ranges. |
+| plateflow_new.as_rolled_material.slab_id | slab_id | TEXT | True |  | slab_material.slab_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique slab identifier; on a plan or mother record, identifies its source slab. |
+| plateflow_new.as_rolled_material.instruction_id | instruction_id | TEXT | True |  | rolling_instruction.instruction_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique rolling-instruction identifier; on a mother record, references the instruction allocating it. |
+| plateflow_new.as_rolled_material.created_at | created_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | UTC database record-creation time; this field does not document a production action. |
+| plateflow_new.as_rolled_material.updated_at | updated_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | UTC database maintenance time; this field does not document a production action. |
 
-- **Declared table constraints:** `CREATE TABLE as_rolled_material (material_id TEXT PRIMARY KEY, as_rolled_plate_no TEXT NOT NULL UNIQUE, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), instruction_id TEXT NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id), furnace_charged_at TEXT , crop_shear_passed_at TEXT , latest_operation_completed_at TEXT , created_at TEXT NOT NULL, updated_at TEXT NOT NULL)`
+```sql
+CREATE TABLE as_rolled_material(material_id TEXT PRIMARY KEY NOT NULL, plate_no TEXT NOT NULL UNIQUE, slab_id TEXT NOT NULL UNIQUE REFERENCES slab_material(slab_id), instruction_id TEXT NOT NULL UNIQUE REFERENCES rolling_instruction(instruction_id), created_at TEXT NOT NULL, updated_at TEXT NOT NULL, CHECK(created_at<=updated_at));
+```
 
-### furnace_charge_tracking
+### process_code
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.furnace_charge_tracking.tracking_id | Tracking Id / tracking_id | Tracking occurrence ID | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["TRM002", "TRM003", "TRM004"] |
-| plateflow.furnace_charge_tracking.material_id | Material Id / material_id | Tracked material | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / as_rolled_material.material_id | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE REFERENCES as_rolled_material(material_id) | See column definition; no implicit unit | ["M002", "M003", "M004"] |
-| plateflow.furnace_charge_tracking.yard_instruction_received_at | Yard Instruction Received At / yard_instruction_received_at | Actual yard instruction receipt | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-03T01:00:00Z", "2026-03-04T01:00:00Z", "2026-03-05T01:00:00Z"] |
-| plateflow.furnace_charge_tracking.lot_charging_started_at | Lot Charging Started At / lot_charging_started_at | Furnace lot charging start; different event granularity from material entry | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-03T01:30:00Z", "2026-03-04T01:30:00Z", "2026-03-05T01:30:00Z"] |
-| plateflow.furnace_charge_tracking.furnace_charge_assigned_at | Furnace Charge Assigned At / furnace_charge_assigned_at | Actual UTC time of Furnace Charge Assigned. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-03T01:05:00Z", "2026-03-04T01:05:00Z", "2026-03-05T01:05:00Z"] |
-| plateflow.furnace_charge_tracking.furnace_charge_confirmed_at | Furnace Charge Confirmed At / furnace_charge_confirmed_at | Actual UTC time of Furnace Charge Confirmed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T03:01:00Z", "2026-03-05T02:01:00Z", "2026-03-06T04:01:00Z"] |
-| plateflow.furnace_charge_tracking.furnace_discharge_confirmed_at | Furnace Discharge Confirmed At / furnace_discharge_confirmed_at | Actual UTC time of Furnace Discharge Confirmed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T05:50:00Z", "2026-03-05T05:50:00Z", "2026-03-06T05:50:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.process_code.process_group | process_group | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK. |
+| plateflow_new.process_code.code | code | TEXT | True | 2 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Business code within a process group; the pair (process_group,code) uniquely identifies its meaning. |
+| plateflow_new.process_code.meaning | meaning | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | English business meaning of the code in the specified process group. |
 
-- **Declared table constraints:** `CREATE TABLE furnace_charge_tracking (tracking_id TEXT PRIMARY KEY, material_id TEXT NOT NULL UNIQUE REFERENCES as_rolled_material(material_id), yard_instruction_received_at TEXT NOT NULL, lot_charging_started_at TEXT NOT NULL, furnace_charge_assigned_at TEXT, furnace_charge_confirmed_at TEXT, furnace_discharge_confirmed_at TEXT)`
+```sql
+CREATE TABLE process_code(process_group TEXT NOT NULL CHECK(process_group IN ('FURNACE','ROLLING','FINISHING')), code TEXT NOT NULL, meaning TEXT NOT NULL, PRIMARY KEY(process_group,code));
+```
 
-### cutting_finishing_instruction
+### equipment
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.cutting_finishing_instruction.instruction_id | Instruction Id / instruction_id | Synthetic instruction ID | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["CIM004", "CIM005", "CIM006"] |
-| plateflow.cutting_finishing_instruction.material_id | Material Id / material_id | Directed mother material | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / as_rolled_material.material_id | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE REFERENCES as_rolled_material(material_id) | See column definition; no implicit unit | ["M004", "M005", "M006"] |
-| plateflow.cutting_finishing_instruction.released_at | Released At / released_at | Actual cutting/finishing instruction release | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T10:00:00Z", "2026-03-06T10:00:00Z", "2026-03-07T10:00:00Z"] |
-| plateflow.cutting_finishing_instruction.cut_method | Cut Method / cut_method | Synthetic split-cut method code | Text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL CHECK(cut_method='SPLIT') | See column definition; no implicit unit | ["SPLIT"] |
-| plateflow.cutting_finishing_instruction.cutting_instruction_acknowledged_at | Cutting Instruction Acknowledged At / cutting_instruction_acknowledged_at | Actual UTC time of Cutting Instruction Acknowledged. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T10:05:00Z", "2026-03-06T10:05:00Z", "2026-03-07T10:05:00Z"] |
-| plateflow.cutting_finishing_instruction.cutting_setup_verified_at | Cutting Setup Verified At / cutting_setup_verified_at | Actual UTC time of Cutting Setup Verified. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T10:10:00Z", "2026-03-06T10:10:00Z", "2026-03-07T10:10:00Z"] |
-| plateflow.cutting_finishing_instruction.cutting_work_started_at | Cutting Work Started At / cutting_work_started_at | Actual UTC time of Cutting Work Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T10:55:00Z", "2026-03-06T10:55:00Z", "2026-03-07T10:55:00Z"] |
-| plateflow.cutting_finishing_instruction.cutting_instruction_closed_at | Cutting Instruction Closed At / cutting_instruction_closed_at | Actual UTC time of Cutting Instruction Closed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-06T11:05:00Z", "2026-03-07T11:05:00Z", "2026-03-11T11:05:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.equipment.equipment_id | equipment_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique equipment-unit identifier; on a work record, references the unit that performed the work. |
+| plateflow_new.equipment.equipment_code | equipment_code | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Human-readable machine code; identifies the machine, not the work performed. |
+| plateflow_new.equipment.equipment_name | equipment_name | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | English equipment-unit name. |
+| plateflow_new.equipment.created_at | created_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | UTC database record-creation time; this field does not document a production action. |
+| plateflow_new.equipment.updated_at | updated_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | UTC database maintenance time; this field does not document a production action. |
 
-- **Declared table constraints:** `CREATE TABLE cutting_finishing_instruction (instruction_id TEXT PRIMARY KEY, material_id TEXT NOT NULL UNIQUE REFERENCES as_rolled_material(material_id), released_at TEXT NOT NULL, cut_method TEXT NOT NULL CHECK(cut_method='SPLIT'), cutting_instruction_acknowledged_at TEXT, cutting_setup_verified_at TEXT, cutting_work_started_at TEXT, cutting_instruction_closed_at TEXT)`
+```sql
+CREATE TABLE equipment(equipment_id TEXT PRIMARY KEY NOT NULL, equipment_code TEXT NOT NULL UNIQUE, equipment_name TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, CHECK(created_at<=updated_at));
+```
+
+### furnace_operation_history
+
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.furnace_operation_history.operation_id | operation_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique work-occurrence identifier within this table; repeat work receives a new identifier. |
+| plateflow_new.furnace_operation_history.material_id | material_id | TEXT | True |  | as_rolled_material.material_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique mother-material identifier; on a work record, references the mother material processed. |
+| plateflow_new.furnace_operation_history.process_group | process_group | TEXT | True |  | process_code.process_group | 'FURNACE' | Unbounded SQLite TEXT | Not applicable | Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK. |
+| plateflow_new.furnace_operation_history.operation_code | operation_code | TEXT | True |  | process_code.code | No SQL default | Unbounded SQLite TEXT | Not applicable | Kind of manufacturing work performed, as defined by the matching process_group/code entry. |
+| plateflow_new.furnace_operation_history.equipment_id | equipment_id | TEXT | True |  | equipment.equipment_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique equipment-unit identifier; on a work record, references the unit that performed the work. |
+| plateflow_new.furnace_operation_history.started_at | started_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC start of this manufacturing work occurrence or quality-review round. |
+| plateflow_new.furnace_operation_history.finished_at | finished_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished. |
+
+```sql
+CREATE TABLE furnace_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), process_group TEXT NOT NULL DEFAULT 'FURNACE' CHECK(process_group='FURNACE'), operation_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,operation_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at));
+```
+
+### rolling_operation_history
+
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.rolling_operation_history.operation_id | operation_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique work-occurrence identifier within this table; repeat work receives a new identifier. |
+| plateflow_new.rolling_operation_history.material_id | material_id | TEXT | True |  | as_rolled_material.material_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique mother-material identifier; on a work record, references the mother material processed. |
+| plateflow_new.rolling_operation_history.process_group | process_group | TEXT | True |  | process_code.process_group | 'ROLLING' | Unbounded SQLite TEXT | Not applicable | Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK. |
+| plateflow_new.rolling_operation_history.phase_code | phase_code | TEXT | True |  | process_code.code | No SQL default | Unbounded SQLite TEXT | Not applicable | Rolling phase performed, as defined by the matching process_group/code entry. |
+| plateflow_new.rolling_operation_history.equipment_id | equipment_id | TEXT | True |  | equipment.equipment_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique equipment-unit identifier; on a work record, references the unit that performed the work. |
+| plateflow_new.rolling_operation_history.started_at | started_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC start of this manufacturing work occurrence or quality-review round. |
+| plateflow_new.rolling_operation_history.finished_at | finished_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished. |
+
+```sql
+CREATE TABLE rolling_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), process_group TEXT NOT NULL DEFAULT 'ROLLING' CHECK(process_group='ROLLING'), phase_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,phase_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at));
+```
 
 ### plate_material
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.plate_material.plate_material_id | Plate Material Id / plate_material_id | Finished-piece material identity | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["P004-1", "P004-2", "P004-3"] |
-| plateflow.plate_material.plate_no | Plate No / plate_no | Individual Plate number | Text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE | See column definition; no implicit unit | ["PLP004-1", "PLP004-2", "PLP004-3"] |
-| plateflow.plate_material.parent_as_rolled_plate_no | Parent As Rolled Plate No / parent_as_rolled_plate_no | Mother as-rolled plate number; synthetic FK policy | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / as_rolled_material.as_rolled_plate_no | No SQL default | SQL type and declared constraints: NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no) | See column definition; no implicit unit | ["AR004", "AR005", "AR006"] |
-| plateflow.plate_material.dimension_inspected_at | Dimension Inspected At / dimension_inspected_at | Actual dimensional inspection timestamp | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T13:36:00Z", "2026-03-05T13:42:00Z", "2026-03-05T13:48:00Z"] |
-| plateflow.plate_material.latest_operation_completed_at | Latest Operation Completed At / latest_operation_completed_at | Latest piece operation snapshot | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T14:06:00Z", "2026-03-05T14:12:00Z", "2026-03-05T14:18:00Z"] |
-| plateflow.plate_material.plate_piece_identified_at | Plate Piece Identified At / plate_piece_identified_at | Actual UTC time of Plate Piece Identified. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T12:36:00Z", "2026-03-05T12:42:00Z", "2026-03-05T12:48:00Z"] |
-| plateflow.plate_material.plate_quality_released_at | Plate Quality Released At / plate_quality_released_at | Actual UTC time of Plate Quality Released. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T14:36:00Z", "2026-03-05T14:42:00Z", "2026-03-05T14:48:00Z"] |
-| plateflow.plate_material.plate_packed_at | Plate Packed At / plate_packed_at | Actual UTC time of Plate Packed. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T15:42:00Z", "2026-03-05T15:48:00Z", "2026-03-06T15:36:00Z"] |
-| plateflow.plate_material.plate_quality_review_started_at | Plate Quality Review Started At / plate_quality_review_started_at | Actual UTC time of Plate Quality Review Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T14:21:00Z", "2026-03-05T14:27:00Z", "2026-03-05T14:33:00Z"] |
-| plateflow.plate_material.plate_packing_started_at | Plate Packing Started At / plate_packing_started_at | Actual UTC time of Plate Packing Started. NULL means this step has not occurred. Authored lifecycle addition; not an original manufacturer field. | Date/time text / TEXT | Not bounded by declared SQLite type | no |  /  | No SQL default | SQL type and declared constraints: See table DDL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-05T15:27:00Z", "2026-03-05T15:33:00Z", "2026-03-06T15:21:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.plate_material.plate_id | plate_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned. |
+| plateflow_new.plate_material.plate_no | plate_no | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique business plate number within this table; mother and piece numbers have separate ranges. |
+| plateflow_new.plate_material.mother_material_id | mother_material_id | TEXT | True |  | as_rolled_material.material_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Mother material from which the individual plate piece was derived. |
+| plateflow_new.plate_material.identified_at | identified_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC time at which the plate piece was identified after rolling. |
+| plateflow_new.plate_material.released_at | released_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released. |
+| plateflow_new.plate_material.packed_at | packed_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC packing-completion time; NULL if not yet packed. |
 
-- **Declared table constraints:** `CREATE TABLE plate_material (plate_material_id TEXT PRIMARY KEY, plate_no TEXT NOT NULL UNIQUE, parent_as_rolled_plate_no TEXT NOT NULL REFERENCES as_rolled_material(as_rolled_plate_no), dimension_inspected_at TEXT , latest_operation_completed_at TEXT , plate_piece_identified_at TEXT, plate_quality_released_at TEXT, plate_packed_at TEXT, plate_quality_review_started_at TEXT, plate_packing_started_at TEXT)`
+```sql
+CREATE TABLE plate_material(plate_id TEXT PRIMARY KEY NOT NULL, plate_no TEXT NOT NULL UNIQUE, mother_material_id TEXT NOT NULL REFERENCES as_rolled_material(material_id), identified_at TEXT NOT NULL, released_at TEXT, packed_at TEXT, CHECK(released_at IS NULL OR identified_at<=released_at), CHECK(packed_at IS NULL OR (released_at IS NOT NULL AND released_at<=packed_at)));
+```
 
-### operation_code
+### finishing_operation_history
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.operation_code.code | Code / code | Synthetic process code | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["CO", "HF", "HT"] |
-| plateflow.operation_code.meaning | Meaning / meaning | English operation meaning | Text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL UNIQUE | See column definition; no implicit unit | ["Cooling Completed", "Heat Treatment Completed", "Heating Completed"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.finishing_operation_history.operation_id | operation_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique work-occurrence identifier within this table; repeat work receives a new identifier. |
+| plateflow_new.finishing_operation_history.plate_id | plate_id | TEXT | True |  | plate_material.plate_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned. |
+| plateflow_new.finishing_operation_history.process_group | process_group | TEXT | True |  | process_code.process_group | 'FINISHING' | Unbounded SQLite TEXT | Not applicable | Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK. |
+| plateflow_new.finishing_operation_history.operation_code | operation_code | TEXT | True |  | process_code.code | No SQL default | Unbounded SQLite TEXT | Not applicable | Kind of manufacturing work performed, as defined by the matching process_group/code entry. |
+| plateflow_new.finishing_operation_history.equipment_id | equipment_id | TEXT | True |  | equipment.equipment_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique equipment-unit identifier; on a work record, references the unit that performed the work. |
+| plateflow_new.finishing_operation_history.started_at | started_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC start of this manufacturing work occurrence or quality-review round. |
+| plateflow_new.finishing_operation_history.finished_at | finished_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished. |
 
-- **Declared table constraints:** `CREATE TABLE operation_code (code TEXT PRIMARY KEY, meaning TEXT NOT NULL UNIQUE)`
+```sql
+CREATE TABLE finishing_operation_history(operation_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), process_group TEXT NOT NULL DEFAULT 'FINISHING' CHECK(process_group='FINISHING'), operation_code TEXT NOT NULL, equipment_id TEXT NOT NULL REFERENCES equipment(equipment_id), started_at TEXT NOT NULL, finished_at TEXT, FOREIGN KEY(process_group,operation_code) REFERENCES process_code(process_group,code), CHECK(finished_at IS NULL OR started_at<finished_at));
+```
 
-### material_operation_history
+### dimension_inspection
 
-| Element ID | Logical / physical name | Definition | Representation / SQL type | Length | Required | PK / FK | Default | Value domain / constraints | Unit | Examples |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| plateflow.material_operation_history.transaction_id | Transaction Id / transaction_id | Operation occurrence ID | Identifier / TEXT | Not bounded by declared SQLite type | yes | 1 /  | No SQL default | SQL type and declared constraints: PRIMARY KEY | See column definition; no implicit unit | ["LC:furnace_charge_tracking:TRM003:3", "LC:furnace_charge_tracking:TRM004:3", "LC:furnace_charge_tracking:TRM005:3"] |
-| plateflow.material_operation_history.material_id | Material Id / material_id | Mother or piece material identity; validated against both material tables | Text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | See column definition; no implicit unit | ["M003", "M004", "P004-1"] |
-| plateflow.material_operation_history.operation_code | Operation Code / operation_code | Synthetic factory/process code | Identifier / TEXT | Not bounded by declared SQLite type | yes |  / operation_code.code | No SQL default | SQL type and declared constraints: NOT NULL REFERENCES operation_code(code) | See column definition; no implicit unit | ["RL", "CO", "LE"] |
-| plateflow.material_operation_history.started_at | Started At / started_at | Actual operation start time | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T05:30:00Z", "2026-03-05T05:30:00Z", "2026-03-05T06:30:00Z"] |
-| plateflow.material_operation_history.completed_at | Completed At / completed_at | Actual operation completion time | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL CHECK(completed_at > started_at) | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T06:00:00Z", "2026-03-05T06:00:00Z", "2026-03-05T07:00:00Z"] |
-| plateflow.material_operation_history.created_at | Created At / created_at | Technical record insertion time | Date/time text / TEXT | Not bounded by declared SQLite type | yes |  /  | No SQL default | SQL type and declared constraints: NOT NULL | UTC for actual event timestamps; source birth dates and planned dates retain their documented meaning | ["2026-03-04T06:06:00Z", "2026-03-05T06:06:00Z", "2026-03-05T07:06:00Z"] |
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.dimension_inspection.inspection_id | inspection_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique dimensional-inspection occurrence identifier; distinct for each reinspection. |
+| plateflow_new.dimension_inspection.plate_id | plate_id | TEXT | True |  | plate_material.plate_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned. |
+| plateflow_new.dimension_inspection.inspected_at | inspected_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC dimensional-inspection completion time. |
+| plateflow_new.dimension_inspection.result_code | result_code | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Inspection outcome PASS or FAIL; either value represents a completed dimensional inspection. |
+| plateflow_new.dimension_inspection.thickness_mm | thickness_mm | REAL | True |  |  | No SQL default | Not applicable | mm | Synthetic measured thickness in millimetres. |
 
-- **Declared table constraints:** `CREATE TABLE material_operation_history (transaction_id TEXT PRIMARY KEY, material_id TEXT NOT NULL, operation_code TEXT NOT NULL REFERENCES operation_code(code), started_at TEXT NOT NULL, completed_at TEXT NOT NULL CHECK(completed_at > started_at), created_at TEXT NOT NULL)`
+```sql
+CREATE TABLE dimension_inspection(inspection_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), inspected_at TEXT NOT NULL, result_code TEXT NOT NULL CHECK(result_code IN ('PASS','FAIL')), thickness_mm REAL NOT NULL CHECK(thickness_mm>0));
+```
 
-### Business meanings and extraction rules
+### plate_quality_review
 
-- Original source layer: Plans, released instructions, tracking records, lifecycle snapshots, individual Plate records and operation history are separate.
-- Original source layer: One slab supplies one mother material in this dataset. A completed mother material yields one to three individual Plate materials.
-- Original source layer: Default mother-material lifecycle includes its own events and all recorded events of its descendant pieces; each occurrence is included once.
-- Original source layer: Plan times, lot charging start and technical timestamps are not part of the selected default material lifecycle. Lot-level analysis is outside this dataset.
-- Original source layer: Rolling completion is obtained from operation-history code RL, not from the latest-operation snapshot column.
-- Original source layer: Operation history preserves repeated heat treatment and inspection. Dimensional inspection and general inspection decision are distinct activities.
-- Original source layer: Completed route: rolling, cooling, leveling, crop-shear passage, cutting instruction, split cutting, piece-level treatment/inspection.
-- Original source layer: Factory codes and relationship counts are synthetic assumptions. Original metadata does not declare data types, PK/FK or allowed code values.
-- Original source layer: A mother-material identifier and a Plate-material identifier are distinct. The parent as-rolled plate number identifies the mother-to-piece relationship.
-- Original source layer: No upstream casting or shipping timestamps are recorded.
-- Only actual occurred_at times generate lifecycle events. Planned dates and technical timestamps remain excluded.
-- Incomplete cases and conditional revision branches are intentional; no final action is inferred for an open case.
-- Single-occurrence milestones use actual time columns on the existing business object. NULL means the milestone did not occur.
-- Repeatable heating completions and surface checks use HF/SF codes in existing material_operation_history; activity meanings are in operation_code.
-- Added milestone columns and HF/SF codes are authored synthetic extensions, not original manufacturer metadata.
-- Event-to-case attribution uses existing FK/genealogy joins; there is no persisted lifecycle_case_link table.
+| Element ID | Column | SQL type | Required | PK position | FK | Default | Length | Unit | Definition |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| plateflow_new.plate_quality_review.review_id | review_id | TEXT | True | 1 |  | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique quality-review round identifier; distinct for each subsequent review. |
+| plateflow_new.plate_quality_review.plate_id | plate_id | TEXT | True |  | plate_material.plate_id | No SQL default | Unbounded SQLite TEXT | Not applicable | Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned. |
+| plateflow_new.plate_quality_review.started_at | started_at | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC start of this manufacturing work occurrence or quality-review round. |
+| plateflow_new.plate_quality_review.finished_at | finished_at | TEXT | False |  |  | No SQL default | Unbounded SQLite TEXT | UTC | Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished. |
+| plateflow_new.plate_quality_review.review_status | review_status | TEXT | True |  |  | No SQL default | Unbounded SQLite TEXT | Not applicable | APPROVED or REWORK for a finished quality review, PENDING for an unfinished review. |
 
-### PlateFlow activity storage in existing business tables
+```sql
+CREATE TABLE plate_quality_review(review_id TEXT PRIMARY KEY NOT NULL, plate_id TEXT NOT NULL REFERENCES plate_material(plate_id), started_at TEXT NOT NULL, finished_at TEXT, review_status TEXT NOT NULL CHECK(review_status IN ('APPROVED','REWORK','PENDING')), CHECK((review_status='PENDING' AND finished_at IS NULL) OR (review_status IN ('APPROVED','REWORK') AND finished_at IS NOT NULL AND started_at<finished_at)));
+```
 
-- Nine original table roles are retained. Generic activity tables and the persisted case-link index are removed.
-- Actual one-time milestones use nullable timestamp columns on their existing business objects.
-- Repeatable heating completions and surface checks use HF/SF rows in material_operation_history, with meanings in operation_code.
-- Technical timestamps, planned times and latest-operation snapshots remain excluded as separate events.
-- Milestone additions and code meanings are authored assumptions, not claimed original source fields.
-- Existing FK and material-genealogy paths derive event-to-case links directly in SQL.
+### Business codes
 
-| Object | Activities | Storage |
-|---|---|---|
-| slab_material | Slab Received; Slab Identity Verified; Slab Quality Checked; Slab Released for Rolling | Existing slab_material milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| planned_rolling_instruction | Rolling Plan Created; Rolling Plan Reviewed; Rolling Plan Approved; Rolling Plan Released | Existing planned_rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| rolling_instruction | Rolling Instruction Acknowledged; Rolling Setup Verified; Rolling Work Started; Rolling Instruction Closed | Existing rolling_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Heating Completed; Furnace Discharge Confirmed | Existing furnace_charge_tracking milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Setup Verified; Cutting Work Started; Cutting Instruction Closed | Existing cutting_finishing_instruction milestone columns; repeatable checks/heating use material_operation_history where applicable |
-| plate_material | Plate Piece Identified; Plate Surface Checked; Plate Quality Released; Plate Packed; Plate Quality Review Started; Plate Packing Started | Existing plate_material milestone columns; repeatable checks/heating use material_operation_history where applicable |
+| Process group | Code | Business meaning |
+| --- | --- | --- |
+| FURNACE | CH | Furnace charging |
+| FURNACE | HT | Furnace heating |
+| FURNACE | DS | Furnace discharge |
+| ROLLING | RR | Rough rolling |
+| ROLLING | FR | Finish rolling |
+| FINISHING | LEV | Leveling |
+| FINISHING | HT | Heat treatment |
+| FINISHING | SF | Surface finishing |
+
+### Business rules
+
+- Each plan concerns one slab. Each issued instruction refers to one plan. Mother and plate-piece identifiers refer to distinct physical materials.
+- A mother-material identity can be allocated before work finishes. Database creation and maintenance times are not evidence of production completion.
+- Every work occurrence retains its own identifier. Repeat work, reinspection and later review rounds retain separate records.
+- Each work-history table is restricted to its declared process group. Code meanings are resolved within that group.
+- Review outcome and inspection result describe the result of the same kind of business record; they do not change its business purpose.
+- Actual start times may exist without finish times. NULL finish means unfinished work; NULL release/packing means not yet released/packed.
+- Scheduled reheating time is a plan and may differ from actual heating time.
+- An approved quality review is required before piece release; packing follows release.
+- All business records, identifiers, times and measurements are synthetic.

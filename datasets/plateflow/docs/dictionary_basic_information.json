@@ -1,17 +1,12 @@
 {
-  "dictionary_id": "NL2EVENTLOG:plateflow",
-  "version": "2026-10-12",
-  "name": "PlateFlow",
-  "description": "English synthetic relational database for query-conditioned process-view and event-log extraction.",
+  "dictionary_id": "NL2EVENTLOG:plateflow_new",
+  "name": "PlateFlow New",
+  "version": "2026-10-29",
   "language": "en",
-  "timezone": "UTC",
   "dbms": "SQLite",
-  "namespace": "plateflow",
-  "timestamp_columns": 39,
-  "event_timestamp_columns": 31,
-  "maintainer": "NL2EVENTLOG project maintainers",
-  "registration_status": "Project-maintained draft; not ISO-registered or certified",
-  "source_policy": "Source definitions are retained and authored lifecycle additions are identified in source/design documents.",
-  "standards_profile": "Project profile informed by ISO/IEC 11179-3 and 11179-4 public abstracts; no full clause-by-clause conformance assessment.",
-  "layout": "1 Dictionary basic information; 2 Table definitions; 3 Column definitions"
+  "timezone": "UTC",
+  "description": "Synthetic plate-manufacturing business records with explicitly declared identifiers and relationships.",
+  "status": "Project-maintained synthetic business-data definitions",
+  "standards_profile": "Three-part project profile informed by public ISO/IEC 11179-3 and 11179-4 scope statements; not a certification or full conformance assessment.",
+  "source_policy": "Schema-informed manufacturing simulation; authored additions are documented separately."
 }

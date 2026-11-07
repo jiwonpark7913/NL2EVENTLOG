@@ -1,104 +1,122 @@
-# PlateFlow
+# PlateFlow New dataset
 
-- **Situation:** Slabs are checked and released, rolling plans and instructions progress through approval and execution, furnace tracking records heating stages, and cut pieces progress through inspection, quality release and packing.
-- **Source:** Selected metadata from a Korean manufacturing company. Original source columns and keys are preserved.
-- **Extension:** New milestone columns, operation codes and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 9 tables; 8 object / case types; 39 activity types; 39 timestamp columns (31 event timestamp columns); 1108 distinct events.
-- **Gold:** 40 answerable question-specific CSV logs out of 42 questions. Paired requests share the same expected content.
-- **Execution:** Run `python datasets/plateflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
-
-## Dataset counts
+- **Purpose:** test event-source discovery and activity-carrier-based row/column classification from the database and an ordinary business dictionary.
+- **Domain:** synthetic plate production informed by the existing Korean manufacturing-company metadata adaptation. This is an independent authored variant, not observed production data or a lossless copy of the original schema.
+- **Build:** `python datasets/plateflow_new/build.py` from the repository root. **Validate:** `python datasets/plateflow_new/validate.py`.
+- Simulation uses the standard library; PNG rendering additionally uses PyMuPDF. No external LLM API is needed to rebuild frozen question pairs.
 
 | Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| PlateFlow | 9 | 8 | 39 | 39 | 31 | 1108 | 44 | 42 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PlateFlow New | 12 | 11 | 20 | 24 | 15 | 620 | 54 | 50 |
 
-- **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
-- **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
-- Activity-history tables, the case-link index and code reference tables do not add object types.
-- Individual cases may contain fewer activities because of incomplete work or conditional branches.
+## Event storage answers — author reference only
+
+- Candidate discovery considers timestamp presence, then distinguishes actual business times from plans and database maintenance.
+- Row encoding means activity kind is selected by a carrier value. Having both start and finish times does not change that classification.
+- Column encoding means no activity-kind carrier exists; the table or timestamp-column business meaning determines the activity. Repeated records or a single timestamp do not make a table row encoded.
+- Timestamp count alone does not establish a mixed representation. The table below classifies base activity identity and states the emitted phase profile separately. This variant contains 3 row tables, 6 column tables and 3 tables with no direct business events.
+- Only this README explicitly lists table classification and activity carriers. Dictionary JSON, Markdown and CSV have no such annotations or table-to-activity extraction answers.
+
+| Table | Base activity identity | Activity carrier | Stored time columns | Gold time columns | Emitted phase profile |
+| --- | --- | --- | --- | --- | --- |
+| slab_material | Column | — | received_at, verified_at, released_at | received_at, released_at, verified_at | point milestones |
+| planned_rolling_instruction | Column | — | planned_reheat_at, submitted_at, approved_at, released_at | approved_at, released_at, submitted_at | point milestones |
+| rolling_instruction | Column | — | issued_at | issued_at | point milestones |
+| as_rolled_material | No business events | — | created_at, updated_at | — | none |
+| process_code | No business events | — | — | — | none |
+| equipment | No business events | — | created_at, updated_at | — | none |
+| furnace_operation_history | Row | operation_code | started_at, finished_at | finished_at | completion only |
+| rolling_operation_history | Row | phase_code | started_at, finished_at | finished_at | completion only |
+| plate_material | Column | — | identified_at, released_at, packed_at | identified_at, packed_at, released_at | point milestones |
+| finishing_operation_history | Row | operation_code | started_at, finished_at | finished_at | completion only |
+| dimension_inspection | Column | — | inspected_at | inspected_at | point milestones |
+| plate_quality_review | Column | — | started_at, finished_at | finished_at | completion only |
+
+- `operation_code=HT` means furnace heating in FURNACE and heat treatment in FINISHING. Process context resolves the meaning; it is not a globally unique activity code.
+- `equipment_code` identifies a machine, and `steel_grade` identifies a grade. Neither selects an activity kind.
+- PASS and FAIL are outcomes of the same dimensional-inspection activity. APPROVED and REWORK are outcomes of the same quality-review activity. They are not activity carriers.
+- `dimension_inspection` has one actual timestamp and a fixed activity meaning; reinspections remain column encoded. `plate_quality_review` has start/finish times and outcome codes but no activity carrier; it is also column encoded.
+- Instruction issue has a single timestamp and no carrier. All three work histories have coded activity kinds plus start/finish times and are row encoded.
+
+## Completion policy and scenarios
+
+- Gold logs emit actual point milestones and completed work only. Work/review `started_at` values do not create additional start activity labels; NULL finish produces no completion.
+- Scenarios include received-only slabs, draft plans, issued instructions awaiting work, unfinished heating/rolling, multiple pieces per mother, failed inspections, completed rework reviews, repeat heat treatment, reinspections, pending reviews and unpacked pieces.
+- Every repeat work or inspection/review round keeps its own occurrence ID. No completed work is inferred from plans, equipment maintenance or mother-record timestamps.
+- Main material and instruction logs require joins across business tables. Mother/slab views include descendant-piece work. Record cases preserve their own identities, and equipment cases use the actual equipment FK.
 
 ## Objects, activities and situations
 
-| Object / case | Activity types across all cases | Situation / scope | Gold CSV |
-|---|---|---|---|
-| slab_material | Cooling Completed; Crop Shear Passed; Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started; Dimensional Inspection Completed; Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heat Treatment Completed; Heating Completed; Inspection Failed; Inspection Passed; Leveling Completed; Plate Packed; Plate Packing Started; Plate Piece Identified; Plate Quality Released; Plate Quality Review Started; Plate Surface Checked; Reheating Started; Rolling Completed; Rolling Instruction Acknowledged; Rolling Instruction Closed; Rolling Instruction Released; Rolling Plan Approved; Rolling Plan Created; Rolling Plan Released; Rolling Plan Reviewed; Rolling Setup Verified; Rolling Work Started; Slab Identity Verified; Slab Quality Checked; Slab Received; Slab Released for Rolling; Split Cutting Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this slab. | [CSV](private/gold_logs/OPV01.csv) |
-| planned_rolling_instruction | Rolling Instruction Released; Rolling Plan Approved; Rolling Plan Created; Rolling Plan Released; Rolling Plan Reviewed | Original recorded actions and authored lifecycle actions explicitly linked to this rolling plan. | [CSV](private/gold_logs/OPV02.csv) |
-| rolling_instruction | Rolling Instruction Acknowledged; Rolling Instruction Closed; Rolling Instruction Released; Rolling Setup Verified; Rolling Work Started | Original recorded actions and authored lifecycle actions explicitly linked to this rolling instruction. | [CSV](private/gold_logs/OPV03.csv) |
-| as_rolled_material | Cooling Completed; Crop Shear Passed; Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started; Dimensional Inspection Completed; Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heat Treatment Completed; Heating Completed; Inspection Failed; Inspection Passed; Leveling Completed; Plate Packed; Plate Packing Started; Plate Piece Identified; Plate Quality Released; Plate Quality Review Started; Plate Surface Checked; Reheating Started; Rolling Completed; Rolling Instruction Acknowledged; Rolling Instruction Closed; Rolling Instruction Released; Rolling Plan Approved; Rolling Plan Created; Rolling Plan Released; Rolling Plan Reviewed; Rolling Setup Verified; Rolling Work Started; Slab Identity Verified; Slab Quality Checked; Slab Received; Slab Released for Rolling; Split Cutting Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this mother material. | [CSV](private/gold_logs/OPV04.csv) |
-| furnace_charge_tracking | Furnace Charge Assigned; Furnace Charge Confirmed; Furnace Discharge Confirmed; Heating Completed; Yard Instruction Received | Original recorded actions and authored lifecycle actions explicitly linked to this furnace tracking record. | [CSV](private/gold_logs/OPV05.csv) |
-| cutting_finishing_instruction | Cutting Instruction Acknowledged; Cutting Instruction Closed; Cutting Instruction Released; Cutting Setup Verified; Cutting Work Started | Original recorded actions and authored lifecycle actions explicitly linked to this cutting instruction. | [CSV](private/gold_logs/OPV06.csv) |
-| plate_material | Dimensional Inspection Completed; Heat Treatment Completed; Inspection Failed; Inspection Passed; Plate Packed; Plate Packing Started; Plate Piece Identified; Plate Quality Released; Plate Quality Review Started; Plate Surface Checked | Original recorded actions and authored lifecycle actions explicitly linked to this cut plate piece. | [CSV](private/gold_logs/OPV07.csv) |
-| material_operation_history | Cooling Completed; Heat Treatment Completed; Heating Completed; Inspection Failed; Inspection Passed; Leveling Completed; Plate Surface Checked; Rolling Completed; Split Cutting Completed | The operation-completion event represented by this transaction ID, preserving its process-code meaning. | [CSV](private/gold_logs/OPV08.csv) |
+| Object / case type | Cases | Activity types | Cases without events | Recorded activity scope |
+| --- | --- | --- | --- | --- |
+| Slab | 30 | 20 | 0 | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rolling Instruction Issued, Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted, Rough Rolling Completed, Slab Received, Slab Released, Slab Verified, Surface Finishing Completed |
+| Rolling Plan | 28 | 4 | 0 | Rolling Instruction Issued, Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted |
+| Rolling Instruction | 26 | 14 | 0 | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rolling Instruction Issued, Rough Rolling Completed, Surface Finishing Completed |
+| Mother Material | 26 | 13 | 2 | Dimensional Inspection Completed, Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Rough Rolling Completed, Surface Finishing Completed |
+| Plate Piece | 38 | 8 | 0 | Dimensional Inspection Completed, Heat Treatment Completed, Leveling Completed, Plate Identified, Plate Packed, Plate Quality Review Completed, Plate Released, Surface Finishing Completed |
+| Dimension Inspection | 46 | 1 | 0 | Dimensional Inspection Completed |
+| Quality Review | 46 | 1 | 3 | Plate Quality Review Completed |
+| Equipment | 7 | 8 | 1 | Finish Rolling Completed, Furnace Charged, Furnace Discharged, Heat Treatment Completed, Heating Completed, Leveling Completed, Rough Rolling Completed, Surface Finishing Completed |
+| Furnace Operation Record | 70 | 3 | 2 | Furnace Charged, Furnace Discharged, Heating Completed |
+| Rolling Operation Record | 44 | 2 | 2 | Finish Rolling Completed, Rough Rolling Completed |
+| Finishing Operation Record | 130 | 3 | 0 | Heat Treatment Completed, Leveling Completed, Surface Finishing Completed |
 
-- Atomic grading and operation records are auxiliary cases; a single occurrence is not expanded into an invented lifecycle.
-- Master cases can aggregate unrelated jobs. Multiple activity types do not imply one causal process across all rows.
-- Conditional revision branches and incomplete histories are intentional. Repeated activity occurrences keep distinct event IDs.
-- Actual activity times are separate from plans, schedules and technical creation/update times.
-- Case population includes objects with no selected events; those cases have no CSV rows.
-- These are case-based CSV logs, not OCEL.
-
-## Database, extraction and validation
-
-- Actual one-time milestones are columns on the existing slab, plan, instruction, tracking and plate-piece tables. Repeatable heating completions and surface checks are HF/SF rows in `material_operation_history`; meanings are stored in `operation_code`.
-- Event-to-case relationships are derived directly through existing business keys and material genealogy JOINs. No generic activity table or persisted event/case index is used.
-- Full ES queries union original and added milestone columns with existing operation-history rows. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
-- Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
-- [Detailed activity design](docs/object_activity_design.md)
-- [Event-log case scopes and counts](docs/object_event_logs.md)
-- [Data dictionary](docs/data_dictionary.md)
-- [Schema overview](docs/schema_overview.md)
-- [Editable draw.io](docs/schema.drawio)
-- [Validation report](validation_report.json)
-
-![Schema](docs/schema.png)
+- Case scopes are fixed before query construction; a full-lifecycle request means all recorded business events in that declared scope, not inferred upstream casting or downstream dispatch.
+- The 11 case types include independent work/inspection/review occurrence records and equipment. process_code is reference data and has no case log. A directly non-event table may still define a case with logs from related work tables.
+- [Full lifecycle Gold files](docs/object_event_logs.md)
 
 ## Question types and pairs
 
-- **Q1 Explicit:** case concept and exact activities.
-- **Q2 Paraphrased:** alternate wording of Q1, with identical Gold scope.
-- **Q3 Full Lifecycle:** case concept only, using the declared default recorded scope.
-- **Q4 Full Lifecycle Paraphrased:** alternate wording of Q3, with identical Gold scope.
-- `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
-- Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
-
 | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
 |---|---:|---:|---:|---:|
-| Q1 | 13 | 12 | 1 | 2.77 |
-| Q2 | 13 | 12 | 1 | 2.77 |
-| Q3 | 9 | 9 | 0 | 17.33 |
-| Q4 | 9 | 9 | 0 | 17.33 |
+| Q1 | 16 | 14 | 2 | 2.44 |
+| Q2 | 16 | 14 | 2 | 2.44 |
+| Q3 | 11 | 11 | 0 | 7.00 |
+| Q4 | 11 | 11 | 0 | 7.00 |
 
 - Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
 
-- [All question texts, types, pairs and answerability](docs/questions.md)
+- Q1 seeds are paraphrased by the assistant LLM into Q2; Q3 seeds are paraphrased into Q4. Prompts, outputs and author review notes are saved in source/llm_paraphrases.json; no separate model/API call is claimed.
+- Pairs share exactly the same Process View, ES, case population and Gold CSV content. Q3/Q4 mention only their case concept and use its fixed default recorded scope.
+- Requested-activity averages include the two unsupported semantic requests and their paraphrases. Casting and truck dispatch cannot be reconstructed from this database.
+- [Questions and requested/extractable activity counts](docs/questions.md)
 
-## Event encoding and data definitions
+## Model input boundary
 
-- [Table-by-table row/column encoding](docs/schema_overview.md)
-- [Three-part data dictionary: basic information, table definitions, column definitions](docs/data_dictionary.md)
-- [Table definitions CSV](docs/table_definitions.csv)
-- Process View includes the case concept and activity scope. Q1/Q2 state the scope explicitly; Q3/Q4 infer it from the declared catalog.
-- [Question activity counts and pairs](docs/questions.md): requested and extractable activity counts are shown separately.
-
-## Native manufacturing storage
-
-- The original nine table roles remain. Six generic activity tables and the persisted case-link index were removed.
-- [Added column/code definitions and direct case JOINs](design/native_storage_mapping.json)
-- Event identities and simulated business history are preserved across this storage redesign.
-- All added columns/codes are authored synthetic assumptions; original manufacturer column mappings remain in `design/source_mapping.json`.
+- `input/model_input_manifest.json` is an allowlist of model inputs. Feed only the files listed there.
+- Inputs contain the SQLite database, SQL schema, business dictionary and question text. input/task_context.md supplies a source-agnostic recorded-lifecycle scope convention, not table bindings or enumerated activities.
+- README, source, design, docs, private, build code and validation reports are author/evaluation material. Exclude these from model context; in particular, the ordinary dictionary excludes both classification and extraction-selection answers.
+- private/questions.jsonl has question types, answerability and activity-count annotations. private/gold.jsonl, persistence_mapping.json, case_paths.json and canonical_history.jsonl contain extraction answers. None are model inputs.
+- **Gold CSV columns:** event_id, case_id, activity, timestamp. Event IDs and physical-source provenance are maintained separately; the same case/event pair is emitted once.
 
 ## Schema and documentation
 
-- [Table inventory and relationships](docs/schema_overview.md)
-- [English column dictionary](docs/data_dictionary.md)
-- [CSV dictionary](docs/data_dictionary.csv)
-- [Editable draw.io diagram](docs/schema.drawio)
-- [Object-based Gold logs and coverage](docs/object_event_logs.md)
+![Schema](docs/schema.png)
 
-## Timestamp columns
+- [Editable draw.io](docs/schema.drawio)
+- [Table inventory and FK relationships](docs/schema_overview.md)
+- [Three-part English data dictionary](docs/data_dictionary.md)
+- [Dictionary CSV](docs/data_dictionary.csv) · [Table definitions CSV](docs/table_definitions.csv)
+- [Author timestamp inventory](docs/timestamp_columns.md)
+- [Source adaptation](design/source_mapping.json)
+- [Validation report](validation_report.json)
 
-- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
-- [Timestamp inventory and roles](docs/timestamp_columns.md)
-- [Milestone-column extraction questions and Gold activity counts](docs/questions.md)
-- Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.
+## Validation scope
+
+- Independent generation-time histories are compared with all SQL results and Gold CSVs. Checks cover completion-only times, group-qualified codes, outcome/machine-code distractors, genealogy, repetition, unfinished/empty cases, PK/FK integrity, dictionary leakage and exact question pairs.
+- Tests establish dataset consistency. They do not measure an LLM's event-table discovery or classification accuracy. The separate NL2EventLog classifier must still be evaluated using the allowlisted inputs.
+
+## Activity identity × timestamp phase audit
+
+- Classification has two axes: how base activity identity is represented, and which occurrence phases are stored/emitted. A code is an activity carrier only when it selects the work kind; outcome, grade and machine codes are not carriers.
+- This dataset retains the previously agreed completion-only Gold policy. It is not an all-four-cases phase benchmark.
+
+| Requested case | Physical representation in PlateFlow New | Current Gold coverage |
+|---|---|---|
+| A: no carrier, one timestamp | rolling_instruction and dimension_inspection | Covered: one fixed milestone/completion |
+| B: no carrier, multiple timestamps | slab/plan/plate milestones; plate_quality_review start/finish | Multiple point milestones are covered, but quality-review start is not emitted; paired-phase coverage is partial |
+| C: activity carrier, one timestamp | None: each coded work history stores both start and finish | Not physically covered; selecting finish alone does not make a one-timestamp table |
+| D: activity carrier, multiple timestamps | All three coded work-history tables | Base activity is row-carried, but only completion is emitted; paired-phase coverage is partial |
+
+- The history tables are **Row activity identity × stored start/complete phases × completion-only extraction**. Their two timestamps do not imply two different base activities. A mixed representation label is acceptable only when these two axes remain explicit.
+- WarehouseFlow New provides all four cases with phased Gold. PlateFlow New retains its DB, occurrence IDs and completion logs.
