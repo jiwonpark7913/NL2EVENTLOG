@@ -133,12 +133,25 @@ def transform(base, output):
         for old,new in mapping.items():
             meaning=old.replace("_"," ").title()
             if name in CODE_TABLE:
-                entry=next(e for e in dictionary["code_values"] if e["code"]==old and e.get(CODE_TABLE[name][1])==namespace)
+                entry=next(e for e in dictionary["code_values"] if e["code"] in (old,new) and e.get(CODE_TABLE[name][1])==namespace)
                 meaning=entry["meaning"]
                 entry["code"]=new
             explanations.append(f"{new} = {meaning}")
+        # Keep the entire published column domain aligned with physical SQLite CHECKs.
+        for field in ("allowed_values","allowed_codes","constraints","value_domain","default_value"):
+            value=dd_col.get(field)
+            if isinstance(value,str):
+                for old,new in mapping.items():
+                    value=re.sub(r"(?<![A-Za-z0-9_])"+re.escape(old)+r"(?![A-Za-z0-9_])",new,value)
+                dd_col[field]=value
+            elif isinstance(value,list):
+                dd_col[field]=[mapping.get(item,item) for item in value]
         dd_col["code_meanings"]={new:next((e["meaning"] for e in dictionary.get("code_values",[]) if e.get("code")==new and e.get(CODE_TABLE.get(name,("", ""))[1])==namespace),old.replace("_"," ").title()) for old,new in mapping.items()}
         dd_col["definition"]="Physical business-action code in "+(namespace+" context" if namespace else table)+"; "+ "; ".join(explanations)+". Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence."
+    for table,column,namespace,mapping in config:
+        col=next(c for t in dictionary["tables"] if t["table"]==table for c in t["columns"] if c["name"]==column)
+        if name=="hospitalflow": col["code_meanings"]={"E":"Order Entered","R":"Order Reviewed","C":"Order Cancelled"}
+        if name=="universityflow": col["code_meanings"]={"A":"Assignment Graded (original)","R":"Assignment Regraded"}
     dictionary.setdefault("business_rules",[]).append("Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.")
     (output/"data_dictionary.json").write_text(json.dumps(dictionary,indent=2,ensure_ascii=False)+"\n")
     for file,sql,count in results:
