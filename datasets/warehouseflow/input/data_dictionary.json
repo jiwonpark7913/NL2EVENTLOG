@@ -1102,6 +1102,7 @@
     "Goods category, dispatch urgency, goods condition, worker role, audit result and task outcome describe their respective business contexts rather than different kinds of action.",
     "A handling/task occurrence refers either to a receiving request or to a dispatch order as constrained by its work kind.",
     "All rows, code conventions, times and quantities are synthetic.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
     "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ]
 }

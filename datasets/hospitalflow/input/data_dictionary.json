@@ -2091,6 +2091,7 @@
     "NULL is interpreted by the column-specific rule: an unrecorded clinical timestamp gives unknown occurrence status; a non-applicable order-reference column and an absent admission association have their separately defined structural meanings.",
     "Laboratory charttime represents specimen collection; storetime represents result availability. Medication and procedure storetime values represent system documentation times.",
     "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
     "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ]
 }

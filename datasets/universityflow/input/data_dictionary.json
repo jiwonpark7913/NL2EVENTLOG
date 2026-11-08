@@ -1802,6 +1802,7 @@
     "Single-occurrence stages use actual milestone columns; repeated grading and reassessment occurrences use assignment_grading rows.",
     "grading_kind distinguishes preserved ORIGINAL grading rows from authored REASSESSMENT rows. Reassessment scores/feedback are synthetic additions.",
     "Composite primary keys are a single key composed of multiple columns; each combination identifies one business record.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
     "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ],
   "object_activity_design": [
