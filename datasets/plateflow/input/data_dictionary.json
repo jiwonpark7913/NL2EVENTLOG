@@ -435,7 +435,7 @@
         {
           "name": "operation_code",
           "sql_type": "TEXT",
-          "definition": "Kind of manufacturing work performed, as defined by the matching process_group/code entry.",
+          "definition": "Physical business-action code in FURNACE context; C = Furnace charging; A = Furnace heating; D = Furnace discharge. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -447,7 +447,12 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "C": "Furnace charging",
+            "A": "Furnace heating",
+            "D": "Furnace discharge"
+          }
         },
         {
           "name": "equipment_id",
@@ -543,7 +548,7 @@
         {
           "name": "phase_code",
           "sql_type": "TEXT",
-          "definition": "Rolling phase performed, as defined by the matching process_group/code entry.",
+          "definition": "Physical business-action code in ROLLING context; R = Rough rolling; F = Finish rolling. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -555,7 +560,11 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "R": "Rough rolling",
+            "F": "Finish rolling"
+          }
         },
         {
           "name": "equipment_id",
@@ -728,7 +737,7 @@
         {
           "name": "operation_code",
           "sql_type": "TEXT",
-          "definition": "Kind of manufacturing work performed, as defined by the matching process_group/code entry.",
+          "definition": "Physical business-action code in FINISHING context; L = Leveling; A = Heat treatment; S = Surface finishing. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -740,7 +749,12 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "L": "Leveling",
+            "A": "Heat treatment",
+            "S": "Surface finishing"
+          }
         },
         {
           "name": "equipment_id",
@@ -923,42 +937,42 @@
   "code_values": [
     {
       "process_group": "FURNACE",
-      "code": "CH",
+      "code": "C",
       "meaning": "Furnace charging"
     },
     {
       "process_group": "FURNACE",
-      "code": "HT",
+      "code": "A",
       "meaning": "Furnace heating"
     },
     {
       "process_group": "FURNACE",
-      "code": "DS",
+      "code": "D",
       "meaning": "Furnace discharge"
     },
     {
       "process_group": "ROLLING",
-      "code": "RR",
+      "code": "R",
       "meaning": "Rough rolling"
     },
     {
       "process_group": "ROLLING",
-      "code": "FR",
+      "code": "F",
       "meaning": "Finish rolling"
     },
     {
       "process_group": "FINISHING",
-      "code": "LEV",
+      "code": "L",
       "meaning": "Leveling"
     },
     {
       "process_group": "FINISHING",
-      "code": "HT",
+      "code": "A",
       "meaning": "Heat treatment"
     },
     {
       "process_group": "FINISHING",
-      "code": "SF",
+      "code": "S",
       "meaning": "Surface finishing"
     }
   ],
@@ -971,6 +985,7 @@
     "Actual start times may exist without finish times. NULL finish means unfinished work; NULL release/packing means not yet released/packed.",
     "Scheduled reheating time is a plan and may differ from actual heating time.",
     "An approved quality review is required before piece release; packing follows release.",
-    "All business records, identifiers, times and measurements are synthetic."
+    "All business records, identifiers, times and measurements are synthetic.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ]
 }

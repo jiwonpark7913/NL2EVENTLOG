@@ -634,7 +634,7 @@
         {
           "name": "movement_code",
           "sql_type": "TEXT",
-          "definition": "IN means actual receipt into warehouse stock; OUT means actual dispatch from warehouse stock.",
+          "definition": "Physical business-action code in MOVEMENT context; I = Receipt into warehouse stock; O = Dispatch from warehouse stock. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -646,7 +646,11 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "I": "Receipt into warehouse stock",
+            "O": "Dispatch from warehouse stock"
+          }
         },
         {
           "name": "occurred_at",
@@ -732,7 +736,7 @@
         {
           "name": "action_code",
           "sql_type": "TEXT",
-          "definition": "CHECK, HOLD or RELEASE action actually performed on the referenced request, as defined in work_code.",
+          "definition": "Physical business-action code in REQUEST context; A = Check receiving request; H = Hold receiving request; R = Release receiving request. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -744,7 +748,12 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "A": "Check receiving request",
+            "H": "Hold receiving request",
+            "R": "Release receiving request"
+          }
         },
         {
           "name": "occurred_at",
@@ -847,7 +856,7 @@
         {
           "name": "task_code",
           "sql_type": "TEXT",
-          "definition": "PUTAWAY, PICK or PACK work actually performed, as defined in work_code.",
+          "definition": "Physical business-action code in TASK context; A = Putaway work; K = Picking work; B = Packing work. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -859,7 +868,12 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "A": "Putaway work",
+            "K": "Picking work",
+            "B": "Packing work"
+          }
         },
         {
           "name": "started_at",
@@ -982,7 +996,7 @@
         {
           "name": "handling_code",
           "sql_type": "TEXT",
-          "definition": "UNLOAD or LOAD work actually performed, as defined in work_code.",
+          "definition": "Physical business-action code in HANDLING context; U = Unloading work; L = Loading work. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "required": true,
           "primary_key_position": 0,
           "default": null,
@@ -994,7 +1008,11 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "code_meanings": {
+            "U": "Unloading work",
+            "L": "Loading work"
+          }
         },
         {
           "name": "started_at",
@@ -1026,52 +1044,52 @@
   "code_values": [
     {
       "code_family": "MOVEMENT",
-      "code": "IN",
+      "code": "I",
       "meaning": "Receipt into warehouse stock"
     },
     {
       "code_family": "MOVEMENT",
-      "code": "OUT",
+      "code": "O",
       "meaning": "Dispatch from warehouse stock"
     },
     {
       "code_family": "REQUEST",
-      "code": "CHECK",
+      "code": "A",
       "meaning": "Check receiving request"
     },
     {
       "code_family": "REQUEST",
-      "code": "HOLD",
+      "code": "H",
       "meaning": "Hold receiving request"
     },
     {
       "code_family": "REQUEST",
-      "code": "RELEASE",
+      "code": "R",
       "meaning": "Release receiving request"
     },
     {
       "code_family": "TASK",
-      "code": "PUTAWAY",
+      "code": "A",
       "meaning": "Putaway work"
     },
     {
       "code_family": "TASK",
-      "code": "PICK",
+      "code": "K",
       "meaning": "Picking work"
     },
     {
       "code_family": "TASK",
-      "code": "PACK",
+      "code": "B",
       "meaning": "Packing work"
     },
     {
       "code_family": "HANDLING",
-      "code": "UNLOAD",
+      "code": "U",
       "meaning": "Unloading work"
     },
     {
       "code_family": "HANDLING",
-      "code": "LOAD",
+      "code": "L",
       "meaning": "Loading work"
     }
   ],
@@ -1083,6 +1101,7 @@
     "Repeated task attempts and request checks retain separate occurrence identifiers.",
     "Goods category, dispatch urgency, goods condition, worker role, audit result and task outcome describe their respective business contexts rather than different kinds of action.",
     "A handling/task occurrence refers either to a receiving request or to a dispatch order as constrained by its work kind.",
-    "All rows, code conventions, times and quantities are synthetic."
+    "All rows, code conventions, times and quantities are synthetic.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ]
 }

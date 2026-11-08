@@ -1,0 +1,30 @@
+[
+  {
+    "dataset": "warehouseflow",
+    "gold_sql_validated": 50,
+    "gold_rows_validated": 5478,
+    "physical_code_groups": 4,
+    "existing_gold_event_labels": "unchanged"
+  },
+  {
+    "dataset": "plateflow",
+    "gold_sql_validated": 50,
+    "gold_rows_validated": 7384,
+    "physical_code_groups": 3,
+    "existing_gold_event_labels": "unchanged"
+  },
+  {
+    "dataset": "universityflow",
+    "gold_sql_validated": 66,
+    "gold_rows_validated": 8528,
+    "physical_code_groups": 1,
+    "existing_gold_event_labels": "unchanged"
+  },
+  {
+    "dataset": "hospitalflow",
+    "gold_sql_validated": 42,
+    "gold_rows_validated": 6642,
+    "physical_code_groups": 1,
+    "existing_gold_event_labels": "unchanged"
+  }
+]

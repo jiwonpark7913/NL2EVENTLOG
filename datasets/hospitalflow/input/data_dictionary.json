@@ -1234,7 +1234,7 @@
           "metadata_id": "hospitalflow.order_history.action",
           "name": "action",
           "readable_name": "Recorded order action",
-          "definition": "Kind of action performed on the referenced order.",
+          "definition": "Physical business-action code in order_history; E = Entered; R = Reviewed; C = Cancelled. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "type": "TEXT",
           "representation_class": "Text",
           "unit": "Not applicable",
@@ -1247,9 +1247,9 @@
             "CANCELLED"
           ],
           "code_meanings": {
-            "ENTERED": "The order was entered",
-            "REVIEWED": "The order was reviewed",
-            "CANCELLED": "The order was cancelled"
+            "E": "Entered",
+            "R": "Reviewed",
+            "C": "Cancelled"
           },
           "minimum": null,
           "maximum": null,
@@ -2090,6 +2090,7 @@
     "A medication prescription can have multiple pharmacy dispensing records; each dispensing can have multiple administration or omission records.",
     "NULL is interpreted by the column-specific rule: an unrecorded clinical timestamp gives unknown occurrence status; a non-applicable order-reference column and an absent admission association have their separately defined structural meanings.",
     "Laboratory charttime represents specimen collection; storetime represents result availability. Medication and procedure storetime values represent system documentation times.",
-    "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively."
+    "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ]
 }

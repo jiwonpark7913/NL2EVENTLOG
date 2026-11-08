@@ -1722,13 +1722,17 @@
           "name": "grading_kind",
           "type": "TEXT",
           "constraints": "NOT NULL DEFAULT 'ORIGINAL' CHECK(grading_kind IN ('ORIGINAL','REASSESSMENT'))",
-          "definition": "ORIGINAL retains each existing Assignment Graded occurrence. REASSESSMENT denotes an authored Assignment Regraded occurrence.",
+          "definition": "Physical business-action code in assignment_grading; A = Original; R = Reassessment. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "source_origin": "authored_assessment_classification",
           "metadata_id": "universityflow.assignment_grading.grading_kind",
           "representation_class": "Text",
           "value_domain": "SQL type and declared constraints: NOT NULL DEFAULT 'ORIGINAL' CHECK(grading_kind IN ('ORIGINAL','REASSESSMENT'))",
           "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "'ORIGINAL'"
+          "default_value": "'ORIGINAL'",
+          "code_meanings": {
+            "A": "Original",
+            "R": "Reassessment"
+          }
         },
         {
           "name": "reassessment_event_id",
@@ -1781,7 +1785,7 @@
     "Original source layer: An examination-result row records one Degree Examination Taken event at examination_date, not score publication.",
     "Original source layer: A registration row records one Course Registered event at registration_time.",
     "Original source layer: The default student timeline includes all recorded examinations, registrations, assignment grading, simulation-experiment completions and thesis submissions linked to that student.",
-    "Original source layer: A grading event belongs to the student through assignment_grading.assignment_id \u2192 assignment.assignment_id \u2192 assignment.student_id. Do not join its instructor course label to every student registration.",
+    "Original source layer: A grading event belongs to the student through assignment_grading.assignment_id → assignment.assignment_id → assignment.student_id. Do not join its instructor course label to every student registration.",
     "Original source layer: Simulation-result and grading composite keys retain repeated actions at different times. Each occurrence appears once.",
     "Original source layer: A passing examination score of at least 60 enables subsequent registration in the simulation; the source does not define this threshold.",
     "Original source layer: Student ID and Name denote shared student information across the three sources. Class is merged between two sources; Major is retained from the course-design source. This shared identity is an integration assumption.",
@@ -1797,7 +1801,8 @@
     "The eleven original university business-table roles are retained; generic activity and case-link tables are removed.",
     "Single-occurrence stages use actual milestone columns; repeated grading and reassessment occurrences use assignment_grading rows.",
     "grading_kind distinguishes preserved ORIGINAL grading rows from authored REASSESSMENT rows. Reassessment scores/feedback are synthetic additions.",
-    "Composite primary keys are a single key composed of multiple columns; each combination identifies one business record."
+    "Composite primary keys are a single key composed of multiple columns; each combination identifies one business record.",
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ],
   "object_activity_design": [
     {
