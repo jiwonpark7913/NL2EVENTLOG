@@ -29,6 +29,9 @@ CONFIG = {
         ("rolling_operation_history", "phase_code", "ROLLING", {"RR": "R", "FR": "F"}),
         ("finishing_operation_history", "operation_code", "FINISHING", {"LEV": "L", "HT": "A", "SF": "S"}),
     ],
+    "universityflow": [
+        ("assignment_grading", "grading_kind", None, {"ORIGINAL": "A", "REASSESSMENT": "R"}),
+    ],
     "hospitalflow": [
         ("order_history", "action", None, {"ENTERED": "E", "REVIEWED": "R", "CANCELLED": "C"}),
     ],
@@ -43,7 +46,7 @@ def rewrite_sql(sql, config):
     for table, column, namespace, mapping in config:
         for old, new in mapping.items():
             # Condition-specific substitutions; DO NOT rename labels in SELECT clauses.
-            pattern = r"(\b" + re.escape(column) + r"\b\s*(?:=|==)\\s*')"+re.escape(old)+r"(')"
+            pattern = r"(\b" + re.escape(column) + r"\b\s*(?:=|==)\s*')"+re.escape(old)+r"(')"
             sql = re.sub(pattern,lambda m:m.group(1)+new+m.group(2),sql,flags=re.I)
             pattern_reverse=r"('"+re.escape(old)+r"'\s*=\s*(?:\w+\.)?"+re.escape(column)+r"\b)"
             sql = re.sub(pattern_reverse,lambda m:m.group(0).replace("'"+old+"'","'"+new+"'"),sql,flags=re.I)
