@@ -1,0 +1,76 @@
+{
+  "purpose": "Controlled evaluation challenges for evidence-grounded activity semantics resolution. Never use these overlays in baseline model input.",
+  "cases": [
+    {
+      "id": "WF-CONTEXT-A",
+      "dataset": "warehouseflow",
+      "input": "baseline",
+      "table": "request_action",
+      "column": "action_code",
+      "value": "A",
+      "expected_meaning": "Check receiving request",
+      "contrast_table": "warehouse_task_history",
+      "contrast_value": "A",
+      "contrast_meaning": "Putaway work",
+      "expected_status": "supported",
+      "gold_policy": "Existing Gold logs unchanged"
+    },
+    {
+      "id": "PF-CONTEXT-A",
+      "dataset": "plateflow",
+      "input": "baseline",
+      "table": "furnace_operation_history",
+      "column": "operation_code",
+      "value": "A",
+      "expected_meaning": "Furnace heating",
+      "contrast_table": "finishing_operation_history",
+      "contrast_value": "A",
+      "contrast_meaning": "Heat treatment",
+      "expected_status": "supported",
+      "gold_policy": "Existing Gold logs unchanged"
+    },
+    {
+      "id": "WF-DD-CONFLICT",
+      "dataset": "warehouseflow",
+      "input": "evaluation/activity_semantics/conflicting_dictionary.json",
+      "table": "request_action",
+      "column": "action_code",
+      "value": "A",
+      "expected_status": "conflicting",
+      "expected_behavior": "Detect contradictory DD vs FK code-table meaning; do not silently resolve to one label.",
+      "gold_policy": "Semantic-status diagnostic only, excluded from normal event-log F1"
+    },
+    {
+      "id": "HF-DD-MISSING",
+      "dataset": "hospitalflow",
+      "input": "evaluation/activity_semantics/insufficient_dictionary.json",
+      "table": "order_history",
+      "column": "action",
+      "value": "E",
+      "expected_status": "unresolved",
+      "expected_behavior": "Without trustworthy code meaning, do not confidently assert Order Entered from the physical code alone.",
+      "gold_policy": "Semantic-status diagnostic only, excluded from normal event-log F1"
+    },
+    {
+      "id": "UF-SNAPSHOT",
+      "dataset": "universityflow",
+      "input": "baseline",
+      "table": "registration",
+      "column": "status",
+      "value": "REGISTERED",
+      "expected_status": "non-event",
+      "expected_behavior": "Current registration status alone is not historical status-transition evidence.",
+      "gold_policy": "Do not add synthetic status-change events to Gold"
+    },
+    {
+      "id": "WF-SNAPSHOT",
+      "dataset": "warehouseflow",
+      "input": "baseline",
+      "table": "goods",
+      "column": "category_code",
+      "expected_status": "non-event",
+      "expected_behavior": "Goods category is a business attribute, not an action occurrence.",
+      "gold_policy": "No corresponding Gold activity"
+    }
+  ]
+}
