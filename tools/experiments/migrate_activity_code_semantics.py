@@ -88,9 +88,20 @@ def transform(base, output):
     config=CONFIG[name]
     db=base/"input/database.sqlite"
     dest=output/"database.sqlite"
-    shutil.copyfile(db,dest)
+    # Rebuild SQLite DDL to keep CHECK constraints aligned with compact codes.
+    source=sqlite3.connect(db)
+    dump=[]
+    for statement in source.iterdump():
+        if statement.lstrip().upper().startswith('CREATE TABLE'):
+            for table,column,namespace,mapping in config:
+                if re.search(r'CREATE TABLE\s+["`]?'+re.escape(table)+r'["`]?\s*\(',statement,re.I):
+                    for old,new in mapping.items():
+                        statement=statement.replace("'"+old+"'","'"+new+"'")
+        dump.append(statement)
+    source.close()
     con=sqlite3.connect(dest)
-    con.execute("PRAGMA foreign_keys=OFF")
+    con.executescript('PRAGMA foreign_keys=OFF; PRAGMA ignore_check_constraints=ON;\n'+'\n'.join(dump))
+    con.execute('PRAGMA foreign_keys=OFF')
     # Run in a single transaction. All code-table and record changes are coordinated.
     for table,column,namespace,mapping in config:
         for old,new in mapping.items():
@@ -103,12 +114,15 @@ def transform(base, output):
             codes,group=CODE_TABLE[name]
             for old,new in mapping.items():
                 con.execute(f"UPDATE {qi(codes)} SET code=? WHERE {qi(group)}=? AND code=?",(new,namespace,old))
+    con.execute("PRAGMA ignore_check_constraints=OFF")
     if list(con.execute("PRAGMA foreign_key_check")):
         raise AssertionError(name+": foreign key violations after code migration")
     if con.execute("PRAGMA integrity_check").fetchone()[0]!="ok":
         raise AssertionError(name+": SQLite integrity check failed")
     con.commit()
     results=test_gold(con,base,config)
+    schema="PRAGMA foreign_keys=ON;\n"+"\n".join(row[0]+";" for row in con.execute("SELECT sql FROM sqlite_master WHERE sql IS NOT NULL AND type IN ('table','index','trigger','view') ORDER BY type,rowid"))+"\n"
+    (output/"schema.sql").write_text(schema)
     con.close()
     dictionary=json.loads((base/"input/data_dictionary.json").read_text())
     for table,column,namespace,mapping in config:
@@ -158,6 +172,7 @@ def main():
                 target=root/name
                 shutil.copy2(target/"database.sqlite",base/"input/database.sqlite")
                 shutil.copy2(target/"data_dictionary.json",base/"input/data_dictionary.json")
+                shutil.copy2(target/"schema.sql",base/"evaluation/schema.sql")
                 for sql in (target/"gold_sql").glob("*.sql"):
                     shutil.copy2(sql,base/"private/gold_sql"/sql.name)
                 if (target/"gold.jsonl").exists():
