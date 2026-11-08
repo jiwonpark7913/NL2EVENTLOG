@@ -1,0 +1,20 @@
+name: Validate semantic activity code benchmark
+on:
+  push:
+    branches: [feature/activity-semantics-benchmark]
+    paths:
+      - 'tools/validation/validate_activity_semantics_benchmark.py'
+      - '.github/workflows/activity-code-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify code semantics, physical records, FK integrity and Gold SQL
+        run: python tools/validation/validate_activity_semantics_benchmark.py
