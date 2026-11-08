@@ -1721,17 +1721,17 @@
         {
           "name": "grading_kind",
           "type": "TEXT",
-          "constraints": "NOT NULL DEFAULT 'ORIGINAL' CHECK(grading_kind IN ('ORIGINAL','REASSESSMENT'))",
+          "constraints": "NOT NULL DEFAULT 'A' CHECK(grading_kind IN ('A','R'))",
           "definition": "Physical business-action code in assignment_grading; A = Original; R = Reassessment. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
           "source_origin": "authored_assessment_classification",
           "metadata_id": "universityflow.assignment_grading.grading_kind",
           "representation_class": "Text",
-          "value_domain": "SQL type and declared constraints: NOT NULL DEFAULT 'ORIGINAL' CHECK(grading_kind IN ('ORIGINAL','REASSESSMENT'))",
+          "value_domain": "SQL type and declared constraints: NOT NULL DEFAULT 'A' CHECK(grading_kind IN ('A','R'))",
           "declared_length": "Not bounded by declared SQLite type",
-          "default_value": "'ORIGINAL'",
+          "default_value": "'A'",
           "code_meanings": {
-            "A": "Original",
-            "R": "Reassessment"
+            "A": "Assignment Graded (original)",
+            "R": "Assignment Regraded"
           }
         },
         {

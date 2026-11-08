@@ -1240,16 +1240,16 @@
           "unit": "Not applicable",
           "format": "Text",
           "timezone": null,
-          "allowed_values": "ENTERED, REVIEWED, CANCELLED",
+          "allowed_values": "E, R, C",
           "allowed_codes": [
-            "ENTERED",
-            "REVIEWED",
-            "CANCELLED"
+            "E",
+            "R",
+            "C"
           ],
           "code_meanings": {
-            "E": "Entered",
-            "R": "Reviewed",
-            "C": "Cancelled"
+            "E": "Order Entered",
+            "R": "Order Reviewed",
+            "C": "Order Cancelled"
           },
           "minimum": null,
           "maximum": null,
@@ -1262,7 +1262,7 @@
           "foreign_keys": [],
           "default_value": null,
           "length": "No maximum length declared",
-          "constraints": "NOT NULL CHECK(action IN ('ENTERED','REVIEWED','CANCELLED'))",
+          "constraints": "NOT NULL CHECK(action IN ('E','R','C'))",
           "synonyms": [],
           "description": "",
           "source_references": [
