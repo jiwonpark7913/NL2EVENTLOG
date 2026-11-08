@@ -6,16 +6,16 @@
 
 | code_family | code | meaning |
 | --- | --- | --- |
-| MOVEMENT | IN | Receipt into warehouse stock |
-| MOVEMENT | OUT | Dispatch from warehouse stock |
-| REQUEST | CHECK | Check receiving request |
-| REQUEST | HOLD | Hold receiving request |
-| REQUEST | RELEASE | Release receiving request |
-| TASK | PUTAWAY | Putaway work |
-| TASK | PICK | Picking work |
-| TASK | PACK | Packing work |
-| HANDLING | UNLOAD | Unloading work |
-| HANDLING | LOAD | Loading work |
+| MOVEMENT | I | Receipt into warehouse stock |
+| MOVEMENT | O | Dispatch from warehouse stock |
+| REQUEST | A | Check receiving request |
+| REQUEST | H | Hold receiving request |
+| REQUEST | R | Release receiving request |
+| TASK | A | Putaway work |
+| TASK | K | Picking work |
+| TASK | B | Packing work |
+| HANDLING | U | Unloading work |
+| HANDLING | L | Loading work |
 
 ## Column definitions
 

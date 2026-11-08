@@ -6,14 +6,14 @@
 
 | process_group | code | meaning |
 | --- | --- | --- |
-| FURNACE | CH | Furnace charging |
-| FURNACE | HT | Furnace heating |
-| FURNACE | DS | Furnace discharge |
-| ROLLING | RR | Rough rolling |
-| ROLLING | FR | Finish rolling |
-| FINISHING | LEV | Leveling |
-| FINISHING | HT | Heat treatment |
-| FINISHING | SF | Surface finishing |
+| FURNACE | C | Furnace charging |
+| FURNACE | A | Furnace heating |
+| FURNACE | D | Furnace discharge |
+| ROLLING | R | Rough rolling |
+| ROLLING | F | Finish rolling |
+| FINISHING | L | Leveling |
+| FINISHING | A | Heat treatment |
+| FINISHING | S | Surface finishing |
 
 ## Column definitions
 
