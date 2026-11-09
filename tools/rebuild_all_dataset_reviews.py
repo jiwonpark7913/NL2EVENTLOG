@@ -226,6 +226,7 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
     if q.exists():
         body=q.read_text()
         body=markdown_clean(body,n)
+        body=body.replace("All DFGs are regenerated from current Gold CSV files, not from the previous split-profile benchmark.", "DFGs are calculated from each question\u0027s Gold event log, using timestamp and event ID for deterministic ordering.")
         body=re.sub(r'^# [^\n]+', "# "+DISPLAY[n]+" — Question-level Gold DFG inspection",body,count=1)
         body=re.sub(r"^Source commit:.*\n","",body,flags=re.M)
         body=body.replace("**EVALUATION ONLY — NEVER PROVIDE TO A MODEL.**",
