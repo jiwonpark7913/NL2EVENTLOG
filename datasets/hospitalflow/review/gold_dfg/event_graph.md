@@ -1,8 +1,8 @@
 # HospitalFlow — Gold source inventory
 
-**Author annotations.** One identity OT per physical table; event-to-object attribution is a separate relation.
+**Legacy author annotations.** Every physical table is an ER. Candidate ET grouping is not yet validated for Identity Namespaces or lifecycle membership.
 
-| Physical table | Gold Object Type | Gold activity source labels |
+| Physical table | Entity Type candidate | Gold activity source labels |
 |---|---|---|
 | admission_detail | Hospital Admission | Discharge Summary Signed |
 | admissions | Hospital Admission | Emergency Department Departed, Emergency Department Registered, Hospital Admitted, Hospital Discharged |
@@ -17,6 +17,8 @@
 | procedure_order | Procedure Order | Procedure Preparation Completed |
 | transfers | Care Unit Transfer | Care Unit Transferred |
 
-This is a source-binding projection. The model is not given this file.
+This is a source-binding projection. This is a reviewer-only candidate grouping and is not provided to the model.
 
 [Gold diagram](../database/gold_evidence_graph.svg) · [Gold DFGs](README.md)
+
+[Entity Representation and namespace candidates](entity_model_candidates.json) — review-only; **not validated semantic ET Gold**.

@@ -1,0 +1,286 @@
+{
+  "dataset": "universityflow",
+  "model": "Target EEG schema; provisional migration of pre-namespace Gold annotation",
+  "status": "candidate_only_not_validated_ET_gold",
+  "one_entity_representation_per_physical_table": true,
+  "identity": "Entity ID = (Entity Type, Identity Namespace, Canonical Key)",
+  "default_directional_case_attribution": "FK_to_referenced_PK_or_unique_only_when_validated",
+  "default_reverse_fk_traversal": false,
+  "identity_mapping_policy": "Shared/Mapped/Independent/Unknown require separate verified evidence",
+  "case_population_policy": "distinct union of validated ET instance mappings; not computed in this review",
+  "lifecycle_membership_policy": "separate evidence required; never inferred from FK alone",
+  "entity_representations": [
+    {
+      "er": "assignment",
+      "candidate_entity_type": "Assignment",
+      "primary_key": [
+        "assignment_id"
+      ],
+      "identity_namespace": "universityflow:assignment",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Assignment Assigned",
+        "Assignment Grade Finalized",
+        "Assignment Resubmitted",
+        "Assignment Revision Requested",
+        "Assignment Submitted"
+      ],
+      "source_time_columns": [
+        "assignment_assigned_at",
+        "assignment_grade_finalized_at",
+        "assignment_resubmitted_at",
+        "assignment_revision_requested_at",
+        "assignment_submitted_at"
+      ]
+    },
+    {
+      "er": "assignment_grading",
+      "candidate_entity_type": "Assignment grading record",
+      "primary_key": [
+        "assignment_id",
+        "instructor_id",
+        "grading_time"
+      ],
+      "identity_namespace": "universityflow:assignment_grading",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Assignment Graded",
+        "Assignment Regraded"
+      ],
+      "source_time_columns": [
+        "grading_time"
+      ]
+    },
+    {
+      "er": "course",
+      "candidate_entity_type": "Course",
+      "primary_key": [
+        "course_id"
+      ],
+      "identity_namespace": "universityflow:course",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Course Offering Approved",
+        "Course Offering Closed",
+        "Course Offering Proposed",
+        "Course Offering Published"
+      ],
+      "source_time_columns": [
+        "course_offering_approved_at",
+        "course_offering_closed_at",
+        "course_offering_proposed_at",
+        "course_offering_published_at"
+      ]
+    },
+    {
+      "er": "degree_examination_result",
+      "candidate_entity_type": "Examination result record",
+      "primary_key": [
+        "result_id"
+      ],
+      "identity_namespace": "universityflow:degree_examination_result",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Degree Examination Taken",
+        "Examination Checked In",
+        "Examination Result Reviewed",
+        "Examination Scheduled",
+        "Examination Score Published"
+      ],
+      "source_time_columns": [
+        "examination_checked_in_at",
+        "examination_date",
+        "examination_result_reviewed_at",
+        "examination_scheduled_at",
+        "examination_score_published_at"
+      ]
+    },
+    {
+      "er": "instructor",
+      "candidate_entity_type": "Instructor",
+      "primary_key": [
+        "instructor_id"
+      ],
+      "identity_namespace": "universityflow:instructor",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    },
+    {
+      "er": "registration",
+      "candidate_entity_type": "Student-course registration",
+      "primary_key": [
+        "student_id",
+        "course_id"
+      ],
+      "identity_namespace": "universityflow:registration",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Course Assessment Completed",
+        "Course Grade Finalized",
+        "Course Registered",
+        "Course Started",
+        "Registration Approved",
+        "Registration Requested"
+      ],
+      "source_time_columns": [
+        "course_assessment_completed_at",
+        "course_grade_finalized_at",
+        "course_started_at",
+        "registration_approved_at",
+        "registration_requested_at",
+        "registration_time"
+      ]
+    },
+    {
+      "er": "simulation_module",
+      "candidate_entity_type": "Simulation module",
+      "primary_key": [
+        "module_id"
+      ],
+      "identity_namespace": "universityflow:simulation_module",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Simulation Module Published",
+        "Simulation Module Released",
+        "Simulation Module Retired",
+        "Simulation Module Validated"
+      ],
+      "source_time_columns": [
+        "simulation_module_published_at",
+        "simulation_module_released_at",
+        "simulation_module_retired_at",
+        "simulation_module_validated_at"
+      ]
+    },
+    {
+      "er": "student",
+      "candidate_entity_type": "Student",
+      "primary_key": [
+        "student_id"
+      ],
+      "identity_namespace": "universityflow:student",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    },
+    {
+      "er": "student_simulation_experiment_result",
+      "candidate_entity_type": "Simulation experiment result record",
+      "primary_key": [
+        "student_id",
+        "module_id",
+        "simulation_date"
+      ],
+      "identity_namespace": "universityflow:student_simulation_experiment_result",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Simulation Experiment Completed",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted",
+        "Simulation Run Scheduled",
+        "Simulation Run Started"
+      ],
+      "source_time_columns": [
+        "simulation_date",
+        "simulation_output_reviewed_at",
+        "simulation_result_accepted_at",
+        "simulation_run_scheduled_at",
+        "simulation_run_started_at"
+      ]
+    },
+    {
+      "er": "task",
+      "candidate_entity_type": "Course-design task",
+      "primary_key": [
+        "task_id"
+      ],
+      "identity_namespace": "universityflow:task",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Design Task Approved",
+        "Design Task Closed",
+        "Design Task Created",
+        "Design Task Published"
+      ],
+      "source_time_columns": [
+        "design_task_approved_at",
+        "design_task_closed_at",
+        "design_task_created_at",
+        "design_task_published_at"
+      ]
+    },
+    {
+      "er": "thesis",
+      "candidate_entity_type": "Thesis",
+      "primary_key": [
+        "thesis_id"
+      ],
+      "identity_namespace": "universityflow:thesis",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Thesis Accepted",
+        "Thesis Draft Registered",
+        "Thesis Resubmitted",
+        "Thesis Review Started",
+        "Thesis Revision Requested",
+        "Thesis Submitted"
+      ],
+      "source_time_columns": [
+        "submission_date",
+        "thesis_accepted_at",
+        "thesis_draft_registered_at",
+        "thesis_resubmitted_at",
+        "thesis_review_started_at",
+        "thesis_revision_requested_at"
+      ]
+    }
+  ],
+  "candidate_entity_types": {
+    "Assignment": [
+      "assignment"
+    ],
+    "Assignment grading record": [
+      "assignment_grading"
+    ],
+    "Course": [
+      "course"
+    ],
+    "Examination result record": [
+      "degree_examination_result"
+    ],
+    "Instructor": [
+      "instructor"
+    ],
+    "Student-course registration": [
+      "registration"
+    ],
+    "Simulation module": [
+      "simulation_module"
+    ],
+    "Student": [
+      "student"
+    ],
+    "Simulation experiment result record": [
+      "student_simulation_experiment_result"
+    ],
+    "Course-design task": [
+      "task"
+    ],
+    "Thesis": [
+      "thesis"
+    ]
+  },
+  "explanation": "This metadata is for reviewer comparison; do not pass it to models or treat it as reviewed semantic ET Gold."
+}

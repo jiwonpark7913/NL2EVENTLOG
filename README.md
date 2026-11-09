@@ -1,9 +1,10 @@
 # NL2EventLog
 
-Research implementation and four evaluation datasets for natural-language-to-event-log extraction.
+Research implementation and four evaluation datasets for natural-language-to-event-log extraction. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**.
 
 ## Repository map
 
+- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
 - [System design](docs/system/) — methodology, event-table scope, paraphrase-generation policy.
 - [Dataset inspection](datasets/) — four active datasets with separate **model input**, **evaluation ground truth**, and **human review** material.
 - [Review generator](tools/build_dataset_review.py) — produces an ERD overview and **actual first 10 SQLite rows** per table.
@@ -14,8 +15,6 @@ Research implementation and four evaluation datasets for natural-language-to-eve
 | [UniversityFlow](datasets/universityflow/) | [SQLite + dictionary](datasets/universityflow/input/) | [Inspection](datasets/universityflow/review/database/) | [DFG](datasets/universityflow/review/gold_dfg/) |
 | [PlateFlow](datasets/plateflow/) | [SQLite + dictionary](datasets/plateflow/input/) | [Inspection](datasets/plateflow/review/database/) | [DFG](datasets/plateflow/review/gold_dfg/) |
 | [WarehouseFlow](datasets/warehouseflow/) | [SQLite + dictionary](datasets/warehouseflow/input/) | [Inspection](datasets/warehouseflow/review/database/) | [DFG](datasets/warehouseflow/review/gold_dfg/) |
-
-PlateFlow and WarehouseFlow refer to the former `*_new` variants; the previous versions are removed from the active branch (and remain recoverable through Git history).
 
 ### Strict boundary
 
@@ -47,3 +46,5 @@ This refactor deliberately separates inspection data from model inputs. The orig
 - `tools/` contains human-review generators.
 
 Python helper scripts are grouped by purpose; the repository root contains only README and Git configuration. The four current databases remain the benchmark source of truth. Generated data and Gold files are unchanged by this structural refactor.
+
+**Evaluation migration status:** the stored Gold SQL/CSV, legacy identity groups, and case semantics predate the namespace-aware ET redesign. Gold SQL/CSV consistency is verified separately; semantic ET reannotation and FK→PK-only attribution recall remain open validation tasks.

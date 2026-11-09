@@ -1,4 +1,4 @@
-# HospitalFlow — Gold object types and direct event sources
+# HospitalFlow — legacy Entity Type candidates and direct event sources
 
 Activities shown here are recorded in table rows; downstream Gold case attribution can associate them with additional business objects.
 

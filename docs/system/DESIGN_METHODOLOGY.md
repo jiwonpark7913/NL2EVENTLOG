@@ -1,3 +1,5 @@
+> The active target terminology and mapping contracts are in [EEG / ET / ER methodology](EEG_ENTITY_MODEL.md). Dataset construction notes below may retain legacy assumptions; they do not establish validated semantic ET groupings or namespace-aware case attribution.
+
 # How the datasets are constructed
 
 ## Database design stages

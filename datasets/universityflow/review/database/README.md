@@ -2,15 +2,19 @@
 
 UniversityFlow is a synthetic university operations database representing students, courses, registration, assignments, examinations, theses, and simulation experiments. Its domain design draws on RSchema university requirements and uses authored synthetic records.
 
-## Gold Evidence Graph
+## Gold EEG Source Projection
 
-![Gold Object Types → Physical Tables → Activities](gold_evidence_graph.svg)
+![Entity Types → Entity Representations → Activities](gold_evidence_graph.svg)
 
-The diagram distinguishes core business object concepts from supporting entities and activity-record types. 
-Each physical table belongs to exactly one Gold Object Type. An event can be associated with several business objects through foreign keys without its source table belonging to multiple OTs.
+The diagram distinguishes core entity concepts from supporting representations and occurrence records. 
+A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. An event may be attributed to several Entity Instances without implying that its source ER belongs to multiple ETs.
 
-**This is an author-annotated Gold source projection, not an inferred Evidence Graph or a full provenance graph.**
-Gold SQL and record-level evidence are available in the linked inspection materials.
+The diagram is an **author-annotated EEG source projection**, not a model-inferred EEG or a validated namespace-aware Entity Type Gold. The ET candidates reflect legacy identity labels.
+Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model.
+
+
+
+**Entity-model status:** A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. [Terminology and namespace contract](../../../../docs/system/EEG_ENTITY_MODEL.md).
 
 ## Relational Schema (SQL foreign keys)
 
@@ -18,7 +22,7 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 
 ## Table inspector
 
-| Physical table | Rows | Columns | Gold OT | First ten records |
+| Physical table | Rows | Columns | legacy ET candidate | First ten records |
 |---|---:|---:|---|---|
 | assignment | 20 | 8 | Assignment | [Preview](tables/assignment.md) |
 | assignment_grading | 25 | 7 | Assignment grading record | [Preview](tables/assignment_grading.md) |
@@ -32,10 +36,10 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 | task | 3 | 10 | Course-design task | [Preview](tables/task.md) |
 | thesis | 16 | 10 | Thesis | [Preview](tables/thesis.md) |
 
-## Gold object types vs. core business objects
+## legacy Entity Type candidates vs. core business objects
 
-Gold identity types: **11**; principal business object concepts in this domain: **8**. 
-The core set is a conceptual layer for interpreting process scope, not a rule that forces unrelated PK domains to merge.
+Legacy ET candidate groups: **11**; principal business object concepts in this domain: **8**. 
+The core set is a conceptual shortlist, not evidence for merging separate Entity Instances or Identity Namespaces.
 
 **Core business concepts:** Assignment, Course, Course-design task, Instructor, Simulation module, Student, Student-course registration, Thesis.
 

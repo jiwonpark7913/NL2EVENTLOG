@@ -1,8 +1,8 @@
 # HospitalFlow — object identity Gold
 
-A physical table belongs to exactly one OT. Do not conflate FK associations with equal business-object identity.
+A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership.
 
-| Object Type | Member physical tables | Identity evidence |
+| Entity Type | Member physical tables | Identity evidence |
 |---|---|---|
 | Patient | patients | Distinct record grain and primary key |
 | Hospital Admission | admissions, admission_detail | Shared hadm_id, enforced shared-PK FK |
@@ -16,7 +16,7 @@ A physical table belongs to exactly one OT. Do not conflate FK associations with
 | Procedure Episode | procedure_episode | Distinct record grain and primary key |
 | Pharmacy Dispensing | pharmacy | Distinct record grain and primary key |
 
-**Decision:** Keep 11 OTs. Merge only admissions with admission_detail. Order history, lab measurements, medication administrations, pharmacy dispensing and transfer records have independent occurrence identities.
+**Legacy annotation:** 11 identity groups; only admissions and admission_detail share a supported primary-key identity. Semantic ET group review may regroup different entity populations without merging instances. Order history, lab measurements, medication administrations, pharmacy dispensing and transfer records have independent occurrence identities.
 
-Clinical grouping in the diagram is presentation only, not an ontology merge.
+Domain grouping is visual only, not evidence of semantic ET equality or shared instance identity.
 

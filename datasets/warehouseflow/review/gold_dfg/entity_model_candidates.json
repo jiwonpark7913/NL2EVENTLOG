@@ -1,0 +1,247 @@
+{
+  "dataset": "warehouseflow",
+  "model": "Target EEG schema; provisional migration of pre-namespace Gold annotation",
+  "status": "candidate_only_not_validated_ET_gold",
+  "one_entity_representation_per_physical_table": true,
+  "identity": "Entity ID = (Entity Type, Identity Namespace, Canonical Key)",
+  "default_directional_case_attribution": "FK_to_referenced_PK_or_unique_only_when_validated",
+  "default_reverse_fk_traversal": false,
+  "identity_mapping_policy": "Shared/Mapped/Independent/Unknown require separate verified evidence",
+  "case_population_policy": "distinct union of validated ET instance mappings; not computed in this review",
+  "lifecycle_membership_policy": "separate evidence required; never inferred from FK alone",
+  "entity_representations": [
+    {
+      "er": "dispatch_order",
+      "candidate_entity_type": "Dispatch Order",
+      "primary_key": [
+        "dispatch_id"
+      ],
+      "identity_namespace": "warehouseflow:dispatch_order",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Dispatch Approved",
+        "Dispatch Requested"
+      ],
+      "source_time_columns": [
+        "approved_at",
+        "requested_at"
+      ]
+    },
+    {
+      "er": "goods",
+      "candidate_entity_type": "Goods",
+      "primary_key": [
+        "goods_id"
+      ],
+      "identity_namespace": "warehouseflow:goods",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    },
+    {
+      "er": "goods_movement",
+      "candidate_entity_type": "Stock Movement",
+      "primary_key": [
+        "movement_id"
+      ],
+      "identity_namespace": "warehouseflow:goods_movement",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "source_time_columns": [
+        "occurred_at"
+      ]
+    },
+    {
+      "er": "goods_receipt",
+      "candidate_entity_type": "Receipt",
+      "primary_key": [
+        "receipt_id"
+      ],
+      "identity_namespace": "warehouseflow:goods_receipt",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Receipt Registered"
+      ],
+      "source_time_columns": [
+        "received_at"
+      ]
+    },
+    {
+      "er": "handling_history",
+      "candidate_entity_type": "Handling Record",
+      "primary_key": [
+        "handling_id"
+      ],
+      "identity_namespace": "warehouseflow:handling_history",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Loading Completed",
+        "Loading Started",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "source_time_columns": [
+        "completed_at",
+        "started_at"
+      ]
+    },
+    {
+      "er": "receiving_request",
+      "candidate_entity_type": "Receiving Request",
+      "primary_key": [
+        "request_id"
+      ],
+      "identity_namespace": "warehouseflow:receiving_request",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Receiving Request Submitted"
+      ],
+      "source_time_columns": [
+        "submitted_at"
+      ]
+    },
+    {
+      "er": "request_action",
+      "candidate_entity_type": "Request Action",
+      "primary_key": [
+        "action_id"
+      ],
+      "identity_namespace": "warehouseflow:request_action",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Request Checked",
+        "Request Held",
+        "Request Released"
+      ],
+      "source_time_columns": [
+        "occurred_at"
+      ]
+    },
+    {
+      "er": "warehouse",
+      "candidate_entity_type": "Warehouse",
+      "primary_key": [
+        "warehouse_id"
+      ],
+      "identity_namespace": "warehouseflow:warehouse",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    },
+    {
+      "er": "warehouse_audit",
+      "candidate_entity_type": "Stock Audit",
+      "primary_key": [
+        "audit_id"
+      ],
+      "identity_namespace": "warehouseflow:warehouse_audit",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Stock Audit Completed",
+        "Stock Audit Started"
+      ],
+      "source_time_columns": [
+        "completed_at",
+        "started_at"
+      ]
+    },
+    {
+      "er": "warehouse_task_history",
+      "candidate_entity_type": "Warehouse Task",
+      "primary_key": [
+        "task_id"
+      ],
+      "identity_namespace": "warehouseflow:warehouse_task_history",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started"
+      ],
+      "source_time_columns": [
+        "completed_at",
+        "started_at"
+      ]
+    },
+    {
+      "er": "work_code",
+      "candidate_entity_type": "work_code",
+      "primary_key": [
+        "code_family",
+        "code"
+      ],
+      "identity_namespace": "warehouseflow:work_code",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    },
+    {
+      "er": "worker",
+      "candidate_entity_type": "Worker",
+      "primary_key": [
+        "worker_id"
+      ],
+      "identity_namespace": "warehouseflow:worker",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    }
+  ],
+  "candidate_entity_types": {
+    "Dispatch Order": [
+      "dispatch_order"
+    ],
+    "Goods": [
+      "goods"
+    ],
+    "Stock Movement": [
+      "goods_movement"
+    ],
+    "Receipt": [
+      "goods_receipt"
+    ],
+    "Handling Record": [
+      "handling_history"
+    ],
+    "Receiving Request": [
+      "receiving_request"
+    ],
+    "Request Action": [
+      "request_action"
+    ],
+    "Warehouse": [
+      "warehouse"
+    ],
+    "Stock Audit": [
+      "warehouse_audit"
+    ],
+    "Warehouse Task": [
+      "warehouse_task_history"
+    ],
+    "work_code": [
+      "work_code"
+    ],
+    "Worker": [
+      "worker"
+    ]
+  },
+  "explanation": "This metadata is for reviewer comparison; do not pass it to models or treat it as reviewed semantic ET Gold."
+}

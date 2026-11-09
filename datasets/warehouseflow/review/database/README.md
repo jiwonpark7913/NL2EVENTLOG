@@ -2,15 +2,19 @@
 
 WarehouseFlow is a synthetic warehouse operations database covering goods, receiving requests, dispatch, stock movement, handling, worker tasks and audits. It uses authored business records rather than observed warehouse transactions.
 
-## Gold Evidence Graph
+## Gold EEG Source Projection
 
-![Gold Object Types → Physical Tables → Activities](gold_evidence_graph.svg)
+![Entity Types → Entity Representations → Activities](gold_evidence_graph.svg)
 
-The diagram distinguishes core business object concepts from supporting entities and activity-record types. 
-Each physical table belongs to exactly one Gold Object Type. An event can be associated with several business objects through foreign keys without its source table belonging to multiple OTs.
+The diagram distinguishes core entity concepts from supporting representations and occurrence records. 
+A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. An event may be attributed to several Entity Instances without implying that its source ER belongs to multiple ETs.
 
-**This is an author-annotated Gold source projection, not an inferred Evidence Graph or a full provenance graph.**
-Gold SQL and record-level evidence are available in the linked inspection materials.
+The diagram is an **author-annotated EEG source projection**, not a model-inferred EEG or a validated namespace-aware Entity Type Gold. The ET candidates reflect legacy identity labels.
+Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model.
+
+
+
+**Entity-model status:** A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. [Terminology and namespace contract](../../../../docs/system/EEG_ENTITY_MODEL.md).
 
 ## Relational Schema (SQL foreign keys)
 
@@ -18,7 +22,7 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 
 ## Table inspector
 
-| Physical table | Rows | Columns | Gold OT | First ten records |
+| Physical table | Rows | Columns | legacy ET candidate | First ten records |
 |---|---:|---:|---|---|
 | dispatch_order | 20 | 7 | Dispatch Order | [Preview](tables/dispatch_order.md) |
 | goods | 7 | 3 | Goods | [Preview](tables/goods.md) |
@@ -33,10 +37,10 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 | work_code | 10 | 3 | work_code | [Preview](tables/work_code.md) |
 | worker | 7 | 4 | Worker | [Preview](tables/worker.md) |
 
-## Gold object types vs. core business objects
+## legacy Entity Type candidates vs. core business objects
 
-Gold identity types: **12**; principal business object concepts in this domain: **5**. 
-The core set is a conceptual layer for interpreting process scope, not a rule that forces unrelated PK domains to merge.
+Legacy ET candidate groups: **12**; principal business object concepts in this domain: **5**. 
+The core set is a conceptual shortlist, not evidence for merging separate Entity Instances or Identity Namespaces.
 
 **Core business concepts:** Dispatch Order, Goods, Receiving Request, Warehouse, Worker.
 

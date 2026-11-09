@@ -1,8 +1,8 @@
 # UniversityFlow — Gold source inventory
 
-**Author annotations.** One identity OT per physical table; event-to-object attribution is a separate relation.
+**Legacy author annotations.** Every physical table is an ER. Candidate ET grouping is not yet validated for Identity Namespaces or lifecycle membership.
 
-| Physical table | Gold Object Type | Gold activity source labels |
+| Physical table | Entity Type candidate | Gold activity source labels |
 |---|---|---|
 | assignment | Assignment | Assignment Assigned, Assignment Grade Finalized, Assignment Resubmitted, Assignment Revision Requested, Assignment Submitted |
 | assignment_grading | Assignment grading record | Assignment Graded, Assignment Regraded |
@@ -16,6 +16,8 @@
 | task | Course-design task | Design Task Approved, Design Task Closed, Design Task Created, Design Task Published |
 | thesis | Thesis | Thesis Accepted, Thesis Draft Registered, Thesis Resubmitted, Thesis Review Started, Thesis Revision Requested, Thesis Submitted |
 
-This is a source-binding projection. The model is not given this file.
+This is a source-binding projection. This is a reviewer-only candidate grouping and is not provided to the model.
 
 [Gold diagram](../database/gold_evidence_graph.svg) · [Gold DFGs](README.md)
+
+[Entity Representation and namespace candidates](entity_model_candidates.json) — review-only; **not validated semantic ET Gold**.

@@ -4,7 +4,7 @@ Generated from current SQLite + authored Gold identity annotations.
 
 [Editable Draw.io](schema.drawio) · [DB review](../review/database/README.md) · [Gold evidence](../review/database/gold_evidence_graph.svg)
 
-| Table | Rows | Columns | PK | Gold OT |
+| Table | Rows | Columns | PK | legacy ET candidate |
 |---|---:|---:|---|---|
 | [admission_detail](../review/database/tables/admission_detail.md) | 5 | 2 | hadm_id | Hospital Admission |
 | [admissions](../review/database/tables/admissions.md) | 15 | 16 | hadm_id | Hospital Admission |
@@ -39,5 +39,5 @@ Generated from current SQLite + authored Gold identity annotations.
 | transfers | hadm_id | admissions | hadm_id |
 | transfers | subject_id | patients | subject_id |
 
-Foreign-key links are not Object Type identity equivalence.
+Foreign-key links are not Entity Type identity equivalence.
 

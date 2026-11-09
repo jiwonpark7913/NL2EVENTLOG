@@ -1,0 +1,254 @@
+{
+  "dataset": "hospitalflow",
+  "model": "Target EEG schema; provisional migration of pre-namespace Gold annotation",
+  "status": "candidate_only_not_validated_ET_gold",
+  "one_entity_representation_per_physical_table": true,
+  "identity": "Entity ID = (Entity Type, Identity Namespace, Canonical Key)",
+  "default_directional_case_attribution": "FK_to_referenced_PK_or_unique_only_when_validated",
+  "default_reverse_fk_traversal": false,
+  "identity_mapping_policy": "Shared/Mapped/Independent/Unknown require separate verified evidence",
+  "case_population_policy": "distinct union of validated ET instance mappings; not computed in this review",
+  "lifecycle_membership_policy": "separate evidence required; never inferred from FK alone",
+  "entity_representations": [
+    {
+      "er": "admission_detail",
+      "candidate_entity_type": "Hospital Admission",
+      "primary_key": [
+        "hadm_id"
+      ],
+      "identity_namespace": "hospitalflow:admission:hadm_id",
+      "namespace_evidence_status": "shared_primary_key_fk_supported",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Discharge Summary Signed"
+      ],
+      "source_time_columns": [
+        "discharge_summary_signed_at"
+      ]
+    },
+    {
+      "er": "admissions",
+      "candidate_entity_type": "Hospital Admission",
+      "primary_key": [
+        "hadm_id"
+      ],
+      "identity_namespace": "hospitalflow:admission:hadm_id",
+      "namespace_evidence_status": "shared_primary_key_fk_supported",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Emergency Department Departed",
+        "Emergency Department Registered",
+        "Hospital Admitted",
+        "Hospital Discharged"
+      ],
+      "source_time_columns": [
+        "admittime",
+        "dischtime",
+        "edouttime",
+        "edregtime"
+      ]
+    },
+    {
+      "er": "emar",
+      "candidate_entity_type": "Medication Administration",
+      "primary_key": [
+        "emar_id"
+      ],
+      "identity_namespace": "hospitalflow:emar",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Medication Administered",
+        "Medication Not Given"
+      ],
+      "source_time_columns": [
+        "charttime"
+      ]
+    },
+    {
+      "er": "lab_order",
+      "candidate_entity_type": "Laboratory Order",
+      "primary_key": [
+        "order_id"
+      ],
+      "identity_namespace": "hospitalflow:lab_order",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Lab Results Verified",
+        "Specimen Received"
+      ],
+      "source_time_columns": [
+        "results_verified_at",
+        "specimen_received_at"
+      ]
+    },
+    {
+      "er": "labevents",
+      "candidate_entity_type": "Lab Measurement",
+      "primary_key": [
+        "labevent_id"
+      ],
+      "identity_namespace": "hospitalflow:labevents",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Lab Result Available",
+        "Specimen Collected"
+      ],
+      "source_time_columns": [
+        "charttime",
+        "storetime"
+      ]
+    },
+    {
+      "er": "medication_order",
+      "candidate_entity_type": "Medication Order",
+      "primary_key": [
+        "order_id"
+      ],
+      "identity_namespace": "hospitalflow:medication_order",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Medication Stopped"
+      ],
+      "source_time_columns": [
+        "stopped_at"
+      ]
+    },
+    {
+      "er": "order_history",
+      "candidate_entity_type": "Order History Record",
+      "primary_key": [
+        "history_id"
+      ],
+      "identity_namespace": "hospitalflow:order_history",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Order Cancelled",
+        "Order Entered",
+        "Order Reviewed"
+      ],
+      "source_time_columns": [
+        "occurred_at"
+      ]
+    },
+    {
+      "er": "patients",
+      "candidate_entity_type": "Patient",
+      "primary_key": [
+        "subject_id"
+      ],
+      "identity_namespace": "hospitalflow:patients",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [],
+      "source_time_columns": []
+    },
+    {
+      "er": "pharmacy",
+      "candidate_entity_type": "Pharmacy Dispensing",
+      "primary_key": [
+        "pharmacy_id"
+      ],
+      "identity_namespace": "hospitalflow:pharmacy",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Medication Dispensed"
+      ],
+      "source_time_columns": [
+        "dispensed_at"
+      ]
+    },
+    {
+      "er": "procedure_episode",
+      "candidate_entity_type": "Procedure Episode",
+      "primary_key": [
+        "procedureevent_id"
+      ],
+      "identity_namespace": "hospitalflow:procedure_episode",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Procedure Completed",
+        "Procedure Started"
+      ],
+      "source_time_columns": [
+        "endtime",
+        "starttime"
+      ]
+    },
+    {
+      "er": "procedure_order",
+      "candidate_entity_type": "Procedure Order",
+      "primary_key": [
+        "order_id"
+      ],
+      "identity_namespace": "hospitalflow:procedure_order",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Procedure Preparation Completed"
+      ],
+      "source_time_columns": [
+        "preparation_completed_at"
+      ]
+    },
+    {
+      "er": "transfers",
+      "candidate_entity_type": "Care Unit Transfer",
+      "primary_key": [
+        "transfer_id"
+      ],
+      "identity_namespace": "hospitalflow:transfers",
+      "namespace_evidence_status": "unreviewed",
+      "semantic_et_validation": "pending",
+      "source_activity_labels": [
+        "Care Unit Transferred"
+      ],
+      "source_time_columns": [
+        "intime"
+      ]
+    }
+  ],
+  "candidate_entity_types": {
+    "Hospital Admission": [
+      "admission_detail",
+      "admissions"
+    ],
+    "Medication Administration": [
+      "emar"
+    ],
+    "Laboratory Order": [
+      "lab_order"
+    ],
+    "Lab Measurement": [
+      "labevents"
+    ],
+    "Medication Order": [
+      "medication_order"
+    ],
+    "Order History Record": [
+      "order_history"
+    ],
+    "Patient": [
+      "patients"
+    ],
+    "Pharmacy Dispensing": [
+      "pharmacy"
+    ],
+    "Procedure Episode": [
+      "procedure_episode"
+    ],
+    "Procedure Order": [
+      "procedure_order"
+    ],
+    "Care Unit Transfer": [
+      "transfers"
+    ]
+  },
+  "explanation": "This metadata is for reviewer comparison; do not pass it to models or treat it as reviewed semantic ET Gold."
+}

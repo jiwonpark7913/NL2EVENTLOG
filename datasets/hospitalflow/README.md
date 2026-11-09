@@ -4,13 +4,13 @@ HospitalFlow models synthetic patient encounters, clinical orders, medication ad
 
 ## Dataset overview
 
-| Physical tables | Gold object types | Core business concepts | Gold SQL/CSV pairs verified |
+| Physical tables | legacy Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
 | 12 | 11 | 5 | 42 |
 
 ## Explore the dataset
 
-- [Gold Evidence Graph and real table records](review/database/README.md)
+- [Gold EEG Source Projection and real table records](review/database/README.md)
 - [Editable Draw.io relational diagram](docs/schema.drawio)
 - [Per-question Gold DFGs](review/gold_dfg/README.md)
 - [Business Data Dictionary](input/data_dictionary.json)
@@ -18,5 +18,9 @@ HospitalFlow models synthetic patient encounters, clinical orders, medication ad
 
 ## Schema and process semantics
 
-Object types identify business entities or independent occurrence records. The conceptual shortlist of core nouns is not a physical schema transformation.
+Entity Types capture business semantics; Entity Representations preserve physical tables. ET classification is separate from instance identity resolution.
 Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.
+
+## Entity-model interpretation
+
+A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. See the [EEG / ET / ER methodology](../../docs/system/EEG_ENTITY_MODEL.md) for the target semantics.
