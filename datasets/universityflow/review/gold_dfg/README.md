@@ -1,8 +1,9 @@
-# universityflow: questions and Gold DFGs
+# Universityflow — Question-level Gold DFG inspection
 
-**EVALUATION ONLY — NEVER PROVIDE TO A MODEL.**
+**Gold reference only. These files are not model input.**
 
-Source commit: `a0ba4c9631d12730d60bf7720d783a3a827b88dc`. Open index.html for search, review notes and complete case traces.
+[Gold OT → Table → Activities diagram](../database/gold_evidence_graph.svg)
+
 
 Node counts = event occurrences. Edge counts = adjacent selected events within a case. Dashed amber edges touch timestamp ties and depend on the tie-break rule. DFGs are projections of the selected log, not causal models.
 

@@ -1,43 +1,58 @@
-# hospitalflow — Database Inspection
+# Hospitalflow — Database and Gold Evidence Review
 
-Original SQLite records; **not model input**. Click a table name to inspect its actual first 10 rows.
+HospitalFlow models synthetic patient encounters, clinical orders, medication administration, laboratory testing, procedures, and care-unit transfers. Its patient and admission structures and time-column vocabulary are inspired by the public MIMIC-IV hospital schema; all records are synthetic, not MIMIC-IV patient records.
 
-![Interactive table overview](schema.svg)
+## Gold Evidence Graph
 
-| Table | Rows | Columns | Open preview |
-|---|---:|---:|---|
-| admission_detail | 5 | 2 | [First 10 rows](tables/admission_detail.md) |
-| admissions | 15 | 16 | [First 10 rows](tables/admissions.md) |
-| emar | 67 | 5 | [First 10 rows](tables/emar.md) |
-| lab_order | 34 | 5 | [First 10 rows](tables/lab_order.md) |
-| labevents | 62 | 7 | [First 10 rows](tables/labevents.md) |
-| medication_order | 29 | 4 | [First 10 rows](tables/medication_order.md) |
-| order_history | 203 | 6 | [First 10 rows](tables/order_history.md) |
-| patients | 12 | 6 | [First 10 rows](tables/patients.md) |
-| pharmacy | 34 | 3 | [First 10 rows](tables/pharmacy.md) |
-| procedure_episode | 23 | 5 | [First 10 rows](tables/procedure_episode.md) |
-| procedure_order | 17 | 4 | [First 10 rows](tables/procedure_order.md) |
-| transfers | 38 | 7 | [First 10 rows](tables/transfers.md) |
+![Gold Object Types → Physical Tables → Activities](gold_evidence_graph.svg)
 
-The table links are the dependable GitHub navigation path; SVG click-through may vary by GitHub's rendering/security restrictions.
-FK arrows are based on declared SQLite foreign keys. Informal semantic links are not asserted as physical FKs.
+The diagram separates **core business object concepts** from supporting entities and activity-record types, without changing the Gold identity assignments. 
+Each physical table belongs to exactly one Gold Object Type. An event can be associated with several business objects through foreign keys without its source table belonging to multiple OTs.
 
-## MIMIC-IV-inspired schema
+**This is an author-annotated Gold source projection, not an inferred Evidence Graph or a full provenance graph.**
+Gold SQL and record-level references remain in the evaluation-only files.
 
-This dataset contains synthetic records, not real MIMIC-IV patient rows.
+## Relational Schema (SQL foreign keys)
 
-Patient master: patients (gender, anchor_age, anchor_year, anchor_year_group, dod). The patient_profile table was removed.
+![Relational database schema](schema.svg)
 
-Admission times retain the MIMIC names admittime, dischtime, deathtime, edregtime, edouttime. Newly introduced transfers uses eventtype, careunit, intime, outtime.
+## Table inspector
 
-The transfer event is eventtype=transfer at intime. Admission and discharge interval rows are not separately treated as new events.
+| Physical table | Rows | Columns | Gold OT | First ten records |
+|---|---:|---:|---|---|
+| admission_detail | 5 | 2 | Hospital Admission | [Preview](tables/admission_detail.md) |
+| admissions | 15 | 16 | Hospital Admission | [Preview](tables/admissions.md) |
+| emar | 67 | 5 | Medication Administration | [Preview](tables/emar.md) |
+| lab_order | 34 | 5 | Laboratory Order | [Preview](tables/lab_order.md) |
+| labevents | 62 | 7 | Lab Measurement | [Preview](tables/labevents.md) |
+| medication_order | 29 | 4 | Medication Order | [Preview](tables/medication_order.md) |
+| order_history | 203 | 6 | Order History Record | [Preview](tables/order_history.md) |
+| patients | 12 | 6 | Patient | [Preview](tables/patients.md) |
+| pharmacy | 34 | 3 | Pharmacy Dispensing | [Preview](tables/pharmacy.md) |
+| procedure_episode | 23 | 5 | Procedure Episode | [Preview](tables/procedure_episode.md) |
+| procedure_order | 17 | 4 | Procedure Order | [Preview](tables/procedure_order.md) |
+| transfers | 38 | 7 | Care Unit Transfer | [Preview](tables/transfers.md) |
 
-[MIMIC-IV hosp reference](https://mimic.mit.edu/docs/iv/modules/hosp/).
+## Gold object types vs. core business objects
 
-## Gold Evidence Graph: OT → Physical Table → Direct Activities
+Gold identity types: **11**; principal business object concepts in this domain: **5**. 
+The core set is a conceptual layer for interpreting process scope, not a rule that forces unrelated PK domains to merge.
 
-![Gold graph with unique OT membership](gold_evidence_graph.svg)
+**Core business concepts:** Hospital Admission, Laboratory Order, Medication Order, Patient, Procedure Order.
 
-OT (left), physical table (middle) and directly recorded event sources (right). Each physical table has exactly one Gold OT; foreign-key/event associations to several objects are distinct from OT membership. The three domain bands are visual grouping only, not merged object types.
+Supporting Gold types: Care Unit Transfer, Lab Measurement, Medication Administration, Order History Record, Pharmacy Dispensing, Procedure Episode.
 
-[Gold source inventory](../gold_dfg/event_graph.md) · [Question-level Gold SQL and DFG](../gold_dfg/README.md)
+## Evaluation evidence
+
+- Gold SQL/CSV pairs executable and consistent: 42; compared event rows across questions: 6656.
+- [Gold source inventory](../gold_dfg/event_graph.md)
+- [Question-level Gold DFGs](../gold_dfg/README.md)
+- [Editable Draw.io schema](../../docs/schema.drawio)
+
+*SQLite, dictionary and Gold outputs are unchanged by this review-page regeneration.*
+
+## MIMIC-IV provenance
+
+HospitalFlow is a synthetic database informed by the [MIMIC-IV hospital schema](https://mimic.mit.edu/docs/iv/modules/hosp/).
+The patient master contains gender, anchor_age, anchor_year, anchor_year_group and dod. The admissions record uses admittime, dischtime, deathtime, edregtime and edouttime. Transfer intervals use eventtype, careunit, intime and outtime.
+All individual records are synthetic.

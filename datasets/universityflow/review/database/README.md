@@ -1,22 +1,51 @@
-# universityflow — Database Inspection
+# Universityflow — Database and Gold Evidence Review
 
-Original SQLite records; **not model input**. Click a table name to inspect its actual first 10 rows.
+UniversityFlow is a synthetic university operations database representing students, courses, registration, assignments, examinations, theses, and simulation experiments. Its domain design draws on RSchema university requirements and uses authored synthetic records.
 
-![Interactive table overview](schema.svg)
+## Gold Evidence Graph
 
-| Table | Rows | Columns | Open preview |
-|---|---:|---:|---|
-| assignment | 20 | 8 | [First 10 rows](tables/assignment.md) |
-| assignment_grading | 25 | 7 | [First 10 rows](tables/assignment_grading.md) |
-| course | 6 | 10 | [First 10 rows](tables/course.md) |
-| degree_examination_result | 40 | 9 | [First 10 rows](tables/degree_examination_result.md) |
-| instructor | 3 | 3 | [First 10 rows](tables/instructor.md) |
-| registration | 47 | 9 | [First 10 rows](tables/registration.md) |
-| simulation_module | 3 | 9 | [First 10 rows](tables/simulation_module.md) |
-| student | 40 | 8 | [First 10 rows](tables/student.md) |
-| student_simulation_experiment_result | 27 | 9 | [First 10 rows](tables/student_simulation_experiment_result.md) |
-| task | 3 | 10 | [First 10 rows](tables/task.md) |
-| thesis | 16 | 10 | [First 10 rows](tables/thesis.md) |
+![Gold Object Types → Physical Tables → Activities](gold_evidence_graph.svg)
 
-The table links are the dependable GitHub navigation path; SVG click-through may vary by GitHub's rendering/security restrictions.
-FK arrows are based on declared SQLite foreign keys. Informal semantic links are not asserted as physical FKs.
+The diagram separates **core business object concepts** from supporting entities and activity-record types, without changing the Gold identity assignments. 
+Each physical table belongs to exactly one Gold Object Type. An event can be associated with several business objects through foreign keys without its source table belonging to multiple OTs.
+
+**This is an author-annotated Gold source projection, not an inferred Evidence Graph or a full provenance graph.**
+Gold SQL and record-level references remain in the evaluation-only files.
+
+## Relational Schema (SQL foreign keys)
+
+![Relational database schema](schema.svg)
+
+## Table inspector
+
+| Physical table | Rows | Columns | Gold OT | First ten records |
+|---|---:|---:|---|---|
+| assignment | 20 | 8 | Assignment | [Preview](tables/assignment.md) |
+| assignment_grading | 25 | 7 | Assignment grading record | [Preview](tables/assignment_grading.md) |
+| course | 6 | 10 | Course | [Preview](tables/course.md) |
+| degree_examination_result | 40 | 9 | Examination result record | [Preview](tables/degree_examination_result.md) |
+| instructor | 3 | 3 | Instructor | [Preview](tables/instructor.md) |
+| registration | 47 | 9 | Student-course registration | [Preview](tables/registration.md) |
+| simulation_module | 3 | 9 | Simulation module | [Preview](tables/simulation_module.md) |
+| student | 40 | 8 | Student | [Preview](tables/student.md) |
+| student_simulation_experiment_result | 27 | 9 | Simulation experiment result record | [Preview](tables/student_simulation_experiment_result.md) |
+| task | 3 | 10 | Course-design task | [Preview](tables/task.md) |
+| thesis | 16 | 10 | Thesis | [Preview](tables/thesis.md) |
+
+## Gold object types vs. core business objects
+
+Gold identity types: **11**; principal business object concepts in this domain: **8**. 
+The core set is a conceptual layer for interpreting process scope, not a rule that forces unrelated PK domains to merge.
+
+**Core business concepts:** Assignment, Course, Course-design task, Instructor, Simulation module, Student, Student-course registration, Thesis.
+
+Supporting Gold types: Assignment grading record, Examination result record, Simulation experiment result record.
+
+## Evaluation evidence
+
+- Gold SQL/CSV pairs executable and consistent: 66; compared event rows across questions: 8528.
+- [Gold source inventory](../gold_dfg/event_graph.md)
+- [Question-level Gold DFGs](../gold_dfg/README.md)
+- [Editable Draw.io schema](../../docs/schema.drawio)
+
+*SQLite, dictionary and Gold outputs are unchanged by this review-page regeneration.*

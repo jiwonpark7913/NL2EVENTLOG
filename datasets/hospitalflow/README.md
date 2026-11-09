@@ -1,28 +1,22 @@
-# HospitalFlow — MIMIC-IV-inspired synthetic hospital database
+# Hospitalflow
 
-The database uses MIMIC-IV-inspired schema and timestamp names but wholly synthetic patient, admission and transfer records.
-No real MIMIC-IV individual-level patient data are included.
+HospitalFlow models synthetic patient encounters, clinical orders, medication administration, laboratory testing, procedures, and care-unit transfers. Its patient and admission structures and time-column vocabulary are inspired by the public MIMIC-IV hospital schema; all records are synthetic, not MIMIC-IV patient records.
 
-## Current benchmark summary
+## Dataset overview
 
-| Tables | Patients | Admissions | Transfer rows | Object types | Distinct events | Answerable questions |
-|---:|---:|---:|---:|---:|---:|---:|
-| 12 | 12 | 15 | 38 | 11 | 627 | 42 |
+| Physical tables | Gold object types | Core business concepts | Gold SQL/CSV pairs verified |
+|---:|---:|---:|---:|
+| 12 | 11 | 5 | 42 |
 
-## Design changes
+## Explore the dataset
 
-- Patient demographics and anchor metadata now reside in patients; patient_profile and preferred_language were removed.
-- Original MIMIC admission timestamp names used: admittime, dischtime, deathtime, edregtime, edouttime.
-- transfers contains eventtype, careunit, intime and outtime and is linked to patient and hospital admission.
-- Only actual transfer eventtype rows create Care Unit Transferred events; admission/discharge intervals are not counted twice.
-- Gold SQL and event logs were regenerated, including a new Care Unit Transferred activity.
+- [Gold Evidence Graph and real table records](review/database/README.md)
+- [Editable Draw.io relational diagram](docs/schema.drawio)
+- [Per-question Gold DFGs](review/gold_dfg/README.md)
+- [Business Data Dictionary](input/data_dictionary.json)
+- [Gold object membership and source bindings](review/gold_dfg/event_graph.md)
 
-## Inspection
+## Schema and process semantics
 
-- [Database and first 10 rows per table](review/database/README.md)
-- [Gold DFGs](review/gold_dfg/README.md)
-- [Gold source evidence inventory](review/gold_dfg/event_graph.md)
-- [Editable Draw.io ERD](docs/schema.drawio)
-- [MIMIC-IV hospital schema documentation](https://mimic.mit.edu/docs/iv/modules/hosp/)
-
-All files under private and review are author-only, never model inputs.
+Object types identify business entities or independent occurrence records. The conceptual shortlist of core nouns is not a physical schema transformation.
+Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.

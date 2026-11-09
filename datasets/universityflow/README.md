@@ -1,111 +1,22 @@
-# UniversityFlow
+# Universityflow
 
-- **Situation:** Students take examinations, request course registration, complete course assessment, submit assignments and simulation results, and revise theses. Courses, instructors and modules aggregate their explicitly linked actions.
-- **Source:** Three preserved RSchema university requirements and logical schemas. Original source columns and keys are preserved.
-- **Extension:** Milestone columns, retained action histories and cross-object attribution rules are authored synthetic domain design. They are not copied from the source or observed production data.
-- **Database:** 11 tables; 11 object / case types; 41 activity types; 40 timestamp columns (40 event timestamp columns); 808 distinct events.
-- **Gold:** 58 answerable question-specific CSV logs out of 62 questions. Paired requests share the same expected content.
-- **Execution:** Run `python datasets/universityflow/build.py` from the repository root, then `python make_docs.py`. Only the Python standard library is needed for DB/log generation; diagrams use PyMuPDF.
+UniversityFlow is a synthetic university operations database representing students, courses, registration, assignments, examinations, theses, and simulation experiments. Its domain design draws on RSchema university requirements and uses authored synthetic records.
 
-## Dataset counts
+## Dataset overview
 
-| Dataset | Tables | Object / case types | Activity types | Timestamp columns | Event timestamp columns | Distinct events | Questions | Gold CSVs |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| UniversityFlow | 11 | 11 | 41 | 40 | 40 | 808 | 70 | 66 |
+| Physical tables | Gold object types | Core business concepts | Gold SQL/CSV pairs verified |
+|---:|---:|---:|---:|
+| 11 | 11 | 8 | 66 |
 
-- **Activity types:** distinct business labels across all recorded events in this database, counted once even when shared by several objects.
-- **Object / case types:** distinct keyed tables with an answerable object-specific event log, including auxiliary event/association-record cases. This is a type count, not a count of individual object instances.
-- Activity-history tables, the case-link index and code reference tables do not add object types.
-- Individual cases may contain fewer activities because of incomplete work or conditional branches.
+## Explore the dataset
 
-## Objects, activities and situations
+- [Gold Evidence Graph and real table records](review/database/README.md)
+- [Editable Draw.io relational diagram](docs/schema.drawio)
+- [Per-question Gold DFGs](review/gold_dfg/README.md)
+- [Business Data Dictionary](input/data_dictionary.json)
+- [Gold object membership and source bindings](review/gold_dfg/event_graph.md)
 
-| Object / case | Activity types across all cases | Situation / scope | Gold CSV |
-|---|---|---|---|
-| student | Assignment Assigned; Assignment Grade Finalized; Assignment Graded; Assignment Regraded; Assignment Resubmitted; Assignment Revision Requested; Assignment Submitted; Course Assessment Completed; Course Grade Finalized; Course Registered; Course Started; Degree Examination Taken; Examination Checked In; Examination Result Reviewed; Examination Scheduled; Examination Score Published; Registration Approved; Registration Requested; Simulation Experiment Completed; Simulation Output Reviewed; Simulation Result Accepted; Simulation Run Scheduled; Simulation Run Started; Thesis Accepted; Thesis Draft Registered; Thesis Resubmitted; Thesis Review Started; Thesis Revision Requested; Thesis Submitted | Original recorded actions and authored lifecycle actions explicitly linked to this student. | [CSV](private/gold_logs/OU01.csv) |
-| course | Course Assessment Completed; Course Grade Finalized; Course Offering Approved; Course Offering Closed; Course Offering Proposed; Course Offering Published; Course Registered; Course Started; Registration Approved; Registration Requested | Original recorded actions and authored lifecycle actions explicitly linked to this course. | [CSV](private/gold_logs/OU02.csv) |
-| registration | Course Assessment Completed; Course Grade Finalized; Course Registered; Course Started; Registration Approved; Registration Requested | Original recorded actions and authored lifecycle actions explicitly linked to this student-course registration. | [CSV](private/gold_logs/OU03.csv) |
-| degree_examination_result | Degree Examination Taken; Examination Checked In; Examination Result Reviewed; Examination Scheduled; Examination Score Published | Original recorded actions and authored lifecycle actions explicitly linked to this examination result record. | [CSV](private/gold_logs/OU04.csv) |
-| simulation_module | Simulation Experiment Completed; Simulation Module Published; Simulation Module Released; Simulation Module Retired; Simulation Module Validated; Simulation Output Reviewed; Simulation Result Accepted; Simulation Run Scheduled; Simulation Run Started | Original recorded actions and authored lifecycle actions explicitly linked to this simulation module. | [CSV](private/gold_logs/OU05.csv) |
-| thesis | Thesis Accepted; Thesis Draft Registered; Thesis Resubmitted; Thesis Review Started; Thesis Revision Requested; Thesis Submitted | Original recorded actions and authored lifecycle actions explicitly linked to this thesis. | [CSV](private/gold_logs/OU06.csv) |
-| student_simulation_experiment_result | Simulation Experiment Completed; Simulation Output Reviewed; Simulation Result Accepted; Simulation Run Scheduled; Simulation Run Started | Original recorded actions and authored lifecycle actions explicitly linked to this simulation experiment result record. | [CSV](private/gold_logs/OU07.csv) |
-| assignment | Assignment Assigned; Assignment Grade Finalized; Assignment Graded; Assignment Regraded; Assignment Resubmitted; Assignment Revision Requested; Assignment Submitted | Original recorded actions and authored lifecycle actions explicitly linked to this assignment. | [CSV](private/gold_logs/OU08.csv) |
-| instructor | Assignment Assigned; Assignment Grade Finalized; Assignment Graded; Assignment Regraded; Assignment Resubmitted; Assignment Revision Requested; Assignment Submitted | Original recorded actions and authored lifecycle actions explicitly linked to this instructor. | [CSV](private/gold_logs/OU09.csv) |
-| assignment_grading | Assignment Graded; Assignment Regraded | Original recorded actions and authored lifecycle actions explicitly linked to this assignment grading record. | [CSV](private/gold_logs/OU10.csv) |
-| task | Design Task Approved; Design Task Closed; Design Task Created; Design Task Published | Actual creation, publication and closure of this design task; these are authored task-management actions, not inferred student executions. | [CSV](private/gold_logs/OU11.csv) |
+## Schema and process semantics
 
-- Atomic grading and operation records are auxiliary cases; a single occurrence is not expanded into an invented lifecycle.
-- Master cases can aggregate unrelated jobs. Multiple activity types do not imply one causal process across all rows.
-- Conditional revision branches and incomplete histories are intentional. Repeated activity occurrences keep distinct event IDs.
-- Actual activity times are separate from plans, schedules and technical creation/update times.
-- Case population includes objects with no selected events; those cases have no CSV rows.
-- These are case-based CSV logs, not OCEL.
-
-## Database, extraction and validation
-
-- One-time stages are named actual-time columns on the existing business tables. Repeated grading/reassessment uses rows of `assignment_grading`, distinguished by `grading_kind`. No `_activity` tables remain.
-- Event-to-case attribution uses existing PK/FK relationships directly; there is no persisted event/case index.
-- Full ES queries union milestone columns with grading, registration, examination and experiment occurrences. Object-specific ES queries apply explicit case links and sort by case, time and event ID.
-- Gold logs are generated from simulated history and compared against executable SQL on the populated DB. This checks internal consistency, not model accuracy.
-- [Detailed activity design](docs/object_activity_design.md)
-- [Event-log case scopes and counts](docs/object_event_logs.md)
-- [Data dictionary](docs/data_dictionary.md)
-- [Schema overview](docs/schema_overview.md)
-- [Editable draw.io](docs/schema.drawio)
-- [Validation report](validation_report.json)
-
-![Schema](docs/schema.png)
-
-## Question types and pairs
-
-- **Q1 Explicit:** case concept and exact activities.
-- **Q2 Paraphrased:** alternate wording of Q1, with identical Gold scope.
-- **Q3 Full Lifecycle:** case concept only, using the declared default recorded scope.
-- **Q4 Full Lifecycle Paraphrased:** alternate wording of Q3, with identical Gold scope.
-- `question_type`, `question_type_name`, `pair_of` and `answerability` are included in every question and Gold answer.
-- Type and answerability are separate: unavailable actions remain unsupported; empty observed logs are not automatically unsupported.
-
-| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
-|---|---:|---:|---:|---:|
-| Q1 | 23 | 21 | 2 | 2.35 |
-| Q2 | 23 | 21 | 2 | 2.35 |
-| Q3 | 12 | 12 | 0 | 9.92 |
-| Q4 | 12 | 12 | 0 | 9.92 |
-
-- Avg. requested activity types = sum of requested activity-type counts / all questions in that row, including non-answerable questions. WarehouseFlow New counts phase-specific requested labels here and reports base activity counts separately. Q3/Q4 counts use the Gold catalog scope. This counts distinct activity types, not event occurrences.
-
-- [All question texts, types, pairs and answerability](docs/questions.md)
-
-## Event encoding and data definitions
-
-- [Table-by-table row/column encoding](docs/schema_overview.md)
-- [Three-part data dictionary: basic information, table definitions, column definitions](docs/data_dictionary.md)
-- [Table definitions CSV](docs/table_definitions.csv)
-- Process View includes the case concept and activity scope. Q1/Q2 state the scope explicitly; Q3/Q4 infer it from the declared catalog.
-- [Question activity counts and pairs](docs/questions.md): requested and extractable activity counts are shown separately.
-
-## Consolidation and primary keys
-
-- The eleven original university business-table roles are retained. All generic activity tables and the event/case index have been removed.
-- One revision branch per assignment/thesis is represented by milestone columns in this simulation. Multiple revision rounds require a dedicated submission/review history.
-- A table has one PRIMARY KEY constraint. Several PK-marked columns form one composite key, not several independent primary keys.
-- `registration`: `(student_id, course_id)` identifies one student-course registration.
-- `assignment_grading`: `(assignment_id, instructor_id, grading_time)` identifies one grading occurrence.
-- `student_simulation_experiment_result`: `(student_id, module_id, simulation_date)` identifies one simulation-run record.
-- PK/FK means the column belongs to the primary key and also references another table.
-- [Storage and direct case JOIN definitions](design/native_storage_mapping.json)
-
-## Schema and documentation
-
-- [Table inventory and relationships](docs/schema_overview.md)
-- [English column dictionary](docs/data_dictionary.md)
-- [CSV dictionary](docs/data_dictionary.csv)
-- [Editable draw.io diagram](docs/schema.drawio)
-- [Object-based Gold logs and coverage](docs/object_event_logs.md)
-
-## Timestamp columns
-
-- Timestamp columns count physical table.column pairs storing date-and-time instants. Date-only birth/planning fields and recurring class schedules are excluded. Event timestamp columns are the subset actually selected as event times by the current ES; roles distinguish plans, technical times, snapshots, interval starts and copied key timestamps. Phase-aware variants may select actual interval starts as event times.
-- [Timestamp inventory and roles](docs/timestamp_columns.md)
-- [Milestone-column extraction questions and Gold activity counts](docs/questions.md)
-- Single-occurrence milestone times are stored on the existing business record. Repeated actions remain row encoded; the same event is not stored twice.
+Object types identify business entities or independent occurrence records. The conceptual shortlist of core nouns is not a physical schema transformation.
+Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.

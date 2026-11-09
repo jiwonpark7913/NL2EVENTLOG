@@ -1,4 +1,4 @@
-# HospitalFlow — Gold DFG visual inspection
+# Hospitalflow — Question-level Gold DFG inspection
 
 **Evaluation only: never provide Gold data or DFGs to NL2EventLog model inputs.**
 
