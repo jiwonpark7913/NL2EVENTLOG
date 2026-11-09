@@ -1,0 +1,29 @@
+name: Regenerate HospitalFlow gold DFGs and README
+on:
+  push:
+    branches: [feature/hospitalflow-mimic-patients-transfers]
+    paths:
+      - 'tools/experiments/rebuild_hospital_gold_review.py'
+      - '.github/workflows/hospital-gold-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild all Gold DFGs and current dataset summary
+        run: python tools/experiments/rebuild_hospital_gold_review.py
+      - name: Commit regenerated review assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/hospitalflow/README.md datasets/hospitalflow/review/gold_dfg
+          git diff --cached --quiet || git commit -m 'docs: refresh all hospital Gold DFGs against new transfer event logs'
+          git push
