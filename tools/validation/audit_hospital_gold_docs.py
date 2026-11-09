@@ -43,7 +43,7 @@ def main():
             target=list(rdr)
         assert rows==target,("SQL/CSV",id,len(rows),len(target))
         assert len(rows)==g["event_count"]
-        assert set(r[2] for r in rows).issubset(set(es["activities"]))
+        assert set(r[2] for r in rows).issubset(set(es["activities"])),(id,sorted(set(r[2] for r in rows)-set(es["activities"])))
         for s in es["activity_sources"]:
             table=s["table"];col=s["timestamp_column"]
             assert table in names
