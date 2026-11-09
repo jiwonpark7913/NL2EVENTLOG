@@ -54,41 +54,23 @@ def markdown_clean(text,name):
     return text
 
 def inventory(base,db,n):
+    # Stable authored Gold manifest; never parse already rendered Markdown as input.
     tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
-    ot={};acts=defaultdict(set);times=defaultdict(set);source=(base/"review/gold_dfg/event_graph.md").read_text()
+    source=readj(base/"review/gold_dfg/gold_source_manifest.json")
+    assert source["dataset"]==n
+    assert set(source["tables"])==tables,(n, "Gold inventory-table mismatch")
+    ot={}
+    acts=defaultdict(set)
+    times=defaultdict(set)
+    for t,item in source["tables"].items():
+        assert item["ot"]
+        ot[t]=item["ot"]
+        acts[t].update(item["activities"])
+        times[t].update(item["timestamps"])
     if n=="hospitalflow":
         private=readj(base/"private/identity_gold.json")
-        for g in private["groups"]:
-            for member in g["members"]:
-                t=member["table"]
-                assert t not in ot
-                ot[t]=g["object_type"]
-        for line in source.splitlines():
-            if not line.startswith("| "):continue
-            f=[c.strip() for c in line.strip().strip("|").split("|")]
-            if len(f)!=4 or f[0] not in tables:continue
-            t=f[0]
-            assert f[1]==ot[t],(t,f[1],ot[t])
-            acts[t].update(v.strip() for v in f[2].split(",") if v.strip() not in ("","—"))
-            times[t].update(v.strip() for v in f[3].split(",") if v.strip() not in ("","—"))
-    else:
-        for line in source.splitlines():
-            if not line.startswith("| "):continue
-            fields=[c.strip() for c in line.strip().strip("|").split("|")]
-            if len(fields) not in (3,7):continue
-            t=fields[0].strip(TICK)
-            if t not in tables:continue
-            if t in ot:
-                assert ot[t]==fields[5],("Conflicting OT",n,t)
-                continue
-            val=fields[5].replace(TICK,"").replace(" (singleton)","") if len(fields)==7 else fields[1].replace(TICK,"")
-            assert val and val!="—"
-            ot[t]=val
-            acts[t].update(v.strip() for v in (fields[6] if len(fields)==7 else fields[2]).split(",") if v.strip() not in ("","—"))
-            # timestamp candidates are already source-inventory values; do not present every timestamp as a confirmed event
-            if len(fields)==7:
-                times[t].update(v.strip(TICK+" ") for v in fields[3].split(",") if v.strip() not in ("","—"))
-    assert set(ot)==tables,(n,"Missing/extra table identity",tables-set(ot),set(ot)-tables)
+        actual={m["table"]:g["object_type"] for g in private["groups"] for m in g["members"]}
+        assert actual==ot,(n,"authored identity Gold diverges from source manifest")
     return ot,acts,times
 
 def gold_audit(base,db,n):
