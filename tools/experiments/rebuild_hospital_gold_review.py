@@ -26,7 +26,7 @@ def make_svg(path,activity,edges,start,end):
     for (a,b),count in sorted(edges.items()):
         x1,y1=loc[a];x2,y2=loc[b]
         if a==b:
-            lines.append('<path d="M%.1f %.1f q -55 -95 30 -110 q 90 15 65 95" fill="none" stroke="#94a3b8" stroke-width="1.5"/>'%(x1,y1,x1,y1))
+            lines.append('<path d="M%.1f %.1f q -55 -95 30 -110 q 90 15 65 95" fill="none" stroke="#94a3b8" stroke-width="1.5"/>'%(x1,y1))
             continue
         delta=math.hypot(x2-x1,y2-y1) or 1
         dx=(x2-x1)/delta;dy=(y2-y1)/delta
