@@ -60,6 +60,10 @@ def main():
         # Separate SVG colored highlights are inserted before text, keeping links functional.
         svgpath=base/"review/database/schema.svg"
         svg=svgpath.read_text()
+        if "Yellow: Gold event-time source" in svg:
+            # Already rendered; repeated workflow runs must not stack background rectangles.
+            counts[name]=changes
+            continue
         for table,tcols in cols.items():
             pat=r'(<a\b[^>]*href="tables/'+re.escape(table)+r'\.md"[^>]*>)(.*?)(</a>)'
             def update(match):
