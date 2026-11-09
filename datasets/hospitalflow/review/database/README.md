@@ -34,8 +34,10 @@ The transfer event is eventtype=transfer at intime. Admission and discharge inte
 
 [MIMIC-IV hosp reference](https://mimic.mit.edu/docs/iv/modules/hosp/).
 
-## Gold Evidence Graph (source bindings)
+## Gold Evidence Graph: OT → Physical Table → Direct Activities
 
-![Gold source graph](gold_evidence_graph.svg)
+![Gold graph with unique OT membership](gold_evidence_graph.svg)
 
-[Gold source inventory](../gold_dfg/event_graph.md). The diagram shows authored source bindings, not the model's inferred graph.
+OT (left), physical table (middle) and directly recorded event sources (right). Each physical table has exactly one Gold OT; foreign-key/event associations to several objects are distinct from OT membership. The three domain bands are visual grouping only, not merged object types.
+
+[Gold source inventory](../gold_dfg/event_graph.md) · [Question-level Gold SQL and DFG](../gold_dfg/README.md)

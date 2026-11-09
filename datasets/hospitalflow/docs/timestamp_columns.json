@@ -1,120 +1,89 @@
 {
-  "timestamp_columns": 19,
-  "event_timestamp_columns": 17,
-  "columns": [
-    {
-      "table": "admissions",
-      "column": "edregtime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "admissions",
-      "column": "admittime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "admissions",
-      "column": "discharge_authorized_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "admissions",
-      "column": "dischtime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "patient_profile",
-      "column": "profile_verified_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "admission_detail",
-      "column": "discharge_summary_signed_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "lab_order",
-      "column": "specimen_received_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "lab_order",
-      "column": "results_verified_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "medication_order",
-      "column": "stopped_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "procedure_order",
-      "column": "preparation_completed_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "order_history",
-      "column": "occurred_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "labevents",
-      "column": "charttime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "labevents",
-      "column": "storetime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "emar",
-      "column": "charttime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "emar",
-      "column": "storetime",
-      "used_as_event_time": false,
-      "role": "Technical documentation time"
-    },
-    {
-      "table": "procedure_episode",
-      "column": "starttime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "procedure_episode",
-      "column": "endtime",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    },
-    {
-      "table": "procedure_episode",
-      "column": "storetime",
-      "used_as_event_time": false,
-      "role": "Technical documentation time"
-    },
-    {
-      "table": "pharmacy",
-      "column": "dispensed_at",
-      "used_as_event_time": true,
-      "role": "Actual event time"
-    }
-  ]
+  "time_columns": {
+    "admission_detail": [
+      "discharge_summary_signed_at"
+    ],
+    "admissions": [
+      "edregtime",
+      "admittime",
+      "dischtime",
+      "deathtime",
+      "edouttime"
+    ],
+    "emar": [
+      "charttime",
+      "storetime"
+    ],
+    "lab_order": [
+      "specimen_received_at",
+      "results_verified_at"
+    ],
+    "labevents": [
+      "charttime",
+      "storetime"
+    ],
+    "medication_order": [
+      "stopped_at"
+    ],
+    "order_history": [
+      "occurred_at"
+    ],
+    "patients": [],
+    "pharmacy": [
+      "dispensed_at"
+    ],
+    "procedure_episode": [
+      "starttime",
+      "endtime",
+      "storetime"
+    ],
+    "procedure_order": [
+      "preparation_completed_at"
+    ],
+    "transfers": [
+      "intime",
+      "outtime"
+    ]
+  },
+  "gold_event_time_columns": {
+    "order_history": [
+      "occurred_at"
+    ],
+    "labevents": [
+      "charttime",
+      "storetime"
+    ],
+    "emar": [
+      "charttime"
+    ],
+    "procedure_episode": [
+      "endtime",
+      "starttime"
+    ],
+    "lab_order": [
+      "results_verified_at",
+      "specimen_received_at"
+    ],
+    "medication_order": [
+      "stopped_at"
+    ],
+    "pharmacy": [
+      "dispensed_at"
+    ],
+    "procedure_order": [
+      "preparation_completed_at"
+    ],
+    "admissions": [
+      "admittime",
+      "dischtime",
+      "edouttime",
+      "edregtime"
+    ],
+    "admission_detail": [
+      "discharge_summary_signed_at"
+    ],
+    "transfers": [
+      "intime"
+    ]
+  }
 }

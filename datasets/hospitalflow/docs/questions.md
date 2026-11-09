@@ -1,61 +1,50 @@
-# HospitalFlow questions
+# HospitalFlow — current evaluation Gold questions
 
-## Question types and pairs
+Generated from Gold metadata; this is an evaluation-only review file.
 
-| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |
-| --- | --- | --- | --- | --- |
-| Q1 | 12 | 11 | 1 | 2.75 |
-| Q2 | 12 | 11 | 1 | 2.75 |
-| Q3 | 10 | 10 | 0 | 6.90 |
-| Q4 | 10 | 10 | 0 | 6.90 |
-
-- Average includes all requests in the type, including unsupported activity requests.
-- Process View includes the case concept and activity scope. Q3/Q4 leave the scope implicit via the catalog.
-- Each P question is an assistant-LLM paraphrase of the frozen seed; prompts and outputs are saved in source/llm_paraphrases.json.
-
-| ID | Type | Paired with | Answerability | Requested activities | Extractable activities | Question |
-| --- | --- | --- | --- | --- | --- | --- |
-| H01 | Q1 | H01P | Answerable | 3 | 3 | For each hospital admission, extract Order Entered, Order Reviewed and Order Cancelled events. |
-| H01P | Q2 | H01 | Answerable | 3 | 3 | For every hospital stay, build a timeline of when its orders were placed, checked and, if applicable, cancelled. |
-| H02 | Q1 | H02P | Answerable | 3 | 3 | For each hospital admission, extract Lab Result Available, Medication Administered and Procedure Completed events. |
-| H02P | Q2 | H02 | Answerable | 3 | 3 | For every hospital stay, show when laboratory findings became available, medicines were given and procedures finished. |
-| H03 | Q1 | H03P | Answerable | 3 | 3 | For each laboratory order, extract Specimen Collected, Lab Result Available and Lab Results Verified events. |
-| H03P | Q2 | H03 | Answerable | 3 | 3 | For every laboratory request, show when specimens were collected, when results became available and when those results were verified. |
-| H04 | Q1 | H04P | Answerable | 4 | 4 | For each medication order, extract Medication Dispensed, Medication Administered, Medication Not Given and Medication Stopped events. |
-| H04P | Q2 | H04 | Answerable | 4 | 4 | Create a timeline for each medication order covering dispensing, each dose given or not given, and the stopping of the medication. |
-| H05 | Q1 | H05P | Answerable | 3 | 3 | For each procedure order, extract Procedure Preparation Completed, Procedure Started and Procedure Completed events. |
-| H05P | Q2 | H05 | Answerable | 3 | 3 | For every procedure order, show when preparation finished and when each procedure occurrence began and ended. |
-| H06 | Q1 | H06P | Answerable | 4 | 4 | For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Discharge Authorized and Hospital Discharged events. |
-| H06P | Q2 | H06 | Answerable | 4 | 4 | For every hospital stay, show arrival registration in the emergency department, admission, authorization to leave and actual discharge. |
-| H07 | Q1 | H07P | Answerable | 5 | 5 | For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events. |
-| H07P | Q2 | H07 | Answerable | 5 | 5 | For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures. |
-| H08 | Q1 | H08P | Non-answerable | 1 | 0 | For each hospital admission, extract Insurance Claim Paid events. |
-| H08P | Q2 | H08 | Non-answerable | 1 | 0 | For each hospital stay, show when its insurance claim was settled by payment. |
-| HF01 | Q3 | HF01P | Answerable | 20 | 20 | Extract the full recorded lifecycle for each patient. |
-| HF01P | Q4 | HF01 | Answerable | 20 | 20 | Build a complete timeline of all recorded care events for every patient. |
-| HF02 | Q3 | HF02P | Answerable | 19 | 19 | Extract the full recorded lifecycle for each hospital admission. |
-| HF02P | Q4 | HF02 | Answerable | 19 | 19 | Show the entire recorded history of each individual hospital stay. |
-| HF03 | Q3 | HF03P | Answerable | 3 | 3 | Extract the full recorded lifecycle for each order history record. |
-| HF03P | Q4 | HF03 | Answerable | 3 | 3 | Show the complete recorded history of every individual order history record. |
-| HF04 | Q3 | HF04P | Answerable | 6 | 6 | Extract the full recorded lifecycle for each laboratory order. |
-| HF04P | Q4 | HF04 | Answerable | 6 | 6 | Show everything recorded over the life of each laboratory order. |
-| HF05 | Q3 | HF05P | Answerable | 6 | 6 | Extract the full recorded lifecycle for each medication order. |
-| HF05P | Q4 | HF05 | Answerable | 6 | 6 | Build the complete recorded history of each medication order. |
-| HF06 | Q3 | HF06P | Answerable | 6 | 6 | Extract the full recorded lifecycle for each procedure order. |
-| HF06P | Q4 | HF06 | Answerable | 6 | 6 | Trace the whole recorded lifecycle of every procedure order. |
-| H09 | Q1 | H09P | Answerable | 1 | 1 | For each patient, extract Patient Profile Verified events. |
-| H09P | Q2 | H09 | Answerable | 1 | 1 | For each patient, show when their supplementary personal information was verified. |
-| H10 | Q1 | H10P | Answerable | 1 | 1 | For each hospital admission, extract Discharge Summary Signed events. |
-| H10P | Q2 | H10 | Answerable | 1 | 1 | For each hospital stay, show when its discharge summary was signed. |
-| H11 | Q1 | H11P | Answerable | 2 | 2 | For each patient, extract Patient Profile Verified and Hospital Admitted events. |
-| H11P | Q2 | H11 | Answerable | 2 | 2 | Build a timeline for every patient showing verification of their supplementary personal information and their entries into hospital. |
-| HF07 | Q3 | HF07P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each lab measurement. |
-| HF07P | Q4 | HF07 | Answerable | 2 | 2 | Show the entire recorded history of each individual laboratory measurement. |
-| HF08 | Q3 | HF08P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each medication administration. |
-| HF08P | Q4 | HF08 | Answerable | 2 | 2 | Build the complete recorded history of every individual medication administration record. |
-| HF09 | Q3 | HF09P | Answerable | 2 | 2 | Extract the full recorded lifecycle for each procedure episode. |
-| HF09P | Q4 | HF09 | Answerable | 2 | 2 | Trace each individual procedure episode through its whole recorded lifecycle. |
-| HF10 | Q3 | HF10P | Answerable | 3 | 3 | Extract the full recorded lifecycle for each pharmacy dispensing record. |
-| HF10P | Q4 | HF10 | Answerable | 3 | 3 | Show the complete recorded course associated with each individual pharmacy dispensing record. |
-| H12 | Q1 | H12P | Answerable | 3 | 3 | For each pharmacy dispensing record, extract Medication Dispensed, Medication Administered and Medication Not Given events. |
-| H12P | Q2 | H12 | Answerable | 3 | 3 | Group the medication dispensing, subsequent doses given and doses not given by the pharmacy dispensing record they refer to. |
+| ID | Type | Answerability | Gold activity scope | Event rows |
+|---|---|---|---:|
+| H01 | Q1 | answerable | Order Entered, Order Reviewed, Order Cancelled | 194 |
+| H01P | Q2 | answerable | Order Entered, Order Reviewed, Order Cancelled | 194 |
+| H02 | Q1 | answerable | Lab Result Available, Medication Administered, Procedure Completed | 124 |
+| H02P | Q2 | answerable | Lab Result Available, Medication Administered, Procedure Completed | 124 |
+| H03 | Q1 | answerable | Specimen Collected, Lab Result Available, Lab Results Verified | 154 |
+| H03P | Q2 | answerable | Specimen Collected, Lab Result Available, Lab Results Verified | 154 |
+| H04 | Q1 | answerable | Medication Dispensed, Medication Administered, Medication Not Given, Medication Stopped | 126 |
+| H04P | Q2 | answerable | Medication Dispensed, Medication Administered, Medication Not Given, Medication Stopped | 126 |
+| H05 | Q1 | answerable | Procedure Preparation Completed, Procedure Started, Procedure Completed | 55 |
+| H05P | Q2 | answerable | Procedure Preparation Completed, Procedure Started, Procedure Completed | 55 |
+| H06 | Q1 | answerable | Emergency Department Registered, Hospital Admitted, Emergency Department Departed, Hospital Discharged | 44 |
+| H06P | Q2 | answerable | Emergency Department Registered, Hospital Admitted, Emergency Department Departed, Hospital Discharged | 44 |
+| H07 | Q1 | answerable | Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed, Hospital Discharged | 158 |
+| H07P | Q2 | answerable | Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed, Hospital Discharged | 158 |
+| H08 | Q1 | non_answerable | — | 0 |
+| H08P | Q2 | non_answerable | — | 0 |
+| HF01 | Q3 | answerable | Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Care Unit Transferred, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 627 |
+| HF01P | Q4 | answerable | Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Care Unit Transferred, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 627 |
+| HF02 | Q3 | answerable | Care Unit Transferred, Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 600 |
+| HF02P | Q4 | answerable | Care Unit Transferred, Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 600 |
+| HF03 | Q3 | answerable | Order Cancelled, Order Entered, Order Reviewed | 203 |
+| HF03P | Q4 | answerable | Order Cancelled, Order Entered, Order Reviewed | 203 |
+| HF04 | Q3 | answerable | Lab Result Available, Lab Results Verified, Order Entered, Order Reviewed, Specimen Collected, Specimen Received | 267 |
+| HF04P | Q4 | answerable | Lab Result Available, Lab Results Verified, Order Entered, Order Reviewed, Specimen Collected, Specimen Received | 267 |
+| HF05 | Q3 | answerable | Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Entered, Order Reviewed | 198 |
+| HF05P | Q4 | answerable | Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Entered, Order Reviewed | 198 |
+| HF06 | Q3 | answerable | Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started | 103 |
+| HF06P | Q4 | answerable | Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started | 103 |
+| H09 | Q1 | answerable | Care Unit Transferred | 10 |
+| H09P | Q2 | answerable | Care Unit Transferred | 10 |
+| H10 | Q1 | answerable | Discharge Summary Signed | 5 |
+| H10P | Q2 | answerable | Discharge Summary Signed | 5 |
+| H11 | Q1 | answerable | Care Unit Transferred, Hospital Admitted | 25 |
+| H11P | Q2 | answerable | Care Unit Transferred, Hospital Admitted | 25 |
+| HF07 | Q3 | answerable | Lab Result Available, Specimen Collected | 124 |
+| HF07P | Q4 | answerable | Lab Result Available, Specimen Collected | 124 |
+| HF08 | Q3 | answerable | Medication Administered, Medication Not Given | 67 |
+| HF08P | Q4 | answerable | Medication Administered, Medication Not Given | 67 |
+| HF09 | Q3 | answerable | Procedure Completed, Procedure Started | 42 |
+| HF09P | Q4 | answerable | Procedure Completed, Procedure Started | 42 |
+| HF10 | Q3 | answerable | Medication Administered, Medication Dispensed, Medication Not Given | 101 |
+| HF10P | Q4 | answerable | Medication Administered, Medication Dispensed, Medication Not Given | 101 |
+| H12 | Q1 | answerable | Medication Dispensed, Medication Administered, Medication Not Given | 101 |
+| H12P | Q2 | answerable | Medication Dispensed, Medication Administered, Medication Not Given | 101 |

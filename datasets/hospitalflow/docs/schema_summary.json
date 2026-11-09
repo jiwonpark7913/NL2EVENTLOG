@@ -1,32 +1,25 @@
 {
   "table_count": 12,
   "tables": {
-    "patients": {
-      "row_count": 12,
-      "column_count": 2,
-      "primary_key": [
-        "subject_id"
-      ]
-    },
-    "admissions": {
-      "row_count": 15,
-      "column_count": 6,
-      "primary_key": [
-        "hadm_id"
-      ]
-    },
-    "patient_profile": {
-      "row_count": 6,
-      "column_count": 3,
-      "primary_key": [
-        "subject_id"
-      ]
-    },
     "admission_detail": {
       "row_count": 5,
       "column_count": 2,
       "primary_key": [
         "hadm_id"
+      ]
+    },
+    "admissions": {
+      "row_count": 15,
+      "column_count": 16,
+      "primary_key": [
+        "hadm_id"
+      ]
+    },
+    "emar": {
+      "row_count": 67,
+      "column_count": 5,
+      "primary_key": [
+        "emar_id"
       ]
     },
     "lab_order": {
@@ -36,15 +29,15 @@
         "order_id"
       ]
     },
-    "medication_order": {
-      "row_count": 29,
-      "column_count": 4,
+    "labevents": {
+      "row_count": 62,
+      "column_count": 7,
       "primary_key": [
-        "order_id"
+        "labevent_id"
       ]
     },
-    "procedure_order": {
-      "row_count": 17,
+    "medication_order": {
+      "row_count": 29,
       "column_count": 4,
       "primary_key": [
         "order_id"
@@ -57,18 +50,18 @@
         "history_id"
       ]
     },
-    "labevents": {
-      "row_count": 62,
-      "column_count": 7,
+    "patients": {
+      "row_count": 12,
+      "column_count": 6,
       "primary_key": [
-        "labevent_id"
+        "subject_id"
       ]
     },
-    "emar": {
-      "row_count": 67,
-      "column_count": 5,
+    "pharmacy": {
+      "row_count": 34,
+      "column_count": 3,
       "primary_key": [
-        "emar_id"
+        "pharmacy_id"
       ]
     },
     "procedure_episode": {
@@ -78,126 +71,19 @@
         "procedureevent_id"
       ]
     },
-    "pharmacy": {
-      "row_count": 34,
-      "column_count": 3,
+    "procedure_order": {
+      "row_count": 17,
+      "column_count": 4,
       "primary_key": [
-        "pharmacy_id"
+        "order_id"
+      ]
+    },
+    "transfers": {
+      "row_count": 38,
+      "column_count": 7,
+      "primary_key": [
+        "transfer_id"
       ]
     }
-  },
-  "relationships": [
-    {
-      "parent": "patients",
-      "child": "admissions",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "subject_id",
-      "to_col": "subject_id"
-    },
-    {
-      "parent": "admissions",
-      "child": "admission_detail",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "hadm_id",
-      "to_col": "hadm_id"
-    },
-    {
-      "parent": "admissions",
-      "child": "lab_order",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "hadm_id",
-      "to_col": "hadm_id"
-    },
-    {
-      "parent": "patients",
-      "child": "lab_order",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "subject_id",
-      "to_col": "subject_id"
-    },
-    {
-      "parent": "admissions",
-      "child": "medication_order",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "hadm_id",
-      "to_col": "hadm_id"
-    },
-    {
-      "parent": "admissions",
-      "child": "procedure_order",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "hadm_id",
-      "to_col": "hadm_id"
-    },
-    {
-      "parent": "procedure_order",
-      "child": "order_history",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "procedure_order_id",
-      "to_col": "order_id"
-    },
-    {
-      "parent": "medication_order",
-      "child": "order_history",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "medication_order_id",
-      "to_col": "order_id"
-    },
-    {
-      "parent": "lab_order",
-      "child": "order_history",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "lab_order_id",
-      "to_col": "order_id"
-    },
-    {
-      "parent": "lab_order",
-      "child": "labevents",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "order_id",
-      "to_col": "order_id"
-    },
-    {
-      "parent": "pharmacy",
-      "child": "emar",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "pharmacy_id",
-      "to_col": "pharmacy_id"
-    },
-    {
-      "parent": "procedure_order",
-      "child": "procedure_episode",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "order_id",
-      "to_col": "order_id"
-    },
-    {
-      "parent": "medication_order",
-      "child": "pharmacy",
-      "label": "1 : 0..N",
-      "logical": false,
-      "from_col": "order_id",
-      "to_col": "order_id"
-    },
-    {
-      "parent": "patients",
-      "child": "patient_profile",
-      "label": "documented same identity; no FK",
-      "logical": true,
-      "from_col": "subject_id",
-      "to_col": "subject_id"
-    }
-  ]
+  }
 }

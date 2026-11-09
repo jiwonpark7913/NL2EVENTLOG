@@ -1,17 +1,18 @@
-# Objects, types and activity scopes
+# HospitalFlow — Gold object types and direct event sources
 
-| Object Type | Instances | Activity types | Activity scope |
-| --- | --- | --- | --- |
-| Patient | 12 | 20 | Discharge Authorized, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Patient Profile Verified, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received |
-| Hospital Admission | 15 | 19 | Discharge Authorized, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received |
-| Laboratory Order | 34 | 6 | Lab Result Available, Lab Results Verified, Order Entered, Order Reviewed, Specimen Collected, Specimen Received |
-| Medication Order | 29 | 6 | Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Entered, Order Reviewed |
-| Procedure Order | 17 | 6 | Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started |
-| Order History Record | 203 | 3 | Order Cancelled, Order Entered, Order Reviewed |
-| Lab Measurement | 62 | 2 | Lab Result Available, Specimen Collected |
-| Medication Administration | 67 | 2 | Medication Administered, Medication Not Given |
-| Procedure Episode | 23 | 2 | Procedure Completed, Procedure Started |
-| Pharmacy Dispensing | 34 | 3 | Medication Administered, Medication Dispensed, Medication Not Given |
+Activities shown here are recorded in table rows; downstream Gold case attribution can associate them with additional business objects.
 
-- Twelve Physical Objects map to ten expected identity-compatible Object Type groups. History/measurement/dose/episode records retain independent occurrence identities.
-- Individual instances may contain fewer activities due to cancellation, ongoing care or missing records.
+| OT | Physical source table | Direct source activities |
+|---|---|---|
+| Patient | patients | — |
+| Hospital Admission | admissions | Emergency Department Departed, Emergency Department Registered, Hospital Admitted, Hospital Discharged |
+| Hospital Admission | admission_detail | Discharge Summary Signed |
+| Care Unit Transfer | transfers | Care Unit Transferred |
+| Laboratory Order | lab_order | Lab Results Verified, Specimen Received |
+| Medication Order | medication_order | Medication Stopped |
+| Procedure Order | procedure_order | Procedure Preparation Completed |
+| Order History Record | order_history | Order Cancelled, Order Entered, Order Reviewed |
+| Lab Measurement | labevents | Lab Result Available, Specimen Collected |
+| Medication Administration | emar | Medication Administered, Medication Not Given |
+| Procedure Episode | procedure_episode | Procedure Completed, Procedure Started |
+| Pharmacy Dispensing | pharmacy | Medication Dispensed |
