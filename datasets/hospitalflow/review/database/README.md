@@ -12,9 +12,9 @@ Synthetic SQLite records; **review-only, never provide to evaluation models**. C
 
 ### Gold Evidence Graph — author annotation, not a model prediction
 
-![Gold Evidence Graph — selected projection](gold_evidence_graph.svg)
+![Gold Evidence Graph — source activity inventory](gold_evidence_graph.svg)
 
-The Gold graph shows **all 12 physical table-to-object-type memberships** and a **representative source activity per event table**. It is a readable projection rather than the complete set of event bindings and attribution paths. See the [full Gold Evidence Graph inventory](../gold_dfg/event_graph.md) and the [question-level Gold DFG review](../gold_dfg/README.md).
+The Gold graph shows **all 12 physical table-to-object-type memberships** and **every Gold source activity type by table** (including repeated activity names across sources). It is a source-binding projection rather than the complete record-level attribution graph. See the [full Gold Evidence Graph inventory](../gold_dfg/event_graph.md) and the [question-level Gold DFG review](../gold_dfg/README.md).
 
 ### MIMIC-IV vs HospitalFlow (provenance)
 
@@ -22,7 +22,7 @@ The Gold graph shows **all 12 physical table-to-object-type memberships** and a 
 
 | MIMIC-IV `hosp` original table | Representative recorded time columns in MIMIC-IV | HospitalFlow relation |
 |---|---|---|
-| `patients` | `dod` (death time); `anchor_year` is not an event timestamp | `patients` keeps IDs/demographic attribute; `patient_profile` is **authored**, not a native MIMIC table |
+| `patients` | `dod` (date of death); `anchor_year` is not an event timestamp | `patients` keeps IDs/demographic attribute; `patient_profile` is **authored**, not a native MIMIC table |
 | `admissions` | `admittime`, `dischtime`, `deathtime`, `edregtime`, `edouttime` | `admissions` inspired by original; `discharge_authorized_at` is authored |
 | `transfers` | `intime`, `outtime` | Not retained |
 | `labevents` | `charttime`, `storetime` | `labevents` retains these timestamp names, but rows are synthetic |
