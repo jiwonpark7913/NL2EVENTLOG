@@ -1,0 +1,20 @@
+name: Validate updated HospitalFlow and Gold
+on:
+  push:
+    branches: [feature/hospitalflow-mimic-patients-transfers]
+    paths:
+      - 'datasets/hospitalflow/validate.py'
+      - '.github/workflows/hospital-mimic-validate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate new schema identity and all Gold SQL/CSV results
+        run: python datasets/hospitalflow/validate.py
