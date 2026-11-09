@@ -1,0 +1,29 @@
+name: Update HospitalFlow to MIMIC-inspired patients admissions transfers
+on:
+  push:
+    branches: [feature/hospitalflow-mimic-patients-transfers]
+    paths:
+      - 'tools/experiments/migrate_hospital_mimic.py'
+      - '.github/workflows/hospital-mimic-migration.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Regenerate SQLite, gold logs and inspections
+        run: python tools/experiments/migrate_hospital_mimic.py
+      - name: Commit checked migration
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/hospitalflow
+          git diff --cached --quiet || git commit -m 'data: merge patient master, use MIMIC admission timestamps, add transfers and verified Gold'
+          git push
