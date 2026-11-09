@@ -2,13 +2,12 @@
   "purpose": "Default model inputs for HospitalFlow using business metadata and question text",
   "paths": [
     "input/database.sqlite",
-    "input/schema.sql",
-    "input/data_dictionary.json",
-    "input/model_questions.jsonl"
+    "input/data_dictionary.json"
   ],
   "excluded_optional_condition": {
-    "path": "input/task_scope_catalog.json",
+    "path": "evaluation/task_scope_catalog.json",
     "reason": "Provides explicit activity scopes; only supply for a declared catalog-assisted experiment."
   },
-  "policy": "README, source, design, docs, private, generator code and validation reports are author/evaluation material, not model inputs."
+  "policy": "Model receives DB, DD, and separately supplied question only. Private, review, design, source and evaluation Gold assets are not model-visible.",
+  "question_path": "evaluation/model_questions.jsonl"
 }

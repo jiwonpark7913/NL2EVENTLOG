@@ -4,7 +4,7 @@
     {
       "case_concept": "Patient",
       "activities": [
-        "Discharge Authorized",
+        "Emergency Department Departed",
         "Discharge Summary Signed",
         "Emergency Department Registered",
         "Hospital Admitted",
@@ -18,7 +18,7 @@
         "Order Cancelled",
         "Order Entered",
         "Order Reviewed",
-        "Patient Profile Verified",
+        "Care Unit Transferred",
         "Procedure Completed",
         "Procedure Preparation Completed",
         "Procedure Started",
@@ -30,7 +30,7 @@
     {
       "case_concept": "Hospital Admission",
       "activities": [
-        "Discharge Authorized",
+        "Emergency Department Departed",
         "Discharge Summary Signed",
         "Emergency Department Registered",
         "Hospital Admitted",
@@ -48,7 +48,8 @@
         "Procedure Preparation Completed",
         "Procedure Started",
         "Specimen Collected",
-        "Specimen Received"
+        "Specimen Received",
+        "Care Unit Transferred"
       ],
       "default_scope": "All recorded events explicitly linked through business keys; no unrecorded care is inferred."
     },
