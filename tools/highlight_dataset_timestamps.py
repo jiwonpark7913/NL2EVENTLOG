@@ -21,38 +21,9 @@ def temporal(name,col):
     )
 
 def event_names(name,base):
-    inventory=(base/"review/gold_dfg/event_graph.md").read_text()
-    times={}
-    if name=="hospitalflow":
-        for line in inventory.splitlines():
-            if not line.startswith("| "):continue
-            c=[x.strip() for x in line.strip().strip("|").split("|")]
-            if len(c)!=4 or c[0] in ("Physical table","---") or c[0] not in {t["table"] for t in json.loads((base/"input/data_dictionary.json").read_text())["tables"]}:continue
-            times[c[0]]=set(c[3].split(", ")) if c[3]!="—" else set()
-    else:
-        # Original source metadata lives in the benchmark's authored inventory or event bindings.
-        # Avoid treating all timestamp-bearing columns as known event occurrences.
-        original=(base/"private/gold.jsonl")
-        if original.exists() and original.stat().st_size:
-            for line in original.read_text().splitlines():
-                if not line.strip():continue
-                g=json.loads(line)
-                es=g.get("es") or {}
-                for v in es.get("event_bindings",[]):
-                    t=v.get("table") or v.get("source_table")
-                    c=v.get("timestamp_column") or v.get("column")
-                    if t and c:times.setdefault(t,set()).add(c)
-        # Author-selected Gold timestamps are explicitly recorded in the full original inventory
-
-        old=(base/"review/gold_dfg/event_graph.md").read_text()
-        for line in old.splitlines():
-            if not line.startswith("| "):continue
-            fields=[x.strip() for x in line.strip().strip("|").split("|")]
-            # New generated 3-column source inventory has no timestamp column.
-            if len(fields)!=4:continue
-            t=fields[0];cols=fields[3]
-            if cols!="—":times.setdefault(t,set()).update(cols.replace("&#124;",",").split(", "))
-    return times
+    source=json.loads((base/"review/gold_dfg/gold_source_manifest.json").read_text())
+    assert source["dataset"]==name
+    return {t:set(v["timestamps"]) for t,v in source["tables"].items()}
 
 def main():
     counts={}
