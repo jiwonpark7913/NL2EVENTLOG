@@ -1,0 +1,29 @@
+name: Audit and rebuild HospitalFlow Gold visualization and docs
+on:
+  push:
+    branches: [fix/hospital-gold-ot-layout-doc-audit]
+    paths:
+      - 'tools/validation/audit_hospital_gold_docs.py'
+      - '.github/workflows/hospital-gold-doc-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconcile database, object memberships, Gold SQL and Markdown
+        run: python tools/validation/audit_hospital_gold_docs.py
+      - name: Commit verified inspection updates
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/hospitalflow/docs datasets/hospitalflow/review
+          git diff --cached --quiet || git commit -m 'docs: regenerate HospitalFlow Gold diagram and current metadata documentation'
+          git push
