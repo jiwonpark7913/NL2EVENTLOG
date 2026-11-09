@@ -1,0 +1,115 @@
+{
+  "dataset": "warehouseflow",
+  "scope": "Authored Gold source evidence; private reviewer-only manifest, NOT model input",
+  "tables": {
+    "dispatch_order": {
+      "ot": "Dispatch Order",
+      "activities": [
+        "Dispatch Approved",
+        "Dispatch Requested"
+      ],
+      "timestamps": [
+        "approved_at",
+        "requested_at"
+      ]
+    },
+    "goods": {
+      "ot": "Goods",
+      "activities": [],
+      "timestamps": []
+    },
+    "goods_movement": {
+      "ot": "Stock Movement",
+      "activities": [
+        "Goods Dispatched",
+        "Goods Received"
+      ],
+      "timestamps": [
+        "occurred_at"
+      ]
+    },
+    "goods_receipt": {
+      "ot": "Receipt",
+      "activities": [
+        "Receipt Registered"
+      ],
+      "timestamps": [
+        "received_at"
+      ]
+    },
+    "handling_history": {
+      "ot": "Handling Record",
+      "activities": [
+        "Loading Completed",
+        "Loading Started",
+        "Unloading Completed",
+        "Unloading Started"
+      ],
+      "timestamps": [
+        "completed_at",
+        "started_at"
+      ]
+    },
+    "receiving_request": {
+      "ot": "Receiving Request",
+      "activities": [
+        "Receiving Request Submitted"
+      ],
+      "timestamps": [
+        "submitted_at"
+      ]
+    },
+    "request_action": {
+      "ot": "Request Action",
+      "activities": [
+        "Request Checked",
+        "Request Held",
+        "Request Released"
+      ],
+      "timestamps": [
+        "occurred_at"
+      ]
+    },
+    "warehouse": {
+      "ot": "Warehouse",
+      "activities": [],
+      "timestamps": []
+    },
+    "warehouse_audit": {
+      "ot": "Stock Audit",
+      "activities": [
+        "Stock Audit Completed",
+        "Stock Audit Started"
+      ],
+      "timestamps": [
+        "completed_at",
+        "started_at"
+      ]
+    },
+    "warehouse_task_history": {
+      "ot": "Warehouse Task",
+      "activities": [
+        "Packing Completed",
+        "Packing Started",
+        "Picking Completed",
+        "Picking Started",
+        "Putaway Completed",
+        "Putaway Started"
+      ],
+      "timestamps": [
+        "completed_at",
+        "started_at"
+      ]
+    },
+    "work_code": {
+      "ot": "work_code",
+      "activities": [],
+      "timestamps": []
+    },
+    "worker": {
+      "ot": "Worker",
+      "activities": [],
+      "timestamps": []
+    }
+  }
+}

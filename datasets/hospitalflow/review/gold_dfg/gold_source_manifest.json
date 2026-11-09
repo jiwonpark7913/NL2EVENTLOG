@@ -1,0 +1,125 @@
+{
+  "dataset": "hospitalflow",
+  "scope": "Authored Gold source evidence; private reviewer-only manifest, NOT model input",
+  "tables": {
+    "admission_detail": {
+      "ot": "Hospital Admission",
+      "activities": [
+        "Discharge Summary Signed"
+      ],
+      "timestamps": [
+        "discharge_summary_signed_at"
+      ]
+    },
+    "admissions": {
+      "ot": "Hospital Admission",
+      "activities": [
+        "Emergency Department Departed",
+        "Emergency Department Registered",
+        "Hospital Admitted",
+        "Hospital Discharged"
+      ],
+      "timestamps": [
+        "admittime",
+        "dischtime",
+        "edouttime",
+        "edregtime"
+      ]
+    },
+    "emar": {
+      "ot": "Medication Administration",
+      "activities": [
+        "Medication Administered",
+        "Medication Not Given"
+      ],
+      "timestamps": [
+        "charttime"
+      ]
+    },
+    "lab_order": {
+      "ot": "Laboratory Order",
+      "activities": [
+        "Lab Results Verified",
+        "Specimen Received"
+      ],
+      "timestamps": [
+        "results_verified_at",
+        "specimen_received_at"
+      ]
+    },
+    "labevents": {
+      "ot": "Lab Measurement",
+      "activities": [
+        "Lab Result Available",
+        "Specimen Collected"
+      ],
+      "timestamps": [
+        "charttime",
+        "storetime"
+      ]
+    },
+    "medication_order": {
+      "ot": "Medication Order",
+      "activities": [
+        "Medication Stopped"
+      ],
+      "timestamps": [
+        "stopped_at"
+      ]
+    },
+    "order_history": {
+      "ot": "Order History Record",
+      "activities": [
+        "Order Cancelled",
+        "Order Entered",
+        "Order Reviewed"
+      ],
+      "timestamps": [
+        "occurred_at"
+      ]
+    },
+    "patients": {
+      "ot": "Patient",
+      "activities": [],
+      "timestamps": []
+    },
+    "pharmacy": {
+      "ot": "Pharmacy Dispensing",
+      "activities": [
+        "Medication Dispensed"
+      ],
+      "timestamps": [
+        "dispensed_at"
+      ]
+    },
+    "procedure_episode": {
+      "ot": "Procedure Episode",
+      "activities": [
+        "Procedure Completed",
+        "Procedure Started"
+      ],
+      "timestamps": [
+        "endtime",
+        "starttime"
+      ]
+    },
+    "procedure_order": {
+      "ot": "Procedure Order",
+      "activities": [
+        "Procedure Preparation Completed"
+      ],
+      "timestamps": [
+        "preparation_completed_at"
+      ]
+    },
+    "transfers": {
+      "ot": "Care Unit Transfer",
+      "activities": [
+        "Care Unit Transferred"
+      ],
+      "timestamps": [
+        "intime"
+      ]
+    }
+  }
+}

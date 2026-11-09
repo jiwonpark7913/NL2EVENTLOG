@@ -1,0 +1,119 @@
+{
+  "dataset": "plateflow",
+  "scope": "Authored Gold source evidence; private reviewer-only manifest, NOT model input",
+  "tables": {
+    "as_rolled_material": {
+      "ot": "Mother Material",
+      "activities": [],
+      "timestamps": []
+    },
+    "dimension_inspection": {
+      "ot": "Dimension Inspection",
+      "activities": [
+        "Dimensional Inspection Completed"
+      ],
+      "timestamps": [
+        "inspected_at"
+      ]
+    },
+    "equipment": {
+      "ot": "Equipment",
+      "activities": [],
+      "timestamps": []
+    },
+    "finishing_operation_history": {
+      "ot": "Finishing Operation Record",
+      "activities": [
+        "Heat Treatment Completed",
+        "Leveling Completed",
+        "Surface Finishing Completed"
+      ],
+      "timestamps": [
+        "finished_at"
+      ]
+    },
+    "furnace_operation_history": {
+      "ot": "Furnace Operation Record",
+      "activities": [
+        "Furnace Charged",
+        "Furnace Discharged",
+        "Heating Completed"
+      ],
+      "timestamps": [
+        "finished_at"
+      ]
+    },
+    "planned_rolling_instruction": {
+      "ot": "Rolling Plan",
+      "activities": [
+        "Rolling Plan Approved",
+        "Rolling Plan Released",
+        "Rolling Plan Submitted"
+      ],
+      "timestamps": [
+        "approved_at",
+        "released_at",
+        "submitted_at"
+      ]
+    },
+    "plate_material": {
+      "ot": "Plate Piece",
+      "activities": [
+        "Plate Identified",
+        "Plate Packed",
+        "Plate Released"
+      ],
+      "timestamps": [
+        "identified_at",
+        "packed_at",
+        "released_at"
+      ]
+    },
+    "plate_quality_review": {
+      "ot": "Quality Review",
+      "activities": [
+        "Plate Quality Review Completed"
+      ],
+      "timestamps": [
+        "finished_at"
+      ]
+    },
+    "process_code": {
+      "ot": "process_code",
+      "activities": [],
+      "timestamps": []
+    },
+    "rolling_instruction": {
+      "ot": "Rolling Instruction",
+      "activities": [
+        "Rolling Instruction Issued"
+      ],
+      "timestamps": [
+        "issued_at"
+      ]
+    },
+    "rolling_operation_history": {
+      "ot": "Rolling Operation Record",
+      "activities": [
+        "Finish Rolling Completed",
+        "Rough Rolling Completed"
+      ],
+      "timestamps": [
+        "finished_at"
+      ]
+    },
+    "slab_material": {
+      "ot": "Slab",
+      "activities": [
+        "Slab Received",
+        "Slab Released",
+        "Slab Verified"
+      ],
+      "timestamps": [
+        "received_at",
+        "released_at",
+        "verified_at"
+      ]
+    }
+  }
+}

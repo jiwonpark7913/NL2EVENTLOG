@@ -1,0 +1,160 @@
+{
+  "dataset": "universityflow",
+  "scope": "Authored Gold source evidence; private reviewer-only manifest, NOT model input",
+  "tables": {
+    "assignment": {
+      "ot": "Assignment",
+      "activities": [
+        "Assignment Assigned",
+        "Assignment Grade Finalized",
+        "Assignment Resubmitted",
+        "Assignment Revision Requested",
+        "Assignment Submitted"
+      ],
+      "timestamps": [
+        "assignment_assigned_at",
+        "assignment_grade_finalized_at",
+        "assignment_resubmitted_at",
+        "assignment_revision_requested_at",
+        "assignment_submitted_at"
+      ]
+    },
+    "assignment_grading": {
+      "ot": "Assignment grading record",
+      "activities": [
+        "Assignment Graded",
+        "Assignment Regraded"
+      ],
+      "timestamps": [
+        "grading_time"
+      ]
+    },
+    "course": {
+      "ot": "Course",
+      "activities": [
+        "Course Offering Approved",
+        "Course Offering Closed",
+        "Course Offering Proposed",
+        "Course Offering Published"
+      ],
+      "timestamps": [
+        "course_offering_approved_at",
+        "course_offering_closed_at",
+        "course_offering_proposed_at",
+        "course_offering_published_at"
+      ]
+    },
+    "degree_examination_result": {
+      "ot": "Examination result record",
+      "activities": [
+        "Degree Examination Taken",
+        "Examination Checked In",
+        "Examination Result Reviewed",
+        "Examination Scheduled",
+        "Examination Score Published"
+      ],
+      "timestamps": [
+        "examination_checked_in_at",
+        "examination_date",
+        "examination_result_reviewed_at",
+        "examination_scheduled_at",
+        "examination_score_published_at"
+      ]
+    },
+    "instructor": {
+      "ot": "Instructor",
+      "activities": [],
+      "timestamps": []
+    },
+    "registration": {
+      "ot": "Student-course registration",
+      "activities": [
+        "Course Assessment Completed",
+        "Course Grade Finalized",
+        "Course Registered",
+        "Course Started",
+        "Registration Approved",
+        "Registration Requested"
+      ],
+      "timestamps": [
+        "course_assessment_completed_at",
+        "course_grade_finalized_at",
+        "course_started_at",
+        "registration_approved_at",
+        "registration_requested_at",
+        "registration_time"
+      ]
+    },
+    "simulation_module": {
+      "ot": "Simulation module",
+      "activities": [
+        "Simulation Module Published",
+        "Simulation Module Released",
+        "Simulation Module Retired",
+        "Simulation Module Validated"
+      ],
+      "timestamps": [
+        "simulation_module_published_at",
+        "simulation_module_released_at",
+        "simulation_module_retired_at",
+        "simulation_module_validated_at"
+      ]
+    },
+    "student": {
+      "ot": "Student",
+      "activities": [],
+      "timestamps": []
+    },
+    "student_simulation_experiment_result": {
+      "ot": "Simulation experiment result record",
+      "activities": [
+        "Simulation Experiment Completed",
+        "Simulation Output Reviewed",
+        "Simulation Result Accepted",
+        "Simulation Run Scheduled",
+        "Simulation Run Started"
+      ],
+      "timestamps": [
+        "simulation_date",
+        "simulation_output_reviewed_at",
+        "simulation_result_accepted_at",
+        "simulation_run_scheduled_at",
+        "simulation_run_started_at"
+      ]
+    },
+    "task": {
+      "ot": "Course-design task",
+      "activities": [
+        "Design Task Approved",
+        "Design Task Closed",
+        "Design Task Created",
+        "Design Task Published"
+      ],
+      "timestamps": [
+        "design_task_approved_at",
+        "design_task_closed_at",
+        "design_task_created_at",
+        "design_task_published_at"
+      ]
+    },
+    "thesis": {
+      "ot": "Thesis",
+      "activities": [
+        "Thesis Accepted",
+        "Thesis Draft Registered",
+        "Thesis Resubmitted",
+        "Thesis Review Started",
+        "Thesis Revision Requested",
+        "Thesis Submitted"
+      ],
+      "timestamps": [
+        "submission_date",
+        "thesis_accepted_at",
+        "thesis_draft_registered_at",
+        "thesis_resubmitted_at",
+        "thesis_review_started_at",
+        "thesis_revision_requested_at"
+      ]
+    }
+  }
+}
