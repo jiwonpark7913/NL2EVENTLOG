@@ -19,15 +19,15 @@
 <a xlink:href="tables/admission_detail.md" href="tables/admission_detail.md" target="_parent"><rect x="820" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="832" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">admission_detail</text>
 <text x="832" y="132" font-family="monospace" font-size="12" fill="#334155">hadm_id</text>
-<text x="832" y="153" font-family="monospace" font-size="12" fill="#334155">discharge_summary_signed_at</text>
+<rect x="829" y="138" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="153" font-family="monospace" font-size="12" fill="#155E85">discharge_summary_signed_at</text>
 <text x="832" y="309" font-family="sans-serif" font-size="12" fill="#475569">5 rows · click for 10 records</text></a>
 <a xlink:href="tables/admissions.md" href="tables/admissions.md" target="_parent"><rect x="430" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="442" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">admissions</text>
 <text x="442" y="132" font-family="monospace" font-size="12" fill="#334155">hadm_id</text>
 <text x="442" y="153" font-family="monospace" font-size="12" fill="#334155">subject_id</text>
-<text x="442" y="174" font-family="monospace" font-size="12" fill="#334155">admittime</text>
-<text x="442" y="195" font-family="monospace" font-size="12" fill="#334155">dischtime</text>
-<text x="442" y="216" font-family="monospace" font-size="12" fill="#334155">deathtime</text>
+<rect x="439" y="159" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="442" y="174" font-family="monospace" font-size="12" fill="#155E85">admittime</text>
+<rect x="439" y="180" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="442" y="195" font-family="monospace" font-size="12" fill="#155E85">dischtime</text>
+<rect x="439" y="201" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="442" y="216" font-family="monospace" font-size="12" fill="#155E85">deathtime</text>
 <text x="442" y="237" font-family="monospace" font-size="12" fill="#334155">admission_type</text>
 <text x="442" y="258" font-family="monospace" font-size="12" fill="#334155">admit_provider_id</text>
 <text x="442" y="279" font-family="monospace" font-size="12" fill="#334155">admission_location</text>
@@ -36,25 +36,25 @@
 <text x="1612" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">emar</text>
 <text x="1612" y="132" font-family="monospace" font-size="12" fill="#334155">emar_id</text>
 <text x="1612" y="153" font-family="monospace" font-size="12" fill="#334155">pharmacy_id</text>
-<text x="1612" y="174" font-family="monospace" font-size="12" fill="#334155">charttime</text>
+<rect x="1609" y="159" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1612" y="174" font-family="monospace" font-size="12" fill="#155E85">charttime</text>
 <text x="1612" y="195" font-family="monospace" font-size="12" fill="#334155">event_txt</text>
-<text x="1612" y="216" font-family="monospace" font-size="12" fill="#334155">storetime</text>
+<rect x="1609" y="201" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1612" y="216" font-family="monospace" font-size="12" fill="#155E85">storetime</text>
 <text x="1612" y="309" font-family="sans-serif" font-size="12" fill="#475569">67 rows · click for 10 records</text></a>
 <a xlink:href="tables/lab_order.md" href="tables/lab_order.md" target="_parent"><rect x="820" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="832" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">lab_order</text>
 <text x="832" y="462" font-family="monospace" font-size="12" fill="#334155">order_id</text>
 <text x="832" y="483" font-family="monospace" font-size="12" fill="#334155">subject_id</text>
 <text x="832" y="504" font-family="monospace" font-size="12" fill="#334155">hadm_id</text>
-<text x="832" y="525" font-family="monospace" font-size="12" fill="#334155">specimen_received_at</text>
-<text x="832" y="546" font-family="monospace" font-size="12" fill="#334155">results_verified_at</text>
+<rect x="829" y="510" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="525" font-family="monospace" font-size="12" fill="#155E85">specimen_received_at</text>
+<rect x="829" y="531" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="546" font-family="monospace" font-size="12" fill="#155E85">results_verified_at</text>
 <text x="832" y="639" font-family="sans-serif" font-size="12" fill="#475569">34 rows · click for 10 records</text></a>
 <a xlink:href="tables/labevents.md" href="tables/labevents.md" target="_parent"><rect x="1210" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="1222" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">labevents</text>
 <text x="1222" y="132" font-family="monospace" font-size="12" fill="#334155">labevent_id</text>
 <text x="1222" y="153" font-family="monospace" font-size="12" fill="#334155">order_id</text>
 <text x="1222" y="174" font-family="monospace" font-size="12" fill="#334155">itemid</text>
-<text x="1222" y="195" font-family="monospace" font-size="12" fill="#334155">charttime</text>
-<text x="1222" y="216" font-family="monospace" font-size="12" fill="#334155">storetime</text>
+<rect x="1219" y="180" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="195" font-family="monospace" font-size="12" fill="#155E85">charttime</text>
+<rect x="1219" y="201" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="216" font-family="monospace" font-size="12" fill="#155E85">storetime</text>
 <text x="1222" y="237" font-family="monospace" font-size="12" fill="#334155">valuenum</text>
 <text x="1222" y="258" font-family="monospace" font-size="12" fill="#334155">valueuom</text>
 <text x="1222" y="309" font-family="sans-serif" font-size="12" fill="#475569">62 rows · click for 10 records</text></a>
@@ -63,7 +63,7 @@
 <text x="832" y="792" font-family="monospace" font-size="12" fill="#334155">order_id</text>
 <text x="832" y="813" font-family="monospace" font-size="12" fill="#334155">hadm_id</text>
 <text x="832" y="834" font-family="monospace" font-size="12" fill="#334155">medication</text>
-<text x="832" y="855" font-family="monospace" font-size="12" fill="#334155">stopped_at</text>
+<rect x="829" y="840" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="855" font-family="monospace" font-size="12" fill="#155E85">stopped_at</text>
 <text x="832" y="969" font-family="sans-serif" font-size="12" fill="#475569">29 rows · click for 10 records</text></a>
 <a xlink:href="tables/order_history.md" href="tables/order_history.md" target="_parent"><rect x="1210" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="1222" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">order_history</text>
@@ -72,7 +72,7 @@
 <text x="1222" y="504" font-family="monospace" font-size="12" fill="#334155">medication_order_id</text>
 <text x="1222" y="525" font-family="monospace" font-size="12" fill="#334155">procedure_order_id</text>
 <text x="1222" y="546" font-family="monospace" font-size="12" fill="#334155">action</text>
-<text x="1222" y="567" font-family="monospace" font-size="12" fill="#334155">occurred_at</text>
+<rect x="1219" y="552" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="567" font-family="monospace" font-size="12" fill="#155E85">occurred_at</text>
 <text x="1222" y="639" font-family="sans-serif" font-size="12" fill="#475569">203 rows · click for 10 records</text></a>
 <a xlink:href="tables/patients.md" href="tables/patients.md" target="_parent"><rect x="40" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="52" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">patients</text>
@@ -87,22 +87,22 @@
 <text x="1222" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">pharmacy</text>
 <text x="1222" y="792" font-family="monospace" font-size="12" fill="#334155">pharmacy_id</text>
 <text x="1222" y="813" font-family="monospace" font-size="12" fill="#334155">order_id</text>
-<text x="1222" y="834" font-family="monospace" font-size="12" fill="#334155">dispensed_at</text>
+<rect x="1219" y="819" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="834" font-family="monospace" font-size="12" fill="#155E85">dispensed_at</text>
 <text x="1222" y="969" font-family="sans-serif" font-size="12" fill="#475569">34 rows · click for 10 records</text></a>
 <a xlink:href="tables/procedure_episode.md" href="tables/procedure_episode.md" target="_parent"><rect x="1210" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="1222" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">procedure_episode</text>
 <text x="1222" y="1122" font-family="monospace" font-size="12" fill="#334155">procedureevent_id</text>
 <text x="1222" y="1143" font-family="monospace" font-size="12" fill="#334155">order_id</text>
-<text x="1222" y="1164" font-family="monospace" font-size="12" fill="#334155">starttime</text>
-<text x="1222" y="1185" font-family="monospace" font-size="12" fill="#334155">endtime</text>
-<text x="1222" y="1206" font-family="monospace" font-size="12" fill="#334155">storetime</text>
+<rect x="1219" y="1149" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="1164" font-family="monospace" font-size="12" fill="#155E85">starttime</text>
+<rect x="1219" y="1170" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="1185" font-family="monospace" font-size="12" fill="#155E85">endtime</text>
+<rect x="1219" y="1191" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="1222" y="1206" font-family="monospace" font-size="12" fill="#155E85">storetime</text>
 <text x="1222" y="1299" font-family="sans-serif" font-size="12" fill="#475569">23 rows · click for 10 records</text></a>
 <a xlink:href="tables/procedure_order.md" href="tables/procedure_order.md" target="_parent"><rect x="820" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="832" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">procedure_order</text>
 <text x="832" y="1122" font-family="monospace" font-size="12" fill="#334155">order_id</text>
 <text x="832" y="1143" font-family="monospace" font-size="12" fill="#334155">hadm_id</text>
 <text x="832" y="1164" font-family="monospace" font-size="12" fill="#334155">procedure_name</text>
-<text x="832" y="1185" font-family="monospace" font-size="12" fill="#334155">preparation_completed_at</text>
+<rect x="829" y="1170" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="1185" font-family="monospace" font-size="12" fill="#155E85">preparation_completed_at</text>
 <text x="832" y="1299" font-family="sans-serif" font-size="12" fill="#475569">17 rows · click for 10 records</text></a>
 <a xlink:href="tables/transfers.md" href="tables/transfers.md" target="_parent"><rect x="820" y="1385" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="1385" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="832" y="1413" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">transfers</text>
@@ -111,7 +111,8 @@
 <text x="832" y="1494" font-family="monospace" font-size="12" fill="#334155">transfer_id</text>
 <text x="832" y="1515" font-family="monospace" font-size="12" fill="#334155">eventtype</text>
 <text x="832" y="1536" font-family="monospace" font-size="12" fill="#334155">careunit</text>
-<text x="832" y="1557" font-family="monospace" font-size="12" fill="#334155">intime</text>
-<text x="832" y="1578" font-family="monospace" font-size="12" fill="#334155">outtime</text>
+<rect x="829" y="1542" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="1557" font-family="monospace" font-size="12" fill="#155E85">intime</text>
+<rect x="829" y="1563" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="832" y="1578" font-family="monospace" font-size="12" fill="#155E85">outtime</text>
 <text x="832" y="1629" font-family="sans-serif" font-size="12" fill="#475569">38 rows · click for 10 records</text></a>
+<text x="20" y="24" font-family="sans-serif" font-size="12" fill="#805000">Yellow: Gold event-time source (where established); Blue: other temporal column</text>
 </svg>
