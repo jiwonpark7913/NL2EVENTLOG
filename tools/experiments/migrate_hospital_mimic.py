@@ -317,3 +317,149 @@ def gold_validate(db,gold):
         assert len(rows)==g["event_count"]
         total+=1
     return total
+
+def finalize(db,gold):
+    allrows={}
+    for g in gold:
+        if g.get("answerability")=="answerable":
+            allrows[g["question_id"]]=list(db.execute(g["es"]["compiled_sql"]))
+    hist={}
+    for row in allrows["HF01"]:
+        eid,case,activity,time=row
+        hist[eid]={"event_id":eid,"activity":activity,"timestamp":time}
+    save_jl(P/"canonical_history.jsonl",sorted(hist.values(),key=lambda x:(x["timestamp"],x["event_id"])))
+    links=set()
+    for rows in allrows.values():
+        for eid,case,_,_ in rows:
+            if isinstance(case,str) and ":" in case:links.add((eid,case))
+    save_json(P/"object_event_links.json",[{"event_id":eid,"object_id":oid} for eid,oid in sorted(links)])
+    old=load_json(P/"identity_gold.json")
+    oldgroups=old["groups"]
+    for group in oldgroups:
+        if group["object_type"]=="Patient":
+            group["members"]=[m for m in group["members"] if m["table"]=="patients"]
+    oldgroups.append({"object_type":"Care Unit Transfer","members":[{"table":"transfers","primary_key":["transfer_id"],"canonical_key_prefix":"TR:"}]})
+    members={m["table"]:(g["object_type"],m["primary_key"][0]) for g in oldgroups for m in g["members"]}
+    names=list(members)
+    pairs=[]
+    for i,a in enumerate(names):
+        for b in names[i+1:]:
+            ota,pka=members[a];otb,pkb=members[b];same=ota==otb
+            ak={str(x[0]) for x in db.execute("SELECT "+q(pka)+" FROM "+q(a))}
+            bk={str(x[0]) for x in db.execute("SELECT "+q(pkb)+" FROM "+q(b))}
+            v=len(ak&bk) if same else 0
+            pairs.append({"tables":[a,b],"primary_keys":[[pka],[pkb]],
+              "expected_same_object_type":"YES" if same else "NO",
+              "expected_same_key_namespace":"YES" if same else "NO",
+              "expected_decision":"MERGE" if same else "SEPARATE",
+              "evidence_refs":["dictionary:"+a+"."+pka,"dictionary:"+b+"."+pkb],
+              "reason":"Shared admission identifier" if same else "Distinct business entity or occurrence",
+              "key_statistics":{"count_A":len(ak),"count_B":len(bk),"intersection_count":v,
+                 "overlap_min":v/min(len(ak),len(bk)) if ak and bk else 0,
+                 "coverage_A":v/len(ak) if ak else 0,"coverage_B":v/len(bk) if bk else 0,
+                 "scope":"Full keys, no sampling."}})
+    dec=Counter(x["expected_decision"] for x in pairs)
+    old.update(groups=oldgroups,physical_object_count=len(members),expected_group_count=len(oldgroups),
+      expected_group_reduction=len(members)-len(oldgroups),pairs=pairs,pair_count=len(pairs),
+      expected_decision_counts={k:dec.get(k,0) for k in ("MERGE","SEPARATE","UNRESOLVED")})
+    save_json(P/"identity_gold.json",old)
+    activity_counts=dict(sorted(Counter(x["activity"] for x in hist.values()).items()))
+    report={"table_rows":{t:table_count(db,t) for t in members},
+            "semantic_object_types":len(oldgroups),"physical_objects":len(members),
+            "identity_groups":len(oldgroups),"events":len(hist),
+            "activity_counts":activity_counts,"total_questions":len(gold),
+            "answerable_questions":len(allrows),"verification":"Gold SQL and CSV match after migration"}
+    save_json(BASE/"validation_report.json",report)
+    # Save executable DDL consistent with the new sqlite_master.
+    ddl="PRAGMA foreign_keys=ON;\n"+"\n".join(x[0]+";" for x in db.execute(
+        "SELECT sql FROM sqlite_master WHERE type='table' AND sql IS NOT NULL ORDER BY name"))+"\n"
+    (E/"schema.sql").write_text(ddl)
+    return report,allrows
+
+def regenerate_diagrams(db):
+    top=ET.Element("mxfile",{"host":"app.diagrams.net"})
+    diag=ET.SubElement(top,"diagram",{"name":"HospitalFlow synthetic MIMIC-style ERD","id":"hospitalflow"})
+    model=ET.SubElement(diag,"mxGraphModel",{"page":"1","pageWidth":"3400","pageHeight":"5200"})
+    root=ET.SubElement(model,"root")
+    ET.SubElement(root,"mxCell",{"id":"0"})
+    ET.SubElement(root,"mxCell",{"id":"1","parent":"0"})
+    names=[x[0] for x in db.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name")]
+    for i,t in enumerate(names):
+        col=i%4;row=i//4
+        columns=list(db.execute("PRAGMA table_info("+q(t)+")"))
+        node=ET.SubElement(root,"mxCell",{"id":t,"value":t,"vertex":"1","parent":"1","style":"shape=swimlane;startSize=46;html=1;fillColor=#E2E8F0;swimlaneFillColor=#FFFFFF;strokeColor=#64748B;fontStyle=1;fontSize=20;"})
+        ET.SubElement(node,"mxGeometry",{"as":"geometry","x":str(70+col*730),"y":str(85+row*1420),"width":"680","height":str(55+40*len(columns))})
+        for k,c in enumerate(columns):
+            n=c["name"];temporal=("time" in n.lower() or n.endswith("_at") or n=="dod")
+            event=n in ("admittime","dischtime","edregtime","edouttime","intime")
+            label=("PK " if c["pk"] else "")+n+" : "+c["type"]
+            cell=ET.SubElement(root,"mxCell",{"id":t+"_name_"+str(k),"value":label,"vertex":"1","parent":t,
+                "style":"text;html=1;align=left;spacingLeft=10;fontSize=16;fillColor="+("#FFF0B3" if event else "#D9F0FF" if temporal else "none")+";fontStyle="+("1" if temporal else "0")+";"})
+            ET.SubElement(cell,"mxGeometry",{"as":"geometry","x":"8","y":str(51+40*k),"width":"650","height":"34"})
+    k=0
+    for t in names:
+        for fk in db.execute("PRAGMA foreign_key_list("+q(t)+")"):
+            k+=1
+            edge=ET.SubElement(root,"mxCell",{"id":"e"+str(k),"value":fk["from"],"edge":"1","parent":"1",
+               "source":fk["table"],"target":t,
+               "style":"edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;strokeColor=#64748B;html=1;"})
+            ET.SubElement(edge,"mxGeometry",{"as":"geometry","relative":"1"})
+    ET.ElementTree(top).write(BASE/"docs/schema.drawio",encoding="utf-8",xml_declaration=True)
+    return k
+
+def regenerate_review(db,gold,report):
+    from importlib.util import spec_from_file_location,module_from_spec
+    spec=spec_from_file_location("db_review",ROOT/"tools/build_dataset_review.py")
+    mod=module_from_spec(spec);spec.loader.exec_module(mod)
+    mod.build("hospitalflow")
+    dest=REVIEW/"database";p=dest/"README.md"
+    s=p.read_text()
+    s+="\n## MIMIC-IV-inspired schema\n\nThis dataset contains synthetic records, not real MIMIC-IV patient rows.\n\n"
+    s+="Patient master: patients (gender, anchor_age, anchor_year, anchor_year_group, dod). The patient_profile table was removed.\n\n"
+    s+="Admission times retain the MIMIC names admittime, dischtime, deathtime, edregtime, edouttime. Newly introduced transfers uses eventtype, careunit, intime, outtime.\n\n"
+    s+="The transfer event is eventtype=transfer at intime. Admission and discharge interval rows are not separately treated as new events.\n\n"
+    s+="[MIMIC-IV hosp reference](https://mimic.mit.edu/docs/iv/modules/hosp/).\n"
+    # Extract the complete authored event sources, not inferred model edges.
+    source=defaultdict(set)
+    for g in gold:
+        if g.get("answerability")!="answerable":continue
+        for row in g["es"].get("activity_sources",[]):
+            source[row["table"]].add(row["activity"])
+    note=["# HospitalFlow Gold source bindings","","EVALUATION ONLY — do not send to the extraction model.","",
+          "| Source table | Gold source activities |","|---|---|"]
+    for t in sorted(source):note.append("| "+t+" | "+", ".join(sorted(source[t]))+" |")
+    (REVIEW/"gold_dfg/event_graph.md").write_text("\n".join(note)+"\n")
+    import html
+    w=1450;h=110+len(source)*55
+    svg=['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+str(w)+' '+str(h)+'">',
+      '<rect width="100%" height="100%" fill="#fff"/>',
+      '<text x="20" y="32" font-size="21" font-family="sans-serif" font-weight="700">HospitalFlow — Gold event source bindings</text>']
+    for i,(table,acts) in enumerate(sorted(source.items())):
+        y=58+i*55
+        svg.append('<rect x="20" y="'+str(y)+'" width="320" height="42" fill="#e6f0fd"/>')
+        svg.append('<text x="30" y="'+str(y+27)+'" font-size="14" font-family="sans-serif">'+html.escape(table)+'</text>')
+        svg.append('<path d="M340 '+str(y+20)+' H400" stroke="#94a3b8"/>')
+        svg.append('<rect x="400" y="'+str(y)+'" width="1020" height="42" fill="#fff2cf"/>')
+        svg.append('<text x="410" y="'+str(y+27)+'" font-size="13" font-family="sans-serif">'+html.escape(", ".join(sorted(acts)))+'</text>')
+    svg.append("</svg>")
+    (dest/"gold_evidence_graph.svg").write_text("\n".join(svg))
+    s+="\n## Gold Evidence Graph (source bindings)\n\n![Gold source graph](gold_evidence_graph.svg)\n\n"
+    s+="[Gold source inventory](../gold_dfg/event_graph.md). The diagram shows authored source bindings, not the model's inferred graph.\n"
+    p.write_text(s)
+    return len(source)
+
+def main():
+    db,moves=migrate_db()
+    dd=migrate_dd(db)
+    gold=migrate_gold(db)
+    verified=gold_validate(db,gold)
+    report,allrows=finalize(db,gold)
+    fks=regenerate_diagrams(db)
+    sources=regenerate_review(db,gold,report)
+    assert not list(db.execute("PRAGMA foreign_key_check"))
+    assert db.execute("PRAGMA integrity_check").fetchone()[0]=="ok"
+    db.commit();db.close()
+    print(json.dumps({"tables":len(report["table_rows"]),"transfer_rows":len(moves),
+      "gold_queries":verified,"events":report["events"],"activities":len(report["activity_counts"]),
+      "fk_edges":fks,"source_tables":sources},indent=2))
+if __name__=="__main__":main()
