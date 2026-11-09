@@ -2,7 +2,7 @@
 
 **Evaluation only: never provide Gold data or DFGs to NL2EventLog model inputs.**
 
-All DFGs are regenerated from current Gold CSV files, not from the previous split-profile benchmark.
+DFGs are calculated from each question's Gold event log, using timestamp and event ID for deterministic ordering.
 
 Timestamp ties are ordered using event_id only for deterministic display; this does not establish causal ordering.
 
