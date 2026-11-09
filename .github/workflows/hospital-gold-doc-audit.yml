@@ -5,6 +5,9 @@ on:
     paths:
       - 'tools/validation/audit_hospital_gold_docs.py'
       - '.github/workflows/hospital-gold-doc-audit.yml'
+      - 'datasets/hospitalflow/private/gold.jsonl'
+      - 'datasets/hospitalflow/docs/**'
+      - 'datasets/hospitalflow/evaluation/task_scope_catalog.json'
   workflow_dispatch:
 permissions:
   contents: write
