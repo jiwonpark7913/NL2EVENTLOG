@@ -1,4 +1,4 @@
-# Warehouseflow — Gold source inventory
+# WarehouseFlow — Gold source inventory
 
 **Author annotations.** One identity OT per physical table; event-to-object attribution is a separate relation.
 

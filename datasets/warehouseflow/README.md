@@ -1,4 +1,4 @@
-# Warehouseflow
+# WarehouseFlow
 
 WarehouseFlow is a synthetic warehouse operations database covering goods, receiving requests, dispatch, stock movement, handling, worker tasks and audits. It uses authored business records rather than observed warehouse transactions.
 

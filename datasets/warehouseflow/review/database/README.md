@@ -1,4 +1,4 @@
-# Warehouseflow — Database and Gold Evidence Review
+# WarehouseFlow — Database and Gold Evidence Review
 
 WarehouseFlow is a synthetic warehouse operations database covering goods, receiving requests, dispatch, stock movement, handling, worker tasks and audits. It uses authored business records rather than observed warehouse transactions.
 
@@ -6,11 +6,11 @@ WarehouseFlow is a synthetic warehouse operations database covering goods, recei
 
 ![Gold Object Types → Physical Tables → Activities](gold_evidence_graph.svg)
 
-The diagram separates **core business object concepts** from supporting entities and activity-record types, without changing the Gold identity assignments. 
+The diagram distinguishes core business object concepts from supporting entities and activity-record types. 
 Each physical table belongs to exactly one Gold Object Type. An event can be associated with several business objects through foreign keys without its source table belonging to multiple OTs.
 
 **This is an author-annotated Gold source projection, not an inferred Evidence Graph or a full provenance graph.**
-Gold SQL and record-level references remain in the evaluation-only files.
+Gold SQL and record-level evidence are available in the linked inspection materials.
 
 ## Relational Schema (SQL foreign keys)
 
@@ -49,4 +49,3 @@ Supporting Gold types: Handling Record, Receipt, Request Action, Stock Audit, St
 - [Question-level Gold DFGs](../gold_dfg/README.md)
 - [Editable Draw.io schema](../../docs/schema.drawio)
 
-*SQLite, dictionary and Gold outputs are unchanged by this review-page regeneration.*

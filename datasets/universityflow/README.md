@@ -1,4 +1,4 @@
-# Universityflow
+# UniversityFlow
 
 UniversityFlow is a synthetic university operations database representing students, courses, registration, assignments, examinations, theses, and simulation experiments. Its domain design draws on RSchema university requirements and uses authored synthetic records.
 

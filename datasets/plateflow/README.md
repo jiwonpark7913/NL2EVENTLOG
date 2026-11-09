@@ -1,4 +1,4 @@
-# Plateflow
+# PlateFlow
 
 PlateFlow is a synthetic steel-plate production database with slab receiving, rolling preparation, furnace and rolling operations, finishing, inspection and quality review. It reflects industrial process concepts, not observed production records.
 

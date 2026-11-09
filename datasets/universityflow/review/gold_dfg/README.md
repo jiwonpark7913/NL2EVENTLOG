@@ -1,4 +1,4 @@
-# Universityflow — Question-level Gold DFG inspection
+# UniversityFlow — Question-level Gold DFG inspection
 
 **Gold reference only. These files are not model input.**
 

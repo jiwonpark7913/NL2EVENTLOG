@@ -1,4 +1,4 @@
-# Plateflow — Question-level Gold DFG inspection
+# PlateFlow — Question-level Gold DFG inspection
 
 **Gold reference only. These files are not model input.**
 
