@@ -73,7 +73,7 @@ def inventory(base,db,n):
             times[t].update(v.strip() for v in f[3].split(",") if v.strip() not in ("","—"))
     else:
         for line in source.splitlines():
-            if not line.startswith("| "+TICK):continue
+            if not line.startswith("| "):continue
             fields=[c.strip() for c in line.strip().strip("|").split("|")]
             if len(fields) not in (3,7):continue
             t=fields[0].strip(TICK)
