@@ -75,18 +75,19 @@ def inventory(base,db,n):
         for line in source.splitlines():
             if not line.startswith("| "+TICK):continue
             fields=[c.strip() for c in line.strip().strip("|").split("|")]
-            if len(fields)!=7:continue
+            if len(fields) not in (3,7):continue
             t=fields[0].strip(TICK)
             if t not in tables:continue
             if t in ot:
                 assert ot[t]==fields[5],("Conflicting OT",n,t)
                 continue
-            val=fields[5].replace(TICK,"").replace(" (singleton)","")
+            val=fields[5].replace(TICK,"").replace(" (singleton)","") if len(fields)==7 else fields[1].replace(TICK,"")
             assert val and val!="—"
             ot[t]=val
-            acts[t].update(v.strip() for v in fields[6].split(",") if v.strip() not in ("","—"))
+            acts[t].update(v.strip() for v in (fields[6] if len(fields)==7 else fields[2]).split(",") if v.strip() not in ("","—"))
             # timestamp candidates are already source-inventory values; do not present every timestamp as a confirmed event
-            times[t].update(v.strip(TICK+" ") for v in fields[3].split(",") if v.strip() not in ("","—"))
+            if len(fields)==7:
+                times[t].update(v.strip(TICK+" ") for v in fields[3].split(",") if v.strip() not in ("","—"))
     assert set(ot)==tables,(n,"Missing/extra table identity",tables-set(ot),set(ot)-tables)
     return ot,acts,times
 
