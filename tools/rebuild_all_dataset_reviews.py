@@ -103,7 +103,7 @@ def gold_audit(base,db,n):
     return queries,sum_rows
 
 def write_svg(base,n,tables,ot,acts,core):
-    # A single OT can include multiple tables only if grounded in the Gold identity.
+    # One provisional entity type can include several ERs only where legacy identity annotations say so.
     groups=defaultdict(list)
     for t in tables:groups[ot[t]].append(t)
     def priority(item):
@@ -114,12 +114,12 @@ def write_svg(base,n,tables,ot,acts,core):
     records=[(name,t) for name,ts in ordered_groups for t in sorted(ts)]
     y={t:156+i*74 for i,(_,t) in enumerate(records)}
     W=1850;H=156+len(records)*74+95
-    svg=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="Gold OT left, physical tables middle and source activities right">',
+    svg=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="ET candidate left, physical tables middle and source activities right">',
       '<rect width="100%" height="100%" fill="#fff"/>',
-      f'<text x="24" y="37" font-size="25" font-weight="700" font-family="Arial,sans-serif">{esc(DISPLAY[n])} · Gold Evidence Structure</text>',
-      '<text x="24" y="64" font-size="14" font-family="Arial,sans-serif" fill="#475569">Gold OT membership is unique per physical table. Activity source bindings are not multi-object attribution edges.</text>',
-      '<text x="25" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Object Types (left)</text>',
-      '<text x="475" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Physical Tables (middle)</text>',
+      f'<text x="24" y="37" font-size="25" font-weight="700" font-family="Arial,sans-serif">{esc(DISPLAY[n])} · Gold EEG Source Projection</text>',
+      '<text x="24" y="64" font-size="14" font-family="Arial,sans-serif" fill="#475569">Each physical table is an ER. Entity Type labels are provisional legacy Gold annotations; activity source bindings are separate.</text>',
+      '<text x="25" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Entity Types (left)</text>',
+      '<text x="475" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Entity Representations (ERs, middle)</text>',
       '<text x="995" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Gold Activity Sources (right)</text>']
     def card(x,yy,w,h,title,color,link=None,sub=None):
         if link:svg.append(f'<a href="{esc(link)}" target="_parent">')
@@ -127,11 +127,11 @@ def write_svg(base,n,tables,ot,acts,core):
         svg.append(f'<text x="{x+12}" y="{yy+28}" font-size="14" font-weight="600" font-family="Arial,sans-serif" fill="#173047">{esc(title)}</text>')
         if sub:svg.append(f'<text x="{x+12}" y="{yy+45}" font-size="11" font-family="Arial,sans-serif" fill="#64748B">{esc(sub)}</text>')
         if link:svg.append("</a>")
-    # Draw OT nodes first. Branching is a short local vertical trunk, no crossing with other OTs.
+    # Draw provisional ET nodes first; ER membership edges are kept separate from event attribution.
     for name,ts in ordered_groups:
         ys=[y[t]+26 for t in sorted(ts)]
         mid=(min(ys)+max(ys))/2
-        card(26,mid-26,386,52,name,"#DFF5E8",sub="Core business object" if name in core else "Supporting/record object")
+        card(26,mid-26,386,52,name,"#DFF5E8",sub="Core business entity" if name in core else "Supporting/record entity")
         if len(ys)>1:
             svg.append(f'<path d="M412 {mid} H444 V{min(ys)} M444 {min(ys)} V{max(ys)}" fill="none" stroke="#64748B" stroke-width="2"/>')
         else:svg.append(f'<path d="M412 {mid} H444" fill="none" stroke="#64748B" stroke-width="2"/>')
@@ -167,22 +167,22 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
     cols={t:[row[1] for row in db.execute("PRAGMA table_info("+quote(t)+")")] for t in tables}
     readme=["# "+DISPLAY[n]+" — Database and Gold Evidence Review","",
       DESCRIPTION[n],"",
-      "## Gold Evidence Graph","",
-      "![Gold Object Types → Physical Tables → Activities](gold_evidence_graph.svg)","",
-      "The diagram distinguishes core business object concepts from supporting entities and activity-record types. ",
-      "Each physical table belongs to exactly one Gold Object Type. An event can be associated with several business objects through foreign keys without its source table belonging to multiple OTs.","",
-      "**This is an author-annotated Gold source projection, not an inferred Evidence Graph or a full provenance graph.**",
-      "Gold SQL and record-level evidence are available in the linked inspection materials.","",
+      "## Gold Event Extraction Graph (EEG) Source Projection","",
+      "![Entity Type candidates → Entity Representations → Activities](gold_evidence_graph.svg)","",
+      "The diagram distinguishes core business entity concepts from supporting entity and event-record types. ",
+      "Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.","",
+      "**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**",
+      "Gold SQL and record-level evidence are available in the linked inspection materials. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.","",
       "## Relational Schema (SQL foreign keys)","",
       "![Relational database schema](schema.svg)","",
       "## Table inspector","",
-      "| Physical table | Rows | Columns | Gold OT | First ten records |",
+      "| Physical table | Rows | Columns | ET candidate | First ten records |",
       "|---|---:|---:|---|---|"]
     for t in tables:
         readme.append("| "+t+" | "+str(counts[t])+" | "+str(len(cols[t]))+" | "+ot[t]+" | "+gitmd("Preview","tables/"+t+".md")+" |")
-    readme+=["","## Gold object types vs. core business objects","",
-      "Gold identity types: **"+str(len(set(ot.values())))+"**; principal business object concepts in this domain: **"+str(len(core & set(ot.values())))+"**. ",
-      "The core set is a conceptual layer for interpreting process scope, not a rule that forces unrelated PK domains to merge.","",
+    readme+=["","## Entity Type candidates vs. core business objects","",
+      "Legacy identity groups (ET candidates): **"+str(len(set(ot.values())))+"**; principal business object concepts in this domain: **"+str(len(core & set(ot.values())))+"**. ",
+      "The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Identity Namespaces.","",
       "**Core business concepts:** "+", ".join(sorted(core & set(ot.values())))+".","",
       "Supporting Gold types: "+", ".join(sorted(set(ot.values())-core))+".","",
       "## Evaluation evidence","",
@@ -199,24 +199,24 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
     (review/"README.md").write_text("\n".join(readme)+"\n")
     top=["# "+DISPLAY[n],"",DESCRIPTION[n],"",
       "## Dataset overview","",
-      "| Physical tables | Gold object types | Core business concepts | Gold SQL/CSV pairs verified |",
+      "| Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |",
       "|---:|---:|---:|---:|",
       "| "+str(len(tables))+" | "+str(len(set(ot.values())))+" | "+str(len(core & set(ot.values())))+" | "+str(goldqueries)+" |",
       "","## Explore the dataset","",
-      "- "+gitmd("Gold Evidence Graph and real table records","review/database/README.md"),
+      "- "+gitmd("Gold Event Extraction Graph (EEG) Source Projection and real table records","review/database/README.md"),
       "- "+gitmd("Editable Draw.io relational diagram","docs/schema.drawio"),
       "- "+gitmd("Per-question Gold DFGs","review/gold_dfg/README.md"),
       "- "+gitmd("Business Data Dictionary","input/data_dictionary.json"),
       "- "+gitmd("Gold object membership and source bindings","review/gold_dfg/event_graph.md"),
       "","## Schema and process semantics","",
-      "Object types identify business entities or independent occurrence records. The conceptual shortlist of core nouns is not a physical schema transformation.",
+      "Entity Types classify business entities; ERs preserve the underlying physical tables. Semantic ET grouping and instance identity resolution are separate tasks.",
       "Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.",""]
     (base/"README.md").write_text("\n".join(top))
     # The README describes only the final public dataset.
     assert all(w not in (base/"README.md").read_text().lower() for w in ["_new","was removed","previous version","formerly","new dataset"])
-    # Brief review inventory grounded in Gold membership, generated from the original inventory.
-    inv=["# "+DISPLAY[n]+" — Gold source inventory","","**Author annotations.** One identity OT per physical table; event-to-object attribution is a separate relation.","",
-      "| Physical table | Gold Object Type | Gold activity source labels |","|---|---|---|"]
+    # Review inventory reproduces legacy author labels as ET candidates, not verified namespace-aware ET Gold.
+    inv=["# "+DISPLAY[n]+" — Gold source inventory","","**Author annotations (legacy ET candidates).** One ER per physical table. Event-to-entity attribution is a separate relation and same-ET does not imply same entity instance.","",
+      "| Physical table | Entity Type candidate | Gold activity source labels |","|---|---|---|"]
     for t in tables:inv.append("| "+t+" | "+ot[t]+" | "+(", ".join(sorted(acts[t])) if acts[t] else "—")+" |")
     inv+=["","This is a source-binding projection. The model is not given this file.","",
        gitmd("Gold diagram","../database/gold_evidence_graph.svg")+" · "+gitmd("Gold DFGs","README.md")]
@@ -230,7 +230,7 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
         body=re.sub(r'^# [^\n]+', "# "+DISPLAY[n]+" — Question-level Gold DFG inspection",body,count=1)
         body=re.sub(r"^Source commit:.*\n","",body,flags=re.M)
         body=body.replace("**EVALUATION ONLY — NEVER PROVIDE TO A MODEL.**",
-            "**Gold reference only. These files are not model input.**\n\n[Gold OT → Table → Activities diagram](../database/gold_evidence_graph.svg)")
+            "**Gold reference only. These files are not model input.**\n\n[ET candidate → Table → Activities diagram](../database/gold_evidence_graph.svg)")
         q.write_text(body)
     return counts
 
