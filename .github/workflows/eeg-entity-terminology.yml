@@ -18,8 +18,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Migrate review documentation and candidate namespaces
-        run: python tools/migrate_eeg_terminology.py
+      - name: Rebuild source projections and apply terminology twice (idempotence check)
+        run: |
+          python tools/rebuild_all_dataset_reviews.py
+          python tools/migrate_eeg_terminology.py
+          git diff --exit-code -- datasets/*/input datasets/*/private datasets/*/evaluation
+      - name: Verify all four candidate manifest policies
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for n in ('hospitalflow','plateflow','universityflow','warehouseflow'):
+              p=Path('datasets')/n/'review/gold_dfg/entity_model_candidates.json'
+              d=json.loads(p.read_text())
+              assert d['status']=='candidate_only_not_validated_ET_gold'
+              assert not d['default_reverse_fk_traversal']
+              assert len(d['entity_representations']) in (11,12)
+          PY
       - name: Commit reviewed documentation artifacts
         run: |
           git config user.name 'github-actions[bot]'
