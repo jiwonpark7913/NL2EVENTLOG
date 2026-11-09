@@ -252,4 +252,8 @@ def run():
             "direct_activity_source_labels":len(set(a for v in activities.values() for a in v))})
         con.close()
     print(json.dumps(report,indent=2))
-if __name__=="__main__": run()
+if __name__=="__main__":
+    run()
+    # Keep rendered review pages aligned with the target EEG/ET/ER terminology.
+    from migrate_eeg_terminology import main as migrate_entity_docs
+    migrate_entity_docs()
