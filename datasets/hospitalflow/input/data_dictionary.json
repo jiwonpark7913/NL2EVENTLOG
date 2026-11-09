@@ -16,7 +16,7 @@
       "table": "patients",
       "metadata_id": "hospitalflow.patients",
       "readable_name": "Patients",
-      "definition": "Patient identifiers and demographic categories.",
+      "definition": "MIMIC-IV-compatible patient demographics and anchor metadata (synthetic).",
       "row_grain": "One row per patient.",
       "primary_key": [
         "subject_id"
@@ -24,7 +24,7 @@
       "foreign_keys": [],
       "logical_relationships": [],
       "table_checks": [],
-      "sql_definition": "CREATE TABLE patients(subject_id INTEGER PRIMARY KEY NOT NULL, gender TEXT NOT NULL CHECK(gender IN ('F','M')))",
+      "sql_definition": "CREATE TABLE \"patients\"(\n        subject_id INTEGER PRIMARY KEY NOT NULL,\n        gender TEXT NOT NULL CHECK(gender IN ('F','M')),\n        anchor_age INTEGER NOT NULL CHECK(anchor_age BETWEEN 0 AND 91),\n        anchor_year INTEGER NOT NULL,\n        anchor_year_group TEXT NOT NULL,\n        dod TEXT\n    )",
       "columns": [
         {
           "metadata_id": "hospitalflow.patients.subject_id",
@@ -95,6 +95,78 @@
             "HospitalFlow authored business convention and declared schema"
           ],
           "null_interpretation": "Not allowed"
+        },
+        {
+          "metadata_id": "hospitalflow.patients.anchor_age",
+          "name": "anchor_age",
+          "readable_name": "Anchor Age",
+          "definition": "Age in synthetic anchor_year; not an event.",
+          "type": "INTEGER",
+          "representation_class": "Integer",
+          "format": "INTEGER",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.patients.anchor_year",
+          "name": "anchor_year",
+          "readable_name": "Anchor Year",
+          "definition": "Synthetic de-identified reference year.",
+          "type": "INTEGER",
+          "representation_class": "Integer",
+          "format": "INTEGER",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.patients.anchor_year_group",
+          "name": "anchor_year_group",
+          "readable_name": "Anchor Year Group",
+          "definition": "Approximate original-year group (synthetic).",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.patients.dod",
+          "name": "dod",
+          "readable_name": "Dod",
+          "definition": "Date of death if known; not an assumed process event.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
         }
       ],
       "constraint_notes": []
@@ -103,7 +175,7 @@
       "table": "admissions",
       "metadata_id": "hospitalflow.admissions",
       "readable_name": "Admissions",
-      "definition": "Distinct hospital stays per patient with actual admission/discharge milestones.",
+      "definition": "Synthetic hospital stay using original MIMIC-IV admissions time-column names.",
       "row_grain": "One row per hospital admission, identified by hadm_id.",
       "primary_key": [
         "hadm_id"
@@ -120,7 +192,7 @@
         "CHECK(edregtime IS NULL OR edregtime<=admittime)",
         "CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime)"
       ],
-      "sql_definition": "CREATE TABLE admissions(hadm_id INTEGER PRIMARY KEY NOT NULL, subject_id INTEGER NOT NULL REFERENCES patients(subject_id), edregtime TEXT, admittime TEXT NOT NULL, discharge_authorized_at TEXT, dischtime TEXT, CHECK(edregtime IS NULL OR edregtime<=admittime), CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime))",
+      "sql_definition": "CREATE TABLE \"admissions\"(\n        hadm_id INTEGER PRIMARY KEY NOT NULL,\n        subject_id INTEGER NOT NULL REFERENCES patients(subject_id),\n        admittime TEXT NOT NULL,\n        dischtime TEXT,\n        deathtime TEXT,\n        admission_type TEXT NOT NULL,\n        admit_provider_id TEXT,\n        admission_location TEXT,\n        discharge_location TEXT,\n        insurance TEXT,\n        language TEXT,\n        marital_status TEXT,\n        race TEXT,\n        edregtime TEXT,\n        edouttime TEXT,\n        hospital_expire_flag INTEGER NOT NULL DEFAULT 0 CHECK(hospital_expire_flag IN (0,1)),\n        CHECK(dischtime IS NULL OR admittime<=dischtime),\n        CHECK(edouttime IS NULL OR edregtime IS NOT NULL),\n        CHECK(edouttime IS NULL OR edregtime<=edouttime)\n    )",
       "columns": [
         {
           "metadata_id": "hospitalflow.admissions.hadm_id",
@@ -260,38 +332,6 @@
           "null_interpretation": "Not allowed"
         },
         {
-          "metadata_id": "hospitalflow.admissions.discharge_authorized_at",
-          "name": "discharge_authorized_at",
-          "readable_name": "Discharge authorization time",
-          "definition": "Time when discharge from this hospital stay was authorized.",
-          "type": "TEXT",
-          "representation_class": "Date-time",
-          "unit": "Not applicable",
-          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
-          "timezone": "UTC",
-          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
-          "allowed_codes": [],
-          "code_meanings": {},
-          "minimum": null,
-          "maximum": null,
-          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
-          "nullable": true,
-          "required": false,
-          "null_meaning": "No discharge authorization time is recorded. Whether authorization occurred is unknown.",
-          "primary_key_position": 0,
-          "unique": false,
-          "foreign_keys": [],
-          "default_value": null,
-          "length": "No maximum length declared",
-          "constraints": "No additional column constraint",
-          "synonyms": [],
-          "description": "",
-          "source_references": [
-            "HospitalFlow authored business convention and declared schema"
-          ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
-        },
-        {
           "metadata_id": "hospitalflow.admissions.dischtime",
           "name": "dischtime",
           "readable_name": "Hospital discharge time",
@@ -323,135 +363,209 @@
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
           "null_interpretation": "Unknown occurrence; timestamp not recorded"
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.deathtime",
+          "name": "deathtime",
+          "readable_name": "Deathtime",
+          "definition": "Actual death timestamp if observed during this admission; NULL in current synthetic cohort.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.edouttime",
+          "name": "edouttime",
+          "readable_name": "Edouttime",
+          "definition": "Time the patient departed the emergency department, as in MIMIC-IV.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.admission_type",
+          "name": "admission_type",
+          "readable_name": "Admission Type",
+          "definition": "Type of admission; administrative attribute, not event.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.admit_provider_id",
+          "name": "admit_provider_id",
+          "readable_name": "Admit Provider Id",
+          "definition": "Admission provider reference.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.admission_location",
+          "name": "admission_location",
+          "readable_name": "Admission Location",
+          "definition": "Location from which admission occurred.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.discharge_location",
+          "name": "discharge_location",
+          "readable_name": "Discharge Location",
+          "definition": "Discharge destination.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.insurance",
+          "name": "insurance",
+          "readable_name": "Insurance",
+          "definition": "Recorded payor category.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.language",
+          "name": "language",
+          "readable_name": "Language",
+          "definition": "Admission-level language preference, not a patient master attribute.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.marital_status",
+          "name": "marital_status",
+          "readable_name": "Marital Status",
+          "definition": "Marital status at admission.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.race",
+          "name": "race",
+          "readable_name": "Race",
+          "definition": "Recorded demographic classification at admission.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.admissions.hospital_expire_flag",
+          "name": "hospital_expire_flag",
+          "readable_name": "Hospital Expire Flag",
+          "definition": "Whether death occurred during admission (all zero in synthetic sample).",
+          "type": "INTEGER",
+          "representation_class": "Integer",
+          "format": "INTEGER",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
         }
       ],
       "constraint_notes": [
         "CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime) rejects a known authorization time later than discharge. When discharge_authorized_at is NULL and dischtime is present, the expression evaluates to UNKNOWN and SQLite permits the row. Authorization is not mandatory for a recorded discharge."
       ]
-    },
-    {
-      "table": "patient_profile",
-      "metadata_id": "hospitalflow.patient_profile",
-      "readable_name": "Patient profile",
-      "definition": "Supplementary patient information keyed by patients.subject_id. Matching subject_id refers to the patient in patients; no SQL foreign key is declared.",
-      "row_grain": "At most one supplementary profile per patient.",
-      "primary_key": [
-        "subject_id"
-      ],
-      "foreign_keys": [],
-      "logical_relationships": [
-        {
-          "columns": [
-            "subject_id"
-          ],
-          "referenced_table": "patients",
-          "referenced_columns": [
-            "subject_id"
-          ],
-          "enforcement": "Documented identifier relationship; no declared SQL foreign key"
-        }
-      ],
-      "table_checks": [],
-      "sql_definition": "CREATE TABLE patient_profile(subject_id INTEGER PRIMARY KEY NOT NULL, profile_verified_at TEXT NOT NULL, preferred_language TEXT NOT NULL)",
-      "columns": [
-        {
-          "metadata_id": "hospitalflow.patient_profile.subject_id",
-          "name": "subject_id",
-          "readable_name": "Patient ID",
-          "definition": "Identifier of the same patient represented in patients.subject_id; this is a documented shared identifier, not a declared SQL foreign key.",
-          "type": "INTEGER",
-          "representation_class": "Identifier",
-          "unit": "Not applicable",
-          "format": "Integer identifier",
-          "timezone": null,
-          "allowed_values": "Patient identifiers in patients.subject_id by documented convention; no SQL foreign key enforces that relationship.",
-          "allowed_codes": [],
-          "code_meanings": {},
-          "minimum": null,
-          "maximum": null,
-          "value_domain_basis": "Business identifier convention plus primary-key uniqueness.",
-          "nullable": false,
-          "required": true,
-          "null_meaning": "NULL is not allowed by the declared schema.",
-          "primary_key_position": 1,
-          "unique": true,
-          "foreign_keys": [],
-          "default_value": null,
-          "length": "Not applicable",
-          "constraints": "PRIMARY KEY NOT NULL",
-          "synonyms": [],
-          "description": "This logical patient reference is intentionally not a declared SQL FK; keep documented relationships separate from enforced relationships.",
-          "source_references": [
-            "HospitalFlow authored business convention and declared schema"
-          ],
-          "null_interpretation": "Not allowed"
-        },
-        {
-          "metadata_id": "hospitalflow.patient_profile.profile_verified_at",
-          "name": "profile_verified_at",
-          "readable_name": "Profile verification time",
-          "definition": "Time when the supplementary patient information was verified.",
-          "type": "TEXT",
-          "representation_class": "Date-time",
-          "unit": "Not applicable",
-          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
-          "timezone": "UTC",
-          "allowed_values": "UTC timestamp text using the documented format; no additional date range is declared.",
-          "allowed_codes": [],
-          "code_meanings": {},
-          "minimum": null,
-          "maximum": null,
-          "value_domain_basis": "Documented representation; SQL checks below apply when present.",
-          "nullable": false,
-          "required": true,
-          "null_meaning": "NULL is not allowed by the declared schema.",
-          "primary_key_position": 0,
-          "unique": false,
-          "foreign_keys": [],
-          "default_value": null,
-          "length": "No maximum length declared",
-          "constraints": "NOT NULL",
-          "synonyms": [],
-          "description": "",
-          "source_references": [
-            "HospitalFlow authored business convention and declared schema"
-          ],
-          "null_interpretation": "Not allowed"
-        },
-        {
-          "metadata_id": "hospitalflow.patient_profile.preferred_language",
-          "name": "preferred_language",
-          "readable_name": "Preferred language",
-          "definition": "Language preference recorded in the supplementary patient information.",
-          "type": "TEXT",
-          "representation_class": "Text",
-          "unit": "Not applicable",
-          "format": "Text",
-          "timezone": null,
-          "allowed_values": "Text; no controlled vocabulary or maximum text length is declared.",
-          "allowed_codes": [],
-          "code_meanings": {},
-          "minimum": null,
-          "maximum": null,
-          "value_domain_basis": "Declared TEXT type and constraints below.",
-          "nullable": false,
-          "required": true,
-          "null_meaning": "NULL is not allowed by the declared schema.",
-          "primary_key_position": 0,
-          "unique": false,
-          "foreign_keys": [],
-          "default_value": null,
-          "length": "No maximum length declared",
-          "constraints": "NOT NULL",
-          "synonyms": [],
-          "description": "",
-          "source_references": [
-            "HospitalFlow authored business convention and declared schema"
-          ],
-          "null_interpretation": "Not allowed"
-        }
-      ],
-      "constraint_notes": []
     },
     {
       "table": "admission_detail",
@@ -1085,7 +1199,7 @@
       "table_checks": [
         "CHECK((lab_order_id IS NOT NULL)+(medication_order_id IS NOT NULL)+(procedure_order_id IS NOT NULL)=1)"
       ],
-      "sql_definition": "CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id INTEGER REFERENCES lab_order(order_id), medication_order_id INTEGER REFERENCES medication_order(order_id), procedure_order_id INTEGER REFERENCES procedure_order(order_id), action TEXT NOT NULL CHECK(action IN ('ENTERED','REVIEWED','CANCELLED')), occurred_at TEXT NOT NULL, CHECK((lab_order_id IS NOT NULL)+(medication_order_id IS NOT NULL)+(procedure_order_id IS NOT NULL)=1))",
+      "sql_definition": "CREATE TABLE order_history(history_id INTEGER PRIMARY KEY NOT NULL, lab_order_id INTEGER REFERENCES lab_order(order_id), medication_order_id INTEGER REFERENCES medication_order(order_id), procedure_order_id INTEGER REFERENCES procedure_order(order_id), action TEXT NOT NULL CHECK(action IN ('E','R','C')), occurred_at TEXT NOT NULL, CHECK((lab_order_id IS NOT NULL)+(medication_order_id IS NOT NULL)+(procedure_order_id IS NOT NULL)=1))",
       "columns": [
         {
           "metadata_id": "hospitalflow.order_history.history_id",
@@ -2077,6 +2191,166 @@
         }
       ],
       "constraint_notes": []
+    },
+    {
+      "table": "transfers",
+      "metadata_id": "hospitalflow.transfers",
+      "readable_name": "Hospital Transfers",
+      "definition": "One patient physical-location interval per record, following the MIMIC-IV transfers table shape.",
+      "row_grain": "One admission, ward transfer, or discharge location interval.",
+      "primary_key": [
+        "transfer_id"
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "subject_id"
+          ],
+          "referenced_table": "patients",
+          "referenced_columns": [
+            "subject_id"
+          ]
+        },
+        {
+          "columns": [
+            "hadm_id"
+          ],
+          "referenced_table": "admissions",
+          "referenced_columns": [
+            "hadm_id"
+          ]
+        }
+      ],
+      "logical_relationships": [],
+      "columns": [
+        {
+          "metadata_id": "hospitalflow.transfers.subject_id",
+          "name": "subject_id",
+          "readable_name": "Subject Id",
+          "definition": "Patient whose physical-location history this record describes.",
+          "type": "INTEGER",
+          "representation_class": "Integer",
+          "format": "INTEGER",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.transfers.hadm_id",
+          "name": "hadm_id",
+          "readable_name": "Hadm Id",
+          "definition": "Hospital admission associated with this location interval.",
+          "type": "INTEGER",
+          "representation_class": "Integer",
+          "format": "INTEGER",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.transfers.transfer_id",
+          "name": "transfer_id",
+          "readable_name": "Transfer Id",
+          "definition": "Unique location record identifier.",
+          "type": "INTEGER",
+          "representation_class": "Integer",
+          "format": "INTEGER",
+          "timezone": null,
+          "nullable": false,
+          "required": true,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 1
+        },
+        {
+          "metadata_id": "hospitalflow.transfers.eventtype",
+          "name": "eventtype",
+          "readable_name": "Eventtype",
+          "definition": "ed, admit, transfer or discharge interval type. Only transfer is a distinct transfer activity.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.transfers.careunit",
+          "name": "careunit",
+          "readable_name": "Careunit",
+          "definition": "Care unit occupied during this location interval.",
+          "type": "TEXT",
+          "representation_class": "Text",
+          "format": "TEXT",
+          "timezone": null,
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.transfers.intime",
+          "name": "intime",
+          "readable_name": "Intime",
+          "definition": "Actual entry time into the recorded care unit.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        },
+        {
+          "metadata_id": "hospitalflow.transfers.outtime",
+          "name": "outtime",
+          "readable_name": "Outtime",
+          "definition": "Actual departure time from the recorded care unit.",
+          "type": "TEXT",
+          "representation_class": "Date-time",
+          "format": "RFC 3339 UTC text, YYYY-MM-DDTHH:MM:SSZ",
+          "timezone": "UTC",
+          "nullable": true,
+          "required": false,
+          "source_references": [
+            "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
+          ],
+          "code_meanings": {},
+          "foreign_keys": [],
+          "primary_key_position": 0
+        }
+      ],
+      "sql_definition": "CREATE TABLE transfers(\n        subject_id INTEGER NOT NULL REFERENCES patients(subject_id),\n        hadm_id INTEGER REFERENCES admissions(hadm_id),\n        transfer_id INTEGER PRIMARY KEY NOT NULL,\n        eventtype TEXT CHECK(eventtype IN ('ed','admit','transfer','discharge')),\n        careunit TEXT,\n        intime TEXT,\n        outtime TEXT,\n        CHECK(outtime IS NULL OR intime IS NULL OR intime<=outtime)\n    )"
     }
   ],
   "business_rules": [
@@ -2092,6 +2366,10 @@
     "Laboratory charttime represents specimen collection; storetime represents result availability. Medication and procedure storetime values represent system documentation times.",
     "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.",
     "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
-    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
+    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
+    "MIMIC-IV-inspired structure with wholly synthetic patients and movements; no original patient record is used.",
+    "Patient demographics live only in patients, with admission-specific attributes in admissions.",
+    "An interval in transfers is not automatically a separate event for every time column: eventtype=transfer at intime records the care-unit transfer; admit and discharge intervals duplicate admission milestones.",
+    "An ED departure event uses admissions.edouttime; admission approval is not inferred. Null deathtime/dod are not events."
   ]
 }

@@ -1,83 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200" width="1800" height="1200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1450 715">
 <rect width="100%" height="100%" fill="#fff"/>
-<text x="30" y="42" font-size="25" font-family="sans-serif" font-weight="700" fill="#172433">HospitalFlow — Gold Evidence Graph: full source activity inventory</text>
-<text x="30" y="70" font-size="14" font-family="sans-serif" fill="#556577">Physical tables → Gold object types and event-source activity types; no model predictions.</text>
-<text x="30" y="114" font-size="18" font-weight="700" font-family="sans-serif">Physical tables (12)</text>
-<text x="535" y="114" font-size="18" font-weight="700" font-family="sans-serif">Gold object types (10)</text>
-<text x="1060" y="114" font-size="18" font-weight="700" font-family="sans-serif">Gold source bindings (20)</text>
-<path d="M386 155 H455 V155 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/admission_detail.md" target="_parent"><rect x="26" y="135" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="160" font-family="sans-serif" font-size="14" fill="#152D42">admission_detail</text></a>
-<path d="M386 230 H455 V155 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/admissions.md" target="_parent"><rect x="26" y="210" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="235" font-family="sans-serif" font-size="14" fill="#152D42">admissions</text></a>
-<path d="M386 305 H455 V389 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/emar.md" target="_parent"><rect x="26" y="285" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="310" font-family="sans-serif" font-size="14" fill="#152D42">emar</text></a>
-<path d="M386 380 H455 V311 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/lab_order.md" target="_parent"><rect x="26" y="360" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="385" font-family="sans-serif" font-size="14" fill="#152D42">lab_order</text></a>
-<path d="M386 455 H455 V233 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/labevents.md" target="_parent"><rect x="26" y="435" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="460" font-family="sans-serif" font-size="14" fill="#152D42">labevents</text></a>
-<path d="M386 530 H455 V467 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/medication_order.md" target="_parent"><rect x="26" y="510" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="535" font-family="sans-serif" font-size="14" fill="#152D42">medication_order</text></a>
-<path d="M386 605 H455 V545 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/order_history.md" target="_parent"><rect x="26" y="585" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="610" font-family="sans-serif" font-size="14" fill="#152D42">order_history</text></a>
-<path d="M386 680 H455 V623 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/patient_profile.md" target="_parent"><rect x="26" y="660" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="685" font-family="sans-serif" font-size="14" fill="#152D42">patient_profile</text></a>
-<path d="M386 755 H455 V623 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/patients.md" target="_parent"><rect x="26" y="735" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="760" font-family="sans-serif" font-size="14" fill="#152D42">patients</text></a>
-<path d="M386 830 H455 V701 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/pharmacy.md" target="_parent"><rect x="26" y="810" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="835" font-family="sans-serif" font-size="14" fill="#152D42">pharmacy</text></a>
-<path d="M386 905 H455 V779 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/procedure_episode.md" target="_parent"><rect x="26" y="885" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="910" font-family="sans-serif" font-size="14" fill="#152D42">procedure_episode</text></a>
-<path d="M386 980 H455 V857 H535" fill="none" stroke="#93A4B8" stroke-width="1.5"/>
-<a href="tables/procedure_order.md" target="_parent"><rect x="26" y="960" width="360" height="40" rx="6" stroke="#9AA7B8" fill="#E6F0FD"/><text x="37" y="985" font-family="sans-serif" font-size="14" fill="#152D42">procedure_order</text></a>
-<rect x="535" y="135" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="160" font-family="sans-serif" font-size="14" fill="#152D42">Hospital Admission</text>
-<rect x="535" y="213" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="238" font-family="sans-serif" font-size="14" fill="#152D42">Lab Measurement</text>
-<rect x="535" y="291" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="316" font-family="sans-serif" font-size="14" fill="#152D42">Laboratory Order</text>
-<rect x="535" y="369" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="394" font-family="sans-serif" font-size="14" fill="#152D42">Medication Administration</text>
-<rect x="535" y="447" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="472" font-family="sans-serif" font-size="14" fill="#152D42">Medication Order</text>
-<rect x="535" y="525" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="550" font-family="sans-serif" font-size="14" fill="#152D42">Order History Record</text>
-<rect x="535" y="603" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="628" font-family="sans-serif" font-size="14" fill="#152D42">Patient</text>
-<rect x="535" y="681" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="706" font-family="sans-serif" font-size="14" fill="#152D42">Pharmacy Dispensing</text>
-<rect x="535" y="759" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="784" font-family="sans-serif" font-size="14" fill="#152D42">Procedure Episode</text>
-<rect x="535" y="837" width="410" height="40" rx="6" stroke="#9AA7B8" fill="#E7F7ED"/><text x="546" y="862" font-family="sans-serif" font-size="14" fill="#152D42">Procedure Order</text>
-<path d="M386 155 H1015 V155 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="135" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="160" font-family="sans-serif" font-size="14" fill="#152D42">Discharge Summary Signed</text>
-<path d="M386 230 H1015 V203 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="183" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="208" font-family="sans-serif" font-size="14" fill="#152D42">Discharge Authorized</text>
-<path d="M386 230 H1015 V251 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="231" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="256" font-family="sans-serif" font-size="14" fill="#152D42">Emergency Department Registered</text>
-<path d="M386 230 H1015 V299 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="279" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="304" font-family="sans-serif" font-size="14" fill="#152D42">Hospital Admitted</text>
-<path d="M386 230 H1015 V347 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="327" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="352" font-family="sans-serif" font-size="14" fill="#152D42">Hospital Discharged</text>
-<path d="M386 305 H1015 V395 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="375" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="400" font-family="sans-serif" font-size="14" fill="#152D42">Medication Administered</text>
-<path d="M386 305 H1015 V443 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="423" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="448" font-family="sans-serif" font-size="14" fill="#152D42">Medication Not Given</text>
-<path d="M386 380 H1015 V491 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="471" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="496" font-family="sans-serif" font-size="14" fill="#152D42">Lab Results Verified</text>
-<path d="M386 380 H1015 V539 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="519" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="544" font-family="sans-serif" font-size="14" fill="#152D42">Specimen Received</text>
-<path d="M386 455 H1015 V587 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="567" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="592" font-family="sans-serif" font-size="14" fill="#152D42">Lab Result Available</text>
-<path d="M386 455 H1015 V635 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="615" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="640" font-family="sans-serif" font-size="14" fill="#152D42">Specimen Collected</text>
-<path d="M386 530 H1015 V683 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="663" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="688" font-family="sans-serif" font-size="14" fill="#152D42">Medication Stopped</text>
-<path d="M386 605 H1015 V731 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="711" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="736" font-family="sans-serif" font-size="14" fill="#152D42">Order Cancelled</text>
-<path d="M386 605 H1015 V779 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="759" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="784" font-family="sans-serif" font-size="14" fill="#152D42">Order Entered</text>
-<path d="M386 605 H1015 V827 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="807" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="832" font-family="sans-serif" font-size="14" fill="#152D42">Order Reviewed</text>
-<path d="M386 680 H1015 V875 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="855" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="880" font-family="sans-serif" font-size="14" fill="#152D42">Patient Profile Verified</text>
-<path d="M386 830 H1015 V923 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="903" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="928" font-family="sans-serif" font-size="14" fill="#152D42">Medication Dispensed</text>
-<path d="M386 905 H1015 V971 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="951" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="976" font-family="sans-serif" font-size="14" fill="#152D42">Procedure Completed</text>
-<path d="M386 905 H1015 V1019 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="999" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="1024" font-family="sans-serif" font-size="14" fill="#152D42">Procedure Started</text>
-<path d="M386 980 H1015 V1067 H1060" stroke="#DDC18B" stroke-width="1.1" fill="none" opacity=".65"/>
-<rect x="1060" y="1047" width="700" height="40" rx="6" stroke="#9AA7B8" fill="#FFF2CF"/><text x="1071" y="1072" font-family="sans-serif" font-size="14" fill="#152D42">Procedure Preparation Completed</text>
-<text x="30" y="1175" font-family="sans-serif" font-size="12" fill="#556577">Gold event sources only; object-to-event attribution across tables and record-level provenance are documented in the linked full inventory.</text>
+<text x="20" y="32" font-size="21" font-family="sans-serif" font-weight="700">HospitalFlow — Gold event source bindings</text>
+<rect x="20" y="58" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="85" font-size="14" font-family="sans-serif">admission_detail</text>
+<path d="M340 78 H400" stroke="#94a3b8"/>
+<rect x="400" y="58" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="85" font-size="13" font-family="sans-serif">Discharge Summary Signed</text>
+<rect x="20" y="113" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="140" font-size="14" font-family="sans-serif">admissions</text>
+<path d="M340 133 H400" stroke="#94a3b8"/>
+<rect x="400" y="113" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="140" font-size="13" font-family="sans-serif">Emergency Department Departed, Emergency Department Registered, Hospital Admitted, Hospital Discharged</text>
+<rect x="20" y="168" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="195" font-size="14" font-family="sans-serif">emar</text>
+<path d="M340 188 H400" stroke="#94a3b8"/>
+<rect x="400" y="168" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="195" font-size="13" font-family="sans-serif">Medication Administered, Medication Not Given</text>
+<rect x="20" y="223" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="250" font-size="14" font-family="sans-serif">lab_order</text>
+<path d="M340 243 H400" stroke="#94a3b8"/>
+<rect x="400" y="223" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="250" font-size="13" font-family="sans-serif">Lab Results Verified, Specimen Received</text>
+<rect x="20" y="278" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="305" font-size="14" font-family="sans-serif">labevents</text>
+<path d="M340 298 H400" stroke="#94a3b8"/>
+<rect x="400" y="278" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="305" font-size="13" font-family="sans-serif">Lab Result Available, Specimen Collected</text>
+<rect x="20" y="333" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="360" font-size="14" font-family="sans-serif">medication_order</text>
+<path d="M340 353 H400" stroke="#94a3b8"/>
+<rect x="400" y="333" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="360" font-size="13" font-family="sans-serif">Medication Stopped</text>
+<rect x="20" y="388" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="415" font-size="14" font-family="sans-serif">order_history</text>
+<path d="M340 408 H400" stroke="#94a3b8"/>
+<rect x="400" y="388" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="415" font-size="13" font-family="sans-serif">Order Cancelled, Order Entered, Order Reviewed</text>
+<rect x="20" y="443" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="470" font-size="14" font-family="sans-serif">pharmacy</text>
+<path d="M340 463 H400" stroke="#94a3b8"/>
+<rect x="400" y="443" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="470" font-size="13" font-family="sans-serif">Medication Dispensed</text>
+<rect x="20" y="498" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="525" font-size="14" font-family="sans-serif">procedure_episode</text>
+<path d="M340 518 H400" stroke="#94a3b8"/>
+<rect x="400" y="498" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="525" font-size="13" font-family="sans-serif">Procedure Completed, Procedure Started</text>
+<rect x="20" y="553" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="580" font-size="14" font-family="sans-serif">procedure_order</text>
+<path d="M340 573 H400" stroke="#94a3b8"/>
+<rect x="400" y="553" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="580" font-size="13" font-family="sans-serif">Procedure Preparation Completed</text>
+<rect x="20" y="608" width="320" height="42" fill="#e6f0fd"/>
+<text x="30" y="635" font-size="14" font-family="sans-serif">transfers</text>
+<path d="M340 628 H400" stroke="#94a3b8"/>
+<rect x="400" y="608" width="1020" height="42" fill="#fff2cf"/>
+<text x="410" y="635" font-size="13" font-family="sans-serif">Care Unit Transferred</text>
 </svg>
