@@ -1,0 +1,27 @@
+name: Rebuild all four Gold evidence review pages
+on:
+  push:
+    branches: [refactor/all-datasets-gold-review-and-clean-readmes]
+    paths:
+      - 'tools/rebuild_all_dataset_reviews.py'
+      - '.github/workflows/rebuild-all-dataset-reviews.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit SQLite, Gold SQL/CSV and regenerate four datasets' review pages
+        run: python tools/rebuild_all_dataset_reviews.py
+      - name: Commit regenerated review pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/*/README.md datasets/*/review/database/README.md datasets/*/review/database/gold_evidence_graph.svg datasets/*/review/gold_dfg/README.md datasets/*/review/gold_dfg/event_graph.md
+          git diff --cached --quiet || git commit -m 'docs: publish final-user Gold evidence review across four datasets'
+          git push
