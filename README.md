@@ -1,9 +1,11 @@
 # NL2EventLog
 
-Research implementation and four evaluation datasets for natural-language-to-event-log extraction. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**.
+Research implementation and four evaluation datasets for natural-language-to-event-log extraction. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**.
 
 ## Repository map
 
+- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
+- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
 - [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
 - [System design](docs/system/) — methodology, event-table scope, paraphrase-generation policy.
 - [Dataset inspection](datasets/) — four active datasets with separate **model input**, **evaluation ground truth**, and **human review** material.

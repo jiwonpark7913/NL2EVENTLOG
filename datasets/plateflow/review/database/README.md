@@ -2,15 +2,15 @@
 
 PlateFlow is a synthetic steel-plate production database with slab receiving, rolling preparation, furnace and rolling operations, finishing, inspection and quality review. It reflects industrial process concepts, not observed production records.
 
-## Gold EEG Source Projection
+## Gold Event Extraction Graph (EEG) Source Projection
 
-![Entity Types → Entity Representations → Activities](gold_evidence_graph.svg)
+![Entity Type candidates → Entity Representations → Activities](gold_evidence_graph.svg)
 
-The diagram distinguishes core entity concepts from supporting representations and occurrence records. 
-A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. An event may be attributed to several Entity Instances without implying that its source ER belongs to multiple ETs.
+The diagram distinguishes core business entity concepts from supporting entity and event-record types. 
+Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.
 
-The diagram is an **author-annotated EEG source projection**, not a model-inferred EEG or a validated namespace-aware Entity Type Gold. The ET candidates reflect legacy identity labels.
-Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model.
+**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**
+Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.
 
 
 
@@ -22,7 +22,7 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 
 ## Table inspector
 
-| Physical table | Rows | Columns | legacy ET candidate | First ten records |
+| Physical table | Rows | Columns | ET candidate | First ten records |
 |---|---:|---:|---|---|
 | as_rolled_material | 26 | 6 | Mother Material | [Preview](tables/as_rolled_material.md) |
 | dimension_inspection | 46 | 5 | Dimension Inspection | [Preview](tables/dimension_inspection.md) |
@@ -37,10 +37,10 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 | rolling_operation_history | 44 | 7 | Rolling Operation Record | [Preview](tables/rolling_operation_history.md) |
 | slab_material | 30 | 6 | Slab | [Preview](tables/slab_material.md) |
 
-## legacy Entity Type candidates vs. core business objects
+## Entity Type candidates vs. core business objects
 
-Legacy ET candidate groups: **12**; principal business object concepts in this domain: **6**. 
-The core set is a conceptual shortlist, not evidence for merging separate Entity Instances or Identity Namespaces.
+Legacy identity groups (ET candidates): **12**; principal business object concepts in this domain: **6**. 
+The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Identity Namespaces.
 
 **Core business concepts:** Equipment, Mother Material, Plate Piece, Rolling Instruction, Rolling Plan, Slab.
 

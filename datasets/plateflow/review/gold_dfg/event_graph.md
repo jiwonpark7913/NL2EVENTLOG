@@ -1,6 +1,6 @@
 # PlateFlow — Gold source inventory
 
-**Legacy author annotations.** Every physical table is an ER. Candidate ET grouping is not yet validated for Identity Namespaces or lifecycle membership.
+**Author annotations (legacy ET candidates).** One ER per physical table. Event-to-entity attribution is a separate relation and same-ET does not imply same entity instance.
 
 | Physical table | Entity Type candidate | Gold activity source labels |
 |---|---|---|

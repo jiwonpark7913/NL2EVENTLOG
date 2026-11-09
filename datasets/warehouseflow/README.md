@@ -4,13 +4,13 @@ WarehouseFlow is a synthetic warehouse operations database covering goods, recei
 
 ## Dataset overview
 
-| Physical tables | legacy Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
+| Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
 | 12 | 12 | 5 | 50 |
 
 ## Explore the dataset
 
-- [Gold EEG Source Projection and real table records](review/database/README.md)
+- [Gold Event Extraction Graph (EEG) Source Projection and real table records](review/database/README.md)
 - [Editable Draw.io relational diagram](docs/schema.drawio)
 - [Per-question Gold DFGs](review/gold_dfg/README.md)
 - [Business Data Dictionary](input/data_dictionary.json)
@@ -18,7 +18,7 @@ WarehouseFlow is a synthetic warehouse operations database covering goods, recei
 
 ## Schema and process semantics
 
-Entity Types capture business semantics; Entity Representations preserve physical tables. ET classification is separate from instance identity resolution.
+Entity Types classify business entities; ERs preserve the underlying physical tables. Semantic ET grouping and instance identity resolution are separate tasks.
 Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.
 
 ## Entity-model interpretation
