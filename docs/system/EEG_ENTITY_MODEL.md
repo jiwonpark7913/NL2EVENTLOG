@@ -6,12 +6,14 @@ NL2EventLog translates a natural-language process request and a relational datab
 
 This document specifies the **target methodology**. The four existing datasets and their current SQL/CSV Gold logs predate the Entity Type / Identity Namespace redesign. Their existing author-assigned Object Type groups are *legacy evaluation annotations*, not independently validated Gold ET groupings. Updated review diagrams use ET/ER terminology to describe their **existing table membership projection**, but this does not establish that namespace-aware case populations or directional attribution have been implemented. Database content, questions and existing Gold event logs are unchanged by this documentation migration.
 
+**Entity storage clarification:** ETs classify identified business targets, not whole tables. A table may identify/reference multiple ETs and a single entity may have several physical identifiers. See the [definitions and partial-function model](ENTITY_IDENTITY_AND_STORAGE.md) and [live dataset cases](../../datasets/ENTITY_STORAGE_CASES.md). WarehouseFlow now includes optional worker attributes under an alternate identifier; existing event-log Gold is unchanged.
+
 ## Glossary
 
 | Term | Meaning |
 |---|---|
-| **Entity Type (ET)** | A class of business entities sharing semantics and a consistent instance-identity interpretation; one ET may span multiple physical representations and identity namespaces |
-| **Entity Representation (ER)** | Schema-level representation of one physical relational table containing information about entities; every physical table has one ER |
+| **Entity Type (ET)** | A class of business entities sharing business meaning and instance granularity; one ET may span multiple physical representations and identity namespaces |
+| **Entity Representation (ER)** | Schema-level representation of one physical relational table containing information about entities; every physical table has one ER node, which does not impose one ET per table |
 | **Entity / Entity Instance** | An individually identifiable entity of an ET |
 | **Identity Namespace** | Technical identity domain within an ET, enabling shared, mapped, independent or unknown cross-ER identity relationships |
 | **Event Extraction Graph (EEG)** | Request-independent graph of candidate activities, ER/ET structure, physical event bindings, semantic evidence and candidate case-attribution contracts |
@@ -28,8 +30,8 @@ Legacy terminology: **Evidence Graph (EG) → EEG**, **Object Type (OT) → ET**
 
 ### Entity Type Identification
 
-1. Create one **ER** for every physical table.
-2. **Semantic type classification:** decide whether multiple ERs represent the same *kind* of business entity using definitions, row grain, Data Dictionary, schema and business semantics. Two ERs can share an ET **without sharing actual instances**.
+1. Keep every physical table as a source node. Enumerate PK, UNIQUE and FK candidates, preserving complete composite tuples. For each candidate determine the target it identifies or references; a table may have multiple such interpretations.
+2. **Semantic type classification:** classify identifier interpretations by business meaning and instance granularity using definitions, the Data Dictionary, schema and business semantics. One table may describe a Registration and reference a Student and a Course. Interpretations can share an ET **without sharing actual instances**; do not group whole tables as the only operation.
 3. **Instance identity resolution:** classify the relationship between instance identifiers *separately* from semantic ET membership. Validate primary/unique key meanings, structural relationships, domain evidence and actual data.
 4. Record an **Identity Namespace** for every resolution domain:
    - **Shared** — normalized canonical key denotes the same instance across ERs.
@@ -61,7 +63,7 @@ The EEG stores contracts and source-level bindings, **not one concrete EEG node 
 
 Select a **target ET** as the Case Notion; the cases are its validated Entity Instances. Explicit requests name activities to retrieve, including supported activities recorded in other ERs with verified attribution. Implicit requests ask for the ET's recorded lifecycle without enumerating activities:
 
-- **own:** eligible events recorded in ERs belonging to the selected ET.
+- **own:** eligible events whose source-row identity interpretation resolves the selected ET as the event's own target; a table-wide type label alone is insufficient.
 - **desc:** own plus supported events from related ERs where the directional Case Attribution Path and Lifecycle Membership are both validated.
 
 Unresolved candidates and mere FK reachability are not automatically included. Process Information is frozen after Step 2.
@@ -78,7 +80,7 @@ Unresolved candidates and mere FK reachability are not automatically included. P
 | `R` | Activity interpretation, timestamp/carrier rules and supporting evidence |
 | `Δ` | NULL behavior, multiplicity, occurrence deduplication and execution policy |
 
-**Case Population(ET)** is the distinct union of validated canonical entity instance mappings across its ERs. Shared identities collapse to a single case; independent namespaces remain disjoint; unknown mappings are not silently unified. **Case union is not event-occurrence union**: preserve distinct recorded events and deduplicate only according to an explicit event-ID/occurrence policy.
+**Case Population(ET)** is the distinct union of validated canonical entity instance mappings across approved table/column/condition interpretations. Shared identities collapse to a single case; independent namespaces remain disjoint; unknown mappings are not silently unified. **Case union is not event-occurrence union**: preserve distinct recorded events and deduplicate only according to an explicit event-ID/occurrence policy.
 
 SQL is compiled deterministically from the validated ES. The LLM does not freely author execution SQL.
 

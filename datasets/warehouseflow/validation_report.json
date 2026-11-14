@@ -11,7 +11,8 @@
     "goods_movement": 39,
     "request_action": 56,
     "warehouse_task_history": 63,
-    "handling_history": 41
+    "handling_history": 41,
+    "worker_contact": 3
   },
   "semantic_object_types": 11,
   "object_view_coverage": [
@@ -305,5 +306,11 @@
     "model_input_allowlist_verified": true,
     "exact_frozen_question_pairs": true,
     "actual_llm_classifier_run": false
+  },
+  "entity_storage_extension": {
+    "optional_worker_attributes": true,
+    "new_events": 0,
+    "key_mapping": "worker_contact.staff_no -> worker.payroll_no -> worker.worker_id",
+    "note": "Same Worker type and instances; contact rows add attributes, not cases or events."
   }
 }

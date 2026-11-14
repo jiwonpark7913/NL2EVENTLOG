@@ -4,6 +4,12 @@ UniversityFlow is a synthetic university operations database representing studen
 
 [Relational schema](#relational-schema-sql-foreign-keys) · [Table previews](#table-inspector) · [Questions](#questions)
 
+## Entity types and identifiers
+
+[Concepts and formal definitions](../../docs/system/ENTITY_IDENTITY_AND_STORAGE.md) · [Storage cases across datasets](../ENTITY_STORAGE_CASES.md) · [Actual PK, UNIQUE and FK inventory](docs/entity_identifiers.md)
+
+The source projection below assigns a principal type for display. It does not mean a table can identify or reference only one ET. Entity identity is resolved from table/column/condition rules, separately from table membership.
+
 ## Dataset overview
 
 | Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |

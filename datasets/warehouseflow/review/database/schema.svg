@@ -29,6 +29,7 @@
 <path d="M340 1100 H590.0 V1100 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>warehouse_task_history.worker_id → worker.worker_id</title></path>
 <path d="M730 110 H785.0 V1100 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>warehouse_task_history.dispatch_id → dispatch_order.dispatch_id</title></path>
 <path d="M730 440 H785.0 V1100 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>warehouse_task_history.request_id → receiving_request.request_id</title></path>
+<path d="M340 1100 H395.0 V1100 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>worker_contact.staff_no → worker.payroll_no</title></path>
 <a xlink:href="tables/dispatch_order.md" href="tables/dispatch_order.md" target="_parent"><rect x="430" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="442" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">dispatch_order</text>
 <text x="442" y="132" font-family="monospace" font-size="12" fill="#334155">dispatch_id</text>
@@ -36,8 +37,8 @@
 <text x="442" y="174" font-family="monospace" font-size="12" fill="#334155">goods_id</text>
 <text x="442" y="195" font-family="monospace" font-size="12" fill="#334155">quantity</text>
 <text x="442" y="216" font-family="monospace" font-size="12" fill="#334155">priority_code</text>
-<rect x="439" y="222" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="442" y="237" font-family="monospace" font-size="12" fill="#805000">requested_at</text>
-<rect x="439" y="243" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="442" y="258" font-family="monospace" font-size="12" fill="#805000">approved_at</text>
+<text x="442" y="237" font-family="monospace" font-size="12" fill="#334155">requested_at</text>
+<text x="442" y="258" font-family="monospace" font-size="12" fill="#334155">approved_at</text>
 <text x="442" y="309" font-family="sans-serif" font-size="12" fill="#475569">20 rows · click for 10 records</text></a>
 <a xlink:href="tables/goods.md" href="tables/goods.md" target="_parent"><rect x="40" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="52" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">goods</text>
@@ -61,7 +62,7 @@
 <text x="832" y="132" font-family="monospace" font-size="12" fill="#334155">receipt_id</text>
 <text x="832" y="153" font-family="monospace" font-size="12" fill="#334155">request_id</text>
 <text x="832" y="174" font-family="monospace" font-size="12" fill="#334155">receiver_id</text>
-<rect x="829" y="180" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="832" y="195" font-family="monospace" font-size="12" fill="#805000">received_at</text>
+<text x="832" y="195" font-family="monospace" font-size="12" fill="#334155">received_at</text>
 <text x="832" y="216" font-family="monospace" font-size="12" fill="#334155">condition_code</text>
 <text x="832" y="309" font-family="sans-serif" font-size="12" fill="#475569">23 rows · click for 10 records</text></a>
 <a xlink:href="tables/handling_history.md" href="tables/handling_history.md" target="_parent"><rect x="820" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
@@ -72,8 +73,8 @@
 <text x="832" y="525" font-family="monospace" font-size="12" fill="#334155">worker_id</text>
 <text x="832" y="546" font-family="monospace" font-size="12" fill="#334155">code_family</text>
 <text x="832" y="567" font-family="monospace" font-size="12" fill="#334155">handling_code</text>
-<rect x="829" y="573" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="832" y="588" font-family="monospace" font-size="12" fill="#805000">started_at</text>
-<rect x="829" y="594" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="832" y="609" font-family="monospace" font-size="12" fill="#805000">completed_at</text>
+<text x="832" y="588" font-family="monospace" font-size="12" fill="#334155">started_at</text>
+<text x="832" y="609" font-family="monospace" font-size="12" fill="#334155">completed_at</text>
 <text x="832" y="639" font-family="sans-serif" font-size="12" fill="#475569">41 rows · click for 10 records</text></a>
 <a xlink:href="tables/receiving_request.md" href="tables/receiving_request.md" target="_parent"><rect x="430" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="442" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">receiving_request</text>
@@ -81,7 +82,7 @@
 <text x="442" y="483" font-family="monospace" font-size="12" fill="#334155">warehouse_id</text>
 <text x="442" y="504" font-family="monospace" font-size="12" fill="#334155">goods_id</text>
 <text x="442" y="525" font-family="monospace" font-size="12" fill="#334155">quantity</text>
-<rect x="439" y="531" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="442" y="546" font-family="monospace" font-size="12" fill="#805000">submitted_at</text>
+<text x="442" y="546" font-family="monospace" font-size="12" fill="#334155">submitted_at</text>
 <text x="442" y="639" font-family="sans-serif" font-size="12" fill="#475569">26 rows · click for 10 records</text></a>
 <a xlink:href="tables/request_action.md" href="tables/request_action.md" target="_parent"><rect x="820" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="832" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">request_action</text>
@@ -90,23 +91,23 @@
 <text x="832" y="834" font-family="monospace" font-size="12" fill="#334155">worker_id</text>
 <text x="832" y="855" font-family="monospace" font-size="12" fill="#334155">code_family</text>
 <text x="832" y="876" font-family="monospace" font-size="12" fill="#334155">action_code</text>
-<rect x="829" y="882" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="832" y="897" font-family="monospace" font-size="12" fill="#805000">occurred_at</text>
+<text x="832" y="897" font-family="monospace" font-size="12" fill="#334155">occurred_at</text>
 <text x="832" y="969" font-family="sans-serif" font-size="12" fill="#475569">56 rows · click for 10 records</text></a>
 <a xlink:href="tables/warehouse.md" href="tables/warehouse.md" target="_parent"><rect x="40" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="52" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">warehouse</text>
 <text x="52" y="462" font-family="monospace" font-size="12" fill="#334155">warehouse_id</text>
 <text x="52" y="483" font-family="monospace" font-size="12" fill="#334155">warehouse_name</text>
 <text x="52" y="504" font-family="monospace" font-size="12" fill="#334155">capacity</text>
-<rect x="49" y="510" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="52" y="525" font-family="monospace" font-size="12" fill="#155E85">created_at</text>
-<rect x="49" y="531" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="52" y="546" font-family="monospace" font-size="12" fill="#155E85">updated_at</text>
+<text x="52" y="525" font-family="monospace" font-size="12" fill="#334155">created_at</text>
+<text x="52" y="546" font-family="monospace" font-size="12" fill="#334155">updated_at</text>
 <text x="52" y="639" font-family="sans-serif" font-size="12" fill="#475569">4 rows · click for 10 records</text></a>
 <a xlink:href="tables/warehouse_audit.md" href="tables/warehouse_audit.md" target="_parent"><rect x="430" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="442" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">warehouse_audit</text>
 <text x="442" y="792" font-family="monospace" font-size="12" fill="#334155">audit_id</text>
 <text x="442" y="813" font-family="monospace" font-size="12" fill="#334155">warehouse_id</text>
 <text x="442" y="834" font-family="monospace" font-size="12" fill="#334155">worker_id</text>
-<rect x="439" y="840" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="442" y="855" font-family="monospace" font-size="12" fill="#805000">started_at</text>
-<rect x="439" y="861" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="442" y="876" font-family="monospace" font-size="12" fill="#805000">completed_at</text>
+<text x="442" y="855" font-family="monospace" font-size="12" fill="#334155">started_at</text>
+<text x="442" y="876" font-family="monospace" font-size="12" fill="#334155">completed_at</text>
 <text x="442" y="897" font-family="monospace" font-size="12" fill="#334155">result_code</text>
 <text x="442" y="969" font-family="sans-serif" font-size="12" fill="#475569">9 rows · click for 10 records</text></a>
 <a xlink:href="tables/warehouse_task_history.md" href="tables/warehouse_task_history.md" target="_parent"><rect x="820" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
@@ -117,8 +118,8 @@
 <text x="832" y="1185" font-family="monospace" font-size="12" fill="#334155">worker_id</text>
 <text x="832" y="1206" font-family="monospace" font-size="12" fill="#334155">code_family</text>
 <text x="832" y="1227" font-family="monospace" font-size="12" fill="#334155">task_code</text>
-<rect x="829" y="1233" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="832" y="1248" font-family="monospace" font-size="12" fill="#805000">started_at</text>
-<rect x="829" y="1254" width="283" height="19" rx="3" fill="#FFF0B3"/><text font-weight="700" x="832" y="1269" font-family="monospace" font-size="12" fill="#805000">completed_at</text>
+<text x="832" y="1248" font-family="monospace" font-size="12" fill="#334155">started_at</text>
+<text x="832" y="1269" font-family="monospace" font-size="12" fill="#334155">completed_at</text>
 <text x="832" y="1299" font-family="sans-serif" font-size="12" fill="#475569">63 rows · click for 10 records</text></a>
 <a xlink:href="tables/work_code.md" href="tables/work_code.md" target="_parent"><rect x="40" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
 <text x="52" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">work_code</text>
@@ -131,8 +132,12 @@
 <text x="52" y="1122" font-family="monospace" font-size="12" fill="#334155">worker_id</text>
 <text x="52" y="1143" font-family="monospace" font-size="12" fill="#334155">worker_name</text>
 <text x="52" y="1164" font-family="monospace" font-size="12" fill="#334155">role_code</text>
-<rect x="49" y="1170" width="283" height="19" rx="3" fill="#D9F0FF"/><text font-weight="700" x="52" y="1185" font-family="monospace" font-size="12" fill="#155E85">updated_at</text>
+<text x="52" y="1185" font-family="monospace" font-size="12" fill="#334155">updated_at</text>
+<text x="52" y="1206" font-family="monospace" font-size="12" fill="#334155">payroll_no</text>
 <text x="52" y="1299" font-family="sans-serif" font-size="12" fill="#475569">7 rows · click for 10 records</text></a>
-<text x="20" y="24" font-family="sans-serif" font-size="12" fill="#805000">Yellow: Gold event-time source (where established); Blue: other temporal column</text>
-<text x="20" y="24" font-family="sans-serif" font-size="12" fill="#805000">Yellow: Gold event-time source (where established); Blue: other temporal column</text>
+<a xlink:href="tables/worker_contact.md" href="tables/worker_contact.md" target="_parent"><rect x="430" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">worker_contact</text>
+<text x="442" y="1122" font-family="monospace" font-size="12" fill="#334155">staff_no</text>
+<text x="442" y="1143" font-family="monospace" font-size="12" fill="#334155">contact_channel</text>
+<text x="442" y="1299" font-family="sans-serif" font-size="12" fill="#475569">3 rows · click for 10 records</text></a>
 </svg>

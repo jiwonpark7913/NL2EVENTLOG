@@ -186,5 +186,8 @@ def main():
  report=dict(table_rows={t:con.execute('SELECT COUNT(*) FROM '+t).fetchone()[0] for t in TABLES},semantic_object_types=len(VIEWS),object_view_coverage=coverage,activity_counts=dict(Counter(e['activity'] for e in hist)),base_activity_counts=dict(Counter(e['base_activity'] for e in hist)),activity_type_count=len({e['base_activity'] for e in hist}),activity_display_label_count=len({e['activity'] for e in hist}),phase_counts=dict(Counter(e['lifecycle_phase'] for e in hist)),events=len(hist),total_questions=len(questions),answerable_questions=sum(q['answerability']=='answerable' for q in questions),timestamp_summary={k:v for k,v in inv.items() if k!='columns'},validation_scope='Dataset construction and Gold consistency, not a measured classifier result.');js('validation_report.json',report)
  from documentation import render
  render(P,con,d,report,questions,coverage,CLASSIFICATION)
- con.close();print(json.dumps({k:report[k] for k in ['events','phase_counts','total_questions','answerable_questions','semantic_object_types','timestamp_summary']},indent=2))
+ con.close()
+ from entity_storage import apply
+ apply(P)
+ print(json.dumps({k:report[k] for k in ['events','phase_counts','total_questions','answerable_questions','semantic_object_types','timestamp_summary']},indent=2))
 if __name__=='__main__':main()

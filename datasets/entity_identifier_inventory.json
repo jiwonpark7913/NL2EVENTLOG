@@ -1,0 +1,1318 @@
+{
+  "universityflow": [
+    {
+      "table": "assignment",
+      "rows": 20,
+      "primary_key": [
+        "assignment_id"
+      ],
+      "unique_indexes": [
+        [
+          "assignment_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "student_id"
+          ],
+          "target_table": "student",
+          "target_columns": [
+            "student_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "assignment_grading",
+      "rows": 25,
+      "primary_key": [
+        "assignment_id",
+        "instructor_id",
+        "grading_time"
+      ],
+      "unique_indexes": [
+        [
+          "reassessment_event_id"
+        ],
+        [
+          "assignment_id",
+          "instructor_id",
+          "grading_time"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "instructor_id"
+          ],
+          "target_table": "instructor",
+          "target_columns": [
+            "instructor_id"
+          ]
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "target_table": "assignment",
+          "target_columns": [
+            "assignment_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "course",
+      "rows": 6,
+      "primary_key": [
+        "course_id"
+      ],
+      "unique_indexes": [
+        [
+          "course_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "degree_examination_result",
+      "rows": 40,
+      "primary_key": [
+        "result_id"
+      ],
+      "unique_indexes": [
+        [
+          "result_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "student_id"
+          ],
+          "target_table": "student",
+          "target_columns": [
+            "student_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "instructor",
+      "rows": 3,
+      "primary_key": [
+        "instructor_id"
+      ],
+      "unique_indexes": [
+        [
+          "instructor_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "registration",
+      "rows": 47,
+      "primary_key": [
+        "student_id",
+        "course_id"
+      ],
+      "unique_indexes": [
+        [
+          "student_id",
+          "course_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "course_id"
+          ],
+          "target_table": "course",
+          "target_columns": [
+            "course_id"
+          ]
+        },
+        {
+          "columns": [
+            "student_id"
+          ],
+          "target_table": "student",
+          "target_columns": [
+            "student_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "simulation_module",
+      "rows": 3,
+      "primary_key": [
+        "module_id"
+      ],
+      "unique_indexes": [
+        [
+          "module_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "student",
+      "rows": 40,
+      "primary_key": [
+        "student_id"
+      ],
+      "unique_indexes": [
+        [
+          "student_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "rows": 27,
+      "primary_key": [
+        "student_id",
+        "module_id",
+        "simulation_date"
+      ],
+      "unique_indexes": [
+        [
+          "student_id",
+          "module_id",
+          "simulation_date"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "module_id"
+          ],
+          "target_table": "simulation_module",
+          "target_columns": [
+            "module_id"
+          ]
+        },
+        {
+          "columns": [
+            "student_id"
+          ],
+          "target_table": "student",
+          "target_columns": [
+            "student_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "task",
+      "rows": 3,
+      "primary_key": [
+        "task_id"
+      ],
+      "unique_indexes": [
+        [
+          "task_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "thesis",
+      "rows": 16,
+      "primary_key": [
+        "thesis_id"
+      ],
+      "unique_indexes": [
+        [
+          "thesis_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "student_id"
+          ],
+          "target_table": "student",
+          "target_columns": [
+            "student_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    }
+  ],
+  "hospitalflow": [
+    {
+      "table": "admission_detail",
+      "rows": 5,
+      "primary_key": [
+        "hadm_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "hadm_id"
+          ],
+          "target_table": "admissions",
+          "target_columns": [
+            "hadm_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "admissions",
+      "rows": 15,
+      "primary_key": [
+        "hadm_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "subject_id"
+          ],
+          "target_table": "patients",
+          "target_columns": [
+            "subject_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "emar",
+      "rows": 67,
+      "primary_key": [
+        "emar_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "pharmacy_id"
+          ],
+          "target_table": "pharmacy",
+          "target_columns": [
+            "pharmacy_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "lab_order",
+      "rows": 34,
+      "primary_key": [
+        "order_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "hadm_id"
+          ],
+          "target_table": "admissions",
+          "target_columns": [
+            "hadm_id"
+          ]
+        },
+        {
+          "columns": [
+            "subject_id"
+          ],
+          "target_table": "patients",
+          "target_columns": [
+            "subject_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "labevents",
+      "rows": 62,
+      "primary_key": [
+        "labevent_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "order_id"
+          ],
+          "target_table": "lab_order",
+          "target_columns": [
+            "order_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "medication_order",
+      "rows": 29,
+      "primary_key": [
+        "order_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "hadm_id"
+          ],
+          "target_table": "admissions",
+          "target_columns": [
+            "hadm_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "order_history",
+      "rows": 203,
+      "primary_key": [
+        "history_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "procedure_order_id"
+          ],
+          "target_table": "procedure_order",
+          "target_columns": [
+            "order_id"
+          ]
+        },
+        {
+          "columns": [
+            "medication_order_id"
+          ],
+          "target_table": "medication_order",
+          "target_columns": [
+            "order_id"
+          ]
+        },
+        {
+          "columns": [
+            "lab_order_id"
+          ],
+          "target_table": "lab_order",
+          "target_columns": [
+            "order_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "patients",
+      "rows": 12,
+      "primary_key": [
+        "subject_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "pharmacy",
+      "rows": 34,
+      "primary_key": [
+        "pharmacy_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "order_id"
+          ],
+          "target_table": "medication_order",
+          "target_columns": [
+            "order_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "procedure_episode",
+      "rows": 23,
+      "primary_key": [
+        "procedureevent_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "order_id"
+          ],
+          "target_table": "procedure_order",
+          "target_columns": [
+            "order_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "procedure_order",
+      "rows": 17,
+      "primary_key": [
+        "order_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "hadm_id"
+          ],
+          "target_table": "admissions",
+          "target_columns": [
+            "hadm_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "transfers",
+      "rows": 38,
+      "primary_key": [
+        "transfer_id"
+      ],
+      "unique_indexes": [],
+      "foreign_keys": [
+        {
+          "columns": [
+            "hadm_id"
+          ],
+          "target_table": "admissions",
+          "target_columns": [
+            "hadm_id"
+          ]
+        },
+        {
+          "columns": [
+            "subject_id"
+          ],
+          "target_table": "patients",
+          "target_columns": [
+            "subject_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    }
+  ],
+  "warehouseflow": [
+    {
+      "table": "dispatch_order",
+      "rows": 20,
+      "primary_key": [
+        "dispatch_id"
+      ],
+      "unique_indexes": [
+        [
+          "dispatch_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "goods_id"
+          ],
+          "target_table": "goods",
+          "target_columns": [
+            "goods_id"
+          ]
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "target_table": "warehouse",
+          "target_columns": [
+            "warehouse_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "goods",
+      "rows": 7,
+      "primary_key": [
+        "goods_id"
+      ],
+      "unique_indexes": [
+        [
+          "goods_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "goods_movement",
+      "rows": 39,
+      "primary_key": [
+        "movement_id"
+      ],
+      "unique_indexes": [
+        [
+          "dispatch_id"
+        ],
+        [
+          "receipt_id"
+        ],
+        [
+          "movement_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "movement_code"
+          ],
+          "target_table": "work_code",
+          "target_columns": [
+            "code_family",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "dispatch_id"
+          ],
+          "target_table": "dispatch_order",
+          "target_columns": [
+            "dispatch_id"
+          ]
+        },
+        {
+          "columns": [
+            "receipt_id"
+          ],
+          "target_table": "goods_receipt",
+          "target_columns": [
+            "receipt_id"
+          ]
+        },
+        {
+          "columns": [
+            "goods_id"
+          ],
+          "target_table": "goods",
+          "target_columns": [
+            "goods_id"
+          ]
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "target_table": "warehouse",
+          "target_columns": [
+            "warehouse_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "goods_receipt",
+      "rows": 23,
+      "primary_key": [
+        "receipt_id"
+      ],
+      "unique_indexes": [
+        [
+          "request_id"
+        ],
+        [
+          "receipt_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "receiver_id"
+          ],
+          "target_table": "worker",
+          "target_columns": [
+            "worker_id"
+          ]
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "target_table": "receiving_request",
+          "target_columns": [
+            "request_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "handling_history",
+      "rows": 41,
+      "primary_key": [
+        "handling_id"
+      ],
+      "unique_indexes": [
+        [
+          "handling_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "handling_code"
+          ],
+          "target_table": "work_code",
+          "target_columns": [
+            "code_family",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "target_table": "worker",
+          "target_columns": [
+            "worker_id"
+          ]
+        },
+        {
+          "columns": [
+            "dispatch_id"
+          ],
+          "target_table": "dispatch_order",
+          "target_columns": [
+            "dispatch_id"
+          ]
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "target_table": "receiving_request",
+          "target_columns": [
+            "request_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "receiving_request",
+      "rows": 26,
+      "primary_key": [
+        "request_id"
+      ],
+      "unique_indexes": [
+        [
+          "request_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "goods_id"
+          ],
+          "target_table": "goods",
+          "target_columns": [
+            "goods_id"
+          ]
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "target_table": "warehouse",
+          "target_columns": [
+            "warehouse_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "request_action",
+      "rows": 56,
+      "primary_key": [
+        "action_id"
+      ],
+      "unique_indexes": [
+        [
+          "action_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "action_code"
+          ],
+          "target_table": "work_code",
+          "target_columns": [
+            "code_family",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "target_table": "worker",
+          "target_columns": [
+            "worker_id"
+          ]
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "target_table": "receiving_request",
+          "target_columns": [
+            "request_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "warehouse",
+      "rows": 4,
+      "primary_key": [
+        "warehouse_id"
+      ],
+      "unique_indexes": [
+        [
+          "warehouse_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "warehouse_audit",
+      "rows": 9,
+      "primary_key": [
+        "audit_id"
+      ],
+      "unique_indexes": [
+        [
+          "audit_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "target_table": "worker",
+          "target_columns": [
+            "worker_id"
+          ]
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "target_table": "warehouse",
+          "target_columns": [
+            "warehouse_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "warehouse_task_history",
+      "rows": 63,
+      "primary_key": [
+        "task_id"
+      ],
+      "unique_indexes": [
+        [
+          "task_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "task_code"
+          ],
+          "target_table": "work_code",
+          "target_columns": [
+            "code_family",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "target_table": "worker",
+          "target_columns": [
+            "worker_id"
+          ]
+        },
+        {
+          "columns": [
+            "dispatch_id"
+          ],
+          "target_table": "dispatch_order",
+          "target_columns": [
+            "dispatch_id"
+          ]
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "target_table": "receiving_request",
+          "target_columns": [
+            "request_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "work_code",
+      "rows": 10,
+      "primary_key": [
+        "code_family",
+        "code"
+      ],
+      "unique_indexes": [
+        [
+          "code_family",
+          "code"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "worker",
+      "rows": 7,
+      "primary_key": [
+        "worker_id"
+      ],
+      "unique_indexes": [
+        [
+          "payroll_no"
+        ],
+        [
+          "worker_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "worker_contact",
+      "rows": 3,
+      "primary_key": [
+        "staff_no"
+      ],
+      "unique_indexes": [
+        [
+          "staff_no"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "staff_no"
+          ],
+          "target_table": "worker",
+          "target_columns": [
+            "payroll_no"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    }
+  ],
+  "plateflow": [
+    {
+      "table": "as_rolled_material",
+      "rows": 26,
+      "primary_key": [
+        "material_id"
+      ],
+      "unique_indexes": [
+        [
+          "instruction_id"
+        ],
+        [
+          "slab_id"
+        ],
+        [
+          "plate_no"
+        ],
+        [
+          "material_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "instruction_id"
+          ],
+          "target_table": "rolling_instruction",
+          "target_columns": [
+            "instruction_id"
+          ]
+        },
+        {
+          "columns": [
+            "slab_id"
+          ],
+          "target_table": "slab_material",
+          "target_columns": [
+            "slab_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "dimension_inspection",
+      "rows": 46,
+      "primary_key": [
+        "inspection_id"
+      ],
+      "unique_indexes": [
+        [
+          "inspection_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "plate_id"
+          ],
+          "target_table": "plate_material",
+          "target_columns": [
+            "plate_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "equipment",
+      "rows": 7,
+      "primary_key": [
+        "equipment_id"
+      ],
+      "unique_indexes": [
+        [
+          "equipment_code"
+        ],
+        [
+          "equipment_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "finishing_operation_history",
+      "rows": 130,
+      "primary_key": [
+        "operation_id"
+      ],
+      "unique_indexes": [
+        [
+          "operation_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "process_group",
+            "operation_code"
+          ],
+          "target_table": "process_code",
+          "target_columns": [
+            "process_group",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "equipment_id"
+          ],
+          "target_table": "equipment",
+          "target_columns": [
+            "equipment_id"
+          ]
+        },
+        {
+          "columns": [
+            "plate_id"
+          ],
+          "target_table": "plate_material",
+          "target_columns": [
+            "plate_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "furnace_operation_history",
+      "rows": 70,
+      "primary_key": [
+        "operation_id"
+      ],
+      "unique_indexes": [
+        [
+          "operation_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "process_group",
+            "operation_code"
+          ],
+          "target_table": "process_code",
+          "target_columns": [
+            "process_group",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "equipment_id"
+          ],
+          "target_table": "equipment",
+          "target_columns": [
+            "equipment_id"
+          ]
+        },
+        {
+          "columns": [
+            "material_id"
+          ],
+          "target_table": "as_rolled_material",
+          "target_columns": [
+            "material_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "rows": 28,
+      "primary_key": [
+        "plan_id"
+      ],
+      "unique_indexes": [
+        [
+          "slab_id"
+        ],
+        [
+          "plan_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "slab_id"
+          ],
+          "target_table": "slab_material",
+          "target_columns": [
+            "slab_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "plate_material",
+      "rows": 38,
+      "primary_key": [
+        "plate_id"
+      ],
+      "unique_indexes": [
+        [
+          "plate_no"
+        ],
+        [
+          "plate_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "mother_material_id"
+          ],
+          "target_table": "as_rolled_material",
+          "target_columns": [
+            "material_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "plate_quality_review",
+      "rows": 46,
+      "primary_key": [
+        "review_id"
+      ],
+      "unique_indexes": [
+        [
+          "review_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "plate_id"
+          ],
+          "target_table": "plate_material",
+          "target_columns": [
+            "plate_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "process_code",
+      "rows": 8,
+      "primary_key": [
+        "process_group",
+        "code"
+      ],
+      "unique_indexes": [
+        [
+          "process_group",
+          "code"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "rolling_instruction",
+      "rows": 26,
+      "primary_key": [
+        "instruction_id"
+      ],
+      "unique_indexes": [
+        [
+          "plan_id"
+        ],
+        [
+          "instruction_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "plan_id"
+          ],
+          "target_table": "planned_rolling_instruction",
+          "target_columns": [
+            "plan_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "rolling_operation_history",
+      "rows": 44,
+      "primary_key": [
+        "operation_id"
+      ],
+      "unique_indexes": [
+        [
+          "operation_id"
+        ]
+      ],
+      "foreign_keys": [
+        {
+          "columns": [
+            "process_group",
+            "phase_code"
+          ],
+          "target_table": "process_code",
+          "target_columns": [
+            "process_group",
+            "code"
+          ]
+        },
+        {
+          "columns": [
+            "equipment_id"
+          ],
+          "target_table": "equipment",
+          "target_columns": [
+            "equipment_id"
+          ]
+        },
+        {
+          "columns": [
+            "material_id"
+          ],
+          "target_table": "as_rolled_material",
+          "target_columns": [
+            "material_id"
+          ]
+        }
+      ],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    },
+    {
+      "table": "slab_material",
+      "rows": 30,
+      "primary_key": [
+        "slab_id"
+      ],
+      "unique_indexes": [
+        [
+          "slab_id"
+        ]
+      ],
+      "foreign_keys": [],
+      "note": "PK/UNIQUE identify rows. ET and entity-reference meanings require semantic review."
+    }
+  ]
+}

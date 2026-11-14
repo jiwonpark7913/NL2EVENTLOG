@@ -1,5 +1,5 @@
 {
-  "name": "WarehouseFlow New",
+  "name": "WarehouseFlow",
   "language": "en",
   "timezone": "UTC",
   "dbms": "SQLite",
@@ -148,12 +148,22 @@
           "default": null,
           "foreign_keys": [],
           "unit": "UTC"
+        },
+        {
+          "name": "payroll_no",
+          "sql_type": "TEXT",
+          "definition": "Unique payroll identifier for the same worker identified by worker_id in this row. Values differ from local worker IDs. NULL means no payroll identifier is recorded.",
+          "required": false,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
         }
       ],
       "primary_key": [
         "worker_id"
       ],
-      "sql_definition": "CREATE TABLE worker(worker_id TEXT PRIMARY KEY NOT NULL, worker_name TEXT NOT NULL, role_code TEXT NOT NULL CHECK(role_code IN ('HANDLER','SUPERVISOR')), updated_at TEXT NOT NULL)"
+      "sql_definition": "CREATE TABLE worker(worker_id TEXT PRIMARY KEY NOT NULL, worker_name TEXT NOT NULL, role_code TEXT NOT NULL CHECK(role_code IN ('HANDLER','SUPERVISOR')), updated_at TEXT NOT NULL, payroll_no TEXT)"
     },
     {
       "table": "work_code",
@@ -1039,6 +1049,43 @@
         "handling_id"
       ],
       "sql_definition": "CREATE TABLE handling_history(handling_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'HANDLING' CHECK(code_family='HANDLING'), handling_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, FOREIGN KEY(code_family,handling_code) REFERENCES work_code(code_family,code), CHECK((handling_code='UNLOAD' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (handling_code='LOAD' AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK(completed_at IS NULL OR started_at<completed_at))"
+    },
+    {
+      "table": "worker_contact",
+      "definition": "Optional contact attributes of an existing worker, identified by the payroll number. A row describes that worker, not a separate contact entity. Absence of a row means no contact attributes are stored.",
+      "columns": [
+        {
+          "name": "staff_no",
+          "sql_type": "TEXT",
+          "definition": "Payroll identifier of the worker described here. References worker.payroll_no; resolve worker_id through that row rather than comparing staff_no with worker_id.",
+          "required": true,
+          "primary_key_position": 1,
+          "default": null,
+          "foreign_keys": [
+            {
+              "table": "worker",
+              "column": "payroll_no",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "unit": null
+        },
+        {
+          "name": "contact_channel",
+          "sql_type": "TEXT",
+          "definition": "Synthetic preferred communication channel; no separate entity identifier.",
+          "required": true,
+          "primary_key_position": 0,
+          "default": null,
+          "foreign_keys": [],
+          "unit": null
+        }
+      ],
+      "primary_key": [
+        "staff_no"
+      ],
+      "sql_definition": "CREATE TABLE worker_contact(\n    staff_no TEXT PRIMARY KEY NOT NULL REFERENCES worker(payroll_no),\n    contact_channel TEXT NOT NULL\n)"
     }
   ],
   "code_values": [
