@@ -52,3 +52,7 @@
 | HospitalFlow | [PK·UNIQUE·FK](hospitalflow/docs/entity_identifiers.md) |
 | WarehouseFlow | [PK·UNIQUE·FK](warehouseflow/docs/entity_identifiers.md) |
 | PlateFlow | [PK·UNIQUE·FK](plateflow/docs/entity_identifiers.md) |
+
+## Case notion과 case
+
+[개념 문서의 case 정의·함수·예시](../docs/system/ENTITY_IDENTITY_AND_STORAGE.md#5-case-notion과-case는-etentity와-어떻게-연결되는가)를 참고한다. Worker를 분석 단위로 선택하면 개별 작업자가 case가 된다. 작업자 1이 worker, worker_contact, goods_receipt에 여러 식별자로 등장해도 한 Worker case이며, 연락 속성 3행이 전체 작업자 모집단 7명을 대체하지 않는다. 같은 입고등록 발생도 Receipt·Receiving Request·Worker 관점에서 각각 다른 대상의 case에 귀속될 수 있다. 여러 관련 ET가 있다는 이유만으로 복합 case를 자동 생성하지 않는다.

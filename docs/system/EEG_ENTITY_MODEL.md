@@ -17,7 +17,9 @@ This document specifies the **target methodology**. The four existing datasets a
 | **Entity / Entity Instance** | An individually identifiable entity of an ET |
 | **Identity Namespace** | Technical identity domain within an ET, enabling shared, mapped, independent or unknown cross-ER identity relationships |
 | **Event Extraction Graph (EEG)** | Request-independent graph of candidate activities, ER/ET structure, physical event bindings, semantic evidence and candidate case-attribution contracts |
-| **Case Notion** | Analyst-chosen ET and case interpretation for a request, with each validated ET instance becoming a case |
+| **Case Notion** | Analysis unit used to group events; under this framework's entity-based model, its central choice is an ET, with resolved identity and population semantics |
+| **Case** | An eligible Entity used as an individual analysis unit in a selected ET view; different physical representations of that Entity do not create extra cases |
+| **Case ID / Trace** | A collision-free output identifier for a case / its ordered attributed event history |
 | **Case Attribution Path** | Verified route mapping source event occurrences to target ET instances, respecting permitted relational links |
 | **Lifecycle Membership** | Separate semantic determination of whether an attributable event belongs to the target entity lifecycle |
 | **Extraction Specification (ES)** | Executable contract for deterministic event-log extraction from a resolved process interpretation |
@@ -61,7 +63,7 @@ The EEG stores contracts and source-level bindings, **not one concrete EEG node 
 
 **Initial Mapping → Semantic Coverage Review → Targeted Candidate Expansion → Joint Reassessment**.
 
-Select a **target ET** as the Case Notion; the cases are its validated Entity Instances. Explicit requests name activities to retrieve, including supported activities recorded in other ERs with verified attribution. Implicit requests ask for the ET's recorded lifecycle without enumerating activities:
+Interpret candidate ETs without forcing an early single choice. For each selected **ET-based case notion**, eligible, identity-resolved Entity Instances correspond one-to-one to cases. Multiple requested views can be specified separately; related ETs are not automatically additional case notions. A composite case requires its own explicit combination and attribution rules. See [case definitions, population and trace equations](ENTITY_IDENTITY_AND_STORAGE.md#5-case-notion과-case는-etentity와-어떻게-연결되는가). Explicit requests name activities to retrieve, including supported activities recorded in other ERs with verified attribution. Implicit requests ask for the ET's recorded lifecycle without enumerating activities:
 
 - **own:** eligible events whose source-row identity interpretation resolves the selected ET as the event's own target; a table-wide type label alone is insufficient.
 - **desc:** own plus supported events from related ERs where the directional Case Attribution Path and Lifecycle Membership are both validated.

@@ -1,4 +1,4 @@
-# Entity、Entity Type、Key、Table: 개념과 DB 저장 방식
+# Entity, Entity Type, Key, Table, Case notion, Case: 개념과 관계
 
 이 문서는 NL2EventLog의 **목표 개념 모델**을 설명한다. 현재 DB와 SQL 실행으로 검증한 저장 사례는 [데이터셋별 목록](../../datasets/ENTITY_STORAGE_CASES.md)에 구분해서 제시한다. 기존 table→ET 도표와 legacy identity Gold는 이 모델 전체의 정답 주석이 아니다. 새로운 ET 추론 알고리즘을 구현하거나 성능을 측정했다는 의미도 아니다.
 
@@ -8,6 +8,10 @@
 |---|---|---|
 | Entity | 분석 도메인에서 다른 대상과 구별되는 개별 대상 | 작업자 1, 입원 20000001, 학생 S002의 강좌 C01 수강등록 |
 | Entity Type (ET) | 동일한 비즈니스 의미와 인스턴스 단위를 공유하는 Entity의 유형 | Worker, Hospital Admission, Registration |
+| Case notion | 어떤 대상 단위별로 이벤트를 묶을지 정하는 분석 관점; 본 연구에서는 ET 기반으로 정의 | Worker를 선택해 작업자별 이력 분석 |
+| Case | 선택한 관점에서 개별 Entity를 나타내는 분석 단위 | 작업자 1의 case |
+| Case ID | 출력 로그에서 case를 식별하는 값 | `L:1` |
+| Trace | 한 case에 귀속된 이벤트를 정렬한 이력 | 작업자 1의 작업 이벤트 순서 |
 | Instance granularity | 무엇을 하나의 독립된 인스턴스로 구분하여 세는지 | 환자 한 명과 입원 한 건은 단위가 다름 |
 | Table | 행과 열로 속성·관계·기록을 저장하는 물리적 구조 | `worker`, `worker_contact`, `goods_receipt` |
 | Row | 한 테이블에 저장된 하나의 레코드 | 입고등록 한 행; 작업자와 입고요청을 참조할 수 있음 |
@@ -103,7 +107,86 @@ NULL 참조나 근거가 부족한 식별자는 함수가 정의되지 않는 �
 
 ‘여러 ET를 다루는 테이블’은 서로 다른 타입의 행을 섞어 저장하는 경우와, **각 행이 여러 타입의 대상을 참조하는 경우**가 다르다. 현재 registration은 후자다. 전자는 discriminator와 조건부 식별 규칙이 필요하며 이번 변경에서는 새로운 혼합 master 테이블을 추가하지 않았다.
 
-## 5. ET 발견과 이벤트 로그 추출에 주는 의미
+## 5. Case notion과 case는 ET·Entity와 어떻게 연결되는가?
+
+| 개념 | 질문 | Worker 예시 |
+|---|---|---|
+| Entity Type | 어떤 종류의 대상인가? | Worker |
+| Entity | 그 종류에 속하는 어떤 개별 대상인가? | 작업자 1 |
+| Case notion | 어떤 단위의 대상별로 이벤트를 묶어 프로세스를 볼 것인가? | 작업자 한 명을 한 case로 보는 관점 |
+| Case | 선택한 분석 관점에서 하나의 이벤트 묶음이 귀속되는 개별 분석 단위 | 작업자 1을 나타내는 case |
+| Case ID | 출력 로그에서 case를 식별하는 표현 | 현재 Worker Gold의 `L:1` |
+| Trace | 한 case에 귀속된 이벤트들을 정해진 순서로 나열한 실행 이력 | 작업자 1의 입고등록·작업·점검 이벤트 이력 |
+
+**ET와 Entity는 도메인의 대상·유형이고, case notion과 case는 그 대상을 프로세스 분석에 사용하는 역할이다.** Worker가 DB에 존재한다고 해서 항상 case notion인 것은 아니다. “작업자별 업무 이력”이라는 요청에서 Worker를 분석 단위로 선택할 때 case notion으로 사용한다. 개별 작업자는 이 관점에서 case를 나타낸다. 별개의 비즈니스 대상을 새로 생성하는 것은 아니다.
+
+우리의 **Entity 기반 case 모델**에서는 다음 연결을 기본으로 한다.
+
+- **Case notion의 핵심 결정:** 어떤 ET의 인스턴스를 case로 삼을지 선택한다.
+- **Case:** 선택한 ET의 개별 Entity를 나타내는 분석 단위다.
+- **Case population:** 그 ET의 Entity 중 식별이 검증되고 요청의 모집단 조건을 만족하는 대상들의 집합이다.
+- **Case ID:** 해당 Entity의 정규 식별을 출력에 표현한 값이다. 임의의 source table PK 하나와 같아야 하는 것은 아니다.
+- **Trace:** 그 case에 속하도록 승인된 이벤트의 순서 있는 이력이다. case 자체와 trace는 구분한다.
+
+일반적인 process mining에서 case notion이 반드시 기존 ET 하나와 같아야 한다는 뜻은 아니다. 세션·시간 창·복합 업무 단위 등 다른 상관 규칙도 가능하다. **여기서 ET 선택으로 설명하는 것은 본 연구의 Entity 기반 정의**다. 선택한 ET가 granularity를 제공하고, 식별 규칙과 모집단 조건이 실제 case 집합을 확정한다. 활동 선택과 이벤트 귀속 규칙은 같은 case 단위에서 어떤 이력을 추출할지 결정하며 ET 자체의 정의와는 구분한다.
+
+### 같은 DB를 다른 case notion으로 보기
+
+WarehouseFlow의 `goods_receipt` 행 `receipt_id='001', request_id='001', receiver_id='1'`은 세 대상을 식별·참조한다. 이 행에서 기록된 Receipt Registered 발생은 요청의 관점에 따라 다르게 귀속될 수 있다.
+
+| 분석 요청 | Case notion으로 사용하는 ET | 개별 case의 대상 | 입고등록 이벤트의 귀속 |
+|---|---|---|---|
+| 입고등록별 처리 이력 | Receipt | 입고등록 001 | 그 입고등록 case |
+| 입고요청별 처리 이력 | Receiving Request | 입고요청 001 | request_id가 가리키는 요청 case |
+| 작업자별 수행 이력 | Worker | 작업자 1 | receiver_id가 가리키는 작업자 case |
+
+한 테이블에서 기록된 이벤트를 분석한다고 해서 그 테이블의 PK가 항상 case ID가 되는 것은 아니다. 반대로 작업자 1을 `worker_id`, `receiver_id`, `payroll_no`, `staff_no`로 발견해도 동일성이 검증되면 Worker 관점에서 **한 case**다. 여러 저장 표현의 수만큼 case를 생성하지 않는다. 참조 경로만으로 모든 관련 이벤트를 포함하지 않고, 해당 요청의 활동 범위와 검증된 귀속 의미를 적용한다.
+
+### 함수와 집합으로 표현하기
+
+요청을 \(q\), case notion으로 선택한 ET를 \(\tau\), 승인된 식별 규칙으로 얻은 Entity 집합을 \(\widehat{\mathcal E}_\tau\)라고 하자. 요청의 모집단 조건을 \(P_q(e)\)라고 하면 대상 집합은
+
+\[
+\mathcal E_{q,\tau}=\{e\in\widehat{\mathcal E}_\tau\mid P_q(e)\}.
+\]
+
+여기서 모집단 조건은 “특정 창고의 요청” 같은 대상 필터다. 이벤트 시간 필터를 case 생성일 필터로 자동 해석하지 않는다. case 대응 함수 \(c_{q,\tau}\)는 대상 Entity마다 서로 다른 case를 부여한다.
+
+\[
+c_{q,\tau}:\mathcal E_{q,\tau}\overset{1:1}{\longrightarrow}\mathcal C_{q,\tau},
+\qquad
+\mathcal C_{q,\tau}=\{c_{q,\tau}(e)\mid e\in\mathcal E_{q,\tau}\}.
+\]
+
+이것은 분석 관점 안에서의 1:1 대응이다. 동일 Entity가 다른 분석에서도 사용될 수 있다. case ID 직렬화는 namespace와 복합키를 보존하여 충돌하지 않아야 한다. 예시의 `L:1`은 현 데이터셋의 표기 관례이며 모든 DB에 통용되는 식별 규칙은 아니다.
+
+요청에 맞게 선택된 실제 이벤트 발생 집합을 \(V_q\)라 하고, 검증된 이벤트 귀속 관계를
+
+\[
+A_{q,\tau}\subseteq V_q\times\mathcal C_{q,\tau}
+\]
+
+로 둔다. `(event occurrence, case)` 쌍을 통해 어떤 발생이 어느 case의 이력에 포함되는지 표현한다. 이 관계는 DB의 FK 관계와 같지 않다. case의 trace는
+
+\[
+\operatorname{trace}_{q,\tau}(c)
+=\operatorname{order}_q\bigl(\{v\in V_q\mid(v,c)\in A_{q,\tau}\}\bigr).
+\]
+
+\(\operatorname{order}_q\)는 timestamp와 명시한 동률 처리 정책을 사용한다. 동일 timestamp의 정렬용 event ID가 실제 인과 순서를 증명하는 것은 아니다. 귀속 이벤트가 없는 case도 모집단에 남을 수 있으며, 일반 이벤트 행 CSV에는 나타나지 않을 수 있다. 같은 발생이 여러 case에 귀속되는 것을 허용한다면 그 다중성을 명시하고, 조인으로 생긴 같은 `(event, case)` 중복과 구분한다.
+
+### 여러 ET가 요청에 관련될 때
+
+여러 ET를 해석 후보로 유지하거나 최종 요청에 여러 ET가 관련되는 것은 가능하다. 이때 **관련 ET 수**, **case notion 수**, **case 수**는 다른 개념이다.
+
+1. 주문별 분석에 고객·결제·배송이 관련되어도 case notion은 Order일 수 있다. 관련된 ET를 전부 case notion으로 삼는 것은 아니다.
+2. “요청별 이력과 작업자별 이력”을 함께 요구하면 Receiving Request와 Worker 관점의 case 집합과 로그를 각각 정의할 수 있다. 한 ET를 초기에 강제로 고를 필요는 없다.
+3. 두 ET를 한 복합 case로 사용하려면 “어떤 Entity 조합을 한 case로 보는가?”를 별도 정의해야 한다. 단순 ET 집합이나 PK 컬럼 나열은 복합 case의 의미·유효 조합·이벤트 귀속을 결정하지 못한다.
+4. 객체 중심 이벤트 데이터로 여러 타입의 Entity와 이벤트 연결을 그대로 유지하는 출력도 별도 선택지다. 이를 기존 case 기반 CSV와 동일한 형식으로 간주하지 않는다.
+
+위 식은 ET별 관점 하나를 설명한다. 여러 관점을 선택하면 각 \(\tau\)에 대해 적용한다. 복합 case 또는 객체 중심 출력을 현재 SQL compiler가 구현했다는 주장은 하지 않는다.
+
+## 6. ET 발견과 이벤트 로그 추출에 주는 의미
 
 1. 모든 테이블에서 PK·UNIQUE·FK와 식별자 후보를 조사한다. timestamp가 없는 테이블도 정체성 근거가 될 수 있다.
 2. 행의 단위, 각 식별자의 의미, 자체 대상과 참조 대상을 구분한다. 코드 사전의 PK나 저장용 row_id를 자동으로 case ET로 만들지 않는다.
