@@ -4,13 +4,21 @@ WarehouseFlow is a synthetic warehouse operations database covering goods, recei
 
 [Relational schema](#relational-schema-sql-foreign-keys) · [Table previews](#table-inspector) · [Questions](#questions)
 
+## Entity types and identifiers
+
+[Concepts and formal definitions](../../docs/system/ENTITY_IDENTITY_AND_STORAGE.md) · [Storage cases across datasets](../ENTITY_STORAGE_CASES.md) · [Actual PK, UNIQUE and FK inventory](docs/entity_identifiers.md)
+
+The source projection below assigns a principal type for display. It does not mean a table can identify or reference only one ET. Entity identity is resolved from table/column/condition rules, separately from table membership.
+
 ## Dataset overview
 
 | Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
-| 12 | 12 | 5 | 50 |
+| 13 | 12 | 5 | 50 |
 
 [SQLite database](input/database.sqlite) · [Business Data Dictionary](input/data_dictionary.json) · [Readable dictionary](docs/data_dictionary.md)
+
+The Worker extension adds `worker.payroll_no` and three `worker_contact` rows. `staff_no` references the alternate payroll key; the worker row resolves it to `worker_id`. These optional attributes create no extra cases or events.
 
 ## Gold Event Extraction Graph (EEG) Source Projection
 
@@ -30,7 +38,7 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 
 ![Relational database schema](review/database/schema.svg)
 
-**Yellow:** Gold event-time source, where established. **Blue:** other temporal columns. A temporal column is not automatically an event timestamp.
+The relational overview shows current tables and declared FKs. The timestamp inventory distinguishes recorded event times from technical times.
 
 [Open full-size ERD](review/database/schema.svg) · [Editable Draw.io diagram](docs/schema.drawio) · [Timestamp inventory and roles](docs/timestamp_columns.md)
 
@@ -49,7 +57,9 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 | warehouse_audit | 9 | 6 | Stock Audit | [Preview](review/database/tables/warehouse_audit.md) |
 | warehouse_task_history | 63 | 9 | Warehouse Task | [Preview](review/database/tables/warehouse_task_history.md) |
 | work_code | 10 | 3 | work_code | [Preview](review/database/tables/work_code.md) |
-| worker | 7 | 4 | Worker | [Preview](review/database/tables/worker.md) |
+| worker | 7 | 5 | Worker | [Preview](review/database/tables/worker.md) |
+
+| worker_contact | 3 | 2 | Worker (optional attributes) | [Preview](review/database/tables/worker_contact.md) |
 
 ## Entity Type candidates vs. core business objects
 

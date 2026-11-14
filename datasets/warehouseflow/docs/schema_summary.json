@@ -1,5 +1,5 @@
 {
-  "table_count": 12,
+  "table_count": 13,
   "tables": {
     "warehouse": {
       "rows": 4,
@@ -17,7 +17,7 @@
     },
     "worker": {
       "rows": 7,
-      "columns": 4,
+      "columns": 5,
       "primary_key": [
         "worker_id"
       ]
@@ -84,6 +84,13 @@
       "columns": 8,
       "primary_key": [
         "handling_id"
+      ]
+    },
+    "worker_contact": {
+      "rows": 3,
+      "columns": 2,
+      "primary_key": [
+        "staff_no"
       ]
     }
   },
@@ -359,6 +366,17 @@
         "request_id"
       ],
       "cardinality": "1 : 0..N"
+    },
+    {
+      "parent": "worker",
+      "child": "worker_contact",
+      "columns": [
+        "staff_no"
+      ],
+      "parent_columns": [
+        "payroll_no"
+      ],
+      "cardinality": "1 : 0..1"
     }
   ]
 }

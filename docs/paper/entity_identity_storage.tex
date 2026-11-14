@@ -1,0 +1,36 @@
+% Proposed conceptual subsection; not a claim that the complete ET inference is implemented.
+\subsection{Entities, identifiers, and relational storage}
+An entity is an individually distinguishable domain object, such as a particular worker or hospital admission. An entity type (ET) groups entities that share both business meaning and instance granularity, where granularity specifies what constitutes one instance. A patient and an admission therefore have different types, even though both concern patient care. Tables, in contrast, are physical storage structures: their rows may describe an entity, reference other entities, or record relationships and repeated occurrences.
+
+A primary key uniquely identifies a row within its table; its business interpretation must be established separately. A foreign key references a row identified by a primary or unique key, but does not by itself establish that the referencing and referenced rows describe the same entity. Neither matching column names nor equal key values establish entity identity across identifier domains.
+
+Let $\mathcal{E}_\tau$ denote the entities of type $\tau$, and let $R_T$ be the rows of table $T$. An identifier interpretation $\rho$ specifies a source table, an ordered list of identifier columns, optional row conditions, an identity namespace, and a validated resolution rule. It defines a partial function
+\[
+\mu_\rho:R_T\rightharpoonup\mathcal{E}_\tau.
+\]
+The function may be undefined for missing or unresolved identifiers. Composite identifiers preserve their complete tuples. Multiple interpretations may apply to the same table, and interpretations in different tables may resolve to the same entity. Thus, semantic entity types are not defined by a single-valued mapping from tables to types.
+
+For example, a receipt row contains a receipt identifier, a receiving-request reference, and a worker reference. These identify three distinct entities. The same worker may also have optional contact attributes in another table. In WarehouseFlow, \texttt{goods\_receipt.receiver\_id} references \texttt{worker.worker\_id}, whereas \texttt{worker\_contact.staff\_no} references the alternate identifier \texttt{worker.payroll\_no}. The worker row explicitly relates the local and payroll identifiers. Consequently, different names and values can resolve to the same worker without merging the receipt with that worker. Only three of seven workers have contact rows; the absence of a supplementary row does not imply the absence of the worker.
+
+We distinguish type classification from instance identity resolution. The former compares business meaning and granularity; the latter verifies shared identifiers or explicit correspondences within their namespaces. A canonical identity may be represented as $(\tau,n,k)$, comprising a type, a namespace, and a canonical key. Equal values in independent namespaces remain distinct, and uncertain correspondences are not silently merged. At schema level, the EEG can record these resolution rules without materializing every entity instance. Event occurrences retain their source and occurrence identities even when their associated entity representations are unified.
+
+
+\paragraph{Case notions and cases.}
+Entity types and entities describe domain objects, whereas case notions and cases describe their roles in a process analysis. A case notion specifies the unit around which events are grouped. Under our entity-based case model, its central choice is an ET whose individual entities serve as cases. Selecting Worker as the case notion, for example, yields one case for each eligible worker, rather than one case for each physical row mentioning that worker. A case ID serializes its resolved identity; a trace is the ordered history attributed to that case. This ET-based definition is a modeling choice for this framework, rather than a universal restriction on process-mining case notions.
+
+For request $q$ and selected type $\tau$, let $\widehat{\mathcal E}_\tau$ denote entities obtained through approved identity interpretations, and let $P_q$ denote the requested population predicate. Define
+\[
+\mathcal E_{q,\tau}=\{e\in\widehat{\mathcal E}_\tau\mid P_q(e)\},
+\qquad
+\mathcal C_{q,\tau}=\{c_{q,\tau}(e)\mid e\in\mathcal E_{q,\tau}\},
+\]
+where $c_{q,\tau}$ is a one-to-one correspondence between eligible entities and cases in that analysis view. Multiple physical representations resolving to the same entity produce one case. An entity may remain in the population even when its trace is empty and therefore absent from an event-row CSV.
+
+Let $V_q$ be the selected event occurrences. Their validated attribution is a relation $A_{q,\tau}\subseteq V_q\times\mathcal C_{q,\tau}$, and
+\[
+\operatorname{trace}_{q,\tau}(c)
+=\operatorname{order}_q\bigl(\{v\in V_q\mid(v,c)\in A_{q,\tau}\}\bigr).
+\]
+Ordering follows timestamps and an explicit tie policy. Attribution requires the requested activity scope and verified business semantics, not merely foreign-key reachability. A receipt-registration occurrence can contribute to a receipt, receiving-request, or worker view through its corresponding identifiers. If an occurrence is assigned to multiple cases, that multiplicity must be distinguished from duplicate join results for the same occurrence--case pair.
+
+Several ETs may be considered during interpretation or participate in the requested process without all becoming case notions. If multiple analysis views are requested, the definitions apply separately to each selected ET; initial interpretation need not force a single choice. A composite case requires an explicit rule defining which entity combinations constitute cases and how events are attributed. It does not follow from listing multiple ETs or key columns. Object-centric output is another distinct contract; neither composite cases nor object-centric output are claimed to be implemented by the existing case-based SQL/CSV benchmark.

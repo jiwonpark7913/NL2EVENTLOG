@@ -1,11 +1,16 @@
 # NL2EventLog
 
-Research implementation and four evaluation datasets for natural-language-to-event-log extraction. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**.
+Research implementation and four evaluation datasets for natural-language-to-event-log extraction. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**.
+
+## Entity identity and relational storage
+
+- [Terminology, formal functions and an actual worked example](docs/system/ENTITY_IDENTITY_AND_STORAGE.md)
+- [Dataset storage patterns and checked cases](datasets/ENTITY_STORAGE_CASES.md)
+- [Paper subsection (LaTeX)](docs/paper/entity_identity_storage.tex)
+- Validate current DBs and all 208 Gold SQL/CSV pairs: `python tools/validation/validate_entity_storage.py`.
 
 ## Repository map
 
-- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
-- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
 - [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
 - [System design](docs/system/) — methodology, event-table scope, paraphrase-generation policy.
 - [Dataset inspection](datasets/) — four active datasets with separate **model input**, **evaluation ground truth**, and **human review** material.

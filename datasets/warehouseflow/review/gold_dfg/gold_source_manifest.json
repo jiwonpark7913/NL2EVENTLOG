@@ -110,6 +110,12 @@
       "ot": "Worker",
       "activities": [],
       "timestamps": []
+    },
+    "worker_contact": {
+      "ot": "Worker",
+      "activities": [],
+      "timestamps": [],
+      "annotation": "Optional attributes of existing workers, resolved through staff_no -> worker.payroll_no -> worker_id. Principal-source projection only; tables may also reference other ETs."
     }
   }
 }

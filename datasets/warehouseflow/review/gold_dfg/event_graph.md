@@ -22,3 +22,7 @@ This is a source-binding projection. This is a reviewer-only candidate grouping 
 [Gold diagram](../database/gold_evidence_graph.svg) · [Gold DFGs](README.md)
 
 [Entity Representation and namespace candidates](entity_model_candidates.json) — review-only; **not validated semantic ET Gold**.
+
+## Optional Worker attributes
+
+`worker_contact` describes the same Worker instances through `staff_no → worker.payroll_no → worker_id`. It contributes no activity source and no additional cases. A principal source-table label does not enumerate all ET references in a table.
