@@ -2,71 +2,31 @@
 
 WarehouseFlow is a synthetic warehouse operations database covering goods, receiving requests, dispatch, stock movement, handling, worker tasks and audits. It uses authored business records rather than observed warehouse transactions.
 
-[Relational schema](#relational-schema-sql-foreign-keys) · [Table previews](#table-inspector) · [Questions](#questions)
-
 ## Dataset overview
 
-| Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
+| Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
 | 12 | 12 | 5 | 50 |
 
-[SQLite database](input/database.sqlite) · [Business Data Dictionary](input/data_dictionary.json) · [Readable dictionary](docs/data_dictionary.md)
+## Explore the dataset
 
-## Gold Event Extraction Graph (EEG) Source Projection
+- [Gold Event Extraction Graph (EEG) Source Projection and real table records](review/database/README.md)
+- [Editable Draw.io relational diagram](docs/schema.drawio)
+- [Per-question Gold DFGs](review/gold_dfg/README.md)
+- [Business Data Dictionary](input/data_dictionary.json)
+- [Gold object membership and source bindings](review/gold_dfg/event_graph.md)
 
-![Entity Type candidates → Entity Representations → Activities](review/database/gold_evidence_graph.svg)
+## Schema and process semantics
 
-The diagram distinguishes core business entity concepts from supporting entity and event-record types. 
-Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.
-
-**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**
-Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.
+Entity Types classify business targets by meaning and instance granularity; Tables preserve physical storage. Semantic ET grouping and instance identity resolution are separate tasks.
+Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.
 
 
+## Evidence and relational schema
 
-**Entity-model status:** A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. [Terminology and namespace contract](../../docs/system/EEG_ENTITY_MODEL.md).
-
-## Relational Schema (SQL foreign keys)
+![Legacy source projection](review/database/gold_evidence_graph.svg)
 
 ![Relational database schema](review/database/schema.svg)
-
-**Yellow:** Gold event-time source, where established. **Blue:** other temporal columns. A temporal column is not automatically an event timestamp.
-
-[Open full-size ERD](review/database/schema.svg) · [Editable Draw.io diagram](docs/schema.drawio) · [Timestamp inventory and roles](docs/timestamp_columns.md)
-
-## Table inspector
-
-| Physical table | Rows | Columns | ET candidate | First ten records |
-|---|---:|---:|---|---|
-| dispatch_order | 20 | 7 | Dispatch Order | [Preview](review/database/tables/dispatch_order.md) |
-| goods | 7 | 3 | Goods | [Preview](review/database/tables/goods.md) |
-| goods_movement | 39 | 9 | Stock Movement | [Preview](review/database/tables/goods_movement.md) |
-| goods_receipt | 23 | 5 | Receipt | [Preview](review/database/tables/goods_receipt.md) |
-| handling_history | 41 | 8 | Handling Record | [Preview](review/database/tables/handling_history.md) |
-| receiving_request | 26 | 5 | Receiving Request | [Preview](review/database/tables/receiving_request.md) |
-| request_action | 56 | 6 | Request Action | [Preview](review/database/tables/request_action.md) |
-| warehouse | 4 | 5 | Warehouse | [Preview](review/database/tables/warehouse.md) |
-| warehouse_audit | 9 | 6 | Stock Audit | [Preview](review/database/tables/warehouse_audit.md) |
-| warehouse_task_history | 63 | 9 | Warehouse Task | [Preview](review/database/tables/warehouse_task_history.md) |
-| work_code | 10 | 3 | work_code | [Preview](review/database/tables/work_code.md) |
-| worker | 7 | 4 | Worker | [Preview](review/database/tables/worker.md) |
-
-## Entity Type candidates vs. core business objects
-
-Legacy identity groups (ET candidates): **12**; principal business object concepts in this domain: **5**. 
-The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Identity Namespaces.
-
-**Core business concepts:** Dispatch Order, Goods, Receiving Request, Warehouse, Worker.
-
-Supporting Gold types: Handling Record, Receipt, Request Action, Stock Audit, Stock Movement, Warehouse Task, work_code.
-
-## Evaluation evidence
-
-- Gold SQL/CSV pairs executable and consistent: 50; compared event rows across questions: 5478.
-- [Gold source inventory](review/gold_dfg/event_graph.md)
-- [Question-level Gold DFGs](review/gold_dfg/README.md)
-- [Editable Draw.io schema](docs/schema.drawio)
-
 
 ## Questions
 
@@ -139,3 +99,9 @@ The checked-in question file contains **54 requests**. Explicit requests enumera
 ## Model input boundary
 
 This README, diagrams, table previews and Gold evidence are reader/reviewer material. Do not supply Gold annotations or review materials to the model.
+
+## Entity terminology
+
+Physical storage is described as Tables and Keys. A table may identify or reference several Entity Types through different keys; a single Entity can appear in several tables. The displayed type labels are legacy author annotations, not validated semantic ET truth. Type classification, Entity identity resolution, and event attribution are separate decisions.
+
+[Canonical terminology and stage contracts](../../docs/system/EEG_ENTITY_MODEL.md). Step 2 uses explicit activities or implicit recorded history with optional process focus; legacy reference logs retain their original scopes.

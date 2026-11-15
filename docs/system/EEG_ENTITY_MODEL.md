@@ -1,102 +1,109 @@
-# NL2EventLog Methodology — Entity Model and Event Extraction Graph
+# NL2EventLog — terminology and stage contracts
 
-## Scope and migration status
+This is the authoritative target-method terminology. Tables, keys and references describe physical storage; Entity Types (ETs) and Entities describe business targets; Event definitions describe how occurrences can be read. Step 1 constructs a request-independent Event Extraction Graph (EEG). Step 2 interprets a request; Steps 3–4 ground and execute its extraction decisions.
 
-NL2EventLog translates a natural-language process request and a relational database into an event log by separating **What** (process interpretation) from **How** (deterministic extraction). The methodology uses an **Event Extraction Graph (EEG)**, which is a *request-independent, schema-level* representation of candidate events, physical source bindings, entity descriptions and evidence for case attribution. **EEG is not an Event Knowledge Graph (EKG)** containing all concrete event/entity instances.
+## Implementation and evaluation boundary
 
-This document specifies the **target methodology**. The four existing datasets and their current SQL/CSV Gold logs predate the Entity Type / Identity Namespace redesign. Their existing author-assigned Object Type groups are *legacy evaluation annotations*, not independently validated Gold ET groupings. Updated review diagrams use ET/ER terminology to describe their **existing table membership projection**, but this does not establish that namespace-aware case populations or directional attribution have been implemented. Database content, questions and existing Gold event logs are unchanged by this documentation migration.
+This repository contains dataset builders, review generators, and authored reference artifacts. Updating their terminology does not implement or evaluate the complete target extraction pipeline. Existing reference labels, SQL/CSV, questions, and recorded scores retain their original meaning. Legacy table/type groups are reviewer annotations, not a newly validated semantic ET ground truth. Review manifests are excluded from model input.
 
-## Glossary
+## Core terminology
 
 | Term | Meaning |
 |---|---|
-| **Entity Type (ET)** | A class of business entities sharing semantics and a consistent instance-identity interpretation; one ET may span multiple physical representations and identity namespaces |
-| **Entity Representation (ER)** | Schema-level representation of one physical relational table containing information about entities; every physical table has one ER |
-| **Entity / Entity Instance** | An individually identifiable entity of an ET |
-| **Identity Namespace** | Technical identity domain within an ET, enabling shared, mapped, independent or unknown cross-ER identity relationships |
-| **Event Extraction Graph (EEG)** | Request-independent graph of candidate activities, ER/ET structure, physical event bindings, semantic evidence and candidate case-attribution contracts |
-| **Case Notion** | Analyst-chosen ET and case interpretation for a request, with each validated ET instance becoming a case |
-| **Case Attribution Path** | Verified route mapping source event occurrences to target ET instances, respecting permitted relational links |
-| **Lifecycle Membership** | Separate semantic determination of whether an attributable event belongs to the target entity lifecycle |
-| **Extraction Specification (ES)** | Executable contract for deterministic event-log extraction from a resolved process interpretation |
+| Table / Row | A physical relational table / one stored record. Do not introduce a separate representation concept for a table. |
+| Primary, unique, foreign key | Declared row-identity and reference constraints. Their existence does not by itself establish business meaning or entity identity. |
+| Entity Type (ET) | A class of Entities sharing business meaning and instance granularity: what counts as one individual. |
+| Entity | A distinguishable individual business target, such as order O1. It is not a table, key value, or stored row. |
+| Key value | A stored identifier value or complete ordered composite-key tuple. |
+| Entity identification rule | A validated interpretation of a table, key columns, applicable conditions and any required correspondence that identifies an Entity. |
+| Identity mapping | A verified correspondence establishing that different database expressions identify the same Entity. |
+| Activity | A kind of business action, such as Approved. |
+| Activity value | A raw stored representation, such as A, interpreted through a validated mapping. |
+| Event definition | A schema-level extraction definition combining activity meaning, source table, row condition, occurrence-time expression, occurrence identity, and evidence/status. |
+| Event / Event occurrence | One actual occurrence obtained by applying an Event definition to source data. Distinct occurrences can share the same case/activity/time triple. |
+| Temporal field / expression | A source column, supported column combination, or supported expression from which time can be read. |
+| Time role | Occurrence, recording, or planned time, with finer roles such as start/completion where supported. |
+| Event–entity attribution rule | A validated rule resolving an applicable occurrence to an individual Entity of a target ET. |
+| EEG | Request-independent schema-level evidence: tables, definitions, identification and attribution rules, alternatives, and uncertainty. It does not materialize every Entity and occurrence. |
 
-Legacy terminology: **Evidence Graph (EG) → EEG**, **Object Type (OT) → ET** *in the methodology*; **Object (Table) → ER**; **Object Linking → Entity Type Identification and Entity Linking**; **Case Linking Path → Case Attribution Path**. The words “object” and “object type” remain valid where citing external process-mining or OCEL terminology, or naming legacy dataset fields explicitly.
+A list under consideration in Step 2 can be called **candidate Event definitions**; definitions finally selected are **selected Event definitions**. The graph node is an Event definition, not an already observed individual event. Physical source summaries that list only activity labels must not be presented as complete extracted Event definitions.
 
-## Step 1: Request-independent EEG
+### Identity without a separate abstraction
 
-**Temporal Screening → Event Interpretation → Selective LLM Review → Entity Type Identification → Entity Linking**
+Use `identify(t, r, k) = n`, where table `t`, row `r`, and key columns `k`, interpreted under a validated rule, identify Entity `n`. Include a required row condition or explicit correspondence in that rule. Different tables can identify the same Entity; a single table can identify or reference several ETs through different keys. Equal raw values alone do not establish identity. If an ET consistently uses one identifier convention, `(ET, key value)` can identify its Entities; otherwise resolve the source-specific interpretation or correspondence. No additional globally required identity-domain node or composite identifier component is imposed.
 
-### Entity Type Identification
+ET classification and instance identity are separate. Current and archived orders may share Order as their ET without sharing individual orders. A one-to-one relation between an order and invoice does not make them the same ET or Entity. A row key may also be an entity key, but record uniqueness alone does not establish that interpretation.
 
-1. Create one **ER** for every physical table.
-2. **Semantic type classification:** decide whether multiple ERs represent the same *kind* of business entity using definitions, row grain, Data Dictionary, schema and business semantics. Two ERs can share an ET **without sharing actual instances**.
-3. **Instance identity resolution:** classify the relationship between instance identifiers *separately* from semantic ET membership. Validate primary/unique key meanings, structural relationships, domain evidence and actual data.
-4. Record an **Identity Namespace** for every resolution domain:
-   - **Shared** — normalized canonical key denotes the same instance across ERs.
-   - **Mapped** — a verified explicit mapping normalizes distinct physical keys to the same instance.
-   - **Independent** — separate identifiers denote separate instances even when ERs share an ET.
-   - **Unknown** — evidence is insufficient; do not merge instances.
-5. Apply deterministic validation to LLM-proposed ET merges/splits; perform ET naming after resolution. Do not generate arbitrary SQL, key transformations or mappings in the semantic reviewer.
+## Step 1 — Event Extraction Graph Construction
 
-Conceptual identity: `Entity ID = (Entity Type, Identity Namespace, Canonical Key)`.
-
-**Key equality, key inequality, and FK existence alone do not prove an identity relationship.** Namespace is not a business concept. Group count (including 5–10 ETs) is not a hard constraint. Preserve ERs whose identity is unresolved, but do not automatically make them selectable case populations.
-
-### Entity Linking
-
-Attach an event candidate to its recorded **source ER**. For additional cross-ER case attribution, traverse only validated **FK → referenced PK/unique-key** links by default. Reverse FK traversal is disallowed in the baseline policy, including in multi-hop paths. Verified identity mappings *within the same ET* are distinct from inter-ET case attribution.
-
-Keep three independent annotations:
-- **Structural Reference:** physical/legal relational path.
-- **Case Attribution:** verified mapping from event occurrence to target entity instance.
-- **Lifecycle Membership:** business evidence that the event belongs to that entity's process.
-
-A structural path alone does **not** establish lifecycle membership. Restricting to FK→PK may remove previously linked Gold events, so measure its effect on support coverage and recall before changing benchmark truth.
-
-The EEG stores contracts and source-level bindings, **not one concrete EEG node per entity instance**.
-
-## Step 2: Iterative Process Interpretation (What)
-
-**Initial Mapping → Semantic Coverage Review → Targeted Candidate Expansion → Joint Reassessment**.
-
-Select a **target ET** as the Case Notion; the cases are its validated Entity Instances. Explicit requests name activities to retrieve, including supported activities recorded in other ERs with verified attribution. Implicit requests ask for the ET's recorded lifecycle without enumerating activities:
-
-- **own:** eligible events recorded in ERs belonging to the selected ET.
-- **desc:** own plus supported events from related ERs where the directional Case Attribution Path and Lifecycle Membership are both validated.
-
-Unresolved candidates and mere FK reachability are not automatically included. Process Information is frozen after Step 2.
-
-## Step 3: Extraction Specification and deterministic SQL (How)
-
-`ES_q = (I_q, b_κ, S, R, Δ)`
-
-| Component | Contract |
+| Substage | Purpose and output |
 |---|---|
-| `I_q` | Target ET, requested activities, explicit/implicit mode and scope |
-| `b_κ` | ET identity namespaces, instance mapping and verified case-population contract |
-| `S` | Event source bindings and case-attribution routes |
-| `R` | Activity interpretation, timestamp/carrier rules and supporting evidence |
-| `Δ` | NULL behavior, multiplicity, occurrence deduplication and execution policy |
+| 1.1 Table Profiling | Inspect all tables, ordered keys, references, temporal fields and observed evidence. Keep non-temporal tables for identification and attribution. |
+| 1.2 Event Definition Interpretation | In tables with supported temporal fields, interpret activities, carrier values or non-carrier evidence, row conditions, time roles and occurrence identities. Retain uncertainty and alternatives. |
+| 1.3 Entity Identification | Discover what keys identify/reference; classify targets by meaning and granularity; then resolve same-Entity correspondences within ETs and build identification rules. |
+| 1.4 Event–Entity Linking | Validate direct identification or supported forward FK-to-referenced-PK/unique-key routes from occurrences to Entities. Keep structural references separate from validated attribution. |
 
-**Case Population(ET)** is the distinct union of validated canonical entity instance mappings across its ERs. Shared identities collapse to a single case; independent namespaces remain disjoint; unknown mappings are not silently unified. **Case union is not event-occurrence union**: preserve distinct recorded events and deduplicate only according to an explicit event-ID/occurrence policy.
+The default directional policy does not traverse a foreign key in reverse; path bounds and validation apply. A structural path is not proof of an appropriate attribution. SQL checks must preserve occurrence identity and verify single-target attribution under the declared applicable-row policy. Invalid or missing times and unresolved keys remain diagnosed, not guessed. Identity mappings and relationships between distinct Entities remain different kinds of evidence.
 
-SQL is compiled deterministically from the validated ES. The LLM does not freely author execution SQL.
+An Event definition records its ID, business activity, source table, carrier/value or non-carrier meaning, condition, temporal expression/role, occurrence key/discriminator, supporting evidence, and status. SQL executability, activity/time support, attribution validity, and validity of the ET's case population are separate statuses. An executable-only visualization is a filtered view; it must not discard unresolved evidence from the underlying graph. Planned and recording times may remain as evidence but are not automatically emitted as occurrence times.
 
-## Step 4: Verification and repair
+## Step 2 — Process Interpretation
 
-Check the consistency and executable behavior of ES and generated SQL **without changing Step 2's settled Process Information**. This includes schema/column existence, namespace/key mapping validity, directional case-attribution bindings, cardinalities, NULL handling and deduplication. Recoverable extraction errors may be repaired only inside the permitted ES/execution boundary. Semantic changes to selected ET, scope or activities require a new explicit interpretation cycle, not implicit post-hoc repair.
+The output is **Process Information (PI), `I_q`**, not an event log or SQL. It fixes the case notion, request mode, any process focus, and selected Event definition IDs.
 
-The exact Step 4 repair operators and acceptance tests require alignment with the current implementation. This document does not claim that the target behavior is already implemented.
+### Request parsing
 
-## Evaluation and provenance boundary
+Parse the original request once by default. Extract:
 
-- **Model-visible evidence:** SQLite database and Data Dictionary; supply the question separately.
-- **Gold/reviewer-only:** author-assigned entity identity, event-source manifest, question-level SQL/CSV, DFGs and review graphics.
-- Existing Gold SQLs are executed and checked against their Gold CSVs, but this proves **internal consistency, not semantic ET correctness, namespace coverage or FK→PK recall**.
-- Re-annotate cross-ER same-ET identity namespaces, cases and process membership before evaluating the target method. Distinguish published *legacy Gold* from future *ET Gold* until that review is complete.
-- The ET/ER diagrams in the present dataset reviews are an **author-labeled source-level projection**, not an EEG inferred by the model.
+- `request_mode`: explicit or implicit;
+- `case_requirement`: the analysis-unit wording and its original text span, or null when unspecified;
+- `activity_requirements`: activities actually named by the user;
+- `process_focus`: an additional business-process restriction such as production or delivery, with its source span, or null.
 
-## References
+Do not invent ET IDs or activity lists without EEG evidence. There is no mandatory second parsing-review call. The parsed result is a fallible checklist, not the answer key. The original request guides initial case/definition selection and all later checks.
 
-- Esser & Fahland (2021), *Multi-Dimensional Event Data in Graph Databases*.
-- Fahland (2022), *Process Mining over Multiple Behavioral Dimensions with Event Knowledge Graphs*.
+### Case notion and candidate retrieval
+
+Compare the original wording with the EEG ET catalog, including meaning, instance granularity and validated identification rules. Explicit grouping such as “for each order” takes precedence over a process word such as “delivery.” If needed, examine multiple ET interpretations and select one validated interpretation; do not union their cases or selections into a composite case.
+
+For ET `tau`, define `D(tau)` as all supported Event definitions with validated attribution to that ET. Simple graph adjacency is insufficient. Collect definitions across all eligible physical sources rather than limiting selection to the ET's principal source table.
+
+| Request | Selection policy |
+|---|---|
+| Explicit | Match the activities requested in the original text to supported attributable definitions; preserve any explicit restrictions. |
+| Implicit, no process focus | Include all of `D(tau)` deterministically; no activity-by-activity LLM selection. |
+| Implicit, with process focus | Use the original text and EEG meanings/source evidence to select the definitions in `D(tau)` matching that focus. |
+
+Examples: “each order's approval and delivery completion” is explicit; “each order's entire history” is implicit without focus; “each order's production process” is implicit with production focus. “For each shipment” selects the grouping unit Shipment, not automatically an additional delivery-only focus.
+
+A process focus restricts Event definitions, not the case Entity population. Do not filter whole ETs or tables as a substitute for definition-level selection. No separate target-method classification into own/desc/expanded is used, and no request-independent lifecycle-membership gate is required. Request-specific focus selection still requires semantic evidence; it is not claimed to be fully deterministic or error-free.
+
+### Review, expansion, revision and finalization
+
+Compare the original request, parsed requirements, selected ET, selected definitions and EEG evidence. Check case-unit agreement, requested coverage, over-selection, IDs, activity/time support, attribution and conflicts. Do not remove an event just because parsing omitted its requirement, or add an event to satisfy an unsupported parsed requirement.
+
+Existing bounded revision can add/remove/replace definitions or reconsider the case notion. Targeted expansion may search the **entire EEG**, but a definition can be added to the current interpretation only with validated attribution to its selected ET. Changing ET rebuilds the candidate set and selection. Implicit-without-focus must again include the full supported attributable set after an ET change. Use bounded budgets and repeated-state detection; do not introduce an unlimited parsing rewrite loop. A comparator selects one validated interpretation unchanged or returns unresolved. Database unanswerability is not established merely by an unsuccessful model interpretation.
+
+## Cases and their identifiers
+
+| Term | Meaning |
+|---|---|
+| Case notion | The chosen ET whose Entities form the analysis units. |
+| Case | An individual Entity in its role as an analysis unit under that case notion. |
+| Case population | All identifiable Entities of the selected ET under the validated identification rules; no request-specific case filter in the current scope. |
+| Case ID | A collision-free serialization of the case's resolved Entity identity. It need not equal a single table PK. |
+| Trace | The ordered occurrence history attributed to one case. |
+
+Multiple representations of the same Entity create one case. Selecting activities or a process focus does not reduce the case population; a case with no selected occurrence remains in the population although it contributes no event-row CSV record. Preserve complete composite keys and prevent collisions between source-specific identifiers without requiring an additional public identity concept.
+
+## Step 3 — Extraction Specification and SQL Generation
+
+**Extraction Specification (ES)** grounds frozen PI into case identification, Event Sources, Activity Rules, validated attribution routes, temporal expressions, occurrence identities and execution policies for nulls, multiplicity and deduplication. These physical decisions are inspectable before deterministic template-based SQL generation. The LLM does not freely author extraction SQL. Event definitions in the EEG and request-specific Event Sources/Activity Rules in ES are related but not interchangeable objects.
+
+## Step 4 — Verification and Repair
+
+Verify ES, SQL execution and log diagnostics. Existing supported physical alternatives may repair extraction rules without silently changing the frozen case notion, requested focus, definition selection, entity identity or case population. Changes to those semantic decisions require an explicit interpretation revision. Passing structural/execution checks does not establish semantic correctness. The exact available repair operators depend on the actual implementation and must not be inferred from this terminology update.
+
+## Legacy artifacts and external vocabulary
+
+Legacy reference schemas can retain fields such as `ot`, `object_type`, old view scopes and author-assigned table groups. This documentation does not reinterpret or regenerate those answers. Ordinary ERD terminology and object-centric terminology in cited external work remain valid. `tools/migrate_eeg_terminology.py` updates presentation and reviewer manifests only; its file name is retained for workflow compatibility. New reviewer manifests are versioned and must not be supplied as model inputs or mistaken for runtime implementation results.

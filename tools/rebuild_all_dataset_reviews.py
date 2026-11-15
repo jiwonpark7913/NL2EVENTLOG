@@ -103,7 +103,7 @@ def gold_audit(base,db,n):
     return queries,sum_rows
 
 def write_svg(base,n,tables,ot,acts,core):
-    # One provisional entity type can include several ERs only where legacy identity annotations say so.
+    # Render legacy source labels only; do not infer current semantic ETs from table membership.
     groups=defaultdict(list)
     for t in tables:groups[ot[t]].append(t)
     def priority(item):
@@ -117,17 +117,17 @@ def write_svg(base,n,tables,ot,acts,core):
     svg=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="ET candidate left, physical tables middle and source activities right">',
       '<rect width="100%" height="100%" fill="#fff"/>',
       f'<text x="24" y="37" font-size="25" font-weight="700" font-family="Arial,sans-serif">{esc(DISPLAY[n])} · Gold EEG Source Projection</text>',
-      '<text x="24" y="64" font-size="14" font-family="Arial,sans-serif" fill="#475569">Each physical table is an ER. Entity Type labels are provisional legacy Gold annotations; activity source bindings are separate.</text>',
+      '<text x="24" y="64" font-size="14" font-family="Arial,sans-serif" fill="#475569">Physical nodes are Tables. Type labels are legacy annotations; activity labels summarize sources, not full Event definitions.</text>',
       '<text x="25" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Entity Types (left)</text>',
-      '<text x="475" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Entity Representations (ERs, middle)</text>',
-      '<text x="995" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Gold Activity Sources (right)</text>']
+      '<text x="475" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Tables (middle)</text>',
+      '<text x="995" y="111" font-size="17" font-family="Arial,sans-serif" font-weight="700">Reference activity-source summary (right)</text>']
     def card(x,yy,w,h,title,color,link=None,sub=None):
         if link:svg.append(f'<a href="{esc(link)}" target="_parent">')
         svg.append(f'<rect x="{x}" y="{yy}" width="{w}" height="{h}" rx="6" fill="{color}" stroke="#94A3B8"/>')
         svg.append(f'<text x="{x+12}" y="{yy+28}" font-size="14" font-weight="600" font-family="Arial,sans-serif" fill="#173047">{esc(title)}</text>')
         if sub:svg.append(f'<text x="{x+12}" y="{yy+45}" font-size="11" font-family="Arial,sans-serif" fill="#64748B">{esc(sub)}</text>')
         if link:svg.append("</a>")
-    # Draw provisional ET nodes first; ER membership edges are kept separate from event attribution.
+    # Draw provisional ET nodes first; legacy table/type edges are kept separate from event attribution.
     for name,ts in ordered_groups:
         ys=[y[t]+26 for t in sorted(ts)]
         mid=(min(ys)+max(ys))/2
@@ -152,7 +152,7 @@ def write_svg(base,n,tables,ot,acts,core):
                 svg.append(f'<text x="1001" y="{yy+20+21*ix}" font-size="12" font-family="Arial,sans-serif" fill="#4E401C">{esc(part)}</text>')
         else:
             svg.append(f'<text x="1000" y="{yy+31}" font-size="13" font-family="Arial,sans-serif" fill="#64748B">No directly encoded Gold activity</text>')
-    svg.append(f'<text x="24" y="{H-48}" font-family="Arial,sans-serif" font-size="12" fill="#475569">Core objects are a conceptual shortlist; record-level types remain distinct Gold identities. No cross-OT mergers are inferred from foreign keys.</text>')
+    svg.append(f'<text x="24" y="{H-48}" font-family="Arial,sans-serif" font-size="12" fill="#475569">Legacy type labels are a source projection, not reviewed semantic ET truth. References do not establish Entity identity.</text>')
     svg.append(f'<text x="24" y="{H-25}" font-family="Arial,sans-serif" font-size="12" fill="#475569">Author-annotated source projection; consult Gold SQL/object event links for attribution of each event to multiple cases or objects.</text>')
     svg.append("</svg>")
     output=base/"review/database/gold_evidence_graph.svg"
@@ -170,8 +170,8 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
       "## Gold Event Extraction Graph (EEG) Source Projection","",
       "![Entity Type candidates → Entity Representations → Activities](gold_evidence_graph.svg)","",
       "The diagram distinguishes core business entity concepts from supporting entity and event-record types. ",
-      "Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.","",
-      "**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**",
+      "A table may identify or reference several ETs through different keys. These legacy source labels do not enumerate or validate those interpretations.","",
+      "**This is a source-level author-annotated projection, not an inferred EEG or a validated semantic ET Gold.**",
       "Gold SQL and record-level evidence are available in the linked inspection materials. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.","",
       "## Relational Schema (SQL foreign keys)","",
       "![Relational database schema](schema.svg)","",
@@ -199,7 +199,7 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
     (review/"README.md").write_text("\n".join(readme)+"\n")
     top=["# "+DISPLAY[n],"",DESCRIPTION[n],"",
       "## Dataset overview","",
-      "| Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |",
+      "| Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |",
       "|---:|---:|---:|---:|",
       "| "+str(len(tables))+" | "+str(len(set(ot.values())))+" | "+str(len(core & set(ot.values())))+" | "+str(goldqueries)+" |",
       "","## Explore the dataset","",
@@ -209,13 +209,19 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
       "- "+gitmd("Business Data Dictionary","input/data_dictionary.json"),
       "- "+gitmd("Gold object membership and source bindings","review/gold_dfg/event_graph.md"),
       "","## Schema and process semantics","",
-      "Entity Types classify business entities; ERs preserve the underlying physical tables. Semantic ET grouping and instance identity resolution are separate tasks.",
+      "Entity Types classify business targets by meaning and instance granularity; Tables preserve physical storage. Semantic ET grouping and instance identity resolution are separate tasks.",
       "Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.",""]
-    (base/"README.md").write_text("\n".join(top))
+    previous=(base/"README.md").read_text() if (base/"README.md").exists() else ""
+    question_section=re.search(r"^## Questions\n.*",previous,re.M|re.S)
+    top += ["", "## Evidence and relational schema", "",
+        "![Legacy source projection](review/database/gold_evidence_graph.svg)", "",
+        "![Relational database schema](review/database/schema.svg)", ""]
+    if question_section: top.append(question_section.group(0).rstrip())
+    (base/"README.md").write_text("\n".join(top)+"\n")
     # The README describes only the final public dataset.
     assert all(w not in (base/"README.md").read_text().lower() for w in ["_new","was removed","previous version","formerly","new dataset"])
-    # Review inventory reproduces legacy author labels as ET candidates, not verified namespace-aware ET Gold.
-    inv=["# "+DISPLAY[n]+" — Gold source inventory","","**Author annotations (legacy ET candidates).** One ER per physical table. Event-to-entity attribution is a separate relation and same-ET does not imply same entity instance.","",
+    # Review inventory reproduces legacy author labels as ET candidates, not verified semantic ET Gold.
+    inv=["# "+DISPLAY[n]+" — Gold source inventory","","**Author annotations (legacy ET candidates).** Physical nodes are Tables; legacy table labels are not a complete Entity identification model. Event-to-entity attribution is a separate relation and same-ET does not imply same entity instance.","",
       "| Physical table | Entity Type candidate | Gold activity source labels |","|---|---|---|"]
     for t in tables:inv.append("| "+t+" | "+ot[t]+" | "+(", ".join(sorted(acts[t])) if acts[t] else "—")+" |")
     inv+=["","This is a source-binding projection. The model is not given this file.","",
@@ -254,6 +260,6 @@ def run():
     print(json.dumps(report,indent=2))
 if __name__=="__main__":
     run()
-    # Keep rendered review pages aligned with the target EEG/ET/ER terminology.
+    # Keep rendered review pages aligned with the target EEG/ET/Table terminology.
     from migrate_eeg_terminology import main as migrate_entity_docs
     migrate_entity_docs()

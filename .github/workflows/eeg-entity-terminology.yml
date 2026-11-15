@@ -23,6 +23,8 @@ jobs:
           python tools/rebuild_all_dataset_reviews.py
           python tools/migrate_eeg_terminology.py
           git diff --exit-code -- datasets/*/input datasets/*/private datasets/*/evaluation
+      - name: Check terminology generator regressions
+        run: python -m unittest discover -s tests -p 'test_eeg_terminology.py'
       - name: Verify all four candidate manifest policies
         run: |
           python - <<'PY'
@@ -33,12 +35,15 @@ jobs:
               d=json.loads(p.read_text())
               assert d['status']=='candidate_only_not_validated_ET_gold'
               assert not d['default_reverse_fk_traversal']
-              assert len(d['entity_representations']) in (11,12)
+              assert d['schema_version']==2
+              assert len(d['table_key_interpretations']) in (11,12)
+              assert 'identity_namespace' not in str(d)
+              assert 'entity_representations' not in d
           PY
       - name: Commit reviewed documentation artifacts
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add README.md docs/system datasets/*/README.md datasets/*/docs datasets/*/design datasets/*/review/database/README.md datasets/*/review/database/gold_evidence_graph.svg datasets/*/review/gold_dfg/event_graph.md datasets/*/review/gold_dfg/entity_model_candidates.json
-          git diff --cached --quiet || git commit -m 'docs: align existing Gold review to EEG/ER/ET with provisional identity namespaces'
+          git diff --cached --quiet || git commit -m 'docs: align EEG review to Tables, Event definitions and identification rules'
           git push

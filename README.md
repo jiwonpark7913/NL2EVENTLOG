@@ -1,12 +1,11 @@
 # NL2EventLog
 
-Research implementation and four evaluation datasets for natural-language-to-event-log extraction. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**. The target method uses **Entity Types (ETs)**, physical-table **Entity Representations (ERs)**, **Identity Namespaces**, and a request-independent **Event Extraction Graph (EEG)**.
+Four evaluation datasets and author review tools for natural-language-to-event-log extraction. The target method uses Tables and Keys, Entity Types (ETs), Entity identification rules, and Event definitions in a request-independent Event Extraction Graph (EEG).
 
 ## Repository map
 
-- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
-- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
-- [EEG / ET / ER target methodology](docs/system/EEG_ENTITY_MODEL.md)
+- [Canonical EEG terminology and stage contracts](docs/system/EEG_ENTITY_MODEL.md)
+
 - [System design](docs/system/) — methodology, event-table scope, paraphrase-generation policy.
 - [Dataset inspection](datasets/) — four active datasets with separate **model input**, **evaluation ground truth**, and **human review** material.
 - [Review generator](tools/build_dataset_review.py) — produces an ERD overview and **actual first 10 SQLite rows** per table.
@@ -49,4 +48,4 @@ This refactor deliberately separates inspection data from model inputs. The orig
 
 Python helper scripts are grouped by purpose; the repository root contains only README and Git configuration. The four current databases remain the benchmark source of truth. Generated data and Gold files are unchanged by this structural refactor.
 
-**Evaluation migration status:** the stored Gold SQL/CSV, legacy identity groups, and case semantics predate the namespace-aware ET redesign. Gold SQL/CSV consistency is verified separately; semantic ET reannotation and FK→PK-only attribution recall remain open validation tasks.
+**Evaluation migration status:** stored reference labels and Gold logs retain their original semantics. SQL/CSV consistency is checked separately from semantic ET correctness and target-method validation. The current pipeline contracts are documented as target behavior, not new measured results.
