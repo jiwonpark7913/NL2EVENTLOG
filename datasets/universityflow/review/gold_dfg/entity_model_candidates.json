@@ -1,32 +1,41 @@
 {
+  "schema_version": 2,
   "dataset": "universityflow",
-  "model": "Target EEG schema; provisional migration of pre-namespace Gold annotation",
   "status": "candidate_only_not_validated_ET_gold",
-  "one_entity_representation_per_physical_table": true,
-  "identity": "Entity ID = (Entity Type, Identity Namespace, Canonical Key)",
+  "purpose": "Reviewer-only Table/Key inventory and legacy labels, not runtime EEG or model input",
+  "identity_rule": "identify(table, row, key_columns) resolves an Entity under a validated interpretation",
   "default_directional_case_attribution": "FK_to_referenced_PK_or_unique_only_when_validated",
   "default_reverse_fk_traversal": false,
-  "identity_mapping_policy": "Shared/Mapped/Independent/Unknown require separate verified evidence",
-  "case_population_policy": "distinct union of validated ET instance mappings; not computed in this review",
-  "lifecycle_membership_policy": "separate evidence required; never inferred from FK alone",
-  "entity_representations": [
+  "table_key_interpretations": [
     {
-      "er": "assignment",
-      "candidate_entity_type": "Assignment",
+      "table": "assignment",
       "primary_key": [
         "assignment_id"
       ],
-      "identity_namespace": "universityflow:assignment",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "student_id"
+          ],
+          "referenced_table": "student",
+          "referenced_columns": [
+            "student_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Assignment",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Assignment Assigned",
         "Assignment Grade Finalized",
         "Assignment Resubmitted",
         "Assignment Revision Requested",
         "Assignment Submitted"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "assignment_assigned_at",
         "assignment_grade_finalized_at",
         "assignment_resubmitted_at",
@@ -35,40 +44,63 @@
       ]
     },
     {
-      "er": "assignment_grading",
-      "candidate_entity_type": "Assignment grading record",
+      "table": "assignment_grading",
       "primary_key": [
         "assignment_id",
         "instructor_id",
         "grading_time"
       ],
-      "identity_namespace": "universityflow:assignment_grading",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "instructor_id"
+          ],
+          "referenced_table": "instructor",
+          "referenced_columns": [
+            "instructor_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "assignment_id"
+          ],
+          "referenced_table": "assignment",
+          "referenced_columns": [
+            "assignment_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Assignment grading record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Assignment Graded",
         "Assignment Regraded"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "grading_time"
       ]
     },
     {
-      "er": "course",
-      "candidate_entity_type": "Course",
+      "table": "course",
       "primary_key": [
         "course_id"
       ],
-      "identity_namespace": "universityflow:course",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Course",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Course Offering Approved",
         "Course Offering Closed",
         "Course Offering Proposed",
         "Course Offering Published"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "course_offering_approved_at",
         "course_offering_closed_at",
         "course_offering_proposed_at",
@@ -76,22 +108,34 @@
       ]
     },
     {
-      "er": "degree_examination_result",
-      "candidate_entity_type": "Examination result record",
+      "table": "degree_examination_result",
       "primary_key": [
         "result_id"
       ],
-      "identity_namespace": "universityflow:degree_examination_result",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "student_id"
+          ],
+          "referenced_table": "student",
+          "referenced_columns": [
+            "student_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Examination result record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Degree Examination Taken",
         "Examination Checked In",
         "Examination Result Reviewed",
         "Examination Scheduled",
         "Examination Score Published"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "examination_checked_in_at",
         "examination_date",
         "examination_result_reviewed_at",
@@ -100,28 +144,51 @@
       ]
     },
     {
-      "er": "instructor",
-      "candidate_entity_type": "Instructor",
+      "table": "instructor",
       "primary_key": [
         "instructor_id"
       ],
-      "identity_namespace": "universityflow:instructor",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Instructor",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "registration",
-      "candidate_entity_type": "Student-course registration",
+      "table": "registration",
       "primary_key": [
         "student_id",
         "course_id"
       ],
-      "identity_namespace": "universityflow:registration",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "course_id"
+          ],
+          "referenced_table": "course",
+          "referenced_columns": [
+            "course_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "student_id"
+          ],
+          "referenced_table": "student",
+          "referenced_columns": [
+            "student_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Student-course registration",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Course Assessment Completed",
         "Course Grade Finalized",
         "Course Registered",
@@ -129,7 +196,7 @@
         "Registration Approved",
         "Registration Requested"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "course_assessment_completed_at",
         "course_grade_finalized_at",
         "course_started_at",
@@ -139,21 +206,21 @@
       ]
     },
     {
-      "er": "simulation_module",
-      "candidate_entity_type": "Simulation module",
+      "table": "simulation_module",
       "primary_key": [
         "module_id"
       ],
-      "identity_namespace": "universityflow:simulation_module",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Simulation module",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Simulation Module Published",
         "Simulation Module Released",
         "Simulation Module Retired",
         "Simulation Module Validated"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "simulation_module_published_at",
         "simulation_module_released_at",
         "simulation_module_retired_at",
@@ -161,36 +228,59 @@
       ]
     },
     {
-      "er": "student",
-      "candidate_entity_type": "Student",
+      "table": "student",
       "primary_key": [
         "student_id"
       ],
-      "identity_namespace": "universityflow:student",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Student",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "student_simulation_experiment_result",
-      "candidate_entity_type": "Simulation experiment result record",
+      "table": "student_simulation_experiment_result",
       "primary_key": [
         "student_id",
         "module_id",
         "simulation_date"
       ],
-      "identity_namespace": "universityflow:student_simulation_experiment_result",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "module_id"
+          ],
+          "referenced_table": "simulation_module",
+          "referenced_columns": [
+            "module_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "student_id"
+          ],
+          "referenced_table": "student",
+          "referenced_columns": [
+            "student_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Simulation experiment result record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Simulation Experiment Completed",
         "Simulation Output Reviewed",
         "Simulation Result Accepted",
         "Simulation Run Scheduled",
         "Simulation Run Started"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "simulation_date",
         "simulation_output_reviewed_at",
         "simulation_result_accepted_at",
@@ -199,21 +289,21 @@
       ]
     },
     {
-      "er": "task",
-      "candidate_entity_type": "Course-design task",
+      "table": "task",
       "primary_key": [
         "task_id"
       ],
-      "identity_namespace": "universityflow:task",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Course-design task",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Design Task Approved",
         "Design Task Closed",
         "Design Task Created",
         "Design Task Published"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "design_task_approved_at",
         "design_task_closed_at",
         "design_task_created_at",
@@ -221,15 +311,27 @@
       ]
     },
     {
-      "er": "thesis",
-      "candidate_entity_type": "Thesis",
+      "table": "thesis",
       "primary_key": [
         "thesis_id"
       ],
-      "identity_namespace": "universityflow:thesis",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "student_id"
+          ],
+          "referenced_table": "student",
+          "referenced_columns": [
+            "student_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Thesis",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Thesis Accepted",
         "Thesis Draft Registered",
         "Thesis Resubmitted",
@@ -237,7 +339,7 @@
         "Thesis Revision Requested",
         "Thesis Submitted"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "submission_date",
         "thesis_accepted_at",
         "thesis_draft_registered_at",
@@ -247,7 +349,7 @@
       ]
     }
   ],
-  "candidate_entity_types": {
+  "legacy_type_groups": {
     "Assignment": [
       "assignment"
     ],
@@ -282,5 +384,15 @@
       "thesis"
     ]
   },
-  "explanation": "This metadata is for reviewer comparison; do not pass it to models or treat it as reviewed semantic ET Gold."
+  "target_method_contract": {
+    "et_classification": "business_meaning_and_instance_granularity_before_instance_identity",
+    "definitions": "Event definitions, not individual Event occurrences",
+    "parsing": "one_call_by_default_then_original_request_based_final_review",
+    "explicit_selection": "requested_activities",
+    "implicit_no_focus": "all_supported_attributable_definitions",
+    "implicit_with_focus": "definition_selection_using_request_and_EEG_evidence",
+    "process_focus_filters": "Event_definitions_not_case_population",
+    "independent_lifecycle_gate": false
+  },
+  "note": "Activity labels are source summaries, not complete Event definitions. No semantic ET reannotation or extraction execution is performed by this renderer."
 }

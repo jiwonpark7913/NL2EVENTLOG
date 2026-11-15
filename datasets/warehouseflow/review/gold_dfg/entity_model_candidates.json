@@ -1,172 +1,449 @@
 {
+  "schema_version": 2,
   "dataset": "warehouseflow",
-  "model": "Target EEG schema; provisional migration of pre-namespace Gold annotation",
   "status": "candidate_only_not_validated_ET_gold",
-  "one_entity_representation_per_physical_table": true,
-  "identity": "Entity ID = (Entity Type, Identity Namespace, Canonical Key)",
+  "purpose": "Reviewer-only Table/Key inventory and legacy labels, not runtime EEG or model input",
+  "identity_rule": "identify(table, row, key_columns) resolves an Entity under a validated interpretation",
   "default_directional_case_attribution": "FK_to_referenced_PK_or_unique_only_when_validated",
   "default_reverse_fk_traversal": false,
-  "identity_mapping_policy": "Shared/Mapped/Independent/Unknown require separate verified evidence",
-  "case_population_policy": "distinct union of validated ET instance mappings; not computed in this review",
-  "lifecycle_membership_policy": "separate evidence required; never inferred from FK alone",
-  "entity_representations": [
+  "table_key_interpretations": [
     {
-      "er": "dispatch_order",
-      "candidate_entity_type": "Dispatch Order",
+      "table": "dispatch_order",
       "primary_key": [
         "dispatch_id"
       ],
-      "identity_namespace": "warehouseflow:dispatch_order",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "goods_id"
+          ],
+          "referenced_table": "goods",
+          "referenced_columns": [
+            "goods_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "referenced_table": "warehouse",
+          "referenced_columns": [
+            "warehouse_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Dispatch Order",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Dispatch Approved",
         "Dispatch Requested"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "approved_at",
         "requested_at"
       ]
     },
     {
-      "er": "goods",
-      "candidate_entity_type": "Goods",
+      "table": "goods",
       "primary_key": [
         "goods_id"
       ],
-      "identity_namespace": "warehouseflow:goods",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Goods",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "goods_movement",
-      "candidate_entity_type": "Stock Movement",
+      "table": "goods_movement",
       "primary_key": [
         "movement_id"
       ],
-      "identity_namespace": "warehouseflow:goods_movement",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "movement_code"
+          ],
+          "referenced_table": "work_code",
+          "referenced_columns": [
+            "code_family",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "dispatch_id"
+          ],
+          "referenced_table": "dispatch_order",
+          "referenced_columns": [
+            "dispatch_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "receipt_id"
+          ],
+          "referenced_table": "goods_receipt",
+          "referenced_columns": [
+            "receipt_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "goods_id"
+          ],
+          "referenced_table": "goods",
+          "referenced_columns": [
+            "goods_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "referenced_table": "warehouse",
+          "referenced_columns": [
+            "warehouse_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Stock Movement",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Goods Dispatched",
         "Goods Received"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "occurred_at"
       ]
     },
     {
-      "er": "goods_receipt",
-      "candidate_entity_type": "Receipt",
+      "table": "goods_receipt",
       "primary_key": [
         "receipt_id"
       ],
-      "identity_namespace": "warehouseflow:goods_receipt",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "receiver_id"
+          ],
+          "referenced_table": "worker",
+          "referenced_columns": [
+            "worker_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "referenced_table": "receiving_request",
+          "referenced_columns": [
+            "request_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Receipt",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Receipt Registered"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "received_at"
       ]
     },
     {
-      "er": "handling_history",
-      "candidate_entity_type": "Handling Record",
+      "table": "handling_history",
       "primary_key": [
         "handling_id"
       ],
-      "identity_namespace": "warehouseflow:handling_history",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "handling_code"
+          ],
+          "referenced_table": "work_code",
+          "referenced_columns": [
+            "code_family",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "referenced_table": "worker",
+          "referenced_columns": [
+            "worker_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "dispatch_id"
+          ],
+          "referenced_table": "dispatch_order",
+          "referenced_columns": [
+            "dispatch_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "referenced_table": "receiving_request",
+          "referenced_columns": [
+            "request_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Handling Record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Loading Completed",
         "Loading Started",
         "Unloading Completed",
         "Unloading Started"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "completed_at",
         "started_at"
       ]
     },
     {
-      "er": "receiving_request",
-      "candidate_entity_type": "Receiving Request",
+      "table": "receiving_request",
       "primary_key": [
         "request_id"
       ],
-      "identity_namespace": "warehouseflow:receiving_request",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "goods_id"
+          ],
+          "referenced_table": "goods",
+          "referenced_columns": [
+            "goods_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "referenced_table": "warehouse",
+          "referenced_columns": [
+            "warehouse_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Receiving Request",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Receiving Request Submitted"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "submitted_at"
       ]
     },
     {
-      "er": "request_action",
-      "candidate_entity_type": "Request Action",
+      "table": "request_action",
       "primary_key": [
         "action_id"
       ],
-      "identity_namespace": "warehouseflow:request_action",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "action_code"
+          ],
+          "referenced_table": "work_code",
+          "referenced_columns": [
+            "code_family",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "referenced_table": "worker",
+          "referenced_columns": [
+            "worker_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "referenced_table": "receiving_request",
+          "referenced_columns": [
+            "request_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Request Action",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Request Checked",
         "Request Held",
         "Request Released"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "occurred_at"
       ]
     },
     {
-      "er": "warehouse",
-      "candidate_entity_type": "Warehouse",
+      "table": "warehouse",
       "primary_key": [
         "warehouse_id"
       ],
-      "identity_namespace": "warehouseflow:warehouse",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Warehouse",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "warehouse_audit",
-      "candidate_entity_type": "Stock Audit",
+      "table": "warehouse_audit",
       "primary_key": [
         "audit_id"
       ],
-      "identity_namespace": "warehouseflow:warehouse_audit",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "referenced_table": "worker",
+          "referenced_columns": [
+            "worker_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "warehouse_id"
+          ],
+          "referenced_table": "warehouse",
+          "referenced_columns": [
+            "warehouse_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Stock Audit",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Stock Audit Completed",
         "Stock Audit Started"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "completed_at",
         "started_at"
       ]
     },
     {
-      "er": "warehouse_task_history",
-      "candidate_entity_type": "Warehouse Task",
+      "table": "warehouse_task_history",
       "primary_key": [
         "task_id"
       ],
-      "identity_namespace": "warehouseflow:warehouse_task_history",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "code_family",
+            "task_code"
+          ],
+          "referenced_table": "work_code",
+          "referenced_columns": [
+            "code_family",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "worker_id"
+          ],
+          "referenced_table": "worker",
+          "referenced_columns": [
+            "worker_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "dispatch_id"
+          ],
+          "referenced_table": "dispatch_order",
+          "referenced_columns": [
+            "dispatch_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "request_id"
+          ],
+          "referenced_table": "receiving_request",
+          "referenced_columns": [
+            "request_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Warehouse Task",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Packing Completed",
         "Packing Started",
         "Picking Completed",
@@ -174,38 +451,38 @@
         "Putaway Completed",
         "Putaway Started"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "completed_at",
         "started_at"
       ]
     },
     {
-      "er": "work_code",
-      "candidate_entity_type": "work_code",
+      "table": "work_code",
       "primary_key": [
         "code_family",
         "code"
       ],
-      "identity_namespace": "warehouseflow:work_code",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "work_code",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "worker",
-      "candidate_entity_type": "Worker",
+      "table": "worker",
       "primary_key": [
         "worker_id"
       ],
-      "identity_namespace": "warehouseflow:worker",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Worker",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     }
   ],
-  "candidate_entity_types": {
+  "legacy_type_groups": {
     "Dispatch Order": [
       "dispatch_order"
     ],
@@ -243,5 +520,15 @@
       "worker"
     ]
   },
-  "explanation": "This metadata is for reviewer comparison; do not pass it to models or treat it as reviewed semantic ET Gold."
+  "target_method_contract": {
+    "et_classification": "business_meaning_and_instance_granularity_before_instance_identity",
+    "definitions": "Event definitions, not individual Event occurrences",
+    "parsing": "one_call_by_default_then_original_request_based_final_review",
+    "explicit_selection": "requested_activities",
+    "implicit_no_focus": "all_supported_attributable_definitions",
+    "implicit_with_focus": "definition_selection_using_request_and_EEG_evidence",
+    "process_focus_filters": "Event_definitions_not_case_population",
+    "independent_lifecycle_gate": false
+  },
+  "note": "Activity labels are source summaries, not complete Event definitions. No semantic ET reannotation or extraction execution is performed by this renderer."
 }

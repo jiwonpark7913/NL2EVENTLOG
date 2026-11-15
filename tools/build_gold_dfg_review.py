@@ -205,7 +205,7 @@ def main():
                 '[dataset provenance](../../../datasets/hospitalflow/README.md) and '
                 '[simulation code](../../../datasets/hospitalflow/simulation.py).\n'
             )
-        markdown.append('\n[Event graph inventory · tables, objects, OTs and activities](event_graph.md)\n')
+        markdown.append('\n[Reference inventory · tables, legacy type labels and activity sources](event_graph.md)\n')
         markdown.append('\n**Source tables** produced matched Gold events. **SQL tables** are all physical tables read by the Gold SQL, including join tables and shared CTE branches.\n')
         markdown.append(dataset_overview(name, questions))
         cache={};records=[]

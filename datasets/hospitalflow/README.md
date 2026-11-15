@@ -2,40 +2,31 @@
 
 HospitalFlow models synthetic patient encounters, clinical orders, medication administration, laboratory testing, procedures, and care-unit transfers. Its patient and admission structures and time-column vocabulary are inspired by the public MIMIC-IV hospital schema; all records are synthetic, not MIMIC-IV patient records.
 
-[Relational schema](#relational-schema) · [Table previews](#table-inspector) · [Questions](#questions) · [Gold source projection](#gold-event-extraction-graph-eeg-source-projection)
-
 ## Dataset overview
 
-| Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
+| Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
 | 12 | 11 | 5 | 42 |
 
-[SQLite database](input/database.sqlite) · [Business Data Dictionary](input/data_dictionary.json) · [Readable dictionary](docs/data_dictionary.md) · [Detailed database review](review/database/README.md)
+## Explore the dataset
 
-## Relational schema
+- [Gold Event Extraction Graph (EEG) Source Projection and real table records](review/database/README.md)
+- [Editable Draw.io relational diagram](docs/schema.drawio)
+- [Per-question Gold DFGs](review/gold_dfg/README.md)
+- [Business Data Dictionary](input/data_dictionary.json)
+- [Gold object membership and source bindings](review/gold_dfg/event_graph.md)
 
-![Relational database schema with highlighted timestamp columns](review/database/schema.svg)
+## Schema and process semantics
 
-**Yellow:** Gold event-time source, where established. **Blue:** other temporal columns. A temporal column is not automatically an event timestamp.
+Entity Types classify business targets by meaning and instance granularity; Tables preserve physical storage. Semantic ET grouping and instance identity resolution are separate tasks.
+Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.
 
-[Open full-size ERD](review/database/schema.svg) · [Editable Draw.io diagram](docs/schema.drawio) · [Timestamp inventory and roles](docs/timestamp_columns.md)
 
-## Table inspector
+## Evidence and relational schema
 
-| Physical table | Rows | Columns | ET candidate | First ten records |
-|---|---:|---:|---|---|
-| admission_detail | 5 | 2 | Hospital Admission | [Preview](review/database/tables/admission_detail.md) |
-| admissions | 15 | 16 | Hospital Admission | [Preview](review/database/tables/admissions.md) |
-| emar | 67 | 5 | Medication Administration | [Preview](review/database/tables/emar.md) |
-| lab_order | 34 | 5 | Laboratory Order | [Preview](review/database/tables/lab_order.md) |
-| labevents | 62 | 7 | Lab Measurement | [Preview](review/database/tables/labevents.md) |
-| medication_order | 29 | 4 | Medication Order | [Preview](review/database/tables/medication_order.md) |
-| order_history | 203 | 6 | Order History Record | [Preview](review/database/tables/order_history.md) |
-| patients | 12 | 6 | Patient | [Preview](review/database/tables/patients.md) |
-| pharmacy | 34 | 3 | Pharmacy Dispensing | [Preview](review/database/tables/pharmacy.md) |
-| procedure_episode | 23 | 5 | Procedure Episode | [Preview](review/database/tables/procedure_episode.md) |
-| procedure_order | 17 | 4 | Procedure Order | [Preview](review/database/tables/procedure_order.md) |
-| transfers | 38 | 7 | Care Unit Transfer | [Preview](review/database/tables/transfers.md) |
+![Legacy source projection](review/database/gold_evidence_graph.svg)
+
+![Relational database schema](review/database/schema.svg)
 
 ## Questions
 
@@ -97,22 +88,22 @@ The checked-in question-text file contains **44 requests**. Explicit requests en
 
 ## Gold Event Extraction Graph (EEG) Source Projection
 
-![Entity Type candidates → Entity Representations → Activities](review/database/gold_evidence_graph.svg)
+![Entity Type candidates → Tables → Activities](review/database/gold_evidence_graph.svg)
 
 The diagram distinguishes core business entity concepts from supporting entity and event-record types. 
-Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.
+Physical storage is described as Tables and Keys. A table may identify or reference several Entity Types through different keys; a single Entity can appear in several tables. The displayed type labels are legacy author annotations, not validated semantic ET truth. Type classification, Entity identity resolution, and event attribution are separate decisions.
 
-**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**
-Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.
+**This is a source-level author-annotated projection, not an inferred EEG or a validated identification-rule-aware ET Gold.**
+Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target Entity identification model. The current membership labels originate from the legacy Gold; an independently validated ET/Entity identification context Gold is a separate evaluation task.
 
 
 
-**Entity-model status:** A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. [Terminology and namespace contract](../../docs/system/EEG_ENTITY_MODEL.md).
+**Entity-model status:** Physical storage is described as Tables and Keys. A table may identify or reference several Entity Types through different keys; a single Entity can appear in several tables. The displayed type labels are legacy author annotations, not validated semantic ET truth. Type classification, Entity identity resolution, and event attribution are separate decisions.
 
 ## Entity Type candidates vs. core business objects
 
 Legacy identity groups (ET candidates): **11**; principal business object concepts in this domain: **5**. 
-The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Identity Namespaces.
+The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Entity identities.
 
 **Core business concepts:** Hospital Admission, Laboratory Order, Medication Order, Patient, Procedure Order.
 
@@ -135,3 +126,9 @@ All individual records are synthetic.
 ## Model input boundary
 
 This README, diagrams, table previews and Gold evidence are reader/reviewer material. Use the [model-input manifest](evaluation/model_input_manifest.json) to identify evaluation inputs; do not supply Gold annotations or review materials to the model.
+
+## Entity terminology
+
+Physical storage is described as Tables and Keys. A table may identify or reference several Entity Types through different keys; a single Entity can appear in several tables. The displayed type labels are legacy author annotations, not validated semantic ET truth. Type classification, Entity identity resolution, and event attribution are separate decisions.
+
+[Canonical terminology and stage contracts](../../docs/system/EEG_ENTITY_MODEL.md). Step 2 uses explicit activities or implicit recorded history with optional process focus; legacy reference logs retain their original scopes.

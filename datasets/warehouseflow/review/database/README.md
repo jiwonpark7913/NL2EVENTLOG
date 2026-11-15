@@ -4,17 +4,13 @@ WarehouseFlow is a synthetic warehouse operations database covering goods, recei
 
 ## Gold Event Extraction Graph (EEG) Source Projection
 
-![Entity Type candidates → Entity Representations → Activities](gold_evidence_graph.svg)
+![Entity Type candidates → Tables → Activities](gold_evidence_graph.svg)
 
 The diagram distinguishes core business entity concepts from supporting entity and event-record types. 
-Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.
+A table may identify or reference several ETs through different keys. These legacy source labels do not enumerate or validate those interpretations.
 
-**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**
-Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.
-
-
-
-**Entity-model status:** A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. [Terminology and namespace contract](../../../../docs/system/EEG_ENTITY_MODEL.md).
+**This is a source-level author-annotated projection, not an inferred EEG or a validated semantic ET Gold.**
+Gold SQL and record-level evidence are available in the linked inspection materials. The current membership labels originate from the legacy Gold; an independently validated ET/Entity identification context Gold is a separate evaluation task.
 
 ## Relational Schema (SQL foreign keys)
 
@@ -40,7 +36,7 @@ Gold SQL and record-level evidence are available in the linked inspection materi
 ## Entity Type candidates vs. core business objects
 
 Legacy identity groups (ET candidates): **12**; principal business object concepts in this domain: **5**. 
-The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Identity Namespaces.
+The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Entity identities.
 
 **Core business concepts:** Dispatch Order, Goods, Receiving Request, Warehouse, Worker.
 

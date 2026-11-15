@@ -1,215 +1,403 @@
 {
+  "schema_version": 2,
   "dataset": "plateflow",
-  "model": "Target EEG schema; provisional migration of pre-namespace Gold annotation",
   "status": "candidate_only_not_validated_ET_gold",
-  "one_entity_representation_per_physical_table": true,
-  "identity": "Entity ID = (Entity Type, Identity Namespace, Canonical Key)",
+  "purpose": "Reviewer-only Table/Key inventory and legacy labels, not runtime EEG or model input",
+  "identity_rule": "identify(table, row, key_columns) resolves an Entity under a validated interpretation",
   "default_directional_case_attribution": "FK_to_referenced_PK_or_unique_only_when_validated",
   "default_reverse_fk_traversal": false,
-  "identity_mapping_policy": "Shared/Mapped/Independent/Unknown require separate verified evidence",
-  "case_population_policy": "distinct union of validated ET instance mappings; not computed in this review",
-  "lifecycle_membership_policy": "separate evidence required; never inferred from FK alone",
-  "entity_representations": [
+  "table_key_interpretations": [
     {
-      "er": "as_rolled_material",
-      "candidate_entity_type": "Mother Material",
+      "table": "as_rolled_material",
       "primary_key": [
         "material_id"
       ],
-      "identity_namespace": "plateflow:as_rolled_material",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "instruction_id"
+          ],
+          "referenced_table": "rolling_instruction",
+          "referenced_columns": [
+            "instruction_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "slab_id"
+          ],
+          "referenced_table": "slab_material",
+          "referenced_columns": [
+            "slab_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Mother Material",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "dimension_inspection",
-      "candidate_entity_type": "Dimension Inspection",
+      "table": "dimension_inspection",
       "primary_key": [
         "inspection_id"
       ],
-      "identity_namespace": "plateflow:dimension_inspection",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "plate_id"
+          ],
+          "referenced_table": "plate_material",
+          "referenced_columns": [
+            "plate_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Dimension Inspection",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Dimensional Inspection Completed"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "inspected_at"
       ]
     },
     {
-      "er": "equipment",
-      "candidate_entity_type": "Equipment",
+      "table": "equipment",
       "primary_key": [
         "equipment_id"
       ],
-      "identity_namespace": "plateflow:equipment",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Equipment",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "finishing_operation_history",
-      "candidate_entity_type": "Finishing Operation Record",
+      "table": "finishing_operation_history",
       "primary_key": [
         "operation_id"
       ],
-      "identity_namespace": "plateflow:finishing_operation_history",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "process_group",
+            "operation_code"
+          ],
+          "referenced_table": "process_code",
+          "referenced_columns": [
+            "process_group",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "equipment_id"
+          ],
+          "referenced_table": "equipment",
+          "referenced_columns": [
+            "equipment_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "plate_id"
+          ],
+          "referenced_table": "plate_material",
+          "referenced_columns": [
+            "plate_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Finishing Operation Record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Heat Treatment Completed",
         "Leveling Completed",
         "Surface Finishing Completed"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "finished_at"
       ]
     },
     {
-      "er": "furnace_operation_history",
-      "candidate_entity_type": "Furnace Operation Record",
+      "table": "furnace_operation_history",
       "primary_key": [
         "operation_id"
       ],
-      "identity_namespace": "plateflow:furnace_operation_history",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "process_group",
+            "operation_code"
+          ],
+          "referenced_table": "process_code",
+          "referenced_columns": [
+            "process_group",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "equipment_id"
+          ],
+          "referenced_table": "equipment",
+          "referenced_columns": [
+            "equipment_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "material_id"
+          ],
+          "referenced_table": "as_rolled_material",
+          "referenced_columns": [
+            "material_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Furnace Operation Record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Furnace Charged",
         "Furnace Discharged",
         "Heating Completed"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "finished_at"
       ]
     },
     {
-      "er": "planned_rolling_instruction",
-      "candidate_entity_type": "Rolling Plan",
+      "table": "planned_rolling_instruction",
       "primary_key": [
         "plan_id"
       ],
-      "identity_namespace": "plateflow:planned_rolling_instruction",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "slab_id"
+          ],
+          "referenced_table": "slab_material",
+          "referenced_columns": [
+            "slab_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Rolling Plan",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Rolling Plan Approved",
         "Rolling Plan Released",
         "Rolling Plan Submitted"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "approved_at",
         "released_at",
         "submitted_at"
       ]
     },
     {
-      "er": "plate_material",
-      "candidate_entity_type": "Plate Piece",
+      "table": "plate_material",
       "primary_key": [
         "plate_id"
       ],
-      "identity_namespace": "plateflow:plate_material",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "mother_material_id"
+          ],
+          "referenced_table": "as_rolled_material",
+          "referenced_columns": [
+            "material_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Plate Piece",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Plate Identified",
         "Plate Packed",
         "Plate Released"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "identified_at",
         "packed_at",
         "released_at"
       ]
     },
     {
-      "er": "plate_quality_review",
-      "candidate_entity_type": "Quality Review",
+      "table": "plate_quality_review",
       "primary_key": [
         "review_id"
       ],
-      "identity_namespace": "plateflow:plate_quality_review",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "plate_id"
+          ],
+          "referenced_table": "plate_material",
+          "referenced_columns": [
+            "plate_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Quality Review",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Plate Quality Review Completed"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "finished_at"
       ]
     },
     {
-      "er": "process_code",
-      "candidate_entity_type": "process_code",
+      "table": "process_code",
       "primary_key": [
         "process_group",
         "code"
       ],
-      "identity_namespace": "plateflow:process_code",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "process_code",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [],
-      "source_time_columns": []
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [],
+      "legacy_source_time_columns": []
     },
     {
-      "er": "rolling_instruction",
-      "candidate_entity_type": "Rolling Instruction",
+      "table": "rolling_instruction",
       "primary_key": [
         "instruction_id"
       ],
-      "identity_namespace": "plateflow:rolling_instruction",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "plan_id"
+          ],
+          "referenced_table": "planned_rolling_instruction",
+          "referenced_columns": [
+            "plan_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Rolling Instruction",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Rolling Instruction Issued"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "issued_at"
       ]
     },
     {
-      "er": "rolling_operation_history",
-      "candidate_entity_type": "Rolling Operation Record",
+      "table": "rolling_operation_history",
       "primary_key": [
         "operation_id"
       ],
-      "identity_namespace": "plateflow:rolling_operation_history",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [
+        {
+          "columns": [
+            "process_group",
+            "phase_code"
+          ],
+          "referenced_table": "process_code",
+          "referenced_columns": [
+            "process_group",
+            "code"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "equipment_id"
+          ],
+          "referenced_table": "equipment",
+          "referenced_columns": [
+            "equipment_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        },
+        {
+          "columns": [
+            "material_id"
+          ],
+          "referenced_table": "as_rolled_material",
+          "referenced_columns": [
+            "material_id"
+          ],
+          "role": "structural_reference",
+          "semantic_attribution_validation": "not_established_by_fk_alone"
+        }
+      ],
+      "legacy_type_label": "Rolling Operation Record",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Finish Rolling Completed",
         "Rough Rolling Completed"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "finished_at"
       ]
     },
     {
-      "er": "slab_material",
-      "candidate_entity_type": "Slab",
+      "table": "slab_material",
       "primary_key": [
         "slab_id"
       ],
-      "identity_namespace": "plateflow:slab_material",
-      "namespace_evidence_status": "unreviewed",
+      "foreign_keys": [],
+      "legacy_type_label": "Slab",
       "semantic_et_validation": "pending",
-      "source_activity_labels": [
+      "identification_rule_validation": "pending",
+      "legacy_source_activity_labels": [
         "Slab Received",
         "Slab Released",
         "Slab Verified"
       ],
-      "source_time_columns": [
+      "legacy_source_time_columns": [
         "received_at",
         "released_at",
         "verified_at"
       ]
     }
   ],
-  "candidate_entity_types": {
+  "legacy_type_groups": {
     "Mother Material": [
       "as_rolled_material"
     ],
@@ -247,5 +435,15 @@
       "slab_material"
     ]
   },
-  "explanation": "This metadata is for reviewer comparison; do not pass it to models or treat it as reviewed semantic ET Gold."
+  "target_method_contract": {
+    "et_classification": "business_meaning_and_instance_granularity_before_instance_identity",
+    "definitions": "Event definitions, not individual Event occurrences",
+    "parsing": "one_call_by_default_then_original_request_based_final_review",
+    "explicit_selection": "requested_activities",
+    "implicit_no_focus": "all_supported_attributable_definitions",
+    "implicit_with_focus": "definition_selection_using_request_and_EEG_evidence",
+    "process_focus_filters": "Event_definitions_not_case_population",
+    "independent_lifecycle_gate": false
+  },
+  "note": "Activity labels are source summaries, not complete Event definitions. No semantic ET reannotation or extraction execution is performed by this renderer."
 }

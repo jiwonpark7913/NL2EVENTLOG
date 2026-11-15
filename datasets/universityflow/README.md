@@ -2,70 +2,31 @@
 
 UniversityFlow is a synthetic university operations database representing students, courses, registration, assignments, examinations, theses, and simulation experiments. Its domain design draws on RSchema university requirements and uses authored synthetic records.
 
-[Relational schema](#relational-schema-sql-foreign-keys) · [Table previews](#table-inspector) · [Questions](#questions)
-
 ## Dataset overview
 
-| Physical ERs | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
+| Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
 | 11 | 11 | 8 | 66 |
 
-[SQLite database](input/database.sqlite) · [Business Data Dictionary](input/data_dictionary.json) · [Readable dictionary](docs/data_dictionary.md)
+## Explore the dataset
 
-## Gold Event Extraction Graph (EEG) Source Projection
+- [Gold Event Extraction Graph (EEG) Source Projection and real table records](review/database/README.md)
+- [Editable Draw.io relational diagram](docs/schema.drawio)
+- [Per-question Gold DFGs](review/gold_dfg/README.md)
+- [Business Data Dictionary](input/data_dictionary.json)
+- [Gold object membership and source bindings](review/gold_dfg/event_graph.md)
 
-![Entity Type candidates → Entity Representations → Activities](review/database/gold_evidence_graph.svg)
+## Schema and process semantics
 
-The diagram distinguishes core business entity concepts from supporting entity and event-record types. 
-Each physical ER has exactly one currently annotated Entity Type candidate. Event-to-entity case attribution is separate from the source ER's provisional ET annotation; FK paths alone do not establish lifecycle membership.
-
-**This is a source-level author-annotated projection, not an inferred EEG or a validated namespace-aware ET Gold.**
-Gold SQL and record-level evidence are available in the linked inspection materials; their internal consistency does not validate the target namespace model. The current membership labels originate from the pre-namespace Gold; an independently validated ET/Identity Namespace Gold is a separate evaluation task.
+Entity Types classify business targets by meaning and instance granularity; Tables preserve physical storage. Semantic ET grouping and instance identity resolution are separate tasks.
+Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.
 
 
+## Evidence and relational schema
 
-**Entity-model status:** A physical table is one **Entity Representation (ER)**. Its displayed **Entity Type (ET) candidate** comes from legacy Gold annotations. ET semantic grouping and cross-ER instance identity resolution must be validated independently. FK reachability alone does not establish Case Attribution or Lifecycle Membership. [Terminology and namespace contract](../../docs/system/EEG_ENTITY_MODEL.md).
-
-## Relational Schema (SQL foreign keys)
+![Legacy source projection](review/database/gold_evidence_graph.svg)
 
 ![Relational database schema](review/database/schema.svg)
-
-**Yellow:** Gold event-time source, where established. **Blue:** other temporal columns. A temporal column is not automatically an event timestamp.
-
-[Open full-size ERD](review/database/schema.svg) · [Editable Draw.io diagram](docs/schema.drawio) · [Timestamp inventory and roles](docs/timestamp_columns.md)
-
-## Table inspector
-
-| Physical table | Rows | Columns | ET candidate | First ten records |
-|---|---:|---:|---|---|
-| assignment | 20 | 8 | Assignment | [Preview](review/database/tables/assignment.md) |
-| assignment_grading | 25 | 7 | Assignment grading record | [Preview](review/database/tables/assignment_grading.md) |
-| course | 6 | 10 | Course | [Preview](review/database/tables/course.md) |
-| degree_examination_result | 40 | 9 | Examination result record | [Preview](review/database/tables/degree_examination_result.md) |
-| instructor | 3 | 3 | Instructor | [Preview](review/database/tables/instructor.md) |
-| registration | 47 | 9 | Student-course registration | [Preview](review/database/tables/registration.md) |
-| simulation_module | 3 | 9 | Simulation module | [Preview](review/database/tables/simulation_module.md) |
-| student | 40 | 8 | Student | [Preview](review/database/tables/student.md) |
-| student_simulation_experiment_result | 27 | 9 | Simulation experiment result record | [Preview](review/database/tables/student_simulation_experiment_result.md) |
-| task | 3 | 10 | Course-design task | [Preview](review/database/tables/task.md) |
-| thesis | 16 | 10 | Thesis | [Preview](review/database/tables/thesis.md) |
-
-## Entity Type candidates vs. core business objects
-
-Legacy identity groups (ET candidates): **11**; principal business object concepts in this domain: **8**. 
-The core set is a candidate semantic grouping, not a rule for merging unrelated instances or Identity Namespaces.
-
-**Core business concepts:** Assignment, Course, Course-design task, Instructor, Simulation module, Student, Student-course registration, Thesis.
-
-Supporting Gold types: Assignment grading record, Examination result record, Simulation experiment result record.
-
-## Evaluation evidence
-
-- Gold SQL/CSV pairs executable and consistent: 66; compared event rows across questions: 8528.
-- [Gold source inventory](review/gold_dfg/event_graph.md)
-- [Question-level Gold DFGs](review/gold_dfg/README.md)
-- [Editable Draw.io schema](docs/schema.drawio)
-
 
 ## Questions
 
@@ -154,3 +115,9 @@ The checked-in question file contains **70 requests**. Explicit requests enumera
 ## Model input boundary
 
 This README, diagrams, table previews and Gold evidence are reader/reviewer material. Do not supply Gold annotations or review materials to the model.
+
+## Entity terminology
+
+Physical storage is described as Tables and Keys. A table may identify or reference several Entity Types through different keys; a single Entity can appear in several tables. The displayed type labels are legacy author annotations, not validated semantic ET truth. Type classification, Entity identity resolution, and event attribution are separate decisions.
+
+[Canonical terminology and stage contracts](../../docs/system/EEG_ENTITY_MODEL.md). Step 2 uses explicit activities or implicit recorded history with optional process focus; legacy reference logs retain their original scopes.

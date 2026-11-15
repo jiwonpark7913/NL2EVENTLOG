@@ -1,6 +1,6 @@
 # WarehouseFlow — Gold source inventory
 
-**Author annotations (legacy ET candidates).** One ER per physical table. Event-to-entity attribution is a separate relation and same-ET does not imply same entity instance.
+**Legacy author annotations.** Physical storage is described as Tables and Keys. A table may identify or reference several Entity Types through different keys; a single Entity can appear in several tables. The displayed type labels are legacy author annotations, not validated semantic ET truth. Type classification, Entity identity resolution, and event attribution are separate decisions.
 
 | Physical table | Entity Type candidate | Gold activity source labels |
 |---|---|---|
@@ -17,8 +17,8 @@
 | work_code | work_code | — |
 | worker | Worker | — |
 
-This is a source-binding projection. This is a reviewer-only candidate grouping and is not provided to the model.
+This is a source-binding projection. The model is not given this file.
 
 [Gold diagram](../database/gold_evidence_graph.svg) · [Gold DFGs](README.md)
 
-[Entity Representation and namespace candidates](entity_model_candidates.json) — review-only; **not validated semantic ET Gold**.
+[Table/key review inventory](entity_model_candidates.json) — reviewer-only, not model input.
