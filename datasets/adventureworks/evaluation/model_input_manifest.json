@@ -1,0 +1,6 @@
+{
+  "purpose": "Microsoft AdventureWorks source database discovery and extraction",
+  "paths": ["input/database.sqlite", "input/data_dictionary.json"],
+  "policy": "Only the two allowlisted files are model inputs. Questions are supplied separately. All documentation, source and review material is author-only.",
+  "gold_status": "No reference logs, Gold SQL or Gold DFGs have been created or evaluated."
+}

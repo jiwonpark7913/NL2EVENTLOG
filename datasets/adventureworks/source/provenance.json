@@ -1,0 +1,396 @@
+{
+  "upstream_repository": "microsoft/sql-server-samples",
+  "upstream_commit": "8fe3fd0c9a825fef3ae6d601e97537b612d7b214",
+  "upstream_path": "samples/databases/adventure-works/oltp-install-script/",
+  "table_count": 71,
+  "row_count": 759240,
+  "row_counts": {
+    "Address": 19614,
+    "AddressType": 6,
+    "BillOfMaterials": 2679,
+    "BusinessEntity": 20777,
+    "BusinessEntityAddress": 19614,
+    "BusinessEntityContact": 909,
+    "ContactType": 20,
+    "CountryRegion": 238,
+    "CountryRegionCurrency": 109,
+    "CreditCard": 19118,
+    "Culture": 8,
+    "Currency": 105,
+    "CurrencyRate": 13532,
+    "Customer": 19820,
+    "Department": 16,
+    "Document": 12,
+    "EmailAddress": 19972,
+    "Employee": 290,
+    "EmployeeDepartmentHistory": 296,
+    "EmployeePayHistory": 316,
+    "Illustration": 5,
+    "JobCandidate": 13,
+    "Location": 14,
+    "Password": 19972,
+    "Person": 19972,
+    "PersonCreditCard": 19118,
+    "PersonPhone": 19972,
+    "PhoneNumberType": 3,
+    "Product": 504,
+    "ProductCategory": 4,
+    "ProductCostHistory": 395,
+    "ProductDescription": 762,
+    "ProductDocument": 32,
+    "ProductInventory": 1069,
+    "ProductListPriceHistory": 395,
+    "ProductModel": 128,
+    "ProductModelIllustration": 7,
+    "ProductModelProductDescriptionCulture": 762,
+    "ProductPhoto": 101,
+    "ProductProductPhoto": 504,
+    "ProductReview": 4,
+    "ProductSubcategory": 37,
+    "ProductVendor": 460,
+    "PurchaseOrderDetail": 8845,
+    "PurchaseOrderHeader": 4012,
+    "SalesOrderDetail": 121317,
+    "SalesOrderHeader": 31465,
+    "SalesOrderHeaderSalesReason": 27647,
+    "SalesPerson": 17,
+    "SalesPersonQuotaHistory": 163,
+    "SalesReason": 10,
+    "SalesTaxRate": 29,
+    "SalesTerritory": 10,
+    "SalesTerritoryHistory": 17,
+    "ScrapReason": 16,
+    "Shift": 3,
+    "ShipMethod": 5,
+    "ShoppingCartItem": 3,
+    "SpecialOffer": 16,
+    "SpecialOfferProduct": 538,
+    "StateProvince": 181,
+    "Store": 701,
+    "TransactionHistory": 113443,
+    "TransactionHistoryArchive": 89253,
+    "UnitMeasure": 38,
+    "Vendor": 104,
+    "WorkOrder": 72591,
+    "WorkOrderRouting": 67131,
+    "AWBuildVersion": 1,
+    "DatabaseLog": 0,
+    "ErrorLog": 0
+  },
+  "foreign_key_count": 90,
+  "integrity_check": "ok",
+  "foreign_key_violations": [],
+  "missing_descriptions": [
+    "Missing column description: Password.BusinessEntityID",
+    "Missing column description: Vendor.PurchasingWebServiceURL",
+    "Missing column description: Vendor.ModifiedDate",
+    "Missing table description: WorkOrder",
+    "Missing column description: WorkOrder.WorkOrderID",
+    "Missing column description: WorkOrder.ProductID",
+    "Missing column description: WorkOrder.OrderQty",
+    "Missing column description: WorkOrder.StockedQty",
+    "Missing column description: WorkOrder.ScrappedQty",
+    "Missing column description: WorkOrder.StartDate",
+    "Missing column description: WorkOrder.EndDate",
+    "Missing column description: WorkOrder.DueDate",
+    "Missing column description: WorkOrder.ScrapReasonID",
+    "Missing column description: WorkOrder.ModifiedDate",
+    "Missing table description: WorkOrderRouting",
+    "Missing column description: WorkOrderRouting.WorkOrderID",
+    "Missing column description: WorkOrderRouting.ProductID",
+    "Missing column description: WorkOrderRouting.OperationSequence",
+    "Missing column description: WorkOrderRouting.LocationID",
+    "Missing column description: WorkOrderRouting.ScheduledStartDate",
+    "Missing column description: WorkOrderRouting.ScheduledEndDate",
+    "Missing column description: WorkOrderRouting.ActualStartDate",
+    "Missing column description: WorkOrderRouting.ActualEndDate",
+    "Missing column description: WorkOrderRouting.ActualResourceHrs",
+    "Missing column description: WorkOrderRouting.PlannedCost",
+    "Missing column description: WorkOrderRouting.ActualCost",
+    "Missing column description: WorkOrderRouting.ModifiedDate"
+  ],
+  "sqlite_sha256": "d94afba859c44c6b16e874b8aaae9fd0d355a2b48dff5eaf84f4b3e981084b15",
+  "dictionary_sha256": "0d5801c8024d16d2bba3650194a838c0b9f4340565dae8b42a27a9770565c98f",
+  "source_files": [
+    {
+      "name": "AWBuildVersion.csv",
+      "git_blob_sha": "41b32f07b1e9eeaf171ef340bed94e0d7920348b"
+    },
+    {
+      "name": "Address.csv",
+      "git_blob_sha": "79b1775ddf60d8d6fd6a3f37d04d2c42c3e074c7"
+    },
+    {
+      "name": "AddressType.csv",
+      "git_blob_sha": "35523bbc44993b848974e34f79245606da5b7088"
+    },
+    {
+      "name": "BillOfMaterials.csv",
+      "git_blob_sha": "f4541cd0b336b9cee24e072516ceac3a163f0327"
+    },
+    {
+      "name": "BusinessEntity.csv",
+      "git_blob_sha": "6920d83a3a1fa33c696f47c1eae45fb89df6d183"
+    },
+    {
+      "name": "BusinessEntityAddress.csv",
+      "git_blob_sha": "abf4a81a1e0073cc28db8ca9c198ecf833e41467"
+    },
+    {
+      "name": "BusinessEntityContact.csv",
+      "git_blob_sha": "9d22be95349120e978022674e916173d1222a586"
+    },
+    {
+      "name": "ContactType.csv",
+      "git_blob_sha": "6707807236fcc82ae38a50809633c144ff67f7ea"
+    },
+    {
+      "name": "CountryRegion.csv",
+      "git_blob_sha": "f8f9b2ac8edf88a93ac362e9ca975b3f1f5662bf"
+    },
+    {
+      "name": "CountryRegionCurrency.csv",
+      "git_blob_sha": "43fd7d60112b5f55ab3f089c948064c0a3efb06b"
+    },
+    {
+      "name": "CreditCard.csv",
+      "git_blob_sha": "e1bf1d88fba88121cc7e9f5993fc507c461c7967"
+    },
+    {
+      "name": "Culture.csv",
+      "git_blob_sha": "ef5a0dec76509df0f67794df1414ca47b413d069"
+    },
+    {
+      "name": "Currency.csv",
+      "git_blob_sha": "36783b4f933a7db361e7a487ec2e3cab791bf073"
+    },
+    {
+      "name": "CurrencyRate.csv",
+      "git_blob_sha": "2d84f32ac49a314b6998e0e13c07122d4d5b9bf7"
+    },
+    {
+      "name": "Customer.csv",
+      "git_blob_sha": "86647686ac7924d04d1c7a2e2e379be68caa9c33"
+    },
+    {
+      "name": "Department.csv",
+      "git_blob_sha": "be79a855d81d0d5c6bdca9b29ac8e109e7ed87a2"
+    },
+    {
+      "name": "Document.csv",
+      "git_blob_sha": "fe33ba94bc0bdf4ca48df665bb6e54c96af0b0b2"
+    },
+    {
+      "name": "EmailAddress.csv",
+      "git_blob_sha": "83d390d24ebafd9aca2659093661c65ed2c7ef3e"
+    },
+    {
+      "name": "Employee.csv",
+      "git_blob_sha": "92b16e3ff1d789a14502d67798d77718971114fe"
+    },
+    {
+      "name": "EmployeeDepartmentHistory.csv",
+      "git_blob_sha": "cacf4a10dbb169f164ab1447293046002c2fc4ce"
+    },
+    {
+      "name": "EmployeePayHistory.csv",
+      "git_blob_sha": "b2daa96777399e49368c35536562f40848c04e73"
+    },
+    {
+      "name": "Illustration.csv",
+      "git_blob_sha": "6a49e9260a8e90e544a77156b98170dc275cc1e7"
+    },
+    {
+      "name": "JobCandidate.csv",
+      "git_blob_sha": "31fe53d648dc0705bfdfceb094f4bf09b3bc0c47"
+    },
+    {
+      "name": "Location.csv",
+      "git_blob_sha": "54eccdf69ea912875c422c98e8277b9f3fbdcb76"
+    },
+    {
+      "name": "Password.csv",
+      "git_blob_sha": "1e6d3f4cc32ed229ebfe11e3ca296eaabbb06b1f"
+    },
+    {
+      "name": "Person.csv",
+      "git_blob_sha": "8e7e107487aa3fab3f0b0af55e1230ccc33558d6"
+    },
+    {
+      "name": "PersonCreditCard.csv",
+      "git_blob_sha": "9a68616dabffb1b49e9389c99b011bc615fb7263"
+    },
+    {
+      "name": "PersonPhone.csv",
+      "git_blob_sha": "014f5d4299cdedfc5555566b2379c155b93e46c7"
+    },
+    {
+      "name": "PhoneNumberType.csv",
+      "git_blob_sha": "b88303a1b0e22552b5eb86da6c9cb4297816fcac"
+    },
+    {
+      "name": "Product.csv",
+      "git_blob_sha": "017cfccb850b98ed114bd3f78f48ad36f9a3f697"
+    },
+    {
+      "name": "ProductCategory.csv",
+      "git_blob_sha": "189ad0c423c60872cc9e36717783b2db9fde71e4"
+    },
+    {
+      "name": "ProductCostHistory.csv",
+      "git_blob_sha": "47628da6c888c5c4a175ccab6f3e38738dc4ea3c"
+    },
+    {
+      "name": "ProductDescription.csv",
+      "git_blob_sha": "f72a4c8cf4979680d80cd611b3efb0463ec9b576"
+    },
+    {
+      "name": "ProductDocument.csv",
+      "git_blob_sha": "f900f17f07a60df95287ee028b286f0992869904"
+    },
+    {
+      "name": "ProductInventory.csv",
+      "git_blob_sha": "fe784f0991eea5e60111abac5dcab8510b85da78"
+    },
+    {
+      "name": "ProductListPriceHistory.csv",
+      "git_blob_sha": "2b50ebed256afd5c0d14723155621dcd0999df31"
+    },
+    {
+      "name": "ProductModel.csv",
+      "git_blob_sha": "3c0686f05b79bd2c28fb01bfc05caa6a2e8fb7b7"
+    },
+    {
+      "name": "ProductModelIllustration.csv",
+      "git_blob_sha": "2d23371ea0232885196fa87ac0a0e9302acf80be"
+    },
+    {
+      "name": "ProductModelProductDescriptionCulture.csv",
+      "git_blob_sha": "0bcbb113ca3a49defb163c06708fc44f2f2fd4fd"
+    },
+    {
+      "name": "ProductPhoto.csv",
+      "git_blob_sha": "8ad13bf00777d0a359828d5141fb660d50abdd87"
+    },
+    {
+      "name": "ProductProductPhoto.csv",
+      "git_blob_sha": "5ec5aa22e538adc6f765a21eb45605d7c66d1153"
+    },
+    {
+      "name": "ProductReview.csv",
+      "git_blob_sha": "6f9de48b1de054e194d3d4cace07a086682a0795"
+    },
+    {
+      "name": "ProductSubcategory.csv",
+      "git_blob_sha": "523c4e90e0b5009163d93d8d7e1f871269c842e7"
+    },
+    {
+      "name": "ProductVendor.csv",
+      "git_blob_sha": "63baa3c20b7dc1410adb9a309ab47aa3293bf207"
+    },
+    {
+      "name": "PurchaseOrderDetail.csv",
+      "git_blob_sha": "3d32f787ad0c54b5378cf580b332a020a3a4bf6a"
+    },
+    {
+      "name": "PurchaseOrderHeader.csv",
+      "git_blob_sha": "f2948ad687ef3b180cbd95f1f25be48152efffa2"
+    },
+    {
+      "name": "SalesOrderDetail.csv",
+      "git_blob_sha": "4a67c5d68652b231227dfcb39247e42ae15cad07"
+    },
+    {
+      "name": "SalesOrderHeader.csv",
+      "git_blob_sha": "fff8408494acb213ec98842dceed56ff4363e669"
+    },
+    {
+      "name": "SalesOrderHeaderSalesReason.csv",
+      "git_blob_sha": "3899a9223eaa2997bfe9aa42230366b7386f93ca"
+    },
+    {
+      "name": "SalesPerson.csv",
+      "git_blob_sha": "fa8663bc4448c86afd679801c38f24c510e9a0b9"
+    },
+    {
+      "name": "SalesPersonQuotaHistory.csv",
+      "git_blob_sha": "2646c16e4a627faa4c814f64474b1ae46c3b97e8"
+    },
+    {
+      "name": "SalesReason.csv",
+      "git_blob_sha": "e2492926428c608bc4c0f9abf0d69bcc4fcff724"
+    },
+    {
+      "name": "SalesTaxRate.csv",
+      "git_blob_sha": "3245e4e3b194b4d2d1b62d2bdbdcfc839cebd73e"
+    },
+    {
+      "name": "SalesTerritory.csv",
+      "git_blob_sha": "0fe5565ca77c36ba4d00ab30afebaef14e54271c"
+    },
+    {
+      "name": "SalesTerritoryHistory.csv",
+      "git_blob_sha": "c8dac0bde5ae1fb35b8254c5739baabc637eba5e"
+    },
+    {
+      "name": "ScrapReason.csv",
+      "git_blob_sha": "eb11acff8857248c1d9f025a39f29a4775a7ce11"
+    },
+    {
+      "name": "Shift.csv",
+      "git_blob_sha": "4d2cf34ae85ae62b27817300189496fef0acd5bd"
+    },
+    {
+      "name": "ShipMethod.csv",
+      "git_blob_sha": "62a9547444c281a56664fa1d5f7a0e6c97d1d732"
+    },
+    {
+      "name": "ShoppingCartItem.csv",
+      "git_blob_sha": "1a11061c7c4dc6def932026f30e4ae2719a614d0"
+    },
+    {
+      "name": "SpecialOffer.csv",
+      "git_blob_sha": "c725ced2c2fb6202de4001e3a8e0147bc509f16e"
+    },
+    {
+      "name": "SpecialOfferProduct.csv",
+      "git_blob_sha": "413465b18d82daab5fb95b2c49745ec0ef9bbda7"
+    },
+    {
+      "name": "StateProvince.csv",
+      "git_blob_sha": "918e1b07357a966de23528f93811f23337946210"
+    },
+    {
+      "name": "Store.csv",
+      "git_blob_sha": "34d4d46d1b8232a730c7f409346d0a4ddab99036"
+    },
+    {
+      "name": "TransactionHistory.csv",
+      "git_blob_sha": "4eb04afd081f02d6a29f9042e763907291bd363a"
+    },
+    {
+      "name": "TransactionHistoryArchive.csv",
+      "git_blob_sha": "d97c26e1beec5b4ee05bc3e137b7e11b7f5d512a"
+    },
+    {
+      "name": "UnitMeasure.csv",
+      "git_blob_sha": "6ed5d4e2b0140d0a544cf0fff44a77758d360738"
+    },
+    {
+      "name": "Vendor.csv",
+      "git_blob_sha": "feecfdf9f80e2a5b06261ba8a84db431459f3609"
+    },
+    {
+      "name": "WorkOrder.csv",
+      "git_blob_sha": "dfe1f65af0f8e82eacd257084e4bc1512d9e121f"
+    },
+    {
+      "name": "WorkOrderRouting.csv",
+      "git_blob_sha": "8e755565b4203516ad05d1d93ab0bb2c691a9c0a"
+    },
+    {
+      "name": "instawdb.sql",
+      "git_blob_sha": "86d6e5f8b93641743bdd80a8a5e4895c71d86cef"
+    }
+  ]
+}

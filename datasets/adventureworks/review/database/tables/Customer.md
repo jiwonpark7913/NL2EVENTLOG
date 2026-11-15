@@ -1,0 +1,30 @@
+# Customer
+
+**Rows:** 19820 · **Columns:** 7
+
+## Original records (first 10)
+
+| CustomerID | PersonID | StoreID | TerritoryID | AccountNumber | rowguid | ModifiedDate |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | NULL | 934 | 1 | AW00000001 | 3F5AE95E-B87D-4AED-95B4-C3797AFCB74F | 2025-09-11 11:15:07.263 |
+| 2 | NULL | 1028 | 1 | AW00000002 | E552F657-A9AF-4A7D-A645-C429D6E02491 | 2025-09-11 11:15:07.263 |
+| 3 | NULL | 642 | 4 | AW00000003 | 130774B1-DB21-4EF3-98C8-C104BCD6ED6D | 2025-09-11 11:15:07.263 |
+| 4 | NULL | 932 | 4 | AW00000004 | FF862851-1DAA-4044-BE7C-3E85583C054D | 2025-09-11 11:15:07.263 |
+| 5 | NULL | 1026 | 4 | AW00000005 | 83905BDC-6F5E-4F71-B162-C98DA069F38A | 2025-09-11 11:15:07.263 |
+| 6 | NULL | 644 | 4 | AW00000006 | 1A92DF88-BFA2-467D-BD54-FCB9E647FDD7 | 2025-09-11 11:15:07.263 |
+| 7 | NULL | 930 | 1 | AW00000007 | 03E9273E-B193-448E-9823-FE0C44AEED78 | 2025-09-11 11:15:07.263 |
+| 8 | NULL | 1024 | 5 | AW00000008 | 801368B1-4323-4BFA-8BEA-5B5B1E4BD4A0 | 2025-09-11 11:15:07.263 |
+| 9 | NULL | 620 | 5 | AW00000009 | B900BB7F-23C3-481D-80DA-C49A5BD6F772 | 2025-09-11 11:15:07.263 |
+| 10 | NULL | 928 | 6 | AW00000010 | CDB6698D-2FF1-4FBA-8F22-60AD1D11DABD | 2025-09-11 11:15:07.263 |
+
+## Column definitions
+
+| Column | SQL type | PK | Not null |
+|---|---|---|---|
+| CustomerID | INTEGER | True | True |
+| PersonID | INTEGER | False | False |
+| StoreID | INTEGER | False | False |
+| TerritoryID | INTEGER | False | False |
+| AccountNumber | TEXT | False | False |
+| rowguid | TEXT | False | True |
+| ModifiedDate | TEXT | False | True |

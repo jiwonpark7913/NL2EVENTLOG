@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DATASETS = ("hospitalflow", "universityflow", "plateflow", "warehouseflow")
+DATASETS = ("hospitalflow", "universityflow", "plateflow", "warehouseflow", "adventureworks")
 
 def quote(name):
     return '"' + name.replace('"', '""') + '"'
@@ -133,7 +133,8 @@ def build(dataset):
         output.append((t,count,len(names)))
     svg,fks=svg_erd(conn,tables)
     (dest/"schema.svg").write_text(svg,encoding="utf-8")
-    update_drawio(base/"docs"/"schema.drawio",tables,[(a,b) for a,b,_,_ in fks])
+    if dataset != "adventureworks":
+        update_drawio(base/"docs"/"schema.drawio",tables,[(a,b) for a,b,_,_ in fks])
     report=[f"# {dataset} — Database Inspection","",
             "Original SQLite records; **not model input**. Click a table name to inspect its actual first 10 rows.",
             "", "![Interactive table overview](schema.svg)", "",

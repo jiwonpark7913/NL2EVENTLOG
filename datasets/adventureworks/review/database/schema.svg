@@ -1,0 +1,709 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2340 8265" width="2340" height="8265">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#64748b"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<path d="M1120 2420 H1175.0 V110 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Address.StateProvinceID → StateProvince.StateProvinceID</title></path>
+<path d="M340 8030 H785.0 V440 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BillOfMaterials.UnitMeasureCode → UnitMeasure.UnitMeasureCode</title></path>
+<path d="M1120 2090 H1175.0 V440 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BillOfMaterials.ComponentID → Product.ProductID</title></path>
+<path d="M1120 2090 H1175.0 V440 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BillOfMaterials.ProductAssemblyID → Product.ProductID</title></path>
+<path d="M340 770 H980.0 V110 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BusinessEntityAddress.BusinessEntityID → BusinessEntity.BusinessEntityID</title></path>
+<path d="M340 440 H980.0 V110 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BusinessEntityAddress.AddressTypeID → AddressType.AddressTypeID</title></path>
+<path d="M1510 110 H1565.0 V110 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BusinessEntityAddress.AddressID → Address.AddressID</title></path>
+<path d="M340 770 H590.0 V110 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BusinessEntityContact.BusinessEntityID → BusinessEntity.BusinessEntityID</title></path>
+<path d="M340 1100 H590.0 V110 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BusinessEntityContact.ContactTypeID → ContactType.ContactTypeID</title></path>
+<path d="M730 770 H785.0 V110 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>BusinessEntityContact.PersonID → Person.BusinessEntityID</title></path>
+<path d="M340 2420 H395.0 V110 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>CountryRegionCurrency.CurrencyCode → Currency.CurrencyCode</title></path>
+<path d="M340 1430 H395.0 V110 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>CountryRegionCurrency.CountryRegionCode → CountryRegion.CountryRegionCode</title></path>
+<path d="M340 2420 H395.0 V440 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>CurrencyRate.ToCurrencyCode → Currency.CurrencyCode</title></path>
+<path d="M340 2420 H395.0 V440 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>CurrencyRate.FromCurrencyCode → Currency.CurrencyCode</title></path>
+<path d="M730 2090 H1370.0 V110 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Customer.TerritoryID → SalesTerritory.TerritoryID</title></path>
+<path d="M1900 2090 H1955.0 V110 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Customer.StoreID → Store.BusinessEntityID</title></path>
+<path d="M730 770 H1370.0 V110 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Customer.PersonID → Person.BusinessEntityID</title></path>
+<path d="M1120 770 H1175.0 V770 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Document.Owner → Employee.BusinessEntityID</title></path>
+<path d="M730 770 H785.0 V440 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>EmailAddress.BusinessEntityID → Person.BusinessEntityID</title></path>
+<path d="M730 770 H785.0 V770 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Employee.BusinessEntityID → Person.BusinessEntityID</title></path>
+<path d="M340 6710 H785.0 V1100 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>EmployeeDepartmentHistory.ShiftID → Shift.ShiftID</title></path>
+<path d="M1120 770 H1175.0 V1100 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>EmployeeDepartmentHistory.BusinessEntityID → Employee.BusinessEntityID</title></path>
+<path d="M340 3080 H785.0 V1100 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>EmployeeDepartmentHistory.DepartmentID → Department.DepartmentID</title></path>
+<path d="M1120 770 H1175.0 V1430 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>EmployeePayHistory.BusinessEntityID → Employee.BusinessEntityID</title></path>
+<path d="M1120 770 H1175.0 V1760 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>JobCandidate.BusinessEntityID → Employee.BusinessEntityID</title></path>
+<path d="M730 770 H785.0 V1100 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Password.BusinessEntityID → Person.BusinessEntityID</title></path>
+<path d="M340 770 H395.0 V770 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Person.BusinessEntityID → BusinessEntity.BusinessEntityID</title></path>
+<path d="M340 1760 H590.0 V1430 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PersonCreditCard.CreditCardID → CreditCard.CreditCardID</title></path>
+<path d="M730 770 H785.0 V1430 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PersonCreditCard.BusinessEntityID → Person.BusinessEntityID</title></path>
+<path d="M340 4400 H590.0 V1760 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PersonPhone.PhoneNumberTypeID → PhoneNumberType.PhoneNumberTypeID</title></path>
+<path d="M730 770 H785.0 V1760 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PersonPhone.BusinessEntityID → Person.BusinessEntityID</title></path>
+<path d="M730 1760 H785.0 V2090 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Product.ProductSubcategoryID → ProductSubcategory.ProductSubcategoryID</title></path>
+<path d="M340 5390 H590.0 V2090 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Product.ProductModelID → ProductModel.ProductModelID</title></path>
+<path d="M340 8030 H590.0 V2090 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Product.WeightUnitMeasureCode → UnitMeasure.UnitMeasureCode</title></path>
+<path d="M340 8030 H590.0 V2090 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Product.SizeUnitMeasureCode → UnitMeasure.UnitMeasureCode</title></path>
+<path d="M1120 2090 H1175.0 V2090 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductCostHistory.ProductID → Product.ProductID</title></path>
+<path d="M1510 770 H1565.0 V440 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductDocument.DocumentNode → Document.DocumentNode</title></path>
+<path d="M1120 2090 H1370.0 V440 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductDocument.ProductID → Product.ProductID</title></path>
+<path d="M1120 2090 H1175.0 V2420 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductInventory.ProductID → Product.ProductID</title></path>
+<path d="M340 4070 H785.0 V2420 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductInventory.LocationID → Location.LocationID</title></path>
+<path d="M1120 2090 H1175.0 V2750 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductListPriceHistory.ProductID → Product.ProductID</title></path>
+<path d="M340 3740 H395.0 V1100 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductModelIllustration.IllustrationID → Illustration.IllustrationID</title></path>
+<path d="M340 5390 H395.0 V1100 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductModelIllustration.ProductModelID → ProductModel.ProductModelID</title></path>
+<path d="M340 5390 H395.0 V1430 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductModelProductDescriptionCulture.ProductModelID → ProductModel.ProductModelID</title></path>
+<path d="M340 2090 H395.0 V1430 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductModelProductDescriptionCulture.CultureID → Culture.CultureID</title></path>
+<path d="M340 5060 H395.0 V1430 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductModelProductDescriptionCulture.ProductDescriptionID → ProductDescription.ProductDescriptionID</title></path>
+<path d="M340 5720 H785.0 V3080 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductProductPhoto.ProductPhotoID → ProductPhoto.ProductPhotoID</title></path>
+<path d="M1120 2090 H1175.0 V3080 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductProductPhoto.ProductID → Product.ProductID</title></path>
+<path d="M1120 2090 H1175.0 V3410 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductReview.ProductID → Product.ProductID</title></path>
+<path d="M340 4730 H395.0 V1760 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductSubcategory.ProductCategoryID → ProductCategory.ProductCategoryID</title></path>
+<path d="M730 2420 H980.0 V3740 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductVendor.BusinessEntityID → Vendor.BusinessEntityID</title></path>
+<path d="M340 8030 H785.0 V3740 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductVendor.UnitMeasureCode → UnitMeasure.UnitMeasureCode</title></path>
+<path d="M1120 2090 H1175.0 V3740 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ProductVendor.ProductID → Product.ProductID</title></path>
+<path d="M1510 4070 H1565.0 V770 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PurchaseOrderDetail.PurchaseOrderID → PurchaseOrderHeader.PurchaseOrderID</title></path>
+<path d="M1120 2090 H1370.0 V770 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PurchaseOrderDetail.ProductID → Product.ProductID</title></path>
+<path d="M340 7040 H785.0 V4070 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PurchaseOrderHeader.ShipMethodID → ShipMethod.ShipMethodID</title></path>
+<path d="M730 2420 H980.0 V4070 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PurchaseOrderHeader.VendorID → Vendor.BusinessEntityID</title></path>
+<path d="M1120 770 H1175.0 V4070 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>PurchaseOrderHeader.EmployeeID → Employee.BusinessEntityID</title></path>
+<path d="M1510 5720 H1565.0 V1100 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderDetail.SpecialOfferID → SpecialOfferProduct.SpecialOfferID</title></path>
+<path d="M1510 5720 H1565.0 V1100 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderDetail.ProductID → SpecialOfferProduct.ProductID</title></path>
+<path d="M2290 440 H1955.0 V1100 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderDetail.SalesOrderID → SalesOrderHeader.SalesOrderID</title></path>
+<path d="M730 2090 H1370.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.TerritoryID → SalesTerritory.TerritoryID</title></path>
+<path d="M340 7040 H1175.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.ShipMethodID → ShipMethod.ShipMethodID</title></path>
+<path d="M1510 4730 H1760.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.SalesPersonID → SalesPerson.BusinessEntityID</title></path>
+<path d="M2290 110 H2150.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.CustomerID → Customer.CustomerID</title></path>
+<path d="M730 440 H1370.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.CurrencyRateID → CurrencyRate.CurrencyRateID</title></path>
+<path d="M340 1760 H1175.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.CreditCardID → CreditCard.CreditCardID</title></path>
+<path d="M1510 110 H1760.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.ShipToAddressID → Address.AddressID</title></path>
+<path d="M1510 110 H1760.0 V440 H1990" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeader.BillToAddressID → Address.AddressID</title></path>
+<path d="M2290 440 H1760.0 V4400 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeaderSalesReason.SalesOrderID → SalesOrderHeader.SalesOrderID</title></path>
+<path d="M340 6050 H785.0 V4400 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesOrderHeaderSalesReason.SalesReasonID → SalesReason.SalesReasonID</title></path>
+<path d="M730 2090 H980.0 V4730 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesPerson.TerritoryID → SalesTerritory.TerritoryID</title></path>
+<path d="M1120 770 H1175.0 V4730 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesPerson.BusinessEntityID → Employee.BusinessEntityID</title></path>
+<path d="M1510 4730 H1565.0 V1430 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesPersonQuotaHistory.BusinessEntityID → SalesPerson.BusinessEntityID</title></path>
+<path d="M1120 2420 H1175.0 V5060 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesTaxRate.StateProvinceID → StateProvince.StateProvinceID</title></path>
+<path d="M340 1430 H395.0 V2090 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesTerritory.CountryRegionCode → CountryRegion.CountryRegionCode</title></path>
+<path d="M730 2090 H1175.0 V1760 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesTerritoryHistory.TerritoryID → SalesTerritory.TerritoryID</title></path>
+<path d="M1510 4730 H1565.0 V1760 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SalesTerritoryHistory.BusinessEntityID → SalesPerson.BusinessEntityID</title></path>
+<path d="M1120 2090 H1175.0 V5390 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>ShoppingCartItem.ProductID → Product.ProductID</title></path>
+<path d="M340 7370 H785.0 V5720 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SpecialOfferProduct.SpecialOfferID → SpecialOffer.SpecialOfferID</title></path>
+<path d="M1120 2090 H1175.0 V5720 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>SpecialOfferProduct.ProductID → Product.ProductID</title></path>
+<path d="M730 2090 H785.0 V2420 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>StateProvince.TerritoryID → SalesTerritory.TerritoryID</title></path>
+<path d="M340 1430 H590.0 V2420 H820" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>StateProvince.CountryRegionCode → CountryRegion.CountryRegionCode</title></path>
+<path d="M1510 4730 H1565.0 V2090 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Store.SalesPersonID → SalesPerson.BusinessEntityID</title></path>
+<path d="M340 770 H980.0 V2090 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Store.BusinessEntityID → BusinessEntity.BusinessEntityID</title></path>
+<path d="M1120 2090 H1175.0 V6050 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>TransactionHistory.ProductID → Product.ProductID</title></path>
+<path d="M340 770 H395.0 V2420 H430" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>Vendor.BusinessEntityID → BusinessEntity.BusinessEntityID</title></path>
+<path d="M340 6380 H785.0 V6380 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>WorkOrder.ScrapReasonID → ScrapReason.ScrapReasonID</title></path>
+<path d="M1120 2090 H1175.0 V6380 H1210" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>WorkOrder.ProductID → Product.ProductID</title></path>
+<path d="M1510 6380 H1565.0 V2420 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>WorkOrderRouting.WorkOrderID → WorkOrder.WorkOrderID</title></path>
+<path d="M340 4070 H980.0 V2420 H1600" fill="none" stroke="#94a3b8" stroke-width="1.4" marker-end="url(#a)"><title>WorkOrderRouting.LocationID → Location.LocationID</title></path>
+<a xlink:href="tables/AWBuildVersion.md" href="tables/AWBuildVersion.md" target="_parent"><rect x="40" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">AWBuildVersion</text>
+<text x="52" y="132" font-family="monospace" font-size="12" fill="#334155">SystemInformationID</text>
+<text x="52" y="153" font-family="monospace" font-size="12" fill="#334155">Database Version</text>
+<text x="52" y="174" font-family="monospace" font-size="12" fill="#334155">VersionDate</text>
+<text x="52" y="195" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="309" font-family="sans-serif" font-size="12" fill="#475569">1 rows · click for 10 records</text></a>
+<a xlink:href="tables/Address.md" href="tables/Address.md" target="_parent"><rect x="1210" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Address</text>
+<text x="1222" y="132" font-family="monospace" font-size="12" fill="#334155">AddressID</text>
+<text x="1222" y="153" font-family="monospace" font-size="12" fill="#334155">AddressLine1</text>
+<text x="1222" y="174" font-family="monospace" font-size="12" fill="#334155">AddressLine2</text>
+<text x="1222" y="195" font-family="monospace" font-size="12" fill="#334155">City</text>
+<text x="1222" y="216" font-family="monospace" font-size="12" fill="#334155">StateProvinceID</text>
+<text x="1222" y="237" font-family="monospace" font-size="12" fill="#334155">PostalCode</text>
+<text x="1222" y="258" font-family="monospace" font-size="12" fill="#334155">SpatialLocation</text>
+<text x="1222" y="279" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1222" y="309" font-family="sans-serif" font-size="12" fill="#475569">19614 rows · click for 10 records</text></a>
+<a xlink:href="tables/AddressType.md" href="tables/AddressType.md" target="_parent"><rect x="40" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">AddressType</text>
+<text x="52" y="462" font-family="monospace" font-size="12" fill="#334155">AddressTypeID</text>
+<text x="52" y="483" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="504" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="52" y="525" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="639" font-family="sans-serif" font-size="12" fill="#475569">6 rows · click for 10 records</text></a>
+<a xlink:href="tables/BillOfMaterials.md" href="tables/BillOfMaterials.md" target="_parent"><rect x="1210" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">BillOfMaterials</text>
+<text x="1222" y="462" font-family="monospace" font-size="12" fill="#334155">BillOfMaterialsID</text>
+<text x="1222" y="483" font-family="monospace" font-size="12" fill="#334155">ProductAssemblyID</text>
+<text x="1222" y="504" font-family="monospace" font-size="12" fill="#334155">ComponentID</text>
+<text x="1222" y="525" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="1222" y="546" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="1222" y="567" font-family="monospace" font-size="12" fill="#334155">UnitMeasureCode</text>
+<text x="1222" y="588" font-family="monospace" font-size="12" fill="#334155">BOMLevel</text>
+<text x="1222" y="609" font-family="monospace" font-size="12" fill="#334155">PerAssemblyQty</text>
+<text x="1222" y="639" font-family="sans-serif" font-size="12" fill="#475569">2679 rows · click for 10 records</text></a>
+<a xlink:href="tables/BusinessEntity.md" href="tables/BusinessEntity.md" target="_parent"><rect x="40" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">BusinessEntity</text>
+<text x="52" y="792" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="52" y="813" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="52" y="834" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="969" font-family="sans-serif" font-size="12" fill="#475569">20777 rows · click for 10 records</text></a>
+<a xlink:href="tables/BusinessEntityAddress.md" href="tables/BusinessEntityAddress.md" target="_parent"><rect x="1600" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">BusinessEntityAddress</text>
+<text x="1612" y="132" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1612" y="153" font-family="monospace" font-size="12" fill="#334155">AddressID</text>
+<text x="1612" y="174" font-family="monospace" font-size="12" fill="#334155">AddressTypeID</text>
+<text x="1612" y="195" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1612" y="216" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1612" y="309" font-family="sans-serif" font-size="12" fill="#475569">19614 rows · click for 10 records</text></a>
+<a xlink:href="tables/BusinessEntityContact.md" href="tables/BusinessEntityContact.md" target="_parent"><rect x="820" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">BusinessEntityContact</text>
+<text x="832" y="132" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="832" y="153" font-family="monospace" font-size="12" fill="#334155">PersonID</text>
+<text x="832" y="174" font-family="monospace" font-size="12" fill="#334155">ContactTypeID</text>
+<text x="832" y="195" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="832" y="216" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="832" y="309" font-family="sans-serif" font-size="12" fill="#475569">909 rows · click for 10 records</text></a>
+<a xlink:href="tables/ContactType.md" href="tables/ContactType.md" target="_parent"><rect x="40" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ContactType</text>
+<text x="52" y="1122" font-family="monospace" font-size="12" fill="#334155">ContactTypeID</text>
+<text x="52" y="1143" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="1164" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="1299" font-family="sans-serif" font-size="12" fill="#475569">20 rows · click for 10 records</text></a>
+<a xlink:href="tables/CountryRegion.md" href="tables/CountryRegion.md" target="_parent"><rect x="40" y="1385" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="1385" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="1413" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">CountryRegion</text>
+<text x="52" y="1452" font-family="monospace" font-size="12" fill="#334155">CountryRegionCode</text>
+<text x="52" y="1473" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="1494" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="1629" font-family="sans-serif" font-size="12" fill="#475569">238 rows · click for 10 records</text></a>
+<a xlink:href="tables/CountryRegionCurrency.md" href="tables/CountryRegionCurrency.md" target="_parent"><rect x="430" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">CountryRegionCurrency</text>
+<text x="442" y="132" font-family="monospace" font-size="12" fill="#334155">CountryRegionCode</text>
+<text x="442" y="153" font-family="monospace" font-size="12" fill="#334155">CurrencyCode</text>
+<text x="442" y="174" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="442" y="309" font-family="sans-serif" font-size="12" fill="#475569">109 rows · click for 10 records</text></a>
+<a xlink:href="tables/CreditCard.md" href="tables/CreditCard.md" target="_parent"><rect x="40" y="1715" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="1715" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="1743" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">CreditCard</text>
+<text x="52" y="1782" font-family="monospace" font-size="12" fill="#334155">CreditCardID</text>
+<text x="52" y="1803" font-family="monospace" font-size="12" fill="#334155">CardType</text>
+<text x="52" y="1824" font-family="monospace" font-size="12" fill="#334155">CardNumber</text>
+<text x="52" y="1845" font-family="monospace" font-size="12" fill="#334155">ExpMonth</text>
+<text x="52" y="1866" font-family="monospace" font-size="12" fill="#334155">ExpYear</text>
+<text x="52" y="1887" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="1959" font-family="sans-serif" font-size="12" fill="#475569">19118 rows · click for 10 records</text></a>
+<a xlink:href="tables/Culture.md" href="tables/Culture.md" target="_parent"><rect x="40" y="2045" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="2045" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="2073" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Culture</text>
+<text x="52" y="2112" font-family="monospace" font-size="12" fill="#334155">CultureID</text>
+<text x="52" y="2133" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="2154" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="2289" font-family="sans-serif" font-size="12" fill="#475569">8 rows · click for 10 records</text></a>
+<a xlink:href="tables/Currency.md" href="tables/Currency.md" target="_parent"><rect x="40" y="2375" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="2375" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="2403" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Currency</text>
+<text x="52" y="2442" font-family="monospace" font-size="12" fill="#334155">CurrencyCode</text>
+<text x="52" y="2463" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="2484" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="2619" font-family="sans-serif" font-size="12" fill="#475569">105 rows · click for 10 records</text></a>
+<a xlink:href="tables/CurrencyRate.md" href="tables/CurrencyRate.md" target="_parent"><rect x="430" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">CurrencyRate</text>
+<text x="442" y="462" font-family="monospace" font-size="12" fill="#334155">CurrencyRateID</text>
+<text x="442" y="483" font-family="monospace" font-size="12" fill="#334155">CurrencyRateDate</text>
+<text x="442" y="504" font-family="monospace" font-size="12" fill="#334155">FromCurrencyCode</text>
+<text x="442" y="525" font-family="monospace" font-size="12" fill="#334155">ToCurrencyCode</text>
+<text x="442" y="546" font-family="monospace" font-size="12" fill="#334155">AverageRate</text>
+<text x="442" y="567" font-family="monospace" font-size="12" fill="#334155">EndOfDayRate</text>
+<text x="442" y="588" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="442" y="639" font-family="sans-serif" font-size="12" fill="#475569">13532 rows · click for 10 records</text></a>
+<a xlink:href="tables/Customer.md" href="tables/Customer.md" target="_parent"><rect x="1990" y="65" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1990" y="65" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="2002" y="93" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Customer</text>
+<text x="2002" y="132" font-family="monospace" font-size="12" fill="#334155">CustomerID</text>
+<text x="2002" y="153" font-family="monospace" font-size="12" fill="#334155">PersonID</text>
+<text x="2002" y="174" font-family="monospace" font-size="12" fill="#334155">StoreID</text>
+<text x="2002" y="195" font-family="monospace" font-size="12" fill="#334155">TerritoryID</text>
+<text x="2002" y="216" font-family="monospace" font-size="12" fill="#334155">AccountNumber</text>
+<text x="2002" y="237" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="2002" y="258" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="2002" y="309" font-family="sans-serif" font-size="12" fill="#475569">19820 rows · click for 10 records</text></a>
+<a xlink:href="tables/DatabaseLog.md" href="tables/DatabaseLog.md" target="_parent"><rect x="40" y="2705" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="2705" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="2733" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">DatabaseLog</text>
+<text x="52" y="2772" font-family="monospace" font-size="12" fill="#334155">DatabaseLogID</text>
+<text x="52" y="2793" font-family="monospace" font-size="12" fill="#334155">PostTime</text>
+<text x="52" y="2814" font-family="monospace" font-size="12" fill="#334155">DatabaseUser</text>
+<text x="52" y="2835" font-family="monospace" font-size="12" fill="#334155">Event</text>
+<text x="52" y="2856" font-family="monospace" font-size="12" fill="#334155">Schema</text>
+<text x="52" y="2877" font-family="monospace" font-size="12" fill="#334155">Object</text>
+<text x="52" y="2898" font-family="monospace" font-size="12" fill="#334155">TSQL</text>
+<text x="52" y="2919" font-family="monospace" font-size="12" fill="#334155">XmlEvent</text>
+<text x="52" y="2949" font-family="sans-serif" font-size="12" fill="#475569">0 rows · click for 10 records</text></a>
+<a xlink:href="tables/Department.md" href="tables/Department.md" target="_parent"><rect x="40" y="3035" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="3035" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="3063" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Department</text>
+<text x="52" y="3102" font-family="monospace" font-size="12" fill="#334155">DepartmentID</text>
+<text x="52" y="3123" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="3144" font-family="monospace" font-size="12" fill="#334155">GroupName</text>
+<text x="52" y="3165" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="3279" font-family="sans-serif" font-size="12" fill="#475569">16 rows · click for 10 records</text></a>
+<a xlink:href="tables/Document.md" href="tables/Document.md" target="_parent"><rect x="1210" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Document</text>
+<text x="1222" y="792" font-family="monospace" font-size="12" fill="#334155">DocumentNode</text>
+<text x="1222" y="813" font-family="monospace" font-size="12" fill="#334155">DocumentLevel</text>
+<text x="1222" y="834" font-family="monospace" font-size="12" fill="#334155">Title</text>
+<text x="1222" y="855" font-family="monospace" font-size="12" fill="#334155">Owner</text>
+<text x="1222" y="876" font-family="monospace" font-size="12" fill="#334155">FolderFlag</text>
+<text x="1222" y="897" font-family="monospace" font-size="12" fill="#334155">FileName</text>
+<text x="1222" y="918" font-family="monospace" font-size="12" fill="#334155">FileExtension</text>
+<text x="1222" y="939" font-family="monospace" font-size="12" fill="#334155">Revision</text>
+<text x="1222" y="969" font-family="sans-serif" font-size="12" fill="#475569">12 rows · click for 10 records</text></a>
+<a xlink:href="tables/EmailAddress.md" href="tables/EmailAddress.md" target="_parent"><rect x="820" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">EmailAddress</text>
+<text x="832" y="462" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="832" y="483" font-family="monospace" font-size="12" fill="#334155">EmailAddressID</text>
+<text x="832" y="504" font-family="monospace" font-size="12" fill="#334155">EmailAddress</text>
+<text x="832" y="525" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="832" y="546" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="832" y="639" font-family="sans-serif" font-size="12" fill="#475569">19972 rows · click for 10 records</text></a>
+<a xlink:href="tables/Employee.md" href="tables/Employee.md" target="_parent"><rect x="820" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Employee</text>
+<text x="832" y="792" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="832" y="813" font-family="monospace" font-size="12" fill="#334155">NationalIDNumber</text>
+<text x="832" y="834" font-family="monospace" font-size="12" fill="#334155">LoginID</text>
+<text x="832" y="855" font-family="monospace" font-size="12" fill="#334155">OrganizationNode</text>
+<text x="832" y="876" font-family="monospace" font-size="12" fill="#334155">OrganizationLevel</text>
+<text x="832" y="897" font-family="monospace" font-size="12" fill="#334155">JobTitle</text>
+<text x="832" y="918" font-family="monospace" font-size="12" fill="#334155">BirthDate</text>
+<text x="832" y="939" font-family="monospace" font-size="12" fill="#334155">MaritalStatus</text>
+<text x="832" y="969" font-family="sans-serif" font-size="12" fill="#475569">290 rows · click for 10 records</text></a>
+<a xlink:href="tables/EmployeeDepartmentHistory.md" href="tables/EmployeeDepartmentHistory.md" target="_parent"><rect x="1210" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">EmployeeDepartmentHistory</text>
+<text x="1222" y="1122" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1222" y="1143" font-family="monospace" font-size="12" fill="#334155">DepartmentID</text>
+<text x="1222" y="1164" font-family="monospace" font-size="12" fill="#334155">ShiftID</text>
+<text x="1222" y="1185" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="1222" y="1206" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="1222" y="1227" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="1299" font-family="sans-serif" font-size="12" fill="#475569">296 rows · click for 10 records</text></a>
+<a xlink:href="tables/EmployeePayHistory.md" href="tables/EmployeePayHistory.md" target="_parent"><rect x="1210" y="1385" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="1385" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="1413" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">EmployeePayHistory</text>
+<text x="1222" y="1452" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1222" y="1473" font-family="monospace" font-size="12" fill="#334155">RateChangeDate</text>
+<text x="1222" y="1494" font-family="monospace" font-size="12" fill="#334155">Rate</text>
+<text x="1222" y="1515" font-family="monospace" font-size="12" fill="#334155">PayFrequency</text>
+<text x="1222" y="1536" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="1629" font-family="sans-serif" font-size="12" fill="#475569">316 rows · click for 10 records</text></a>
+<a xlink:href="tables/ErrorLog.md" href="tables/ErrorLog.md" target="_parent"><rect x="40" y="3365" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="3365" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="3393" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ErrorLog</text>
+<text x="52" y="3432" font-family="monospace" font-size="12" fill="#334155">ErrorLogID</text>
+<text x="52" y="3453" font-family="monospace" font-size="12" fill="#334155">ErrorTime</text>
+<text x="52" y="3474" font-family="monospace" font-size="12" fill="#334155">UserName</text>
+<text x="52" y="3495" font-family="monospace" font-size="12" fill="#334155">ErrorNumber</text>
+<text x="52" y="3516" font-family="monospace" font-size="12" fill="#334155">ErrorSeverity</text>
+<text x="52" y="3537" font-family="monospace" font-size="12" fill="#334155">ErrorState</text>
+<text x="52" y="3558" font-family="monospace" font-size="12" fill="#334155">ErrorProcedure</text>
+<text x="52" y="3579" font-family="monospace" font-size="12" fill="#334155">ErrorLine</text>
+<text x="52" y="3609" font-family="sans-serif" font-size="12" fill="#475569">0 rows · click for 10 records</text></a>
+<a xlink:href="tables/Illustration.md" href="tables/Illustration.md" target="_parent"><rect x="40" y="3695" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="3695" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="3723" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Illustration</text>
+<text x="52" y="3762" font-family="monospace" font-size="12" fill="#334155">IllustrationID</text>
+<text x="52" y="3783" font-family="monospace" font-size="12" fill="#334155">Diagram</text>
+<text x="52" y="3804" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="3939" font-family="sans-serif" font-size="12" fill="#475569">5 rows · click for 10 records</text></a>
+<a xlink:href="tables/JobCandidate.md" href="tables/JobCandidate.md" target="_parent"><rect x="1210" y="1715" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="1715" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="1743" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">JobCandidate</text>
+<text x="1222" y="1782" font-family="monospace" font-size="12" fill="#334155">JobCandidateID</text>
+<text x="1222" y="1803" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1222" y="1824" font-family="monospace" font-size="12" fill="#334155">Resume</text>
+<text x="1222" y="1845" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="1959" font-family="sans-serif" font-size="12" fill="#475569">13 rows · click for 10 records</text></a>
+<a xlink:href="tables/Location.md" href="tables/Location.md" target="_parent"><rect x="40" y="4025" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="4025" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="4053" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Location</text>
+<text x="52" y="4092" font-family="monospace" font-size="12" fill="#334155">LocationID</text>
+<text x="52" y="4113" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="4134" font-family="monospace" font-size="12" fill="#334155">CostRate</text>
+<text x="52" y="4155" font-family="monospace" font-size="12" fill="#334155">Availability</text>
+<text x="52" y="4176" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="4269" font-family="sans-serif" font-size="12" fill="#475569">14 rows · click for 10 records</text></a>
+<a xlink:href="tables/Password.md" href="tables/Password.md" target="_parent"><rect x="820" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Password</text>
+<text x="832" y="1122" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="832" y="1143" font-family="monospace" font-size="12" fill="#334155">PasswordHash</text>
+<text x="832" y="1164" font-family="monospace" font-size="12" fill="#334155">PasswordSalt</text>
+<text x="832" y="1185" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="832" y="1206" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="832" y="1299" font-family="sans-serif" font-size="12" fill="#475569">19972 rows · click for 10 records</text></a>
+<a xlink:href="tables/Person.md" href="tables/Person.md" target="_parent"><rect x="430" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Person</text>
+<text x="442" y="792" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="442" y="813" font-family="monospace" font-size="12" fill="#334155">PersonType</text>
+<text x="442" y="834" font-family="monospace" font-size="12" fill="#334155">NameStyle</text>
+<text x="442" y="855" font-family="monospace" font-size="12" fill="#334155">Title</text>
+<text x="442" y="876" font-family="monospace" font-size="12" fill="#334155">FirstName</text>
+<text x="442" y="897" font-family="monospace" font-size="12" fill="#334155">MiddleName</text>
+<text x="442" y="918" font-family="monospace" font-size="12" fill="#334155">LastName</text>
+<text x="442" y="939" font-family="monospace" font-size="12" fill="#334155">Suffix</text>
+<text x="442" y="969" font-family="sans-serif" font-size="12" fill="#475569">19972 rows · click for 10 records</text></a>
+<a xlink:href="tables/PersonCreditCard.md" href="tables/PersonCreditCard.md" target="_parent"><rect x="820" y="1385" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="1385" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="1413" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">PersonCreditCard</text>
+<text x="832" y="1452" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="832" y="1473" font-family="monospace" font-size="12" fill="#334155">CreditCardID</text>
+<text x="832" y="1494" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="832" y="1629" font-family="sans-serif" font-size="12" fill="#475569">19118 rows · click for 10 records</text></a>
+<a xlink:href="tables/PersonPhone.md" href="tables/PersonPhone.md" target="_parent"><rect x="820" y="1715" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="1715" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="1743" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">PersonPhone</text>
+<text x="832" y="1782" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="832" y="1803" font-family="monospace" font-size="12" fill="#334155">PhoneNumber</text>
+<text x="832" y="1824" font-family="monospace" font-size="12" fill="#334155">PhoneNumberTypeID</text>
+<text x="832" y="1845" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="832" y="1959" font-family="sans-serif" font-size="12" fill="#475569">19972 rows · click for 10 records</text></a>
+<a xlink:href="tables/PhoneNumberType.md" href="tables/PhoneNumberType.md" target="_parent"><rect x="40" y="4355" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="4355" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="4383" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">PhoneNumberType</text>
+<text x="52" y="4422" font-family="monospace" font-size="12" fill="#334155">PhoneNumberTypeID</text>
+<text x="52" y="4443" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="4464" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="4599" font-family="sans-serif" font-size="12" fill="#475569">3 rows · click for 10 records</text></a>
+<a xlink:href="tables/Product.md" href="tables/Product.md" target="_parent"><rect x="820" y="2045" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="2045" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="2073" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Product</text>
+<text x="832" y="2112" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="832" y="2133" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="832" y="2154" font-family="monospace" font-size="12" fill="#334155">ProductNumber</text>
+<text x="832" y="2175" font-family="monospace" font-size="12" fill="#334155">MakeFlag</text>
+<text x="832" y="2196" font-family="monospace" font-size="12" fill="#334155">FinishedGoodsFlag</text>
+<text x="832" y="2217" font-family="monospace" font-size="12" fill="#334155">Color</text>
+<text x="832" y="2238" font-family="monospace" font-size="12" fill="#334155">SafetyStockLevel</text>
+<text x="832" y="2259" font-family="monospace" font-size="12" fill="#334155">ReorderPoint</text>
+<text x="832" y="2289" font-family="sans-serif" font-size="12" fill="#475569">504 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductCategory.md" href="tables/ProductCategory.md" target="_parent"><rect x="40" y="4685" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="4685" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="4713" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductCategory</text>
+<text x="52" y="4752" font-family="monospace" font-size="12" fill="#334155">ProductCategoryID</text>
+<text x="52" y="4773" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="4794" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="52" y="4815" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="4929" font-family="sans-serif" font-size="12" fill="#475569">4 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductCostHistory.md" href="tables/ProductCostHistory.md" target="_parent"><rect x="1210" y="2045" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="2045" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="2073" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductCostHistory</text>
+<text x="1222" y="2112" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="2133" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="1222" y="2154" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="1222" y="2175" font-family="monospace" font-size="12" fill="#334155">StandardCost</text>
+<text x="1222" y="2196" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="2289" font-family="sans-serif" font-size="12" fill="#475569">395 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductDescription.md" href="tables/ProductDescription.md" target="_parent"><rect x="40" y="5015" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="5015" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="5043" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductDescription</text>
+<text x="52" y="5082" font-family="monospace" font-size="12" fill="#334155">ProductDescriptionID</text>
+<text x="52" y="5103" font-family="monospace" font-size="12" fill="#334155">Description</text>
+<text x="52" y="5124" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="52" y="5145" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="5259" font-family="sans-serif" font-size="12" fill="#475569">762 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductDocument.md" href="tables/ProductDocument.md" target="_parent"><rect x="1600" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductDocument</text>
+<text x="1612" y="462" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1612" y="483" font-family="monospace" font-size="12" fill="#334155">DocumentNode</text>
+<text x="1612" y="504" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1612" y="639" font-family="sans-serif" font-size="12" fill="#475569">32 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductInventory.md" href="tables/ProductInventory.md" target="_parent"><rect x="1210" y="2375" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="2375" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="2403" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductInventory</text>
+<text x="1222" y="2442" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="2463" font-family="monospace" font-size="12" fill="#334155">LocationID</text>
+<text x="1222" y="2484" font-family="monospace" font-size="12" fill="#334155">Shelf</text>
+<text x="1222" y="2505" font-family="monospace" font-size="12" fill="#334155">Bin</text>
+<text x="1222" y="2526" font-family="monospace" font-size="12" fill="#334155">Quantity</text>
+<text x="1222" y="2547" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1222" y="2568" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="2619" font-family="sans-serif" font-size="12" fill="#475569">1069 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductListPriceHistory.md" href="tables/ProductListPriceHistory.md" target="_parent"><rect x="1210" y="2705" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="2705" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="2733" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductListPriceHistory</text>
+<text x="1222" y="2772" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="2793" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="1222" y="2814" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="1222" y="2835" font-family="monospace" font-size="12" fill="#334155">ListPrice</text>
+<text x="1222" y="2856" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="2949" font-family="sans-serif" font-size="12" fill="#475569">395 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductModel.md" href="tables/ProductModel.md" target="_parent"><rect x="40" y="5345" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="5345" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="5373" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductModel</text>
+<text x="52" y="5412" font-family="monospace" font-size="12" fill="#334155">ProductModelID</text>
+<text x="52" y="5433" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="5454" font-family="monospace" font-size="12" fill="#334155">CatalogDescription</text>
+<text x="52" y="5475" font-family="monospace" font-size="12" fill="#334155">Instructions</text>
+<text x="52" y="5496" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="52" y="5517" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="5589" font-family="sans-serif" font-size="12" fill="#475569">128 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductModelIllustration.md" href="tables/ProductModelIllustration.md" target="_parent"><rect x="430" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductModelIllustration</text>
+<text x="442" y="1122" font-family="monospace" font-size="12" fill="#334155">ProductModelID</text>
+<text x="442" y="1143" font-family="monospace" font-size="12" fill="#334155">IllustrationID</text>
+<text x="442" y="1164" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="442" y="1299" font-family="sans-serif" font-size="12" fill="#475569">7 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductModelProductDescriptionCulture.md" href="tables/ProductModelProductDescriptionCulture.md" target="_parent"><rect x="430" y="1385" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="1385" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="1413" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductModelProductDescriptionCulture</text>
+<text x="442" y="1452" font-family="monospace" font-size="12" fill="#334155">ProductModelID</text>
+<text x="442" y="1473" font-family="monospace" font-size="12" fill="#334155">ProductDescriptionID</text>
+<text x="442" y="1494" font-family="monospace" font-size="12" fill="#334155">CultureID</text>
+<text x="442" y="1515" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="442" y="1629" font-family="sans-serif" font-size="12" fill="#475569">762 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductPhoto.md" href="tables/ProductPhoto.md" target="_parent"><rect x="40" y="5675" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="5675" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="5703" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductPhoto</text>
+<text x="52" y="5742" font-family="monospace" font-size="12" fill="#334155">ProductPhotoID</text>
+<text x="52" y="5763" font-family="monospace" font-size="12" fill="#334155">ThumbNailPhoto</text>
+<text x="52" y="5784" font-family="monospace" font-size="12" fill="#334155">ThumbnailPhotoFileName</text>
+<text x="52" y="5805" font-family="monospace" font-size="12" fill="#334155">LargePhoto</text>
+<text x="52" y="5826" font-family="monospace" font-size="12" fill="#334155">LargePhotoFileName</text>
+<text x="52" y="5847" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="5919" font-family="sans-serif" font-size="12" fill="#475569">101 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductProductPhoto.md" href="tables/ProductProductPhoto.md" target="_parent"><rect x="1210" y="3035" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="3035" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="3063" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductProductPhoto</text>
+<text x="1222" y="3102" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="3123" font-family="monospace" font-size="12" fill="#334155">ProductPhotoID</text>
+<text x="1222" y="3144" font-family="monospace" font-size="12" fill="#334155">Primary</text>
+<text x="1222" y="3165" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="3279" font-family="sans-serif" font-size="12" fill="#475569">504 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductReview.md" href="tables/ProductReview.md" target="_parent"><rect x="1210" y="3365" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="3365" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="3393" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductReview</text>
+<text x="1222" y="3432" font-family="monospace" font-size="12" fill="#334155">ProductReviewID</text>
+<text x="1222" y="3453" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="3474" font-family="monospace" font-size="12" fill="#334155">ReviewerName</text>
+<text x="1222" y="3495" font-family="monospace" font-size="12" fill="#334155">ReviewDate</text>
+<text x="1222" y="3516" font-family="monospace" font-size="12" fill="#334155">EmailAddress</text>
+<text x="1222" y="3537" font-family="monospace" font-size="12" fill="#334155">Rating</text>
+<text x="1222" y="3558" font-family="monospace" font-size="12" fill="#334155">Comments</text>
+<text x="1222" y="3579" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="3609" font-family="sans-serif" font-size="12" fill="#475569">4 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductSubcategory.md" href="tables/ProductSubcategory.md" target="_parent"><rect x="430" y="1715" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="1715" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="1743" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductSubcategory</text>
+<text x="442" y="1782" font-family="monospace" font-size="12" fill="#334155">ProductSubcategoryID</text>
+<text x="442" y="1803" font-family="monospace" font-size="12" fill="#334155">ProductCategoryID</text>
+<text x="442" y="1824" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="442" y="1845" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="442" y="1866" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="442" y="1959" font-family="sans-serif" font-size="12" fill="#475569">37 rows · click for 10 records</text></a>
+<a xlink:href="tables/ProductVendor.md" href="tables/ProductVendor.md" target="_parent"><rect x="1210" y="3695" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="3695" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="3723" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ProductVendor</text>
+<text x="1222" y="3762" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="3783" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1222" y="3804" font-family="monospace" font-size="12" fill="#334155">AverageLeadTime</text>
+<text x="1222" y="3825" font-family="monospace" font-size="12" fill="#334155">StandardPrice</text>
+<text x="1222" y="3846" font-family="monospace" font-size="12" fill="#334155">LastReceiptCost</text>
+<text x="1222" y="3867" font-family="monospace" font-size="12" fill="#334155">LastReceiptDate</text>
+<text x="1222" y="3888" font-family="monospace" font-size="12" fill="#334155">MinOrderQty</text>
+<text x="1222" y="3909" font-family="monospace" font-size="12" fill="#334155">MaxOrderQty</text>
+<text x="1222" y="3939" font-family="sans-serif" font-size="12" fill="#475569">460 rows · click for 10 records</text></a>
+<a xlink:href="tables/PurchaseOrderDetail.md" href="tables/PurchaseOrderDetail.md" target="_parent"><rect x="1600" y="725" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="725" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="753" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">PurchaseOrderDetail</text>
+<text x="1612" y="792" font-family="monospace" font-size="12" fill="#334155">PurchaseOrderID</text>
+<text x="1612" y="813" font-family="monospace" font-size="12" fill="#334155">PurchaseOrderDetailID</text>
+<text x="1612" y="834" font-family="monospace" font-size="12" fill="#334155">DueDate</text>
+<text x="1612" y="855" font-family="monospace" font-size="12" fill="#334155">OrderQty</text>
+<text x="1612" y="876" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1612" y="897" font-family="monospace" font-size="12" fill="#334155">UnitPrice</text>
+<text x="1612" y="918" font-family="monospace" font-size="12" fill="#334155">LineTotal</text>
+<text x="1612" y="939" font-family="monospace" font-size="12" fill="#334155">ReceivedQty</text>
+<text x="1612" y="969" font-family="sans-serif" font-size="12" fill="#475569">8845 rows · click for 10 records</text></a>
+<a xlink:href="tables/PurchaseOrderHeader.md" href="tables/PurchaseOrderHeader.md" target="_parent"><rect x="1210" y="4025" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="4025" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="4053" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">PurchaseOrderHeader</text>
+<text x="1222" y="4092" font-family="monospace" font-size="12" fill="#334155">PurchaseOrderID</text>
+<text x="1222" y="4113" font-family="monospace" font-size="12" fill="#334155">RevisionNumber</text>
+<text x="1222" y="4134" font-family="monospace" font-size="12" fill="#334155">Status</text>
+<text x="1222" y="4155" font-family="monospace" font-size="12" fill="#334155">EmployeeID</text>
+<text x="1222" y="4176" font-family="monospace" font-size="12" fill="#334155">VendorID</text>
+<text x="1222" y="4197" font-family="monospace" font-size="12" fill="#334155">ShipMethodID</text>
+<text x="1222" y="4218" font-family="monospace" font-size="12" fill="#334155">OrderDate</text>
+<text x="1222" y="4239" font-family="monospace" font-size="12" fill="#334155">ShipDate</text>
+<text x="1222" y="4269" font-family="sans-serif" font-size="12" fill="#475569">4012 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesOrderDetail.md" href="tables/SalesOrderDetail.md" target="_parent"><rect x="1600" y="1055" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="1055" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="1083" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesOrderDetail</text>
+<text x="1612" y="1122" font-family="monospace" font-size="12" fill="#334155">SalesOrderID</text>
+<text x="1612" y="1143" font-family="monospace" font-size="12" fill="#334155">SalesOrderDetailID</text>
+<text x="1612" y="1164" font-family="monospace" font-size="12" fill="#334155">CarrierTrackingNumber</text>
+<text x="1612" y="1185" font-family="monospace" font-size="12" fill="#334155">OrderQty</text>
+<text x="1612" y="1206" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1612" y="1227" font-family="monospace" font-size="12" fill="#334155">SpecialOfferID</text>
+<text x="1612" y="1248" font-family="monospace" font-size="12" fill="#334155">UnitPrice</text>
+<text x="1612" y="1269" font-family="monospace" font-size="12" fill="#334155">UnitPriceDiscount</text>
+<text x="1612" y="1299" font-family="sans-serif" font-size="12" fill="#475569">121317 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesOrderHeader.md" href="tables/SalesOrderHeader.md" target="_parent"><rect x="1990" y="395" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1990" y="395" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="2002" y="423" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesOrderHeader</text>
+<text x="2002" y="462" font-family="monospace" font-size="12" fill="#334155">SalesOrderID</text>
+<text x="2002" y="483" font-family="monospace" font-size="12" fill="#334155">RevisionNumber</text>
+<text x="2002" y="504" font-family="monospace" font-size="12" fill="#334155">OrderDate</text>
+<text x="2002" y="525" font-family="monospace" font-size="12" fill="#334155">DueDate</text>
+<text x="2002" y="546" font-family="monospace" font-size="12" fill="#334155">ShipDate</text>
+<text x="2002" y="567" font-family="monospace" font-size="12" fill="#334155">Status</text>
+<text x="2002" y="588" font-family="monospace" font-size="12" fill="#334155">OnlineOrderFlag</text>
+<text x="2002" y="609" font-family="monospace" font-size="12" fill="#334155">SalesOrderNumber</text>
+<text x="2002" y="639" font-family="sans-serif" font-size="12" fill="#475569">31465 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesOrderHeaderSalesReason.md" href="tables/SalesOrderHeaderSalesReason.md" target="_parent"><rect x="1210" y="4355" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="4355" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="4383" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesOrderHeaderSalesReason</text>
+<text x="1222" y="4422" font-family="monospace" font-size="12" fill="#334155">SalesOrderID</text>
+<text x="1222" y="4443" font-family="monospace" font-size="12" fill="#334155">SalesReasonID</text>
+<text x="1222" y="4464" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="4599" font-family="sans-serif" font-size="12" fill="#475569">27647 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesPerson.md" href="tables/SalesPerson.md" target="_parent"><rect x="1210" y="4685" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="4685" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="4713" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesPerson</text>
+<text x="1222" y="4752" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1222" y="4773" font-family="monospace" font-size="12" fill="#334155">TerritoryID</text>
+<text x="1222" y="4794" font-family="monospace" font-size="12" fill="#334155">SalesQuota</text>
+<text x="1222" y="4815" font-family="monospace" font-size="12" fill="#334155">Bonus</text>
+<text x="1222" y="4836" font-family="monospace" font-size="12" fill="#334155">CommissionPct</text>
+<text x="1222" y="4857" font-family="monospace" font-size="12" fill="#334155">SalesYTD</text>
+<text x="1222" y="4878" font-family="monospace" font-size="12" fill="#334155">SalesLastYear</text>
+<text x="1222" y="4899" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1222" y="4929" font-family="sans-serif" font-size="12" fill="#475569">17 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesPersonQuotaHistory.md" href="tables/SalesPersonQuotaHistory.md" target="_parent"><rect x="1600" y="1385" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="1385" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="1413" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesPersonQuotaHistory</text>
+<text x="1612" y="1452" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1612" y="1473" font-family="monospace" font-size="12" fill="#334155">QuotaDate</text>
+<text x="1612" y="1494" font-family="monospace" font-size="12" fill="#334155">SalesQuota</text>
+<text x="1612" y="1515" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1612" y="1536" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1612" y="1629" font-family="sans-serif" font-size="12" fill="#475569">163 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesReason.md" href="tables/SalesReason.md" target="_parent"><rect x="40" y="6005" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="6005" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="6033" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesReason</text>
+<text x="52" y="6072" font-family="monospace" font-size="12" fill="#334155">SalesReasonID</text>
+<text x="52" y="6093" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="6114" font-family="monospace" font-size="12" fill="#334155">ReasonType</text>
+<text x="52" y="6135" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="6249" font-family="sans-serif" font-size="12" fill="#475569">10 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesTaxRate.md" href="tables/SalesTaxRate.md" target="_parent"><rect x="1210" y="5015" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="5015" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="5043" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesTaxRate</text>
+<text x="1222" y="5082" font-family="monospace" font-size="12" fill="#334155">SalesTaxRateID</text>
+<text x="1222" y="5103" font-family="monospace" font-size="12" fill="#334155">StateProvinceID</text>
+<text x="1222" y="5124" font-family="monospace" font-size="12" fill="#334155">TaxType</text>
+<text x="1222" y="5145" font-family="monospace" font-size="12" fill="#334155">TaxRate</text>
+<text x="1222" y="5166" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="1222" y="5187" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1222" y="5208" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="5259" font-family="sans-serif" font-size="12" fill="#475569">29 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesTerritory.md" href="tables/SalesTerritory.md" target="_parent"><rect x="430" y="2045" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="2045" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="2073" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesTerritory</text>
+<text x="442" y="2112" font-family="monospace" font-size="12" fill="#334155">TerritoryID</text>
+<text x="442" y="2133" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="442" y="2154" font-family="monospace" font-size="12" fill="#334155">CountryRegionCode</text>
+<text x="442" y="2175" font-family="monospace" font-size="12" fill="#334155">Group</text>
+<text x="442" y="2196" font-family="monospace" font-size="12" fill="#334155">SalesYTD</text>
+<text x="442" y="2217" font-family="monospace" font-size="12" fill="#334155">SalesLastYear</text>
+<text x="442" y="2238" font-family="monospace" font-size="12" fill="#334155">CostYTD</text>
+<text x="442" y="2259" font-family="monospace" font-size="12" fill="#334155">CostLastYear</text>
+<text x="442" y="2289" font-family="sans-serif" font-size="12" fill="#475569">10 rows · click for 10 records</text></a>
+<a xlink:href="tables/SalesTerritoryHistory.md" href="tables/SalesTerritoryHistory.md" target="_parent"><rect x="1600" y="1715" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="1715" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="1743" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SalesTerritoryHistory</text>
+<text x="1612" y="1782" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1612" y="1803" font-family="monospace" font-size="12" fill="#334155">TerritoryID</text>
+<text x="1612" y="1824" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="1612" y="1845" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="1612" y="1866" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1612" y="1887" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1612" y="1959" font-family="sans-serif" font-size="12" fill="#475569">17 rows · click for 10 records</text></a>
+<a xlink:href="tables/ScrapReason.md" href="tables/ScrapReason.md" target="_parent"><rect x="40" y="6335" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="6335" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="6363" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ScrapReason</text>
+<text x="52" y="6402" font-family="monospace" font-size="12" fill="#334155">ScrapReasonID</text>
+<text x="52" y="6423" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="6444" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="6579" font-family="sans-serif" font-size="12" fill="#475569">16 rows · click for 10 records</text></a>
+<a xlink:href="tables/Shift.md" href="tables/Shift.md" target="_parent"><rect x="40" y="6665" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="6665" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="6693" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Shift</text>
+<text x="52" y="6732" font-family="monospace" font-size="12" fill="#334155">ShiftID</text>
+<text x="52" y="6753" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="6774" font-family="monospace" font-size="12" fill="#334155">StartTime</text>
+<text x="52" y="6795" font-family="monospace" font-size="12" fill="#334155">EndTime</text>
+<text x="52" y="6816" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="6909" font-family="sans-serif" font-size="12" fill="#475569">3 rows · click for 10 records</text></a>
+<a xlink:href="tables/ShipMethod.md" href="tables/ShipMethod.md" target="_parent"><rect x="40" y="6995" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="6995" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="7023" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ShipMethod</text>
+<text x="52" y="7062" font-family="monospace" font-size="12" fill="#334155">ShipMethodID</text>
+<text x="52" y="7083" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="7104" font-family="monospace" font-size="12" fill="#334155">ShipBase</text>
+<text x="52" y="7125" font-family="monospace" font-size="12" fill="#334155">ShipRate</text>
+<text x="52" y="7146" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="52" y="7167" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="7239" font-family="sans-serif" font-size="12" fill="#475569">5 rows · click for 10 records</text></a>
+<a xlink:href="tables/ShoppingCartItem.md" href="tables/ShoppingCartItem.md" target="_parent"><rect x="1210" y="5345" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="5345" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="5373" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">ShoppingCartItem</text>
+<text x="1222" y="5412" font-family="monospace" font-size="12" fill="#334155">ShoppingCartItemID</text>
+<text x="1222" y="5433" font-family="monospace" font-size="12" fill="#334155">ShoppingCartID</text>
+<text x="1222" y="5454" font-family="monospace" font-size="12" fill="#334155">Quantity</text>
+<text x="1222" y="5475" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="5496" font-family="monospace" font-size="12" fill="#334155">DateCreated</text>
+<text x="1222" y="5517" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="5589" font-family="sans-serif" font-size="12" fill="#475569">3 rows · click for 10 records</text></a>
+<a xlink:href="tables/SpecialOffer.md" href="tables/SpecialOffer.md" target="_parent"><rect x="40" y="7325" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="7325" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="7353" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SpecialOffer</text>
+<text x="52" y="7392" font-family="monospace" font-size="12" fill="#334155">SpecialOfferID</text>
+<text x="52" y="7413" font-family="monospace" font-size="12" fill="#334155">Description</text>
+<text x="52" y="7434" font-family="monospace" font-size="12" fill="#334155">DiscountPct</text>
+<text x="52" y="7455" font-family="monospace" font-size="12" fill="#334155">Type</text>
+<text x="52" y="7476" font-family="monospace" font-size="12" fill="#334155">Category</text>
+<text x="52" y="7497" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="52" y="7518" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="52" y="7539" font-family="monospace" font-size="12" fill="#334155">MinQty</text>
+<text x="52" y="7569" font-family="sans-serif" font-size="12" fill="#475569">16 rows · click for 10 records</text></a>
+<a xlink:href="tables/SpecialOfferProduct.md" href="tables/SpecialOfferProduct.md" target="_parent"><rect x="1210" y="5675" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="5675" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="5703" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">SpecialOfferProduct</text>
+<text x="1222" y="5742" font-family="monospace" font-size="12" fill="#334155">SpecialOfferID</text>
+<text x="1222" y="5763" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="5784" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1222" y="5805" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1222" y="5919" font-family="sans-serif" font-size="12" fill="#475569">538 rows · click for 10 records</text></a>
+<a xlink:href="tables/StateProvince.md" href="tables/StateProvince.md" target="_parent"><rect x="820" y="2375" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="820" y="2375" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="832" y="2403" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">StateProvince</text>
+<text x="832" y="2442" font-family="monospace" font-size="12" fill="#334155">StateProvinceID</text>
+<text x="832" y="2463" font-family="monospace" font-size="12" fill="#334155">StateProvinceCode</text>
+<text x="832" y="2484" font-family="monospace" font-size="12" fill="#334155">CountryRegionCode</text>
+<text x="832" y="2505" font-family="monospace" font-size="12" fill="#334155">IsOnlyStateProvinceFlag</text>
+<text x="832" y="2526" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="832" y="2547" font-family="monospace" font-size="12" fill="#334155">TerritoryID</text>
+<text x="832" y="2568" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="832" y="2589" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="832" y="2619" font-family="sans-serif" font-size="12" fill="#475569">181 rows · click for 10 records</text></a>
+<a xlink:href="tables/Store.md" href="tables/Store.md" target="_parent"><rect x="1600" y="2045" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="2045" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="2073" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Store</text>
+<text x="1612" y="2112" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="1612" y="2133" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="1612" y="2154" font-family="monospace" font-size="12" fill="#334155">SalesPersonID</text>
+<text x="1612" y="2175" font-family="monospace" font-size="12" fill="#334155">Demographics</text>
+<text x="1612" y="2196" font-family="monospace" font-size="12" fill="#334155">rowguid</text>
+<text x="1612" y="2217" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="1612" y="2289" font-family="sans-serif" font-size="12" fill="#475569">701 rows · click for 10 records</text></a>
+<a xlink:href="tables/TransactionHistory.md" href="tables/TransactionHistory.md" target="_parent"><rect x="1210" y="6005" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="6005" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="6033" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">TransactionHistory</text>
+<text x="1222" y="6072" font-family="monospace" font-size="12" fill="#334155">TransactionID</text>
+<text x="1222" y="6093" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="6114" font-family="monospace" font-size="12" fill="#334155">ReferenceOrderID</text>
+<text x="1222" y="6135" font-family="monospace" font-size="12" fill="#334155">ReferenceOrderLineID</text>
+<text x="1222" y="6156" font-family="monospace" font-size="12" fill="#334155">TransactionDate</text>
+<text x="1222" y="6177" font-family="monospace" font-size="12" fill="#334155">TransactionType</text>
+<text x="1222" y="6198" font-family="monospace" font-size="12" fill="#334155">Quantity</text>
+<text x="1222" y="6219" font-family="monospace" font-size="12" fill="#334155">ActualCost</text>
+<text x="1222" y="6249" font-family="sans-serif" font-size="12" fill="#475569">113443 rows · click for 10 records</text></a>
+<a xlink:href="tables/TransactionHistoryArchive.md" href="tables/TransactionHistoryArchive.md" target="_parent"><rect x="40" y="7655" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="7655" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="7683" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">TransactionHistoryArchive</text>
+<text x="52" y="7722" font-family="monospace" font-size="12" fill="#334155">TransactionID</text>
+<text x="52" y="7743" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="52" y="7764" font-family="monospace" font-size="12" fill="#334155">ReferenceOrderID</text>
+<text x="52" y="7785" font-family="monospace" font-size="12" fill="#334155">ReferenceOrderLineID</text>
+<text x="52" y="7806" font-family="monospace" font-size="12" fill="#334155">TransactionDate</text>
+<text x="52" y="7827" font-family="monospace" font-size="12" fill="#334155">TransactionType</text>
+<text x="52" y="7848" font-family="monospace" font-size="12" fill="#334155">Quantity</text>
+<text x="52" y="7869" font-family="monospace" font-size="12" fill="#334155">ActualCost</text>
+<text x="52" y="7899" font-family="sans-serif" font-size="12" fill="#475569">89253 rows · click for 10 records</text></a>
+<a xlink:href="tables/UnitMeasure.md" href="tables/UnitMeasure.md" target="_parent"><rect x="40" y="7985" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="40" y="7985" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="52" y="8013" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">UnitMeasure</text>
+<text x="52" y="8052" font-family="monospace" font-size="12" fill="#334155">UnitMeasureCode</text>
+<text x="52" y="8073" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="52" y="8094" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="52" y="8229" font-family="sans-serif" font-size="12" fill="#475569">38 rows · click for 10 records</text></a>
+<a xlink:href="tables/Vendor.md" href="tables/Vendor.md" target="_parent"><rect x="430" y="2375" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="430" y="2375" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="442" y="2403" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">Vendor</text>
+<text x="442" y="2442" font-family="monospace" font-size="12" fill="#334155">BusinessEntityID</text>
+<text x="442" y="2463" font-family="monospace" font-size="12" fill="#334155">AccountNumber</text>
+<text x="442" y="2484" font-family="monospace" font-size="12" fill="#334155">Name</text>
+<text x="442" y="2505" font-family="monospace" font-size="12" fill="#334155">CreditRating</text>
+<text x="442" y="2526" font-family="monospace" font-size="12" fill="#334155">PreferredVendorStatus</text>
+<text x="442" y="2547" font-family="monospace" font-size="12" fill="#334155">ActiveFlag</text>
+<text x="442" y="2568" font-family="monospace" font-size="12" fill="#334155">PurchasingWebServiceURL</text>
+<text x="442" y="2589" font-family="monospace" font-size="12" fill="#334155">ModifiedDate</text>
+<text x="442" y="2619" font-family="sans-serif" font-size="12" fill="#475569">104 rows · click for 10 records</text></a>
+<a xlink:href="tables/WorkOrder.md" href="tables/WorkOrder.md" target="_parent"><rect x="1210" y="6335" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1210" y="6335" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1222" y="6363" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">WorkOrder</text>
+<text x="1222" y="6402" font-family="monospace" font-size="12" fill="#334155">WorkOrderID</text>
+<text x="1222" y="6423" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1222" y="6444" font-family="monospace" font-size="12" fill="#334155">OrderQty</text>
+<text x="1222" y="6465" font-family="monospace" font-size="12" fill="#334155">StockedQty</text>
+<text x="1222" y="6486" font-family="monospace" font-size="12" fill="#334155">ScrappedQty</text>
+<text x="1222" y="6507" font-family="monospace" font-size="12" fill="#334155">StartDate</text>
+<text x="1222" y="6528" font-family="monospace" font-size="12" fill="#334155">EndDate</text>
+<text x="1222" y="6549" font-family="monospace" font-size="12" fill="#334155">DueDate</text>
+<text x="1222" y="6579" font-family="sans-serif" font-size="12" fill="#475569">72591 rows · click for 10 records</text></a>
+<a xlink:href="tables/WorkOrderRouting.md" href="tables/WorkOrderRouting.md" target="_parent"><rect x="1600" y="2375" width="300" height="255" rx="9" fill="#fff" stroke="#64748b"/><rect x="1600" y="2375" width="300" height="43" rx="9" fill="#e2e8f0"/>
+<text x="1612" y="2403" font-family="sans-serif" font-weight="700" font-size="16" fill="#0f172a">WorkOrderRouting</text>
+<text x="1612" y="2442" font-family="monospace" font-size="12" fill="#334155">WorkOrderID</text>
+<text x="1612" y="2463" font-family="monospace" font-size="12" fill="#334155">ProductID</text>
+<text x="1612" y="2484" font-family="monospace" font-size="12" fill="#334155">OperationSequence</text>
+<text x="1612" y="2505" font-family="monospace" font-size="12" fill="#334155">LocationID</text>
+<text x="1612" y="2526" font-family="monospace" font-size="12" fill="#334155">ScheduledStartDate</text>
+<text x="1612" y="2547" font-family="monospace" font-size="12" fill="#334155">ScheduledEndDate</text>
+<text x="1612" y="2568" font-family="monospace" font-size="12" fill="#334155">ActualStartDate</text>
+<text x="1612" y="2589" font-family="monospace" font-size="12" fill="#334155">ActualEndDate</text>
+<text x="1612" y="2619" font-family="sans-serif" font-size="12" fill="#475569">67131 rows · click for 10 records</text></a>
+</svg>

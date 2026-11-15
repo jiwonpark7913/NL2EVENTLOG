@@ -1,0 +1,27 @@
+# SpecialOfferProduct
+
+**Rows:** 538 · **Columns:** 4
+
+## Original records (first 10)
+
+| SpecialOfferID | ProductID | rowguid | ModifiedDate |
+| --- | --- | --- | --- |
+| 1 | 680 | BB30B868-D86C-4557-8DB2-4B2D0A83A0FB | 2022-03-31 00:00:00.000 |
+| 1 | 706 | B3C9A4B1-2AE6-4CBA-B552-1F206C9F4C1F | 2022-03-31 00:00:00.000 |
+| 1 | 707 | 27B711FE-0B77-4EA4-AD1A-7C239956BEF4 | 2022-03-31 00:00:00.000 |
+| 1 | 708 | 46CBB78B-246E-4D69-9BD6-E521277C1078 | 2022-03-31 00:00:00.000 |
+| 1 | 709 | CF102AA0-055F-4D2B-8B98-04B161758EA8 | 2022-03-31 00:00:00.000 |
+| 1 | 710 | 63718DA1-464B-4325-9514-CDEE46CB124F | 2022-03-31 00:00:00.000 |
+| 1 | 711 | 457EB971-D1C9-48CA-B947-AE7E1B114377 | 2022-03-31 00:00:00.000 |
+| 1 | 712 | 5B948448-BAE5-4F2A-A1F3-8203E892FD24 | 2022-03-31 00:00:00.000 |
+| 1 | 713 | 07768F40-6E46-430F-AC1A-FF6A3629729C | 2022-03-31 00:00:00.000 |
+| 1 | 714 | 85004BCE-C74A-4D4E-8D17-3157991A1400 | 2022-03-31 00:00:00.000 |
+
+## Column definitions
+
+| Column | SQL type | PK | Not null |
+|---|---|---|---|
+| SpecialOfferID | INTEGER | True | True |
+| ProductID | INTEGER | True | True |
+| rowguid | TEXT | False | True |
+| ModifiedDate | TEXT | False | True |

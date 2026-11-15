@@ -1,0 +1,965 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="All_tables" name="All tables">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DatabaseLog" value="&lt;b&gt;dbo.DatabaseLog&lt;/b&gt;&lt;br&gt;DatabaseLogID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;PostTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;DatabaseUser&lt;br&gt;Event&lt;br&gt;Schema&lt;br&gt;Object&lt;br&gt;TSQL&lt;br&gt;XmlEvent" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="226" />
+        </mxCell>
+        <mxCell id="ErrorLog" value="&lt;b&gt;dbo.ErrorLog&lt;/b&gt;&lt;br&gt;ErrorLogID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ErrorTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;UserName&lt;br&gt;ErrorNumber&lt;br&gt;ErrorSeverity&lt;br&gt;ErrorState&lt;br&gt;ErrorProcedure&lt;br&gt;ErrorLine&lt;br&gt;ErrorMessage" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="248" />
+        </mxCell>
+        <mxCell id="Address" value="&lt;b&gt;Person.Address&lt;/b&gt;&lt;br&gt;AddressID [PK]&lt;br&gt;AddressLine1&lt;br&gt;AddressLine2&lt;br&gt;City&lt;br&gt;StateProvinceID [FK]&lt;br&gt;PostalCode&lt;br&gt;SpatialLocation&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="248" />
+        </mxCell>
+        <mxCell id="AddressType" value="&lt;b&gt;Person.AddressType&lt;/b&gt;&lt;br&gt;AddressTypeID [PK]&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="80" width="370" height="138" />
+        </mxCell>
+        <mxCell id="AWBuildVersion" value="&lt;b&gt;dbo.AWBuildVersion&lt;/b&gt;&lt;br&gt;SystemInformationID [PK]&lt;br&gt;Database Version&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;VersionDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="386" width="370" height="138" />
+        </mxCell>
+        <mxCell id="BillOfMaterials" value="&lt;b&gt;Production.BillOfMaterials&lt;/b&gt;&lt;br&gt;BillOfMaterialsID [PK]&lt;br&gt;ProductAssemblyID [FK]&lt;br&gt;ComponentID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;UnitMeasureCode [FK]&lt;br&gt;BOMLevel&lt;br&gt;PerAssemblyQty&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="408" width="370" height="248" />
+        </mxCell>
+        <mxCell id="BusinessEntity" value="&lt;b&gt;Person.BusinessEntity&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="408" width="370" height="116" />
+        </mxCell>
+        <mxCell id="BusinessEntityAddress" value="&lt;b&gt;Person.BusinessEntityAddress&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;AddressID [PK] [FK]&lt;br&gt;AddressTypeID [PK] [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="298" width="370" height="160" />
+        </mxCell>
+        <mxCell id="BusinessEntityContact" value="&lt;b&gt;Person.BusinessEntityContact&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PersonID [PK] [FK]&lt;br&gt;ContactTypeID [PK] [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="604" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ContactType" value="&lt;b&gt;Person.ContactType&lt;/b&gt;&lt;br&gt;ContactTypeID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="736" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CountryRegionCurrency" value="&lt;b&gt;Sales.CountryRegionCurrency&lt;/b&gt;&lt;br&gt;CountryRegionCode [PK] [FK]&lt;br&gt;CurrencyCode [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="604" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CountryRegion" value="&lt;b&gt;Person.CountryRegion&lt;/b&gt;&lt;br&gt;CountryRegionCode [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="538" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CreditCard" value="&lt;b&gt;Sales.CreditCard&lt;/b&gt;&lt;br&gt;CreditCardID [PK]&lt;br&gt;CardType&lt;br&gt;CardNumber&lt;br&gt;ExpMonth&lt;br&gt;ExpYear&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="844" width="370" height="182" />
+        </mxCell>
+        <mxCell id="Culture" value="&lt;b&gt;Production.Culture&lt;/b&gt;&lt;br&gt;CultureID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="932" width="370" height="116" />
+        </mxCell>
+        <mxCell id="Currency" value="&lt;b&gt;Sales.Currency&lt;/b&gt;&lt;br&gt;CurrencyCode [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="800" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CurrencyRate" value="&lt;b&gt;Sales.CurrencyRate&lt;/b&gt;&lt;br&gt;CurrencyRateID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;CurrencyRateDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;FromCurrencyCode [FK]&lt;br&gt;ToCurrencyCode [FK]&lt;br&gt;AverageRate&lt;br&gt;EndOfDayRate&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="734" width="370" height="204" />
+        </mxCell>
+        <mxCell id="Customer" value="&lt;b&gt;Sales.Customer&lt;/b&gt;&lt;br&gt;CustomerID [PK]&lt;br&gt;PersonID [FK]&lt;br&gt;StoreID [FK]&lt;br&gt;TerritoryID [FK]&lt;br&gt;AccountNumber [computed]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1106" width="370" height="204" />
+        </mxCell>
+        <mxCell id="Department" value="&lt;b&gt;HumanResources.Department&lt;/b&gt;&lt;br&gt;DepartmentID [PK]&lt;br&gt;Name&lt;br&gt;GroupName&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1128" width="370" height="138" />
+        </mxCell>
+        <mxCell id="Document" value="&lt;b&gt;Production.Document&lt;/b&gt;&lt;br&gt;DocumentNode [PK]&lt;br&gt;DocumentLevel [computed]&lt;br&gt;Title&lt;br&gt;Owner [FK]&lt;br&gt;FolderFlag&lt;br&gt;FileName&lt;br&gt;FileExtension&lt;br&gt;Revision&lt;br&gt;ChangeNumber&lt;br&gt;Status&lt;br&gt;DocumentSummary&lt;br&gt;Document&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="996" width="370" height="358" />
+        </mxCell>
+        <mxCell id="EmailAddress" value="&lt;b&gt;Person.EmailAddress&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;EmailAddressID [PK]&lt;br&gt;EmailAddress&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1018" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Employee" value="&lt;b&gt;HumanResources.Employee&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;NationalIDNumber&lt;br&gt;LoginID&lt;br&gt;OrganizationNode&lt;br&gt;OrganizationLevel [computed]&lt;br&gt;JobTitle&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;BirthDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;MaritalStatus&lt;br&gt;Gender&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;HireDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;SalariedFlag&lt;br&gt;VacationHours&lt;br&gt;SickLeaveHours&lt;br&gt;CurrentFlag&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1390" width="370" height="402" />
+        </mxCell>
+        <mxCell id="EmployeeDepartmentHistory" value="&lt;b&gt;HumanResources.EmployeeDepartmentHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;DepartmentID [PK] [FK]&lt;br&gt;ShiftID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1346" width="370" height="182" />
+        </mxCell>
+        <mxCell id="EmployeePayHistory" value="&lt;b&gt;HumanResources.EmployeePayHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;RateChangeDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Rate&lt;br&gt;PayFrequency&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1434" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Illustration" value="&lt;b&gt;Production.Illustration&lt;/b&gt;&lt;br&gt;IllustrationID [PK]&lt;br&gt;Diagram&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1258" width="370" height="116" />
+        </mxCell>
+        <mxCell id="JobCandidate" value="&lt;b&gt;HumanResources.JobCandidate&lt;/b&gt;&lt;br&gt;JobCandidateID [PK]&lt;br&gt;BusinessEntityID [FK]&lt;br&gt;Resume&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1872" width="370" height="138" />
+        </mxCell>
+        <mxCell id="Location" value="&lt;b&gt;Production.Location&lt;/b&gt;&lt;br&gt;LocationID [PK]&lt;br&gt;Name&lt;br&gt;CostRate&lt;br&gt;Availability&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1608" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Password" value="&lt;b&gt;Person.Password&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PasswordHash&lt;br&gt;PasswordSalt&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1674" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Person" value="&lt;b&gt;Person.Person&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PersonType&lt;br&gt;NameStyle&lt;br&gt;Title&lt;br&gt;FirstName&lt;br&gt;MiddleName&lt;br&gt;LastName&lt;br&gt;Suffix&lt;br&gt;EmailPromotion&lt;br&gt;AdditionalContactInfo&lt;br&gt;Demographics&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1454" width="370" height="336" />
+        </mxCell>
+        <mxCell id="PersonCreditCard" value="&lt;b&gt;Sales.PersonCreditCard&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;CreditCardID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2090" width="370" height="116" />
+        </mxCell>
+        <mxCell id="PersonPhone" value="&lt;b&gt;Person.PersonPhone&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PhoneNumber [PK]&lt;br&gt;PhoneNumberTypeID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1848" width="370" height="138" />
+        </mxCell>
+        <mxCell id="PhoneNumberType" value="&lt;b&gt;Person.PhoneNumberType&lt;/b&gt;&lt;br&gt;PhoneNumberTypeID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1914" width="370" height="116" />
+        </mxCell>
+        <mxCell id="Product" value="&lt;b&gt;Production.Product&lt;/b&gt;&lt;br&gt;ProductID [PK]&lt;br&gt;Name&lt;br&gt;ProductNumber&lt;br&gt;MakeFlag&lt;br&gt;FinishedGoodsFlag&lt;br&gt;Color&lt;br&gt;SafetyStockLevel&lt;br&gt;ReorderPoint&lt;br&gt;StandardCost&lt;br&gt;ListPrice&lt;br&gt;Size&lt;br&gt;SizeUnitMeasureCode [FK]&lt;br&gt;WeightUnitMeasureCode [FK]&lt;br&gt;Weight&lt;br&gt;DaysToManufacture&lt;br&gt;ProductLine&lt;br&gt;Class&lt;br&gt;Style&lt;br&gt;ProductSubcategoryID [FK]&lt;br&gt;ProductModelID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;SellStartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;SellEndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DiscontinuedDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1870" width="370" height="600" />
+        </mxCell>
+        <mxCell id="ProductCategory" value="&lt;b&gt;Production.ProductCategory&lt;/b&gt;&lt;br&gt;ProductCategoryID [PK]&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2286" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductCostHistory" value="&lt;b&gt;Production.ProductCostHistory&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;StandardCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="2066" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ProductDescription" value="&lt;b&gt;Production.ProductDescription&lt;/b&gt;&lt;br&gt;ProductDescriptionID [PK]&lt;br&gt;Description&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="2110" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductDocument" value="&lt;b&gt;Production.ProductDocument&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;DocumentNode [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="2550" width="370" height="116" />
+        </mxCell>
+        <mxCell id="ProductInventory" value="&lt;b&gt;Production.ProductInventory&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;LocationID [PK] [FK]&lt;br&gt;Shelf&lt;br&gt;Bin&lt;br&gt;Quantity&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2504" width="370" height="204" />
+        </mxCell>
+        <mxCell id="ProductListPriceHistory" value="&lt;b&gt;Production.ProductListPriceHistory&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;ListPrice&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="2306" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ProductModel" value="&lt;b&gt;Production.ProductModel&lt;/b&gt;&lt;br&gt;ProductModelID [PK]&lt;br&gt;Name&lt;br&gt;CatalogDescription&lt;br&gt;Instructions&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="2328" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ProductModelIllustration" value="&lt;b&gt;Production.ProductModelIllustration&lt;/b&gt;&lt;br&gt;ProductModelID [PK] [FK]&lt;br&gt;IllustrationID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="2746" width="370" height="116" />
+        </mxCell>
+        <mxCell id="ProductModelProductDescriptionCulture" value="&lt;b&gt;Production.ProductModelProductDescriptionCulture&lt;/b&gt;&lt;br&gt;ProductModelID [PK] [FK]&lt;br&gt;ProductDescriptionID [PK] [FK]&lt;br&gt;CultureID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="2788" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductPhoto" value="&lt;b&gt;Production.ProductPhoto&lt;/b&gt;&lt;br&gt;ProductPhotoID [PK]&lt;br&gt;ThumbNailPhoto&lt;br&gt;ThumbnailPhotoFileName&lt;br&gt;LargePhoto&lt;br&gt;LargePhotoFileName&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="2546" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ProductProductPhoto" value="&lt;b&gt;Production.ProductProductPhoto&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;ProductPhotoID [PK] [FK]&lt;br&gt;Primary&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="2590" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductReview" value="&lt;b&gt;Production.ProductReview&lt;/b&gt;&lt;br&gt;ProductReviewID [PK]&lt;br&gt;ProductID [FK]&lt;br&gt;ReviewerName&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ReviewDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;EmailAddress&lt;br&gt;Rating&lt;br&gt;Comments&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="2942" width="370" height="226" />
+        </mxCell>
+        <mxCell id="ProductSubcategory" value="&lt;b&gt;Production.ProductSubcategory&lt;/b&gt;&lt;br&gt;ProductSubcategoryID [PK]&lt;br&gt;ProductCategoryID [FK]&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="3006" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ProductVendor" value="&lt;b&gt;Purchasing.ProductVendor&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;AverageLeadTime&lt;br&gt;StandardPrice&lt;br&gt;LastReceiptCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;LastReceiptDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;MinOrderQty&lt;br&gt;MaxOrderQty&lt;br&gt;OnOrderQty&lt;br&gt;UnitMeasureCode [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="2808" width="370" height="292" />
+        </mxCell>
+        <mxCell id="PurchaseOrderDetail" value="&lt;b&gt;Purchasing.PurchaseOrderDetail&lt;/b&gt;&lt;br&gt;PurchaseOrderID [PK] [FK]&lt;br&gt;PurchaseOrderDetailID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DueDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;OrderQty&lt;br&gt;ProductID [FK]&lt;br&gt;UnitPrice&lt;br&gt;LineTotal [computed]&lt;br&gt;ReceivedQty&lt;br&gt;RejectedQty&lt;br&gt;StockedQty [computed]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="2808" width="370" height="292" />
+        </mxCell>
+        <mxCell id="PurchaseOrderHeader" value="&lt;b&gt;Purchasing.PurchaseOrderHeader&lt;/b&gt;&lt;br&gt;PurchaseOrderID [PK]&lt;br&gt;RevisionNumber&lt;br&gt;Status&lt;br&gt;EmployeeID [FK]&lt;br&gt;VendorID [FK]&lt;br&gt;ShipMethodID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;OrderDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ShipDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;SubTotal&lt;br&gt;TaxAmt&lt;br&gt;Freight&lt;br&gt;TotalDue [computed]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="3248" width="370" height="336" />
+        </mxCell>
+        <mxCell id="SalesOrderDetail" value="&lt;b&gt;Sales.SalesOrderDetail&lt;/b&gt;&lt;br&gt;SalesOrderID [PK] [FK]&lt;br&gt;SalesOrderDetailID [PK]&lt;br&gt;CarrierTrackingNumber&lt;br&gt;OrderQty&lt;br&gt;ProductID [FK]&lt;br&gt;SpecialOfferID [FK]&lt;br&gt;UnitPrice&lt;br&gt;UnitPriceDiscount&lt;br&gt;LineTotal [computed]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="3246" width="370" height="292" />
+        </mxCell>
+        <mxCell id="SalesOrderHeader" value="&lt;b&gt;Sales.SalesOrderHeader&lt;/b&gt;&lt;br&gt;SalesOrderID [PK]&lt;br&gt;RevisionNumber&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;OrderDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DueDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ShipDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Status&lt;br&gt;OnlineOrderFlag&lt;br&gt;SalesOrderNumber [computed]&lt;br&gt;PurchaseOrderNumber&lt;br&gt;AccountNumber&lt;br&gt;CustomerID [FK]&lt;br&gt;SalesPersonID [FK]&lt;br&gt;TerritoryID [FK]&lt;br&gt;BillToAddressID [FK]&lt;br&gt;ShipToAddressID [FK]&lt;br&gt;ShipMethodID [FK]&lt;br&gt;CreditCardID [FK]&lt;br&gt;CreditCardApprovalCode&lt;br&gt;CurrencyRateID [FK]&lt;br&gt;SubTotal&lt;br&gt;TaxAmt&lt;br&gt;Freight&lt;br&gt;TotalDue [computed]&lt;br&gt;Comment&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="3180" width="370" height="622" />
+        </mxCell>
+        <mxCell id="SalesOrderHeaderSalesReason" value="&lt;b&gt;Sales.SalesOrderHeaderSalesReason&lt;/b&gt;&lt;br&gt;SalesOrderID [PK] [FK]&lt;br&gt;SalesReasonID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="3180" width="370" height="116" />
+        </mxCell>
+        <mxCell id="SalesPerson" value="&lt;b&gt;Sales.SalesPerson&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;TerritoryID [FK]&lt;br&gt;SalesQuota&lt;br&gt;Bonus&lt;br&gt;CommissionPct&lt;br&gt;SalesYTD&lt;br&gt;SalesLastYear&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="3664" width="370" height="248" />
+        </mxCell>
+        <mxCell id="SalesPersonQuotaHistory" value="&lt;b&gt;Sales.SalesPersonQuotaHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;QuotaDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;SalesQuota&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="3618" width="370" height="160" />
+        </mxCell>
+        <mxCell id="SalesReason" value="&lt;b&gt;Sales.SalesReason&lt;/b&gt;&lt;br&gt;SalesReasonID [PK]&lt;br&gt;Name&lt;br&gt;ReasonType&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="3882" width="370" height="138" />
+        </mxCell>
+        <mxCell id="SalesTaxRate" value="&lt;b&gt;Sales.SalesTaxRate&lt;/b&gt;&lt;br&gt;SalesTaxRateID [PK]&lt;br&gt;StateProvinceID [FK]&lt;br&gt;TaxType&lt;br&gt;TaxRate&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="3376" width="370" height="204" />
+        </mxCell>
+        <mxCell id="SalesTerritory" value="&lt;b&gt;Sales.SalesTerritory&lt;/b&gt;&lt;br&gt;TerritoryID [PK]&lt;br&gt;Name&lt;br&gt;CountryRegionCode [FK]&lt;br&gt;Group&lt;br&gt;SalesYTD&lt;br&gt;SalesLastYear&lt;br&gt;CostYTD&lt;br&gt;CostLastYear&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="3992" width="370" height="270" />
+        </mxCell>
+        <mxCell id="SalesTerritoryHistory" value="&lt;b&gt;Sales.SalesTerritoryHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;TerritoryID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="3858" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ScrapReason" value="&lt;b&gt;Production.ScrapReason&lt;/b&gt;&lt;br&gt;ScrapReasonID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="4100" width="370" height="116" />
+        </mxCell>
+        <mxCell id="Shift" value="&lt;b&gt;HumanResources.Shift&lt;/b&gt;&lt;br&gt;ShiftID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="3660" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ShipMethod" value="&lt;b&gt;Purchasing.ShipMethod&lt;/b&gt;&lt;br&gt;ShipMethodID [PK]&lt;br&gt;Name&lt;br&gt;ShipBase&lt;br&gt;ShipRate&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="4342" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ShoppingCartItem" value="&lt;b&gt;Sales.ShoppingCartItem&lt;/b&gt;&lt;br&gt;ShoppingCartItemID [PK]&lt;br&gt;ShoppingCartID&lt;br&gt;Quantity&lt;br&gt;ProductID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DateCreated&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="4120" width="370" height="182" />
+        </mxCell>
+        <mxCell id="SpecialOffer" value="&lt;b&gt;Sales.SpecialOffer&lt;/b&gt;&lt;br&gt;SpecialOfferID [PK]&lt;br&gt;Description&lt;br&gt;DiscountPct&lt;br&gt;Type&lt;br&gt;Category&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;MinQty&lt;br&gt;MaxQty&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="4296" width="370" height="292" />
+        </mxCell>
+        <mxCell id="SpecialOfferProduct" value="&lt;b&gt;Sales.SpecialOfferProduct&lt;/b&gt;&lt;br&gt;SpecialOfferID [PK] [FK]&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="3900" width="370" height="138" />
+        </mxCell>
+        <mxCell id="StateProvince" value="&lt;b&gt;Person.StateProvince&lt;/b&gt;&lt;br&gt;StateProvinceID [PK]&lt;br&gt;StateProvinceCode&lt;br&gt;CountryRegionCode [FK]&lt;br&gt;IsOnlyStateProvinceFlag&lt;br&gt;Name&lt;br&gt;TerritoryID [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="4604" width="370" height="226" />
+        </mxCell>
+        <mxCell id="Store" value="&lt;b&gt;Sales.Store&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;Name&lt;br&gt;SalesPersonID [FK]&lt;br&gt;Demographics&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="4382" width="370" height="182" />
+        </mxCell>
+        <mxCell id="TransactionHistory" value="&lt;b&gt;Production.TransactionHistory&lt;/b&gt;&lt;br&gt;TransactionID [PK]&lt;br&gt;ProductID [FK]&lt;br&gt;ReferenceOrderID&lt;br&gt;ReferenceOrderLineID&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;TransactionDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;TransactionType&lt;br&gt;Quantity&lt;br&gt;ActualCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="4668" width="370" height="248" />
+        </mxCell>
+        <mxCell id="TransactionHistoryArchive" value="&lt;b&gt;Production.TransactionHistoryArchive&lt;/b&gt;&lt;br&gt;TransactionID [PK]&lt;br&gt;ProductID&lt;br&gt;ReferenceOrderID&lt;br&gt;ReferenceOrderLineID&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;TransactionDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;TransactionType&lt;br&gt;Quantity&lt;br&gt;ActualCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="4118" width="370" height="248" />
+        </mxCell>
+        <mxCell id="UnitMeasure" value="&lt;b&gt;Production.UnitMeasure&lt;/b&gt;&lt;br&gt;UnitMeasureCode [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="4910" width="370" height="116" />
+        </mxCell>
+        <mxCell id="Vendor" value="&lt;b&gt;Purchasing.Vendor&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;AccountNumber&lt;br&gt;Name&lt;br&gt;CreditRating&lt;br&gt;PreferredVendorStatus&lt;br&gt;ActiveFlag&lt;br&gt;PurchasingWebServiceURL&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="4644" width="370" height="226" />
+        </mxCell>
+        <mxCell id="WorkOrder" value="&lt;b&gt;Production.WorkOrder&lt;/b&gt;&lt;br&gt;WorkOrderID [PK]&lt;br&gt;ProductID [FK]&lt;br&gt;OrderQty&lt;br&gt;StockedQty [computed]&lt;br&gt;ScrappedQty&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DueDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;ScrapReasonID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="4996" width="370" height="270" />
+        </mxCell>
+        <mxCell id="WorkOrderRouting" value="&lt;b&gt;Production.WorkOrderRouting&lt;/b&gt;&lt;br&gt;WorkOrderID [PK] [FK]&lt;br&gt;ProductID [PK]&lt;br&gt;OperationSequence [PK]&lt;br&gt;LocationID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ScheduledStartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ScheduledEndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ActualStartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ActualEndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;ActualResourceHrs&lt;br&gt;PlannedCost&lt;br&gt;ActualCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="4446" width="370" height="314" />
+        </mxCell>
+        <mxCell id="FK_Address_StateProvince_StateProvinceID" value="StateProvinceID → StateProvinceID" source="Address" target="StateProvince" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BillOfMaterials_Product_ProductAssemblyID" value="ProductAssemblyID → ProductID" source="BillOfMaterials" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BillOfMaterials_Product_ComponentID" value="ComponentID → ProductID" source="BillOfMaterials" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BillOfMaterials_UnitMeasure_UnitMeasureCode" value="UnitMeasureCode → UnitMeasureCode" source="BillOfMaterials" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityAddress_Address_AddressID" value="AddressID → AddressID" source="BusinessEntityAddress" target="Address" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityAddress_AddressType_AddressTypeID" value="AddressTypeID → AddressTypeID" source="BusinessEntityAddress" target="AddressType" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="BusinessEntityAddress" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityContact_Person_PersonID" value="PersonID → BusinessEntityID" source="BusinessEntityContact" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityContact_ContactType_ContactTypeID" value="ContactTypeID → ContactTypeID" source="BusinessEntityContact" target="ContactType" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityContact_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="BusinessEntityContact" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_CountryRegionCurrency_CountryRegion_CountryRegionCode" value="CountryRegionCode → CountryRegionCode" source="CountryRegionCurrency" target="CountryRegion" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_CountryRegionCurrency_Currency_CurrencyCode" value="CurrencyCode → CurrencyCode" source="CountryRegionCurrency" target="Currency" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_CurrencyRate_Currency_FromCurrencyCode" value="FromCurrencyCode → CurrencyCode" source="CurrencyRate" target="Currency" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_CurrencyRate_Currency_ToCurrencyCode" value="ToCurrencyCode → CurrencyCode" source="CurrencyRate" target="Currency" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Customer_Person_PersonID" value="PersonID → BusinessEntityID" source="Customer" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Customer_Store_StoreID" value="StoreID → BusinessEntityID" source="Customer" target="Store" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Customer_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="Customer" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Document_Employee_Owner" value="Owner → BusinessEntityID" source="Document" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmailAddress_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="EmailAddress" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Employee_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Employee" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeeDepartmentHistory_Department_DepartmentID" value="DepartmentID → DepartmentID" source="EmployeeDepartmentHistory" target="Department" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeeDepartmentHistory_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="EmployeeDepartmentHistory" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeeDepartmentHistory_Shift_ShiftID" value="ShiftID → ShiftID" source="EmployeeDepartmentHistory" target="Shift" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeePayHistory_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="EmployeePayHistory" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_JobCandidate_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="JobCandidate" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Password_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Password" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Person_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Person" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonCreditCard_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="PersonCreditCard" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonCreditCard_CreditCard_CreditCardID" value="CreditCardID → CreditCardID" source="PersonCreditCard" target="CreditCard" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonPhone_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="PersonPhone" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID" value="PhoneNumberTypeID → PhoneNumberTypeID" source="PersonPhone" target="PhoneNumberType" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_UnitMeasure_SizeUnitMeasureCode" value="SizeUnitMeasureCode → UnitMeasureCode" source="Product" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_UnitMeasure_WeightUnitMeasureCode" value="WeightUnitMeasureCode → UnitMeasureCode" source="Product" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_ProductModel_ProductModelID" value="ProductModelID → ProductModelID" source="Product" target="ProductModel" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_ProductSubcategory_ProductSubcategoryID" value="ProductSubcategoryID → ProductSubcategoryID" source="Product" target="ProductSubcategory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductCostHistory_Product_ProductID" value="ProductID → ProductID" source="ProductCostHistory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductDocument_Product_ProductID" value="ProductID → ProductID" source="ProductDocument" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductDocument_Document_DocumentNode" value="DocumentNode → DocumentNode" source="ProductDocument" target="Document" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductInventory_Location_LocationID" value="LocationID → LocationID" source="ProductInventory" target="Location" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductInventory_Product_ProductID" value="ProductID → ProductID" source="ProductInventory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductListPriceHistory_Product_ProductID" value="ProductID → ProductID" source="ProductListPriceHistory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelIllustration_ProductModel_ProductModelID" value="ProductModelID → ProductModelID" source="ProductModelIllustration" target="ProductModel" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelIllustration_Illustration_IllustrationID" value="IllustrationID → IllustrationID" source="ProductModelIllustration" target="Illustration" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelProductDescriptionCulture_ProductDescription_ProductDescriptionID" value="ProductDescriptionID → ProductDescriptionID" source="ProductModelProductDescriptionCulture" target="ProductDescription" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelProductDescriptionCulture_Culture_CultureID" value="CultureID → CultureID" source="ProductModelProductDescriptionCulture" target="Culture" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelProductDescriptionCulture_ProductModel_ProductModelID" value="ProductModelID → ProductModelID" source="ProductModelProductDescriptionCulture" target="ProductModel" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductProductPhoto_Product_ProductID" value="ProductID → ProductID" source="ProductProductPhoto" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" value="ProductPhotoID → ProductPhotoID" source="ProductProductPhoto" target="ProductPhoto" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductReview_Product_ProductID" value="ProductID → ProductID" source="ProductReview" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductSubcategory_ProductCategory_ProductCategoryID" value="ProductCategoryID → ProductCategoryID" source="ProductSubcategory" target="ProductCategory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductVendor_Product_ProductID" value="ProductID → ProductID" source="ProductVendor" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductVendor_UnitMeasure_UnitMeasureCode" value="UnitMeasureCode → UnitMeasureCode" source="ProductVendor" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductVendor_Vendor_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="ProductVendor" target="Vendor" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderDetail_Product_ProductID" value="ProductID → ProductID" source="PurchaseOrderDetail" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID" value="PurchaseOrderID → PurchaseOrderID" source="PurchaseOrderDetail" target="PurchaseOrderHeader" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderHeader_Employee_EmployeeID" value="EmployeeID → BusinessEntityID" source="PurchaseOrderHeader" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderHeader_Vendor_VendorID" value="VendorID → BusinessEntityID" source="PurchaseOrderHeader" target="Vendor" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderHeader_ShipMethod_ShipMethodID" value="ShipMethodID → ShipMethodID" source="PurchaseOrderHeader" target="ShipMethod" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" value="SalesOrderID → SalesOrderID" source="SalesOrderDetail" target="SalesOrderHeader" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID" value="SpecialOfferID, ProductID → SpecialOfferID, ProductID" source="SalesOrderDetail" target="SpecialOfferProduct" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_Address_BillToAddressID" value="BillToAddressID → AddressID" source="SalesOrderHeader" target="Address" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_Address_ShipToAddressID" value="ShipToAddressID → AddressID" source="SalesOrderHeader" target="Address" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_CreditCard_CreditCardID" value="CreditCardID → CreditCardID" source="SalesOrderHeader" target="CreditCard" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_CurrencyRate_CurrencyRateID" value="CurrencyRateID → CurrencyRateID" source="SalesOrderHeader" target="CurrencyRate" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_Customer_CustomerID" value="CustomerID → CustomerID" source="SalesOrderHeader" target="Customer" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_SalesPerson_SalesPersonID" value="SalesPersonID → BusinessEntityID" source="SalesOrderHeader" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_ShipMethod_ShipMethodID" value="ShipMethodID → ShipMethodID" source="SalesOrderHeader" target="ShipMethod" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="SalesOrderHeader" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID" value="SalesReasonID → SalesReasonID" source="SalesOrderHeaderSalesReason" target="SalesReason" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID" value="SalesOrderID → SalesOrderID" source="SalesOrderHeaderSalesReason" target="SalesOrderHeader" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesPerson_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="SalesPerson" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesPerson_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="SalesPerson" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="SalesPersonQuotaHistory" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesTaxRate_StateProvince_StateProvinceID" value="StateProvinceID → StateProvinceID" source="SalesTaxRate" target="StateProvince" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesTerritory_CountryRegion_CountryRegionCode" value="CountryRegionCode → CountryRegionCode" source="SalesTerritory" target="CountryRegion" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="SalesTerritoryHistory" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesTerritoryHistory_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="SalesTerritoryHistory" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ShoppingCartItem_Product_ProductID" value="ProductID → ProductID" source="ShoppingCartItem" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SpecialOfferProduct_Product_ProductID" value="ProductID → ProductID" source="SpecialOfferProduct" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" value="SpecialOfferID → SpecialOfferID" source="SpecialOfferProduct" target="SpecialOffer" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_StateProvince_CountryRegion_CountryRegionCode" value="CountryRegionCode → CountryRegionCode" source="StateProvince" target="CountryRegion" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_StateProvince_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="StateProvince" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Store_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Store" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Store_SalesPerson_SalesPersonID" value="SalesPersonID → BusinessEntityID" source="Store" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_TransactionHistory_Product_ProductID" value="ProductID → ProductID" source="TransactionHistory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Vendor_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Vendor" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrder_Product_ProductID" value="ProductID → ProductID" source="WorkOrder" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrder_ScrapReason_ScrapReasonID" value="ScrapReasonID → ScrapReasonID" source="WorkOrder" target="ScrapReason" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrderRouting_Location_LocationID" value="LocationID → LocationID" source="WorkOrderRouting" target="Location" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrderRouting_WorkOrder_WorkOrderID" value="WorkOrderID → WorkOrderID" source="WorkOrderRouting" target="WorkOrder" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="HumanResources" name="HumanResources">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Department" value="&lt;b&gt;HumanResources.Department&lt;/b&gt;&lt;br&gt;DepartmentID [PK]&lt;br&gt;Name&lt;br&gt;GroupName&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="138" />
+        </mxCell>
+        <mxCell id="Employee" value="&lt;b&gt;HumanResources.Employee&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;NationalIDNumber&lt;br&gt;LoginID&lt;br&gt;OrganizationNode&lt;br&gt;OrganizationLevel [computed]&lt;br&gt;JobTitle&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;BirthDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;MaritalStatus&lt;br&gt;Gender&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;HireDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;SalariedFlag&lt;br&gt;VacationHours&lt;br&gt;SickLeaveHours&lt;br&gt;CurrentFlag&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="402" />
+        </mxCell>
+        <mxCell id="EmployeeDepartmentHistory" value="&lt;b&gt;HumanResources.EmployeeDepartmentHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;DepartmentID [PK] [FK]&lt;br&gt;ShiftID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="182" />
+        </mxCell>
+        <mxCell id="EmployeePayHistory" value="&lt;b&gt;HumanResources.EmployeePayHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;RateChangeDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Rate&lt;br&gt;PayFrequency&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="80" width="370" height="160" />
+        </mxCell>
+        <mxCell id="JobCandidate" value="&lt;b&gt;HumanResources.JobCandidate&lt;/b&gt;&lt;br&gt;JobCandidateID [PK]&lt;br&gt;BusinessEntityID [FK]&lt;br&gt;Resume&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="298" width="370" height="138" />
+        </mxCell>
+        <mxCell id="Shift" value="&lt;b&gt;HumanResources.Shift&lt;/b&gt;&lt;br&gt;ShiftID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="562" width="370" height="160" />
+        </mxCell>
+        <mxCell id="FK_EmployeeDepartmentHistory_Department_DepartmentID" value="DepartmentID → DepartmentID" source="EmployeeDepartmentHistory" target="Department" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeeDepartmentHistory_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="EmployeeDepartmentHistory" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeeDepartmentHistory_Shift_ShiftID" value="ShiftID → ShiftID" source="EmployeeDepartmentHistory" target="Shift" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmployeePayHistory_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="EmployeePayHistory" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_JobCandidate_Employee_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="JobCandidate" target="Employee" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="Person" name="Person">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Address" value="&lt;b&gt;Person.Address&lt;/b&gt;&lt;br&gt;AddressID [PK]&lt;br&gt;AddressLine1&lt;br&gt;AddressLine2&lt;br&gt;City&lt;br&gt;StateProvinceID [FK]&lt;br&gt;PostalCode&lt;br&gt;SpatialLocation&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="248" />
+        </mxCell>
+        <mxCell id="AddressType" value="&lt;b&gt;Person.AddressType&lt;/b&gt;&lt;br&gt;AddressTypeID [PK]&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="138" />
+        </mxCell>
+        <mxCell id="BusinessEntity" value="&lt;b&gt;Person.BusinessEntity&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="116" />
+        </mxCell>
+        <mxCell id="BusinessEntityAddress" value="&lt;b&gt;Person.BusinessEntityAddress&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;AddressID [PK] [FK]&lt;br&gt;AddressTypeID [PK] [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="80" width="370" height="160" />
+        </mxCell>
+        <mxCell id="BusinessEntityContact" value="&lt;b&gt;Person.BusinessEntityContact&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PersonID [PK] [FK]&lt;br&gt;ContactTypeID [PK] [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="408" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ContactType" value="&lt;b&gt;Person.ContactType&lt;/b&gt;&lt;br&gt;ContactTypeID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="298" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CountryRegion" value="&lt;b&gt;Person.CountryRegion&lt;/b&gt;&lt;br&gt;CountryRegionCode [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="276" width="370" height="116" />
+        </mxCell>
+        <mxCell id="EmailAddress" value="&lt;b&gt;Person.EmailAddress&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;EmailAddressID [PK]&lt;br&gt;EmailAddress&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="320" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Password" value="&lt;b&gt;Person.Password&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PasswordHash&lt;br&gt;PasswordSalt&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="648" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Person" value="&lt;b&gt;Person.Person&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PersonType&lt;br&gt;NameStyle&lt;br&gt;Title&lt;br&gt;FirstName&lt;br&gt;MiddleName&lt;br&gt;LastName&lt;br&gt;Suffix&lt;br&gt;EmailPromotion&lt;br&gt;AdditionalContactInfo&lt;br&gt;Demographics&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="494" width="370" height="336" />
+        </mxCell>
+        <mxCell id="PersonPhone" value="&lt;b&gt;Person.PersonPhone&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;PhoneNumber [PK]&lt;br&gt;PhoneNumberTypeID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="472" width="370" height="138" />
+        </mxCell>
+        <mxCell id="PhoneNumberType" value="&lt;b&gt;Person.PhoneNumberType&lt;/b&gt;&lt;br&gt;PhoneNumberTypeID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="560" width="370" height="116" />
+        </mxCell>
+        <mxCell id="StateProvince" value="&lt;b&gt;Person.StateProvince&lt;/b&gt;&lt;br&gt;StateProvinceID [PK]&lt;br&gt;StateProvinceCode&lt;br&gt;CountryRegionCode [FK]&lt;br&gt;IsOnlyStateProvinceFlag&lt;br&gt;Name&lt;br&gt;TerritoryID [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="888" width="370" height="226" />
+        </mxCell>
+        <mxCell id="FK_Address_StateProvince_StateProvinceID" value="StateProvinceID → StateProvinceID" source="Address" target="StateProvince" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityAddress_Address_AddressID" value="AddressID → AddressID" source="BusinessEntityAddress" target="Address" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityAddress_AddressType_AddressTypeID" value="AddressTypeID → AddressTypeID" source="BusinessEntityAddress" target="AddressType" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="BusinessEntityAddress" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityContact_Person_PersonID" value="PersonID → BusinessEntityID" source="BusinessEntityContact" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityContact_ContactType_ContactTypeID" value="ContactTypeID → ContactTypeID" source="BusinessEntityContact" target="ContactType" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BusinessEntityContact_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="BusinessEntityContact" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_EmailAddress_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="EmailAddress" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Password_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Password" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Person_BusinessEntity_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="Person" target="BusinessEntity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonPhone_Person_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="PersonPhone" target="Person" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID" value="PhoneNumberTypeID → PhoneNumberTypeID" source="PersonPhone" target="PhoneNumberType" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_StateProvince_CountryRegion_CountryRegionCode" value="CountryRegionCode → CountryRegionCode" source="StateProvince" target="CountryRegion" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="Production" name="Production">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BillOfMaterials" value="&lt;b&gt;Production.BillOfMaterials&lt;/b&gt;&lt;br&gt;BillOfMaterialsID [PK]&lt;br&gt;ProductAssemblyID [FK]&lt;br&gt;ComponentID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;UnitMeasureCode [FK]&lt;br&gt;BOMLevel&lt;br&gt;PerAssemblyQty&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="248" />
+        </mxCell>
+        <mxCell id="Culture" value="&lt;b&gt;Production.Culture&lt;/b&gt;&lt;br&gt;CultureID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="116" />
+        </mxCell>
+        <mxCell id="Document" value="&lt;b&gt;Production.Document&lt;/b&gt;&lt;br&gt;DocumentNode [PK]&lt;br&gt;DocumentLevel [computed]&lt;br&gt;Title&lt;br&gt;Owner [FK]&lt;br&gt;FolderFlag&lt;br&gt;FileName&lt;br&gt;FileExtension&lt;br&gt;Revision&lt;br&gt;ChangeNumber&lt;br&gt;Status&lt;br&gt;DocumentSummary&lt;br&gt;Document&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="358" />
+        </mxCell>
+        <mxCell id="Illustration" value="&lt;b&gt;Production.Illustration&lt;/b&gt;&lt;br&gt;IllustrationID [PK]&lt;br&gt;Diagram&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="80" width="370" height="116" />
+        </mxCell>
+        <mxCell id="Location" value="&lt;b&gt;Production.Location&lt;/b&gt;&lt;br&gt;LocationID [PK]&lt;br&gt;Name&lt;br&gt;CostRate&lt;br&gt;Availability&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="408" width="370" height="160" />
+        </mxCell>
+        <mxCell id="Product" value="&lt;b&gt;Production.Product&lt;/b&gt;&lt;br&gt;ProductID [PK]&lt;br&gt;Name&lt;br&gt;ProductNumber&lt;br&gt;MakeFlag&lt;br&gt;FinishedGoodsFlag&lt;br&gt;Color&lt;br&gt;SafetyStockLevel&lt;br&gt;ReorderPoint&lt;br&gt;StandardCost&lt;br&gt;ListPrice&lt;br&gt;Size&lt;br&gt;SizeUnitMeasureCode [FK]&lt;br&gt;WeightUnitMeasureCode [FK]&lt;br&gt;Weight&lt;br&gt;DaysToManufacture&lt;br&gt;ProductLine&lt;br&gt;Class&lt;br&gt;Style&lt;br&gt;ProductSubcategoryID [FK]&lt;br&gt;ProductModelID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;SellStartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;SellEndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DiscontinuedDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="276" width="370" height="600" />
+        </mxCell>
+        <mxCell id="ProductCategory" value="&lt;b&gt;Production.ProductCategory&lt;/b&gt;&lt;br&gt;ProductCategoryID [PK]&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="518" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductCostHistory" value="&lt;b&gt;Production.ProductCostHistory&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;StandardCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="276" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ProductDescription" value="&lt;b&gt;Production.ProductDescription&lt;/b&gt;&lt;br&gt;ProductDescriptionID [PK]&lt;br&gt;Description&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="648" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductDocument" value="&lt;b&gt;Production.ProductDocument&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;DocumentNode [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="956" width="370" height="116" />
+        </mxCell>
+        <mxCell id="ProductInventory" value="&lt;b&gt;Production.ProductInventory&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;LocationID [PK] [FK]&lt;br&gt;Shelf&lt;br&gt;Bin&lt;br&gt;Quantity&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="736" width="370" height="204" />
+        </mxCell>
+        <mxCell id="ProductListPriceHistory" value="&lt;b&gt;Production.ProductListPriceHistory&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;ListPrice&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="516" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ProductModel" value="&lt;b&gt;Production.ProductModel&lt;/b&gt;&lt;br&gt;ProductModelID [PK]&lt;br&gt;Name&lt;br&gt;CatalogDescription&lt;br&gt;Instructions&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="866" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ProductModelIllustration" value="&lt;b&gt;Production.ProductModelIllustration&lt;/b&gt;&lt;br&gt;ProductModelID [PK] [FK]&lt;br&gt;IllustrationID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1152" width="370" height="116" />
+        </mxCell>
+        <mxCell id="ProductModelProductDescriptionCulture" value="&lt;b&gt;Production.ProductModelProductDescriptionCulture&lt;/b&gt;&lt;br&gt;ProductModelID [PK] [FK]&lt;br&gt;ProductDescriptionID [PK] [FK]&lt;br&gt;CultureID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1020" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductPhoto" value="&lt;b&gt;Production.ProductPhoto&lt;/b&gt;&lt;br&gt;ProductPhotoID [PK]&lt;br&gt;ThumbNailPhoto&lt;br&gt;ThumbnailPhotoFileName&lt;br&gt;LargePhoto&lt;br&gt;LargePhotoFileName&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="756" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ProductProductPhoto" value="&lt;b&gt;Production.ProductProductPhoto&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;ProductPhotoID [PK] [FK]&lt;br&gt;Primary&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1128" width="370" height="138" />
+        </mxCell>
+        <mxCell id="ProductReview" value="&lt;b&gt;Production.ProductReview&lt;/b&gt;&lt;br&gt;ProductReviewID [PK]&lt;br&gt;ProductID [FK]&lt;br&gt;ReviewerName&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ReviewDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;EmailAddress&lt;br&gt;Rating&lt;br&gt;Comments&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1348" width="370" height="226" />
+        </mxCell>
+        <mxCell id="ProductSubcategory" value="&lt;b&gt;Production.ProductSubcategory&lt;/b&gt;&lt;br&gt;ProductSubcategoryID [PK]&lt;br&gt;ProductCategoryID [FK]&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1238" width="370" height="160" />
+        </mxCell>
+        <mxCell id="ScrapReason" value="&lt;b&gt;Production.ScrapReason&lt;/b&gt;&lt;br&gt;ScrapReasonID [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1018" width="370" height="116" />
+        </mxCell>
+        <mxCell id="TransactionHistory" value="&lt;b&gt;Production.TransactionHistory&lt;/b&gt;&lt;br&gt;TransactionID [PK]&lt;br&gt;ProductID [FK]&lt;br&gt;ReferenceOrderID&lt;br&gt;ReferenceOrderLineID&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;TransactionDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;TransactionType&lt;br&gt;Quantity&lt;br&gt;ActualCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1346" width="370" height="248" />
+        </mxCell>
+        <mxCell id="TransactionHistoryArchive" value="&lt;b&gt;Production.TransactionHistoryArchive&lt;/b&gt;&lt;br&gt;TransactionID [PK]&lt;br&gt;ProductID&lt;br&gt;ReferenceOrderID&lt;br&gt;ReferenceOrderLineID&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;TransactionDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;TransactionType&lt;br&gt;Quantity&lt;br&gt;ActualCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1654" width="370" height="248" />
+        </mxCell>
+        <mxCell id="UnitMeasure" value="&lt;b&gt;Production.UnitMeasure&lt;/b&gt;&lt;br&gt;UnitMeasureCode [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1478" width="370" height="116" />
+        </mxCell>
+        <mxCell id="WorkOrder" value="&lt;b&gt;Production.WorkOrder&lt;/b&gt;&lt;br&gt;WorkOrderID [PK]&lt;br&gt;ProductID [FK]&lt;br&gt;OrderQty&lt;br&gt;StockedQty [computed]&lt;br&gt;ScrappedQty&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DueDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;ScrapReasonID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1214" width="370" height="270" />
+        </mxCell>
+        <mxCell id="WorkOrderRouting" value="&lt;b&gt;Production.WorkOrderRouting&lt;/b&gt;&lt;br&gt;WorkOrderID [PK] [FK]&lt;br&gt;ProductID [PK]&lt;br&gt;OperationSequence [PK]&lt;br&gt;LocationID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ScheduledStartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ScheduledEndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ActualStartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ActualEndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;ActualResourceHrs&lt;br&gt;PlannedCost&lt;br&gt;ActualCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1674" width="370" height="314" />
+        </mxCell>
+        <mxCell id="FK_BillOfMaterials_Product_ProductAssemblyID" value="ProductAssemblyID → ProductID" source="BillOfMaterials" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BillOfMaterials_Product_ComponentID" value="ComponentID → ProductID" source="BillOfMaterials" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_BillOfMaterials_UnitMeasure_UnitMeasureCode" value="UnitMeasureCode → UnitMeasureCode" source="BillOfMaterials" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_UnitMeasure_SizeUnitMeasureCode" value="SizeUnitMeasureCode → UnitMeasureCode" source="Product" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_UnitMeasure_WeightUnitMeasureCode" value="WeightUnitMeasureCode → UnitMeasureCode" source="Product" target="UnitMeasure" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_ProductModel_ProductModelID" value="ProductModelID → ProductModelID" source="Product" target="ProductModel" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Product_ProductSubcategory_ProductSubcategoryID" value="ProductSubcategoryID → ProductSubcategoryID" source="Product" target="ProductSubcategory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductCostHistory_Product_ProductID" value="ProductID → ProductID" source="ProductCostHistory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductDocument_Product_ProductID" value="ProductID → ProductID" source="ProductDocument" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductDocument_Document_DocumentNode" value="DocumentNode → DocumentNode" source="ProductDocument" target="Document" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductInventory_Location_LocationID" value="LocationID → LocationID" source="ProductInventory" target="Location" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductInventory_Product_ProductID" value="ProductID → ProductID" source="ProductInventory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductListPriceHistory_Product_ProductID" value="ProductID → ProductID" source="ProductListPriceHistory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelIllustration_ProductModel_ProductModelID" value="ProductModelID → ProductModelID" source="ProductModelIllustration" target="ProductModel" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelIllustration_Illustration_IllustrationID" value="IllustrationID → IllustrationID" source="ProductModelIllustration" target="Illustration" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelProductDescriptionCulture_ProductDescription_ProductDescriptionID" value="ProductDescriptionID → ProductDescriptionID" source="ProductModelProductDescriptionCulture" target="ProductDescription" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelProductDescriptionCulture_Culture_CultureID" value="CultureID → CultureID" source="ProductModelProductDescriptionCulture" target="Culture" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductModelProductDescriptionCulture_ProductModel_ProductModelID" value="ProductModelID → ProductModelID" source="ProductModelProductDescriptionCulture" target="ProductModel" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductProductPhoto_Product_ProductID" value="ProductID → ProductID" source="ProductProductPhoto" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductProductPhoto_ProductPhoto_ProductPhotoID" value="ProductPhotoID → ProductPhotoID" source="ProductProductPhoto" target="ProductPhoto" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductReview_Product_ProductID" value="ProductID → ProductID" source="ProductReview" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_ProductSubcategory_ProductCategory_ProductCategoryID" value="ProductCategoryID → ProductCategoryID" source="ProductSubcategory" target="ProductCategory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_TransactionHistory_Product_ProductID" value="ProductID → ProductID" source="TransactionHistory" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrder_Product_ProductID" value="ProductID → ProductID" source="WorkOrder" target="Product" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrder_ScrapReason_ScrapReasonID" value="ScrapReasonID → ScrapReasonID" source="WorkOrder" target="ScrapReason" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrderRouting_Location_LocationID" value="LocationID → LocationID" source="WorkOrderRouting" target="Location" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_WorkOrderRouting_WorkOrder_WorkOrderID" value="WorkOrderID → WorkOrderID" source="WorkOrderRouting" target="WorkOrder" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="Purchasing" name="Purchasing">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ProductVendor" value="&lt;b&gt;Purchasing.ProductVendor&lt;/b&gt;&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;AverageLeadTime&lt;br&gt;StandardPrice&lt;br&gt;LastReceiptCost&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;LastReceiptDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;MinOrderQty&lt;br&gt;MaxOrderQty&lt;br&gt;OnOrderQty&lt;br&gt;UnitMeasureCode [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="292" />
+        </mxCell>
+        <mxCell id="PurchaseOrderDetail" value="&lt;b&gt;Purchasing.PurchaseOrderDetail&lt;/b&gt;&lt;br&gt;PurchaseOrderID [PK] [FK]&lt;br&gt;PurchaseOrderDetailID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DueDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;OrderQty&lt;br&gt;ProductID [FK]&lt;br&gt;UnitPrice&lt;br&gt;LineTotal [computed]&lt;br&gt;ReceivedQty&lt;br&gt;RejectedQty&lt;br&gt;StockedQty [computed]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="292" />
+        </mxCell>
+        <mxCell id="PurchaseOrderHeader" value="&lt;b&gt;Purchasing.PurchaseOrderHeader&lt;/b&gt;&lt;br&gt;PurchaseOrderID [PK]&lt;br&gt;RevisionNumber&lt;br&gt;Status&lt;br&gt;EmployeeID [FK]&lt;br&gt;VendorID [FK]&lt;br&gt;ShipMethodID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;OrderDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ShipDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;SubTotal&lt;br&gt;TaxAmt&lt;br&gt;Freight&lt;br&gt;TotalDue [computed]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="336" />
+        </mxCell>
+        <mxCell id="ShipMethod" value="&lt;b&gt;Purchasing.ShipMethod&lt;/b&gt;&lt;br&gt;ShipMethodID [PK]&lt;br&gt;Name&lt;br&gt;ShipBase&lt;br&gt;ShipRate&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="80" width="370" height="182" />
+        </mxCell>
+        <mxCell id="Vendor" value="&lt;b&gt;Purchasing.Vendor&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;AccountNumber&lt;br&gt;Name&lt;br&gt;CreditRating&lt;br&gt;PreferredVendorStatus&lt;br&gt;ActiveFlag&lt;br&gt;PurchasingWebServiceURL&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="452" width="370" height="226" />
+        </mxCell>
+        <mxCell id="FK_ProductVendor_Vendor_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="ProductVendor" target="Vendor" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderDetail_PurchaseOrderHeader_PurchaseOrderID" value="PurchaseOrderID → PurchaseOrderID" source="PurchaseOrderDetail" target="PurchaseOrderHeader" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderHeader_Vendor_VendorID" value="VendorID → BusinessEntityID" source="PurchaseOrderHeader" target="Vendor" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PurchaseOrderHeader_ShipMethod_ShipMethodID" value="ShipMethodID → ShipMethodID" source="PurchaseOrderHeader" target="ShipMethod" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="Sales" name="Sales">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CountryRegionCurrency" value="&lt;b&gt;Sales.CountryRegionCurrency&lt;/b&gt;&lt;br&gt;CountryRegionCode [PK] [FK]&lt;br&gt;CurrencyCode [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CreditCard" value="&lt;b&gt;Sales.CreditCard&lt;/b&gt;&lt;br&gt;CreditCardID [PK]&lt;br&gt;CardType&lt;br&gt;CardNumber&lt;br&gt;ExpMonth&lt;br&gt;ExpYear&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="182" />
+        </mxCell>
+        <mxCell id="Currency" value="&lt;b&gt;Sales.Currency&lt;/b&gt;&lt;br&gt;CurrencyCode [PK]&lt;br&gt;Name&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="116" />
+        </mxCell>
+        <mxCell id="CurrencyRate" value="&lt;b&gt;Sales.CurrencyRate&lt;/b&gt;&lt;br&gt;CurrencyRateID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;CurrencyRateDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;FromCurrencyCode [FK]&lt;br&gt;ToCurrencyCode [FK]&lt;br&gt;AverageRate&lt;br&gt;EndOfDayRate&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="80" width="370" height="204" />
+        </mxCell>
+        <mxCell id="Customer" value="&lt;b&gt;Sales.Customer&lt;/b&gt;&lt;br&gt;CustomerID [PK]&lt;br&gt;PersonID [FK]&lt;br&gt;StoreID [FK]&lt;br&gt;TerritoryID [FK]&lt;br&gt;AccountNumber [computed]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="276" width="370" height="204" />
+        </mxCell>
+        <mxCell id="PersonCreditCard" value="&lt;b&gt;Sales.PersonCreditCard&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;CreditCardID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="342" width="370" height="116" />
+        </mxCell>
+        <mxCell id="SalesOrderDetail" value="&lt;b&gt;Sales.SalesOrderDetail&lt;/b&gt;&lt;br&gt;SalesOrderID [PK] [FK]&lt;br&gt;SalesOrderDetailID [PK]&lt;br&gt;CarrierTrackingNumber&lt;br&gt;OrderQty&lt;br&gt;ProductID [FK]&lt;br&gt;SpecialOfferID [FK]&lt;br&gt;UnitPrice&lt;br&gt;UnitPriceDiscount&lt;br&gt;LineTotal [computed]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="276" width="370" height="292" />
+        </mxCell>
+        <mxCell id="SalesOrderHeader" value="&lt;b&gt;Sales.SalesOrderHeader&lt;/b&gt;&lt;br&gt;SalesOrderID [PK]&lt;br&gt;RevisionNumber&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;OrderDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DueDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ShipDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Status&lt;br&gt;OnlineOrderFlag&lt;br&gt;SalesOrderNumber [computed]&lt;br&gt;PurchaseOrderNumber&lt;br&gt;AccountNumber&lt;br&gt;CustomerID [FK]&lt;br&gt;SalesPersonID [FK]&lt;br&gt;TerritoryID [FK]&lt;br&gt;BillToAddressID [FK]&lt;br&gt;ShipToAddressID [FK]&lt;br&gt;ShipMethodID [FK]&lt;br&gt;CreditCardID [FK]&lt;br&gt;CreditCardApprovalCode&lt;br&gt;CurrencyRateID [FK]&lt;br&gt;SubTotal&lt;br&gt;TaxAmt&lt;br&gt;Freight&lt;br&gt;TotalDue [computed]&lt;br&gt;Comment&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="364" width="370" height="622" />
+        </mxCell>
+        <mxCell id="SalesOrderHeaderSalesReason" value="&lt;b&gt;Sales.SalesOrderHeaderSalesReason&lt;/b&gt;&lt;br&gt;SalesOrderID [PK] [FK]&lt;br&gt;SalesReasonID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="560" width="370" height="116" />
+        </mxCell>
+        <mxCell id="SalesPerson" value="&lt;b&gt;Sales.SalesPerson&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;TerritoryID [FK]&lt;br&gt;SalesQuota&lt;br&gt;Bonus&lt;br&gt;CommissionPct&lt;br&gt;SalesYTD&lt;br&gt;SalesLastYear&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="538" width="370" height="248" />
+        </mxCell>
+        <mxCell id="SalesPersonQuotaHistory" value="&lt;b&gt;Sales.SalesPersonQuotaHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;QuotaDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;SalesQuota&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="648" width="370" height="160" />
+        </mxCell>
+        <mxCell id="SalesReason" value="&lt;b&gt;Sales.SalesReason&lt;/b&gt;&lt;br&gt;SalesReasonID [PK]&lt;br&gt;Name&lt;br&gt;ReasonType&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1066" width="370" height="138" />
+        </mxCell>
+        <mxCell id="SalesTaxRate" value="&lt;b&gt;Sales.SalesTaxRate&lt;/b&gt;&lt;br&gt;SalesTaxRateID [PK]&lt;br&gt;StateProvinceID [FK]&lt;br&gt;TaxType&lt;br&gt;TaxRate&lt;br&gt;Name&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="756" width="370" height="204" />
+        </mxCell>
+        <mxCell id="SalesTerritory" value="&lt;b&gt;Sales.SalesTerritory&lt;/b&gt;&lt;br&gt;TerritoryID [PK]&lt;br&gt;Name&lt;br&gt;CountryRegionCode [FK]&lt;br&gt;Group&lt;br&gt;SalesYTD&lt;br&gt;SalesLastYear&lt;br&gt;CostYTD&lt;br&gt;CostLastYear&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="866" width="370" height="270" />
+        </mxCell>
+        <mxCell id="SalesTerritoryHistory" value="&lt;b&gt;Sales.SalesTerritoryHistory&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;TerritoryID [PK] [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate [PK]&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="888" width="370" height="182" />
+        </mxCell>
+        <mxCell id="ShoppingCartItem" value="&lt;b&gt;Sales.ShoppingCartItem&lt;/b&gt;&lt;br&gt;ShoppingCartItemID [PK]&lt;br&gt;ShoppingCartID&lt;br&gt;Quantity&lt;br&gt;ProductID [FK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;DateCreated&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1290" y="1284" width="370" height="182" />
+        </mxCell>
+        <mxCell id="SpecialOffer" value="&lt;b&gt;Sales.SpecialOffer&lt;/b&gt;&lt;br&gt;SpecialOfferID [PK]&lt;br&gt;Description&lt;br&gt;DiscountPct&lt;br&gt;Type&lt;br&gt;Category&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;StartDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;EndDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;MinQty&lt;br&gt;MaxQty&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="1040" width="370" height="292" />
+        </mxCell>
+        <mxCell id="SpecialOfferProduct" value="&lt;b&gt;Sales.SpecialOfferProduct&lt;/b&gt;&lt;br&gt;SpecialOfferID [PK] [FK]&lt;br&gt;ProductID [PK] [FK]&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="1216" width="370" height="138" />
+        </mxCell>
+        <mxCell id="Store" value="&lt;b&gt;Sales.Store&lt;/b&gt;&lt;br&gt;BusinessEntityID [PK] [FK]&lt;br&gt;Name&lt;br&gt;SalesPersonID [FK]&lt;br&gt;Demographics&lt;br&gt;rowguid&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="1150" width="370" height="182" />
+        </mxCell>
+        <mxCell id="FK_CountryRegionCurrency_Currency_CurrencyCode" value="CurrencyCode → CurrencyCode" source="CountryRegionCurrency" target="Currency" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_CurrencyRate_Currency_FromCurrencyCode" value="FromCurrencyCode → CurrencyCode" source="CurrencyRate" target="Currency" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_CurrencyRate_Currency_ToCurrencyCode" value="ToCurrencyCode → CurrencyCode" source="CurrencyRate" target="Currency" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Customer_Store_StoreID" value="StoreID → BusinessEntityID" source="Customer" target="Store" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Customer_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="Customer" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_PersonCreditCard_CreditCard_CreditCardID" value="CreditCardID → CreditCardID" source="PersonCreditCard" target="CreditCard" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" value="SalesOrderID → SalesOrderID" source="SalesOrderDetail" target="SalesOrderHeader" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID" value="SpecialOfferID, ProductID → SpecialOfferID, ProductID" source="SalesOrderDetail" target="SpecialOfferProduct" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_CreditCard_CreditCardID" value="CreditCardID → CreditCardID" source="SalesOrderHeader" target="CreditCard" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_CurrencyRate_CurrencyRateID" value="CurrencyRateID → CurrencyRateID" source="SalesOrderHeader" target="CurrencyRate" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_Customer_CustomerID" value="CustomerID → CustomerID" source="SalesOrderHeader" target="Customer" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_SalesPerson_SalesPersonID" value="SalesPersonID → BusinessEntityID" source="SalesOrderHeader" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeader_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="SalesOrderHeader" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID" value="SalesReasonID → SalesReasonID" source="SalesOrderHeaderSalesReason" target="SalesReason" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID" value="SalesOrderID → SalesOrderID" source="SalesOrderHeaderSalesReason" target="SalesOrderHeader" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesPerson_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="SalesPerson" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="SalesPersonQuotaHistory" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID" value="BusinessEntityID → BusinessEntityID" source="SalesTerritoryHistory" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SalesTerritoryHistory_SalesTerritory_TerritoryID" value="TerritoryID → TerritoryID" source="SalesTerritoryHistory" target="SalesTerritory" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" value="SpecialOfferID → SpecialOfferID" source="SpecialOfferProduct" target="SpecialOffer" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="FK_Store_SalesPerson_SalesPersonID" value="SalesPersonID → BusinessEntityID" source="Store" target="SalesPerson" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="dbo" name="dbo">
+    <mxGraphModel page="0" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DatabaseLog" value="&lt;b&gt;dbo.DatabaseLog&lt;/b&gt;&lt;br&gt;DatabaseLogID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;PostTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;DatabaseUser&lt;br&gt;Event&lt;br&gt;Schema&lt;br&gt;Object&lt;br&gt;TSQL&lt;br&gt;XmlEvent" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="80" width="370" height="226" />
+        </mxCell>
+        <mxCell id="ErrorLog" value="&lt;b&gt;dbo.ErrorLog&lt;/b&gt;&lt;br&gt;ErrorLogID [PK]&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ErrorTime&lt;/b&gt;&lt;/font&gt;&lt;br&gt;UserName&lt;br&gt;ErrorNumber&lt;br&gt;ErrorSeverity&lt;br&gt;ErrorState&lt;br&gt;ErrorProcedure&lt;br&gt;ErrorLine&lt;br&gt;ErrorMessage" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="470" y="80" width="370" height="248" />
+        </mxCell>
+        <mxCell id="AWBuildVersion" value="&lt;b&gt;dbo.AWBuildVersion&lt;/b&gt;&lt;br&gt;SystemInformationID [PK]&lt;br&gt;Database Version&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;VersionDate&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#b45309&quot;&gt;&lt;b&gt;ModifiedDate&lt;/b&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="80" width="370" height="138" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
