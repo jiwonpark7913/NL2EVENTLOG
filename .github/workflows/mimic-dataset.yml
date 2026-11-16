@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'datasets/mimic/build.py'
+      - 'tests/test_mimic_builder.py'
       - '.github/workflows/mimic-dataset.yml'
 permissions:
   contents: write
@@ -20,6 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Run MIMIC builder smoke tests
+        run: python tests/test_mimic_builder.py
       - name: Download official public MIMIC demo
         run: |
           mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
