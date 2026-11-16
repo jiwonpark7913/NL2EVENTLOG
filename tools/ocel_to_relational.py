@@ -51,6 +51,17 @@ def main(src,dest):
  relation_sql=f"SELECT {quote(reid)},{quote(roid)}"+(f",{quote(qualifier)}" if qualifier else ",NULL")+" FROM event_object"
  out.executemany("INSERT OR IGNORE INTO activity_subject VALUES (?,?,?)",
                  ((str(a),str(b),str(c) if c is not None else "") for a,b,c in source.execute(relation_sql)))
+ # Preserve direct O2O links where the original OCEL contains them, but do not
+ # propagate event attribution transitively when generating the reference log.
+ if "object_object" in names:
+  oo=columns("object_object")
+  src_col=find(oo,["ocel_source_id","source_id"])
+  dst_col=find(oo,["ocel_target_id","target_id"])
+  role_col=find(oo,["ocel_qualifier","qualifier"])
+  if src_col and dst_col:
+   sql=f"SELECT {quote(src_col)},{quote(dst_col)}"+(f",{quote(role_col)}" if role_col else ",NULL")+" FROM object_object"
+   out.executemany("INSERT OR IGNORE INTO entity_link VALUES (?,?,?)",
+                    ((str(a),str(b),str(c) if c is not None else "") for a,b,c in source.execute(sql)))
  # Materialize per-activity occurrence tables from OCEL typed event tables.
  eventtypes={}
  timestamps={}
@@ -100,12 +111,18 @@ def main(src,dest):
   typ=object_by_id[str(obj)]
   all_records[typ].append((str(obj),str(ev),event_by_id[str(ev)],timestamps[str(ev)],role or ""))
  gold=dest/"review/gold_flatten";gold.mkdir(parents=True,exist_ok=True)
+ for typ in sorted(set(object_by_id.values())):
+  with (gold/(sanitize(typ)+"_cases.csv")).open("w",newline="") as f:
+   writer=csv.writer(f);writer.writerow(["case_id"])
+   writer.writerows((obj,) for obj,ot in objects if ot==typ)
  for typ,records in all_records.items():
   with (gold/(sanitize(typ)+".csv")).open("w",newline="") as f:
    writer=csv.writer(f);writer.writerow(["case_id","event_id","activity","timestamp","relation_qualifier"])
    writer.writerows(sorted(records))
  counts={"source_sha256":h.hexdigest(),"source_file":src.name,"events":len(events),"objects":len(objects),
         "event_object_links":out.execute("SELECT COUNT(*) FROM activity_subject").fetchone()[0],
+        "object_object_links":out.execute("SELECT COUNT(*) FROM entity_link").fetchone()[0],
+        "case_populations":{typ:sum(1 for _,ot in objects if ot==typ) for typ in set(object_by_id.values())},
         "flattened_et_counts":{typ:len(v) for typ,v in all_records.items()},
         "timestamp_coverage":len(timestamps),"warning":"Timestamp-complete reference for direct E2O only. Human review and full population semantics still required."}
  (dest/"review/provenance.json").write_text(json.dumps(counts,indent=2)+"\n")
