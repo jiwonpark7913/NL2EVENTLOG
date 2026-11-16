@@ -24,7 +24,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
           python -m pip install physionet
-          physionet download mimic-iv-demo --version 2.2 --destination "$RUNNER_TEMP/mimic-iv-demo"
+          physionet download mimic-iv-demo --version 2.2 --output "$RUNNER_TEMP/mimic-iv-demo"
           find "$RUNNER_TEMP/mimic-iv-demo" -name '*.csv.gz' | head
       - name: Build SQLite and review artifacts
         run: |
