@@ -1,0 +1,51 @@
+name: Build MIMIC-IV Demo benchmark assets
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'datasets/mimic/build.py'
+      - '.github/workflows/mimic-dataset.yml'
+permissions:
+  contents: write
+concurrency:
+  group: mimic-demo-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download official public MIMIC demo
+        run: |
+          mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
+          wget --recursive --no-parent --no-host-directories --cut-dirs=3 --accept '*.csv.gz,*.csv,SHA256SUMS.txt' --directory-prefix="$RUNNER_TEMP/mimic-iv-demo" https://physionet.org/files/mimic-iv-demo/2.2/
+      - name: Build SQLite and review artifacts
+        run: |
+          python -m pip install cairosvg==2.8.2
+          python datasets/mimic/build.py --source "$RUNNER_TEMP/mimic-iv-demo" --png
+          python - <<'PY'
+          import json,sqlite3
+          from pathlib import Path
+          p=Path('datasets/mimic/input')
+          dd=json.loads((p/'data_dictionary.json').read_text())
+          assert len(dd['tables'])>=20,dd['statistics']
+          conn=sqlite3.connect(p/'database.sqlite')
+          assert conn.execute('pragma integrity_check').fetchone()[0]=='ok'
+          assert conn.execute('select count(*) from patients').fetchone()[0]==100
+          print(dd['statistics'])
+          PY
+          git diff --check
+      - name: Commit generated datasets and diagrams
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: materialize public MIMIC-IV Demo'
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
