@@ -1,0 +1,53 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>NL2EventLog · Gold Review</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#172033;background:#f4f7fb}
+body{max-width:1200px;margin:auto;padding:22px}header{display:flex;justify-content:space-between;align-items:center}h1{margin-bottom:3px}
+.card{background:white;border:1px solid #dbe3ed;border-radius:12px;margin:15px 0;padding:18px}
+.tag{background:#fef3c7;padding:5px 10px;border-radius:20px}
+label{display:block;font-weight:600;margin-top:12px}textarea,input,select{font:inherit;padding:9px;border:1px solid #bdcadc;border-radius:5px;width:100%;box-sizing:border-box}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+table{width:100%;border-collapse:collapse}th,td{padding:10px;text-align:left;border-bottom:1px solid #e3e9f1}th{background:#f1f5f9}
+button{padding:10px 14px;cursor:pointer;background:#1642a5;color:white;border:0;border-radius:7px}
+.small{color:#65748b;font-size:13px}.warning{background:#fff5e5;padding:14px;border-radius:8px}
+.bad{color:#a11} .ok{color:#17633e}
+</style>
+<header><div><h1>Gold Extraction Review</h1><p>Source evidence → semantic decisions → independent approval</p></div><span class="tag">DRAFT · NOT GOLD</span></header>
+<div class="warning">브라우저에서 직접 열어 사용합니다. 실제 DB 행과 SQL 실행 결과는 자동 검증되지 않습니다. 이 화면의 승인 상태는 로컬 검수 기록이며 벤치마크 정답 확정을 의미하지 않습니다.</div>
+<section class="card"><h2>1 · 대상 및 범위</h2><label>Dataset</label><select id="dataset"><option value="mimic">MIMIC-IV Demo</option></select>
+<label>자연어 요청</label><textarea id="request" rows="2"></textarea><div class="grid">
+<div><label>Case Entity Type</label><input id="case_et"></div><div><label>Case identifier</label><input id="case_id"></div></div>
+<label>Case population SQL / rule</label><textarea id="population" rows="2"></textarea></section>
+<section class="card"><h2>2 · Event candidates</h2><table><thead><tr><th>Activity</th><th>Source table</th><th>Timestamp</th><th>Decision</th><th>Evidence / comment</th></tr></thead><tbody id="events"></tbody></table></section>
+<section class="card"><h2>3 · 독립 검수 체크리스트</h2><div id="questions"></div>
+<label>추출 SQL (직접 확인한 경우에만 입력)</label><textarea id="sql" rows="5" placeholder="검증된 SQL을 입력하세요"></textarea>
+<label>검수 메모</label><textarea id="notes" rows="4" placeholder="근거 행, 예외, 중복 이벤트, 누락 사례를 기록하세요"></textarea>
+<label>검수자</label><input id="reviewer" placeholder="실명 또는 reviewer ID"></section>
+<section class="card"><h2>4 · 검수 결과</h2><p id="status" class="bad"></p><button onclick="download()">검수 JSON 내보내기</button>
+<button onclick="localStorage.setItem('nl2eventlog_mimic_review',JSON.stringify(collect()))">로컬 저장</button>
+<button onclick="location.reload()">초기화</button><p class="small">Export JSON includes reviewed decisions but never converts draft to Gold automatically.</p></section>
+<script>
+const SEED={"id":"mimic_admission_lifecycle_v1","dataset":"mimic","status":"draft_requires_human_review","request":"Extract an event log for each hospital admission, including admission, intra-hospital transfers, and discharge.","case_et":"Hospital Admission","case_id":"hadm_id","case_population":{"source":"admissions","filter":"hadm_id IS NOT NULL","include_zero_event_cases":true},"event_candidates":[{"activity":"Hospital admission","table":"admissions","timestamp":"admittime","entity_key":"hadm_id","decision":"include","status":"pending"},{"activity":"Transfer in","table":"transfers","timestamp":"intime","entity_key":"hadm_id","decision":"review","status":"pending"},{"activity":"Transfer out","table":"transfers","timestamp":"outtime","entity_key":"hadm_id","decision":"review","status":"pending"},{"activity":"Hospital discharge","table":"admissions","timestamp":"dischtime","entity_key":"hadm_id","decision":"include","status":"pending"}],"questions":["Is the intended case an admission (hadm_id) rather than a patient (subject_id)?","Does the requested scope include every admission, including admissions with no transfers?","Do transfer rows represent a unit entry, a unit exit, or both?","Are admission/discharge timestamps duplicated by boundary transfer rows?","Are NULL timestamps excluded without dropping the case population?","Are transfer rows with NULL hadm_id excluded from admission-scoped events?","Does joining by hadm_id preserve exactly one event per qualifying source row and chosen timestamp?","Do event IDs encode source table, row key and timestamp role deterministically?","Does the extracted trace match the reviewed original DB rows?","Has the evaluator independently reviewed the SQL and approved the Gold?"],"gold_sql":null,"gold_event_log":null,"approved":false};
+const stored=localStorage.getItem('nl2eventlog_mimic_review');let model=stored?JSON.parse(stored):SEED;
+document.getElementById('request').value=model.request;
+document.getElementById('case_et').value=model.case_et;
+document.getElementById('case_id').value=model.case_id;
+document.getElementById('population').value=JSON.stringify(model.case_population,null,2);
+document.getElementById('sql').value=model.gold_sql||'';
+document.getElementById('notes').value=model.notes||'';
+document.getElementById('reviewer').value=model.reviewer||'';
+const events=document.getElementById('events'),checks=document.getElementById('questions');
+model.event_candidates.forEach((e,i)=>{
+ let tr=document.createElement('tr');tr.innerHTML='<td>'+escapeHTML(e.activity)+'</td><td>'+escapeHTML(e.table)+'</td><td>'+escapeHTML(e.timestamp)+'</td><td><select class="decision"><option>review</option><option>include</option><option>exclude</option></select></td><td><input class="evidence" placeholder="원본 record ID / 이유"></td>';
+ events.appendChild(tr);tr.querySelector('select').value=e.decision;tr.querySelector('input').value=e.evidence||'';
+});
+model.questions.forEach((q,i)=>{let p=document.createElement('p');p.innerHTML='<label><input type="checkbox" class="check" style="width:auto;margin-right:9px" '+(model.checked?.[i]?'checked':'')+'> '+escapeHTML(q)+'</label>';checks.append(p)});
+function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function collect(){let rows=[...events.querySelectorAll('tr')];return {...model,
+request:document.getElementById('request').value,case_et:document.getElementById('case_et').value,case_id:document.getElementById('case_id').value,
+case_population:document.getElementById('population').value,event_candidates:model.event_candidates.map((e,i)=>({...e,decision:rows[i].querySelector('select').value,evidence:rows[i].querySelector('input').value})),
+checked:[...document.querySelectorAll('.check')].map(c=>c.checked),gold_sql:document.getElementById('sql').value,
+notes:document.getElementById('notes').value,reviewer:document.getElementById('reviewer').value,
+status:'review_in_progress',approved:false,exported_at:new Date().toISOString()};}
+function download(){const data=collect(),blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mimic_admission_review.json';a.click();URL.revokeObjectURL(a.href)}
+document.getElementById('status').textContent='Status: reviewer approval pending — compare SQL output with original records before committing Gold.';
+</script></html>
