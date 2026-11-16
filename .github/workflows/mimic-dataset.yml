@@ -23,7 +23,9 @@ jobs:
       - name: Download official public MIMIC demo
         run: |
           mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
-          wget --recursive --no-parent --no-host-directories --cut-dirs=3 --accept '*.csv.gz,*.csv,SHA256SUMS.txt' --directory-prefix="$RUNNER_TEMP/mimic-iv-demo" https://physionet.org/files/mimic-iv-demo/2.2/
+          python -m pip install physionet
+          physionet download mimic-iv-demo --version 2.2 --destination "$RUNNER_TEMP/mimic-iv-demo"
+          find "$RUNNER_TEMP/mimic-iv-demo" -name '*.csv.gz' | head
       - name: Build SQLite and review artifacts
         run: |
           python -m pip install cairosvg==2.8.2
@@ -44,6 +46,15 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,shutil
+          db=Path("datasets/mimic/input/database.sqlite")
+          if db.stat().st_size > 90_000_000:
+              with db.open("rb") as src,gzip.open(str(db)+".gz","wb",compresslevel=6) as dst:shutil.copyfileobj(src,dst)
+              db.unlink()
+              print("SQLite exceeds GitHub 100 MB file limit; committed database.sqlite.gz")
+          PY
           git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database
           if ! git diff --cached --quiet; then
             git commit -m 'data: materialize public MIMIC-IV Demo'
