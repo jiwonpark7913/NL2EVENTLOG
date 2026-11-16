@@ -41,7 +41,9 @@ def main(src,dest):
  CREATE TABLE business_entity(entity_id TEXT PRIMARY KEY,entity_class TEXT);
  CREATE TABLE activity_subject(record_id TEXT,entity_id TEXT,role TEXT,
      PRIMARY KEY(record_id,entity_id,role));
- CREATE INDEX idx_activity_subject_entity ON activity_subject(entity_id);""")
+ CREATE INDEX idx_activity_subject_entity ON activity_subject(entity_id);
+ CREATE TABLE entity_link(source_entity_id TEXT,target_entity_id TEXT,relation_role TEXT,
+ PRIMARY KEY(source_entity_id,target_entity_id,relation_role));""")
  events=[(str(a),str(b)) for a,b in source.execute(f"SELECT {quote(eid)},{quote(etype)} FROM event")]
  objects=[(str(a),str(b)) for a,b in source.execute(f"SELECT {quote(oid)},{quote(otype)} FROM object")]
  out.executemany("INSERT INTO activity_record(record_id,activity_class) VALUES (?,?)",events)
