@@ -10,10 +10,13 @@ def fixture(path,missing_timestamp=False):
  CREATE TABLE object(ocel_id TEXT,ocel_type TEXT);
  CREATE TABLE event_object(ocel_event_id TEXT,ocel_object_id TEXT,ocel_qualifier TEXT);
  CREATE TABLE event_map_type(ocel_type TEXT,ocel_type_map TEXT);
+ CREATE TABLE object_object(ocel_source_id TEXT,ocel_target_id TEXT,ocel_qualifier TEXT);
  CREATE TABLE event_PlaceOrder(ocel_id TEXT,ocel_time TEXT);
  INSERT INTO event VALUES('e1','Place Order');
  INSERT INTO object VALUES('o1','Order');
  INSERT INTO object VALUES('o2','Order');
+ INSERT INTO object VALUES('o3','Order');
+ INSERT INTO object_object VALUES('o1','o3','related');
  INSERT INTO event_object VALUES('e1','o1','subject');
  INSERT INTO event_object VALUES('e1','o2','subject');
  INSERT INTO event_map_type VALUES('Place Order','PlaceOrder');
@@ -36,6 +39,10 @@ def test_event_to_multiple_cases():
   assert set(r["timestamp"] for r in rows)=={"2026-01-01 12:00:00"}
   with sqlite3.connect(out/"input/database.sqlite") as c:
    assert c.execute("SELECT COUNT(*) FROM activity_subject").fetchone()[0]==2
+   assert c.execute("SELECT COUNT(*) FROM entity_link").fetchone()[0]==1
+  with (out/"review/gold_flatten/Order_cases.csv").open() as f:
+   cases=list(csv.DictReader(f))
+  assert {c["case_id"] for c in cases}=={"o1","o2","o3"}
 def test_missing_timestamp_fails_closed():
  with tempfile.TemporaryDirectory() as t:
   result,out=run(Path(t),True)
