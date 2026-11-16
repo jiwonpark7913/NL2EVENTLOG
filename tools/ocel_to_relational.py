@@ -37,14 +37,14 @@ def main(src,dest):
  db=dest/"input/database.sqlite";db.parent.mkdir(parents=True,exist_ok=True)
  if db.exists():db.unlink()
  out=sqlite3.connect(db)
- out.executescript("""CREATE TABLE activity_record(record_id TEXT PRIMARY KEY,activity_class TEXT);
+ out.executescript("""CREATE TABLE activity_record(record_id TEXT PRIMARY KEY,activity_class TEXT,observed_at TEXT);
  CREATE TABLE business_entity(entity_id TEXT PRIMARY KEY,entity_class TEXT);
  CREATE TABLE activity_subject(record_id TEXT,entity_id TEXT,role TEXT,
      PRIMARY KEY(record_id,entity_id,role));
  CREATE INDEX idx_activity_subject_entity ON activity_subject(entity_id);""")
  events=[(str(a),str(b)) for a,b in source.execute(f"SELECT {quote(eid)},{quote(etype)} FROM event")]
  objects=[(str(a),str(b)) for a,b in source.execute(f"SELECT {quote(oid)},{quote(otype)} FROM object")]
- out.executemany("INSERT INTO activity_record VALUES (?,?)",events)
+ out.executemany("INSERT INTO activity_record(record_id,activity_class) VALUES (?,?)",events)
  out.executemany("INSERT INTO business_entity VALUES (?,?)",objects)
  # Preserve exact event/object ids and relation qualifier; no invented link paths.
  qualifier=find(rel_cols,["ocel_qualifier","qualifier"])
@@ -53,6 +53,7 @@ def main(src,dest):
                  ((str(a),str(b),str(c) if c is not None else "") for a,b,c in source.execute(relation_sql)))
  # Materialize per-activity occurrence tables from OCEL typed event tables.
  eventtypes={}
+ timestamps={}
  if "event_map_type" in names:
   mapcols=columns("event_map_type")
   if "ocel_type" in mapcols and "ocel_type_map" in mapcols:
@@ -66,15 +67,21 @@ def main(src,dest):
   target="observations_"+sanitize(mapped)
   # Keep individual activity tables to create multiple physical event representations.
   out.execute(f"CREATE TABLE {quote(target)}(record_id TEXT PRIMARY KEY, observed_at TEXT)")
-  out.executemany(f"INSERT INTO {quote(target)} VALUES (?,?)",
-      ((str(a),str(b) if b is not None else None) for a,b in source.execute(f"SELECT {quote(idc)},{quote(time)} FROM {quote(table)}")))
+  typed_rows=[(str(a),str(b) if b is not None else None) for a,b in source.execute(f"SELECT {quote(idc)},{quote(time)} FROM {quote(table)}")]
+  out.executemany(f"INSERT INTO {quote(target)} VALUES (?,?)",typed_rows)
+  for eid_value,time_value in typed_rows:
+   if eid_value in timestamps and timestamps[eid_value]!=time_value:
+    raise ValueError(f"Conflicting timestamps for event {eid_value}")
+   timestamps[eid_value]=time_value
  # Fallback: timestamp in event root, if present.
  if not eventtypes:
   time=find(e_cols,["ocel_time","time","timestamp"])
   if time:
-   out.execute("ALTER TABLE activity_record ADD COLUMN observed_at TEXT")
-   out.executemany("UPDATE activity_record SET observed_at=? WHERE record_id=?",
-     ((t,str(e)) for e,t in source.execute(f"SELECT {quote(eid)},{quote(time)} FROM event")))
+   timestamps.update((str(e),str(t) if t is not None else None) for e,t in source.execute(f"SELECT {quote(eid)},{quote(time)} FROM event"))
+ if not timestamps or len(timestamps)!=len(events) or any(t is None for t in timestamps.values()):
+  raise ValueError(f"Incomplete event timestamps: mapped {len(timestamps)} / {len(events)}. Refuse to generate Gold.")
+ out.executemany("UPDATE activity_record SET observed_at=? WHERE record_id=?",
+                  ((t,e) for e,t in timestamps.items()))
  out.commit()
  # The source OCEL explicitly exposes event/object concepts. The representation is
  # deliberately a controlled reconstruction baseline, not a realistic ERP schema.
@@ -91,16 +98,16 @@ def main(src,dest):
  for ev,obj,role in source.execute(relation_sql):
   if str(obj) not in object_by_id or str(ev) not in event_by_id:continue
   typ=object_by_id[str(obj)]
-  all_records[typ].append((str(obj),str(ev),event_by_id[str(ev)],role or ""))
+  all_records[typ].append((str(obj),str(ev),event_by_id[str(ev)],timestamps[str(ev)],role or ""))
  gold=dest/"review/gold_flatten";gold.mkdir(parents=True,exist_ok=True)
  for typ,records in all_records.items():
   with (gold/(sanitize(typ)+".csv")).open("w",newline="") as f:
-   writer=csv.writer(f);writer.writerow(["case_id","event_id","activity","relation_qualifier"])
+   writer=csv.writer(f);writer.writerow(["case_id","event_id","activity","timestamp","relation_qualifier"])
    writer.writerows(sorted(records))
  counts={"source_sha256":h.hexdigest(),"source_file":src.name,"events":len(events),"objects":len(objects),
         "event_object_links":out.execute("SELECT COUNT(*) FROM activity_subject").fetchone()[0],
         "flattened_et_counts":{typ:len(v) for typ,v in all_records.items()},
-        "warning":"Timestamp must be reviewed before Gold is accepted; missing typed event timestamps mean incomplete reference."}
+        "timestamp_coverage":len(timestamps),"warning":"Timestamp-complete reference for direct E2O only. Human review and full population semantics still required."}
  (dest/"review/provenance.json").write_text(json.dumps(counts,indent=2)+"\n")
  source.close();out.close()
  print(json.dumps(counts,indent=2))
