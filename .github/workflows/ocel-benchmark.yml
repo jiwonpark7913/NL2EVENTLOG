@@ -1,0 +1,56 @@
+name: Build OCEL relational benchmarks
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/ocel_to_relational.py'
+      - 'tools/download_ocel_benchmark.py'
+      - 'tests/test_ocel_benchmark.py'
+      - '.github/workflows/ocel-benchmark.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        dataset: [bpi2019, order_management]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit test conversion and timestamp coverage
+        run: python tests/test_ocel_benchmark.py
+      - name: Install OCEL 2.0 conversion library
+        run: python -m pip install pm4py
+      - name: Download immutable Zenodo source
+        run: python tools/download_ocel_benchmark.py ${{ matrix.dataset }} --dest "$RUNNER_TEMP/ocel-source"
+      - name: Build relational DB and reference event log
+        run: |
+          set -euo pipefail
+          SOURCE=$(find "$RUNNER_TEMP/ocel-source" -maxdepth 1 -name '*.sqlite' -print | head -n 1)
+          test -n "$SOURCE"
+          python tools/ocel_to_relational.py --source "$SOURCE" --out "datasets/${{ matrix.dataset }}_ocel"
+          python - <<'PY'
+          import sqlite3,json,pathlib
+          dataset="${{ matrix.dataset }}"
+          out=pathlib.Path("datasets")/(dataset+"_ocel")
+          con=sqlite3.connect(out/"input/database.sqlite")
+          assert con.execute("PRAGMA integrity_check").fetchone()[0]=="ok"
+          assert con.execute("SELECT COUNT(*) FROM activity_record WHERE observed_at IS NULL").fetchone()[0]==0
+          manifest=json.loads((out/"review/provenance.json").read_text())
+          assert manifest["timestamp_coverage"]==manifest["events"]
+          assert manifest["event_object_links"]>0
+          print(manifest)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.dataset }}-ocel-benchmark
+          path: |
+            datasets/${{ matrix.dataset }}_ocel/input/
+            datasets/${{ matrix.dataset }}_ocel/review/
+          retention-days: 14
