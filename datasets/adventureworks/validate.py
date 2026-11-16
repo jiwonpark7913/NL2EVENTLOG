@@ -23,7 +23,30 @@ for path,key in [('input/database.sqlite','sqlite_sha256'),('input/data_dictiona
     assert hashlib.sha256((P/path).read_bytes()).hexdigest()==manifest[key],path
 root=ET.parse(P/'docs/schema.drawio').getroot()
 all_cells=root.find('diagram/mxGraphModel/root').findall('mxCell')
-assert len([c for c in all_cells if c.get('vertex')=='1'])==71
+table_names={t['table'] for t in dd['tables']}
+by_id={c.get('id'):c for c in all_cells}
+assert {c.get('id') for c in all_cells if c.get('vertex')=='1' and c.get('id') in table_names}==table_names
+from diagram import BLUE, YELLOW, geometry, temporal
+boxes, _, _, _ = geometry({t['table']: t for t in dd['tables']})
+for t in dd['tables']:
+    for col in t['columns']:
+        cell=by_id[t['table']+'.'+col['name']]
+        assert cell.get('parent')==t['table']
+        color=YELLOW if col['name']=='ModifiedDate' else BLUE if temporal(col) else '#ffffff'
+        assert 'fillColor='+color+';' in cell.get('style'),cell.get('id')
+    for f in t['foreign_keys']:
+        edge=by_id[f['name']]
+        assert edge.get('source')==t['table']+'.'+f['columns'][0]
+        assert edge.get('target')==f['referenced_table']+'.'+f['referenced_columns'][0]
+        assert edge.get('value')==', '.join(f['columns'])+' → '+', '.join(f['referenced_columns'])
+for i,a in enumerate(boxes.values()):
+    for b in list(boxes.values())[i+1:]:
+        assert a[0]+a[2]<=b[0] or b[0]+b[2]<=a[0] or a[1]+a[3]<=b[1] or b[1]+b[3]<=a[1],(a,b)
+svg=ET.parse(P/'docs/schema.svg').getroot()
+ns={'s':'http://www.w3.org/2000/svg'}
+assert {g.get('id') for g in svg.findall('s:g',ns)}==table_names
+assert len([g for g in svg.findall('s:path',ns) if g.get('class')=='fk'])==90
+assert (P/'docs/schema.svg').read_bytes()==(P/'review/database/schema.svg').read_bytes()
 assert len([c for c in all_cells if c.get('edge')=='1'])==90
 assert len(root.findall('diagram'))==7
 # Known source anchors catch wrong import delimiters / shifted columns.

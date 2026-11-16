@@ -132,7 +132,14 @@ def build(dataset):
         (dest/"tables"/(t+".md")).write_text(md,encoding="utf-8")
         output.append((t,count,len(names)))
     svg,fks=svg_erd(conn,tables)
-    (dest/"schema.svg").write_text(svg,encoding="utf-8")
+    if dataset == "adventureworks":
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("adventureworks_diagram", base/"diagram.py")
+        diagram = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(diagram)
+        diagram.generate()
+    else:
+        (dest/"schema.svg").write_text(svg,encoding="utf-8")
     if dataset != "adventureworks":
         update_drawio(base/"docs"/"schema.drawio",tables,[(a,b) for a,b,_,_ in fks])
     report=[f"# {dataset} — Database Inspection","",
@@ -142,6 +149,13 @@ def build(dataset):
     report += [f"| {t} | {n} | {c} | [First 10 rows](tables/{t}.md) |" for t,n,c in output]
     report += ["","The table links are the dependable GitHub navigation path; SVG click-through may vary by GitHub's rendering/security restrictions.",
                "FK arrows are based on declared SQLite foreign keys. Informal semantic links are not asserted as physical FKs."]
+    if dataset == "adventureworks":
+        report[4:5] = [
+            "[**Scrollable explorer: horizontal/vertical scroll, zoom, search and FK focus**](../../docs/schema.html)",
+            "", "Download the HTML and open it in a browser; GitHub displays HTML source, not an interactive page.",
+            "", "[Full-resolution PNG](../../docs/schema.png) · [Editable draw.io](../../docs/schema.drawio)",
+            "", "Blue: non-ModifiedDate date/time. Yellow: ModifiedDate. Only non-maintenance temporal tables are placed on the left.",
+            "", "![Business-aligned relational schema](schema.svg)", ""]
     (dest/"README.md").write_text("\n".join(report)+"\n",encoding="utf-8")
     conn.close()
     print(dataset, "tables",len(tables),"FKs",len(fks),"output",dest)

@@ -5,7 +5,8 @@ A SQLite snapshot of Microsoft's **AdventureWorks 2025 OLTP installation exports
 ## Explore the database
 
 - [Model inputs: database and data dictionary](input/)
-- [Editable draw.io schema](docs/schema.drawio): all 71 tables and all declared foreign keys, plus separate pages for each SQL Server schema. Date/time columns are highlighted in amber. Arrows show declared physical many-to-one references; optionality is not depicted.
+- [**Scrollable schema explorer**](docs/schema.html): horizontal/vertical scrolling, zoom, table search and direct-FK highlighting. Download the HTML and open it in a browser; GitHub itself displays HTML source.
+- [Full-resolution PNG](docs/schema.png) · [Vector SVG](docs/schema.svg) · [Editable draw.io schema](docs/schema.drawio): all 71 tables and 90 declared foreign keys, plus separate draw.io pages for each SQL Server schema.
 - [Database inspection and first 10 actual rows per table](review/database/README.md)
 - [Readable data dictionary](docs/data_dictionary.md)
 - [SQLite DDL](evaluation/schema.sql)
@@ -17,6 +18,25 @@ A SQLite snapshot of Microsoft's **AdventureWorks 2025 OLTP installation exports
 | 71 | 759,240 | 90 | 5 + dbo administration |
 
 `DatabaseLog` and `ErrorLog` are retained as empty tables: the source exports contain no rows for them, and SQL Server setup-generated log records are not fabricated. `AWBuildVersion` uses the supplied export rather than the local build time. No tables or exported business rows are sampled or synthesized.
+
+## Business-aligned schema
+
+![AdventureWorks business-aligned schema](docs/schema.png)
+
+The same layout is used in PNG, SVG, draw.io and the scrollable explorer:
+
+| Axis / color | Meaning |
+|---|---|
+| Vertical lanes | Sales → procurement → manufacturing → product → people/organization → geography → system metadata. These are business reading groups, not a single end-to-end chronology. |
+| Left three levels | Tables with at least one date/time column other than `ModifiedDate`, grouped as lifecycle/anchor, order/effective-period, and detail/occurrence. |
+| Right three levels | Tables with only `ModifiedDate`, or no date/time columns, grouped as entity/snapshot, detail/association, and classification/support. |
+| Sky blue | Non-`ModifiedDate` date/time columns, including actual, planned, effective-period and descriptive times. Color alone does **not** identify an event timestamp. |
+| Yellow | `ModifiedDate`: maintenance time, excluded when deciding left/right placement. |
+| FK arrows | Declared physical child FK → referenced key, including composite keys. Arrows are **not** process transitions; optionality is not depicted. |
+
+Order headers and order lines, work orders and operation-level routing, and products and product/location stock remain distinct instance grains. Current and archived inventory transactions sit together because they share a business meaning and grain; this visual proximity does not establish instance identity. A shared lane or level does not assert that tables belong to one Entity Type. The database and model-input dictionary are unchanged.
+
+The viewer has a persistent bottom horizontal scrollbar, vertical scrolling, zoom, search and table focus. It is self-contained, so the downloaded HTML works offline. PNG and draw.io downloads beside it require the other files from `docs/`.
 
 ## Model input boundary
 
@@ -49,6 +69,8 @@ Requires Python 3 with its standard library and network access to Microsoft's Gi
 python datasets/adventureworks/build.py --cache /tmp/adventureworks-source
 python datasets/adventureworks/validate.py
 python tools/build_dataset_review.py --dataset adventureworks
+python -m pip install cairosvg==2.8.2
+python datasets/adventureworks/diagram.py --png
 ```
 
 The [dataset build workflow](../../.github/workflows/adventureworks-dataset.yml) also performs these steps and commits the validated SQLite snapshot when the builder or pinned source manifest changes.

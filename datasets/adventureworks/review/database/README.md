@@ -2,7 +2,16 @@
 
 Original SQLite records; **not model input**. Click a table name to inspect its actual first 10 rows.
 
-![Interactive table overview](schema.svg)
+[**Scrollable explorer: horizontal/vertical scroll, zoom, search and FK focus**](../../docs/schema.html)
+
+Download the HTML and open it in a browser; GitHub displays HTML source, not an interactive page.
+
+[Full-resolution PNG](../../docs/schema.png) · [Editable draw.io](../../docs/schema.drawio)
+
+Blue: non-ModifiedDate date/time. Yellow: ModifiedDate. Only non-maintenance temporal tables are placed on the left.
+
+![Business-aligned relational schema](schema.svg)
+
 
 | Table | Rows | Columns | Open preview |
 |---|---:|---:|---|

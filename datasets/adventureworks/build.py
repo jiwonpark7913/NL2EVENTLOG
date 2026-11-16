@@ -85,31 +85,10 @@ def records(path, spec, ncols):
         yield row
 
 def drawio(tables):
-    root=ET.Element('mxfile',host='app.diagrams.net')
-    # Full schema plus separate domain pages; every physical FK is retained on the full page.
-    for group in ['All tables']+sorted({t['source_schema'] for t in tables.values()}):
-        ts=[t for t in tables.values() if group=='All tables' or t['source_schema']==group]
-        dia=ET.SubElement(root,'diagram',id=group.replace(' ','_'),name=group)
-        model=ET.SubElement(dia,'mxGraphModel',page='0',grid='1',gridSize='10');r=ET.SubElement(model,'root')
-        ET.SubElement(r,'mxCell',id='0');ET.SubElement(r,'mxCell',id='1',parent='0')
-        heights=[0]*4
-        for i,t in enumerate(ts):
-            col=i%4;y=heights[col]+80;h=50+22*len(t['columns']);heights[col]=y+h
-            lines=[f"<b>{t['source_schema']}.{t['table']}</b>"]
-            for c in t['columns']:
-                label=html.escape(c['name'])+(' [PK]' if c['primary_key_position'] else '')+(' [FK]' if c['foreign_keys'] else '')+(' [computed]' if c['computed'] else '')
-                if c['source_type'] in ('datetime','date','time','datetime2','smalldatetime'):label='<font color="#b45309"><b>'+label+'</b></font>'
-                lines.append(label)
-            cell=ET.SubElement(r,'mxCell',id=t['table'],value='<br>'.join(lines),style='rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#64748b;',vertex='1',parent='1')
-            ET.SubElement(cell,'mxGeometry',x=str(60+col*410),y=str(y),width='370',height=str(h),attrib={'as':'geometry'})
-        present={t['table'] for t in ts}
-        for t in ts:
-            for f in t['foreign_keys']:
-                if f['referenced_table'] not in present:continue
-                cell=ET.SubElement(r,'mxCell',id=f['name'],value=', '.join(f['columns'])+' → '+', '.join(f['referenced_columns']),source=t['table'],target=f['referenced_table'],edge='1',parent='1',style='edgeStyle=orthogonalEdgeStyle;html=1;endArrow=ERone;startArrow=ERmany;fontSize=9;')
-                ET.SubElement(cell,'mxGeometry',relative='1',attrib={'as':'geometry'})
-    ET.indent(root)
-    ET.ElementTree(root).write(BASE/'docs/schema.drawio',encoding='utf-8',xml_declaration=True)
+    # Shared human-only geometry; no changes to DB / data dictionary.
+    from diagram import generate
+    generate(tables)
+
 
 def build(cache):
     files=download(cache)
