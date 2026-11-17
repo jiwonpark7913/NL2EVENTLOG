@@ -45,6 +45,7 @@ jobs:
           SOURCE=$(find "$RUNNER_TEMP/ocel-source" -maxdepth 1 -name '*.sqlite' -print | head -n 1)
           test -n "$SOURCE"
           python -u tools/ocel_to_relational.py --source "$SOURCE" --out "datasets/${{ matrix.dataset }}_ocel"
+          python -u tools/audit_benchmark.py --dataset "${{ matrix.dataset }}" --source "$SOURCE" --report "datasets/${{ matrix.dataset }}_ocel/review/integrity_audit.json"
           python - <<'PY'
           import sqlite3,json,pathlib
           dataset="${{ matrix.dataset }}"
