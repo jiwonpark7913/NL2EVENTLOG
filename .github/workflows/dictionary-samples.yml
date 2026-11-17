@@ -1,0 +1,70 @@
+name: Populate Data Dictionary sample values
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/add_dictionary_samples.py'
+      - 'tests/test_dictionary_samples.py'
+      - '.github/workflows/dictionary-samples.yml'
+permissions:
+  contents: write
+concurrency:
+  group: dictionary-samples-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  populate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Sample six checked-in datasets from real SQLite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u tests/test_dictionary_samples.py
+          for d in adventureworks hospitalflow universityflow plateflow warehouseflow; do
+            python tools/add_dictionary_samples.py --dataset "$d" --require-db
+          done
+          gzip -dc datasets/mimic/input/database.sqlite.gz > "$RUNNER_TEMP/mimic.sqlite"
+          python tools/add_dictionary_samples.py --dataset mimic --database "$RUNNER_TEMP/mimic.sqlite" --require-db
+          for d in adventureworks hospitalflow universityflow plateflow warehouseflow mimic; do
+            python tools/normalize_data_dictionaries.py --dataset "$d"
+          done
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for name in ['adventureworks','hospitalflow','universityflow','plateflow','warehouseflow','mimic']:
+              path=Path('datasets')/name/'input/data_dictionary.json'
+              data=json.loads(path.read_text())
+              tables=data['tables'].values() if isinstance(data['tables'],dict) else data['tables']
+              cols=[c for t in tables for c in t['columns']]
+              assert cols
+              assert all(isinstance(c.get('sample_values'),list) and len(c['sample_values'])<=3 for c in cols)
+              assert all('[' in l and ']' in l for l in path.read_text().splitlines() if '"sample_values":' in l)
+              print(name, len(cols), sum(bool(c['sample_values']) for c in cols))
+          PY
+      - name: Commit only dictionary JSON files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --mixed "origin/${GITHUB_REF_NAME}"
+            for d in adventureworks mimic hospitalflow universityflow plateflow warehouseflow; do
+              git add "datasets/$d/input/data_dictionary.json" "datasets/$d/docs/data_dictionary.standard.json"
+            done
+            if git diff --cached --quiet; then exit 0; fi
+            git diff --cached --check
+            git commit -m 'data: add real 3-value samples to six data dictionaries'
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then exit 0; fi
+            [ "$attempt" -lt 5 ] || exit 1
+            sleep "$((attempt * 2))"
+          done
