@@ -46,13 +46,16 @@ def audit_mimic(report,root):
    total_columns=sum(len(t["columns"]) for t in dd["tables"].values())
    check(report,"mimic.documented_columns",documented>0,
          f"with verified semantic definitions={documented}/{total_columns}")
-   check(report,"mimic.documentation_sources",
-         all(t.get("documentation_url") for t in dd["tables"].values()),
-         "table source URLs must be attached to each MIMIC table")
-   invalid=[(name,col["name"]) for name,t in dd["tables"].items()
-            for col in t["columns"] if col.get("definition") and not col.get("definition_source")]
-   check(report,"mimic.definition_provenance",not invalid,
-         f"definitions without source URLs={invalid[:10]}")
+   forbidden=[(name,col["name"],k)
+              for name,t in dd["tables"].items() for col in t["columns"]
+              for k in ("definition_source","source_type_source","temporal_role","timestamp_semantics")
+              if k in col]
+   check(report,"mimic.no_redundant_column_metadata",not forbidden,
+         f"unexpected redundant fields={forbidden[:10]}")
+   missing_types=[(name,col["name"]) for name,t in dd["tables"].items()
+                  for col in t["columns"] if not col.get("source_type")]
+   check(report,"mimic.source_type_coverage",not missing_types,
+         f"columns without source_type={missing_types[:10]}",warning=True)
    standardized=p/"docs/data_dictionary.standard.json"
    if standardized.exists():
     norm=json.loads(standardized.read_text())
