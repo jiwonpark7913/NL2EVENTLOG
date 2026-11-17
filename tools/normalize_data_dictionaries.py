@@ -21,25 +21,22 @@ def normalize(dataset,raw):
   cols=[]
   for c in table.get("columns",[]):
    desc=c.get("definition") or c.get("description") or None
-   refs=c.get("source_references") or ([c["definition_source"]] if c.get("definition_source") else [])
+   refs=c.get("source_references") or []
    cols.append({
     "metadata_id":c.get("metadata_id") or f"{dataset}.{name}.{c['name']}",
     "name":c["name"],"sql_type":c.get("sql_type") or c.get("type"),
     "source_type":c.get("source_type"),
     "definition":desc,
-    "definition_source":c.get("definition_source"),
     "source_references":refs,
     "required":c.get("required"),
     "primary_key_position":c.get("primary_key_position"),
     "foreign_keys":c.get("foreign_keys",[]),
-    "temporal_role":c.get("temporal_role"),
     "unit":c.get("unit"),
    })
   converted.append({
     "table":name,
     "metadata_id":table.get("metadata_id") or f"{dataset}.{name}",
     "definition":table.get("definition"),
-    "documentation_url":table.get("documentation_url"),
     "source_schema":table.get("source_schema") or table.get("source_module"),
     "row_grain":table.get("row_grain"),
     "primary_key":table.get("primary_key"),
@@ -52,7 +49,6 @@ def normalize(dataset,raw):
   "language":raw.get("language","en"),
   "dbms":raw.get("dbms","SQLite"),
   "timezone":raw.get("timezone"),
-  "documentation_sources":raw.get("documentation_sources",{}),
   "tables":converted,
   "note":"Lossless metadata intent, not full legacy-field fidelity: original dictionary is authoritative for unmapped fields. Missing definitions remain null."
  }
