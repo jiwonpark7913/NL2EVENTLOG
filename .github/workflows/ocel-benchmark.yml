@@ -6,7 +6,9 @@ on:
     paths:
       - 'tools/ocel_to_relational.py'
       - 'tools/download_ocel_benchmark.py'
+      - 'tools/stream_ocel_json.py'
       - 'tests/test_ocel_benchmark.py'
+      - 'tests/test_stream_ocel_json.py'
       - '.github/workflows/ocel-benchmark.yml'
 permissions:
   contents: read
@@ -26,10 +28,12 @@ jobs:
       - name: Unit test conversion and timestamp coverage
         run: |
           set -euo pipefail
-          python -m py_compile tools/ocel_to_relational.py tools/download_ocel_benchmark.py tests/test_ocel_benchmark.py
+          python -m py_compile tools/ocel_to_relational.py tools/download_ocel_benchmark.py tools/stream_ocel_json.py tests/test_ocel_benchmark.py tests/test_stream_ocel_json.py
           python -u tests/test_ocel_benchmark.py
       - name: Install OCEL 2.0 conversion library
-        run: python -m pip install pm4py
+        run: python -m pip install pm4py 'ijson>=3.3,<4'
+      - name: Test streaming OCEL 2.0 JSON conversion
+        run: python -u tests/test_stream_ocel_json.py
       - name: Download immutable Zenodo source
         run: |
           set -euo pipefail
