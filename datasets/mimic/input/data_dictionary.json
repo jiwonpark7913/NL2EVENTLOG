@@ -12,117 +12,202 @@
           "name": "subject_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Identifier for the patient; the same patient may have multiple hospital admissions.",
+          "timestamp_semantics": null,
+          "definition": "Identifier for the patient; the same patient may have multiple hospital admissions.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.subject_id",
+          "source_type": "INTEGER NOT NULL",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Unique identifier for a hospital admission.",
+          "timestamp_semantics": null,
+          "definition": "Unique identifier for a hospital admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.hadm_id",
+          "source_type": "INTEGER NOT NULL",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "admittime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Date and time the patient was admitted to hospital.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Date and time the patient was admitted to hospital.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.admittime",
+          "source_type": "TIMESTAMP NOT NULL",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "dischtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Date and time the patient was discharged from hospital.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Date and time the patient was discharged from hospital.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.dischtime",
+          "source_type": "TIMESTAMP",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "deathtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Time of in-hospital death, when applicable.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Time of in-hospital death, when applicable.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.deathtime",
+          "source_type": "TIMESTAMP",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "admission_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Category describing urgency or type of admission.",
+          "timestamp_semantics": null,
+          "definition": "Category describing urgency or type of admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.admission_type",
+          "source_type": "VARCHAR(40) NOT NULL",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "admit_provider_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Deidentified identifier of the provider admitting the patient.",
+          "timestamp_semantics": null,
+          "definition": "Deidentified identifier of the provider admitting the patient.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.admit_provider_id",
+          "source_type": "VARCHAR(10)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "admission_location",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Location or source from which the patient was admitted.",
+          "timestamp_semantics": null,
+          "definition": "Location or source from which the patient was admitted.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.admission_location",
+          "source_type": "VARCHAR(60)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "discharge_location",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Disposition or location to which the patient was discharged.",
+          "timestamp_semantics": null,
+          "definition": "Disposition or location to which the patient was discharged.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.discharge_location",
+          "source_type": "VARCHAR(60)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "insurance",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Insurance category recorded for the hospital admission.",
+          "timestamp_semantics": null,
+          "definition": "Insurance category recorded for the hospital admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.insurance",
+          "source_type": "VARCHAR(255)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "language",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Patient language recorded for the hospital admission.",
+          "timestamp_semantics": null,
+          "definition": "Patient language recorded for the hospital admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.language",
+          "source_type": "VARCHAR(10)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "marital_status",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Marital status recorded for the hospital admission.",
+          "timestamp_semantics": null,
+          "definition": "Marital status recorded for the hospital admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.marital_status",
+          "source_type": "VARCHAR(30)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "race",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Patient race category recorded for the hospital admission.",
+          "timestamp_semantics": null,
+          "definition": "Patient race category recorded for the hospital admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.race",
+          "source_type": "VARCHAR(80)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "edregtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Date and time of registration in the emergency department.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Date and time of registration in the emergency department.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.edregtime",
+          "source_type": "TIMESTAMP",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "edouttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Date and time of departure from the emergency department.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Date and time of departure from the emergency department.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.edouttime",
+          "source_type": "TIMESTAMP",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         },
         {
           "name": "hospital_expire_flag",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Binary indicator of in-hospital death for the admission.",
+          "timestamp_semantics": null,
+          "definition": "Binary indicator of in-hospital death for the admission.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+          "metadata_id": "mimic.admissions.hospital_expire_flag",
+          "source_type": "SMALLINT",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html"
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
+      "source_module": "hosp",
+      "definition": "One row for each hospital admission; contains admission, discharge, demographic and administrative information.",
+      "foreign_keys": []
     },
     "caregiver": {
       "row_count": 15468,
@@ -133,11 +218,21 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.caregiver.caregiver_id",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/caregiver.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/caregiver.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "chartevents": {
       "row_count": 668862,
@@ -147,82 +242,142 @@
           "name": "subject_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Patient identifier.",
+          "timestamp_semantics": null,
+          "definition": "Patient identifier.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.subject_id",
+          "source_type": "INTEGER",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Hospital-admission identifier.",
+          "timestamp_semantics": null,
+          "definition": "Hospital-admission identifier.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.hadm_id",
+          "source_type": "INTEGER",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "ICU stay identifier.",
+          "timestamp_semantics": null,
+          "definition": "ICU stay identifier.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.stay_id",
+          "source_type": "INTEGER",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "caregiver_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Identifier of the caregiver who documented the measurement.",
+          "timestamp_semantics": null,
+          "definition": "Identifier of the caregiver who documented the measurement.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.caregiver_id",
+          "source_type": "INTEGER",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "charttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Time at which the observation was made; usually the closest proxy to measurement time.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Time at which the observation was made; usually the closest proxy to measurement time.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.charttime",
+          "source_type": "TIMESTAMP(0)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
-          "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "description": "Time at which the observation was entered or manually validated.",
+          "timestamp_semantics": "unverified_candidate",
+          "definition": "Time at which the observation was entered or manually validated.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.storetime",
+          "source_type": "TIMESTAMP(0)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Identifier of a measurement concept; can be resolved using d_items.",
+          "timestamp_semantics": null,
+          "definition": "Identifier of a measurement concept; can be resolved using d_items.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.itemid",
+          "source_type": "INTEGER",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "value",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Recorded value of the concept identified by itemid.",
+          "timestamp_semantics": null,
+          "definition": "Recorded value of the concept identified by itemid.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.value",
+          "source_type": "VARCHAR(200)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "valuenum",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Numeric representation of value when numeric.",
+          "timestamp_semantics": null,
+          "definition": "Numeric representation of value when numeric.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.valuenum",
+          "source_type": "DOUBLE PRECISION",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "valueuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Unit of measurement for value, when applicable.",
+          "timestamp_semantics": null,
+          "definition": "Unit of measurement for value, when applicable.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.valueuom",
+          "source_type": "VARCHAR(20)",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         },
         {
           "name": "warning",
           "sql_type": "TEXT",
           "temporal_role": "other",
-          "description": "",
-          "timestamp_semantics": null
+          "description": "Whether a warning was manually documented for the observation.",
+          "timestamp_semantics": null,
+          "definition": "Whether a warning was manually documented for the observation.",
+          "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+          "metadata_id": "mimic.chartevents.warning",
+          "source_type": "SMALLINT",
+          "source_type_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html"
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/chartevents.html",
+      "source_module": "icu",
+      "definition": "Charted ICU observations including vital signs, laboratory values and clinical settings.",
+      "foreign_keys": []
     },
     "d_hcpcs": {
       "row_count": 89200,
@@ -233,32 +388,57 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_hcpcs.code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "category",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_hcpcs.category",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "long_description",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_hcpcs.long_description",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "short_description",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_hcpcs.short_description",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/d_hcpcs.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/d_hcpcs.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "d_icd_diagnoses": {
       "row_count": 109775,
@@ -269,25 +449,45 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_icd_diagnoses.icd_code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "icd_version",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_icd_diagnoses.icd_version",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "long_title",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_icd_diagnoses.long_title",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/d_icd_diagnoses.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/d_icd_diagnoses.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "d_icd_procedures": {
       "row_count": 85257,
@@ -298,25 +498,45 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_icd_procedures.icd_code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "icd_version",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_icd_procedures.icd_version",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "long_title",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_icd_procedures.long_title",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/d_icd_procedures.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/d_icd_procedures.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "d_items": {
       "row_count": 4014,
@@ -327,67 +547,117 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "label",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.label",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "abbreviation",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.abbreviation",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "linksto",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.linksto",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "category",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.category",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "unitname",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.unitname",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "param_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.param_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "lownormalvalue",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.lownormalvalue",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "highnormalvalue",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_items.highnormalvalue",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/d_items.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/d_items.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "d_labitems": {
       "row_count": 1622,
@@ -398,32 +668,57 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_labitems.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "label",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_labitems.label",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "fluid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_labitems.fluid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "category",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.d_labitems.category",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/d_labitems.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/d_labitems.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "datetimeevents": {
       "row_count": 15280,
@@ -434,74 +729,129 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.stay_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "caregiver_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.caregiver_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "charttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.charttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.value",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "valueuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.valueuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "warning",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.datetimeevents.warning",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/datetimesevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/datetimesevents.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "diagnoses_icd": {
       "row_count": 4506,
@@ -512,39 +862,69 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.diagnoses_icd.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.diagnoses_icd.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "seq_num",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.diagnoses_icd.seq_num",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "icd_code",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.diagnoses_icd.icd_code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "icd_version",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.diagnoses_icd.icd_version",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/diagnoses_icd.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/diagnoses_icd.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "drgcodes": {
       "row_count": 454,
@@ -555,53 +935,93 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "drg_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.drg_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "drg_code",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.drg_code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "description",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.description",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "drg_severity",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.drg_severity",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "drg_mortality",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.drgcodes.drg_mortality",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/drgcodes.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/drgcodes.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "emar": {
       "row_count": 35835,
@@ -612,88 +1032,153 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "emar_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.emar_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "emar_seq",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.emar_seq",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "poe_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "pharmacy_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.pharmacy_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "enter_provider_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.enter_provider_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "charttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.charttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "medication",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.medication",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "event_txt",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.event_txt",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "scheduletime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.scheduletime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar.storetime",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "emar_detail": {
       "row_count": 72018,
@@ -704,235 +1189,405 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "emar_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.emar_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "emar_seq",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.emar_seq",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "parent_field_ordinal",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.parent_field_ordinal",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "administration_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.administration_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "pharmacy_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.pharmacy_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "barcode_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.barcode_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "reason_for_no_barcode",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.reason_for_no_barcode",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "complete_dose_not_given",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.complete_dose_not_given",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dose_due",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.dose_due",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dose_due_unit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.dose_due_unit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dose_given",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.dose_given",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dose_given_unit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.dose_given_unit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "will_remainder_of_dose_be_given",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.will_remainder_of_dose_be_given",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "product_amount_given",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.product_amount_given",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "product_unit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.product_unit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "product_code",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.product_code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "product_description",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.product_description",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "product_description_other",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.product_description_other",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "prior_infusion_rate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.prior_infusion_rate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "infusion_rate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.infusion_rate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "infusion_rate_adjustment",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.infusion_rate_adjustment",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "infusion_rate_adjustment_amount",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.infusion_rate_adjustment_amount",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "infusion_rate_unit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.infusion_rate_unit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "route",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.route",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "infusion_complete",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.infusion_complete",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "completion_interval",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.completion_interval",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "new_iv_bag_hung",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.new_iv_bag_hung",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "continued_infusion_in_other_location",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.continued_infusion_in_other_location",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "restart_interval",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.restart_interval",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "side",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.side",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "site",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.site",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "non_formulary_visual_verification",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.emar_detail.non_formulary_visual_verification",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/emar_detail.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/emar_detail.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "hcpcsevents": {
       "row_count": 61,
@@ -943,46 +1598,81 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.hcpcsevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.hcpcsevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "chartdate",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.hcpcsevents.chartdate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hcpcs_cd",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.hcpcsevents.hcpcs_cd",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "seq_num",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.hcpcsevents.seq_num",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "short_description",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.hcpcsevents.short_description",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/hcpcsevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/hcpcsevents.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "icustays": {
       "row_count": 140,
@@ -993,60 +1683,105 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.stay_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "first_careunit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.first_careunit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "last_careunit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.last_careunit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "intime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.intime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "outtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.outtime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "los",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.icustays.los",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/icustays.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/icustays.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "ingredientevents": {
       "row_count": 25728,
@@ -1057,123 +1792,213 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.stay_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "caregiver_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.caregiver_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "starttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.starttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "endtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.endtime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "amount",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.amount",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "amountuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.amountuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "rate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.rate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "rateuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.rateuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "orderid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.orderid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "linkorderid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.linkorderid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "statusdescription",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.statusdescription",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "originalamount",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.originalamount",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "originalrate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.ingredientevents.originalrate",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/ingredientevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/ingredientevents.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "inputevents": {
       "row_count": 20404,
@@ -1184,186 +2009,321 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.stay_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "caregiver_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.caregiver_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "starttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.starttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "endtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.endtime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "amount",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.amount",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "amountuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.amountuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "rate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.rate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "rateuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.rateuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "orderid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.orderid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "linkorderid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.linkorderid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ordercategoryname",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.ordercategoryname",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "secondaryordercategoryname",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.secondaryordercategoryname",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ordercomponenttypedescription",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.ordercomponenttypedescription",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ordercategorydescription",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.ordercategorydescription",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "patientweight",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.patientweight",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "totalamount",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.totalamount",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "totalamountuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.totalamountuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "isopenbag",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.isopenbag",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "continueinnextdept",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.continueinnextdept",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "statusdescription",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.statusdescription",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "originalamount",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.originalamount",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "originalrate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.inputevents.originalrate",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/inputevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/inputevents.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "labevents": {
       "row_count": 107727,
@@ -1374,116 +2334,201 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.labevent_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "subject_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "specimen_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.specimen_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_provider_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.order_provider_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "charttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.charttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.value",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "valuenum",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.valuenum",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "valueuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.valueuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ref_range_lower",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.ref_range_lower",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ref_range_upper",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.ref_range_upper",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "flag",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.flag",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "priority",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.priority",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "comments",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.labevents.comments",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "microbiologyevents": {
       "row_count": 2899,
@@ -1494,179 +2539,309 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.microevent_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "subject_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "micro_specimen_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.micro_specimen_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_provider_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.order_provider_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "chartdate",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.chartdate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "charttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.charttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "spec_itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.spec_itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "spec_type_desc",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.spec_type_desc",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "test_seq",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.test_seq",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storedate",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.storedate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "test_itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.test_itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "test_name",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.test_name",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "org_itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.org_itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "org_name",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.org_name",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "isolate_num",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.isolate_num",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "quantity",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.quantity",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ab_itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.ab_itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ab_name",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.ab_name",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dilution_text",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.dilution_text",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dilution_comparison",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.dilution_comparison",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dilution_value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.dilution_value",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "interpretation",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.interpretation",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "comments",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.microbiologyevents.comments",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/microbiologyevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/microbiologyevents.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "omr": {
       "row_count": 2964,
@@ -1677,39 +2852,69 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.omr.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "chartdate",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.omr.chartdate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "seq_num",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.omr.seq_num",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "result_name",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.omr.result_name",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "result_value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.omr.result_value",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/omr.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/omr.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "outputevents": {
       "row_count": 9362,
@@ -1720,67 +2925,117 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.stay_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "caregiver_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.caregiver_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "charttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.charttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.value",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "valueuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.outputevents.valueuom",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/outputevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/outputevents.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "patients": {
       "row_count": 100,
@@ -1791,46 +3046,81 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.patients.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "gender",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.patients.gender",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "anchor_age",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.patients.anchor_age",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "anchor_year",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.patients.anchor_year",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "anchor_year_group",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.patients.anchor_year_group",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dod",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.patients.dod",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/patients.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/patients.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "pharmacy": {
       "row_count": 15306,
@@ -1841,193 +3131,333 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "pharmacy_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.pharmacy_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "poe_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "starttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.starttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stoptime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.stoptime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "medication",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.medication",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "proc_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.proc_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "status",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.status",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "entertime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.entertime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "verifiedtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.verifiedtime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "route",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.route",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "frequency",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.frequency",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "disp_sched",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.disp_sched",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "infusion_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.infusion_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "sliding_scale",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.sliding_scale",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "lockout_interval",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.lockout_interval",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "basal_rate",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.basal_rate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "one_hr_max",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.one_hr_max",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "doses_per_24_hrs",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.doses_per_24_hrs",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "duration",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.duration",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "duration_interval",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.duration_interval",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "expiration_value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.expiration_value",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "expiration_unit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.expiration_unit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "expirationdate",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.expirationdate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dispensation",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.dispensation",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "fill_quantity",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.pharmacy.fill_quantity",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/pharmacy.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/pharmacy.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "poe": {
       "row_count": 45154,
@@ -2038,88 +3468,153 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "poe_seq",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.poe_seq",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "subject_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ordertime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.ordertime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.order_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_subtype",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.order_subtype",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "transaction_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.transaction_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "discontinue_of_poe_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.discontinue_of_poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "discontinued_by_poe_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.discontinued_by_poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_provider_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.order_provider_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_status",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe.order_status",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/poe.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/poe.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "poe_detail": {
       "row_count": 3795,
@@ -2130,39 +3625,69 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe_detail.poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "poe_seq",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe_detail.poe_seq",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "subject_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe_detail.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "field_name",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe_detail.field_name",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "field_value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.poe_detail.field_value",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/poe_detail.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/poe_detail.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "prescriptions": {
       "row_count": 18087,
@@ -2173,151 +3698,261 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "pharmacy_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.pharmacy_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "poe_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.poe_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "poe_seq",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.poe_seq",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "order_provider_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.order_provider_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "starttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.starttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stoptime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.stoptime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "drug_type",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.drug_type",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "drug",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.drug",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "formulary_drug_cd",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.formulary_drug_cd",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "gsn",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.gsn",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ndc",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.ndc",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "prod_strength",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.prod_strength",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "form_rx",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.form_rx",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dose_val_rx",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.dose_val_rx",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "dose_unit_rx",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.dose_unit_rx",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "form_val_disp",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.form_val_disp",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "form_unit_disp",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.form_unit_disp",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "doses_per_24_hrs",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.doses_per_24_hrs",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "route",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.prescriptions.route",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/prescriptions.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/prescriptions.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "procedureevents": {
       "row_count": 1468,
@@ -2328,158 +3963,273 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "stay_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.stay_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "caregiver_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.caregiver_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "starttime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.starttime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "endtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.endtime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "storetime",
           "sql_type": "TEXT",
           "temporal_role": "maintenance",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.storetime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "itemid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.itemid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "value",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.value",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "valueuom",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.valueuom",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "location",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.location",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "locationcategory",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.locationcategory",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "orderid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.orderid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "linkorderid",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.linkorderid",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ordercategoryname",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.ordercategoryname",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ordercategorydescription",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.ordercategorydescription",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "patientweight",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.patientweight",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "isopenbag",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.isopenbag",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "continueinnextdept",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.continueinnextdept",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "statusdescription",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.statusdescription",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ORIGINALAMOUNT",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.ORIGINALAMOUNT",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "ORIGINALRATE",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedureevents.ORIGINALRATE",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/icu/procedureevents.html",
+      "source_module": "icu",
+      "definition": null,
+      "foreign_keys": []
     },
     "procedures_icd": {
       "row_count": 722,
@@ -2490,46 +4240,81 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedures_icd.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedures_icd.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "seq_num",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedures_icd.seq_num",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "chartdate",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedures_icd.chartdate",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "icd_code",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedures_icd.icd_code",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "icd_version",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.procedures_icd.icd_version",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/procedures_icd.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/procedures_icd.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "provider": {
       "row_count": 40508,
@@ -2540,11 +4325,21 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.provider.provider_id",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/provider.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/provider.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "services": {
       "row_count": 319,
@@ -2555,39 +4350,69 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.services.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.services.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "transfertime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.services.transfertime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "prev_service",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.services.prev_service",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "curr_service",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.services.curr_service",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/services.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/services.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     },
     "transfers": {
       "row_count": 1190,
@@ -2598,53 +4423,93 @@
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.subject_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "hadm_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.hadm_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "transfer_id",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.transfer_id",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "eventtype",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.eventtype",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "careunit",
           "sql_type": "TEXT",
           "temporal_role": "other",
           "description": "",
-          "timestamp_semantics": null
+          "timestamp_semantics": null,
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.careunit",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "intime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.intime",
+          "source_type": null,
+          "source_type_source": null
         },
         {
           "name": "outtime",
           "sql_type": "TEXT",
           "temporal_role": "temporal",
           "description": "",
-          "timestamp_semantics": "unverified_candidate"
+          "timestamp_semantics": "unverified_candidate",
+          "definition": null,
+          "definition_source": null,
+          "metadata_id": "mimic.transfers.outtime",
+          "source_type": null,
+          "source_type_source": null
         }
       ],
       "primary_key": null,
-      "foreign_keys_declared": []
+      "foreign_keys_declared": [],
+      "documentation_url": "https://mimic.mit.edu/docs/iv/modules/hosp/transfers.html",
+      "definition_source": "https://mimic.mit.edu/docs/iv/modules/hosp/transfers.html",
+      "source_module": "hosp",
+      "definition": null,
+      "foreign_keys": []
     }
   },
   "candidate_relationships": [
@@ -3019,5 +4884,22 @@
     "tables": 31,
     "rows": 1398500,
     "columns": 342
+  },
+  "dictionary_schema_version": "2.0",
+  "name": "MIMIC-IV Clinical Database Demo 2.2",
+  "language": "en",
+  "dbms": "SQLite",
+  "documentation_sources": {
+    "overview": "https://mimic.mit.edu/docs/iv/",
+    "hospital_module": "https://mimic.mit.edu/docs/iv/modules/hosp/",
+    "icu_module": "https://mimic.mit.edu/docs/iv/modules/icu/",
+    "dataset": "https://physionet.org/content/mimic-iv-demo/2.2/",
+    "publisher": "MIT Laboratory for Computational Physiology"
+  },
+  "metadata_coverage": {
+    "documented_columns": 27,
+    "total_columns": 342,
+    "source": "MIMIC-IV official table documentation (verified summary descriptions for admissions and chartevents)",
+    "notes": "Other columns remain null pending official-page extraction and independent validation."
   }
 }
