@@ -21,16 +21,23 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run MIMIC builder smoke tests
-        run: python tests/test_mimic_builder.py
+      - name: Preflight syntax and MIMIC smoke tests
+        run: |
+          set -euo pipefail
+          python -m py_compile datasets/mimic/build.py tests/test_mimic_builder.py
+          python -u tests/test_mimic_builder.py
       - name: Download official public MIMIC demo
         run: |
           mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
-          python -m pip install physionet
+          set -euo pipefail
+          python -m pip install 'physionet==0.3.0'
+          physionet download --help
           physionet download mimic-iv-demo --version 2.2 --output "$RUNNER_TEMP/mimic-iv-demo"
-          find "$RUNNER_TEMP/mimic-iv-demo" -name '*.csv.gz' | head
+          find "$RUNNER_TEMP/mimic-iv-demo" -type f \( -name '*.csv.gz' -o -name '*.csv' \) | sort | head -35
+          test "$(find "$RUNNER_TEMP/mimic-iv-demo" -type f \( -name '*.csv.gz' -o -name '*.csv' \) | wc -l)" -ge 20
       - name: Build SQLite and review artifacts
         run: |
+          set -euo pipefail
           python -m pip install cairosvg==2.8.2
           python datasets/mimic/build.py --source "$RUNNER_TEMP/mimic-iv-demo" --png
           python - <<'PY'
@@ -47,6 +54,7 @@ jobs:
           git diff --check
       - name: Commit generated datasets and diagrams
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           python - <<'PY'
