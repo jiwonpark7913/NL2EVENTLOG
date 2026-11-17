@@ -22,10 +22,10 @@ def temporal_type(source_type):
     # SQL Server examples: [datetime] NOT NULL / [datetime2](7).
     # PostgreSQL examples: TIMESTAMP(0), timestamp without time zone.
     declaration = str(source_type).strip()
-    match = re.match(r"^\\[?([A-Za-z_][A-Za-z_0-9]*)\\]?", declaration)
+    match = re.match("[A-Za-z_][A-Za-z_0-9]*", declaration.lstrip("["))
     if match is None:
         return None
-    return match.group(1).upper() in _TEMPORAL_BASE_TYPES
+    return match.group(0).upper() in _TEMPORAL_BASE_TYPES
 
 def columns(dictionary):
     source=dictionary["tables"]
