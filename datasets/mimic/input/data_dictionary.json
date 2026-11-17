@@ -2685,12 +2685,6 @@
       "status": "inferred_not_declared"
     },
     {
-      "source_table": "d_labitems",
-      "target_table": "d_items",
-      "column": "itemid",
-      "status": "inferred_not_declared"
-    },
-    {
       "source_table": "datetimeevents",
       "target_table": "patients",
       "column": "subject_id",
@@ -2860,7 +2854,7 @@
     },
     {
       "source_table": "labevents",
-      "target_table": "d_items",
+      "target_table": "d_labitems",
       "column": "itemid",
       "status": "inferred_not_declared"
     },
