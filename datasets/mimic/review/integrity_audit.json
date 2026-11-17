@@ -1,0 +1,691 @@
+{
+  "dataset": "mimic",
+  "checks": [
+    {
+      "name": "mimic.sqlite_present",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.integrity",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.table_catalog",
+      "status": "PASS",
+      "detail": "actual=31, dictionary=31"
+    },
+    {
+      "name": "mimic.rows.admissions",
+      "status": "PASS",
+      "detail": "actual=275,expected=275"
+    },
+    {
+      "name": "mimic.columns.admissions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.caregiver",
+      "status": "PASS",
+      "detail": "actual=15468,expected=15468"
+    },
+    {
+      "name": "mimic.columns.caregiver",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.chartevents",
+      "status": "PASS",
+      "detail": "actual=668862,expected=668862"
+    },
+    {
+      "name": "mimic.columns.chartevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.d_hcpcs",
+      "status": "PASS",
+      "detail": "actual=89200,expected=89200"
+    },
+    {
+      "name": "mimic.columns.d_hcpcs",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.d_icd_diagnoses",
+      "status": "PASS",
+      "detail": "actual=109775,expected=109775"
+    },
+    {
+      "name": "mimic.columns.d_icd_diagnoses",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.d_icd_procedures",
+      "status": "PASS",
+      "detail": "actual=85257,expected=85257"
+    },
+    {
+      "name": "mimic.columns.d_icd_procedures",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.d_items",
+      "status": "PASS",
+      "detail": "actual=4014,expected=4014"
+    },
+    {
+      "name": "mimic.columns.d_items",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.d_labitems",
+      "status": "PASS",
+      "detail": "actual=1622,expected=1622"
+    },
+    {
+      "name": "mimic.columns.d_labitems",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.datetimeevents",
+      "status": "PASS",
+      "detail": "actual=15280,expected=15280"
+    },
+    {
+      "name": "mimic.columns.datetimeevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.diagnoses_icd",
+      "status": "PASS",
+      "detail": "actual=4506,expected=4506"
+    },
+    {
+      "name": "mimic.columns.diagnoses_icd",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.drgcodes",
+      "status": "PASS",
+      "detail": "actual=454,expected=454"
+    },
+    {
+      "name": "mimic.columns.drgcodes",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.emar",
+      "status": "PASS",
+      "detail": "actual=35835,expected=35835"
+    },
+    {
+      "name": "mimic.columns.emar",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.emar_detail",
+      "status": "PASS",
+      "detail": "actual=72018,expected=72018"
+    },
+    {
+      "name": "mimic.columns.emar_detail",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.hcpcsevents",
+      "status": "PASS",
+      "detail": "actual=61,expected=61"
+    },
+    {
+      "name": "mimic.columns.hcpcsevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.icustays",
+      "status": "PASS",
+      "detail": "actual=140,expected=140"
+    },
+    {
+      "name": "mimic.columns.icustays",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.ingredientevents",
+      "status": "PASS",
+      "detail": "actual=25728,expected=25728"
+    },
+    {
+      "name": "mimic.columns.ingredientevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.inputevents",
+      "status": "PASS",
+      "detail": "actual=20404,expected=20404"
+    },
+    {
+      "name": "mimic.columns.inputevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.labevents",
+      "status": "PASS",
+      "detail": "actual=107727,expected=107727"
+    },
+    {
+      "name": "mimic.columns.labevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.microbiologyevents",
+      "status": "PASS",
+      "detail": "actual=2899,expected=2899"
+    },
+    {
+      "name": "mimic.columns.microbiologyevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.omr",
+      "status": "PASS",
+      "detail": "actual=2964,expected=2964"
+    },
+    {
+      "name": "mimic.columns.omr",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.outputevents",
+      "status": "PASS",
+      "detail": "actual=9362,expected=9362"
+    },
+    {
+      "name": "mimic.columns.outputevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.patients",
+      "status": "PASS",
+      "detail": "actual=100,expected=100"
+    },
+    {
+      "name": "mimic.columns.patients",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.pharmacy",
+      "status": "PASS",
+      "detail": "actual=15306,expected=15306"
+    },
+    {
+      "name": "mimic.columns.pharmacy",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.poe",
+      "status": "PASS",
+      "detail": "actual=45154,expected=45154"
+    },
+    {
+      "name": "mimic.columns.poe",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.poe_detail",
+      "status": "PASS",
+      "detail": "actual=3795,expected=3795"
+    },
+    {
+      "name": "mimic.columns.poe_detail",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.prescriptions",
+      "status": "PASS",
+      "detail": "actual=18087,expected=18087"
+    },
+    {
+      "name": "mimic.columns.prescriptions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.procedureevents",
+      "status": "PASS",
+      "detail": "actual=1468,expected=1468"
+    },
+    {
+      "name": "mimic.columns.procedureevents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.procedures_icd",
+      "status": "PASS",
+      "detail": "actual=722,expected=722"
+    },
+    {
+      "name": "mimic.columns.procedures_icd",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.provider",
+      "status": "PASS",
+      "detail": "actual=40508,expected=40508"
+    },
+    {
+      "name": "mimic.columns.provider",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.services",
+      "status": "PASS",
+      "detail": "actual=319,expected=319"
+    },
+    {
+      "name": "mimic.columns.services",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.rows.transfers",
+      "status": "PASS",
+      "detail": "actual=1190,expected=1190"
+    },
+    {
+      "name": "mimic.columns.transfers",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.total_rows",
+      "status": "PASS",
+      "detail": "actual=1398500"
+    },
+    {
+      "name": "mimic.patient_count",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.candidate_link.admissions.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.chartevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.chartevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.chartevents.stay_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=icustays"
+    },
+    {
+      "name": "mimic.candidate_link.chartevents.caregiver_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=caregiver"
+    },
+    {
+      "name": "mimic.candidate_link.chartevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_items"
+    },
+    {
+      "name": "mimic.candidate_link.datetimeevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.datetimeevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.datetimeevents.stay_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=icustays"
+    },
+    {
+      "name": "mimic.candidate_link.datetimeevents.caregiver_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=caregiver"
+    },
+    {
+      "name": "mimic.candidate_link.datetimeevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_items"
+    },
+    {
+      "name": "mimic.candidate_link.diagnoses_icd.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.diagnoses_icd.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.drgcodes.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.drgcodes.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.emar.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.emar.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.emar_detail.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.hcpcsevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.hcpcsevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.icustays.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.icustays.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.ingredientevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.ingredientevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.ingredientevents.stay_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=icustays"
+    },
+    {
+      "name": "mimic.candidate_link.ingredientevents.caregiver_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=caregiver"
+    },
+    {
+      "name": "mimic.candidate_link.ingredientevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_items"
+    },
+    {
+      "name": "mimic.candidate_link.inputevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.inputevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.inputevents.stay_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=icustays"
+    },
+    {
+      "name": "mimic.candidate_link.inputevents.caregiver_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=caregiver"
+    },
+    {
+      "name": "mimic.candidate_link.inputevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_items"
+    },
+    {
+      "name": "mimic.candidate_link.labevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.labevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.labevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_labitems"
+    },
+    {
+      "name": "mimic.candidate_link.microbiologyevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.microbiologyevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.omr.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.outputevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.outputevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.outputevents.stay_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=icustays"
+    },
+    {
+      "name": "mimic.candidate_link.outputevents.caregiver_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=caregiver"
+    },
+    {
+      "name": "mimic.candidate_link.outputevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_items"
+    },
+    {
+      "name": "mimic.candidate_link.pharmacy.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.pharmacy.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.poe.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.poe.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.poe_detail.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.prescriptions.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.prescriptions.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.procedureevents.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.procedureevents.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.procedureevents.stay_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=icustays"
+    },
+    {
+      "name": "mimic.candidate_link.procedureevents.caregiver_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=caregiver"
+    },
+    {
+      "name": "mimic.candidate_link.procedureevents.itemid",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=d_items"
+    },
+    {
+      "name": "mimic.candidate_link.procedures_icd.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.procedures_icd.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.services.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.services.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.candidate_link.transfers.subject_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=patients"
+    },
+    {
+      "name": "mimic.candidate_link.transfers.hadm_id",
+      "status": "PASS",
+      "detail": "non_null_orphans=0,target=admissions"
+    },
+    {
+      "name": "mimic.svg_parse",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.svg_table_coverage",
+      "status": "PASS",
+      "detail": "31 table boxes"
+    },
+    {
+      "name": "mimic.svg_colors",
+      "status": "PASS",
+      "detail": "blue=temporal candidate; yellow=maintenance"
+    },
+    {
+      "name": "mimic.drawio_parse",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.drawio_table_count",
+      "status": "PASS",
+      "detail": "boxes=31"
+    },
+    {
+      "name": "mimic.drawio_relationship_edges",
+      "status": "PASS",
+      "detail": "draw.io contains inferred table relationships"
+    },
+    {
+      "name": "mimic.png_signature",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "mimic.gold_approved",
+      "status": "WARN",
+      "detail": "Admission lifecycle currently requires independent human approval"
+    },
+    {
+      "name": "mimic.model_db_uncompressed",
+      "status": "PASS",
+      "detail": "README advertises database.sqlite but GitHub stores database.sqlite.gz"
+    }
+  ],
+  "scope": "Automated physical/evidence audit; does not certify semantic Gold."
+}
