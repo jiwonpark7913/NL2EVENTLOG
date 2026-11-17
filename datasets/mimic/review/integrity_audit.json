@@ -332,6 +332,26 @@
       "detail": "actual=1398500"
     },
     {
+      "name": "mimic.documented_columns",
+      "status": "PASS",
+      "detail": "with verified semantic definitions=313/342"
+    },
+    {
+      "name": "mimic.documentation_sources",
+      "status": "PASS",
+      "detail": "table source URLs must be attached to each MIMIC table"
+    },
+    {
+      "name": "mimic.definition_provenance",
+      "status": "PASS",
+      "detail": "definitions without source URLs=[]"
+    },
+    {
+      "name": "mimic.standard_catalog",
+      "status": "PASS",
+      "detail": "canonical projection must cover all imported tables"
+    },
+    {
       "name": "mimic.patient_count",
       "status": "PASS",
       "detail": null
