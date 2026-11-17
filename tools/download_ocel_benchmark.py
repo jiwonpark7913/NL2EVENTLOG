@@ -5,7 +5,7 @@ BPI 2019 release: https://zenodo.org/records/22663565
 Order Management: https://zenodo.org/records/8428112
 Never treat the transformed relational schema as a recovered original enterprise DB.
 """
-import argparse,hashlib,json,urllib.request,zipfile,shutil,tempfile
+import argparse,hashlib,json,urllib.request,zipfile,shutil,tempfile,time
 from pathlib import Path
 
 RECORDS={"bpi2019":("22663565","BPIC19_ocel2.zip","06d7911d54db9a9f1ca33ad991488676"),
@@ -16,8 +16,25 @@ def digest(p,kind):
   for chunk in iter(lambda:f.read(1<<20),b""):h.update(chunk)
  return h.hexdigest()
 def download(url,out):
- req=urllib.request.Request(url,headers={"User-Agent":"NL2EventLog-benchmark/1.0"})
- with urllib.request.urlopen(req,timeout=90) as response, out.open("wb") as f:shutil.copyfileobj(response,f)
+ # Large Zenodo archives can intermittently exceed a 90-second read timeout.
+ # Resume partial downloads with HTTP Range where supported and validate MD5
+ # before accepting the file. If Range is ignored, restart from byte zero.
+ for attempt in range(4):
+  existing=out.stat().st_size if out.exists() else 0
+  headers={"User-Agent":"NL2EventLog-benchmark/1.0"}
+  if existing:headers["Range"]=f"bytes={existing}-"
+  req=urllib.request.Request(url,headers=headers)
+  try:
+   with urllib.request.urlopen(req,timeout=240) as response:
+    status=getattr(response,"status",200)
+    mode="ab" if existing and status==206 else "wb"
+    with out.open(mode) as f:shutil.copyfileobj(response,f,length=1024*1024)
+   print(f"Downloaded {out.name}: {out.stat().st_size} bytes",flush=True)
+   return
+  except Exception as exc:
+   print(f"Download attempt {attempt+1}/4 failed: {type(exc).__name__}: {exc}",flush=True)
+   if attempt==3:raise
+   time.sleep(min(2**attempt,8))
 def acquire(name,outdir):
  record_id,filename,md5=RECORDS[name]
  outdir.mkdir(parents=True,exist_ok=True)
