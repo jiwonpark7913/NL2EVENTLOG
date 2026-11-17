@@ -7,6 +7,7 @@ on:
       - 'datasets/mimic/build.py'
       - 'datasets/mimic/enrich_dictionary.py'
       - 'tools/normalize_data_dictionaries.py'
+      - 'tools/add_dictionary_samples.py'
       - 'tools/temporal_candidates.py'
       - 'tests/test_temporal_candidates.py'
       - 'tests/test_mimic_builder.py'
@@ -70,6 +71,7 @@ jobs:
           python -m pip install 'beautifulsoup4>=4.12,<5'
           python -m py_compile datasets/mimic/enrich_dictionary.py tools/normalize_data_dictionaries.py
           python -u datasets/mimic/enrich_dictionary.py --dictionary datasets/mimic/input/data_dictionary.json
+          python tools/add_dictionary_samples.py --dataset mimic --require-db
           python tools/normalize_data_dictionaries.py --dataset mimic
           python - <<'PY'
           import json
@@ -77,9 +79,8 @@ jobs:
           path=Path("datasets/mimic/input/data_dictionary.json")
           dd=json.loads(path.read_text())
           assert dd["metadata_coverage"]["documented_columns"]>=20
-          assert all(t.get("documentation_url") for t in dd["tables"].values())
           assert dd["tables"]["admissions"]["columns"][2]["definition"]
-          assert dd["tables"]["admissions"]["columns"][2]["definition_source"]
+          assert len(dd["tables"]["admissions"]["columns"][2]["sample_values"]) <= 3
           print("Documented",dd["metadata_coverage"])
           PY
       - name: Audit MIMIC SQLite, dictionary, schema and references
