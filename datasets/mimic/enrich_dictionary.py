@@ -89,7 +89,6 @@ def enrich(path,strict=False):
    for col in cols:
     name=col["name"].lower()
     col["definition"]=definitions.get(name) or col.get("definition") or None
-    col["description"]=col["definition"] or ""
     col["definition_source"]=url if definitions.get(name) else col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
     col["source_type"]=source_types.get(name) or col.get("source_type")
@@ -101,7 +100,6 @@ def enrich(path,strict=False):
    stats["missing_pages"].append({"table":table,"url":url,"reason":str(exc)})
    for col in cols:
     col["definition"]=col.get("definition") or None
-    col["description"]=col["definition"] or ""
     col["definition_source"]=col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
     col["source_type"]=col.get("source_type")
