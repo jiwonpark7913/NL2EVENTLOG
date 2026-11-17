@@ -17,7 +17,7 @@ ICU={"caregiver","d_items","chartevents","datetimeevents","icustays",
 assert len(HOSP|ICU)==31
 def page_url(table):
  module="hosp" if table in HOSP else "icu"
- return f"{BASE}modules/{module}/{table}.html"
+ return f"{BASE}modules/{module}/{table if table != 'datetimeevents' else 'datetimesevents'}.html"
 def fetch(url):
  request=urllib.request.Request(url,headers={"User-Agent":"NL2EventLog-metadata/1.0"})
  with urllib.request.urlopen(request,timeout=35) as response:
@@ -47,7 +47,7 @@ def parse(doc,column_names):
  summary=None
  for node in heading_nodes:
   title=node.get_text(" ",strip=True).lower()
-  if title in ("brief summary","table purpose"):
+  if title in ("brief summary","table purpose","detailed description"):
    chunks=[]
    for sibling in node.next_siblings:
     if getattr(sibling,"name",None) in {"h1","h2","h3","h4","h5","h6"}:break
@@ -80,6 +80,7 @@ def enrich(path,strict=False):
    for col in cols:
     name=col["name"].lower()
     col["definition"]=definitions.get(name) or col.get("definition") or None
+    col["description"]=col["definition"] or ""
     col["definition_source"]=url if definitions.get(name) else col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
     col["source_type"]=col.get("source_type")
@@ -90,6 +91,7 @@ def enrich(path,strict=False):
    stats["missing_pages"].append({"table":table,"url":url,"reason":str(exc)})
    for col in cols:
     col["definition"]=col.get("definition") or None
+    col["description"]=col["definition"] or ""
     col["definition_source"]=col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
     col["source_type"]=col.get("source_type")
