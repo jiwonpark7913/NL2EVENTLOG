@@ -190,6 +190,23 @@ def audit_ocel(report,root,dataset,source):
        ("object_identity","SELECT COUNT(*) FROM (SELECT entity_id AS id, entity_class AS typ FROM business_entity EXCEPT SELECT ocel_id,ocel_type FROM upstream.object)","object identifiers / types")):
       bad=c.execute(condition).fetchone()[0]
       check(report,dataset+".source_"+name,bad==0,f"extra/mismatched {detail}={bad}")
+     source_cols={r[1] for r in c.execute("PRAGMA upstream.table_info(event_object)")}
+     ekey="ocel_event_id" if "ocel_event_id" in source_cols else "event_id"
+     okey="ocel_object_id" if "ocel_object_id" in source_cols else "object_id"
+     role="ocel_qualifier" if "ocel_qualifier" in source_cols else ("qualifier" if "qualifier" in source_cols else None)
+     role_expr=f"COALESCE({quote(role)},'')" if role else "''"
+     src_rel=f"SELECT {quote(ekey)},{quote(okey)},{role_expr} FROM upstream.event_object"
+     dst_rel="SELECT record_id,entity_id,role FROM activity_subject"
+     for direction,left,right in (("missing",src_rel,dst_rel),("extra",dst_rel,src_rel)):
+      bad=c.execute(f"SELECT COUNT(*) FROM ({left} EXCEPT {right})").fetchone()[0]
+      check(report,dataset+".source_E2O_"+direction,bad==0,
+            f"unique direct E2O/qualifier tuples={bad}")
+     if "ocel_time" in scols:
+      count=c.execute("""SELECT COUNT(*) FROM activity_record a
+          JOIN upstream.event e ON e.ocel_id=a.record_id
+          WHERE a.observed_at IS NOT e.ocel_time""").fetchone()[0]
+      check(report,dataset+".source_timestamp_values",count==0,
+            f"event timestamps different from source={count}")
      c.execute("DETACH DATABASE upstream")
   check(report,dataset+".human_gold_approval",False,
         "Automated direct E2O flattening is not independently approved Gold",warning=True)
