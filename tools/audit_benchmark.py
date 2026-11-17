@@ -137,16 +137,34 @@ def audit_ocel(report,root,dataset,source):
     check(report,dataset+".flatten."+slug(typ),expected==0,
           f"missing CSV, expected {expected} rows")
     continue
+   # Compare every CSV occurrence against the corresponding relational join,
+   # including multiplicity, case, activity, time and qualifier.
+   # Sorted streaming avoids holding millions of reference records in Python.
+   from itertools import zip_longest
+   query="""SELECT o.entity_id,s.record_id,e.activity_class,e.observed_at,COALESCE(s.role,'')
+       FROM activity_subject s
+       JOIN business_entity o ON o.entity_id=s.entity_id
+       JOIN activity_record e ON e.record_id=s.record_id
+       WHERE o.entity_class=?
+       ORDER BY o.entity_id,s.record_id,e.activity_class,e.observed_at,s.role"""
+   mismatches=0;actual=0;missing_timestamp=0;first_mismatch=None
    with path.open(newline="") as f:
     reader=csv.DictReader(f)
-    actual=0;missing_timestamp=0
-    for row in reader:
-     actual+=1
-     if not row.get("timestamp"):missing_timestamp+=1
+    csv_rows=((r.get("case_id"),r.get("event_id"),r.get("activity"),r.get("timestamp"),
+               r.get("relation_qualifier") or "") for r in reader)
+    for a,b in zip_longest(csv_rows,c.execute(query,(typ,))):
+     if a is not None:
+      actual+=1
+      if not a[3]:missing_timestamp+=1
+     if a!=b:
+      mismatches+=1
+      if first_mismatch is None:first_mismatch={"csv":a,"db":b}
    check(report,dataset+".flatten_count."+slug(typ),actual==expected,
          f"expected={expected},csv={actual}")
    check(report,dataset+".flatten_timestamp."+slug(typ),missing_timestamp==0,
          f"missing timestamps={missing_timestamp}")
+   check(report,dataset+".flatten_exact."+slug(typ),mismatches==0,
+         f"mismatched occurrences={mismatches}, first={first_mismatch}")
   if source is not None and source.exists():
    with attach(source) as src:
     names=structure(src)
