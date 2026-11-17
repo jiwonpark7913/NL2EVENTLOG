@@ -24,3 +24,21 @@ Only `input/database.sqlite` and `input/data_dictionary.json` may be given to th
 This implementation uses a **controlled OCEL-native normalized relational schema**. It is not representative of a recovered ERP database. It is useful for testing instance linking and event coverage but **not as independent evidence that EEG reconstructs hidden event semantics**. A future business-schema redesign must be conducted separately and without reading test answers during design.
 
 The generator refuses to emit references with incomplete timestamps. It retains case instances without events and raw O2O links, but does not propagate events via O2O relations or reconstruct full attribute histories. Those require explicitly defined benchmark policies and further human review before labeling the output Gold.
+
+## BPI 2019 oversized JSON handling (2026-11-17)
+
+The pinned 87,645,028-byte ZIP contains `BPIC19_ocel2.json`, whose
+uncompressed size exceeds the previous arbitrary 2 GB safety threshold.
+The archive checksum was verified in GitHub Actions. The new converter
+`tools/stream_ocel_json.py` uses `ijson` to stream the JSON member
+directly from the ZIP into a compact SQLite **staging source**, without
+materializing the expanded JSON or loading the full log into PM4Py.
+
+The staging source intentionally preserves event ID, event type,
+timestamp, object ID, object type, direct E2O links, and direct O2O links.
+**It currently discards event and object attributes.** Therefore this
+conversion is appropriate for evaluating type-level case selection,
+activity occurrence extraction, and direct linking; it is **not yet an
+attribute-complete OCEL benchmark**. Independently validate source counts,
+timestamp coverage, referential integrity and flattening before calling
+any generated CSV a finalized Gold log.
