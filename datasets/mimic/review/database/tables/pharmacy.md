@@ -1,0 +1,16 @@
+# pharmacy
+
+Human-only sample; **not** Gold.
+
+| subject_id | hadm_id | pharmacy_id | poe_id | starttime | stoptime | medication | proc_type | status | entertime | verifiedtime | route | frequency | disp_sched | infusion_type | sliding_scale | lockout_interval | basal_rate | one_hr_max | doses_per_24_hrs | duration | duration_interval | expiration_value | expiration_unit | expirationdate | dispensation | fill_quantity |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 10027602 | 28166872 | 24340150 | NULL | 2201-10-30 12:00:00 | NULL | Midazolam | Miscellaneous Charges | Inactive (Due to a change order) | 2201-10-30 12:32:11 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10027602 | 28166872 | 14435820 | NULL | 2201-10-30 12:00:00 | NULL | Midazolam | Miscellaneous Charges | Inactive (Due to a change order) | 2201-10-30 12:54:34 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10027602 | 28166872 | 40720238 | NULL | 2201-10-30 12:00:00 | NULL | Fentanyl Citrate | Miscellaneous Charges | Inactive (Due to a change order) | 2201-10-30 12:32:11 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10027602 | 28166872 | 27168639 | NULL | 2201-10-30 12:00:00 | NULL | Fentanyl Citrate | Miscellaneous Charges | Inactive (Due to a change order) | 2201-10-30 12:54:34 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10027602 | 28166872 | 62845687 | NULL | 2201-10-31 12:00:00 | NULL | Lorazepam | Miscellaneous Charges | Inactive (Due to a change order) | 2201-10-31 12:02:42 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10027602 | 28166872 | 27602869 | NULL | 2201-10-30 13:00:00 | NULL | Propofol | Miscellaneous Charges | Inactive (Due to a change order) | 2201-10-30 13:39:12 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10020740 | 23831430 | 53634685 | 10020740-96 | 2150-03-12 14:00:00 | NULL | NULL | TPN | Expired | 2150-03-12 14:37:10 | 2150-03-12 14:42:34 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10002428 | 28662225 | 21001377 | 10002428-187 | 2156-04-17 08:00:00 | 2156-04-17 16:00:00 | NULL | TPN | Discontinued | 2156-04-17 09:27:13 | 2156-04-17 09:32:56 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10002428 | 28662225 | 51912443 | 10002428-219 | 2156-04-18 11:00:00 | NULL | NULL | TPN | Expired | 2156-04-18 10:52:02 | 2156-04-18 11:03:53 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
+| 10002428 | 28662225 | 29961424 | 10002428-235 | 2156-04-19 13:00:00 | 2156-04-20 08:00:00 | NULL | TPN | Inactive (Due to a change order) | 2156-04-19 12:28:39 | 2156-04-19 12:44:20 | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL | NULL |
