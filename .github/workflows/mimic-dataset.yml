@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'datasets/mimic/build.py'
+      - 'datasets/mimic/enrich_dictionary.py'
+      - 'tools/normalize_data_dictionaries.py'
       - 'tests/test_mimic_builder.py'
       - '.github/workflows/mimic-dataset.yml'
 permissions:
@@ -59,6 +61,24 @@ jobs:
           print(dd['statistics'])
           PY
           git diff --check
+      - name: Enrich official MIMIC-IV metadata and verify coverage
+        run: |
+          set -euo pipefail
+          python -m pip install 'beautifulsoup4>=4.12,<5'
+          python -m py_compile datasets/mimic/enrich_dictionary.py tools/normalize_data_dictionaries.py
+          python -u datasets/mimic/enrich_dictionary.py --dictionary datasets/mimic/input/data_dictionary.json --strict
+          python tools/normalize_data_dictionaries.py --dataset mimic
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path=Path("datasets/mimic/input/data_dictionary.json")
+          dd=json.loads(path.read_text())
+          assert dd["metadata_coverage"]["documented_columns"]>=171
+          assert all(t.get("documentation_url") for t in dd["tables"].values())
+          assert dd["tables"]["admissions"]["columns"][2]["definition"]
+          assert dd["tables"]["admissions"]["columns"][2]["definition_source"]
+          print("Documented",dd["metadata_coverage"])
+          PY
       - name: Audit MIMIC SQLite, dictionary, schema and references
         run: |
           set -euo pipefail
