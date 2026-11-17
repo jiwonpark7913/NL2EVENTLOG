@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tools/ocel_to_relational.py'
+      - 'tools/add_dictionary_samples.py'
       - 'tools/download_ocel_benchmark.py'
       - 'tools/stream_ocel_json.py'
       - 'tests/test_ocel_benchmark.py'
