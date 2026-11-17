@@ -111,6 +111,26 @@ def enrich(path,strict=False):
    "source":"official MIMIC-IV table documentation",
    "notes":"Null means the official description could not be reliably mapped."}
  path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+ # Keep human-readable dictionary consistent with the actual model-input JSON.
+ md=["# MIMIC-IV Demo 2.2 — Data Dictionary", "",
+     "Source: [MIMIC-IV official documentation]("+BASE+") · "
+     "[MIMIC-IV Demo 2.2](https://physionet.org/content/mimic-iv-demo/2.2/)", "",
+     "Column descriptions and native types come from the linked official table pages. "
+     "Unknown descriptions are left blank; inferred links are not declared FKs.", ""]
+ for name,meta in sorted(tables.items()):
+  md.extend(["## "+name, "",
+   "Official table documentation: ["+meta["documentation_url"]+"]("+meta["documentation_url"]+")", "",
+   (meta.get("definition") or "*No verified table summary*"), "",
+   "| Column | Native type | SQLite type | Description |",
+   "|---|---|---|---|"])
+  for col in meta["columns"]:
+   desc=(col.get("definition") or "*Not documented / not reliably matched*").replace("|","\\|").replace("\n"," ")
+   native=col.get("source_type") or "Unverified"
+   md.append("| `"+col["name"]+"` | "+native+" | "+col.get("sql_type","")+" | "+desc+" |")
+  md.append("")
+ destination=path.parent.parent/"docs/data_dictionary.md"
+ destination.parent.mkdir(parents=True,exist_ok=True)
+ destination.write_text("\n".join(md)+"\n",encoding="utf-8")
  print(json.dumps(stats,ensure_ascii=False,indent=2),flush=True)
  if strict and (stats["missing_pages"] or stats["documented_columns"]<stats["total_columns"]//2):
   raise SystemExit("Official documentation coverage insufficient; review extraction.")
