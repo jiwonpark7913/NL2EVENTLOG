@@ -9,7 +9,7 @@ from __future__ import annotations
 import json,re
 from pathlib import Path
 
-_TEMPORAL=re.compile(r"\\b(?:timestamp(?:tz)?|timestamptz|datetime(?:2|offset)?|smalldatetime|date|time(?:tz)?|timetz)\\b",re.I)
+_TEMPORAL=re.compile(r"\b(?:timestamp(?:tz)?|timestamptz|datetime(?:2|offset)?|smalldatetime|date|time(?:tz)?|timetz)\b",re.I)
 def temporal_type(source_type):
     if not source_type:return None
     normalized=str(source_type).replace("WITH TIME ZONE","").replace("WITHOUT TIME ZONE","")
