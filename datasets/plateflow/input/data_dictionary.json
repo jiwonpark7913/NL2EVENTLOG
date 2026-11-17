@@ -17,7 +17,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S001", "S002", "S003"]
         },
         {
           "name": "charge_id",
@@ -27,7 +28,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C001", "C002", "C003"]
         },
         {
           "name": "steel_grade",
@@ -37,7 +39,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["G1", "G2"]
         },
         {
           "name": "received_at",
@@ -47,7 +50,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-04T11:20:00Z", "2026-01-07T22:40:00Z", "2026-01-11T10:00:00Z"]
         },
         {
           "name": "verified_at",
@@ -57,7 +61,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T10:10:00Z", "2026-01-14T21:30:00Z", "2026-01-18T08:50:00Z"]
         },
         {
           "name": "released_at",
@@ -67,7 +72,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T10:20:00Z", "2026-01-14T21:40:00Z", "2026-01-18T09:00:00Z"]
         }
       ],
       "primary_key": [
@@ -87,7 +93,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["L003", "L004", "L005"]
         },
         {
           "name": "slab_id",
@@ -104,7 +111,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S003", "S004", "S005"]
         },
         {
           "name": "planned_reheat_at",
@@ -114,7 +122,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T18:20:00Z", "2026-01-15T05:40:00Z", "2026-01-18T17:00:00Z"]
         },
         {
           "name": "submitted_at",
@@ -124,7 +133,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T10:30:00Z", "2026-01-14T21:50:00Z", "2026-01-18T09:10:00Z"]
         },
         {
           "name": "approved_at",
@@ -134,7 +144,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:20:00Z", "2026-01-21T20:40:00Z", "2026-01-25T08:00:00Z"]
         },
         {
           "name": "released_at",
@@ -144,7 +155,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:30:00Z", "2026-01-21T20:50:00Z", "2026-01-25T08:10:00Z"]
         }
       ],
       "primary_key": [
@@ -164,7 +176,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I005", "I006", "I007"]
         },
         {
           "name": "plan_id",
@@ -181,7 +194,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["L005", "L006", "L007"]
         },
         {
           "name": "issued_at",
@@ -191,7 +205,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:40:00Z", "2026-01-21T21:00:00Z", "2026-01-25T08:20:00Z"]
         }
       ],
       "primary_key": [
@@ -211,7 +226,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M005", "M006", "M007"]
         },
         {
           "name": "plate_no",
@@ -221,7 +237,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["MOTHER-5", "MOTHER-6", "MOTHER-7"]
         },
         {
           "name": "slab_id",
@@ -238,7 +255,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S005", "S006", "S007"]
         },
         {
           "name": "instruction_id",
@@ -255,7 +273,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I005", "I006", "I007"]
         },
         {
           "name": "created_at",
@@ -265,7 +284,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:41:00Z", "2026-01-21T21:01:00Z", "2026-01-25T08:21:00Z"]
         },
         {
           "name": "updated_at",
@@ -275,7 +295,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-21T03:20:00Z", "2026-01-24T14:40:00Z", "2026-01-28T02:00:00Z"]
         }
       ],
       "primary_key": [
@@ -295,7 +316,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FURNACE", "ROLLING", "FINISHING"]
         },
         {
           "name": "code",
@@ -305,7 +327,8 @@
           "primary_key_position": 2,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C", "A", "D"]
         },
         {
           "name": "meaning",
@@ -315,7 +338,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Furnace charging", "Furnace heating", "Furnace discharge"]
         }
       ],
       "primary_key": [
@@ -336,7 +360,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FU1", "FU2", "RO1"]
         },
         {
           "name": "equipment_code",
@@ -346,7 +371,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FURNACE-UNIT-1", "FURNACE-UNIT-2", "ROLLING-UNIT-1"]
         },
         {
           "name": "equipment_name",
@@ -356,7 +382,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Furnace unit 1", "Furnace unit 2", "Rolling unit 1"]
         },
         {
           "name": "created_at",
@@ -366,7 +393,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2025-12-31T07:20:00Z", "2025-12-31T09:00:00Z"]
         },
         {
           "name": "updated_at",
@@ -376,7 +404,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-12-14T05:20:00Z", "2026-12-14T07:00:00Z"]
         }
       ],
       "primary_key": [
@@ -396,7 +425,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "material_id",
@@ -413,7 +443,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M007", "M008", "M009"]
         },
         {
           "name": "process_group",
@@ -430,7 +461,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FURNACE"]
         },
         {
           "name": "operation_code",
@@ -452,7 +484,8 @@
             "C": "Furnace charging",
             "A": "Furnace heating",
             "D": "Furnace discharge"
-          }
+          },
+          "sample_values": ["C", "A", "D"]
         },
         {
           "name": "equipment_id",
@@ -469,7 +502,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FU2", "FU1"]
         },
         {
           "name": "started_at",
@@ -479,7 +513,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T08:30:00Z", "2026-01-25T08:45:00Z", "2026-01-25T09:25:00Z"]
         },
         {
           "name": "finished_at",
@@ -489,7 +524,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T08:40:00Z", "2026-01-25T09:20:00Z", "2026-01-25T09:30:00Z"]
         }
       ],
       "primary_key": [
@@ -509,7 +545,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "material_id",
@@ -526,7 +563,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M007", "M008", "M009"]
         },
         {
           "name": "process_group",
@@ -543,7 +581,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["ROLLING"]
         },
         {
           "name": "phase_code",
@@ -564,7 +603,8 @@
           "code_meanings": {
             "R": "Rough rolling",
             "F": "Finish rolling"
-          }
+          },
+          "sample_values": ["R", "F"]
         },
         {
           "name": "equipment_id",
@@ -581,7 +621,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["RO2", "RO1"]
         },
         {
           "name": "started_at",
@@ -591,7 +632,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T09:40:00Z", "2026-01-25T10:10:00Z", "2026-01-28T21:00:00Z"]
         },
         {
           "name": "finished_at",
@@ -601,7 +643,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T10:00:00Z", "2026-01-25T10:35:00Z", "2026-01-28T21:20:00Z"]
         }
       ],
       "primary_key": [
@@ -621,7 +664,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "name": "plate_no",
@@ -631,7 +675,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PIECE-7-1", "PIECE-7-2", "PIECE-8-1"]
         },
         {
           "name": "mother_material_id",
@@ -648,7 +693,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M007", "M008", "M009"]
         },
         {
           "name": "identified_at",
@@ -658,7 +704,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T19:30:00Z", "2026-01-26T03:50:00Z", "2026-01-29T06:50:00Z"]
         },
         {
           "name": "released_at",
@@ -668,7 +715,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T22:30:00Z", "2026-01-26T05:30:00Z", "2026-01-29T08:30:00Z"]
         },
         {
           "name": "packed_at",
@@ -678,7 +726,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T22:50:00Z", "2026-01-26T05:50:00Z", "2026-01-29T08:50:00Z"]
         }
       ],
       "primary_key": [
@@ -698,7 +747,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "plate_id",
@@ -715,7 +765,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "name": "process_group",
@@ -732,7 +783,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FINISHING"]
         },
         {
           "name": "operation_code",
@@ -754,7 +806,8 @@
             "L": "Leveling",
             "A": "Heat treatment",
             "S": "Surface finishing"
-          }
+          },
+          "sample_values": ["L", "A", "S"]
         },
         {
           "name": "equipment_id",
@@ -771,7 +824,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FI1", "FI2"]
         },
         {
           "name": "started_at",
@@ -781,7 +835,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T19:35:00Z", "2026-01-25T19:50:00Z", "2026-01-25T20:15:00Z"]
         },
         {
           "name": "finished_at",
@@ -791,7 +846,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T19:45:00Z", "2026-01-25T20:10:00Z", "2026-01-25T20:25:00Z"]
         }
       ],
       "primary_key": [
@@ -811,7 +867,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1-1", "P007-1-2", "P007-2-1"]
         },
         {
           "name": "plate_id",
@@ -828,7 +885,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "name": "inspected_at",
@@ -838,7 +896,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T20:35:00Z", "2026-01-25T21:55:00Z", "2026-01-26T04:55:00Z"]
         },
         {
           "name": "result_code",
@@ -848,7 +907,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FAIL", "PASS"]
         },
         {
           "name": "thickness_mm",
@@ -858,7 +918,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "mm"
+          "unit": "mm",
+          "sample_values": [22.5, 20.1]
         }
       ],
       "primary_key": [
@@ -878,7 +939,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1-1", "P007-1-2", "P007-2-1"]
         },
         {
           "name": "plate_id",
@@ -895,7 +957,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "name": "started_at",
@@ -905,7 +968,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T20:40:00Z", "2026-01-25T22:00:00Z", "2026-01-26T05:00:00Z"]
         },
         {
           "name": "finished_at",
@@ -915,7 +979,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T20:50:00Z", "2026-01-25T22:15:00Z", "2026-01-26T05:10:00Z"]
         },
         {
           "name": "review_status",
@@ -925,7 +990,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["REWORK", "APPROVED", "PENDING"]
         }
       ],
       "primary_key": [

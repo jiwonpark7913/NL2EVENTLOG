@@ -17,7 +17,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "warehouse_name",
@@ -27,7 +28,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Warehouse 1", "Warehouse 2", "Warehouse 3"]
         },
         {
           "name": "capacity",
@@ -37,7 +39,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [1000]
         },
         {
           "name": "created_at",
@@ -47,7 +50,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-31T07:20:00Z"]
         },
         {
           "name": "updated_at",
@@ -57,7 +61,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-06-19T21:20:00Z"]
         }
       ],
       "primary_key": [
@@ -77,7 +82,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "goods_name",
@@ -87,7 +93,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Goods 1", "Goods 2", "Goods 3"]
         },
         {
           "name": "category_code",
@@ -97,7 +104,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["NORMAL", "FRAGILE"]
         }
       ],
       "primary_key": [
@@ -117,7 +125,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "worker_name",
@@ -127,7 +136,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Worker 1", "Worker 2", "Worker 3"]
         },
         {
           "name": "role_code",
@@ -137,7 +147,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["HANDLER", "SUPERVISOR"]
         },
         {
           "name": "updated_at",
@@ -147,7 +158,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-06-19T21:21:00Z", "2026-06-19T21:22:00Z", "2026-06-19T21:23:00Z"]
         }
       ],
       "primary_key": [
@@ -167,7 +179,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["MOVEMENT", "REQUEST", "TASK"]
         },
         {
           "name": "code",
@@ -177,7 +190,8 @@
           "primary_key_position": 2,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I", "O", "A"]
         },
         {
           "name": "meaning",
@@ -187,7 +201,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Receipt into warehouse stock", "Dispatch from warehouse stock", "Check receiving request"]
         }
       ],
       "primary_key": [
@@ -208,7 +223,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "warehouse_id",
@@ -225,7 +241,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "goods_id",
@@ -242,7 +259,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "quantity",
@@ -252,7 +270,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [10]
         },
         {
           "name": "submitted_at",
@@ -262,7 +281,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:00:00Z", "2026-02-01T10:00:00Z", "2026-02-01T15:00:00Z"]
         }
       ],
       "primary_key": [
@@ -282,7 +302,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "request_id",
@@ -299,7 +320,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "receiver_id",
@@ -316,7 +338,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "received_at",
@@ -326,7 +349,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:32:00Z", "2026-02-01T10:32:00Z", "2026-02-01T15:32:00Z"]
         },
         {
           "name": "condition_code",
@@ -336,7 +360,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["GOOD", "DAMAGED"]
         }
       ],
       "primary_key": [
@@ -356,7 +381,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "warehouse_id",
@@ -373,7 +399,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "goods_id",
@@ -390,7 +417,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "quantity",
@@ -400,7 +428,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [4]
         },
         {
           "name": "priority_code",
@@ -410,7 +439,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["NORMAL", "URGENT"]
         },
         {
           "name": "requested_at",
@@ -420,7 +450,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-04-11T15:40:00Z", "2026-04-11T20:40:00Z", "2026-04-12T01:40:00Z"]
         },
         {
           "name": "approved_at",
@@ -430,7 +461,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-04-11T15:50:00Z", "2026-04-11T20:50:00Z", "2026-04-12T01:50:00Z"]
         }
       ],
       "primary_key": [
@@ -450,7 +482,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "warehouse_id",
@@ -467,7 +500,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "worker_id",
@@ -484,7 +518,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "started_at",
@@ -494,7 +529,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-05-16T05:40:00Z", "2026-05-16T07:20:00Z", "2026-05-16T09:00:00Z"]
         },
         {
           "name": "completed_at",
@@ -504,7 +540,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-05-16T06:20:00Z", "2026-05-16T08:00:00Z", "2026-05-16T09:40:00Z"]
         },
         {
           "name": "result_code",
@@ -514,7 +551,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PASS", "RECOUNT", "PENDING"]
         }
       ],
       "primary_key": [
@@ -534,7 +572,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "warehouse_id",
@@ -551,7 +590,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "goods_id",
@@ -568,7 +608,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "quantity",
@@ -578,7 +619,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [10, 4]
         },
         {
           "name": "receipt_id",
@@ -595,7 +637,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "dispatch_id",
@@ -612,7 +655,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "code_family",
@@ -629,7 +673,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["MOVEMENT"]
         },
         {
           "name": "movement_code",
@@ -650,7 +695,8 @@
           "code_meanings": {
             "I": "Receipt into warehouse stock",
             "O": "Dispatch from warehouse stock"
-          }
+          },
+          "sample_values": ["I", "O"]
         },
         {
           "name": "occurred_at",
@@ -660,7 +706,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:35:00Z", "2026-02-01T10:35:00Z", "2026-02-01T15:35:00Z"]
         }
       ],
       "primary_key": [
@@ -680,7 +727,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "request_id",
@@ -697,7 +745,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "worker_id",
@@ -714,7 +763,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "code_family",
@@ -731,7 +781,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["REQUEST"]
         },
         {
           "name": "action_code",
@@ -753,7 +804,8 @@
             "A": "Check receiving request",
             "H": "Hold receiving request",
             "R": "Release receiving request"
-          }
+          },
+          "sample_values": ["A", "R", "H"]
         },
         {
           "name": "occurred_at",
@@ -763,7 +815,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:05:00Z", "2026-02-01T05:12:00Z", "2026-02-01T10:05:00Z"]
         }
       ],
       "primary_key": [
@@ -783,7 +836,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "request_id",
@@ -800,7 +854,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "dispatch_id",
@@ -817,7 +872,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "worker_id",
@@ -834,7 +890,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "code_family",
@@ -851,7 +908,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["TASK"]
         },
         {
           "name": "task_code",
@@ -873,7 +931,8 @@
             "A": "Putaway work",
             "K": "Picking work",
             "B": "Packing work"
-          }
+          },
+          "sample_values": ["A", "K", "B"]
         },
         {
           "name": "started_at",
@@ -883,7 +942,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:40:00Z", "2026-02-01T10:40:00Z", "2026-02-01T15:40:00Z"]
         },
         {
           "name": "completed_at",
@@ -893,7 +953,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:50:00Z", "2026-02-01T10:50:00Z", "2026-02-01T15:50:00Z"]
         },
         {
           "name": "outcome_code",
@@ -903,7 +964,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["OK", "PENDING", "RETRY"]
         }
       ],
       "primary_key": [
@@ -923,7 +985,8 @@
           "primary_key_position": 1,
           "default": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "name": "request_id",
@@ -940,7 +1003,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "dispatch_id",
@@ -957,7 +1021,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "name": "worker_id",
@@ -974,7 +1039,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "name": "code_family",
@@ -991,7 +1057,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["HANDLING"]
         },
         {
           "name": "handling_code",
@@ -1012,7 +1079,8 @@
           "code_meanings": {
             "U": "Unloading work",
             "L": "Loading work"
-          }
+          },
+          "sample_values": ["U", "L"]
         },
         {
           "name": "started_at",
@@ -1022,7 +1090,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:20:00Z", "2026-02-01T10:20:00Z", "2026-02-01T15:20:00Z"]
         },
         {
           "name": "completed_at",
@@ -1032,7 +1101,8 @@
           "primary_key_position": 0,
           "default": null,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:30:00Z", "2026-02-01T10:30:00Z", "2026-02-01T15:30:00Z"]
         }
       ],
       "primary_key": [

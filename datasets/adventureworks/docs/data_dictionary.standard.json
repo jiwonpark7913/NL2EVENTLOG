@@ -1,7 +1,7 @@
 {
   "dictionary_schema_version": "NL2EVENTLOG-DD-v1",
-  "dataset_id": "adventureworks",
   "name": "Microsoft AdventureWorks OLTP",
+  "dataset_id": "adventureworks",
   "language": "en",
   "dbms": "SQLite",
   "timezone": null,
@@ -27,7 +27,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.PostTime",
@@ -39,7 +40,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.DatabaseUser",
@@ -51,7 +53,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.Event",
@@ -63,7 +66,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.Schema",
@@ -75,7 +79,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.Object",
@@ -87,7 +92,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.TSQL",
@@ -99,7 +105,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.DatabaseLog.XmlEvent",
@@ -111,7 +118,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         }
       ]
     },
@@ -136,7 +144,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorTime",
@@ -148,7 +157,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.UserName",
@@ -160,7 +170,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorNumber",
@@ -172,7 +183,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorSeverity",
@@ -184,7 +196,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorState",
@@ -196,7 +209,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorProcedure",
@@ -208,7 +222,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorLine",
@@ -220,7 +235,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ErrorLog.ErrorMessage",
@@ -232,7 +248,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         }
       ]
     },
@@ -268,7 +285,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Address.AddressLine1",
@@ -280,7 +298,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Address.AddressLine2",
@@ -292,7 +311,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Address.City",
@@ -304,7 +324,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Bothell", "Portland", "Seattle"]
         },
         {
           "metadata_id": "adventureworks.Address.StateProvinceID",
@@ -321,7 +342,8 @@
               "column": "StateProvinceID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [79, 58, 36]
         },
         {
           "metadata_id": "adventureworks.Address.PostalCode",
@@ -333,7 +355,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["98011", "97205", "98104"]
         },
         {
           "metadata_id": "adventureworks.Address.SpatialLocation",
@@ -345,7 +368,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Address.rowguid",
@@ -357,7 +381,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["9AADCB0D-36CF-483F-84D8-585C2D4EC6E9", "32A54B9E-E034-4BFB-B573-A71CDE60D8C0", "4C506923-6D1B-452C-A07C-BAA6F5B142A4"]
         },
         {
           "metadata_id": "adventureworks.Address.ModifiedDate",
@@ -369,7 +394,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2018-12-03 00:00:00.000", "2019-11-30 00:00:00.000", "2024-03-06 00:00:00.000"]
         }
       ]
     },
@@ -394,7 +420,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.AddressType.Name",
@@ -406,7 +433,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Billing", "Home", "Main Office"]
         },
         {
           "metadata_id": "adventureworks.AddressType.rowguid",
@@ -418,7 +446,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["B84F78B1-4EFE-4A0E-8CB7-70E9F112F886", "41BC2FF6-F0FC-475F-8EB9-CEC0805AA0F2", "8EEEC28C-07A2-4FB9-AD0A-42D4A0BBC575"]
         },
         {
           "metadata_id": "adventureworks.AddressType.ModifiedDate",
@@ -430,7 +459,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -455,7 +485,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1]
         },
         {
           "metadata_id": "adventureworks.AWBuildVersion.Database Version",
@@ -467,7 +498,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["17.0.1000.3"]
         },
         {
           "metadata_id": "adventureworks.AWBuildVersion.VersionDate",
@@ -479,7 +511,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-10-06 21:25:57.990"]
         },
         {
           "metadata_id": "adventureworks.AWBuildVersion.ModifiedDate",
@@ -491,7 +524,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-11-14 12:13:16.797"]
         }
       ]
     },
@@ -547,7 +581,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.ProductAssemblyID",
@@ -564,7 +599,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [807, 782, 950]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.ComponentID",
@@ -581,7 +617,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 995, 989]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.StartDate",
@@ -593,7 +630,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2021-03-03 00:00:00.000", "2021-05-03 00:00:00.000", "2021-03-17 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.EndDate",
@@ -605,7 +643,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2021-05-02 00:00:00.000", "2021-05-16 00:00:00.000", "2021-07-24 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.UnitMeasureCode",
@@ -622,7 +661,8 @@
               "column": "UnitMeasureCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["EA ", "IN ", "OZ "]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.BOMLevel",
@@ -634,7 +674,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 1, 0]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.PerAssemblyQty",
@@ -646,7 +687,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1.00", "3.00", "2.00"]
         },
         {
           "metadata_id": "adventureworks.BillOfMaterials.ModifiedDate",
@@ -658,7 +700,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2021-02-17 00:00:00.000", "2021-04-19 00:00:00.000", "2021-05-02 00:00:00.000"]
         }
       ]
     },
@@ -683,7 +726,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.BusinessEntity.rowguid",
@@ -695,7 +739,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0C7D8F81-D7B1-4CF0-9C0A-4CD8B6B50087", "6648747F-7843-4002-B317-65389684C398", "568204DA-93D7-42F4-8A7A-4446A144277D"]
         },
         {
           "metadata_id": "adventureworks.BusinessEntity.ModifiedDate",
@@ -707,7 +752,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2017-12-13 13:20:24.150", "2017-12-13 13:20:24.430", "2017-12-13 13:20:24.540"]
         }
       ]
     },
@@ -770,7 +816,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.BusinessEntityAddress.AddressID",
@@ -787,7 +834,8 @@
               "column": "AddressID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.BusinessEntityAddress.AddressTypeID",
@@ -804,7 +852,8 @@
               "column": "AddressTypeID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.BusinessEntityAddress.rowguid",
@@ -816,7 +865,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["3A5D0A00-6739-4DFE-A8F7-844CD9DEE3DF", "84AE7057-EDF4-4C51-8B8D-3AEAEFBFB4A1", "3C915B31-7C05-4A05-9859-0DF663677240"]
         },
         {
           "metadata_id": "adventureworks.BusinessEntityAddress.ModifiedDate",
@@ -828,7 +878,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-09-11 11:15:06.967", "2022-07-31 00:00:00.000", "2024-07-30 00:00:00.000"]
         }
       ]
     },
@@ -891,7 +942,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [292, 294, 296]
         },
         {
           "metadata_id": "adventureworks.BusinessEntityContact.PersonID",
@@ -908,7 +960,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [291, 293, 295]
         },
         {
           "metadata_id": "adventureworks.BusinessEntityContact.ContactTypeID",
@@ -925,7 +978,8 @@
               "column": "ContactTypeID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [11, 14, 15]
         },
         {
           "metadata_id": "adventureworks.BusinessEntityContact.rowguid",
@@ -937,7 +991,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["7D4D2DBC-4A44-48F5-911D-A63ABAFD5120", "3EA25B65-9579-4260-977D-D6F00D7D20EE", "DADAC1FF-3351-4827-9AE0-95004885C193"]
         },
         {
           "metadata_id": "adventureworks.BusinessEntityContact.ModifiedDate",
@@ -949,7 +1004,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2017-12-13 13:21:02.243", "2017-12-13 13:21:02.320", "2017-12-13 13:21:02.383"]
         }
       ]
     },
@@ -974,7 +1030,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ContactType.Name",
@@ -986,7 +1043,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Accounting Manager", "Assistant Sales Agent", "Assistant Sales Representative"]
         },
         {
           "metadata_id": "adventureworks.ContactType.ModifiedDate",
@@ -998,7 +1056,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -1050,7 +1109,8 @@
               "column": "CountryRegionCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AE", "AR", "AT"]
         },
         {
           "metadata_id": "adventureworks.CountryRegionCurrency.CurrencyCode",
@@ -1067,7 +1127,8 @@
               "column": "CurrencyCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AED", "ARS", "ATS"]
         },
         {
           "metadata_id": "adventureworks.CountryRegionCurrency.ModifiedDate",
@@ -1079,7 +1140,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-02-07 10:17:21.510", "2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -1104,7 +1166,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AD", "AE", "AF"]
         },
         {
           "metadata_id": "adventureworks.CountryRegion.Name",
@@ -1116,7 +1179,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Andorra", "United Arab Emirates", "Afghanistan"]
         },
         {
           "metadata_id": "adventureworks.CountryRegion.ModifiedDate",
@@ -1128,7 +1192,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -1153,7 +1218,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.CreditCard.CardType",
@@ -1165,7 +1231,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["SuperiorCard", "Distinguish", "ColonialVoice"]
         },
         {
           "metadata_id": "adventureworks.CreditCard.CardNumber",
@@ -1177,7 +1244,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["33332664695310", "55552127249722", "77778344838353"]
         },
         {
           "metadata_id": "adventureworks.CreditCard.ExpMonth",
@@ -1189,7 +1257,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [11, 8, 7]
         },
         {
           "metadata_id": "adventureworks.CreditCard.ExpYear",
@@ -1201,7 +1270,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [2006, 2005, 2007]
         },
         {
           "metadata_id": "adventureworks.CreditCard.ModifiedDate",
@@ -1213,7 +1283,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-07-28 00:00:00.000", "2024-12-04 00:00:00.000", "2025-01-13 00:00:00.000"]
         }
       ]
     },
@@ -1238,7 +1309,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["ar    ", "en    ", "es    "]
         },
         {
           "metadata_id": "adventureworks.Culture.Name",
@@ -1250,7 +1322,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Invariant Language (Invariant Country)", "Arabic", "English"]
         },
         {
           "metadata_id": "adventureworks.Culture.ModifiedDate",
@@ -1262,7 +1335,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -1287,7 +1361,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AED", "AFA", "ALL"]
         },
         {
           "metadata_id": "adventureworks.Currency.Name",
@@ -1299,7 +1374,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Emirati Dirham", "Afghani", "Lek"]
         },
         {
           "metadata_id": "adventureworks.Currency.ModifiedDate",
@@ -1311,7 +1387,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -1357,7 +1434,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.CurrencyRate.CurrencyRateDate",
@@ -1369,7 +1447,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2022-05-31 00:00:00.000", "2022-06-01 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.CurrencyRate.FromCurrencyCode",
@@ -1386,7 +1465,8 @@
               "column": "CurrencyCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["USD"]
         },
         {
           "metadata_id": "adventureworks.CurrencyRate.ToCurrencyCode",
@@ -1403,7 +1483,8 @@
               "column": "CurrencyCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["ARS", "AUD", "BRL"]
         },
         {
           "metadata_id": "adventureworks.CurrencyRate.AverageRate",
@@ -1415,7 +1496,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1.0000", "1.5491", "1.9379"]
         },
         {
           "metadata_id": "adventureworks.CurrencyRate.EndOfDayRate",
@@ -1427,7 +1509,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1.0002", "1.5500", "1.9419"]
         },
         {
           "metadata_id": "adventureworks.CurrencyRate.ModifiedDate",
@@ -1439,7 +1522,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2022-05-31 00:00:00.000", "2022-06-01 00:00:00.000"]
         }
       ]
     },
@@ -1495,7 +1579,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Customer.PersonID",
@@ -1512,7 +1597,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [13531, 5454, 11269]
         },
         {
           "metadata_id": "adventureworks.Customer.StoreID",
@@ -1529,7 +1615,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [934, 1028, 642]
         },
         {
           "metadata_id": "adventureworks.Customer.TerritoryID",
@@ -1546,7 +1633,8 @@
               "column": "TerritoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 4, 5]
         },
         {
           "metadata_id": "adventureworks.Customer.AccountNumber",
@@ -1558,7 +1646,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AW00000001", "AW00000002", "AW00000003"]
         },
         {
           "metadata_id": "adventureworks.Customer.rowguid",
@@ -1570,7 +1659,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["3F5AE95E-B87D-4AED-95B4-C3797AFCB74F", "E552F657-A9AF-4A7D-A645-C429D6E02491", "130774B1-DB21-4EF3-98C8-C104BCD6ED6D"]
         },
         {
           "metadata_id": "adventureworks.Customer.ModifiedDate",
@@ -1582,7 +1672,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-09-11 11:15:07.263"]
         }
       ]
     },
@@ -1607,7 +1698,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Department.Name",
@@ -1619,7 +1711,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Engineering", "Tool Design", "Sales"]
         },
         {
           "metadata_id": "adventureworks.Department.GroupName",
@@ -1631,7 +1724,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Research and Development", "Sales and Marketing", "Inventory Management"]
         },
         {
           "metadata_id": "adventureworks.Department.ModifiedDate",
@@ -1643,7 +1737,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2008-04-30 00:00:00.000"]
         }
       ]
     },
@@ -1679,7 +1774,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["58", "5AC0", "5B40"]
         },
         {
           "metadata_id": "adventureworks.Document.DocumentLevel",
@@ -1691,7 +1787,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0", "1", "2"]
         },
         {
           "metadata_id": "adventureworks.Document.Title",
@@ -1703,7 +1800,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Documents", "Overview", "Introduction 1"]
         },
         {
           "metadata_id": "adventureworks.Document.Owner",
@@ -1720,7 +1818,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [217, 219, 220]
         },
         {
           "metadata_id": "adventureworks.Document.FolderFlag",
@@ -1732,7 +1831,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 0]
         },
         {
           "metadata_id": "adventureworks.Document.FileName",
@@ -1744,7 +1844,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Documents", "Overview", "Introduction 1.doc"]
         },
         {
           "metadata_id": "adventureworks.Document.FileExtension",
@@ -1756,7 +1857,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".doc"]
         },
         {
           "metadata_id": "adventureworks.Document.Revision",
@@ -1768,7 +1870,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0    ", "4    ", "2    "]
         },
         {
           "metadata_id": "adventureworks.Document.ChangeNumber",
@@ -1780,7 +1883,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 28, 8]
         },
         {
           "metadata_id": "adventureworks.Document.Status",
@@ -1792,7 +1896,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 1]
         },
         {
           "metadata_id": "adventureworks.Document.DocumentSummary",
@@ -1804,7 +1909,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Document.Document",
@@ -1816,7 +1922,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Document.rowguid",
@@ -1828,7 +1935,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["27CF33AF-C338-4842-966C-75CA11AAA6A3", "26A266F1-1D23-40E2-AF48-6AB8D954FE37", "48265174-8451-4967-973A-639C2276CFAF"]
         },
         {
           "metadata_id": "adventureworks.Document.ModifiedDate",
@@ -1840,7 +1948,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2017-12-13 13:58:03.943", "2017-12-13 13:58:03.977", "2024-05-29 00:00:00.000"]
         }
       ]
     },
@@ -1882,7 +1991,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.EmailAddress.EmailAddressID",
@@ -1894,7 +2004,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.EmailAddress.EmailAddress",
@@ -1906,7 +2017,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.EmailAddress.rowguid",
@@ -1918,7 +2030,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["8A1901E4-671B-431A-871C-EADB2942E9EE", "B5FF9EFD-72A2-4F87-830B-F338FDD4D162", "C8A51084-1C03-4C58-A8B3-55854AE7C499"]
         },
         {
           "metadata_id": "adventureworks.EmailAddress.ModifiedDate",
@@ -1930,7 +2043,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2020-01-07 00:00:00.000", "2019-01-23 00:00:00.000", "2018-11-03 00:00:00.000"]
         }
       ]
     },
@@ -1971,7 +2085,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Employee.NationalIDNumber",
@@ -1983,7 +2098,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["295847284", "245797967", "509647174"]
         },
         {
           "metadata_id": "adventureworks.Employee.LoginID",
@@ -1995,7 +2111,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["adventure-works\\ken0", "adventure-works\\terri0", "adventure-works\\roberto0"]
         },
         {
           "metadata_id": "adventureworks.Employee.OrganizationNode",
@@ -2007,7 +2124,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["58", "5AC0", "5AD6"]
         },
         {
           "metadata_id": "adventureworks.Employee.OrganizationLevel",
@@ -2019,7 +2137,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "adventureworks.Employee.JobTitle",
@@ -2031,7 +2150,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Chief Executive Officer", "Vice President of Engineering", "Engineering Manager"]
         },
         {
           "metadata_id": "adventureworks.Employee.BirthDate",
@@ -2043,7 +2163,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1969-01-29", "1971-08-01", "1974-11-12"]
         },
         {
           "metadata_id": "adventureworks.Employee.MaritalStatus",
@@ -2055,7 +2176,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S", "M"]
         },
         {
           "metadata_id": "adventureworks.Employee.Gender",
@@ -2067,7 +2189,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M", "F"]
         },
         {
           "metadata_id": "adventureworks.Employee.HireDate",
@@ -2079,7 +2202,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2009-01-14", "2008-01-31", "2007-11-11"]
         },
         {
           "metadata_id": "adventureworks.Employee.SalariedFlag",
@@ -2091,7 +2215,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 0]
         },
         {
           "metadata_id": "adventureworks.Employee.VacationHours",
@@ -2103,7 +2228,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [99, 1, 2]
         },
         {
           "metadata_id": "adventureworks.Employee.SickLeaveHours",
@@ -2115,7 +2241,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [69, 20, 21]
         },
         {
           "metadata_id": "adventureworks.Employee.CurrentFlag",
@@ -2127,7 +2254,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1]
         },
         {
           "metadata_id": "adventureworks.Employee.rowguid",
@@ -2139,7 +2267,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["F01251E5-96A3-448D-981E-0F99D789110D", "45E8F437-670D-4409-93CB-F9424A40D6EE", "9BBBFB2C-EFBB-4217-9AB7-F97689328841"]
         },
         {
           "metadata_id": "adventureworks.Employee.ModifiedDate",
@@ -2151,7 +2280,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2014-06-30 00:00:00.000", "2014-12-26 09:17:08.637"]
         }
       ]
     },
@@ -2215,7 +2345,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.EmployeeDepartmentHistory.DepartmentID",
@@ -2232,7 +2363,8 @@
               "column": "DepartmentID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [16, 1, 2]
         },
         {
           "metadata_id": "adventureworks.EmployeeDepartmentHistory.ShiftID",
@@ -2249,7 +2381,8 @@
               "column": "ShiftID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 3, 2]
         },
         {
           "metadata_id": "adventureworks.EmployeeDepartmentHistory.StartDate",
@@ -2261,7 +2394,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2009-01-14", "2008-01-31", "2007-11-11"]
         },
         {
           "metadata_id": "adventureworks.EmployeeDepartmentHistory.EndDate",
@@ -2273,7 +2407,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2010-05-30", "2009-07-14", "2011-08-31"]
         },
         {
           "metadata_id": "adventureworks.EmployeeDepartmentHistory.ModifiedDate",
@@ -2285,7 +2420,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2009-01-13 00:00:00.000", "2008-01-30 00:00:00.000", "2007-11-10 00:00:00.000"]
         }
       ]
     },
@@ -2327,7 +2463,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.EmployeePayHistory.RateChangeDate",
@@ -2339,7 +2476,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2009-01-14 00:00:00.000", "2008-01-31 00:00:00.000", "2007-11-11 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.EmployeePayHistory.Rate",
@@ -2351,7 +2489,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["125.5000", "63.4615", "43.2692"]
         },
         {
           "metadata_id": "adventureworks.EmployeePayHistory.PayFrequency",
@@ -2363,7 +2502,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 1]
         },
         {
           "metadata_id": "adventureworks.EmployeePayHistory.ModifiedDate",
@@ -2375,7 +2515,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2014-06-30 00:00:00.000", "2007-11-21 00:00:00.000", "2010-05-16 00:00:00.000"]
         }
       ]
     },
@@ -2400,7 +2541,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [3, 4, 5]
         },
         {
           "metadata_id": "adventureworks.Illustration.Diagram",
@@ -2412,7 +2554,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Illustration.ModifiedDate",
@@ -2424,7 +2567,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-01-08 13:06:11.780", "2025-01-08 13:06:11.903", "2025-01-08 13:06:11.950"]
         }
       ]
     },
@@ -2460,7 +2604,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.JobCandidate.BusinessEntityID",
@@ -2477,7 +2622,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [274, 212]
         },
         {
           "metadata_id": "adventureworks.JobCandidate.Resume",
@@ -2489,7 +2635,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.JobCandidate.ModifiedDate",
@@ -2501,7 +2648,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2007-06-23 00:00:00.000", "2013-12-22 18:32:21.313", "2013-12-22 18:32:21.267"]
         }
       ]
     },
@@ -2526,7 +2674,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Location.Name",
@@ -2538,7 +2687,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Tool Crib", "Sheet Metal Racks", "Paint Shop"]
         },
         {
           "metadata_id": "adventureworks.Location.CostRate",
@@ -2550,7 +2700,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", "22.5000", "25.0000"]
         },
         {
           "metadata_id": "adventureworks.Location.Availability",
@@ -2562,7 +2713,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".00", "96.00", "108.00"]
         },
         {
           "metadata_id": "adventureworks.Location.ModifiedDate",
@@ -2574,7 +2726,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -2615,7 +2768,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Password.PasswordHash",
@@ -2627,7 +2781,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Password.PasswordSalt",
@@ -2639,7 +2794,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Password.rowguid",
@@ -2651,7 +2807,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["329EACBE-C883-4F48-B8B6-17AA4627EFFF", "A4C82398-7466-4FE6-B9EE-CEC34D116F68", "AC3F4536-BB2E-41C5-B70D-454BE460C1BD"]
         },
         {
           "metadata_id": "adventureworks.Password.ModifiedDate",
@@ -2663,7 +2820,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2020-01-07 00:00:00.000", "2019-01-23 00:00:00.000", "2018-11-03 00:00:00.000"]
         }
       ]
     },
@@ -2704,7 +2862,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Person.PersonType",
@@ -2716,7 +2875,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["EM", "SP", "SC"]
         },
         {
           "metadata_id": "adventureworks.Person.NameStyle",
@@ -2728,7 +2888,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0"]
         },
         {
           "metadata_id": "adventureworks.Person.Title",
@@ -2740,7 +2901,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Ms.", "Mr.", "Sr."]
         },
         {
           "metadata_id": "adventureworks.Person.FirstName",
@@ -2752,7 +2914,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Ken", "Terri", "Roberto"]
         },
         {
           "metadata_id": "adventureworks.Person.MiddleName",
@@ -2764,7 +2927,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["J", "Lee", "A"]
         },
         {
           "metadata_id": "adventureworks.Person.LastName",
@@ -2776,7 +2940,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Sánchez", "Duffy", "Tamburello"]
         },
         {
           "metadata_id": "adventureworks.Person.Suffix",
@@ -2788,7 +2953,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["III", "Jr.", "II"]
         },
         {
           "metadata_id": "adventureworks.Person.EmailPromotion",
@@ -2800,7 +2966,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Person.AdditionalContactInfo",
@@ -2812,7 +2979,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Person.Demographics",
@@ -2824,7 +2992,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Person.rowguid",
@@ -2836,7 +3005,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["92C4279F-1207-48A3-8448-4636514EB7E2", "D8763459-8AA8-47CC-AFF7-C9079AF79033", "E1A2555E-0828-434B-A33B-6F38136A37DE"]
         },
         {
           "metadata_id": "adventureworks.Person.ModifiedDate",
@@ -2848,7 +3018,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2020-01-07 00:00:00.000", "2019-01-23 00:00:00.000", "2018-11-03 00:00:00.000"]
         }
       ]
     },
@@ -2900,7 +3071,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [293, 295, 297]
         },
         {
           "metadata_id": "adventureworks.PersonCreditCard.CreditCardID",
@@ -2917,7 +3089,8 @@
               "column": "CreditCardID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [17038, 15369, 8010]
         },
         {
           "metadata_id": "adventureworks.PersonCreditCard.ModifiedDate",
@@ -2929,7 +3102,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-07-30 00:00:00.000", "2022-07-31 00:00:00.000", "2022-05-30 00:00:00.000"]
         }
       ]
     },
@@ -2982,7 +3156,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.PersonPhone.PhoneNumber",
@@ -2994,7 +3169,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["697-555-0142", "819-555-0175", "212-555-0187"]
         },
         {
           "metadata_id": "adventureworks.PersonPhone.PhoneNumberTypeID",
@@ -3011,7 +3187,8 @@
               "column": "PhoneNumberTypeID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 3, 2]
         },
         {
           "metadata_id": "adventureworks.PersonPhone.ModifiedDate",
@@ -3023,7 +3200,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2020-01-07 00:00:00.000", "2019-01-23 00:00:00.000", "2018-11-03 00:00:00.000"]
         }
       ]
     },
@@ -3048,7 +3226,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.PhoneNumberType.Name",
@@ -3060,7 +3239,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Cell", "Home", "Work"]
         },
         {
           "metadata_id": "adventureworks.PhoneNumberType.ModifiedDate",
@@ -3072,7 +3252,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2017-12-13 13:19:22.273"]
         }
       ]
     },
@@ -3138,7 +3319,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Product.Name",
@@ -3150,7 +3332,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Adjustable Race", "Bearing Ball", "BB Ball Bearing"]
         },
         {
           "metadata_id": "adventureworks.Product.ProductNumber",
@@ -3162,7 +3345,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AR-5381", "BA-8327", "BE-2349"]
         },
         {
           "metadata_id": "adventureworks.Product.MakeFlag",
@@ -3174,7 +3358,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1]
         },
         {
           "metadata_id": "adventureworks.Product.FinishedGoodsFlag",
@@ -3186,7 +3371,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1]
         },
         {
           "metadata_id": "adventureworks.Product.Color",
@@ -3198,7 +3384,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Black", "Silver", "Red"]
         },
         {
           "metadata_id": "adventureworks.Product.SafetyStockLevel",
@@ -3210,7 +3397,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1000, 800, 500]
         },
         {
           "metadata_id": "adventureworks.Product.ReorderPoint",
@@ -3222,7 +3410,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [750, 600, 375]
         },
         {
           "metadata_id": "adventureworks.Product.StandardCost",
@@ -3234,7 +3423,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", "98.7700", "108.9900"]
         },
         {
           "metadata_id": "adventureworks.Product.ListPrice",
@@ -3246,7 +3436,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", "133.3400", "147.1400"]
         },
         {
           "metadata_id": "adventureworks.Product.Size",
@@ -3258,7 +3449,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["58", "M", "L"]
         },
         {
           "metadata_id": "adventureworks.Product.SizeUnitMeasureCode",
@@ -3275,7 +3467,8 @@
               "column": "UnitMeasureCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["CM "]
         },
         {
           "metadata_id": "adventureworks.Product.WeightUnitMeasureCode",
@@ -3292,7 +3485,8 @@
               "column": "UnitMeasureCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["G  ", "LB "]
         },
         {
           "metadata_id": "adventureworks.Product.Weight",
@@ -3304,7 +3498,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["435.00", "450.00", "400.00"]
         },
         {
           "metadata_id": "adventureworks.Product.DaysToManufacture",
@@ -3316,7 +3511,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1, 2]
         },
         {
           "metadata_id": "adventureworks.Product.ProductLine",
@@ -3328,7 +3524,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["R ", "S ", "M "]
         },
         {
           "metadata_id": "adventureworks.Product.Class",
@@ -3340,7 +3537,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["L ", "M ", "H "]
         },
         {
           "metadata_id": "adventureworks.Product.Style",
@@ -3352,7 +3550,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["U ", "W ", "M "]
         },
         {
           "metadata_id": "adventureworks.Product.ProductSubcategoryID",
@@ -3369,7 +3568,8 @@
               "column": "ProductSubcategoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [14, 31, 23]
         },
         {
           "metadata_id": "adventureworks.Product.ProductModelID",
@@ -3386,7 +3586,8 @@
               "column": "ProductModelID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [6, 33, 18]
         },
         {
           "metadata_id": "adventureworks.Product.SellStartDate",
@@ -3398,7 +3599,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000", "2022-05-30 00:00:00.000", "2023-05-30 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.Product.SellEndDate",
@@ -3410,7 +3612,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-05-29 00:00:00.000", "2024-05-28 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.Product.DiscontinuedDate",
@@ -3422,7 +3625,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Product.rowguid",
@@ -3434,7 +3638,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["694215B7-08F7-4C0D-ACB1-D734BA44C0C8", "58AE3C20-4F3A-4749-A7D4-D568806CC537", "9C21AED2-5BFA-4F18-BCB8-F11638DC2E4E"]
         },
         {
           "metadata_id": "adventureworks.Product.ModifiedDate",
@@ -3446,7 +3651,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-02-07 10:01:36.827", "2025-02-07 10:03:55.510"]
         }
       ]
     },
@@ -3471,7 +3677,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductCategory.Name",
@@ -3483,7 +3690,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Bikes", "Components", "Clothing"]
         },
         {
           "metadata_id": "adventureworks.ProductCategory.rowguid",
@@ -3495,7 +3703,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["CFBDA25C-DF71-47A7-B81B-64EE161AA37C", "C657828D-D808-4ABA-91A3-AF2CE02300E9", "10A7C342-CA82-48D4-8A38-46A2EB089B74"]
         },
         {
           "metadata_id": "adventureworks.ProductCategory.ModifiedDate",
@@ -3507,7 +3716,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -3549,7 +3759,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [707, 708, 709]
         },
         {
           "metadata_id": "adventureworks.ProductCostHistory.StartDate",
@@ -3561,7 +3772,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2023-05-30 00:00:00.000", "2024-05-29 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.ProductCostHistory.EndDate",
@@ -3573,7 +3785,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-05-29 00:00:00.000", "2024-05-28 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.ProductCostHistory.StandardCost",
@@ -3585,7 +3798,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["12.0278", "13.8782", "13.0863"]
         },
         {
           "metadata_id": "adventureworks.ProductCostHistory.ModifiedDate",
@@ -3597,7 +3811,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-05-29 00:00:00.000", "2024-05-28 00:00:00.000", "2024-05-15 00:00:00.000"]
         }
       ]
     },
@@ -3622,7 +3837,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [3, 4, 5]
         },
         {
           "metadata_id": "adventureworks.ProductDescription.Description",
@@ -3634,7 +3850,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Chromoly steel.", "Aluminum alloy cups; large diameter spindle.", "Aluminum alloy cups and a hollow axle."]
         },
         {
           "metadata_id": "adventureworks.ProductDescription.rowguid",
@@ -3646,7 +3863,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["301EED3A-1A82-4855-99CB-2AFE8290D641", "DFEBA528-DA11-4650-9D86-CAFDA7294EB0", "F7178DA7-1A7E-4997-8470-06737181305E"]
         },
         {
           "metadata_id": "adventureworks.ProductDescription.ModifiedDate",
@@ -3658,7 +3876,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-04-29 00:00:00.000", "2025-02-07 10:32:17.973"]
         }
       ]
     },
@@ -3710,7 +3929,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [317, 318, 319]
         },
         {
           "metadata_id": "adventureworks.ProductDocument.DocumentNode",
@@ -3727,7 +3947,8 @@
               "column": "DocumentNode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["6AC0", "7AC0", "7B40"]
         },
         {
           "metadata_id": "adventureworks.ProductDocument.ModifiedDate",
@@ -3739,7 +3960,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-12-28 13:51:58.103", "2024-12-28 13:51:58.120"]
         }
       ]
     },
@@ -3791,7 +4013,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductInventory.LocationID",
@@ -3808,7 +4031,8 @@
               "column": "LocationID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 6, 50]
         },
         {
           "metadata_id": "adventureworks.ProductInventory.Shelf",
@@ -3820,7 +4044,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A", "B", "C"]
         },
         {
           "metadata_id": "adventureworks.ProductInventory.Bin",
@@ -3832,7 +4057,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 5, 2]
         },
         {
           "metadata_id": "adventureworks.ProductInventory.Quantity",
@@ -3844,7 +4070,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [408, 324, 353]
         },
         {
           "metadata_id": "adventureworks.ProductInventory.rowguid",
@@ -3856,7 +4083,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["47A24246-6C43-48EB-968F-025738A8A410", "D4544D7D-CAF5-46B3-AB22-5718DCC26B5E", "BFF7DC60-96A8-43CA-81A7-D6D2ED3000A8"]
         },
         {
           "metadata_id": "adventureworks.ProductInventory.ModifiedDate",
@@ -3868,7 +4096,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-08-07 00:00:00.000", "2019-03-31 00:00:00.000", "2025-08-08 00:00:00.000"]
         }
       ]
     },
@@ -3910,7 +4139,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [707, 708, 709]
         },
         {
           "metadata_id": "adventureworks.ProductListPriceHistory.StartDate",
@@ -3922,7 +4152,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2023-05-30 00:00:00.000", "2024-05-29 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.ProductListPriceHistory.EndDate",
@@ -3934,7 +4165,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-05-29 00:00:00.000", "2024-05-28 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.ProductListPriceHistory.ListPrice",
@@ -3946,7 +4178,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["33.6442", "34.9900", "9.5000"]
         },
         {
           "metadata_id": "adventureworks.ProductListPriceHistory.ModifiedDate",
@@ -3958,7 +4191,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-05-29 00:00:00.000", "2024-05-28 00:00:00.000", "2024-05-08 00:00:00.000"]
         }
       ]
     },
@@ -3983,7 +4217,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductModel.Name",
@@ -3995,7 +4230,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Classic Vest", "Cycling Cap", "Full-Finger Gloves"]
         },
         {
           "metadata_id": "adventureworks.ProductModel.CatalogDescription",
@@ -4007,7 +4243,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ProductModel.Instructions",
@@ -4019,7 +4256,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ProductModel.rowguid",
@@ -4031,7 +4269,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["29321D47-1E4C-4AAC-887C-19634328C25E", "474FB654-3C96-4CB9-82DF-2152EEFFBDB0", "A75483FE-3C47-4AA4-93CF-664B51192987"]
         },
         {
           "metadata_id": "adventureworks.ProductModel.ModifiedDate",
@@ -4043,7 +4282,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-04-29 00:00:00.000", "2022-04-30 00:00:00.000", "2023-04-30 00:00:00.000"]
         }
       ]
     },
@@ -4095,7 +4335,8 @@
               "column": "ProductModelID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [7, 10, 47]
         },
         {
           "metadata_id": "adventureworks.ProductModelIllustration.IllustrationID",
@@ -4112,7 +4353,8 @@
               "column": "IllustrationID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [3, 4, 5]
         },
         {
           "metadata_id": "adventureworks.ProductModelIllustration.ModifiedDate",
@@ -4124,7 +4366,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-01-08 14:41:02.167", "2025-01-08 14:41:02.183", "2025-01-08 14:41:02.200"]
         }
       ]
     },
@@ -4187,7 +4430,8 @@
               "column": "ProductModelID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductModelProductDescriptionCulture.ProductDescriptionID",
@@ -4204,7 +4448,8 @@
               "column": "ProductDescriptionID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1199, 1467, 1589]
         },
         {
           "metadata_id": "adventureworks.ProductModelProductDescriptionCulture.CultureID",
@@ -4221,7 +4466,8 @@
               "column": "CultureID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["en    ", "ar    ", "fr    "]
         },
         {
           "metadata_id": "adventureworks.ProductModelProductDescriptionCulture.ModifiedDate",
@@ -4233,7 +4479,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-04-29 00:00:00.000"]
         }
       ]
     },
@@ -4258,7 +4505,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 69, 70]
         },
         {
           "metadata_id": "adventureworks.ProductPhoto.ThumbNailPhoto",
@@ -4270,7 +4518,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ProductPhoto.ThumbnailPhotoFileName",
@@ -4282,7 +4531,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["no_image_available_small.gif", "racer02_black_f_small.gif", "racer02_black_small.gif"]
         },
         {
           "metadata_id": "adventureworks.ProductPhoto.LargePhoto",
@@ -4294,7 +4544,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ProductPhoto.LargePhotoFileName",
@@ -4306,7 +4557,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["no_image_available_large.gif", "racer02_black_f_large.gif", "racer02_black_large.gif"]
         },
         {
           "metadata_id": "adventureworks.ProductPhoto.ModifiedDate",
@@ -4318,7 +4570,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000", "2023-10-19 09:56:38.273", "2023-04-30 00:00:00.000"]
         }
       ]
     },
@@ -4370,7 +4623,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductProductPhoto.ProductPhotoID",
@@ -4387,7 +4641,8 @@
               "column": "ProductPhotoID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 160, 162]
         },
         {
           "metadata_id": "adventureworks.ProductProductPhoto.Primary",
@@ -4399,7 +4654,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1]
         },
         {
           "metadata_id": "adventureworks.ProductProductPhoto.ModifiedDate",
@@ -4411,7 +4667,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-03-31 00:00:00.000", "2022-04-30 00:00:00.000", "2023-04-30 00:00:00.000"]
         }
       ]
     },
@@ -4447,7 +4704,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductReview.ProductID",
@@ -4464,7 +4722,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [709, 937, 798]
         },
         {
           "metadata_id": "adventureworks.ProductReview.ReviewerName",
@@ -4476,7 +4735,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["John Smith", "David", "Jill"]
         },
         {
           "metadata_id": "adventureworks.ProductReview.ReviewDate",
@@ -4488,7 +4748,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-09-17 00:00:00.000", "2024-11-12 00:00:00.000", "2024-11-14 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.ProductReview.EmailAddress",
@@ -4500,7 +4761,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ProductReview.Rating",
@@ -4512,7 +4774,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [5, 4, 2]
         },
         {
           "metadata_id": "adventureworks.ProductReview.Comments",
@@ -4524,7 +4787,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.ProductReview.ModifiedDate",
@@ -4536,7 +4800,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-09-17 00:00:00.000", "2024-11-12 00:00:00.000", "2024-11-14 00:00:00.000"]
         }
       ]
     },
@@ -4572,7 +4837,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductSubcategory.ProductCategoryID",
@@ -4589,7 +4855,8 @@
               "column": "ProductCategoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ProductSubcategory.Name",
@@ -4601,7 +4868,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Mountain Bikes", "Road Bikes", "Touring Bikes"]
         },
         {
           "metadata_id": "adventureworks.ProductSubcategory.rowguid",
@@ -4613,7 +4881,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2D364ADE-264A-433C-B092-4FCBF3804E01", "000310C0-BCC8-42C4-B0C3-45AE611AF06B", "02C5061D-ECDC-4274-B5F1-E91D76BC3F37"]
         },
         {
           "metadata_id": "adventureworks.ProductSubcategory.ModifiedDate",
@@ -4625,7 +4894,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -4687,7 +4957,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 4]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.BusinessEntityID",
@@ -4704,7 +4975,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1580, 1688, 1650]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.AverageLeadTime",
@@ -4716,7 +4988,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [17, 19, 15]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.StandardPrice",
@@ -4728,7 +5001,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["47.8700", "39.9200", "54.3100"]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.LastReceiptCost",
@@ -4740,7 +5014,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["50.2635", "41.9160", "57.0255"]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.LastReceiptDate",
@@ -4752,7 +5027,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-08-28 00:00:00.000", "2022-08-24 00:00:00.000", "2022-08-18 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.MinOrderQty",
@@ -4764,7 +5040,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 100, 20]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.MaxOrderQty",
@@ -4776,7 +5053,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [5, 1000, 100]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.OnOrderQty",
@@ -4788,7 +5066,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [3, 300, 60]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.UnitMeasureCode",
@@ -4805,7 +5084,8 @@
               "column": "UnitMeasureCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["CS ", "CTN", "EA "]
         },
         {
           "metadata_id": "adventureworks.ProductVendor.ModifiedDate",
@@ -4817,7 +5097,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-08-28 00:00:00.000", "2022-08-24 00:00:00.000", "2022-08-18 00:00:00.000"]
         }
       ]
     },
@@ -4869,7 +5150,8 @@
               "column": "PurchaseOrderID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.PurchaseOrderDetailID",
@@ -4881,7 +5163,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.DueDate",
@@ -4893,7 +5176,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-29 00:00:00.000", "2022-05-13 00:00:00.000", "2022-12-27 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.OrderQty",
@@ -4905,7 +5189,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [4, 3, 550]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.ProductID",
@@ -4922,7 +5207,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 359, 360]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.UnitPrice",
@@ -4934,7 +5220,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["50.2600", "45.1200", "45.5805"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.LineTotal",
@@ -4946,7 +5233,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["201.0400", "135.3600", "136.7415"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.ReceivedQty",
@@ -4958,7 +5246,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["3.00", "550.00", "2.00"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.RejectedQty",
@@ -4970,7 +5259,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".00", "1.00", "82.00"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.StockedQty",
@@ -4982,7 +5272,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["3.00", "550.00", "1.00"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderDetail.ModifiedDate",
@@ -4994,7 +5285,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-22 00:00:00.000", "2022-05-06 00:00:00.000", "2022-12-20 00:00:00.000"]
         }
       ]
     },
@@ -5050,7 +5342,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.RevisionNumber",
@@ -5062,7 +5355,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [5, 6, 7]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.Status",
@@ -5074,7 +5368,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [4, 1, 3]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.EmployeeID",
@@ -5091,7 +5386,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [258, 254, 257]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.VendorID",
@@ -5108,7 +5404,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1580, 1496, 1494]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.ShipMethodID",
@@ -5125,7 +5422,8 @@
               "column": "ShipMethodID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [3, 5, 2]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.OrderDate",
@@ -5137,7 +5435,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-15 00:00:00.000", "2022-04-29 00:00:00.000", "2022-12-13 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.ShipDate",
@@ -5149,7 +5448,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-24 00:00:00.000", "2022-05-08 00:00:00.000", "2022-12-22 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.SubTotal",
@@ -5161,7 +5461,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["201.0400", "272.1015", "8847.3000"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.TaxAmt",
@@ -5173,7 +5474,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["16.0832", "21.7681", "707.7840"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.Freight",
@@ -5185,7 +5487,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["5.0260", "6.8025", "221.1825"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.TotalDue",
@@ -5197,7 +5500,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["222.1492", "300.6721", "9776.2665"]
         },
         {
           "metadata_id": "adventureworks.PurchaseOrderHeader.ModifiedDate",
@@ -5209,7 +5513,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-24 00:00:00.000", "2022-05-08 00:00:00.000", "2022-12-22 00:00:00.000"]
         }
       ]
     },
@@ -5263,7 +5568,8 @@
               "column": "SalesOrderID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [43659, 43660, 43661]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.SalesOrderDetailID",
@@ -5275,7 +5581,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.CarrierTrackingNumber",
@@ -5287,7 +5594,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["4911-403C-98", "6431-4D57-83", "4E0A-4F89-AE"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.OrderQty",
@@ -5299,7 +5607,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 3, 2]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.ProductID",
@@ -5316,7 +5625,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [776, 777, 778]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.SpecialOfferID",
@@ -5333,7 +5643,8 @@
               "column": "SpecialOfferID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.UnitPrice",
@@ -5345,7 +5656,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024.9940", "2039.9940", "28.8404"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.UnitPriceDiscount",
@@ -5357,7 +5669,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", ".0200", ".0500"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.LineTotal",
@@ -5369,7 +5682,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024.994000", "6074.982000", "2039.994000"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.rowguid",
@@ -5381,7 +5695,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["B207C96D-D9E6-402B-8470-2CC176C42283", "7ABB600D-1E77-41BE-9FE5-B9142CFC08FA", "475CF8C6-49F6-486E-B0AD-AFC6A50CDD2F"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderDetail.ModifiedDate",
@@ -5393,7 +5708,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2022-05-31 00:00:00.000", "2022-06-01 00:00:00.000"]
         }
       ]
     },
@@ -5499,7 +5815,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [43659, 43660, 43661]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.RevisionNumber",
@@ -5511,7 +5828,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [10]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.OrderDate",
@@ -5523,7 +5841,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2022-05-31 00:00:00.000", "2022-06-01 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.DueDate",
@@ -5535,7 +5854,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-11 00:00:00.000", "2022-06-12 00:00:00.000", "2022-06-13 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.ShipDate",
@@ -5547,7 +5867,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-06 00:00:00.000", "2022-06-07 00:00:00.000", "2022-06-08 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.Status",
@@ -5559,7 +5880,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [5]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.OnlineOrderFlag",
@@ -5571,7 +5893,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.SalesOrderNumber",
@@ -5583,7 +5906,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["SO43659", "SO43660", "SO43661"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.PurchaseOrderNumber",
@@ -5595,7 +5919,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PO522145787", "PO18850127500", "PO18473189620"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.AccountNumber",
@@ -5607,7 +5932,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["10-4020-000676", "10-4020-000117", "10-4020-000442"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.CustomerID",
@@ -5624,7 +5950,8 @@
               "column": "CustomerID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [29825, 29672, 29734]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.SalesPersonID",
@@ -5641,7 +5968,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [279, 282, 276]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.TerritoryID",
@@ -5658,7 +5986,8 @@
               "column": "TerritoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [5, 6, 4]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.BillToAddressID",
@@ -5675,7 +6004,8 @@
               "column": "AddressID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.ShipToAddressID",
@@ -5692,7 +6022,8 @@
               "column": "AddressID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.ShipMethodID",
@@ -5709,7 +6040,8 @@
               "column": "ShipMethodID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [5, 1]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.CreditCardID",
@@ -5726,7 +6058,8 @@
               "column": "CreditCardID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [16281, 5618, 1346]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.CreditCardApprovalCode",
@@ -5738,7 +6071,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["105041Vi84182", "115213Vi29411", "85274Vi6854"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.CurrencyRateID",
@@ -5755,7 +6089,8 @@
               "column": "CurrencyRateID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [4, 8, 2]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.SubTotal",
@@ -5767,7 +6102,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["20565.6206", "1294.2529", "32726.4786"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.TaxAmt",
@@ -5779,7 +6115,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1971.5149", "124.2483", "3153.7696"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.Freight",
@@ -5791,7 +6128,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["616.0984", "38.8276", "985.5530"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.TotalDue",
@@ -5803,7 +6141,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["23153.2339", "1457.3288", "36865.8012"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.Comment",
@@ -5815,7 +6154,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.rowguid",
@@ -5827,7 +6167,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["79B65321-39CA-4115-9CBA-8FE0903E12E6", "738DC42D-D03B-48A1-9822-F95A67EA7389", "D91B9131-18A4-4A11-BC3A-90B6F53E9D74"]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeader.ModifiedDate",
@@ -5839,7 +6180,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-06 00:00:00.000", "2022-06-07 00:00:00.000", "2022-06-08 00:00:00.000"]
         }
       ]
     },
@@ -5891,7 +6233,8 @@
               "column": "SalesOrderID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [43697, 43702, 43703]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeaderSalesReason.SalesReasonID",
@@ -5908,7 +6251,8 @@
               "column": "SalesReasonID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [5, 9, 2]
         },
         {
           "metadata_id": "adventureworks.SalesOrderHeaderSalesReason.ModifiedDate",
@@ -5920,7 +6264,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2022-05-31 00:00:00.000", "2022-06-01 00:00:00.000"]
         }
       ]
     },
@@ -5971,7 +6316,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [274, 275, 276]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.TerritoryID",
@@ -5988,7 +6334,8 @@
               "column": "TerritoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 4, 3]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.SalesQuota",
@@ -6000,7 +6347,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["300000.0000", "250000.0000"]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.Bonus",
@@ -6012,7 +6360,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", "4100.0000", "2000.0000"]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.CommissionPct",
@@ -6024,7 +6373,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", ".0120", ".0150"]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.SalesYTD",
@@ -6036,7 +6386,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["559697.5639", "3763178.1787", "4251368.5497"]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.SalesLastYear",
@@ -6048,7 +6399,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", "1750406.4785", "1439156.0291"]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.rowguid",
@@ -6060,7 +6412,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["48754992-9EE0-4C0E-8C94-9451604E3E02", "1E0A7274-3064-4F58-88EE-4C6586C87169", "4DD9EEE4-8E81-4F8C-AF97-683394C1F7C0"]
         },
         {
           "metadata_id": "adventureworks.SalesPerson.ModifiedDate",
@@ -6072,7 +6425,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2021-12-27 00:00:00.000", "2022-05-23 00:00:00.000", "2023-09-23 00:00:00.000"]
         }
       ]
     },
@@ -6114,7 +6468,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [274, 275, 276]
         },
         {
           "metadata_id": "adventureworks.SalesPersonQuotaHistory.QuotaDate",
@@ -6126,7 +6481,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2022-08-30 00:00:00.000", "2022-11-30 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SalesPersonQuotaHistory.SalesQuota",
@@ -6138,7 +6494,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["28000.0000", "7000.0000", "91000.0000"]
         },
         {
           "metadata_id": "adventureworks.SalesPersonQuotaHistory.rowguid",
@@ -6150,7 +6507,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["99109BBF-8693-4587-BC23-6036EC89E1BE", "DFD01444-8900-461C-8D6F-04598DAE01D4", "0A69F453-9689-4CCF-A08C-C644670F5668"]
         },
         {
           "metadata_id": "adventureworks.SalesPersonQuotaHistory.ModifiedDate",
@@ -6162,7 +6520,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-15 00:00:00.000", "2022-07-16 00:00:00.000", "2022-10-16 00:00:00.000"]
         }
       ]
     },
@@ -6187,7 +6546,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SalesReason.Name",
@@ -6199,7 +6559,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Price", "On Promotion", "Magazine Advertisement"]
         },
         {
           "metadata_id": "adventureworks.SalesReason.ReasonType",
@@ -6211,7 +6572,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Other", "Promotion", "Marketing"]
         },
         {
           "metadata_id": "adventureworks.SalesReason.ModifiedDate",
@@ -6223,7 +6585,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -6259,7 +6622,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SalesTaxRate.StateProvinceID",
@@ -6276,7 +6640,8 @@
               "column": "StateProvinceID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 57, 63]
         },
         {
           "metadata_id": "adventureworks.SalesTaxRate.TaxType",
@@ -6288,7 +6653,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SalesTaxRate.TaxRate",
@@ -6300,7 +6666,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["14.0000", "14.2500", "7.0000"]
         },
         {
           "metadata_id": "adventureworks.SalesTaxRate.Name",
@@ -6312,7 +6679,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Canadian GST + Alberta Provincial Tax", "Canadian GST + Ontario Provincial Tax", "Canadian GST + Quebec Provincial Tax"]
         },
         {
           "metadata_id": "adventureworks.SalesTaxRate.rowguid",
@@ -6324,7 +6692,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["683DE5DD-521A-47D4-A573-06A3CDB1BC5D", "05C4FFDB-4F84-4CDF-ABE5-FDF3216EA74E", "D4EDB557-56D7-403C-B538-4DF5E7302588"]
         },
         {
           "metadata_id": "adventureworks.SalesTaxRate.ModifiedDate",
@@ -6336,7 +6705,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -6372,7 +6742,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.Name",
@@ -6384,7 +6755,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Northwest", "Northeast", "Central"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.CountryRegionCode",
@@ -6401,7 +6773,8 @@
               "column": "CountryRegionCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["US", "CA", "FR"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.Group",
@@ -6413,7 +6786,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["North America", "Europe", "Pacific"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.SalesYTD",
@@ -6425,7 +6799,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["7887186.7882", "2402176.8476", "3072175.1180"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.SalesLastYear",
@@ -6437,7 +6812,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["3298694.4938", "3607148.9371", "3205014.0767"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.CostYTD",
@@ -6449,7 +6825,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.CostLastYear",
@@ -6461,7 +6838,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.rowguid",
@@ -6473,7 +6851,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["43689A10-E30B-497F-B0DE-11DE20267FF7", "00FB7309-96CC-49E2-8363-0A1BA72486F2", "DF6E7FD8-1A8D-468C-B103-ED8ADDB452C1"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritory.ModifiedDate",
@@ -6485,7 +6864,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -6538,7 +6918,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [275, 276, 277]
         },
         {
           "metadata_id": "adventureworks.SalesTerritoryHistory.TerritoryID",
@@ -6555,7 +6936,8 @@
               "column": "TerritoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 3, 4]
         },
         {
           "metadata_id": "adventureworks.SalesTerritoryHistory.StartDate",
@@ -6567,7 +6949,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-05-30 00:00:00.000", "2023-11-30 00:00:00.000", "2023-05-30 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritoryHistory.EndDate",
@@ -6579,7 +6962,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-11-29 00:00:00.000", "2023-09-29 00:00:00.000", "2023-05-29 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritoryHistory.rowguid",
@@ -6591,7 +6975,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["8563CE6A-00FF-47D7-BA4D-3C3E1CDEF531", "2F44304C-EE87-4C72-813E-CA75C5F61F4C", "64BCB1B3-A793-40BA-9859-D90F78C3F167"]
         },
         {
           "metadata_id": "adventureworks.SalesTerritoryHistory.ModifiedDate",
@@ -6603,7 +6988,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2023-11-22 00:00:00.000", "2023-11-23 00:00:00.000", "2022-05-23 00:00:00.000"]
         }
       ]
     },
@@ -6628,7 +7014,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ScrapReason.Name",
@@ -6640,7 +7027,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Brake assembly not as ordered", "Color incorrect", "Gouge in metal"]
         },
         {
           "metadata_id": "adventureworks.ScrapReason.ModifiedDate",
@@ -6652,7 +7040,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -6677,7 +7066,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.Shift.Name",
@@ -6689,7 +7079,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Day", "Evening", "Night"]
         },
         {
           "metadata_id": "adventureworks.Shift.StartTime",
@@ -6701,7 +7092,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["07:00:00.0000000", "15:00:00.0000000", "23:00:00.0000000"]
         },
         {
           "metadata_id": "adventureworks.Shift.EndTime",
@@ -6713,7 +7105,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["15:00:00.0000000", "23:00:00.0000000", "07:00:00.0000000"]
         },
         {
           "metadata_id": "adventureworks.Shift.ModifiedDate",
@@ -6725,7 +7118,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2008-04-30 00:00:00.000"]
         }
       ]
     },
@@ -6750,7 +7144,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.ShipMethod.Name",
@@ -6762,7 +7157,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["XRQ - TRUCK GROUND", "ZY - EXPRESS", "OVERSEAS - DELUXE"]
         },
         {
           "metadata_id": "adventureworks.ShipMethod.ShipBase",
@@ -6774,7 +7170,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["3.9500", "9.9500", "29.9500"]
         },
         {
           "metadata_id": "adventureworks.ShipMethod.ShipRate",
@@ -6786,7 +7183,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".9900", "1.9900", "2.9900"]
         },
         {
           "metadata_id": "adventureworks.ShipMethod.rowguid",
@@ -6798,7 +7196,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["6BE756D9-D7BE-4463-8F2C-AE60C710D606", "3455079B-F773-4DC6-8F1E-2A58649C4AB8", "22F4E461-28CF-4ACE-A980-F686CF112EC8"]
         },
         {
           "metadata_id": "adventureworks.ShipMethod.ModifiedDate",
@@ -6810,7 +7209,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -6846,7 +7246,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 4, 5]
         },
         {
           "metadata_id": "adventureworks.ShoppingCartItem.ShoppingCartID",
@@ -6858,7 +7259,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["14951", "20621"]
         },
         {
           "metadata_id": "adventureworks.ShoppingCartItem.Quantity",
@@ -6870,7 +7272,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [3, 4, 7]
         },
         {
           "metadata_id": "adventureworks.ShoppingCartItem.ProductID",
@@ -6887,7 +7290,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [862, 881, 874]
         },
         {
           "metadata_id": "adventureworks.ShoppingCartItem.DateCreated",
@@ -6899,7 +7303,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-11-08 17:54:07.603"]
         },
         {
           "metadata_id": "adventureworks.ShoppingCartItem.ModifiedDate",
@@ -6911,7 +7316,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-11-08 17:54:07.603"]
         }
       ]
     },
@@ -6936,7 +7342,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.Description",
@@ -6948,7 +7355,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["No Discount", "Volume Discount 11 to 14", "Volume Discount 15 to 24"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.DiscountPct",
@@ -6960,7 +7368,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", ".0200", ".0500"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.Type",
@@ -6972,7 +7381,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["No Discount", "Volume Discount", "Discontinued Product"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.Category",
@@ -6984,7 +7394,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["No Discount", "Reseller", "Customer"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.StartDate",
@@ -6996,7 +7407,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-30 00:00:00.000", "2022-05-30 00:00:00.000", "2023-04-13 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.EndDate",
@@ -7008,7 +7420,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-11-29 00:00:00.000", "2025-05-29 00:00:00.000", "2023-05-29 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.MinQty",
@@ -7020,7 +7433,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 11, 15]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.MaxQty",
@@ -7032,7 +7446,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [14, 24, 40]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.rowguid",
@@ -7044,7 +7459,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0290C4F5-191F-4337-AB6B-0A2DDE03CBF9", "D7542EE7-15DB-4541-985C-5CC27AEF26D6", "4BDBCC01-8CF7-40A9-B643-40EC5B717491"]
         },
         {
           "metadata_id": "adventureworks.SpecialOffer.ModifiedDate",
@@ -7056,7 +7472,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-03-31 00:00:00.000", "2022-04-30 00:00:00.000", "2023-03-14 00:00:00.000"]
         }
       ]
     },
@@ -7108,7 +7525,8 @@
               "column": "SpecialOfferID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.SpecialOfferProduct.ProductID",
@@ -7125,7 +7543,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [680, 706, 707]
         },
         {
           "metadata_id": "adventureworks.SpecialOfferProduct.rowguid",
@@ -7137,7 +7556,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["BB30B868-D86C-4557-8DB2-4B2D0A83A0FB", "B3C9A4B1-2AE6-4CBA-B552-1F206C9F4C1F", "27B711FE-0B77-4EA4-AD1A-7C239956BEF4"]
         },
         {
           "metadata_id": "adventureworks.SpecialOfferProduct.ModifiedDate",
@@ -7149,7 +7569,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-03-31 00:00:00.000", "2022-04-30 00:00:00.000", "2023-03-14 00:00:00.000"]
         }
       ]
     },
@@ -7195,7 +7616,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.StateProvince.StateProvinceCode",
@@ -7207,7 +7629,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AB ", "AK ", "AL "]
         },
         {
           "metadata_id": "adventureworks.StateProvince.CountryRegionCode",
@@ -7224,7 +7647,8 @@
               "column": "CountryRegionCode"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["CA", "US", "AS"]
         },
         {
           "metadata_id": "adventureworks.StateProvince.IsOnlyStateProvinceFlag",
@@ -7236,7 +7660,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1]
         },
         {
           "metadata_id": "adventureworks.StateProvince.Name",
@@ -7248,7 +7673,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Alberta", "Alaska", "Alabama"]
         },
         {
           "metadata_id": "adventureworks.StateProvince.TerritoryID",
@@ -7265,7 +7691,8 @@
               "column": "TerritoryID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [6, 1, 5]
         },
         {
           "metadata_id": "adventureworks.StateProvince.rowguid",
@@ -7277,7 +7704,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["298C2880-AB1C-4982-A5AD-A36EB4BA0D34", "5B7B8462-A888-4E0B-A3E1-7278F8AF107E", "41B328BE-21AE-45D0-841D-6F8DD71CE626"]
         },
         {
           "metadata_id": "adventureworks.StateProvince.ModifiedDate",
@@ -7289,7 +7717,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-02-07 10:17:21.587", "2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -7340,7 +7769,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [292, 294, 296]
         },
         {
           "metadata_id": "adventureworks.Store.Name",
@@ -7352,7 +7782,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Next-Door Bike Store", "Professional Sales and Service", "Riders Company"]
         },
         {
           "metadata_id": "adventureworks.Store.SalesPersonID",
@@ -7369,7 +7800,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [279, 276, 277]
         },
         {
           "metadata_id": "adventureworks.Store.Demographics",
@@ -7381,7 +7813,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "adventureworks.Store.rowguid",
@@ -7393,7 +7826,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A22517E3-848D-4EBE-B9D9-7437F3432304", "B50CA50B-C601-4A13-B07E-2C63862D71B4", "337C3688-1339-4E1A-A08A-B54B23566E49"]
         },
         {
           "metadata_id": "adventureworks.Store.ModifiedDate",
@@ -7405,7 +7839,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-09-11 11:15:07.497"]
         }
       ]
     },
@@ -7441,7 +7876,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [100000, 100001, 100002]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.ProductID",
@@ -7458,7 +7894,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [784, 794, 797]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.ReferenceOrderID",
@@ -7470,7 +7907,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [41590, 41591, 41592]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.ReferenceOrderLineID",
@@ -7482,7 +7920,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1, 2]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.TransactionDate",
@@ -7494,7 +7933,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-07-30 00:00:00.000", "2024-07-31 00:00:00.000", "2024-08-01 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.TransactionType",
@@ -7506,7 +7946,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["W", "S", "P"]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.Quantity",
@@ -7518,7 +7959,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [2, 1, 3]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.ActualCost",
@@ -7530,7 +7972,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [".0000", "5.8435", "874.6920"]
         },
         {
           "metadata_id": "adventureworks.TransactionHistory.ModifiedDate",
@@ -7542,7 +7985,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2024-07-30 00:00:00.000", "2024-07-31 00:00:00.000", "2024-08-01 00:00:00.000"]
         }
       ]
     },
@@ -7567,7 +8011,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.ProductID",
@@ -7579,7 +8024,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 359, 360]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.ReferenceOrderID",
@@ -7591,7 +8037,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.ReferenceOrderLineID",
@@ -7603,7 +8050,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.TransactionDate",
@@ -7615,7 +8063,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-15 00:00:00.000", "2022-04-29 00:00:00.000", "2022-05-30 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.TransactionType",
@@ -7627,7 +8076,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P", "S", "W"]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.Quantity",
@@ -7639,7 +8089,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [4, 3, 550]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.ActualCost",
@@ -7651,7 +8102,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["50.2600", "45.1200", "45.5805"]
         },
         {
           "metadata_id": "adventureworks.TransactionHistoryArchive.ModifiedDate",
@@ -7663,7 +8115,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-04-15 00:00:00.000", "2022-04-29 00:00:00.000", "2022-05-30 00:00:00.000"]
         }
       ]
     },
@@ -7688,7 +8141,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["BOX", "BTL", "C  "]
         },
         {
           "metadata_id": "adventureworks.UnitMeasure.Name",
@@ -7700,7 +8154,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Boxes", "Bottle", "Celsius"]
         },
         {
           "metadata_id": "adventureworks.UnitMeasure.ModifiedDate",
@@ -7712,7 +8167,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2019-04-30 00:00:00.000"]
         }
       ]
     },
@@ -7753,7 +8209,8 @@
               "column": "BusinessEntityID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [1492, 1494, 1496]
         },
         {
           "metadata_id": "adventureworks.Vendor.AccountNumber",
@@ -7765,7 +8222,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["AUSTRALI0001", "ALLENSON0001", "ADVANCED0001"]
         },
         {
           "metadata_id": "adventureworks.Vendor.Name",
@@ -7777,7 +8235,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Australia Bike Retailer", "Allenson Cycles", "Advanced Bicycles"]
         },
         {
           "metadata_id": "adventureworks.Vendor.CreditRating",
@@ -7789,7 +8248,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 4]
         },
         {
           "metadata_id": "adventureworks.Vendor.PreferredVendorStatus",
@@ -7801,7 +8261,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 0]
         },
         {
           "metadata_id": "adventureworks.Vendor.ActiveFlag",
@@ -7813,7 +8274,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 0]
         },
         {
           "metadata_id": "adventureworks.Vendor.PurchasingWebServiceURL",
@@ -7825,7 +8287,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["www.litwareinc.com/", "www.treyresearch.net/", "www.adatum.com/"]
         },
         {
           "metadata_id": "adventureworks.Vendor.ModifiedDate",
@@ -7837,14 +8300,15 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-12-22 00:00:00.000", "2022-04-24 00:00:00.000", "2023-02-02 00:00:00.000"]
         }
       ]
     },
     {
       "table": "WorkOrder",
       "metadata_id": "adventureworks.WorkOrder",
-      "definition": null,
+      "definition": "",
       "source_schema": "Production",
       "row_grain": null,
       "primary_key": [
@@ -7883,7 +8347,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.ProductID",
@@ -7900,7 +8365,8 @@
               "column": "ProductID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [722, 725, 726]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.OrderQty",
@@ -7912,7 +8378,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [8, 15, 9]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.StockedQty",
@@ -7924,7 +8391,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["8", "15", "9"]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.ScrappedQty",
@@ -7936,7 +8404,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [0, 1, 3]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.StartDate",
@@ -7948,7 +8417,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-02 00:00:00.000", "2022-06-03 00:00:00.000", "2022-06-04 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.EndDate",
@@ -7960,7 +8430,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-12 00:00:00.000", "2022-06-18 00:00:00.000", "2022-06-14 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.DueDate",
@@ -7972,7 +8443,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-13 00:00:00.000", "2022-06-14 00:00:00.000", "2022-06-15 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.ScrapReasonID",
@@ -7989,7 +8461,8 @@
               "column": "ScrapReasonID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [7, 11, 14]
         },
         {
           "metadata_id": "adventureworks.WorkOrder.ModifiedDate",
@@ -8001,14 +8474,15 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-12 00:00:00.000", "2022-06-18 00:00:00.000", "2022-06-14 00:00:00.000"]
         }
       ]
     },
     {
       "table": "WorkOrderRouting",
       "metadata_id": "adventureworks.WorkOrderRouting",
-      "definition": null,
+      "definition": "",
       "source_schema": "Production",
       "row_grain": null,
       "primary_key": [
@@ -8054,7 +8528,8 @@
               "column": "WorkOrderID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [13, 14, 15]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ProductID",
@@ -8066,7 +8541,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [747, 748, 749]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.OperationSequence",
@@ -8078,7 +8554,8 @@
           "required": true,
           "primary_key_position": 3,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.LocationID",
@@ -8095,7 +8572,8 @@
               "column": "LocationID"
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": [10, 20, 30]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ScheduledStartDate",
@@ -8107,7 +8585,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-02 00:00:00.000", "2022-06-03 00:00:00.000", "2022-06-04 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ScheduledEndDate",
@@ -8119,7 +8598,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-13 00:00:00.000", "2022-06-14 00:00:00.000", "2022-06-15 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ActualStartDate",
@@ -8131,7 +8611,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-02 00:00:00.000", "2022-06-08 00:00:00.000", "2022-06-04 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ActualEndDate",
@@ -8143,7 +8624,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-18 00:00:00.000", "2022-06-14 00:00:00.000", "2022-06-22 00:00:00.000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ActualResourceHrs",
@@ -8155,7 +8637,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["4.1000", "3.5000", "1.0000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.PlannedCost",
@@ -8167,7 +8650,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["92.2500", "87.5000", "14.5000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ActualCost",
@@ -8179,7 +8663,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["92.2500", "87.5000", "14.5000"]
         },
         {
           "metadata_id": "adventureworks.WorkOrderRouting.ModifiedDate",
@@ -8191,10 +8676,11 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2022-06-18 00:00:00.000", "2022-06-14 00:00:00.000", "2022-06-22 00:00:00.000"]
         }
       ]
     }
   ],
-  "note": "Standardized metadata projection. Original input/data_dictionary.json remains authoritative for additional fields; no evaluator Gold included."
+  "note": "Lossless metadata intent, not full legacy-field fidelity: original dictionary is authoritative for unmapped fields. Missing definitions remain null."
 }

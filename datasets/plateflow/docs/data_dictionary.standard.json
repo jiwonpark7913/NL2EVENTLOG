@@ -1,7 +1,7 @@
 {
   "dictionary_schema_version": "NL2EVENTLOG-DD-v1",
-  "dataset_id": "plateflow",
   "name": "PlateFlow New",
+  "dataset_id": "plateflow",
   "language": "en",
   "dbms": "SQLite",
   "timezone": "UTC",
@@ -27,7 +27,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S001", "S002", "S003"]
         },
         {
           "metadata_id": "plateflow.slab_material.charge_id",
@@ -39,7 +40,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C001", "C002", "C003"]
         },
         {
           "metadata_id": "plateflow.slab_material.steel_grade",
@@ -51,7 +53,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["G1", "G2"]
         },
         {
           "metadata_id": "plateflow.slab_material.received_at",
@@ -63,7 +66,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-04T11:20:00Z", "2026-01-07T22:40:00Z", "2026-01-11T10:00:00Z"]
         },
         {
           "metadata_id": "plateflow.slab_material.verified_at",
@@ -75,7 +79,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T10:10:00Z", "2026-01-14T21:30:00Z", "2026-01-18T08:50:00Z"]
         },
         {
           "metadata_id": "plateflow.slab_material.released_at",
@@ -87,7 +92,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T10:20:00Z", "2026-01-14T21:40:00Z", "2026-01-18T09:00:00Z"]
         }
       ]
     },
@@ -112,7 +118,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["L003", "L004", "L005"]
         },
         {
           "metadata_id": "plateflow.planned_rolling_instruction.slab_id",
@@ -131,7 +138,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S003", "S004", "S005"]
         },
         {
           "metadata_id": "plateflow.planned_rolling_instruction.planned_reheat_at",
@@ -143,7 +151,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T18:20:00Z", "2026-01-15T05:40:00Z", "2026-01-18T17:00:00Z"]
         },
         {
           "metadata_id": "plateflow.planned_rolling_instruction.submitted_at",
@@ -155,7 +164,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-11T10:30:00Z", "2026-01-14T21:50:00Z", "2026-01-18T09:10:00Z"]
         },
         {
           "metadata_id": "plateflow.planned_rolling_instruction.approved_at",
@@ -167,7 +177,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:20:00Z", "2026-01-21T20:40:00Z", "2026-01-25T08:00:00Z"]
         },
         {
           "metadata_id": "plateflow.planned_rolling_instruction.released_at",
@@ -179,7 +190,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:30:00Z", "2026-01-21T20:50:00Z", "2026-01-25T08:10:00Z"]
         }
       ]
     },
@@ -204,7 +216,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I005", "I006", "I007"]
         },
         {
           "metadata_id": "plateflow.rolling_instruction.plan_id",
@@ -223,7 +236,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["L005", "L006", "L007"]
         },
         {
           "metadata_id": "plateflow.rolling_instruction.issued_at",
@@ -235,7 +249,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:40:00Z", "2026-01-21T21:00:00Z", "2026-01-25T08:20:00Z"]
         }
       ]
     },
@@ -260,7 +275,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M005", "M006", "M007"]
         },
         {
           "metadata_id": "plateflow.as_rolled_material.plate_no",
@@ -272,7 +288,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["MOTHER-5", "MOTHER-6", "MOTHER-7"]
         },
         {
           "metadata_id": "plateflow.as_rolled_material.slab_id",
@@ -291,7 +308,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S005", "S006", "S007"]
         },
         {
           "metadata_id": "plateflow.as_rolled_material.instruction_id",
@@ -310,7 +328,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I005", "I006", "I007"]
         },
         {
           "metadata_id": "plateflow.as_rolled_material.created_at",
@@ -322,7 +341,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-18T09:41:00Z", "2026-01-21T21:01:00Z", "2026-01-25T08:21:00Z"]
         },
         {
           "metadata_id": "plateflow.as_rolled_material.updated_at",
@@ -334,7 +354,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-21T03:20:00Z", "2026-01-24T14:40:00Z", "2026-01-28T02:00:00Z"]
         }
       ]
     },
@@ -360,7 +381,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FURNACE", "ROLLING", "FINISHING"]
         },
         {
           "metadata_id": "plateflow.process_code.code",
@@ -372,7 +394,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C", "A", "D"]
         },
         {
           "metadata_id": "plateflow.process_code.meaning",
@@ -384,7 +407,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Furnace charging", "Furnace heating", "Furnace discharge"]
         }
       ]
     },
@@ -409,7 +433,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FU1", "FU2", "RO1"]
         },
         {
           "metadata_id": "plateflow.equipment.equipment_code",
@@ -421,7 +446,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FURNACE-UNIT-1", "FURNACE-UNIT-2", "ROLLING-UNIT-1"]
         },
         {
           "metadata_id": "plateflow.equipment.equipment_name",
@@ -433,7 +459,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Furnace unit 1", "Furnace unit 2", "Rolling unit 1"]
         },
         {
           "metadata_id": "plateflow.equipment.created_at",
@@ -445,7 +472,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2025-12-31T07:20:00Z", "2025-12-31T09:00:00Z"]
         },
         {
           "metadata_id": "plateflow.equipment.updated_at",
@@ -457,7 +485,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-12-14T05:20:00Z", "2026-12-14T07:00:00Z"]
         }
       ]
     },
@@ -482,7 +511,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "plateflow.furnace_operation_history.material_id",
@@ -501,7 +531,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M007", "M008", "M009"]
         },
         {
           "metadata_id": "plateflow.furnace_operation_history.process_group",
@@ -520,7 +551,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FURNACE"]
         },
         {
           "metadata_id": "plateflow.furnace_operation_history.operation_code",
@@ -539,7 +571,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C", "A", "D"]
         },
         {
           "metadata_id": "plateflow.furnace_operation_history.equipment_id",
@@ -558,7 +591,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FU2", "FU1"]
         },
         {
           "metadata_id": "plateflow.furnace_operation_history.started_at",
@@ -570,7 +604,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T08:30:00Z", "2026-01-25T08:45:00Z", "2026-01-25T09:25:00Z"]
         },
         {
           "metadata_id": "plateflow.furnace_operation_history.finished_at",
@@ -582,7 +617,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T08:40:00Z", "2026-01-25T09:20:00Z", "2026-01-25T09:30:00Z"]
         }
       ]
     },
@@ -607,7 +643,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "plateflow.rolling_operation_history.material_id",
@@ -626,7 +663,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M007", "M008", "M009"]
         },
         {
           "metadata_id": "plateflow.rolling_operation_history.process_group",
@@ -645,7 +683,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["ROLLING"]
         },
         {
           "metadata_id": "plateflow.rolling_operation_history.phase_code",
@@ -664,7 +703,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["R", "F"]
         },
         {
           "metadata_id": "plateflow.rolling_operation_history.equipment_id",
@@ -683,7 +723,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["RO2", "RO1"]
         },
         {
           "metadata_id": "plateflow.rolling_operation_history.started_at",
@@ -695,7 +736,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T09:40:00Z", "2026-01-25T10:10:00Z", "2026-01-28T21:00:00Z"]
         },
         {
           "metadata_id": "plateflow.rolling_operation_history.finished_at",
@@ -707,7 +749,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T10:00:00Z", "2026-01-25T10:35:00Z", "2026-01-28T21:20:00Z"]
         }
       ]
     },
@@ -732,7 +775,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "metadata_id": "plateflow.plate_material.plate_no",
@@ -744,7 +788,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PIECE-7-1", "PIECE-7-2", "PIECE-8-1"]
         },
         {
           "metadata_id": "plateflow.plate_material.mother_material_id",
@@ -763,7 +808,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M007", "M008", "M009"]
         },
         {
           "metadata_id": "plateflow.plate_material.identified_at",
@@ -775,7 +821,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T19:30:00Z", "2026-01-26T03:50:00Z", "2026-01-29T06:50:00Z"]
         },
         {
           "metadata_id": "plateflow.plate_material.released_at",
@@ -787,7 +834,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T22:30:00Z", "2026-01-26T05:30:00Z", "2026-01-29T08:30:00Z"]
         },
         {
           "metadata_id": "plateflow.plate_material.packed_at",
@@ -799,7 +847,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T22:50:00Z", "2026-01-26T05:50:00Z", "2026-01-29T08:50:00Z"]
         }
       ]
     },
@@ -824,7 +873,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "plateflow.finishing_operation_history.plate_id",
@@ -843,7 +893,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "metadata_id": "plateflow.finishing_operation_history.process_group",
@@ -862,7 +913,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FINISHING"]
         },
         {
           "metadata_id": "plateflow.finishing_operation_history.operation_code",
@@ -881,7 +933,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["L", "A", "S"]
         },
         {
           "metadata_id": "plateflow.finishing_operation_history.equipment_id",
@@ -900,7 +953,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FI1", "FI2"]
         },
         {
           "metadata_id": "plateflow.finishing_operation_history.started_at",
@@ -912,7 +966,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T19:35:00Z", "2026-01-25T19:50:00Z", "2026-01-25T20:15:00Z"]
         },
         {
           "metadata_id": "plateflow.finishing_operation_history.finished_at",
@@ -924,7 +979,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T19:45:00Z", "2026-01-25T20:10:00Z", "2026-01-25T20:25:00Z"]
         }
       ]
     },
@@ -949,7 +1005,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1-1", "P007-1-2", "P007-2-1"]
         },
         {
           "metadata_id": "plateflow.dimension_inspection.plate_id",
@@ -968,7 +1025,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "metadata_id": "plateflow.dimension_inspection.inspected_at",
@@ -980,7 +1038,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T20:35:00Z", "2026-01-25T21:55:00Z", "2026-01-26T04:55:00Z"]
         },
         {
           "metadata_id": "plateflow.dimension_inspection.result_code",
@@ -992,7 +1051,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["FAIL", "PASS"]
         },
         {
           "metadata_id": "plateflow.dimension_inspection.thickness_mm",
@@ -1004,7 +1064,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "mm"
+          "unit": "mm",
+          "sample_values": [22.5, 20.1]
         }
       ]
     },
@@ -1029,7 +1090,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1-1", "P007-1-2", "P007-2-1"]
         },
         {
           "metadata_id": "plateflow.plate_quality_review.plate_id",
@@ -1048,7 +1110,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["P007-1", "P007-2", "P008-1"]
         },
         {
           "metadata_id": "plateflow.plate_quality_review.started_at",
@@ -1060,7 +1123,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T20:40:00Z", "2026-01-25T22:00:00Z", "2026-01-26T05:00:00Z"]
         },
         {
           "metadata_id": "plateflow.plate_quality_review.finished_at",
@@ -1072,7 +1136,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-25T20:50:00Z", "2026-01-25T22:15:00Z", "2026-01-26T05:10:00Z"]
         },
         {
           "metadata_id": "plateflow.plate_quality_review.review_status",
@@ -1084,10 +1149,11 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["REWORK", "APPROVED", "PENDING"]
         }
       ]
     }
   ],
-  "note": "Standardized metadata projection. Original input/data_dictionary.json remains authoritative for additional fields; no evaluator Gold included."
+  "note": "Lossless metadata intent, not full legacy-field fidelity: original dictionary is authoritative for unmapped fields. Missing definitions remain null."
 }

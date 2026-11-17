@@ -56,7 +56,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [10000001, 10000002, 10000003]
         },
         {
           "metadata_id": "hospitalflow.patients.gender",
@@ -94,7 +95,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["F", "M"]
         },
         {
           "metadata_id": "hospitalflow.patients.anchor_age",
@@ -112,7 +114,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": [22, 29, 36]
         },
         {
           "metadata_id": "hospitalflow.patients.anchor_year",
@@ -130,7 +133,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": [2026]
         },
         {
           "metadata_id": "hospitalflow.patients.anchor_year_group",
@@ -148,7 +152,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["2011 - 2013", "2014 - 2016", "2017 - 2019"]
         },
         {
           "metadata_id": "hospitalflow.patients.dod",
@@ -166,7 +171,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": []
         }
       ],
       "constraint_notes": []
@@ -225,7 +231,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [20000001, 20000002, 20000003]
         },
         {
           "metadata_id": "hospitalflow.admissions.subject_id",
@@ -263,7 +270,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [10000001, 10000002, 10000003]
         },
         {
           "metadata_id": "hospitalflow.admissions.edregtime",
@@ -296,7 +304,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-01-17T13:42:00Z", "2026-02-03T09:01:00Z", "2026-02-19T21:23:00Z"]
         },
         {
           "metadata_id": "hospitalflow.admissions.admittime",
@@ -329,7 +338,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-17T16:12:00Z", "2026-01-27T13:19:00Z", "2026-02-03T09:23:00Z"]
         },
         {
           "metadata_id": "hospitalflow.admissions.dischtime",
@@ -362,7 +372,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-01-19T15:01:00Z", "2026-01-29T18:54:00Z", "2026-02-08T20:38:00Z"]
         },
         {
           "metadata_id": "hospitalflow.admissions.deathtime",
@@ -380,7 +391,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": []
         },
         {
           "metadata_id": "hospitalflow.admissions.edouttime",
@@ -398,7 +410,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["2026-01-17T15:42:00Z", "2026-02-03T09:18:36Z", "2026-02-19T23:40:36Z"]
         },
         {
           "metadata_id": "hospitalflow.admissions.admission_type",
@@ -416,7 +429,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["EW EMER.", "DIRECT EMER.", "URGENT"]
         },
         {
           "metadata_id": "hospitalflow.admissions.admit_provider_id",
@@ -434,7 +448,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["PV0001", "PV0002", "PV0003"]
         },
         {
           "metadata_id": "hospitalflow.admissions.admission_location",
@@ -452,7 +467,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["EMERGENCY ROOM", "PHYSICIAN REFERRAL", "CLINIC REFERRAL"]
         },
         {
           "metadata_id": "hospitalflow.admissions.discharge_location",
@@ -470,7 +486,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["HOME"]
         },
         {
           "metadata_id": "hospitalflow.admissions.insurance",
@@ -488,7 +505,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["Medicare", "Medicaid", "Other"]
         },
         {
           "metadata_id": "hospitalflow.admissions.language",
@@ -506,7 +524,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["ENGLISH", "SPANISH"]
         },
         {
           "metadata_id": "hospitalflow.admissions.marital_status",
@@ -524,7 +543,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["SINGLE", "MARRIED", "UNKNOWN"]
         },
         {
           "metadata_id": "hospitalflow.admissions.race",
@@ -542,7 +562,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["WHITE", "BLACK/AFRICAN AMERICAN", "ASIAN"]
         },
         {
           "metadata_id": "hospitalflow.admissions.hospital_expire_flag",
@@ -560,7 +581,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": [0]
         }
       ],
       "constraint_notes": [
@@ -622,7 +644,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [20000001, 20000004, 20000007]
         },
         {
           "metadata_id": "hospitalflow.admission_detail.discharge_summary_signed_at",
@@ -654,7 +677,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-19T18:13:00Z", "2026-02-19T17:04:00Z", "2026-03-11T15:45:00Z"]
         }
       ],
       "constraint_notes": []
@@ -714,7 +738,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [30000117, 30000691, 30000983]
         },
         {
           "metadata_id": "hospitalflow.lab_order.subject_id",
@@ -751,7 +776,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [10000005, 10000003, 10000009]
         },
         {
           "metadata_id": "hospitalflow.lab_order.hadm_id",
@@ -788,7 +814,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "No associated admission"
+          "null_interpretation": "No associated admission",
+          "sample_values": [20000009, 20000006, 20000013]
         },
         {
           "metadata_id": "hospitalflow.lab_order.specimen_received_at",
@@ -820,7 +847,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-03-25T19:11:00Z", "2026-03-06T10:37:00Z", "2026-05-31T07:57:00Z"]
         },
         {
           "metadata_id": "hospitalflow.lab_order.results_verified_at",
@@ -852,7 +880,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-03-25T20:41:00Z", "2026-03-06T15:06:00Z", "2026-05-31T13:32:00Z"]
         }
       ],
       "constraint_notes": []
@@ -907,7 +936,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [30000117, 30000691, 30000983]
         },
         {
           "metadata_id": "hospitalflow.medication_order.hadm_id",
@@ -944,7 +974,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [20000010, 20000007, 20000013]
         },
         {
           "metadata_id": "hospitalflow.medication_order.medication",
@@ -976,7 +1007,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["Metformin", "Omeprazole", "Amoxicillin"]
         },
         {
           "metadata_id": "hospitalflow.medication_order.stopped_at",
@@ -1008,7 +1040,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-04-11T22:04:00Z", "2026-03-09T18:11:00Z", "2026-05-31T17:45:00Z"]
         }
       ],
       "constraint_notes": []
@@ -1063,7 +1096,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [30000117, 30000691, 30000983]
         },
         {
           "metadata_id": "hospitalflow.procedure_order.hadm_id",
@@ -1100,7 +1134,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [20000011, 20000007, 20000008]
         },
         {
           "metadata_id": "hospitalflow.procedure_order.procedure_name",
@@ -1132,7 +1167,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["Wound Debridement", "Bronchoscopy", "Endoscopy"]
         },
         {
           "metadata_id": "hospitalflow.procedure_order.preparation_completed_at",
@@ -1164,7 +1200,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-03-08T20:31:00Z", "2026-03-18T20:27:00Z", "2026-07-03T15:31:00Z"]
         }
       ],
       "constraint_notes": []
@@ -1231,7 +1268,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "hospitalflow.order_history.lab_order_id",
@@ -1268,7 +1306,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not applicable to this order category"
+          "null_interpretation": "Not applicable to this order category",
+          "sample_values": [31070762, 31079248, 31073704]
         },
         {
           "metadata_id": "hospitalflow.order_history.medication_order_id",
@@ -1305,7 +1344,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not applicable to this order category"
+          "null_interpretation": "Not applicable to this order category",
+          "sample_values": [32064975, 32028896, 32091033]
         },
         {
           "metadata_id": "hospitalflow.order_history.procedure_order_id",
@@ -1342,7 +1382,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not applicable to this order category"
+          "null_interpretation": "Not applicable to this order category",
+          "sample_values": [33032683, 33088335, 33060273]
         },
         {
           "metadata_id": "hospitalflow.order_history.action",
@@ -1382,7 +1423,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["E", "R", "C"]
         },
         {
           "metadata_id": "hospitalflow.order_history.occurred_at",
@@ -1414,7 +1456,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-17T17:00:00Z", "2026-01-17T17:22:00Z", "2026-01-17T17:39:00Z"]
         }
       ],
       "constraint_notes": []
@@ -1472,7 +1515,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "hospitalflow.labevents.order_id",
@@ -1509,7 +1553,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [31070762, 31079248, 31073704]
         },
         {
           "metadata_id": "hospitalflow.labevents.itemid",
@@ -1542,7 +1587,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [1003, 1002, 1001]
         },
         {
           "metadata_id": "hospitalflow.labevents.charttime",
@@ -1575,7 +1621,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html#charttime",
             "HospitalFlow records specimen collection in charttime; measurement execution is not represented."
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-27T19:38:00Z", "2026-02-03T16:09:00Z", "2026-02-03T15:16:00Z"]
         },
         {
           "metadata_id": "hospitalflow.labevents.storetime",
@@ -1608,7 +1655,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-27T23:09:00Z", "2026-02-03T19:00:00Z", "2026-02-03T19:38:00Z"]
         },
         {
           "metadata_id": "hospitalflow.labevents.valuenum",
@@ -1641,7 +1689,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Value not recorded"
+          "null_interpretation": "Value not recorded",
+          "sample_values": [14.6, 14.1, 141.8]
         },
         {
           "metadata_id": "hospitalflow.labevents.valueuom",
@@ -1674,7 +1723,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Value not recorded"
+          "null_interpretation": "Value not recorded",
+          "sample_values": ["g/dL", "mmol/L", "mg/dL"]
         }
       ],
       "constraint_notes": []
@@ -1731,7 +1781,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "hospitalflow.emar.pharmacy_id",
@@ -1768,7 +1819,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [40000001, 40000002, 40000003]
         },
         {
           "metadata_id": "hospitalflow.emar.charttime",
@@ -1801,7 +1853,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-17T19:31:00Z", "2026-01-17T21:22:00Z", "2026-01-17T23:09:00Z"]
         },
         {
           "metadata_id": "hospitalflow.emar.event_txt",
@@ -1840,7 +1893,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["Administered", "Not Given"]
         },
         {
           "metadata_id": "hospitalflow.emar.storetime",
@@ -1873,7 +1927,8 @@
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-17T20:12:00Z", "2026-01-17T21:44:00Z", "2026-01-17T23:56:00Z"]
         }
       ],
       "constraint_notes": []
@@ -1930,7 +1985,8 @@
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [1, 2, 3]
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.order_id",
@@ -1967,7 +2023,8 @@
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [33032683, 33088335, 33092897]
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.starttime",
@@ -1999,7 +2056,8 @@
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-27T18:22:00Z", "2026-02-15T01:42:00Z", "2026-02-15T05:27:00Z"]
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.endtime",
@@ -2031,7 +2089,8 @@
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
-          "null_interpretation": "Unknown occurrence; timestamp not recorded"
+          "null_interpretation": "Unknown occurrence; timestamp not recorded",
+          "sample_values": ["2026-01-27T19:24:00Z", "2026-02-15T02:25:00Z", "2026-02-15T06:34:00Z"]
         },
         {
           "metadata_id": "hospitalflow.procedure_episode.storetime",
@@ -2063,7 +2122,8 @@
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-27T18:40:00Z", "2026-02-15T02:16:00Z", "2026-02-15T05:53:00Z"]
         }
       ],
       "constraint_notes": []
@@ -2118,7 +2178,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [40000001, 40000002, 40000003]
         },
         {
           "metadata_id": "hospitalflow.pharmacy.order_id",
@@ -2155,7 +2216,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": [32064975, 32028896, 32042809]
         },
         {
           "metadata_id": "hospitalflow.pharmacy.dispensed_at",
@@ -2187,7 +2249,8 @@
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
-          "null_interpretation": "Not allowed"
+          "null_interpretation": "Not allowed",
+          "sample_values": ["2026-01-17T18:40:00Z", "2026-01-17T22:07:00Z", "2026-01-17T19:12:00Z"]
         }
       ],
       "constraint_notes": []
@@ -2239,7 +2302,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": [10000001, 10000002, 10000003]
         },
         {
           "metadata_id": "hospitalflow.transfers.hadm_id",
@@ -2257,7 +2321,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": [20000001, 20000002, 20000003]
         },
         {
           "metadata_id": "hospitalflow.transfers.transfer_id",
@@ -2275,7 +2340,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 1
+          "primary_key_position": 1,
+          "sample_values": [80000001, 80000002, 80000003]
         },
         {
           "metadata_id": "hospitalflow.transfers.eventtype",
@@ -2293,7 +2359,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["admit", "transfer", "discharge"]
         },
         {
           "metadata_id": "hospitalflow.transfers.careunit",
@@ -2311,7 +2378,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["Medical Ward", "Surgical Ward", "Step-Down Unit"]
         },
         {
           "metadata_id": "hospitalflow.transfers.intime",
@@ -2329,7 +2397,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["2026-01-17T16:12:00Z", "2026-01-18T13:16:03Z", "2026-01-19T15:01:00Z"]
         },
         {
           "metadata_id": "hospitalflow.transfers.outtime",
@@ -2347,7 +2416,8 @@
           ],
           "code_meanings": {},
           "foreign_keys": [],
-          "primary_key_position": 0
+          "primary_key_position": 0,
+          "sample_values": ["2026-01-18T13:16:03Z", "2026-01-19T15:01:00Z", "2026-01-28T13:25:45Z"]
         }
       ],
       "sql_definition": "CREATE TABLE transfers(\n        subject_id INTEGER NOT NULL REFERENCES patients(subject_id),\n        hadm_id INTEGER REFERENCES admissions(hadm_id),\n        transfer_id INTEGER PRIMARY KEY NOT NULL,\n        eventtype TEXT CHECK(eventtype IN ('ed','admit','transfer','discharge')),\n        careunit TEXT,\n        intime TEXT,\n        outtime TEXT,\n        CHECK(outtime IS NULL OR intime IS NULL OR intime<=outtime)\n    )"

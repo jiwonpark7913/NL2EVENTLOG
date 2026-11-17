@@ -1,7 +1,7 @@
 {
   "dictionary_schema_version": "NL2EVENTLOG-DD-v1",
-  "dataset_id": "universityflow",
   "name": "UniversityFlow",
+  "dataset_id": "universityflow",
   "language": "en",
   "dbms": "SQLite",
   "timezone": "UTC",
@@ -43,7 +43,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S001", "S002", "S003"]
         },
         {
           "metadata_id": "universityflow.student.name",
@@ -71,7 +72,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Student 01", "Student 02", "Student 03"]
         },
         {
           "metadata_id": "universityflow.student.date_of_birth",
@@ -89,7 +91,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2004-01-01"]
         },
         {
           "metadata_id": "universityflow.student.phone_number",
@@ -107,7 +110,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "universityflow.student.home_address",
@@ -125,7 +129,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": []
         },
         {
           "metadata_id": "universityflow.student.registration_eligibility",
@@ -143,7 +148,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["INELIGIBLE", "ELIGIBLE"]
         },
         {
           "metadata_id": "universityflow.student.class",
@@ -166,7 +172,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Cohort 2026"]
         },
         {
           "metadata_id": "universityflow.student.major",
@@ -184,7 +191,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Industrial Engineering"]
         }
       ]
     },
@@ -215,7 +223,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C01", "C02", "C03"]
         },
         {
           "metadata_id": "universityflow.course.course_name",
@@ -233,7 +242,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Database Systems", "Statistics", "Operations Research"]
         },
         {
           "metadata_id": "universityflow.course.credits",
@@ -251,7 +261,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [3]
         },
         {
           "metadata_id": "universityflow.course.instructor",
@@ -269,7 +280,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Instructor 1", "Instructor 2", "Instructor 3"]
         },
         {
           "metadata_id": "universityflow.course.class_time",
@@ -287,7 +299,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Monday 09:00"]
         },
         {
           "metadata_id": "universityflow.course.class_location",
@@ -305,7 +318,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Room 001", "Room 002", "Room 003"]
         },
         {
           "metadata_id": "universityflow.course.course_offering_proposed_at",
@@ -317,7 +331,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-04T11:00:00Z", "2026-02-05T12:00:00Z", "2026-02-24T13:00:00Z"]
         },
         {
           "metadata_id": "universityflow.course.course_offering_approved_at",
@@ -329,7 +344,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-05T11:00:00Z", "2026-02-06T12:00:00Z", "2026-02-25T13:00:00Z"]
         },
         {
           "metadata_id": "universityflow.course.course_offering_published_at",
@@ -341,7 +357,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-06T11:00:00Z", "2026-02-07T12:00:00Z", "2026-02-26T13:00:00Z"]
         },
         {
           "metadata_id": "universityflow.course.course_offering_closed_at",
@@ -353,7 +370,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-04-07T12:00:00Z", "2026-04-07T13:00:00Z", "2026-04-14T14:00:00Z"]
         }
       ]
     },
@@ -396,7 +414,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S002", "S003", "S006"]
         },
         {
           "metadata_id": "universityflow.registration.course_id",
@@ -414,7 +433,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["C01", "C06", "C02"]
         },
         {
           "metadata_id": "universityflow.registration.registration_time",
@@ -432,7 +452,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-07T11:00:00Z", "2026-02-07T16:00:00Z", "2026-02-08T12:00:00Z"]
         },
         {
           "metadata_id": "universityflow.registration.status",
@@ -450,7 +471,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["REGISTERED"]
         },
         {
           "metadata_id": "universityflow.registration.registration_requested_at",
@@ -462,7 +484,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-07T07:00:00Z", "2026-02-07T12:00:00Z", "2026-02-08T08:00:00Z"]
         },
         {
           "metadata_id": "universityflow.registration.registration_approved_at",
@@ -474,7 +497,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-07T09:00:00Z", "2026-02-07T14:00:00Z", "2026-02-08T10:00:00Z"]
         },
         {
           "metadata_id": "universityflow.registration.course_started_at",
@@ -486,7 +510,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-09T11:00:00Z", "2026-02-09T16:00:00Z", "2026-02-10T12:00:00Z"]
         },
         {
           "metadata_id": "universityflow.registration.course_assessment_completed_at",
@@ -498,7 +523,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-27T11:00:00Z", "2026-02-27T16:00:00Z", "2026-02-28T12:00:00Z"]
         },
         {
           "metadata_id": "universityflow.registration.course_grade_finalized_at",
@@ -510,7 +536,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-03-01T16:00:00Z", "2026-03-02T12:00:00Z", "2026-03-02T15:00:00Z"]
         }
       ]
     },
@@ -547,7 +574,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["E001-1", "E002-1", "E002-2"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.student_id",
@@ -565,7 +593,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S001", "S002", "S003"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.examination_name",
@@ -583,7 +612,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Registration Eligibility Examination"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.grade",
@@ -601,7 +631,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [33, 32, 88]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.examination_date",
@@ -619,7 +650,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-02T09:00:00Z", "2026-02-03T09:00:00Z", "2026-02-05T09:00:00Z"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.examination_scheduled_at",
@@ -631,7 +663,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-02T07:00:00Z", "2026-02-03T07:00:00Z", "2026-02-05T07:00:00Z"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.examination_checked_in_at",
@@ -643,7 +676,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-02T08:00:00Z", "2026-02-03T08:00:00Z", "2026-02-05T08:00:00Z"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.examination_score_published_at",
@@ -655,7 +689,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-02T11:00:00Z", "2026-02-03T11:00:00Z", "2026-02-05T11:00:00Z"]
         },
         {
           "metadata_id": "universityflow.degree_examination_result.examination_result_reviewed_at",
@@ -667,7 +702,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-03T12:00:00Z", "2026-02-05T12:00:00Z", "2026-02-04T12:00:00Z"]
         }
       ]
     },
@@ -698,7 +734,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["T01", "T02", "T03"]
         },
         {
           "metadata_id": "universityflow.task.task_title",
@@ -716,7 +753,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Course Design Task 1", "Course Design Task 2", "Course Design Task 3"]
         },
         {
           "metadata_id": "universityflow.task.task_description",
@@ -734,7 +772,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Analyze simulation output"]
         },
         {
           "metadata_id": "universityflow.task.task_start_date",
@@ -752,7 +791,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-01"]
         },
         {
           "metadata_id": "universityflow.task.task_end_date",
@@ -770,7 +810,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-05-31"]
         },
         {
           "metadata_id": "universityflow.task.task_location",
@@ -788,7 +829,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Teaching Laboratory"]
         },
         {
           "metadata_id": "universityflow.task.design_task_created_at",
@@ -800,7 +842,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2025-12-31T00:00:00Z", "2026-01-01T00:00:00Z", "2026-01-02T00:00:00Z"]
         },
         {
           "metadata_id": "universityflow.task.design_task_approved_at",
@@ -812,7 +855,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-01-01T00:00:00Z", "2026-01-02T00:00:00Z", "2026-01-03T00:00:00Z"]
         },
         {
           "metadata_id": "universityflow.task.design_task_published_at",
@@ -824,7 +868,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-01-02T00:00:00Z", "2026-01-03T00:00:00Z", "2026-01-04T00:00:00Z"]
         },
         {
           "metadata_id": "universityflow.task.design_task_closed_at",
@@ -836,7 +881,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-03T00:00:00Z", "2026-02-04T00:00:00Z"]
         }
       ]
     },
@@ -867,7 +913,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M01", "M02", "M03"]
         },
         {
           "metadata_id": "universityflow.simulation_module.module_name",
@@ -885,7 +932,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PCM", "DPCM", "Delta Modulation"]
         },
         {
           "metadata_id": "universityflow.simulation_module.module_type",
@@ -903,7 +951,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PCM", "DPCM", "DELTA"]
         },
         {
           "metadata_id": "universityflow.simulation_module.module_description",
@@ -921,7 +970,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Synthetic teaching module"]
         },
         {
           "metadata_id": "universityflow.simulation_module.module_code",
@@ -939,7 +989,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["example_module_1()", "example_module_2()", "example_module_3()"]
         },
         {
           "metadata_id": "universityflow.simulation_module.simulation_module_published_at",
@@ -951,7 +1002,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-11T15:00:00Z", "2026-02-15T15:00:00Z", "2026-02-10T15:00:00Z"]
         },
         {
           "metadata_id": "universityflow.simulation_module.simulation_module_validated_at",
@@ -963,7 +1015,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-12T15:00:00Z", "2026-02-16T15:00:00Z", "2026-02-11T15:00:00Z"]
         },
         {
           "metadata_id": "universityflow.simulation_module.simulation_module_released_at",
@@ -975,7 +1028,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-13T15:00:00Z", "2026-02-17T15:00:00Z", "2026-02-12T15:00:00Z"]
         },
         {
           "metadata_id": "universityflow.simulation_module.simulation_module_retired_at",
@@ -987,7 +1041,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-04-16T15:00:00Z", "2026-04-20T15:00:00Z"]
         }
       ]
     },
@@ -1024,7 +1079,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["TH002", "TH003", "TH006"]
         },
         {
           "metadata_id": "universityflow.thesis.student_id",
@@ -1042,7 +1098,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S002", "S003", "S006"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_title",
@@ -1060,7 +1117,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Course Design Thesis"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_content",
@@ -1078,7 +1136,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Synthetic thesis content"]
         },
         {
           "metadata_id": "universityflow.thesis.submission_date",
@@ -1096,7 +1155,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-23T16:00:00Z", "2026-02-24T16:00:00Z", "2026-02-27T16:00:00Z"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_draft_registered_at",
@@ -1108,7 +1168,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-19T16:00:00Z", "2026-02-20T16:00:00Z", "2026-02-23T16:00:00Z"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_review_started_at",
@@ -1120,7 +1181,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-24T16:00:00Z", "2026-02-25T16:00:00Z", "2026-02-28T16:00:00Z"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_accepted_at",
@@ -1132,7 +1194,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-28T16:00:00Z", "2026-03-03T16:00:00Z", "2026-03-04T16:00:00Z"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_revision_requested_at",
@@ -1144,7 +1207,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-25T16:00:00Z", "2026-03-02T16:00:00Z", "2026-03-13T16:00:00Z"]
         },
         {
           "metadata_id": "universityflow.thesis.thesis_resubmitted_at",
@@ -1156,7 +1220,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-26T16:00:00Z", "2026-03-03T16:00:00Z", "2026-03-14T16:00:00Z"]
         }
       ]
     },
@@ -1200,7 +1265,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S002", "S003", "S006"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.module_id",
@@ -1218,7 +1284,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["M03", "M01", "M02"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.simulation_date",
@@ -1236,7 +1303,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-13T15:00:00Z", "2026-02-14T15:00:00Z", "2026-02-15T15:00:00Z"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.simulation_result_data",
@@ -1254,7 +1322,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Synthetic output 1", "Synthetic output 2"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.result_analysis",
@@ -1272,7 +1341,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Recorded experiment analysis"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.simulation_run_scheduled_at",
@@ -1284,7 +1354,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-13T13:00:00Z", "2026-02-14T13:00:00Z", "2026-02-15T13:00:00Z"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.simulation_run_started_at",
@@ -1296,7 +1367,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-13T14:00:00Z", "2026-02-14T14:00:00Z", "2026-02-15T14:00:00Z"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.simulation_output_reviewed_at",
@@ -1308,7 +1380,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-13T17:00:00Z", "2026-02-14T17:00:00Z", "2026-02-15T17:00:00Z"]
         },
         {
           "metadata_id": "universityflow.student_simulation_experiment_result.simulation_result_accepted_at",
@@ -1320,7 +1393,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-14T18:00:00Z", "2026-02-15T18:00:00Z", "2026-02-17T18:00:00Z"]
         }
       ]
     },
@@ -1357,7 +1431,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A002", "A003", "A006"]
         },
         {
           "metadata_id": "universityflow.assignment.student_id",
@@ -1375,7 +1450,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["S002", "S003", "S006"]
         },
         {
           "metadata_id": "universityflow.assignment.assignment_content",
@@ -1393,7 +1469,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Synthetic assignment content"]
         },
         {
           "metadata_id": "universityflow.assignment.assignment_assigned_at",
@@ -1405,7 +1482,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-07T14:00:00Z", "2026-02-08T14:00:00Z", "2026-02-11T14:00:00Z"]
         },
         {
           "metadata_id": "universityflow.assignment.assignment_submitted_at",
@@ -1417,7 +1495,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-09T14:00:00Z", "2026-02-10T14:00:00Z", "2026-02-13T14:00:00Z"]
         },
         {
           "metadata_id": "universityflow.assignment.assignment_grade_finalized_at",
@@ -1429,7 +1508,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-14T14:00:00Z", "2026-02-17T14:00:00Z", "2026-02-19T14:00:00Z"]
         },
         {
           "metadata_id": "universityflow.assignment.assignment_revision_requested_at",
@@ -1441,7 +1521,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-11T15:00:00Z", "2026-02-16T15:00:00Z", "2026-02-23T15:00:00Z"]
         },
         {
           "metadata_id": "universityflow.assignment.assignment_resubmitted_at",
@@ -1453,7 +1534,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-12T14:00:00Z", "2026-02-17T14:00:00Z", "2026-02-24T14:00:00Z"]
         }
       ]
     },
@@ -1484,7 +1566,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I01", "I02", "I03"]
         },
         {
           "metadata_id": "universityflow.instructor.instructor_name",
@@ -1502,7 +1585,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Instructor 1", "Instructor 2", "Instructor 3"]
         },
         {
           "metadata_id": "universityflow.instructor.course",
@@ -1520,7 +1604,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Database Systems", "Statistics", "Operations Research"]
         }
       ]
     },
@@ -1564,7 +1649,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A002", "A003", "A006"]
         },
         {
           "metadata_id": "universityflow.assignment_grading.instructor_id",
@@ -1582,7 +1668,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I03", "I01", "I02"]
         },
         {
           "metadata_id": "universityflow.assignment_grading.grading_time",
@@ -1600,7 +1687,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["2026-02-11T14:00:00Z", "2026-02-12T14:00:00Z", "2026-02-15T14:00:00Z"]
         },
         {
           "metadata_id": "universityflow.assignment_grading.score",
@@ -1618,7 +1706,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": [70, 80, 75]
         },
         {
           "metadata_id": "universityflow.assignment_grading.evaluation",
@@ -1636,7 +1725,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Initial feedback", "Revised feedback", "Authored synthetic reassessment score and feedback"]
         },
         {
           "metadata_id": "universityflow.assignment_grading.grading_kind",
@@ -1648,7 +1738,8 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A", "R"]
         },
         {
           "metadata_id": "universityflow.assignment_grading.reassessment_event_id",
@@ -1660,10 +1751,11 @@
           "required": null,
           "primary_key_position": null,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["LC:assignment:A002:5", "LC:assignment:A007:5", "LC:assignment:A014:5"]
         }
       ]
     }
   ],
-  "note": "Standardized metadata projection. Original input/data_dictionary.json remains authoritative for additional fields; no evaluator Gold included."
+  "note": "Lossless metadata intent, not full legacy-field fidelity: original dictionary is authoritative for unmapped fields. Missing definitions remain null."
 }

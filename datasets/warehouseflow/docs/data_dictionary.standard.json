@@ -1,7 +1,7 @@
 {
   "dictionary_schema_version": "NL2EVENTLOG-DD-v1",
-  "dataset_id": "warehouseflow",
   "name": "WarehouseFlow New",
+  "dataset_id": "warehouseflow",
   "language": "en",
   "dbms": "SQLite",
   "timezone": "UTC",
@@ -27,7 +27,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.warehouse.warehouse_name",
@@ -39,7 +40,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Warehouse 1", "Warehouse 2", "Warehouse 3"]
         },
         {
           "metadata_id": "warehouseflow.warehouse.capacity",
@@ -51,7 +53,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [1000]
         },
         {
           "metadata_id": "warehouseflow.warehouse.created_at",
@@ -63,7 +66,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-01-31T07:20:00Z"]
         },
         {
           "metadata_id": "warehouseflow.warehouse.updated_at",
@@ -75,7 +79,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-06-19T21:20:00Z"]
         }
       ]
     },
@@ -100,7 +105,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.goods.goods_name",
@@ -112,7 +118,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Goods 1", "Goods 2", "Goods 3"]
         },
         {
           "metadata_id": "warehouseflow.goods.category_code",
@@ -124,7 +131,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["NORMAL", "FRAGILE"]
         }
       ]
     },
@@ -149,7 +157,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.worker.worker_name",
@@ -161,7 +170,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Worker 1", "Worker 2", "Worker 3"]
         },
         {
           "metadata_id": "warehouseflow.worker.role_code",
@@ -173,7 +183,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["HANDLER", "SUPERVISOR"]
         },
         {
           "metadata_id": "warehouseflow.worker.updated_at",
@@ -185,7 +196,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-06-19T21:21:00Z", "2026-06-19T21:22:00Z", "2026-06-19T21:23:00Z"]
         }
       ]
     },
@@ -211,7 +223,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["MOVEMENT", "REQUEST", "TASK"]
         },
         {
           "metadata_id": "warehouseflow.work_code.code",
@@ -223,7 +236,8 @@
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I", "O", "A"]
         },
         {
           "metadata_id": "warehouseflow.work_code.meaning",
@@ -235,7 +249,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["Receipt into warehouse stock", "Dispatch from warehouse stock", "Check receiving request"]
         }
       ]
     },
@@ -260,7 +275,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.receiving_request.warehouse_id",
@@ -279,7 +295,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.receiving_request.goods_id",
@@ -298,7 +315,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.receiving_request.quantity",
@@ -310,7 +328,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [10]
         },
         {
           "metadata_id": "warehouseflow.receiving_request.submitted_at",
@@ -322,7 +341,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:00:00Z", "2026-02-01T10:00:00Z", "2026-02-01T15:00:00Z"]
         }
       ]
     },
@@ -347,7 +367,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.goods_receipt.request_id",
@@ -366,7 +387,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.goods_receipt.receiver_id",
@@ -385,7 +407,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.goods_receipt.received_at",
@@ -397,7 +420,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:32:00Z", "2026-02-01T10:32:00Z", "2026-02-01T15:32:00Z"]
         },
         {
           "metadata_id": "warehouseflow.goods_receipt.condition_code",
@@ -409,7 +433,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["GOOD", "DAMAGED"]
         }
       ]
     },
@@ -434,7 +459,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.dispatch_order.warehouse_id",
@@ -453,7 +479,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.dispatch_order.goods_id",
@@ -472,7 +499,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.dispatch_order.quantity",
@@ -484,7 +512,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [4]
         },
         {
           "metadata_id": "warehouseflow.dispatch_order.priority_code",
@@ -496,7 +525,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["NORMAL", "URGENT"]
         },
         {
           "metadata_id": "warehouseflow.dispatch_order.requested_at",
@@ -508,7 +538,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-04-11T15:40:00Z", "2026-04-11T20:40:00Z", "2026-04-12T01:40:00Z"]
         },
         {
           "metadata_id": "warehouseflow.dispatch_order.approved_at",
@@ -520,7 +551,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-04-11T15:50:00Z", "2026-04-11T20:50:00Z", "2026-04-12T01:50:00Z"]
         }
       ]
     },
@@ -545,7 +577,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_audit.warehouse_id",
@@ -564,7 +597,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_audit.worker_id",
@@ -583,7 +617,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_audit.started_at",
@@ -595,7 +630,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-05-16T05:40:00Z", "2026-05-16T07:20:00Z", "2026-05-16T09:00:00Z"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_audit.completed_at",
@@ -607,7 +643,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-05-16T06:20:00Z", "2026-05-16T08:00:00Z", "2026-05-16T09:40:00Z"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_audit.result_code",
@@ -619,7 +656,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["PASS", "RECOUNT", "PENDING"]
         }
       ]
     },
@@ -644,7 +682,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.warehouse_id",
@@ -663,7 +702,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.goods_id",
@@ -682,7 +722,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.quantity",
@@ -694,7 +735,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "stock units"
+          "unit": "stock units",
+          "sample_values": [10, 4]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.receipt_id",
@@ -713,7 +755,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.dispatch_id",
@@ -732,7 +775,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.code_family",
@@ -751,7 +795,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["MOVEMENT"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.movement_code",
@@ -770,7 +815,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["I", "O"]
         },
         {
           "metadata_id": "warehouseflow.goods_movement.occurred_at",
@@ -782,7 +828,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:35:00Z", "2026-02-01T10:35:00Z", "2026-02-01T15:35:00Z"]
         }
       ]
     },
@@ -807,7 +854,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "warehouseflow.request_action.request_id",
@@ -826,7 +874,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.request_action.worker_id",
@@ -845,7 +894,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.request_action.code_family",
@@ -864,7 +914,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["REQUEST"]
         },
         {
           "metadata_id": "warehouseflow.request_action.action_code",
@@ -883,7 +934,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A", "R", "H"]
         },
         {
           "metadata_id": "warehouseflow.request_action.occurred_at",
@@ -895,7 +947,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:05:00Z", "2026-02-01T05:12:00Z", "2026-02-01T10:05:00Z"]
         }
       ]
     },
@@ -920,7 +973,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.request_id",
@@ -939,7 +993,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.dispatch_id",
@@ -958,7 +1013,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.worker_id",
@@ -977,7 +1033,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.code_family",
@@ -996,7 +1053,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["TASK"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.task_code",
@@ -1015,7 +1073,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["A", "K", "B"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.started_at",
@@ -1027,7 +1086,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:40:00Z", "2026-02-01T10:40:00Z", "2026-02-01T15:40:00Z"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.completed_at",
@@ -1039,7 +1099,8 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:50:00Z", "2026-02-01T10:50:00Z", "2026-02-01T15:50:00Z"]
         },
         {
           "metadata_id": "warehouseflow.warehouse_task_history.outcome_code",
@@ -1051,7 +1112,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["OK", "PENDING", "RETRY"]
         }
       ]
     },
@@ -1076,7 +1138,8 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "unit": null
+          "unit": null,
+          "sample_values": ["0001", "0002", "0003"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.request_id",
@@ -1095,7 +1158,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.dispatch_id",
@@ -1114,7 +1178,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["001", "002", "003"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.worker_id",
@@ -1133,7 +1198,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["1", "2", "3"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.code_family",
@@ -1152,7 +1218,8 @@
               "position": 0
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["HANDLING"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.handling_code",
@@ -1171,7 +1238,8 @@
               "position": 1
             }
           ],
-          "unit": null
+          "unit": null,
+          "sample_values": ["U", "L"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.started_at",
@@ -1183,7 +1251,8 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:20:00Z", "2026-02-01T10:20:00Z", "2026-02-01T15:20:00Z"]
         },
         {
           "metadata_id": "warehouseflow.handling_history.completed_at",
@@ -1195,10 +1264,11 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "unit": "UTC"
+          "unit": "UTC",
+          "sample_values": ["2026-02-01T05:30:00Z", "2026-02-01T10:30:00Z", "2026-02-01T15:30:00Z"]
         }
       ]
     }
   ],
-  "note": "Standardized metadata projection. Original input/data_dictionary.json remains authoritative for additional fields; no evaluator Gold included."
+  "note": "Lossless metadata intent, not full legacy-field fidelity: original dictionary is authoritative for unmapped fields. Missing definitions remain null."
 }
