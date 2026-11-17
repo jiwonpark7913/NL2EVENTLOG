@@ -72,9 +72,8 @@ def enrich(path,strict=False):
  data.setdefault("name","MIMIC-IV Clinical Database Demo 2.2")
  data.setdefault("language","en")
  data.setdefault("dbms","SQLite")
- data["documentation_sources"]={"overview":BASE,
-  "dataset":"https://physionet.org/content/mimic-iv-demo/2.2/",
-  "publisher":"MIT Laboratory for Computational Physiology"}
+ data.pop("documentation_sources",None)
+ # Official source links are maintained centrally in datasets/mimic/README.md.
  for table,record in sorted(tables.items()):
   url=page_url(table)
   record["source_module"]="hosp" if table in HOSP else "icu"
