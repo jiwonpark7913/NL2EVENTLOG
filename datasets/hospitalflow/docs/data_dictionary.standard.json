@@ -5,13 +5,11 @@
   "language": "en",
   "dbms": "SQLite",
   "timezone": "UTC",
-  "documentation_sources": {},
   "tables": [
     {
       "table": "patients",
       "metadata_id": "hospitalflow.patients",
       "definition": "MIMIC-IV-compatible patient demographics and anchor metadata (synthetic).",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One row per patient.",
       "primary_key": [
@@ -25,14 +23,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of the patient represented by this row.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -41,14 +37,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Synthetic demographic category recorded for the patient.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -57,14 +51,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Age in synthetic anchor_year; not an event.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -73,14 +65,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Synthetic de-identified reference year.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -89,14 +79,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Approximate original-year group (synthetic).",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -105,14 +93,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Date of death if known; not an assumed process event.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -121,7 +107,6 @@
       "table": "admissions",
       "metadata_id": "hospitalflow.admissions",
       "definition": "Synthetic hospital stay using original MIMIC-IV admissions time-column names.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One row per hospital admission, identified by hadm_id.",
       "primary_key": [
@@ -141,7 +126,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of this particular hospital admission, distinct from the patient identifier.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -149,7 +133,6 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -158,7 +141,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Patient to whom this hospital admission belongs.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -171,7 +153,6 @@
               "column": "subject_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -180,7 +161,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time of emergency department registration associated with this admission.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -188,7 +168,6 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -197,7 +176,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the patient was admitted for this hospital stay.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -205,7 +183,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -214,7 +191,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the patient actually left this hospital stay.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/admissions.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -222,7 +198,6 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -231,14 +206,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual death timestamp if observed during this admission; NULL in current synthetic cohort.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -247,14 +220,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time the patient departed the emergency department, as in MIMIC-IV.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -263,14 +234,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Type of admission; administrative attribute, not event.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -279,14 +248,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Admission provider reference.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -295,14 +262,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Location from which admission occurred.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -311,14 +276,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Discharge destination.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -327,14 +290,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Recorded payor category.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -343,14 +304,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Admission-level language preference, not a patient master attribute.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -359,14 +318,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Marital status at admission.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -375,14 +332,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Recorded demographic classification at admission.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -391,14 +346,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Whether death occurred during admission (all zero in synthetic sample).",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -407,7 +360,6 @@
       "table": "admission_detail",
       "metadata_id": "hospitalflow.admission_detail",
       "definition": "Recorded signed discharge summaries associated with hospital admissions.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One recorded signed discharge summary per admission represented in this table. Draft documents are outside this table.",
       "primary_key": [
@@ -427,7 +379,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of the same hospital stay represented in admissions.hadm_id.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -439,7 +390,6 @@
               "column": "hadm_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -448,14 +398,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the discharge summary for this admission was signed; signing may occur after the patient has left the hospital.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -464,7 +412,6 @@
       "table": "lab_order",
       "metadata_id": "hospitalflow.lab_order",
       "definition": "Laboratory request; multiple measurements can fulfill it. subject_id identifies the patient even when hadm_id is NULL for a request outside an admission.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One authored laboratory request for one patient, optionally associated with an admission.",
       "primary_key": [
@@ -489,14 +436,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of this laboratory request in the laboratory-order identifier namespace.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -505,7 +450,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Patient for this laboratory request, including requests not associated with a hospital admission.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -517,7 +461,6 @@
               "column": "subject_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -526,7 +469,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Optional hospital admission associated with this laboratory request.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -538,7 +480,6 @@
               "column": "hadm_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -547,14 +488,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when specimens associated with this laboratory request were received by the laboratory.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -563,14 +502,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the recorded results for this laboratory order were verified.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -579,7 +516,6 @@
       "table": "medication_order",
       "metadata_id": "hospitalflow.medication_order",
       "definition": "One medication prescription, including its stop time. Dispensing is recorded separately in pharmacy.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One medication prescription; dispensing records and dose records have their own identities.",
       "primary_key": [
@@ -599,14 +535,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of this medication request in the medication-order identifier namespace.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -615,7 +549,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Hospital admission under which this medication request was made.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -627,7 +560,6 @@
               "column": "hadm_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -636,14 +568,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Generic medication name for synthetic records; not a treatment recommendation.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -652,14 +582,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when medication under this request was stopped.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -668,7 +596,6 @@
       "table": "procedure_order",
       "metadata_id": "hospitalflow.procedure_order",
       "definition": "Distinct procedure order; repeated execution episodes belong to one order.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One row per procedure order; multiple execution episodes may belong to it.",
       "primary_key": [
@@ -688,14 +615,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of this procedure request in the procedure-order identifier namespace.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -704,7 +629,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Hospital admission under which this procedure request was made.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -716,7 +640,6 @@
               "column": "hadm_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -725,14 +648,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Fictional procedure label associated with this synthetic procedure request.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -741,14 +662,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when preparation for this procedure request was completed.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -757,7 +676,6 @@
       "table": "order_history",
       "metadata_id": "hospitalflow.order_history",
       "definition": "Recorded actions on laboratory, medication or procedure requests, including repeated reviews.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One row per order-action occurrence, including repeated reviews.",
       "primary_key": [
@@ -787,14 +705,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of one order-action occurrence; separate reviews of an order have separate identifiers.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -803,7 +719,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Laboratory order on which this action was performed, when the action concerns a laboratory request.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -815,7 +730,6 @@
               "column": "order_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -824,7 +738,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Medication order on which this action was performed, when the action concerns a medication request.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -836,7 +749,6 @@
               "column": "order_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -845,7 +757,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Procedure order on which this action was performed, when the action concerns a procedure request.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -857,7 +768,6 @@
               "column": "order_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -866,14 +776,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Physical business-action code in order_history; E = Entered; R = Reviewed; C = Cancelled. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -882,14 +790,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when this particular order action occurred.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -898,7 +804,6 @@
       "table": "labevents",
       "metadata_id": "hospitalflow.labevents",
       "definition": "Laboratory measurement results with specimen collection and result-availability times. charttime denotes specimen collection, not measurement execution.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One laboratory measurement result associated with a collected specimen and a laboratory request; collection and result availability have separate timestamps.",
       "primary_key": [
@@ -918,7 +823,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of this individual laboratory measurement occurrence.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -926,7 +830,6 @@
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -935,7 +838,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Laboratory order to which this measurement belongs.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -947,7 +849,6 @@
               "column": "order_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -956,7 +857,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Authored laboratory concept: 1001 Creatinine (mg/dL), 1002 Sodium (mmol/L), 1003 Hemoglobin (g/dL). Not original MIMIC codes.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -964,7 +864,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -973,7 +872,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the specimen used for this laboratory measurement was collected. This column does not store measurement execution time.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html#charttime",
             "HospitalFlow records specimen collection in charttime; measurement execution is not represented."
@@ -981,7 +879,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -990,7 +887,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when this laboratory result became available in the laboratory system.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -998,7 +894,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1007,7 +902,6 @@
           "sql_type": "REAL",
           "source_type": null,
           "definition": "Numeric result recorded for this laboratory measurement.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -1015,7 +909,6 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "As specified by valueuom for the corresponding test."
         },
         {
@@ -1024,7 +917,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Measurement unit; mg/dL for Creatinine, mmol/L for Sodium, g/dL for Hemoglobin.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/labevents.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -1032,7 +924,6 @@
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -1041,7 +932,6 @@
       "table": "emar",
       "metadata_id": "hospitalflow.emar",
       "definition": "Medication administration or omission records associated with pharmacy dispensing records.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One administration or omission record referring to one pharmacy dispensing record.",
       "primary_key": [
@@ -1061,14 +951,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Local integer identifier of this administration or omission record; it is not the original MIMIC formatted eMAR identifier.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1077,7 +965,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Dispensing record associated with this administration or omission.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -1089,7 +976,6 @@
               "column": "pharmacy_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1098,7 +984,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the administration or omission documented by this dose record occurred.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -1106,7 +991,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1115,7 +999,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Recorded disposition of this medication dose, indicating administration or omission.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -1123,7 +1006,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1132,7 +1014,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when the dose record was documented in the medication system.",
-          "definition_source": null,
           "source_references": [
             "https://mimic.mit.edu/docs/iv/modules/hosp/emar.html",
             "HospitalFlow authored adaptation; local constraints and records are synthetic"
@@ -1140,7 +1021,6 @@
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -1149,7 +1029,6 @@
       "table": "procedure_episode",
       "metadata_id": "hospitalflow.procedure_episode",
       "definition": "Hospital-level procedure execution episodes; the ICU stay_id hierarchy is excluded.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One hospital-level procedure execution episode, not an ICU stay.",
       "primary_key": [
@@ -1169,14 +1048,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Local synthetic identifier of one procedure execution episode; repeat episodes have separate identifiers.",
-          "definition_source": null,
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1185,7 +1062,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Procedure order executed in this episode.",
-          "definition_source": null,
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
@@ -1197,7 +1073,6 @@
               "column": "order_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1206,14 +1081,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when this procedure execution episode began.",
-          "definition_source": null,
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1222,14 +1095,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when this procedure execution episode ended.",
-          "definition_source": null,
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1238,14 +1109,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time when this episode was recorded in the procedure system.",
-          "definition_source": null,
           "source_references": [
             "Hospital-level adaptation of episode timing; the MIMIC ICU stay_id hierarchy is excluded. This is not the original procedureevents schema."
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -1254,7 +1123,6 @@
       "table": "pharmacy",
       "metadata_id": "hospitalflow.pharmacy",
       "definition": "One distinct dispensing record for a medication prescription; repeated dispensing records can fulfill the same prescription.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One dispensing record for one medication prescription; a prescription may have zero or multiple dispensing records.",
       "primary_key": [
@@ -1274,14 +1142,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Identifier of a single pharmacy dispensing record, distinct from prescription and administration identifiers.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1290,7 +1156,6 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Medication prescription fulfilled by this dispensing record.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
@@ -1302,7 +1167,6 @@
               "column": "order_id"
             }
           ],
-          "temporal_role": null,
           "unit": "Not applicable"
         },
         {
@@ -1311,14 +1175,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Time of the individual dispensing represented by this pharmacy record. This is not the first dispensing time for the prescription; each additional dispensing has its own pharmacy_id and row.",
-          "definition_source": null,
           "source_references": [
             "HospitalFlow authored business convention and declared schema"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "Not applicable"
         }
       ]
@@ -1327,7 +1189,6 @@
       "table": "transfers",
       "metadata_id": "hospitalflow.transfers",
       "definition": "One patient physical-location interval per record, following the MIMIC-IV transfers table shape.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": "One admission, ward transfer, or discharge location interval.",
       "primary_key": [
@@ -1360,14 +1221,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Patient whose physical-location history this record describes.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1376,14 +1235,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Hospital admission associated with this location interval.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1392,14 +1249,12 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Unique location record identifier.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1408,14 +1263,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "ed, admit, transfer or discharge interval type. Only transfer is a distinct transfer activity.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1424,14 +1277,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Care unit occupied during this location interval.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1440,14 +1291,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual entry time into the recorded care unit.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1456,14 +1305,12 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual departure time from the recorded care unit.",
-          "definition_source": null,
           "source_references": [
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
