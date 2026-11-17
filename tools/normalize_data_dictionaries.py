@@ -32,6 +32,7 @@ def normalize(dataset,raw):
     "primary_key_position":c.get("primary_key_position"),
     "foreign_keys":c.get("foreign_keys",[]),
     "unit":c.get("unit"),
+    "sample_values":c.get("sample_values",[]),
    })
   converted.append({
     "table":name,
@@ -58,7 +59,8 @@ def main(dataset):
  data=normalize(dataset,json.loads(src.read_text()))
  dest=src.parent.parent/"docs/data_dictionary.standard.json"
  dest.parent.mkdir(parents=True,exist_ok=True)
- dest.write_text(json.dumps(data,indent=2,ensure_ascii=False)+"\n")
+ from add_dictionary_samples import write_dictionary
+ write_dictionary(dest,data)
  summary={"dataset":dataset,"tables":len(data["tables"]),"columns":sum(len(t["columns"]) for t in data["tables"]),
           "described":sum(bool(c["definition"]) for t in data["tables"] for c in t["columns"])}
  print(json.dumps(summary))
