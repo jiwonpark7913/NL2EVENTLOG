@@ -43,12 +43,15 @@ def acquire(name,outdir):
  entries=metadata.get("files",[])
  file=next((x for x in entries if x.get("key")==filename),None)
  if file is None:raise ValueError(f"Cannot find pinned {filename} in Zenodo record {record_id}")
+ print(f"Zenodo record {record_id}, source {filename}, metadata checksum={file.get('checksum','missing')}",flush=True)
  url=file["links"].get("self") or file["links"].get("content")
  if not url:raise ValueError("No download link")
  target=outdir/filename
  if not target.exists() or digest(target,"md5")!=md5:download(url,target)
  if digest(target,"md5")!=md5:raise ValueError("Downloaded source hash differs from pinned Zenodo release")
+ print(f"Checksum OK: {target.name} ({target.stat().st_size} bytes)",flush=True)
  if target.suffix==".sqlite":return target
+ print(f"Opening ZIP archive: {target}",flush=True)
  with zipfile.ZipFile(target) as z:
   members=[m for m in z.infolist() if not m.is_dir() and m.filename.lower().endswith((".sqlite",".sqlite3",".jsonocel",".json",".xmlocel",".xml"))]
   # Prefer the native SQLite format, then OCEL2 XML, then JSON.
@@ -61,10 +64,12 @@ def acquire(name,outdir):
   if member.file_size>2_000_000_000:raise ValueError("Oversized decompressed OCEL")
   extracted=outdir/Path(member.filename).name
   with z.open(member) as a, extracted.open("wb") as b:shutil.copyfileobj(a,b)
+ print(f"Extracted OCEL source: {extracted.name} ({extracted.stat().st_size} bytes)",flush=True)
  if extracted.suffix.lower() in (".sqlite",".sqlite3"):return extracted
  try:import pm4py
  except ImportError as e:raise RuntimeError("Install pm4py to convert JSON/XML OCEL 2.0") from e
  ext=extracted.suffix.lower()
+ print(f"Converting OCEL file using pm4py, format={ext}",flush=True)
  if ext in (".json",".jsonocel"):ocel=pm4py.read_ocel2_json(str(extracted))
  elif ext in (".xml",".xmlocel"):ocel=pm4py.read_ocel2_xml(str(extracted))
  else:raise ValueError("Unknown OCEL format")
