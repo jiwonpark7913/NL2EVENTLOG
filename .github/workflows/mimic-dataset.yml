@@ -59,6 +59,10 @@ jobs:
           print(dd['statistics'])
           PY
           git diff --check
+      - name: Audit MIMIC SQLite, dictionary, schema and references
+        run: |
+          set -euo pipefail
+          python -u tools/audit_benchmark.py --dataset mimic --report datasets/mimic/review/integrity_audit.json
       - name: Commit generated datasets and diagrams
         run: |
           set -euo pipefail
@@ -73,7 +77,7 @@ jobs:
               db.unlink()
               print("SQLite exceeds GitHub 100 MB file limit; committed database.sqlite.gz")
           PY
-          git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database
+          git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database datasets/mimic/review/integrity_audit.json
           if ! git diff --cached --quiet; then
             git commit -m 'data: materialize public MIMIC-IV Demo'
             # Other workflows/users may push after checkout. Rebase the generated
