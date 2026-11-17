@@ -5,7 +5,7 @@ BPI 2019 release: https://zenodo.org/records/22663565
 Order Management: https://zenodo.org/records/8428112
 Never treat the transformed relational schema as a recovered original enterprise DB.
 """
-import argparse,hashlib,json,urllib.request,zipfile,shutil,tempfile,time
+import argparse,hashlib,json,urllib.request,zipfile,shutil,tempfile,time,subprocess,sys
 from pathlib import Path
 
 RECORDS={"bpi2019":("22663565","BPIC19_ocel2.zip","06d7911d54db9a9f1ca33ad991488676"),
@@ -61,7 +61,16 @@ def acquire(name,outdir):
   if not members:raise ValueError(f"No supported OCEL 2.0 file in zip. Members: {z.namelist()[:40]}")
   print(f"Archive members: {[m.filename for m in members[:10]]}",flush=True)
   member=members[0]
-  if member.file_size>2_000_000_000:raise ValueError("Oversized decompressed OCEL")
+  # Large OCEL 2.0 JSON files must not be extracted into RAM or fed to PM4Py.
+  # Stream directly from the validated ZIP, avoiding >2 GB uncompressed JSON.
+  if Path(member.filename).suffix.lower() in (".json", ".jsonocel"):
+   output=outdir/(name+".sqlite")
+   print(f"Streaming {member.filename} ({member.file_size} uncompressed bytes) into SQLite",flush=True)
+   subprocess.run([sys.executable,str(Path(__file__).with_name("stream_ocel_json.py")),
+                   "--archive",str(target),"--member",member.filename,"--output",str(output)],check=True)
+   return output
+  if member.file_size>2_000_000_000:
+   raise ValueError("Oversized non-JSON OCEL; streaming decoder not implemented")
   extracted=outdir/Path(member.filename).name
   with z.open(member) as a, extracted.open("wb") as b:shutil.copyfileobj(a,b)
  print(f"Extracted OCEL source: {extracted.name} ({extracted.stat().st_size} bytes)",flush=True)
