@@ -77,30 +77,31 @@ def enrich(path,strict=False):
   "publisher":"MIT Laboratory for Computational Physiology"}
  for table,record in sorted(tables.items()):
   url=page_url(table)
-  record["documentation_url"]=url
-  record["definition_source"]=url
   record["source_module"]="hosp" if table in HOSP else "icu"
   record.setdefault("definition",None)
   record.setdefault("foreign_keys",[])
+  record.pop("documentation_url",None)
+  record.pop("definition_source",None)
   cols=record["columns"];stats["total_columns"]+=len(cols)
   try:
    summary,definitions,source_types=parse(fetch(url),[c["name"] for c in cols])
    if summary:record["definition"]=summary;stats["documented_tables"]+=1
    for col in cols:
     name=col["name"].lower()
+    for extra in ("definition_source","source_type_source","temporal_role","timestamp_semantics"):
+     col.pop(extra,None)
     col["definition"]=definitions.get(name) or col.get("definition") or None
-    col["definition_source"]=url if definitions.get(name) else col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
     col["source_type"]=source_types.get(name) or col.get("source_type")
-    col["source_type_source"]=url if source_types.get(name) else col.get("source_type_source")
     if definitions.get(name):stats["documented_columns"]+=1
    missing=[c["name"] for c in cols if not c["definition"]]
    if missing:stats["unmatched_columns"][table]=missing
   except Exception as exc:
    stats["missing_pages"].append({"table":table,"url":url,"reason":str(exc)})
    for col in cols:
+    for extra in ("definition_source","source_type_source","temporal_role","timestamp_semantics"):
+     col.pop(extra,None)
     col["definition"]=col.get("definition") or None
-    col["definition_source"]=col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
     col["source_type"]=col.get("source_type")
   time.sleep(0.15)
@@ -117,7 +118,7 @@ def enrich(path,strict=False):
      "Unknown descriptions are left blank; inferred links are not declared FKs.", ""]
  for name,meta in sorted(tables.items()):
   md.extend(["## "+name, "",
-   "Official table documentation: ["+meta["documentation_url"]+"]("+meta["documentation_url"]+")", "",
+   "Official table documentation: ["+page_url(name)+"]("+page_url(name)+")", "",
    (meta.get("definition") or "*No verified table summary*"), "",
    "| Column | Native type | SQLite type | Description |",
    "|---|---|---|---|"])
