@@ -103,7 +103,9 @@ def main(src,dest):
  for name, in out.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"):
   dictionary["tables"][name]={"columns":[{"name":c[1],"type":c[2]} for c in out.execute(f"PRAGMA table_info({quote(name)})")],
                                "row_count":out.execute(f"SELECT COUNT(*) FROM {quote(name)}").fetchone()[0]}
- (dest/"input/data_dictionary.json").write_text(json.dumps(dictionary,indent=2)+"\n")
+ from add_dictionary_samples import add_samples,write_dictionary
+ add_samples(dictionary,db)
+ write_dictionary(dest/"input/data_dictionary.json",dictionary)
  # Independent reference: per-object type, every directly linked event. Do not infer
  # transitive propagation through O2O relations; that is a separate policy decision.
  event_by_id=dict(events);object_by_id=dict(objects)
