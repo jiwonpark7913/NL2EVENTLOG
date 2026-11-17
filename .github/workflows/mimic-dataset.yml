@@ -73,34 +73,41 @@ jobs:
           import gzip,shutil
           db=Path("datasets/mimic/input/database.sqlite")
           if db.stat().st_size > 90_000_000:
-              with db.open("rb") as src,gzip.open(str(db)+".gz","wb",compresslevel=6) as dst:shutil.copyfileobj(src,dst)
+              compressed=Path(str(db)+".gz")
+              # Stable gzip header: default gzip.open() embeds a changing mtime,
+              # making an unchanged source DB appear different on every run.
+              with db.open("rb") as src,compressed.open("wb") as raw:
+                  with gzip.GzipFile(filename="",mode="wb",fileobj=raw,compresslevel=6,mtime=0) as dst:
+                      shutil.copyfileobj(src,dst)
               db.unlink()
-              print("SQLite exceeds GitHub 100 MB file limit; committed database.sqlite.gz")
+              print("SQLite exceeds GitHub 100 MB file limit; wrote deterministic database.sqlite.gz")
           PY
-          git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database datasets/mimic/review/integrity_audit.json
-          if ! git diff --cached --quiet; then
+          # No rebase of generated binary artifacts: it creates conflicts even
+          # if the only remote changes are to unrelated workflow/document files.
+          # Adopt the latest remote commit as parent, preserving this job's
+          # generated artifacts in the working tree, then stage only the
+          # dataset outputs. A rejected push triggers a fresh safe retry.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --mixed "origin/${GITHUB_REF_NAME}"
+            git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database datasets/mimic/review/integrity_audit.json
+            if git diff --cached --quiet; then
+              echo "Generated MIMIC artifacts match the latest remote snapshot; nothing to publish."
+              exit 0
+            fi
+            git diff --cached --check
             git commit -m 'data: materialize public MIMIC-IV Demo'
-            # Other workflows/users may push after checkout. Rebase the generated
-            # artifact commit on the latest main, then retry a bounded number
-            # of times. Never force-push or discard remote commits.
-            for attempt in 1 2 3 4 5; do
-              git fetch origin "${GITHUB_REF_NAME}"
-              git rebase "origin/${GITHUB_REF_NAME}" || {
-                git rebase --abort || true
-                echo "::error::Generated artifacts conflict with a newer remote commit"
-                exit 1
-              }
-              if git push origin "HEAD:${GITHUB_REF_NAME}"; then
-                echo "MIMIC dataset artifacts published successfully."
-                break
-              fi
-              if [ "$attempt" -eq 5 ]; then
-                echo "::error::Failed to push after five safe rebase retries"
-                exit 1
-              fi
-              sleep "$((attempt * 2))"
-            done
-          fi
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "MIMIC dataset artifacts published successfully."
+              exit 0
+            fi
+            if [ "$attempt" -eq 5 ]; then
+              echo "::error::Failed to push artifacts after 5 attempts without force push."
+              exit 1
+            fi
+            echo "Remote changed during artifact upload; retrying against latest main."
+            sleep "$((attempt * 2))"
+          done
       - name: Preserve MIMIC integrity audit on failure
         if: always()
         uses: actions/upload-artifact@v4
