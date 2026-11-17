@@ -137,7 +137,11 @@ def build(cache):
         for c in t['columns']:
             if not c['definition']:issues.append('Missing column description: '+t['table']+'.'+c['name'])
     dictionary=dict(name='Microsoft AdventureWorks OLTP',language='en',dbms='SQLite',description='Microsoft sample business data, converted from the official OLTP installation exports; not observed enterprise transactions.',tables=list(tables.values()))
-    write_json(BASE/'input/data_dictionary.json',dictionary)
+    from sys import path as import_path
+    import_path.insert(0,str(BASE.parent.parent/'tools'))
+    from add_dictionary_samples import add_samples,write_dictionary
+    add_samples(dictionary,db)
+    write_dictionary(BASE/'input/data_dictionary.json',dictionary)
     (BASE/'evaluation/schema.sql').write_text('\n\n'.join(ddls)+'\n')
     manifest=dict(upstream_repository='microsoft/sql-server-samples',upstream_commit=COMMIT,upstream_path=PREFIX,table_count=len(tables),row_count=sum(counts.values()),row_counts=counts,foreign_key_count=sum(len(t['foreign_keys']) for t in tables.values()),integrity_check=integrity,foreign_key_violations=fk,missing_descriptions=issues,sqlite_sha256=hashlib.sha256(db.read_bytes()).hexdigest(),dictionary_sha256=hashlib.sha256((BASE/'input/data_dictionary.json').read_bytes()).hexdigest(),source_files=[dict(name=f['name'],git_blob_sha=f['sha']) for f in files])
     write_json(BASE/'source/provenance.json',manifest)
