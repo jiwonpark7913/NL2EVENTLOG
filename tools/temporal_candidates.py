@@ -9,11 +9,24 @@ from __future__ import annotations
 import json,re
 from pathlib import Path
 
-_TEMPORAL=re.compile(r"\b(?:timestamp(?:tz)?|timestamptz|datetime(?:2|offset)?|smalldatetime|date|time(?:tz)?|timetz)\b",re.I)
+# Parse the leading SQL type token; modifiers such as (0), NOT NULL and
+# WITH/WITHOUT TIME ZONE are not part of the base type.
+_TEMPORAL_BASE_TYPES = {
+    "DATE", "TIME", "TIMETZ", "TIMESTAMP", "TIMESTAMPTZ",
+    "DATETIME", "DATETIME2", "DATETIMEOFFSET", "SMALLDATETIME",
+}
+
 def temporal_type(source_type):
-    if not source_type:return None
-    normalized=str(source_type).replace("WITH TIME ZONE","").replace("WITHOUT TIME ZONE","")
-    return bool(_TEMPORAL.search(normalized))
+    if source_type is None or not str(source_type).strip():
+        return None
+    # SQL Server examples: [datetime] NOT NULL / [datetime2](7).
+    # PostgreSQL examples: TIMESTAMP(0), timestamp without time zone.
+    declaration = str(source_type).strip()
+    match = re.match(r"^\\[?([A-Za-z_][A-Za-z_0-9]*)\\]?", declaration)
+    if match is None:
+        return None
+    return match.group(1).upper() in _TEMPORAL_BASE_TYPES
+
 def columns(dictionary):
     source=dictionary["tables"]
     return [(name,t,c) for name,t in source.items() for c in t.get("columns",[])] if isinstance(source,dict) else [
