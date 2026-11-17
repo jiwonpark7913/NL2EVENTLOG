@@ -42,6 +42,23 @@ def audit_mimic(report,root):
     expected=[col["name"] for col in meta["columns"]]
     check(report,"mimic.columns."+name,cols==expected)
    check(report,"mimic.total_rows",total==dd["statistics"]["rows"],f"actual={total}")
+   documented=sum(bool(col.get("definition")) for t in dd["tables"].values() for col in t["columns"])
+   total_columns=sum(len(t["columns"]) for t in dd["tables"].values())
+   check(report,"mimic.documented_columns",documented>0,
+         f"with verified semantic definitions={documented}/{total_columns}")
+   check(report,"mimic.documentation_sources",
+         all(t.get("documentation_url") for t in dd["tables"].values()),
+         "table source URLs must be attached to each MIMIC table")
+   invalid=[(name,col["name"]) for name,t in dd["tables"].items()
+            for col in t["columns"] if col.get("definition") and not col.get("definition_source")]
+   check(report,"mimic.definition_provenance",not invalid,
+         f"definitions without source URLs={invalid[:10]}")
+   standardized=p/"docs/data_dictionary.standard.json"
+   if standardized.exists():
+    norm=json.loads(standardized.read_text())
+    check(report,"mimic.standard_catalog",
+          {t["table"] for t in norm["tables"]}==tables,
+          "canonical projection must cover all imported tables")
    if "patients" in tables:
     check(report,"mimic.patient_count",c.execute("SELECT COUNT(*) FROM patients").fetchone()[0]==100)
    # Candidate links are checked for invalid non-null references. MIMIC CSVs
