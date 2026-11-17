@@ -28,13 +28,20 @@ jobs:
           python -u tests/test_mimic_builder.py
       - name: Download official public MIMIC demo
         run: |
-          mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
           set -euo pipefail
-          python -m pip install 'physionet==0.3.0'
-          physionet download --help
-          physionet download mimic-iv-demo --version 2.2 --output "$RUNNER_TEMP/mimic-iv-demo"
-          find "$RUNNER_TEMP/mimic-iv-demo" -type f \( -name '*.csv.gz' -o -name '*.csv' \) | sort | head -35
-          test "$(find "$RUNNER_TEMP/mimic-iv-demo" -type f \( -name '*.csv.gz' -o -name '*.csv' \) | wc -l)" -ge 20
+          mkdir -p "$RUNNER_TEMP/mimic-download"
+          cd "$RUNNER_TEMP/mimic-download"
+          # PhysioNet explicitly documents recursive wget for the public Demo v2.2.
+          wget --recursive --no-parent --no-host-directories --cut-dirs=3 \
+            --continue --tries=4 --timeout=90 \
+            https://physionet.org/files/mimic-iv-demo/2.2/
+          echo "Downloaded CSV files:"
+          find . -type f \( -name '*.csv.gz' -o -name '*.csv' \) | sort
+          test "$(find . -type f \( -name '*.csv.gz' -o -name '*.csv' \) | wc -l)" -ge 20
+          test -f SHA256SUMS.txt
+          sha256sum -c SHA256SUMS.txt
+          mkdir -p "$RUNNER_TEMP/mimic-iv-demo"
+          cp -a . "$RUNNER_TEMP/mimic-iv-demo/"
       - name: Build SQLite and review artifacts
         run: |
           set -euo pipefail
