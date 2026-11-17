@@ -5,6 +5,10 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 from temporal_candidates import temporal_type,detect
 def main():
  assert temporal_type("TIMESTAMP NOT NULL") is True
+ assert temporal_type("[datetime] NOT NULL") is True
+ assert temporal_type("[datetime2](7)") is True
+ assert temporal_type("TIME WITHOUT TIME ZONE") is True
+ assert temporal_type("VARCHAR(50)") is False
  assert temporal_type("TIMESTAMP(0)") is True
  assert temporal_type("timestamp without time zone") is True
  assert temporal_type("DATE") is True
