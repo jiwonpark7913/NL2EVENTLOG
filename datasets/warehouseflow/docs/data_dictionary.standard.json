@@ -5,13 +5,11 @@
   "language": "en",
   "dbms": "SQLite",
   "timezone": "UTC",
-  "documentation_sources": {},
   "tables": [
     {
       "table": "warehouse",
       "metadata_id": "warehouseflow.warehouse",
       "definition": "Warehouse identity, capacity and database maintenance times. These maintenance times do not document warehouse work.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -25,12 +23,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -39,12 +35,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "English warehouse name.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -53,12 +47,10 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Maximum stored stock units for the simulated warehouse.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "stock units"
         },
         {
@@ -67,12 +59,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "UTC database record-creation time, not a warehouse business action.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -81,12 +71,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "UTC database maintenance time, not a warehouse business action.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
@@ -95,7 +83,6 @@
       "table": "goods",
       "metadata_id": "warehouseflow.goods",
       "definition": "Goods identity and product category; NORMAL/FRAGILE describe the goods.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -109,12 +96,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique goods identity; foreign references identify the goods concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -123,12 +108,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "English goods name.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -137,12 +120,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "NORMAL or FRAGILE product category, not an action.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -151,7 +132,6 @@
       "table": "worker",
       "metadata_id": "warehouseflow.worker",
       "definition": "Worker identity and job role. role_code identifies a role, not an action performed.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -165,12 +145,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -179,12 +157,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "English worker name.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -193,12 +169,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "HANDLER or SUPERVISOR worker role, not the action performed.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -207,12 +181,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "UTC database maintenance time, not a warehouse business action.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
@@ -221,7 +193,6 @@
       "table": "work_code",
       "metadata_id": "warehouseflow.work_code",
       "definition": "Business meanings of codes within the specified code family.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -236,12 +207,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -250,12 +219,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Business code within the stated family.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 2,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -264,12 +231,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "English business meaning of the code in its family.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -278,7 +243,6 @@
       "table": "receiving_request",
       "metadata_id": "warehouseflow.receiving_request",
       "definition": "One submitted request for receipt of one goods type into a warehouse.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -292,12 +256,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receiving-request identity; foreign references identify the same request.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -306,7 +268,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -318,7 +279,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -327,7 +287,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique goods identity; foreign references identify the goods concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -339,7 +298,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -348,12 +306,10 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Positive number of goods units requested or moved.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "stock units"
         },
         {
@@ -362,12 +318,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC receiving-request submission time.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
@@ -376,7 +330,6 @@
       "table": "goods_receipt",
       "metadata_id": "warehouseflow.goods_receipt",
       "definition": "One actual receipt registration for a receiving request. condition_code describes goods condition, not the receipt action kind.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -390,12 +343,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receipt-registration identity; on a stock movement, references its receipt registration.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -404,7 +355,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receiving-request identity; foreign references identify the same request.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -416,7 +366,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -425,7 +374,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Worker who registered the actual receipt.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -437,7 +385,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -446,12 +393,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC receipt-registration time.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -460,12 +405,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "GOOD or DAMAGED condition observed when goods were received. Either value denotes the same kind of receipt registration.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -474,7 +417,6 @@
       "table": "dispatch_order",
       "metadata_id": "warehouseflow.dispatch_order",
       "definition": "One request to dispatch one goods type, with separate actual request and approval times. Priority describes urgency.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -488,12 +430,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -502,7 +442,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -514,7 +453,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -523,7 +461,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique goods identity; foreign references identify the goods concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -535,7 +472,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -544,12 +480,10 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Positive number of goods units requested or moved.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "stock units"
         },
         {
@@ -558,12 +492,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "NORMAL or URGENT dispatch urgency; does not identify the action performed.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -572,12 +504,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC dispatch-request submission time.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -586,12 +516,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC dispatch-approval time; NULL if not yet approved.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
@@ -600,7 +528,6 @@
       "table": "warehouse_audit",
       "metadata_id": "warehouseflow.warehouse_audit",
       "definition": "One stock-audit occurrence, its actual start and completion, and its outcome. PASS/RECOUNT describes the result of the same audit kind.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -614,12 +541,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique stock-audit occurrence identifier.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -628,7 +553,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -640,7 +564,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -649,7 +572,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -661,7 +583,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -670,12 +591,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC start time of this audit or work occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -684,12 +603,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC completion time of this audit or work occurrence; NULL if unfinished.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -698,12 +615,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "PASS or RECOUNT outcome of a completed stock audit, or PENDING for an unfinished audit.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -712,7 +627,6 @@
       "table": "goods_movement",
       "metadata_id": "warehouseflow.goods_movement",
       "definition": "One completed inbound or outbound stock movement; each row records when the movement actually occurred.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -726,12 +640,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique stock-movement occurrence identifier.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -740,7 +652,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique warehouse identity; foreign references identify the warehouse concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -752,7 +663,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -761,7 +671,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique goods identity; foreign references identify the goods concerned.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -773,7 +682,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -782,12 +690,10 @@
           "sql_type": "INTEGER",
           "source_type": null,
           "definition": "Positive number of goods units requested or moved.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "stock units"
         },
         {
@@ -796,7 +702,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receipt-registration identity; on a stock movement, references its receipt registration.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
@@ -808,7 +713,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -817,7 +721,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
@@ -829,7 +732,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -838,7 +740,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -850,7 +751,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -859,7 +759,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Physical business-action code in MOVEMENT context; I = Receipt into warehouse stock; O = Dispatch from warehouse stock. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -871,7 +770,6 @@
               "position": 1
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -880,12 +778,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC time of this completed stock movement or request action.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
@@ -894,7 +790,6 @@
       "table": "request_action",
       "metadata_id": "warehouseflow.request_action",
       "definition": "One checking, holding or releasing action performed on a receiving request; repeated checking actions retain separate records.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -908,12 +803,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receiving-request action occurrence identifier.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -922,7 +815,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receiving-request identity; foreign references identify the same request.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -934,7 +826,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -943,7 +834,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -955,7 +845,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -964,7 +853,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -976,7 +864,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -985,7 +872,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Physical business-action code in REQUEST context; A = Check receiving request; H = Hold receiving request; R = Release receiving request. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -997,7 +883,6 @@
               "position": 1
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1006,12 +891,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC time of this completed stock movement or request action.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
@@ -1020,7 +903,6 @@
       "table": "warehouse_task_history",
       "metadata_id": "warehouseflow.warehouse_task_history",
       "definition": "One putaway, picking or packing work occurrence, with actual start and optional completion. A repeated attempt has a new task_id.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -1034,12 +916,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique task-attempt identifier; repeat work has a new identifier.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1048,7 +928,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receiving-request identity; foreign references identify the same request.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
@@ -1060,7 +939,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1069,7 +947,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
@@ -1081,7 +958,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1090,7 +966,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -1102,7 +977,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1111,7 +985,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -1123,7 +996,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1132,7 +1004,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Physical business-action code in TASK context; A = Putaway work; K = Picking work; B = Packing work. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -1144,7 +1015,6 @@
               "position": 1
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1153,12 +1023,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC start time of this audit or work occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -1167,12 +1035,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC completion time of this audit or work occurrence; NULL if unfinished.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -1181,12 +1047,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "OK or RETRY result of a completed task attempt, or PENDING while unfinished; the outcome does not change the kind of work.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         }
       ]
@@ -1195,7 +1059,6 @@
       "table": "handling_history",
       "metadata_id": "warehouseflow.handling_history",
       "definition": "One unloading or loading occurrence, with actual start and optional completion. A repeated attempt has a new handling_id.",
-      "documentation_url": null,
       "source_schema": null,
       "row_grain": null,
       "primary_key": [
@@ -1209,12 +1072,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique handling-attempt identifier.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 1,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1223,7 +1084,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique receiving-request identity; foreign references identify the same request.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
@@ -1235,7 +1095,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1244,7 +1103,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique dispatch-order identity; foreign references identify the same dispatch request.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
@@ -1256,7 +1114,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1265,7 +1122,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Unique worker identity; on a work or audit record, identifies the worker performing it.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -1277,7 +1133,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1286,7 +1141,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Business context for the code. Each work table has one fixed family enforced by CHECK.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -1298,7 +1152,6 @@
               "position": 0
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1307,7 +1160,6 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Physical business-action code in HANDLING context; U = Unloading work; L = Loading work. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
@@ -1319,7 +1171,6 @@
               "position": 1
             }
           ],
-          "temporal_role": null,
           "unit": null
         },
         {
@@ -1328,12 +1179,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC start time of this audit or work occurrence.",
-          "definition_source": null,
           "source_references": [],
           "required": true,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         },
         {
@@ -1342,12 +1191,10 @@
           "sql_type": "TEXT",
           "source_type": null,
           "definition": "Actual UTC completion time of this audit or work occurrence; NULL if unfinished.",
-          "definition_source": null,
           "source_references": [],
           "required": false,
           "primary_key_position": 0,
           "foreign_keys": [],
-          "temporal_role": null,
           "unit": "UTC"
         }
       ]
