@@ -21,7 +21,16 @@ GROUPS={
  "ICU stay and observations":{"icustays","chartevents","inputevents","outputevents","procedureevents","datetimeevents","ingredientevents","caregiver"},
  "Reference dictionaries":{"d_items","d_labitems","d_icd_diagnoses","d_icd_procedures","d_hcpcs","provider"}}
 REFS={"hadm_id":"admissions","subject_id":"patients","stay_id":"icustays",
-      "itemid":"d_items","caregiver_id":"caregiver"}
+      "caregiver_id":"caregiver"}
+# A shared column name does not establish an FK to an arbitrary codebook.
+# In particular, hospital lab itemid is NOT an ICU d_items itemid.
+CONTEXT_REFS={"labevents":{"itemid":"d_labitems"},
+              "chartevents":{"itemid":"d_items"},
+              "inputevents":{"itemid":"d_items"},
+              "outputevents":{"itemid":"d_items"},
+              "procedureevents":{"itemid":"d_items"},
+              "datetimeevents":{"itemid":"d_items"},
+              "ingredientevents":{"itemid":"d_items"}}
 def q(s):return '"'+s.replace('"','""')+'"'
 def temporal(name):
  n=name.lower()
@@ -120,8 +129,9 @@ def build(src,make_png=False):
  refs=[]
  for t,columns in cols.items():
   for c in columns:
-   if c in REFS and REFS[c]!=t and REFS[c] in cols and c in cols[REFS[c]]:
-    refs.append((t,REFS[c],c))
+   target=CONTEXT_REFS.get(t,{}).get(c,REFS.get(c))
+   if target and target!=t and target in cols and c in cols[target]:
+    refs.append((t,target,c))
  dd["candidate_relationships"]=[{"source_table":a,"target_table":b,"column":c,"status":"inferred_not_declared"} for a,b,c in refs]
  dd["statistics"]={"tables":len(files),"rows":count,"columns":sum(map(len,cols.values()))}
  (ROOT/"input/data_dictionary.json").write_text(json.dumps(dd,indent=2,ensure_ascii=False)+"\n")
@@ -138,9 +148,17 @@ def build(src,make_png=False):
  model=ET.SubElement(diagram,"mxGraphModel",page="1",pageWidth=str(w),pageHeight=str(h))
  root=ET.SubElement(model,"root");ET.SubElement(root,"mxCell",id="0");ET.SubElement(root,"mxCell",id="1",parent="0")
  for i,(t,(x,y,height)) in enumerate(coords.items(),start=2):
-  label="<b>"+html.escape(t)+"</b><hr/>"+"<br/>".join(html.escape(c) for c in cols[t])
-  cell=ET.SubElement(root,"mxCell",id=str(i),value=label,style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;align=left;verticalAlign=top;spacing=9;",vertex="1",parent="1")
+  def colored(c):
+   color={"temporal":"#bae6fd","maintenance":"#fde68a","other":"#ffffff"}[temporal(c)]
+   return '<div style="background-color:'+color+';padding:2px 6px">'+html.escape(c)+'</div>'
+  label="<b>"+html.escape(t)+"</b><hr/>"+"".join(colored(c) for c in cols[t])
+  cell=ET.SubElement(root,"mxCell",id="table_"+t,value=label,style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;align=left;verticalAlign=top;spacing=9;",vertex="1",parent="1")
   ET.SubElement(cell,"mxGeometry",x=str(x),y=str(y),width="450",height=str(height),**{"as":"geometry"})
+ for i,(child,parent,key) in enumerate(refs):
+  edge=ET.SubElement(root,"mxCell",id=f"link_{i}",value=key+" → "+parent,
+     style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=block;html=1;strokeColor=#94a3b8;",
+     edge="1",parent="1",source="table_"+child,target="table_"+parent)
+  ET.SubElement(edge,"mxGeometry",relative="1",**{"as":"geometry"})
  ET.ElementTree(graph).write(ROOT/"docs/schema.drawio",encoding="utf-8",xml_declaration=True)
  # Offline scrollable viewer. The embedded SVG is the same source as the PNG/draw.io layout.
  viewer="""<!doctype html><meta charset="utf-8"><title>MIMIC-IV Schema Explorer</title>
