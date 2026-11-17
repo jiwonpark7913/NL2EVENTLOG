@@ -33,8 +33,13 @@ def acquire(name,outdir):
  if digest(target,"md5")!=md5:raise ValueError("Downloaded source hash differs from pinned Zenodo release")
  if target.suffix==".sqlite":return target
  with zipfile.ZipFile(target) as z:
-  members=[m for m in z.infolist() if not m.is_dir() and m.filename.lower().endswith((".sqlite",".sqlite3",".jsonocel",".json",".xml"))]
-  if len(members)!=1:raise ValueError(f"Expected one OCEL file in zip, got: {[m.filename for m in members]}")
+  members=[m for m in z.infolist() if not m.is_dir() and m.filename.lower().endswith((".sqlite",".sqlite3",".jsonocel",".json",".xmlocel",".xml"))]
+  # Prefer the native SQLite format, then OCEL2 XML, then JSON.
+  priority={".sqlite":0,".sqlite3":0,".xmlocel":1,".xml":2,".jsonocel":3,".json":4}
+  members=[m for m in members if not m.filename.startswith("__MACOSX/") and not Path(m.filename).name.startswith("._")]
+  members.sort(key=lambda m:(priority.get(Path(m.filename).suffix.lower(),9),len(m.filename)))
+  if not members:raise ValueError(f"No supported OCEL 2.0 file in zip. Members: {z.namelist()[:40]}")
+  print(f"Archive members: {[m.filename for m in members[:10]]}",flush=True)
   member=members[0]
   if member.file_size>2_000_000_000:raise ValueError("Oversized decompressed OCEL")
   extracted=outdir/Path(member.filename).name
@@ -44,9 +49,10 @@ def acquire(name,outdir):
  except ImportError as e:raise RuntimeError("Install pm4py to convert JSON/XML OCEL 2.0") from e
  ext=extracted.suffix.lower()
  if ext in (".json",".jsonocel"):ocel=pm4py.read_ocel2_json(str(extracted))
- elif ext==".xml":ocel=pm4py.read_ocel2_xml(str(extracted))
+ elif ext in (".xml",".xmlocel"):ocel=pm4py.read_ocel2_xml(str(extracted))
  else:raise ValueError("Unknown OCEL format")
  output=outdir/(name+".sqlite")
+ print(f"Imported OCEL: {len(ocel.events)} events, {len(ocel.objects)} objects",flush=True)
  pm4py.write_ocel2_sqlite(ocel,str(output))
  return output
 if __name__=="__main__":
