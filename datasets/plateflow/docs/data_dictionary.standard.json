@@ -1,0 +1,1238 @@
+{
+  "dictionary_schema_version": "NL2EVENTLOG-DD-v1",
+  "dataset_id": "plateflow",
+  "name": "PlateFlow New",
+  "language": "en",
+  "dbms": "SQLite",
+  "timezone": "UTC",
+  "documentation_sources": {},
+  "tables": [
+    {
+      "table": "slab_material",
+      "metadata_id": "plateflow.slab_material",
+      "definition": "Slab identity, steel grade and actual receipt, verification and release times.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "slab_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.slab_material.slab_id",
+          "name": "slab_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique slab identifier; on a plan or mother record, identifies its source slab.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.slab_material.charge_id",
+          "name": "charge_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Steelmaking charge identifier recorded for material genealogy; no casting time is recorded here.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.slab_material.steel_grade",
+          "name": "steel_grade",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Synthetic steel-grade category G1 or G2.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.slab_material.received_at",
+          "name": "received_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time at which the slab was received.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.slab_material.verified_at",
+          "name": "verified_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time at which the slab identity was verified; NULL if not yet verified.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.slab_material.released_at",
+          "name": "released_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "planned_rolling_instruction",
+      "metadata_id": "plateflow.planned_rolling_instruction",
+      "definition": "One rolling plan per slab, its scheduled reheating time and actual submission, approval and release times.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "plan_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.planned_rolling_instruction.plan_id",
+          "name": "plan_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique rolling-plan identifier; on an instruction, references its plan.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.planned_rolling_instruction.slab_id",
+          "name": "slab_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique slab identifier; on a plan or mother record, identifies its source slab.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "slab_material",
+              "column": "slab_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.planned_rolling_instruction.planned_reheat_at",
+          "name": "planned_reheat_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Scheduled UTC reheating time; a schedule does not establish that reheating occurred.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.planned_rolling_instruction.submitted_at",
+          "name": "submitted_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC rolling-plan submission time.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.planned_rolling_instruction.approved_at",
+          "name": "approved_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC rolling-plan approval time; NULL if not yet approved.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.planned_rolling_instruction.released_at",
+          "name": "released_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "rolling_instruction",
+      "metadata_id": "plateflow.rolling_instruction",
+      "definition": "An issued rolling instruction for an approved plan.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "instruction_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.rolling_instruction.instruction_id",
+          "name": "instruction_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique rolling-instruction identifier; on a mother record, references the instruction allocating it.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_instruction.plan_id",
+          "name": "plan_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique rolling-plan identifier; on an instruction, references its plan.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "planned_rolling_instruction",
+              "column": "plan_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_instruction.issued_at",
+          "name": "issued_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC rolling-instruction issue time.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "as_rolled_material",
+      "metadata_id": "plateflow.as_rolled_material",
+      "definition": "Allocated mother-material identity and genealogy for a rolling instruction; created_at and updated_at describe database maintenance, not production completion.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "material_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.as_rolled_material.material_id",
+          "name": "material_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique mother-material identifier; on a work record, references the mother material processed.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.as_rolled_material.plate_no",
+          "name": "plate_no",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique business plate number within this table; mother and piece numbers have separate ranges.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.as_rolled_material.slab_id",
+          "name": "slab_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique slab identifier; on a plan or mother record, identifies its source slab.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "slab_material",
+              "column": "slab_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.as_rolled_material.instruction_id",
+          "name": "instruction_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique rolling-instruction identifier; on a mother record, references the instruction allocating it.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "rolling_instruction",
+              "column": "instruction_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.as_rolled_material.created_at",
+          "name": "created_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "UTC database record-creation time; this field does not document a production action.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.as_rolled_material.updated_at",
+          "name": "updated_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "UTC database maintenance time; this field does not document a production action.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "process_code",
+      "metadata_id": "plateflow.process_code",
+      "definition": "Business code meanings within each manufacturing process group. The same code text can have a different meaning in another group.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "process_group",
+        "code"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.process_code.process_group",
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.process_code.code",
+          "name": "code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Business code within a process group; the pair (process_group,code) uniquely identifies its meaning.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 2,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.process_code.meaning",
+          "name": "meaning",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "English business meaning of the code in the specified process group.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "equipment",
+      "metadata_id": "plateflow.equipment",
+      "definition": "Equipment identifiers, names and system-maintenance times. Each equipment_code identifies a machine, not a manufacturing step.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "equipment_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.equipment.equipment_id",
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.equipment.equipment_code",
+          "name": "equipment_code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Human-readable machine code; identifies the machine, not the work performed.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.equipment.equipment_name",
+          "name": "equipment_name",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "English equipment-unit name.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.equipment.created_at",
+          "name": "created_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "UTC database record-creation time; this field does not document a production action.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.equipment.updated_at",
+          "name": "updated_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "UTC database maintenance time; this field does not document a production action.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "furnace_operation_history",
+      "metadata_id": "plateflow.furnace_operation_history",
+      "definition": "Actual furnace work occurrences for mother materials, retaining repeat work and unfinished intervals.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "operation_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.furnace_operation_history.operation_id",
+          "name": "operation_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique work-occurrence identifier within this table; repeat work receives a new identifier.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.furnace_operation_history.material_id",
+          "name": "material_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique mother-material identifier; on a work record, references the mother material processed.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "as_rolled_material",
+              "column": "material_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.furnace_operation_history.process_group",
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "process_group",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.furnace_operation_history.operation_code",
+          "name": "operation_code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Physical business-action code in FURNACE context; C = Furnace charging; A = Furnace heating; D = Furnace discharge. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.furnace_operation_history.equipment_id",
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "equipment",
+              "column": "equipment_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.furnace_operation_history.started_at",
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.furnace_operation_history.finished_at",
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "rolling_operation_history",
+      "metadata_id": "plateflow.rolling_operation_history",
+      "definition": "Actual rolling phase occurrences for mother materials, retaining repeat work and unfinished intervals.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "operation_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.rolling_operation_history.operation_id",
+          "name": "operation_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique work-occurrence identifier within this table; repeat work receives a new identifier.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_operation_history.material_id",
+          "name": "material_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique mother-material identifier; on a work record, references the mother material processed.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "as_rolled_material",
+              "column": "material_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_operation_history.process_group",
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "process_group",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_operation_history.phase_code",
+          "name": "phase_code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Physical business-action code in ROLLING context; R = Rough rolling; F = Finish rolling. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_operation_history.equipment_id",
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "equipment",
+              "column": "equipment_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.rolling_operation_history.started_at",
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.rolling_operation_history.finished_at",
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "plate_material",
+      "metadata_id": "plateflow.plate_material",
+      "definition": "Individual plate-piece identity and mother-material genealogy, with actual identification, release and packing times.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "plate_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.plate_material.plate_id",
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.plate_material.plate_no",
+          "name": "plate_no",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique business plate number within this table; mother and piece numbers have separate ranges.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.plate_material.mother_material_id",
+          "name": "mother_material_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Mother material from which the individual plate piece was derived.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "as_rolled_material",
+              "column": "material_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.plate_material.identified_at",
+          "name": "identified_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time at which the plate piece was identified after rolling.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.plate_material.released_at",
+          "name": "released_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC release time for the slab, rolling plan or plate piece described by this table; NULL if not yet released.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.plate_material.packed_at",
+          "name": "packed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC packing-completion time; NULL if not yet packed.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "finishing_operation_history",
+      "metadata_id": "plateflow.finishing_operation_history",
+      "definition": "Actual finishing work occurrences for individual plate pieces, including repeated heat treatment after rework.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "operation_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.finishing_operation_history.operation_id",
+          "name": "operation_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique work-occurrence identifier within this table; repeat work receives a new identifier.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.finishing_operation_history.plate_id",
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "plate_material",
+              "column": "plate_id",
+              "constraint_id": 2,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.finishing_operation_history.process_group",
+          "name": "process_group",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Business context FURNACE, ROLLING or FINISHING; each work-history table has one fixed group enforced by CHECK.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "process_group",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.finishing_operation_history.operation_code",
+          "name": "operation_code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Physical business-action code in FINISHING context; L = Leveling; A = Heat treatment; S = Surface finishing. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "process_code",
+              "column": "code",
+              "constraint_id": 0,
+              "position": 1
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.finishing_operation_history.equipment_id",
+          "name": "equipment_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique equipment-unit identifier; on a work record, references the unit that performed the work.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "equipment",
+              "column": "equipment_id",
+              "constraint_id": 1,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.finishing_operation_history.started_at",
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.finishing_operation_history.finished_at",
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        }
+      ]
+    },
+    {
+      "table": "dimension_inspection",
+      "metadata_id": "plateflow.dimension_inspection",
+      "definition": "One dimensional inspection record per inspection occurrence. Reinspection has a new inspection_id; PASS/FAIL describes its result.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "inspection_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.dimension_inspection.inspection_id",
+          "name": "inspection_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique dimensional-inspection occurrence identifier; distinct for each reinspection.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.dimension_inspection.plate_id",
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "plate_material",
+              "column": "plate_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.dimension_inspection.inspected_at",
+          "name": "inspected_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC dimensional-inspection completion time.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.dimension_inspection.result_code",
+          "name": "result_code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Inspection outcome PASS or FAIL; either value represents a completed dimensional inspection.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.dimension_inspection.thickness_mm",
+          "name": "thickness_mm",
+          "sql_type": "REAL",
+          "source_type": null,
+          "definition": "Synthetic measured thickness in millimetres.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "mm"
+        }
+      ]
+    },
+    {
+      "table": "plate_quality_review",
+      "metadata_id": "plateflow.plate_quality_review",
+      "definition": "One quality review record per review round. APPROVED/REWORK describes its outcome; PENDING means the review has not finished.",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "review_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "plateflow.plate_quality_review.review_id",
+          "name": "review_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique quality-review round identifier; distinct for each subsequent review.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 1,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.plate_quality_review.plate_id",
+          "name": "plate_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique individual plate-piece identifier; on work, inspection or review records, references the piece concerned.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [
+            {
+              "table": "plate_material",
+              "column": "plate_id",
+              "constraint_id": 0,
+              "position": 0
+            }
+          ],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "plateflow.plate_quality_review.started_at",
+          "name": "started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC start of this manufacturing work occurrence or quality-review round.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.plate_quality_review.finished_at",
+          "name": "finished_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC finish of this manufacturing work occurrence or quality-review round; NULL if unfinished.",
+          "definition_source": null,
+          "source_references": [],
+          "required": false,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": "UTC"
+        },
+        {
+          "metadata_id": "plateflow.plate_quality_review.review_status",
+          "name": "review_status",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "APPROVED or REWORK for a finished quality review, PENDING for an unfinished review.",
+          "definition_source": null,
+          "source_references": [],
+          "required": true,
+          "primary_key_position": 0,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    }
+  ],
+  "note": "Standardized metadata projection. Original input/data_dictionary.json remains authoritative for additional fields; no evaluator Gold included."
+}
