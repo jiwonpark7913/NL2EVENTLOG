@@ -121,7 +121,7 @@ def build(src,make_png=False):
    if batch:conn.executemany("INSERT INTO "+q(name)+" VALUES ("+",".join("?" for _ in header)+")",batch)
   count+=n
   dd["tables"][name]={"row_count":n,"source_sha256":checksum(path),"columns":[
-   {"name":c,"sql_type":"TEXT","temporal_role":temporal(c),"description":"",
+   {"name":c,"sql_type":"TEXT","temporal_role":temporal(c),"definition":None,
     "timestamp_semantics":"unverified_candidate" if temporal(c)!="other" else None} for c in header],
     "primary_key":None,"foreign_keys_declared":[]}
  conn.commit()
