@@ -1,0 +1,1865 @@
+{
+  "dictionary_schema_version": "NL2EVENTLOG-DD-v1",
+  "dataset_id": "universityflow",
+  "name": "UniversityFlow",
+  "language": "en",
+  "dbms": "SQLite",
+  "timezone": "UTC",
+  "documentation_sources": {},
+  "tables": [
+    {
+      "table": "student",
+      "metadata_id": "universityflow.student",
+      "definition": "Unified student information from the three university examples",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "student_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "universityflow.student.student_id",
+          "name": "student_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student identifier shared across the three combined examples",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Student ID"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Student ID"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Student",
+              "source_attribute": "Student ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.name",
+          "name": "name",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student name",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Name"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Name"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Student",
+              "source_attribute": "Name"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.date_of_birth",
+          "name": "date_of_birth",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Birth date; not an academic event",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Date of Birth"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.phone_number",
+          "name": "phone_number",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student contact number",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Phone Number"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.home_address",
+          "name": "home_address",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student postal address",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Home Address"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.registration_eligibility",
+          "name": "registration_eligibility",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Current eligibility, ELIGIBLE or INELIGIBLE; changes are not timestamped",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Student",
+              "source_attribute": "Registration Eligibility"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.class",
+          "name": "class",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student class or cohort",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Class"
+            },
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Student",
+              "source_attribute": "Class"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student.major",
+          "name": "major",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student major",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student",
+              "source_attribute": "Major"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "course",
+      "metadata_id": "universityflow.course",
+      "definition": "Course offerings and planned teaching schedules",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "course_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "universityflow.course.course_id",
+          "name": "course_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Course-offering identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Course ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.course_name",
+          "name": "course_name",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Course title",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Course Name"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.credits",
+          "name": "credits",
+          "sql_type": "INTEGER",
+          "source_type": null,
+          "definition": "Academic credit units",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Credits"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.instructor",
+          "name": "instructor",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Instructor name as stored in the registration source; no FK to instructor is assumed",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Instructor"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.class_time",
+          "name": "class_time",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Planned teaching time; not proof that a class occurred",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Class Time"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.class_location",
+          "name": "class_location",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Planned teaching location",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Course",
+              "source_attribute": "Class Location"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.course_offering_proposed_at",
+          "name": "course_offering_proposed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Offering Proposed. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.course_offering_approved_at",
+          "name": "course_offering_approved_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Offering Approved. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.course_offering_published_at",
+          "name": "course_offering_published_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Offering Published. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.course.course_offering_closed_at",
+          "name": "course_offering_closed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Offering Closed. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "registration",
+      "metadata_id": "universityflow.registration",
+      "definition": "Successful registrations; one retained row per student and course",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "student_id",
+        "course_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "course_id",
+          "parent_table": "course",
+          "parent_column": "course_id"
+        }
+      ],
+      "columns": [
+        {
+          "metadata_id": "universityflow.registration.student_id",
+          "name": "student_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student identifier shared across the three combined examples",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Student ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.course_id",
+          "name": "course_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Course-offering identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Course ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.registration_time",
+          "name": "registration_time",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual successful registration time in UTC",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Registration Time"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.status",
+          "name": "status",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Current registration status; REGISTERED in the simulated rows; no change history",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Registration",
+              "source_attribute": "Status"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.registration_requested_at",
+          "name": "registration_requested_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Registration Requested. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.registration_approved_at",
+          "name": "registration_approved_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Registration Approved. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.course_started_at",
+          "name": "course_started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Started. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.course_assessment_completed_at",
+          "name": "course_assessment_completed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Assessment Completed. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.registration.course_grade_finalized_at",
+          "name": "course_grade_finalized_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Course Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "degree_examination_result",
+      "metadata_id": "universityflow.degree_examination_result",
+      "definition": "Examination results including retakes",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "result_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        }
+      ],
+      "columns": [
+        {
+          "metadata_id": "universityflow.degree_examination_result.result_id",
+          "name": "result_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Unique examination-result identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Result ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.student_id",
+          "name": "student_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student identifier shared across the three combined examples",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Student ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.examination_name",
+          "name": "examination_name",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Degree examination name",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Examination Name"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.grade",
+          "name": "grade",
+          "sql_type": "INTEGER",
+          "source_type": null,
+          "definition": "Examination score, 0 to 100; 60 is the simulated passing threshold",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Grade"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.examination_date",
+          "name": "examination_date",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual examination time in UTC; not score-publication time",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aaec",
+              "source_table": "Degree Examination Result",
+              "source_attribute": "Examination Date"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.examination_scheduled_at",
+          "name": "examination_scheduled_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Examination Scheduled. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.examination_checked_in_at",
+          "name": "examination_checked_in_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Examination Checked In. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.examination_score_published_at",
+          "name": "examination_score_published_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Examination Score Published. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.degree_examination_result.examination_result_reviewed_at",
+          "name": "examination_result_reviewed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Examination Result Reviewed. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "task",
+      "metadata_id": "universityflow.task",
+      "definition": "Course-design task descriptions and scheduled task periods",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "task_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "universityflow.task.task_id",
+          "name": "task_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Course-design task identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.task_title",
+          "name": "task_title",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Task title",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Title"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.task_description",
+          "name": "task_description",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Task description",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Description"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.task_start_date",
+          "name": "task_start_date",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Scheduled task-period start; not an observed student action",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Start Date"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.task_end_date",
+          "name": "task_end_date",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Scheduled task deadline; not proof of completion",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task End Date"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.task_location",
+          "name": "task_location",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Task location",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Task",
+              "source_attribute": "Task Location"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.design_task_created_at",
+          "name": "design_task_created_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Design Task Created. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.design_task_approved_at",
+          "name": "design_task_approved_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Design Task Approved. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.design_task_published_at",
+          "name": "design_task_published_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Design Task Published. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.task.design_task_closed_at",
+          "name": "design_task_closed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Design Task Closed. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "simulation_module",
+      "metadata_id": "universityflow.simulation_module",
+      "definition": "Simulation module descriptions and example code",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "module_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "universityflow.simulation_module.module_id",
+          "name": "module_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Simulation module identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.module_name",
+          "name": "module_name",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Module name",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Name"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.module_type",
+          "name": "module_type",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Simulation method, such as PCM or DPCM",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Type"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.module_description",
+          "name": "module_description",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Module description",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Description"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.module_code",
+          "name": "module_code",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Example module code; not an event code",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Simulation Module",
+              "source_attribute": "Module Code"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.simulation_module_published_at",
+          "name": "simulation_module_published_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Module Published. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.simulation_module_validated_at",
+          "name": "simulation_module_validated_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Module Validated. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.simulation_module_released_at",
+          "name": "simulation_module_released_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Module Released. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.simulation_module.simulation_module_retired_at",
+          "name": "simulation_module_retired_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Module Retired. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "thesis",
+      "metadata_id": "universityflow.thesis",
+      "definition": "Student theses with actual submission times",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "thesis_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        }
+      ],
+      "columns": [
+        {
+          "metadata_id": "universityflow.thesis.thesis_id",
+          "name": "thesis_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Thesis identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Thesis ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.student_id",
+          "name": "student_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student identifier shared across the three combined examples",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Student ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_title",
+          "name": "thesis_title",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Thesis title",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Thesis Title"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_content",
+          "name": "thesis_content",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Submitted thesis content",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Thesis Content"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.submission_date",
+          "name": "submission_date",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual thesis-submission time in UTC",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Thesis",
+              "source_attribute": "Submission Date"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_draft_registered_at",
+          "name": "thesis_draft_registered_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Thesis Draft Registered. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_review_started_at",
+          "name": "thesis_review_started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Thesis Review Started. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_accepted_at",
+          "name": "thesis_accepted_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Thesis Accepted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_revision_requested_at",
+          "name": "thesis_revision_requested_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Thesis Revision Requested. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.thesis.thesis_resubmitted_at",
+          "name": "thesis_resubmitted_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Thesis Resubmitted. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "student_simulation_experiment_result",
+      "metadata_id": "universityflow.student_simulation_experiment_result",
+      "definition": "Student simulation results with actual experiment-completion times",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "student_id",
+        "module_id",
+        "simulation_date"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        },
+        {
+          "column": "module_id",
+          "parent_table": "simulation_module",
+          "parent_column": "module_id"
+        }
+      ],
+      "columns": [
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.student_id",
+          "name": "student_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student identifier shared across the three combined examples",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Student ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.module_id",
+          "name": "module_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Simulation module identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Module ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_date",
+          "name": "simulation_date",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual experiment-completion time in UTC; this interpretation is an added simulation assumption",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Simulation Date"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_result_data",
+          "name": "simulation_result_data",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Stored experiment output; not a timestamp",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Simulation Result Data"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.result_analysis",
+          "name": "result_analysis",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student analysis of the experiment result",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41aa43",
+              "source_table": "Student Simulation Experiment Result",
+              "source_attribute": "Result Analysis"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_run_scheduled_at",
+          "name": "simulation_run_scheduled_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Run Scheduled. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_run_started_at",
+          "name": "simulation_run_started_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Run Started. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_output_reviewed_at",
+          "name": "simulation_output_reviewed_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Output Reviewed. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.student_simulation_experiment_result.simulation_result_accepted_at",
+          "name": "simulation_result_accepted_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Simulation Result Accepted. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "assignment",
+      "metadata_id": "universityflow.assignment",
+      "definition": "Student assignment content; submission time is not recorded",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "assignment_id"
+      ],
+      "foreign_keys": [
+        {
+          "column": "student_id",
+          "parent_table": "student",
+          "parent_column": "student_id"
+        }
+      ],
+      "columns": [
+        {
+          "metadata_id": "universityflow.assignment.assignment_id",
+          "name": "assignment_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Assignment identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment",
+              "source_attribute": "Assignment ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.student_id",
+          "name": "student_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Student identifier shared across the three combined examples",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment",
+              "source_attribute": "Student ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.assignment_content",
+          "name": "assignment_content",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Submitted assignment content; actual submission time is absent",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment",
+              "source_attribute": "Assignment Content"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.assignment_assigned_at",
+          "name": "assignment_assigned_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Assignment Assigned. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.assignment_submitted_at",
+          "name": "assignment_submitted_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Assignment Submitted. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.assignment_grade_finalized_at",
+          "name": "assignment_grade_finalized_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Assignment Grade Finalized. NULL means no recorded occurrence. Authored single-occurrence milestone; not a source-provided field.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.assignment_revision_requested_at",
+          "name": "assignment_revision_requested_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Assignment Revision Requested. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment.assignment_resubmitted_at",
+          "name": "assignment_resubmitted_at",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual UTC time of Assignment Resubmitted. One occurrence per source business record in this simulation. NULL means no recorded occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "instructor",
+      "metadata_id": "universityflow.instructor",
+      "definition": "Instructor information from the assignment-management example",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "instructor_id"
+      ],
+      "foreign_keys": [],
+      "columns": [
+        {
+          "metadata_id": "universityflow.instructor.instructor_id",
+          "name": "instructor_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Instructor identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Instructor",
+              "source_attribute": "Instructor ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.instructor.instructor_name",
+          "name": "instructor_name",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Instructor name",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Instructor",
+              "source_attribute": "Name"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.instructor.course",
+          "name": "course",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Instructor course label from the assignment source; no declared FK to course",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Instructor",
+              "source_attribute": "Course"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    },
+    {
+      "table": "assignment_grading",
+      "metadata_id": "universityflow.assignment_grading",
+      "definition": "Every recorded grading action, including regrading",
+      "documentation_url": null,
+      "source_schema": null,
+      "row_grain": null,
+      "primary_key": [
+        "assignment_id",
+        "instructor_id",
+        "grading_time"
+      ],
+      "foreign_keys": [
+        {
+          "column": "assignment_id",
+          "parent_table": "assignment",
+          "parent_column": "assignment_id"
+        },
+        {
+          "column": "instructor_id",
+          "parent_table": "instructor",
+          "parent_column": "instructor_id"
+        }
+      ],
+      "columns": [
+        {
+          "metadata_id": "universityflow.assignment_grading.assignment_id",
+          "name": "assignment_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Assignment identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Assignment ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment_grading.instructor_id",
+          "name": "instructor_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Instructor identifier",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Instructor ID"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment_grading.grading_time",
+          "name": "grading_time",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Actual grading time in UTC; regrading creates another composite-key row",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Grading Time"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment_grading.score",
+          "name": "score",
+          "sql_type": "INTEGER",
+          "source_type": null,
+          "definition": "Assignment grade, 0 to 100",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Score"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment_grading.evaluation",
+          "name": "evaluation",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Instructor feedback",
+          "definition_source": null,
+          "source_references": [
+            {
+              "record_id": "67552f0b13602ec03b41ab04",
+              "source_table": "Assignment Grading",
+              "source_attribute": "Evaluation"
+            }
+          ],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment_grading.grading_kind",
+          "name": "grading_kind",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Physical business-action code in assignment_grading; A = Original; R = Reassessment. Recorded occurrence time is given by the corresponding event timestamp; the code alone is not proof of occurrence.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        },
+        {
+          "metadata_id": "universityflow.assignment_grading.reassessment_event_id",
+          "name": "reassessment_event_id",
+          "sql_type": "TEXT",
+          "source_type": null,
+          "definition": "Stable identity of an authored reassessment occurrence. The source composite PK remains unchanged; distinct reassessments have distinct occurrence IDs.",
+          "definition_source": null,
+          "source_references": [],
+          "required": null,
+          "primary_key_position": null,
+          "foreign_keys": [],
+          "temporal_role": null,
+          "unit": null
+        }
+      ]
+    }
+  ],
+  "note": "Standardized metadata projection. Original input/data_dictionary.json remains authoritative for additional fields; no evaluator Gold included."
+}
