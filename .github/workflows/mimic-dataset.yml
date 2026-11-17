@@ -7,6 +7,8 @@ on:
       - 'datasets/mimic/build.py'
       - 'datasets/mimic/enrich_dictionary.py'
       - 'tools/normalize_data_dictionaries.py'
+      - 'tools/temporal_candidates.py'
+      - 'tests/test_temporal_candidates.py'
       - 'tests/test_mimic_builder.py'
       - '.github/workflows/mimic-dataset.yml'
 permissions:
@@ -28,6 +30,7 @@ jobs:
           set -euo pipefail
           python -m py_compile datasets/mimic/build.py tests/test_mimic_builder.py
           python -u tests/test_mimic_builder.py
+          python -u tests/test_temporal_candidates.py
       - name: Download official public MIMIC demo
         run: |
           set -euo pipefail
