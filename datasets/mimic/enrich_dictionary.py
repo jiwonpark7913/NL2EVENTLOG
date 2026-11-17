@@ -29,8 +29,17 @@ def parse(doc,column_names):
  main=soup.select_one("main") or soup.select_one("article") or soup
  for x in main.select("script,style,nav,footer"):x.decompose()
  definitions={}
+ source_types={}
  valid={c.lower():c for c in column_names}
  heading_nodes=main.find_all(re.compile(r"^h[2-6]$"))
+ for table in main.find_all("table"):
+  headers=[compact(th.get_text(" ",strip=True)).lower() for th in table.find_all("th")][:3]
+  if len(headers)<2 or "name" not in headers[0] or "type" not in headers[1]:continue
+  for row in table.find_all("tr"):
+   cells=row.find_all(["th","td"])
+   if len(cells)<2:continue
+   name=compact(cells[0].get_text(" ",strip=True)).strip("`").lower()
+   if name in valid:source_types[name]=compact(cells[1].get_text(" ",strip=True),130)
  for node in heading_nodes:
   title=compact(node.get_text(" ",strip=True),250)
   matching=[n for n in re.findall(r"\b[a-z][a-z0-9_]*\b",title.lower()) if n in valid]
@@ -53,7 +62,7 @@ def parse(doc,column_names):
     if getattr(sibling,"name",None) in {"h1","h2","h3","h4","h5","h6"}:break
     if hasattr(sibling,"get_text"):chunks.append(sibling.get_text(" ",strip=True))
    if chunks:summary=compact(" ".join(chunks));break
- return summary,definitions
+ return summary,definitions,source_types
 def enrich(path,strict=False):
  data=json.loads(path.read_text(encoding="utf-8"))
  tables=data["tables"]
@@ -75,7 +84,7 @@ def enrich(path,strict=False):
   record.setdefault("foreign_keys",[])
   cols=record["columns"];stats["total_columns"]+=len(cols)
   try:
-   summary,definitions=parse(fetch(url),[c["name"] for c in cols])
+   summary,definitions,source_types=parse(fetch(url),[c["name"] for c in cols])
    if summary:record["definition"]=summary;stats["documented_tables"]+=1
    for col in cols:
     name=col["name"].lower()
@@ -83,7 +92,8 @@ def enrich(path,strict=False):
     col["description"]=col["definition"] or ""
     col["definition_source"]=url if definitions.get(name) else col.get("definition_source")
     col["metadata_id"]="mimic."+table+"."+col["name"]
-    col["source_type"]=col.get("source_type")
+    col["source_type"]=source_types.get(name) or col.get("source_type")
+    col["source_type_source"]=url if source_types.get(name) else col.get("source_type_source")
     if definitions.get(name):stats["documented_columns"]+=1
    missing=[c["name"] for c in cols if not c["definition"]]
    if missing:stats["unmatched_columns"][table]=missing
