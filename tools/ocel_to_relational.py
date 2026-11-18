@@ -98,11 +98,31 @@ def main(src,dest):
  out.commit()
  # The source OCEL explicitly exposes event/object concepts. The representation is
  # deliberately a controlled reconstruction baseline, not a realistic ERP schema.
- dictionary={"provenance_note":"Normalized OCEL-derived relational benchmark, NOT an original operational database",
-             "tables":{}}
- for name, in out.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"):
-  dictionary["tables"][name]={"columns":[{"name":c[1],"type":c[2]} for c in out.execute(f"PRAGMA table_info({quote(name)})")],
-                               "row_count":out.execute(f"SELECT COUNT(*) FROM {quote(name)}").fetchone()[0]}
+ # Publish the same canonical table/column shape as the other benchmark inputs.
+ # Do not import OCEL Gold mappings or invent semantic field definitions.
+ dictionary={"name":dest.name,"dbms":"SQLite",
+             "description":"OCEL-native normalized relational conversion, not an original ERP schema.",
+             "tables":[]}
+ for table_name, in out.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"):
+  table_info=list(out.execute(f"PRAGMA table_info({quote(table_name)})"))
+  declared_fks=list(out.execute(f"PRAGMA foreign_key_list({quote(table_name)})"))
+  grouped={}
+  for fk in declared_fks:
+   grouped.setdefault(fk[0],[]).append(fk)
+  foreign_keys=[]
+  for group in grouped.values():
+   group.sort(key=lambda r:r[1])
+   foreign_keys.append({"columns":[r[3] for r in group],
+                       "referenced_table":group[0][2],
+                       "referenced_columns":[r[4] for r in group]})
+  dictionary["tables"].append({
+   "table":table_name,
+   "definition":None,
+   "primary_key":[r[1] for r in sorted(table_info,key=lambda r:r[5]) if r[5]>0],
+   "foreign_keys":foreign_keys,
+   "row_count":out.execute(f"SELECT COUNT(*) FROM {quote(table_name)}").fetchone()[0],
+   "columns":[{"name":r[1],"data_type":r[2] or None,"storage_type":r[2] or None,
+               "definition":None} for r in table_info]})
  from add_dictionary_samples import add_samples,write_dictionary
  add_samples(dictionary,db)
  write_dictionary(dest/"input/data_dictionary.json",dictionary)
