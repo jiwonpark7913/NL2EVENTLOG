@@ -3,6 +3,11 @@ __pycache__/
 .DS_Store
 .venv/
 
+# Local runtime products: manifests may be reviewed/committed, but DB expansion
+# and lossless EEG exports exceed normal Git/GitHub object limits.
+datasets/mimic/input/database.sqlite
+datasets/*/review/eeg/actual_eeg.json
+
 # API credentials remain local
 .env
 .env.*
