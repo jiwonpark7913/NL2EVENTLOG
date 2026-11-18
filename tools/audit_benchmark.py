@@ -136,7 +136,17 @@ def audit_ocel(report,root,dataset,source):
         c.execute("SELECT COUNT(*) FROM activity_subject a LEFT JOIN business_entity o "
                   "ON a.entity_id=o.entity_id WHERE o.entity_id IS NULL").fetchone()[0]==0)
   catalog=json.loads((p/"input/data_dictionary.json").read_text())
-  check(report,dataset+".dictionary_tables",set(catalog["tables"])==tables)
+  dd_tables=catalog["tables"]
+  dd_names={t["table"] for t in dd_tables} if isinstance(dd_tables,list) else set(dd_tables)
+  check(report,dataset+".dictionary_tables",dd_names==tables)
+  if isinstance(dd_tables,list):
+   check(report,dataset+".dictionary_fields",
+         all(all({"name","data_type","storage_type","definition","sample_values"}<=set(col)
+                 for col in table.get("columns",[])) for table in dd_tables),
+         "canonical columns and deterministic samples")
+   check(report,dataset+".dictionary_sample_limit",
+         all(isinstance(col.get("sample_values"),list) and len(col["sample_values"])<=3
+             for table in dd_tables for col in table.get("columns",[])))
   # Count all object instances, including those with no events.
   for typ,n in c.execute("SELECT entity_class,COUNT(*) FROM business_entity GROUP BY entity_class"):
    path=reference/(slug(typ)+"_cases.csv")
