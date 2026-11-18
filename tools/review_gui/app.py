@@ -6,6 +6,8 @@ validate its semantics. This GUI never fabricates EEG nodes.
 """
 from __future__ import annotations
 import csv
+import os
+import sys
 import gzip
 import io
 import json
@@ -13,6 +15,9 @@ import sqlite3
 from pathlib import Path
 
 import streamlit as st
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from run_eeg import execute as execute_eeg, validate_graph as validate_actual_graph
 
 ROOT = Path(__file__).resolve().parents[2]
 DATASETS = {
@@ -156,6 +161,25 @@ with tabs[0]:
 
 with tabs[1]:
     st.subheader("Actual Event Extraction Graph")
+    runner = os.environ.get("NL2EVENTLOG_EEG_RUNNER", "").strip()
+    if runner:
+        st.success("External Step 1 runner configured. The EEG can be generated from the current dataset inputs.")
+        if st.button("Run actual Step 1 and load EEG", key="run_actual_step1"):
+            with st.spinner("Executing real Step 1 using database and dictionary only"):
+                try:
+                    output, manifest = execute_eeg(slug, runner=runner)
+                    st.success(f"Actual EEG saved: {output}")
+                    st.json(manifest)
+                except Exception as exc:
+                    st.error(str(exc))
+    else:
+        st.warning("BLOCKED_NO_RUNTIME: The full Step 1 implementation is not in this dataset repository. Configure NL2EVENTLOG_EEG_RUNNER to its executable; no fake EEG is generated.")
+        st.code('export NL2EVENTLOG_EEG_RUNNER="python /absolute/path/to/step1_export.py"', language="bash")
+    manifest_path = root / "review/eeg/run_manifest.json"
+    manifest = read_json(manifest_path)
+    if manifest:
+        st.caption(f"EEG generation provenance: {manifest.get('status', 'unknown')} · {manifest.get('generator_version', '?')}")
+
     st.warning("ERD and authored Gold evidence graphs are **not** the EEG produced by Step 1. Only an exported Step 1 EEG is accepted here.")
     eeg_paths = [
         root / "review/eeg/actual_eeg.json",
@@ -168,6 +192,11 @@ with tabs[1]:
         st.info("No actual EEG export was found. Use Codex to run the Step 1 implementation and export the graph to review/eeg/actual_eeg.json.")
     else:
         error = validate_graph(graph)
+        if not error:
+            try:
+                validate_actual_graph(graph, slug)
+            except ValueError as exc:
+                error = str(exc)
         if error:
             st.error(error)
         else:
