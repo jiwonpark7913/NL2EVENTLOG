@@ -50,3 +50,8 @@ This refactor deliberately separates inspection data from model inputs. The orig
 Python helper scripts are grouped by purpose; the repository root contains only README and Git configuration. The four original databases remain the gold-labelled benchmark source of truth. AdventureWorks adds a complete source snapshot with an official dictionary; its questions, reference logs and Gold DFGs are not yet authored. Generated data and Gold files are unchanged by this structural refactor.
 
 **Evaluation migration status:** stored reference labels and Gold logs retain their original semantics. SQL/CSV consistency is checked separately from semantic ET correctness and target-method validation. The current pipeline contracts are documented as target behavior, not new measured results.
+
+## EEG and Gold review GUI
+
+[Cross-dataset EEG review GUI](tools/review_gui/README.md) — local read-only Streamlit reviewer. Inspect DB/Data Dictionary, import and visualize **actual runtime EEG exports**, inspect natural-language requests and independent reference logs, and export reviewer decisions. An ERD is not an EEG; until Step 1 exports a real graph, the EEG panel explicitly displays its unavailable state. See [Codex implementation instructions](tools/review_gui/CODEX_EEG_INTEGRATION.md).
+
