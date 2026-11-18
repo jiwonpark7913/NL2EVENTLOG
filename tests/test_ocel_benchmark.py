@@ -1,5 +1,5 @@
 """Smoke tests for OCEL 2.0 relational reconstruction (no external download)."""
-import csv,sqlite3,subprocess,sys,tempfile
+import csv,json,sqlite3,subprocess,sys,tempfile
 from pathlib import Path
 
 SCRIPT=Path(__file__).resolve().parents[1]/"tools/ocel_to_relational.py"
@@ -37,6 +37,16 @@ def test_event_to_multiple_cases():
   assert len(rows)==2
   assert {r["case_id"] for r in rows}=={"o1","o2"}
   assert set(r["timestamp"] for r in rows)=={"2026-01-01 12:00:00"}
+  dictionary_path=out/"input/data_dictionary.json"
+  dd=json.loads(dictionary_path.read_text(encoding="utf-8"))
+  assert isinstance(dd["tables"],list)
+  assert dd["tables"]
+  assert all("table" in table and "columns" in table for table in dd["tables"])
+  assert all(all({"name","data_type","storage_type","definition","sample_values"} <= set(col)
+                 and len(col["sample_values"]) <= 3
+                 for col in table["columns"]) for table in dd["tables"])
+  assert '"sample_values": [' in dictionary_path.read_text(encoding="utf-8")
+  assert '"sample_values": [\\n' not in dictionary_path.read_text(encoding="utf-8")
   with sqlite3.connect(out/"input/database.sqlite") as c:
    assert c.execute("SELECT COUNT(*) FROM activity_subject").fetchone()[0]==2
    assert c.execute("SELECT COUNT(*) FROM entity_link").fetchone()[0]==1
