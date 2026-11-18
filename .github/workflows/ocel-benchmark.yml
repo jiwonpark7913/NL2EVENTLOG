@@ -89,7 +89,12 @@ jobs:
           from pathlib import Path
           base=Path("${{ runner.temp }}/ocel-artifacts")
           for name in ("bpi2019", "order_management"):
-              src=base/(name+"-ocel-benchmark")/"datasets"/(name+"_ocel")/"input"/"data_dictionary.json"
+              artifact=base/(name+"-ocel-benchmark")
+              candidates=[
+                  artifact/"input"/"data_dictionary.json",
+                  artifact/"datasets"/(name+"_ocel")/"input"/"data_dictionary.json",
+              ]
+              src=next((path for path in candidates if path.exists()),candidates[0])
               if not src.is_file():
                   raise FileNotFoundError(f"Missing validated dictionary artifact: {src}")
               dd=json.loads(src.read_text(encoding="utf-8"))
