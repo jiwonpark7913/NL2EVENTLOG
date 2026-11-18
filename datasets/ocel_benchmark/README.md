@@ -16,7 +16,7 @@ python tools/download_ocel_benchmark.py order_management --dest /tmp/order
 python tools/ocel_to_relational.py --source /tmp/order/order-management.sqlite --out datasets/order_management_ocel
 ```
 
-For BPI 2019 the actual converted SQLite filename depends on the archive member. Use the source path printed by the downloader rather than assuming it is `bpi2019.sqlite`. The [OCEL build workflow](../../.github/workflows/ocel-benchmark.yml) discovers that path and publishes a downloadable artifact after validation. It does **not** commit datasets automatically.
+For BPI 2019 the actual converted SQLite filename depends on the archive member. Use the source path printed by the downloader rather than assuming it is `bpi2019.sqlite`. The [OCEL build workflow](../../.github/workflows/ocel-benchmark.yml) discovers that path and publishes a downloadable artifact after validation. On successful main-branch runs, a separate job commits the **generated input/data_dictionary.json only**, preserving its DB-backed sample values. The SQLite and reviewer Gold remain workflow artifacts and are **not** committed. If a workflow has not completed successfully, dictionary files may still be absent from main.
 
 ## Evaluation separation
 Only `input/database.sqlite` and `input/data_dictionary.json` may be given to the model. `review/gold_flatten/*.csv` contains direct event-to-object flattening with case_id, event_id, activity and timestamp. Separate `*_cases.csv` files retain the full case population including objects with no related events. The reconstructed database also retains direct OCEL object–object links when available. The source OCEL and review references are evaluator-only. Every event directly linked to two distinct objects of one type produces two flattened rows; retain both.
@@ -47,3 +47,10 @@ any generated CSV a finalized Gold log.
 
 [Cross-dataset EEG review GUI](../../tools/review_gui/README.md) — local read-only Streamlit reviewer. Inspect DB/Data Dictionary, import and visualize **actual runtime EEG exports**, inspect natural-language requests and independent reference logs, and export reviewer decisions. An ERD is not an EEG; until Step 1 exports a real graph, the EEG panel explicitly displays its unavailable state. See [Codex implementation instructions](../../tools/review_gui/CODEX_EEG_INTEGRATION.md).
 
+
+## Dictionary publishing and GUI availability
+
+- The OCEL converter creates a **canonical** `tables[]` dictionary with each column's `name`, `data_type`, `storage_type`, `definition`, and up to three actual inline `sample_values`. Because this is a normalized relational conversion, not a database with official source DD documentation, missing semantic definitions remain `null` rather than being invented.
+- After both datasets pass conversion and audit, GitHub Actions publishes `datasets/bpi2019_ocel/input/data_dictionary.json` and `datasets/order_management_ocel/input/data_dictionary.json`. This can fail independently due to download, validation, runtime limits or repository push permissions. The presence of an Actions workflow does **not** prove that publishing has succeeded.
+- For local review of database rows or generating a real EEG, download the validated workflow artifact and place `input/database.sqlite` alongside the published Data Dictionary. A DD by itself enables dictionary inspection only.
+- The [review dashboard](../../tools/review_gui/README.md) never presents an ERD or evaluator-only direct E2O reference as an automatically inferred Step 1 EEG; an external authentic runtime is required.
