@@ -13,6 +13,9 @@ import sqlite3
 from pathlib import Path
 
 import streamlit as st
+from model import (column_metadata, graph_hash, read_json as read_json_object,
+                   readonly_preview, table_catalog as normalize_tables,
+                   temporal_candidates)
 
 ROOT = Path(__file__).resolve().parents[2]
 DATASETS = {
@@ -35,7 +38,9 @@ with st.sidebar:
     st.caption("No graph is displayed as an actual EEG unless an EEG export is supplied.")
     st.markdown("[EEG terminology contract](https://github.com/jiwonpark7913/NL2EVENTLOG/blob/main/docs/system/EEG_ENTITY_MODEL.md)")
 
+@st.cache_data(show_spinner=False)
 def read_json(path):
+    """PURPOSE: Cache optional JSON artifacts across Streamlit reruns. INPUT: Path. OUTPUT: Decoded value or None."""
     if path.is_file():
         return json.loads(path.read_text(encoding="utf-8"))
     return None
@@ -109,6 +114,13 @@ def read_log(path):
     return list(csv.DictReader(io.StringIO(content)))
 
 dd = read_json(root / "input/data_dictionary.json")
+manifest = read_json(root / "review/eeg/run_manifest.json")
+with st.sidebar:
+    if manifest:
+        status = manifest.get("status", "UNKNOWN")
+        (st.success if status == "RUNNABLE" else st.warning)(f"Step 1: {status}")
+        st.caption(f"Input ready: {bool((root/'input/data_dictionary.json').is_file() and ((root/'input/database.sqlite').is_file() or (root/'input/database.sqlite.gz').is_file()))}")
+        st.caption(f"Actual EEG: {bool((root/'review/eeg/actual_eeg.json').is_file())}")
 if dd is None:
     st.warning("Data Dictionary가 로컬에 없습니다. 특히 OCEL은 Actions artifact를 먼저 다운로드해 datasets/<name>/input/에 배치하세요.")
     uploaded_dd = st.file_uploader("Load data_dictionary.json", type="json")
@@ -119,7 +131,7 @@ tabs = st.tabs(["1 · DB & Dictionary", "2 · Actual EEG", "3 · Question & Gold
 with tabs[0]:
     st.subheader("Physical evidence")
     if dd:
-        tables = table_catalog(dd)
+        tables = normalize_tables(dd)
         names = [t["table"] for t in tables]
         st.metric("Tables", len(tables))
         filter_text = st.text_input("Search table", "")
@@ -130,7 +142,8 @@ with tabs[0]:
             name = st.selectbox("Table", filtered)
             table = next(t for t in tables if t["table"] == name)
             st.write("**Definition:**", table.get("definition") or "Not documented")
-            st.dataframe(metadata(table.get("columns", [])), use_container_width=True, hide_index=True)
+            st.dataframe(column_metadata(table.get("columns", [])), use_container_width=True, hide_index=True)
+            st.write("**Structural temporal candidates (meaning not inferred):**", [c["name"] for c in temporal_candidates(table)])
             st.write("**Declared primary key:**", table.get("primary_key"))
             st.write("**Declared foreign keys:**", table.get("foreign_keys") or table.get("foreign_keys_declared") or [])
             with st.expander("Candidate relationships (not declared FKs)"):
@@ -146,9 +159,8 @@ with tabs[0]:
                     actual = {x[0] for x in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
                     if name in actual:
                         st.markdown("**Actual source rows (read-only, LIMIT 10)**")
-                        cursor = con.execute("SELECT * FROM " + valid_identifier(name) + " LIMIT 10")
-                        st.dataframe([dict(zip([c[0] for c in cursor.description], row)) for row in cursor.fetchall()],
-                                     use_container_width=True)
+                        page = st.number_input("Row offset", min_value=0, value=0, step=10)
+                        st.dataframe(readonly_preview(dbpath, name, limit=10, offset=int(page)), use_container_width=True)
                     else: st.warning("Table not found in physical DB.")
                 finally: con.close()
             else: st.info("SQLite snapshot not found. Dictionary-only mode.")
@@ -178,6 +190,16 @@ with tabs[1]:
             types = sorted({n.get("type", "unknown") for n in nodes})
             chosen_types = st.multiselect("Node types", types, default=types)
             chosen_nodes = [n["id"] for n in nodes if n.get("type", "unknown") in chosen_types]
+            if len(chosen_nodes) > 150:
+                st.info("Large EEG: focus mode renders one node and its direct neighbors; the complete graph remains searchable below.")
+                query = st.text_input("Search graph node", "")
+                matches = [n for n in nodes if query.casefold() in (n.get("label") or n["id"]).casefold() and n["id"] in chosen_nodes]
+                focus = st.selectbox("Focus node", [n["id"] for n in matches[:500]] or chosen_nodes[:500])
+                neighborhood = {focus}
+                for edge in edges:
+                    if focus in (edge["source"], edge["target"]):
+                        neighborhood.update((edge["source"], edge["target"]))
+                chosen_nodes = [identifier for identifier in chosen_nodes if identifier in neighborhood]
             include_unresolved = st.checkbox("Show unresolved/rejected evidence", value=True)
             try:
                 st.graphviz_chart(graphviz_source(graph, chosen_nodes, include_unresolved), use_container_width=True)
@@ -191,6 +213,7 @@ with tabs[1]:
             st.json(next(n for n in nodes if n["id"]==node_id))
             attached = [e for e in edges if node_id in (e["source"], e["target"])]
             st.json({"related_edges":attached})
+            st.caption(f"Graph SHA-256: {graph_hash(graph)}")
 with tabs[2]:
     st.subheader("Natural-language request → reviewed extraction")
     proposal = read_json(root / "review/admission_timeline.json") if slug == "mimic" else None
@@ -234,11 +257,23 @@ with tabs[3]:
         decisions[label] = st.selectbox(label, ["pending","pass","fail","not_applicable"],help=help_text)
     notes = st.text_area("Evidence, record IDs, counterexamples, unresolved issues")
     reviewer = st.text_input("Reviewer ID")
+    element_decisions = []
+    if 'graph' in locals() and graph and not validate_graph(graph):
+        target_kind = st.radio("Review target kind", ["node", "edge"], horizontal=True)
+        targets = graph["nodes"] if target_kind == "node" else graph["edges"]
+        target_id = st.selectbox("Node/edge ID", [item.get("id", f"{item['source']}->{item['target']}") for item in targets])
+        verdict = st.selectbox("Semantic decision", ["uncertain", "pass", "fail"])
+        issue = st.selectbox("Issue category", ["none", "missing_or_mislabeled_et", "missed_event_definition", "false_positive_event", "wrong_timestamp_role", "invalid_linking", "duplication", "identity_collision"])
+        source_citation = st.text_input("Source citation (table/key/row ID)")
+        counterexample = st.text_area("Counterexample / element note")
+        element_decisions.append({"target_type": target_kind, "target_id": target_id, "decision": verdict, "issue": issue, "source_citation": source_citation, "counterexample": counterexample})
     result = {
         "dataset":slug, "request":st.session_state.get("request",""),
         "case_et":st.session_state.get("case_et",""),
         "reviewer":reviewer,"checks":decisions,"notes":notes,
-        "approval":"needs_review", "method":"manual_evidence_review"}
+        "approval":"needs_review", "method":"manual_evidence_review",
+        "graph_sha256": graph_hash(graph) if 'graph' in locals() and graph and not validate_graph(graph) else None,
+        "element_decisions": element_decisions}
     st.download_button("Export review JSON",data=json.dumps(result,indent=2,ensure_ascii=False),
                        file_name=f"{slug}_review.json",mime="application/json")
     st.caption("Downloading a review never converts a draft into approved Gold.")

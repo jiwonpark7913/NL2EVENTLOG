@@ -45,5 +45,7 @@ any generated CSV a finalized Gold log.
 
 ## EEG and Gold review GUI
 
+After reproducing the Actions artifacts at the documented input paths, use the [reviewer adapter](../../tools/review_gui/README.md). Until then each dataset reports `BLOCKED_NO_DB` and never substitutes its reference OCEL log for an EEG.
+
 [Cross-dataset EEG review GUI](../../tools/review_gui/README.md) — local read-only Streamlit reviewer. Inspect DB/Data Dictionary, import and visualize **actual runtime EEG exports**, inspect natural-language requests and independent reference logs, and export reviewer decisions. An ERD is not an EEG; until Step 1 exports a real graph, the EEG panel explicitly displays its unavailable state. See [Codex implementation instructions](../../tools/review_gui/CODEX_EEG_INTEGRATION.md).
 

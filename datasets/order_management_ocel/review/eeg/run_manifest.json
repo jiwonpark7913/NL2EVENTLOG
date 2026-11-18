@@ -1,0 +1,22 @@
+{
+  "completed_stages": [],
+  "configuration": {
+    "global_ot_review": false,
+    "repair": false,
+    "semantic_signatures": false
+  },
+  "dataset": "order_management_ocel",
+  "finished_at": "2026-11-18T03:46:13.018476+00:00",
+  "gold_used": false,
+  "input_policy": "database.sqlite + data_dictionary.json only",
+  "missing_inputs": [
+    "/data/pjw_ids25/POSCO/NL2EVENTLOG/datasets/order_management_ocel/input/database.sqlite",
+    "/data/pjw_ids25/POSCO/NL2EVENTLOG/datasets/order_management_ocel/input/data_dictionary.json"
+  ],
+  "model": "deterministic-no-model",
+  "runtime_commit": null,
+  "runtime_root": "/data/pjw_ids25/POSCO/NL2EL",
+  "schema_version": "nl2eventlog-step1-run-v1",
+  "started_at": "2026-11-18T03:46:13.015353+00:00",
+  "status": "BLOCKED_NO_DB"
+}
