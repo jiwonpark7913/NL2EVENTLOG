@@ -1,0 +1,407 @@
+{
+  "name": "order_management_ocel",
+  "dbms": "SQLite",
+  "description": "OCEL-native normalized relational conversion, not an original ERP schema.",
+  "tables": [
+    {
+      "table": "activity_record",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 21008,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["place_o-990001", "pick_i-880003", "place_o-990002"]
+        },
+        {
+          "name": "activity_class",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["place order", "pick item", "item out of stock"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-03 12:08:18", "2023-04-03 13:21:49", "2023-04-03 16:36:55"]
+        }
+      ]
+    },
+    {
+      "table": "activity_subject",
+      "definition": null,
+      "primary_key": [
+        "record_id",
+        "entity_id",
+        "role"
+      ],
+      "foreign_keys": [],
+      "row_count": 147463,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["confirm_o-990001", "confirm_o-990002", "confirm_o-990003"]
+        },
+        {
+          "name": "entity_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["AlpenTech Innovations AG", "Echo", "Wil van der Aalst"]
+        },
+        {
+          "name": "role",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["customer", "product", "sales person"]
+        }
+      ]
+    },
+    {
+      "table": "business_entity",
+      "definition": null,
+      "primary_key": [
+        "entity_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 10840,
+      "columns": [
+        {
+          "name": "entity_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["Echo", "Echo Show 8", "Danube Pharmaceuticals BV"]
+        },
+        {
+          "name": "entity_class",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["products", "customers", "employees"]
+        }
+      ]
+    },
+    {
+      "table": "entity_link",
+      "definition": null,
+      "primary_key": [
+        "source_entity_id",
+        "target_entity_id",
+        "relation_role"
+      ],
+      "foreign_keys": [],
+      "row_count": 28391,
+      "columns": [
+        {
+          "name": "source_entity_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["AlpenTech Innovations AG", "Balkan Minerals d.o.o.", "Baltic Wave Energies Ltd."]
+        },
+        {
+          "name": "target_entity_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["Istvan Koren", "Wil van der Aalst", "o-990001"]
+        },
+        {
+          "name": "relation_role",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["secondarySalesRep", "primarySalesRep", "places"]
+        }
+      ]
+    },
+    {
+      "table": "observations_ConfirmOrder",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 2000,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["confirm_o-990002", "confirm_o-990001", "confirm_o-990005"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-04 16:09:41", "2023-04-04 16:34:29", "2023-04-04 20:51:37"]
+        }
+      ]
+    },
+    {
+      "table": "observations_CreatePackage",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 1128,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["create_p-660001", "create_p-660002", "create_p-660003"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-08 01:00:00", "2023-04-12 09:52:12", "2023-04-12 15:59:22"]
+        }
+      ]
+    },
+    {
+      "table": "observations_FailedDelivery",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 311,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["fail_p-660006_1", "fail_p-660013_2", "fail_p-660013_3"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-17 16:13:05", "2023-04-21 08:51:18", "2023-04-21 10:39:44"]
+        }
+      ]
+    },
+    {
+      "table": "observations_ItemOutOfStock",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 1544,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["out_of_stock_i-880016", "out_of_stock_i-880036", "out_of_stock_i-880018"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-04 15:42:47", "2023-04-05 13:24:16", "2023-04-05 14:08:04"]
+        }
+      ]
+    },
+    {
+      "table": "observations_PackageDelivered",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 1128,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["deliver_p-660001", "deliver_p-660004", "deliver_p-660002"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-11 11:03:27", "2023-04-13 08:08:48", "2023-04-13 15:28:20"]
+        }
+      ]
+    },
+    {
+      "table": "observations_PayOrder",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 2000,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["pay_o-990005", "pay_o-990001", "pay_o-990008"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-05 17:28:14", "2023-04-05 17:47:04", "2023-04-06 16:30:08"]
+        }
+      ]
+    },
+    {
+      "table": "observations_PaymentReminder",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 566,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["reminder_o-990003_1", "reminder_o-990009_2", "reminder_o-990004_3"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-25 15:27:08", "2023-04-26 10:12:38", "2023-04-26 15:26:08"]
+        }
+      ]
+    },
+    {
+      "table": "observations_PickItem",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 7659,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["pick_i-880003", "pick_i-880001", "pick_i-880006"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-03 13:21:49", "2023-04-04 09:50:21", "2023-04-04 10:01:31"]
+        }
+      ]
+    },
+    {
+      "table": "observations_PlaceOrder",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 2000,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["place_o-990001", "place_o-990002", "place_o-990003"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-03 12:08:18", "2023-04-03 16:36:55", "2023-04-03 23:31:23"]
+        }
+      ]
+    },
+    {
+      "table": "observations_ReorderItem",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 1544,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["reorder_i-880016", "reorder_i-880010", "reorder_i-880033"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-05 11:26:59", "2023-04-05 17:19:01", "2023-04-05 17:53:54"]
+        }
+      ]
+    },
+    {
+      "table": "observations_SendPackage",
+      "definition": null,
+      "primary_key": [
+        "record_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 1128,
+      "columns": [
+        {
+          "name": "record_id",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["send_p-660001", "send_p-660002", "send_p-660004"]
+        },
+        {
+          "name": "observed_at",
+          "data_type": "TEXT",
+          "storage_type": "TEXT",
+          "definition": null,
+          "sample_values": ["2023-04-10 10:40:42", "2023-04-12 16:34:48", "2023-04-13 08:05:53"]
+        }
+      ]
+    }
+  ]
+}
