@@ -1,0 +1,47 @@
+name: Review GUI smoke test
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/review_gui/**'
+      - 'tests/test_review_gui_contract.py'
+      - '.github/workflows/review-gui.yml'
+  pull_request:
+    paths:
+      - 'tools/review_gui/**'
+      - 'tests/test_review_gui_contract.py'
+      - '.github/workflows/review-gui.yml'
+  workflow_dispatch:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Syntax and contract
+        run: |
+          python -m py_compile tools/review_gui/app.py tests/test_review_gui_contract.py
+          python tests/test_review_gui_contract.py
+      - name: Install reviewer dependencies
+        run: python -m pip install -r tools/review_gui/requirements.txt
+      - name: Streamlit import and startup
+        run: |
+          streamlit run tools/review_gui/app.py --server.headless=true --server.address=127.0.0.1 --server.port=8508 > /tmp/streamlit-review.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" || true' EXIT
+          python - <<'PY'
+          import time,urllib.request
+          url='http://127.0.0.1:8508/_stcore/health'
+          for attempt in range(40):
+              try:
+                  with urllib.request.urlopen(url,timeout=2) as response:
+                      assert response.status==200
+                      print('Streamlit server health: OK')
+                      break
+              except Exception:
+                  time.sleep(0.5)
+          else:
+              raise RuntimeError('Streamlit health check failed')
+          PY
