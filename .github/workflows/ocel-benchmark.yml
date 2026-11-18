@@ -10,9 +10,10 @@ on:
       - 'tools/stream_ocel_json.py'
       - 'tests/test_ocel_benchmark.py'
       - 'tests/test_stream_ocel_json.py'
+      - 'tools/review_gui/**'
       - '.github/workflows/ocel-benchmark.yml'
 permissions:
-  contents: read
+  contents: write
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -67,3 +68,43 @@ jobs:
             datasets/${{ matrix.dataset }}_ocel/input/
             datasets/${{ matrix.dataset }}_ocel/review/
           retention-days: 14
+
+  publish-dictionaries:
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: '*-ocel-benchmark'
+          path: ${{ runner.temp }}/ocel-artifacts
+      - name: Publish generated OCEL dictionaries (never Gold or source rows)
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("${{ runner.temp }}/ocel-artifacts")
+          for name in ("bpi2019", "order_management"):
+              src=base/(name+"-ocel-benchmark")/"datasets"/(name+"_ocel")/"input"/"data_dictionary.json"
+              if not src.is_file():
+                  raise FileNotFoundError(f"Missing validated dictionary artifact: {src}")
+              dd=json.loads(src.read_text(encoding="utf-8"))
+              tables=dd.get("tables")
+              if not isinstance(tables,list) or not tables or not all("columns" in t for t in tables):
+                  raise ValueError(f"Invalid canonical dictionary structure for {name}")
+              dest=Path("datasets")/(name+"_ocel")/"input"/"data_dictionary.json"
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              dest.write_text(src.read_text(encoding="utf-8"),encoding="utf-8")
+              print(f"Prepared {dest} ({len(tables)} tables)")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datasets/bpi2019_ocel/input/data_dictionary.json datasets/order_management_ocel/input/data_dictionary.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: publish validated OCEL input dictionaries [skip ci]"
+            git push
+          fi
