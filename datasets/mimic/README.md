@@ -45,3 +45,8 @@ The JSON `input/data_dictionary.json` is the live model-input dictionary. It con
 **Metadata completeness:** The dictionary contains 313/342 non-empty column definitions in the latest inspected commit; the GitHub Actions enrichment step is configured to collect official descriptions. A non-empty definition alone does not certify that its source semantics are correct. Do not interpret a successful build as proof that all 342 columns are documented. Check `metadata_coverage` and the enrichment log for exact coverage.
 
 **EEG temporal screening policy:** use `source_type` for native temporal type candidates (such as `timestamp`, `date`, `time`), then interpret the field's `definition` to distinguish observed, planned, validity and maintenance timestamps. The converted SQLite `sql_type=TEXT` does not reflect the original temporal type. A column with `source_type=null` requires fallback to physical schema, column name, representative values and documented semantics. The ERD uses a separate layout-only heuristic for blue/yellow highlights, not a Gold event label.
+
+## EEG and Gold review GUI
+
+[Cross-dataset EEG review GUI](../../tools/review_gui/README.md) — local read-only Streamlit reviewer. Inspect DB/Data Dictionary, import and visualize **actual runtime EEG exports**, inspect natural-language requests and independent reference logs, and export reviewer decisions. An ERD is not an EEG; until Step 1 exports a real graph, the EEG panel explicitly displays its unavailable state. See [Codex implementation instructions](../../tools/review_gui/CODEX_EEG_INTEGRATION.md).
+
