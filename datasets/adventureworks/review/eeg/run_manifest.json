@@ -1,0 +1,48 @@
+{
+  "command": [
+    "/home/pjw_ids25/miniconda3/bin/python",
+    "-m",
+    "nl2el.dbu",
+    "build",
+    "--db",
+    "/data/pjw_ids25/POSCO/NL2EVENTLOG/datasets/adventureworks/input/database.sqlite",
+    "--dd",
+    "/data/pjw_ids25/POSCO/NL2EVENTLOG/datasets/adventureworks/input/data_dictionary.json",
+    "--out",
+    "/tmp/nl2eventlog-step1-0ogrpolg/runtime",
+    "--no-repair",
+    "--no-global-ot-review",
+    "--no-semantic-signatures",
+    "--model",
+    "deterministic-no-model"
+  ],
+  "completed_stages": [],
+  "configuration": {
+    "global_ot_review": false,
+    "repair": false,
+    "semantic_signatures": false
+  },
+  "dataset": "adventureworks",
+  "finished_at": "2026-11-18T03:46:13.010460+00:00",
+  "gold_used": false,
+  "input_policy": "database.sqlite + data_dictionary.json only",
+  "model": "deterministic-no-model",
+  "returncode": -2,
+  "runtime_commit": null,
+  "runtime_root": "/data/pjw_ids25/POSCO/NL2EL",
+  "runtime_stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/dbu/__main__.py\", line 3, in <module>\n    main()\n    ~~~~^^\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/dbu/cli.py\", line 73, in main\n    _,graph=load_or_build(args.db,args.dd,config=config,\n            ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        client=_client(config.repair or config.global_ot_review),response_cache=cache)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/graph_cache.py\", line 183, in load_or_build\n    native=build_evidence_graph(Path(database),Path(dictionary),config,build_client,cache=response_cache)\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/dbu/__init__.py\", line 239, in build_evidence_graph\n    attribution_paths = measured(\n        \"attribution\", enumerate_attribution_paths, Path(db_path), bindings, table_keys,\n        concepts, references, bridges, rollups, max_hops=config.max_hops)\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/dbu/__init__.py\", line 142, in measured\n    value = function(*args, **kwargs)\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/dbu/attribution.py\", line 203, in enumerate_attribution_paths\n    validation, map_sql, map_parameters = _validate_path(\n                                          ~~~~~~~~~~~~~~^\n        connection, binding, source_object[\"pk\"], target[\"table\"], target[\"pk\"],\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        joins, type_tag=type_tag, allow_many=allow_many)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/dbu/attribution.py\", line 144, in _validate_path\n    states = reference_path_row_states(connection, binding[\"table\"], joins, target_key,\n                                       predicate=predicate, parameters=parameters,\n                                       row_key_columns=source_key)\n  File \"/data/pjw_ids25/POSCO/NL2EL/nl2el/entity_linking.py\", line 87, in reference_path_row_states\n    counts = dict(connection.execute('SELECT state, COUNT(*) FROM (' + rows + ') GROUP BY state',\n                  ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n                                     list(parameters)).fetchall())\n                                     ^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+  "runtime_stdout": "",
+  "schema_version": "nl2eventlog-step1-run-v1",
+  "source_files": {
+    "data_dictionary.json": "77c31665fd4c10a561f1a704a310865f0d3a22fda5a125953374b1091e7c8a09",
+    "database.sqlite": "e407b0e93122e1f0778baed145c2c0943692661ab303c835f9a460329cc8fed4"
+  },
+  "started_at": "2026-11-18T01:41:43.041769+00:00",
+  "status": "BLOCKED_RUNTIME_RESOURCE_LIMIT",
+  "resource_limit": {
+    "elapsed_seconds": 7468,
+    "peak_rss_bytes_observed": 4871286784,
+    "temporary_filesystem_available_bytes": 4617089843,
+    "stage_when_stopped": "1.4 Event-Entity Linking / attribution path validation"
+  }
+}
