@@ -106,10 +106,35 @@ jobs:
               dest.write_text(src.read_text(encoding="utf-8"),encoding="utf-8")
               print(f"Prepared {dest} ({len(tables)} tables)")
           PY
+          # Preserve the validated files outside the checkout. Each attempt
+          # must start from the latest remote main, not the outdated Actions SHA.
+          mkdir -p "$RUNNER_TEMP/ocel-publish"
+          cp datasets/bpi2019_ocel/input/data_dictionary.json "$RUNNER_TEMP/ocel-publish/bpi2019.json"
+          cp datasets/order_management_ocel/input/data_dictionary.json "$RUNNER_TEMP/ocel-publish/order_management.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add datasets/bpi2019_ocel/input/data_dictionary.json datasets/order_management_ocel/input/data_dictionary.json
-          if ! git diff --cached --quiet; then
+          published=false
+          for attempt in 1 2 3 4 5; do
+            echo "Publish attempt $attempt against latest origin/main"
+            git fetch origin main
+            # Safe in this disposable CI checkout; generated JSONs are saved
+            # under RUNNER_TEMP. Never force-push or overwrite remote history.
+            git reset --hard origin/main
+            mkdir -p datasets/bpi2019_ocel/input datasets/order_management_ocel/input
+            cp "$RUNNER_TEMP/ocel-publish/bpi2019.json" datasets/bpi2019_ocel/input/data_dictionary.json
+            cp "$RUNNER_TEMP/ocel-publish/order_management.json" datasets/order_management_ocel/input/data_dictionary.json
+            git add -- datasets/bpi2019_ocel/input/data_dictionary.json datasets/order_management_ocel/input/data_dictionary.json
+            if git diff --cached --quiet; then
+              echo "Remote main already has the validated dictionaries."
+              published=true
+              break
+            fi
             git commit -m "data: publish validated OCEL input dictionaries [skip ci]"
-            git push
-          fi
+            if git push origin HEAD:main; then
+              published=true
+              break
+            fi
+            echo "main moved during publishing; retrying without force push"
+            sleep 2
+          done
+          test "$published" = true
