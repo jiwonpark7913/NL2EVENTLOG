@@ -28,7 +28,7 @@ def main():
         assert slug in source
     # Basic actual EEG adapter node shape is documented rather than injected as runtime results.
     guide = (ROOT / "tools/review_gui/README.md").read_text(encoding="utf-8")
-    assert "actual_eeg.json" in guide and "example above is illustrative only" in guide
+    assert "actual_eeg.json" in guide and "example above is illustrative only" in guide.lower()
     print("EEG review GUI static contract: OK")
 
 if __name__ == "__main__":
