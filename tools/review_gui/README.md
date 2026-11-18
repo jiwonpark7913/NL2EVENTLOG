@@ -16,6 +16,21 @@ The four datasets listed in the sidebar are **MIMIC-IV Demo**, **Microsoft Adven
 - The BPI 2019 and Order Management OCEL converted databases are **generated GitHub Actions artifacts**, not necessarily committed under `datasets/`. Download the workflow artifacts, extract `input/database.sqlite` and `input/data_dictionary.json` into `datasets/bpi2019_ocel/` and `datasets/order_management_ocel/`.
 - **There are not yet verified runtime EEG outputs for these four datasets in this repository.** The schema ERD or an authored Gold evidence graph is *not* a Step 1 EEG. The EEG tab is intentionally empty until given a real export. See `CODEX_EEG_INTEGRATION.md` for the implementation handoff.
 
+### Direct runtime integration
+
+The GUI now includes **Run actual Step 1 and load EEG** when an external runtime executable is configured. This repository is a dataset/review repository and does not contain the target Step 1 implementation, so the button cannot run without that dependency.
+
+```bash
+export NL2EVENTLOG_EEG_RUNNER="python /absolute/path/to/step1_export.py"
+streamlit run tools/review_gui/app.py --server.address 127.0.0.1
+```
+
+The external script must accept `--database`, `--dictionary`, `--dataset` and `--output`. It must use only the input DB/DD, perform the actual Step 1, and write `source="actual_step1_eeg"`, `generator_version`, `dataset`, `nodes[]` and `edges[]`. The GUI validates and saves results under `review/eeg/` with an input SHA256 manifest; missing runtime is explicitly shown as `BLOCKED_NO_RUNTIME`. This does **not** make an EEG from the DB itself. See `CODEX_EEG_INTEGRATION.md` to implement the adapter from the actual code.
+
+### OCEL dictionary publication
+
+The OCEL converter already generated `data_dictionary.json`, but the build workflow previously uploaded it only as a temporary artifact. The workflow now has a second job to publish **validated Data Dictionary JSON files** to `datasets/bpi2019_ocel/input/data_dictionary.json` and `datasets/order_management_ocel/input/data_dictionary.json` on successful main-branch builds. Source SQLite snapshots and reviewer Gold are **not** committed by this job. On a fresh checkout before that job succeeds, the GUI will still report missing files; use the workflow artifact or run the documented OCEL converter. An unfinished/failed conversion is never marked as a published dictionary.
+
 ### Actual EEG export adapter
 
 The dashboard requires a lightweight **view/export** produced from the genuine Step 1 runtime graph. Do not generate an EEG by simply turning all timestamp columns into events or by reading Gold artifacts.
