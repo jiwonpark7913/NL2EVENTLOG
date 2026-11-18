@@ -83,3 +83,8 @@ The builder verifies every downloaded file against the pinned Git blob hashes, b
 - [Microsoft installation instructions](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure)
 - Upstream commit: `8fe3fd0c9a825fef3ae6d601e97537b612d7b214`.
 - [Microsoft sample license (MIT)](source/LICENSE.txt). Original source descriptions and records retain Microsoft's copyright and license.
+
+## EEG and Gold review GUI
+
+[Cross-dataset EEG review GUI](../../tools/review_gui/README.md) — local read-only Streamlit reviewer. Inspect DB/Data Dictionary, import and visualize **actual runtime EEG exports**, inspect natural-language requests and independent reference logs, and export reviewer decisions. An ERD is not an EEG; until Step 1 exports a real graph, the EEG panel explicitly displays its unavailable state. See [Codex implementation instructions](../../tools/review_gui/CODEX_EEG_INTEGRATION.md).
+
