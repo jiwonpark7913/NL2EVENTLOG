@@ -42,3 +42,8 @@ activity occurrence extraction, and direct linking; it is **not yet an
 attribute-complete OCEL benchmark**. Independently validate source counts,
 timestamp coverage, referential integrity and flattening before calling
 any generated CSV a finalized Gold log.
+
+## EEG and Gold review GUI
+
+[Cross-dataset EEG review GUI](../../tools/review_gui/README.md) — local read-only Streamlit reviewer. Inspect DB/Data Dictionary, import and visualize **actual runtime EEG exports**, inspect natural-language requests and independent reference logs, and export reviewer decisions. An ERD is not an EEG; until Step 1 exports a real graph, the EEG panel explicitly displays its unavailable state. See [Codex implementation instructions](../../tools/review_gui/CODEX_EEG_INTEGRATION.md).
+
