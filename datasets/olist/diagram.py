@@ -21,8 +21,8 @@ LAYOUT = {
 }
 # Child table -> parent table: routing in SVG; draw.io uses equivalent border anchors.
 EDGE_ROUTES = {
-    ("orders", "customers"): ("M1100 420 V306", (1110, 368), (0.5, 0), (0.5, 1)),
-    ("order_items", "orders"): ("M1100 930 V716", (1110, 823), (0.5, 0), (0.5, 1)),
+    ("orders", "customers"): ("M1100 420 V301", (1110, 368), (0.5, 0), (0.5, 1)),
+    ("order_items", "orders"): ("M1100 930 V708", (1110, 823), (0.5, 0), (0.5, 1)),
     ("order_items", "products"): ("M1010 1189 V1280 H800 V1390", (823, 1311), (0.28, 1), (0.5, 0)),
     ("order_items", "sellers"): ("M1190 1189 V1305 H1400 V1390", (1260, 1337), (0.72, 1), (0.5, 0)),
     ("order_payments", "orders"): ("M660 568 H900", (760, 541), (1, 0.5), (0, 0.5)),
