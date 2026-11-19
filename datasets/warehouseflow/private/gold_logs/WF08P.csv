@@ -1,40 +1,220 @@
 event_id,case_id,activity,timestamp
-M:0001,M:0001,Goods Received,2026-02-01T05:35:00Z
-M:0002,M:0002,Goods Received,2026-02-01T10:35:00Z
-M:0003,M:0003,Goods Received,2026-02-01T15:35:00Z
-M:0004,M:0004,Goods Received,2026-02-01T20:35:00Z
-M:0005,M:0005,Goods Received,2026-02-02T01:35:00Z
-M:0006,M:0006,Goods Received,2026-02-02T06:35:00Z
-M:0007,M:0007,Goods Received,2026-02-02T11:35:00Z
-M:0008,M:0008,Goods Received,2026-02-02T16:35:00Z
-M:0009,M:0009,Goods Received,2026-02-02T21:35:00Z
-M:0010,M:0010,Goods Received,2026-02-03T02:35:00Z
-M:0011,M:0011,Goods Received,2026-02-03T07:35:00Z
-M:0012,M:0012,Goods Received,2026-02-03T12:35:00Z
-M:0013,M:0013,Goods Received,2026-02-03T17:35:00Z
-M:0014,M:0014,Goods Received,2026-02-03T22:35:00Z
-M:0015,M:0015,Goods Received,2026-02-04T03:35:00Z
-M:0016,M:0016,Goods Received,2026-02-04T08:35:00Z
-M:0017,M:0017,Goods Received,2026-02-04T13:35:00Z
-M:0018,M:0018,Goods Received,2026-02-04T18:35:00Z
-M:0019,M:0019,Goods Received,2026-02-04T23:35:00Z
-M:0020,M:0020,Goods Received,2026-02-05T04:35:00Z
-M:0021,M:0021,Goods Received,2026-02-05T09:35:00Z
-M:0022,M:0022,Goods Received,2026-02-05T14:35:00Z
-M:0023,M:0023,Goods Received,2026-02-05T19:35:00Z
-M:0024,M:0024,Goods Dispatched,2026-04-11T16:45:00Z
-M:0025,M:0025,Goods Dispatched,2026-04-11T21:45:00Z
-M:0026,M:0026,Goods Dispatched,2026-04-12T02:45:00Z
-M:0027,M:0027,Goods Dispatched,2026-04-12T07:45:00Z
-M:0028,M:0028,Goods Dispatched,2026-04-12T12:45:00Z
-M:0029,M:0029,Goods Dispatched,2026-04-12T17:45:00Z
-M:0030,M:0030,Goods Dispatched,2026-04-12T22:45:00Z
-M:0031,M:0031,Goods Dispatched,2026-04-13T03:45:00Z
-M:0032,M:0032,Goods Dispatched,2026-04-13T08:45:00Z
-M:0033,M:0033,Goods Dispatched,2026-04-13T13:45:00Z
-M:0034,M:0034,Goods Dispatched,2026-04-13T18:45:00Z
-M:0035,M:0035,Goods Dispatched,2026-04-13T23:45:00Z
-M:0036,M:0036,Goods Dispatched,2026-04-14T04:45:00Z
-M:0037,M:0037,Goods Dispatched,2026-04-14T09:45:00Z
-M:0038,M:0038,Goods Dispatched,2026-04-14T14:45:00Z
-M:0039,M:0039,Goods Dispatched,2026-04-14T19:45:00Z
+Q:001,G:1,Receiving Request Submitted,2026-02-01T05:00:00Z
+C:0001,G:1,Request Checked,2026-02-01T05:05:00Z
+C:0002,G:1,Request Released,2026-02-01T05:12:00Z
+H:0001:start,G:1,Unloading Started,2026-02-01T05:20:00Z
+H:0001:complete,G:1,Unloading Completed,2026-02-01T05:30:00Z
+R:001,G:1,Receipt Registered,2026-02-01T05:32:00Z
+M:0001,G:1,Goods Received,2026-02-01T05:35:00Z
+T:0001:start,G:1,Putaway Started,2026-02-01T05:40:00Z
+T:0001:complete,G:1,Putaway Completed,2026-02-01T05:50:00Z
+Q:007,G:1,Receiving Request Submitted,2026-02-02T11:00:00Z
+C:0015,G:1,Request Checked,2026-02-02T11:05:00Z
+C:0016,G:1,Request Released,2026-02-02T11:12:00Z
+H:0007:start,G:1,Unloading Started,2026-02-02T11:20:00Z
+H:0007:complete,G:1,Unloading Completed,2026-02-02T11:30:00Z
+R:007,G:1,Receipt Registered,2026-02-02T11:32:00Z
+M:0007,G:1,Goods Received,2026-02-02T11:35:00Z
+T:0007:start,G:1,Putaway Started,2026-02-02T11:40:00Z
+T:0007:complete,G:1,Putaway Completed,2026-02-02T11:50:00Z
+Q:013,G:1,Receiving Request Submitted,2026-02-03T17:00:00Z
+C:0029,G:1,Request Checked,2026-02-03T17:05:00Z
+C:0030,G:1,Request Released,2026-02-03T17:12:00Z
+H:0013:start,G:1,Unloading Started,2026-02-03T17:20:00Z
+H:0013:complete,G:1,Unloading Completed,2026-02-03T17:30:00Z
+R:013,G:1,Receipt Registered,2026-02-03T17:32:00Z
+M:0013,G:1,Goods Received,2026-02-03T17:35:00Z
+T:0013:start,G:1,Putaway Started,2026-02-03T17:40:00Z
+T:0013:complete,G:1,Putaway Completed,2026-02-03T17:50:00Z
+Q:019,G:1,Receiving Request Submitted,2026-02-04T23:00:00Z
+C:0043,G:1,Request Checked,2026-02-04T23:05:00Z
+C:0044,G:1,Request Released,2026-02-04T23:12:00Z
+H:0019:start,G:1,Unloading Started,2026-02-04T23:20:00Z
+H:0019:complete,G:1,Unloading Completed,2026-02-04T23:30:00Z
+R:019,G:1,Receipt Registered,2026-02-04T23:32:00Z
+M:0019,G:1,Goods Received,2026-02-04T23:35:00Z
+T:0019:start,G:1,Putaway Started,2026-02-04T23:40:00Z
+T:0019:complete,G:1,Putaway Completed,2026-02-04T23:50:00Z
+Q:025,G:1,Receiving Request Submitted,2026-02-06T05:00:00Z
+Q:002,G:2,Receiving Request Submitted,2026-02-01T10:00:00Z
+C:0003,G:2,Request Checked,2026-02-01T10:05:00Z
+C:0004,G:2,Request Released,2026-02-01T10:12:00Z
+H:0002:start,G:2,Unloading Started,2026-02-01T10:20:00Z
+H:0002:complete,G:2,Unloading Completed,2026-02-01T10:30:00Z
+R:002,G:2,Receipt Registered,2026-02-01T10:32:00Z
+M:0002,G:2,Goods Received,2026-02-01T10:35:00Z
+T:0002:start,G:2,Putaway Started,2026-02-01T10:40:00Z
+T:0002:complete,G:2,Putaway Completed,2026-02-01T10:50:00Z
+Q:008,G:2,Receiving Request Submitted,2026-02-02T16:00:00Z
+C:0017,G:2,Request Checked,2026-02-02T16:05:00Z
+C:0018,G:2,Request Released,2026-02-02T16:12:00Z
+H:0008:start,G:2,Unloading Started,2026-02-02T16:20:00Z
+H:0008:complete,G:2,Unloading Completed,2026-02-02T16:30:00Z
+R:008,G:2,Receipt Registered,2026-02-02T16:32:00Z
+M:0008,G:2,Goods Received,2026-02-02T16:35:00Z
+T:0008:start,G:2,Putaway Started,2026-02-02T16:40:00Z
+T:0008:complete,G:2,Putaway Completed,2026-02-02T16:50:00Z
+Q:014,G:2,Receiving Request Submitted,2026-02-03T22:00:00Z
+C:0031,G:2,Request Checked,2026-02-03T22:05:00Z
+C:0032,G:2,Request Released,2026-02-03T22:12:00Z
+H:0014:start,G:2,Unloading Started,2026-02-03T22:20:00Z
+H:0014:complete,G:2,Unloading Completed,2026-02-03T22:30:00Z
+R:014,G:2,Receipt Registered,2026-02-03T22:32:00Z
+M:0014,G:2,Goods Received,2026-02-03T22:35:00Z
+T:0014:start,G:2,Putaway Started,2026-02-03T22:40:00Z
+T:0014:complete,G:2,Putaway Completed,2026-02-03T22:50:00Z
+Q:020,G:2,Receiving Request Submitted,2026-02-05T04:00:00Z
+C:0045,G:2,Request Checked,2026-02-05T04:05:00Z
+C:0046,G:2,Request Held,2026-02-05T04:08:00Z
+C:0047,G:2,Request Checked,2026-02-05T04:10:00Z
+C:0048,G:2,Request Released,2026-02-05T04:12:00Z
+H:0020:start,G:2,Unloading Started,2026-02-05T04:20:00Z
+H:0020:complete,G:2,Unloading Completed,2026-02-05T04:30:00Z
+R:020,G:2,Receipt Registered,2026-02-05T04:32:00Z
+M:0020,G:2,Goods Received,2026-02-05T04:35:00Z
+T:0020:start,G:2,Putaway Started,2026-02-05T04:40:00Z
+T:0020:complete,G:2,Putaway Completed,2026-02-05T04:50:00Z
+Q:026,G:2,Receiving Request Submitted,2026-02-06T10:00:00Z
+Q:003,G:3,Receiving Request Submitted,2026-02-01T15:00:00Z
+C:0005,G:3,Request Checked,2026-02-01T15:05:00Z
+C:0006,G:3,Request Released,2026-02-01T15:12:00Z
+H:0003:start,G:3,Unloading Started,2026-02-01T15:20:00Z
+H:0003:complete,G:3,Unloading Completed,2026-02-01T15:30:00Z
+R:003,G:3,Receipt Registered,2026-02-01T15:32:00Z
+M:0003,G:3,Goods Received,2026-02-01T15:35:00Z
+T:0003:start,G:3,Putaway Started,2026-02-01T15:40:00Z
+T:0003:complete,G:3,Putaway Completed,2026-02-01T15:50:00Z
+Q:009,G:3,Receiving Request Submitted,2026-02-02T21:00:00Z
+C:0019,G:3,Request Checked,2026-02-02T21:05:00Z
+C:0020,G:3,Request Released,2026-02-02T21:12:00Z
+H:0009:start,G:3,Unloading Started,2026-02-02T21:20:00Z
+H:0009:complete,G:3,Unloading Completed,2026-02-02T21:30:00Z
+R:009,G:3,Receipt Registered,2026-02-02T21:32:00Z
+M:0009,G:3,Goods Received,2026-02-02T21:35:00Z
+T:0009:start,G:3,Putaway Started,2026-02-02T21:40:00Z
+T:0009:complete,G:3,Putaway Completed,2026-02-02T21:50:00Z
+Q:015,G:3,Receiving Request Submitted,2026-02-04T03:00:00Z
+C:0033,G:3,Request Checked,2026-02-04T03:05:00Z
+C:0034,G:3,Request Held,2026-02-04T03:08:00Z
+C:0035,G:3,Request Checked,2026-02-04T03:10:00Z
+C:0036,G:3,Request Released,2026-02-04T03:12:00Z
+H:0015:start,G:3,Unloading Started,2026-02-04T03:20:00Z
+H:0015:complete,G:3,Unloading Completed,2026-02-04T03:30:00Z
+R:015,G:3,Receipt Registered,2026-02-04T03:32:00Z
+M:0015,G:3,Goods Received,2026-02-04T03:35:00Z
+T:0015:start,G:3,Putaway Started,2026-02-04T03:40:00Z
+T:0015:complete,G:3,Putaway Completed,2026-02-04T03:50:00Z
+Q:021,G:3,Receiving Request Submitted,2026-02-05T09:00:00Z
+C:0049,G:3,Request Checked,2026-02-05T09:05:00Z
+C:0050,G:3,Request Released,2026-02-05T09:12:00Z
+H:0021:start,G:3,Unloading Started,2026-02-05T09:20:00Z
+H:0021:complete,G:3,Unloading Completed,2026-02-05T09:30:00Z
+R:021,G:3,Receipt Registered,2026-02-05T09:32:00Z
+M:0021,G:3,Goods Received,2026-02-05T09:35:00Z
+T:0021:start,G:3,Putaway Started,2026-02-05T09:40:00Z
+Q:004,G:4,Receiving Request Submitted,2026-02-01T20:00:00Z
+C:0007,G:4,Request Checked,2026-02-01T20:05:00Z
+C:0008,G:4,Request Released,2026-02-01T20:12:00Z
+H:0004:start,G:4,Unloading Started,2026-02-01T20:20:00Z
+H:0004:complete,G:4,Unloading Completed,2026-02-01T20:30:00Z
+R:004,G:4,Receipt Registered,2026-02-01T20:32:00Z
+M:0004,G:4,Goods Received,2026-02-01T20:35:00Z
+T:0004:start,G:4,Putaway Started,2026-02-01T20:40:00Z
+T:0004:complete,G:4,Putaway Completed,2026-02-01T20:50:00Z
+Q:010,G:4,Receiving Request Submitted,2026-02-03T02:00:00Z
+C:0021,G:4,Request Checked,2026-02-03T02:05:00Z
+C:0022,G:4,Request Held,2026-02-03T02:08:00Z
+C:0023,G:4,Request Checked,2026-02-03T02:10:00Z
+C:0024,G:4,Request Released,2026-02-03T02:12:00Z
+H:0010:start,G:4,Unloading Started,2026-02-03T02:20:00Z
+H:0010:complete,G:4,Unloading Completed,2026-02-03T02:30:00Z
+R:010,G:4,Receipt Registered,2026-02-03T02:32:00Z
+M:0010,G:4,Goods Received,2026-02-03T02:35:00Z
+T:0010:start,G:4,Putaway Started,2026-02-03T02:40:00Z
+T:0010:complete,G:4,Putaway Completed,2026-02-03T02:50:00Z
+Q:016,G:4,Receiving Request Submitted,2026-02-04T08:00:00Z
+C:0037,G:4,Request Checked,2026-02-04T08:05:00Z
+C:0038,G:4,Request Released,2026-02-04T08:12:00Z
+H:0016:start,G:4,Unloading Started,2026-02-04T08:20:00Z
+H:0016:complete,G:4,Unloading Completed,2026-02-04T08:30:00Z
+R:016,G:4,Receipt Registered,2026-02-04T08:32:00Z
+M:0016,G:4,Goods Received,2026-02-04T08:35:00Z
+T:0016:start,G:4,Putaway Started,2026-02-04T08:40:00Z
+T:0016:complete,G:4,Putaway Completed,2026-02-04T08:50:00Z
+Q:022,G:4,Receiving Request Submitted,2026-02-05T14:00:00Z
+C:0051,G:4,Request Checked,2026-02-05T14:05:00Z
+C:0052,G:4,Request Released,2026-02-05T14:12:00Z
+H:0022:start,G:4,Unloading Started,2026-02-05T14:20:00Z
+H:0022:complete,G:4,Unloading Completed,2026-02-05T14:30:00Z
+R:022,G:4,Receipt Registered,2026-02-05T14:32:00Z
+M:0022,G:4,Goods Received,2026-02-05T14:35:00Z
+T:0022:start,G:4,Putaway Started,2026-02-05T14:40:00Z
+T:0022:complete,G:4,Putaway Completed,2026-02-05T14:50:00Z
+Q:005,G:5,Receiving Request Submitted,2026-02-02T01:00:00Z
+C:0009,G:5,Request Checked,2026-02-02T01:05:00Z
+C:0010,G:5,Request Held,2026-02-02T01:08:00Z
+C:0011,G:5,Request Checked,2026-02-02T01:10:00Z
+C:0012,G:5,Request Released,2026-02-02T01:12:00Z
+H:0005:start,G:5,Unloading Started,2026-02-02T01:20:00Z
+H:0005:complete,G:5,Unloading Completed,2026-02-02T01:30:00Z
+R:005,G:5,Receipt Registered,2026-02-02T01:32:00Z
+M:0005,G:5,Goods Received,2026-02-02T01:35:00Z
+T:0005:start,G:5,Putaway Started,2026-02-02T01:40:00Z
+T:0005:complete,G:5,Putaway Completed,2026-02-02T01:50:00Z
+Q:011,G:5,Receiving Request Submitted,2026-02-03T07:00:00Z
+C:0025,G:5,Request Checked,2026-02-03T07:05:00Z
+C:0026,G:5,Request Released,2026-02-03T07:12:00Z
+H:0011:start,G:5,Unloading Started,2026-02-03T07:20:00Z
+H:0011:complete,G:5,Unloading Completed,2026-02-03T07:30:00Z
+R:011,G:5,Receipt Registered,2026-02-03T07:32:00Z
+M:0011,G:5,Goods Received,2026-02-03T07:35:00Z
+T:0011:start,G:5,Putaway Started,2026-02-03T07:40:00Z
+T:0011:complete,G:5,Putaway Completed,2026-02-03T07:50:00Z
+Q:017,G:5,Receiving Request Submitted,2026-02-04T13:00:00Z
+C:0039,G:5,Request Checked,2026-02-04T13:05:00Z
+C:0040,G:5,Request Released,2026-02-04T13:12:00Z
+H:0017:start,G:5,Unloading Started,2026-02-04T13:20:00Z
+H:0017:complete,G:5,Unloading Completed,2026-02-04T13:30:00Z
+R:017,G:5,Receipt Registered,2026-02-04T13:32:00Z
+M:0017,G:5,Goods Received,2026-02-04T13:35:00Z
+T:0017:start,G:5,Putaway Started,2026-02-04T13:40:00Z
+T:0017:complete,G:5,Putaway Completed,2026-02-04T13:50:00Z
+Q:023,G:5,Receiving Request Submitted,2026-02-05T19:00:00Z
+C:0053,G:5,Request Checked,2026-02-05T19:05:00Z
+C:0054,G:5,Request Released,2026-02-05T19:12:00Z
+H:0023:start,G:5,Unloading Started,2026-02-05T19:20:00Z
+H:0023:complete,G:5,Unloading Completed,2026-02-05T19:30:00Z
+R:023,G:5,Receipt Registered,2026-02-05T19:32:00Z
+M:0023,G:5,Goods Received,2026-02-05T19:35:00Z
+T:0023:start,G:5,Putaway Started,2026-02-05T19:40:00Z
+Q:006,G:6,Receiving Request Submitted,2026-02-02T06:00:00Z
+C:0013,G:6,Request Checked,2026-02-02T06:05:00Z
+C:0014,G:6,Request Released,2026-02-02T06:12:00Z
+H:0006:start,G:6,Unloading Started,2026-02-02T06:20:00Z
+H:0006:complete,G:6,Unloading Completed,2026-02-02T06:30:00Z
+R:006,G:6,Receipt Registered,2026-02-02T06:32:00Z
+M:0006,G:6,Goods Received,2026-02-02T06:35:00Z
+T:0006:start,G:6,Putaway Started,2026-02-02T06:40:00Z
+T:0006:complete,G:6,Putaway Completed,2026-02-02T06:50:00Z
+Q:012,G:6,Receiving Request Submitted,2026-02-03T12:00:00Z
+C:0027,G:6,Request Checked,2026-02-03T12:05:00Z
+C:0028,G:6,Request Released,2026-02-03T12:12:00Z
+H:0012:start,G:6,Unloading Started,2026-02-03T12:20:00Z
+H:0012:complete,G:6,Unloading Completed,2026-02-03T12:30:00Z
+R:012,G:6,Receipt Registered,2026-02-03T12:32:00Z
+M:0012,G:6,Goods Received,2026-02-03T12:35:00Z
+T:0012:start,G:6,Putaway Started,2026-02-03T12:40:00Z
+T:0012:complete,G:6,Putaway Completed,2026-02-03T12:50:00Z
+Q:018,G:6,Receiving Request Submitted,2026-02-04T18:00:00Z
+C:0041,G:6,Request Checked,2026-02-04T18:05:00Z
+C:0042,G:6,Request Released,2026-02-04T18:12:00Z
+H:0018:start,G:6,Unloading Started,2026-02-04T18:20:00Z
+H:0018:complete,G:6,Unloading Completed,2026-02-04T18:30:00Z
+R:018,G:6,Receipt Registered,2026-02-04T18:32:00Z
+M:0018,G:6,Goods Received,2026-02-04T18:35:00Z
+T:0018:start,G:6,Putaway Started,2026-02-04T18:40:00Z
+T:0018:complete,G:6,Putaway Completed,2026-02-04T18:50:00Z
+Q:024,G:6,Receiving Request Submitted,2026-02-06T00:00:00Z
+C:0055,G:6,Request Checked,2026-02-06T00:05:00Z
+C:0056,G:6,Request Released,2026-02-06T00:12:00Z
+H:0024:start,G:6,Unloading Started,2026-02-06T00:20:00Z

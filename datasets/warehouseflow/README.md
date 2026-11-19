@@ -41,8 +41,8 @@ The checked-in question file contains **40 requests**. Explicit requests enumera
 |---|---|
 | W03 | For each dispatch order, extract Dispatch Requested and Dispatch Approved events. |
 | W03P | For every dispatch order, show when dispatch was requested and when it was approved. |
-| W06 | For each request action record, extract Request Checked, Request Held and Request Released events. |
-| W06P | For each individual request action record, show the checking, holding or releasing action that was recorded. |
+| W06 | For each receiving request, extract Request Checked, Request Held and Request Released events. |
+| W06P | For every receiving request, show when it was checked, put on hold and released from hold. |
 | W07 | For each warehouse task, extract Putaway Started, Putaway Completed, Picking Started, Picking Completed, Packing Started and Packing Completed events. |
 | W07P | For every warehouse task, show the recorded beginnings and completions of putaway, picking or packing, as applicable. |
 | W08 | For each handling record, extract Unloading Started, Unloading Completed, Loading Started and Loading Completed events. |
@@ -71,10 +71,10 @@ The checked-in question file contains **40 requests**. Explicit requests enumera
 | WF05P | Show the entire recorded history associated with each individual receipt record. |
 | WF06 | Extract the full recorded lifecycle for each dispatch order. |
 | WF06P | Build a complete recorded timeline for every dispatch order. |
-| WF08 | Extract the full recorded lifecycle for each stock movement record. |
-| WF08P | Trace each individual stock movement record through its entire recorded history. |
-| WF09 | Extract the full recorded lifecycle for each request action record. |
-| WF09P | Show the complete recorded history of every individual request action record. |
+| WF08 | Extract the full recorded inbound-receiving lifecycle for each goods type. |
+| WF08P | For every goods type, reconstruct the complete recorded history of its inbound receiving process. |
+| WF09 | Extract the full recorded outbound-fulfillment work lifecycle for each worker. |
+| WF09P | For every worker, reconstruct the complete recorded history of their work on outbound fulfillment. |
 | WF10 | Extract the full recorded lifecycle for each warehouse task. |
 | WF10P | Build the full recorded lifecycle of each warehouse task. |
 | WF11 | Extract the full recorded lifecycle for each handling record. |

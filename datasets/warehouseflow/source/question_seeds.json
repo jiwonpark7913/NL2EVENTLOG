@@ -16,7 +16,9 @@
       "Request Held",
       "Request Released"
     ],
-    "question": "For each request action record, extract Request Checked, Request Held and Request Released events."
+    "question": "For each receiving request, extract Request Checked, Request Held and Request Released events.",
+    "case_concept": "Receiving Request",
+    "post_generation_edit": "Author revised following 2026-11-20 audit."
   },
   {
     "id": "W07",
@@ -144,12 +146,36 @@
   {
     "id": "WF08",
     "view": "Stock Movement",
-    "question": "Extract the full recorded lifecycle for each stock movement record."
+    "question": "Extract the full recorded inbound-receiving lifecycle for each goods type.",
+    "case_concept": "Goods",
+    "activities": [
+      "Goods Received",
+      "Putaway Completed",
+      "Putaway Started",
+      "Receipt Registered",
+      "Receiving Request Submitted",
+      "Request Checked",
+      "Request Held",
+      "Request Released",
+      "Unloading Completed",
+      "Unloading Started"
+    ],
+    "post_generation_edit": "Author revised following 2026-11-20 audit."
   },
   {
     "id": "WF09",
     "view": "Request Action",
-    "question": "Extract the full recorded lifecycle for each request action record."
+    "question": "Extract the full recorded outbound-fulfillment work lifecycle for each worker.",
+    "case_concept": "Worker",
+    "activities": [
+      "Loading Completed",
+      "Loading Started",
+      "Packing Completed",
+      "Packing Started",
+      "Picking Completed",
+      "Picking Started"
+    ],
+    "post_generation_edit": "Author revised following 2026-11-20 audit."
   },
   {
     "id": "WF10",

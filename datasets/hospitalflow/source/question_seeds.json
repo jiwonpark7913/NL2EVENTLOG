@@ -86,7 +86,18 @@
   {
     "id": "HF03",
     "view": "Order History Record",
-    "question": "Extract the full recorded lifecycle for each order history record."
+    "question": "Extract the full recorded laboratory-testing lifecycle for each hospital admission.",
+    "case_concept": "Hospital Admission",
+    "activities": [
+      "Lab Result Available",
+      "Lab Results Verified",
+      "Order Cancelled",
+      "Order Entered",
+      "Order Reviewed",
+      "Specimen Collected",
+      "Specimen Received"
+    ],
+    "post_generation_edit": "Author revised following 2026-11-20 audit."
   },
   {
     "id": "HF04",
@@ -128,7 +139,18 @@
   {
     "id": "HF08",
     "view": "Medication Administration",
-    "question": "Extract the full recorded lifecycle for each medication administration."
+    "question": "Extract the full recorded medication-treatment lifecycle for each patient.",
+    "case_concept": "Patient",
+    "activities": [
+      "Medication Administered",
+      "Medication Dispensed",
+      "Medication Not Given",
+      "Medication Stopped",
+      "Order Cancelled",
+      "Order Entered",
+      "Order Reviewed"
+    ],
+    "post_generation_edit": "Author revised following 2026-11-20 audit."
   },
   {
     "id": "HF09",

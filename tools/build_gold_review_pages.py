@@ -97,6 +97,7 @@ def build(base):
     out=base/'review/gold_dfg'
     qp=next(p for p in [base/'private/questions.jsonl',base/'evaluation/questions.jsonl'] if p.exists())
     questions=[json.loads(s) for s in qp.read_text().splitlines() if s.strip()]
+    gold={g['question_id']:g for g in map(json.loads,(base/'private/gold.jsonl').read_text().splitlines())}
     sources=gold_source_rows.SourceRows(base)
     all_tables=[r[0] for r in sources.db.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name")]
     records=[]; total_missing=0
@@ -109,6 +110,15 @@ def build(base):
             records.append(dict(id=ident,html=section));continue
         rows=list(csv.DictReader(csvpath.open()));sql=sqlpath.read_text()
         svg,cases,activities=graph(rows)
+        g=gold[ident];population=g.get('es',{}).get('case_population')
+        if population is None and g.get('es',{}).get('case_population_query'):
+            population=[r[0] for r in sources.db.execute(g['es']['case_population_query'])]
+        frequencies=Counter(r['case_id'] for r in rows);singleton=sum(n==1 for n in frequencies.values())
+        info=f'Singleton cases: {singleton}/{cases}'
+        if population is not None:info+=f' · 전체 case: {len(population)} · 빈 case: {len(population)-cases}'
+        focus=g.get('process_view',{}).get('process_focus')
+        if focus:info+=' · Process focus: '+focus
+        section+='<p class="meta">'+esc(info)+'</p>'
         tables,reads,missing,related=sources.inspect(sql,rows);total_missing+=missing
         section+=f'<p class="meta">{len(rows)} events · {cases} cases with events · {activities} activities</p><div class="split"><section class="graph"><h3>Gold DFG</h3><div class="toolbar"><button data-zoom="0.25">＋</button><button data-zoom="-0.25">−</button><button data-zoom="reset">맞춤</button></div><div class="graph-scroll">{svg}</div><p class="meta">노드: 발생 횟수 · 간선: 직접 후속 횟수<br>점선: 동일 timestamp의 event_id 정렬에 영향받는 전이. 인과관계를 의미하지 않습니다.</p></section><section class="source"><h3>원본 테이블 · 추출 근거</h3>'
         if missing:section+=f'<p class="warning">원본 행 미매칭: {missing} Gold 이벤트. 추측한 행으로 대체하지 않았습니다.</p>'

@@ -837,16 +837,16 @@
     "dataset": "plateflow",
     "id": "N12",
     "type": "Q1",
-    "question": "For each furnace operation record, extract Furnace Charged, Heating Completed and Furnace Discharged events.",
+    "question": "For each mother material, extract Furnace Charged, Heating Completed and Furnace Discharged events.",
     "answerable": true,
     "pair_of": "N12P",
-    "gold_sha256": "61e96ffa8455b4b018140224166126bb32e3724d6e7c27fee982a395e12227fd",
+    "gold_sha256": "01cb514c43fc700a2a5036fd3992e1b90f046a1c2ac5db3953fe8dd06ba07891",
     "chart": "graphs/N12.svg",
     "stats": {
       "events": 68,
-      "observed_cases": 68,
+      "observed_cases": 24,
       "activities": 3,
-      "dfg_edges": 0,
+      "dfg_edges": 2,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -857,7 +857,20 @@
       "Heating Completed": 22,
       "Furnace Discharged": 22
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Furnace Charged",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "furnace_operation_history": 68
     },
@@ -867,16 +880,16 @@
     "dataset": "plateflow",
     "id": "N12P",
     "type": "Q2",
-    "question": "For every furnace operation record, show the recorded completion of furnace charging, heating or furnace discharge, as applicable.",
+    "question": "For every mother material, show when furnace charging, heating and furnace discharge finished.",
     "answerable": true,
     "pair_of": "N12",
-    "gold_sha256": "61e96ffa8455b4b018140224166126bb32e3724d6e7c27fee982a395e12227fd",
+    "gold_sha256": "01cb514c43fc700a2a5036fd3992e1b90f046a1c2ac5db3953fe8dd06ba07891",
     "chart": "graphs/N12.svg",
     "stats": {
       "events": 68,
-      "observed_cases": 68,
+      "observed_cases": 24,
       "activities": 3,
-      "dfg_edges": 0,
+      "dfg_edges": 2,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -887,7 +900,20 @@
       "Heating Completed": 22,
       "Furnace Discharged": 22
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Furnace Charged",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "furnace_operation_history": 68
     },

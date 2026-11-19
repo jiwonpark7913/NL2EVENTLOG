@@ -75,16 +75,16 @@
     "dataset": "warehouseflow",
     "id": "W06",
     "type": "Q1",
-    "question": "For each request action record, extract Request Checked, Request Held and Request Released events.",
+    "question": "For each receiving request, extract Request Checked, Request Held and Request Released events.",
     "answerable": true,
     "pair_of": "W06P",
-    "gold_sha256": "318c3a8df438b006c379f743541803d3762375f1085f88e84cf06164c271d991",
+    "gold_sha256": "d7b5065d126c6c53d3d7bfb91072cb862776f7fbadfb919d4ad4ee6c03eb651d",
     "chart": "graphs/W06.svg",
     "stats": {
       "events": 56,
-      "observed_cases": 56,
+      "observed_cases": 24,
       "activities": 3,
-      "dfg_edges": 0,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -95,7 +95,26 @@
       "Request Released": 24,
       "Request Held": 4
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Request Checked",
+        "target": "Request Held",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Checked",
+        "target": "Request Released",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Held",
+        "target": "Request Checked",
+        "count": 4,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "request_action": 56
     },
@@ -105,16 +124,16 @@
     "dataset": "warehouseflow",
     "id": "W06P",
     "type": "Q2",
-    "question": "For each individual request action record, show the checking, holding or releasing action that was recorded.",
+    "question": "For every receiving request, show when it was checked, put on hold and released from hold.",
     "answerable": true,
     "pair_of": "W06",
-    "gold_sha256": "318c3a8df438b006c379f743541803d3762375f1085f88e84cf06164c271d991",
+    "gold_sha256": "d7b5065d126c6c53d3d7bfb91072cb862776f7fbadfb919d4ad4ee6c03eb651d",
     "chart": "graphs/W06.svg",
     "stats": {
       "events": 56,
-      "observed_cases": 56,
+      "observed_cases": 24,
       "activities": 3,
-      "dfg_edges": 0,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -125,7 +144,26 @@
       "Request Released": 24,
       "Request Held": 4
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Request Checked",
+        "target": "Request Held",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Checked",
+        "target": "Request Released",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Held",
+        "target": "Request Checked",
+        "count": 4,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "request_action": 56
     },
@@ -2841,28 +2879,108 @@
     "dataset": "warehouseflow",
     "id": "WF08",
     "type": "Q3",
-    "question": "Extract the full recorded lifecycle for each stock movement record.",
+    "question": "Extract the full recorded inbound-receiving lifecycle for each goods type.",
     "answerable": true,
     "pair_of": "WF08P",
-    "gold_sha256": "aacdf84e0396c8e7f1661269e797012864d3b590056688abae0447dc181c4548",
+    "gold_sha256": "472afd7ce536ee0515f9b48979bf36c194c2c173da136e1ed93c74ccc12b870f",
     "chart": "graphs/WF08.svg",
     "stats": {
-      "events": 39,
-      "observed_cases": 39,
-      "activities": 2,
-      "dfg_edges": 0,
+      "events": 219,
+      "observed_cases": 6,
+      "activities": 10,
+      "dfg_edges": 11,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Receiving Request Submitted": 26,
+      "Request Checked": 28,
+      "Request Released": 24,
+      "Unloading Started": 24,
+      "Unloading Completed": 23,
+      "Receipt Registered": 23,
       "Goods Received": 23,
-      "Goods Dispatched": 16
+      "Putaway Started": 23,
+      "Putaway Completed": 21,
+      "Request Held": 4
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Putaway Started",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Putaway Completed",
+        "target": "Receiving Request Submitted",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Putaway Started",
+        "target": "Putaway Completed",
+        "count": 21,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receipt Registered",
+        "target": "Goods Received",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Request Submitted",
+        "target": "Request Checked",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Checked",
+        "target": "Request Held",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Checked",
+        "target": "Request Released",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Held",
+        "target": "Request Checked",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Released",
+        "target": "Unloading Started",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Unloading Completed",
+        "target": "Receipt Registered",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Unloading Started",
+        "target": "Unloading Completed",
+        "count": 23,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "goods_movement": 39
+      "goods_movement": 23,
+      "goods_receipt": 23,
+      "handling_history": 24,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_task_history": 23
     },
     "unmatched_gold_rows": 0
   },
@@ -2870,28 +2988,108 @@
     "dataset": "warehouseflow",
     "id": "WF08P",
     "type": "Q4",
-    "question": "Trace each individual stock movement record through its entire recorded history.",
+    "question": "For every goods type, reconstruct the complete recorded history of its inbound receiving process.",
     "answerable": true,
     "pair_of": "WF08",
-    "gold_sha256": "aacdf84e0396c8e7f1661269e797012864d3b590056688abae0447dc181c4548",
+    "gold_sha256": "472afd7ce536ee0515f9b48979bf36c194c2c173da136e1ed93c74ccc12b870f",
     "chart": "graphs/WF08.svg",
     "stats": {
-      "events": 39,
-      "observed_cases": 39,
-      "activities": 2,
-      "dfg_edges": 0,
+      "events": 219,
+      "observed_cases": 6,
+      "activities": 10,
+      "dfg_edges": 11,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Receiving Request Submitted": 26,
+      "Request Checked": 28,
+      "Request Released": 24,
+      "Unloading Started": 24,
+      "Unloading Completed": 23,
+      "Receipt Registered": 23,
       "Goods Received": 23,
-      "Goods Dispatched": 16
+      "Putaway Started": 23,
+      "Putaway Completed": 21,
+      "Request Held": 4
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Putaway Started",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Putaway Completed",
+        "target": "Receiving Request Submitted",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Putaway Started",
+        "target": "Putaway Completed",
+        "count": 21,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receipt Registered",
+        "target": "Goods Received",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Receiving Request Submitted",
+        "target": "Request Checked",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Checked",
+        "target": "Request Held",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Checked",
+        "target": "Request Released",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Held",
+        "target": "Request Checked",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Request Released",
+        "target": "Unloading Started",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Unloading Completed",
+        "target": "Receipt Registered",
+        "count": 23,
+        "tie_affected": 0
+      },
+      {
+        "source": "Unloading Started",
+        "target": "Unloading Completed",
+        "count": 23,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "goods_movement": 39
+      "goods_movement": 23,
+      "goods_receipt": 23,
+      "handling_history": 24,
+      "receiving_request": 26,
+      "request_action": 56,
+      "warehouse_task_history": 23
     },
     "unmatched_gold_rows": 0
   },
@@ -2899,29 +3097,76 @@
     "dataset": "warehouseflow",
     "id": "WF09",
     "type": "Q3",
-    "question": "Extract the full recorded lifecycle for each request action record.",
+    "question": "Extract the full recorded outbound-fulfillment work lifecycle for each worker.",
     "answerable": true,
     "pair_of": "WF09P",
-    "gold_sha256": "318c3a8df438b006c379f743541803d3762375f1085f88e84cf06164c271d991",
-    "chart": "graphs/W06.svg",
+    "gold_sha256": "7a749cec089ce5200f53dbac292d87cf02063941f62c6cd77eeabd3d7eea4da4",
+    "chart": "graphs/WF09.svg",
     "stats": {
-      "events": 56,
-      "observed_cases": 56,
-      "activities": 3,
-      "dfg_edges": 0,
+      "events": 112,
+      "observed_cases": 6,
+      "activities": 6,
+      "dfg_edges": 7,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
-      "Request Checked": 28,
-      "Request Released": 24,
-      "Request Held": 4
+      "Picking Started": 22,
+      "Picking Completed": 22,
+      "Packing Started": 18,
+      "Packing Completed": 17,
+      "Loading Started": 17,
+      "Loading Completed": 16
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Loading Completed",
+        "target": "Picking Started",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Loading Started",
+        "target": "Loading Completed",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Packing Completed",
+        "target": "Loading Started",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Packing Started",
+        "target": "Packing Completed",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Picking Completed",
+        "target": "Packing Started",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Picking Completed",
+        "target": "Picking Started",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Picking Started",
+        "target": "Picking Completed",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "request_action": 56
+      "handling_history": 17,
+      "warehouse_task_history": 40
     },
     "unmatched_gold_rows": 0
   },
@@ -2929,29 +3174,76 @@
     "dataset": "warehouseflow",
     "id": "WF09P",
     "type": "Q4",
-    "question": "Show the complete recorded history of every individual request action record.",
+    "question": "For every worker, reconstruct the complete recorded history of their work on outbound fulfillment.",
     "answerable": true,
     "pair_of": "WF09",
-    "gold_sha256": "318c3a8df438b006c379f743541803d3762375f1085f88e84cf06164c271d991",
-    "chart": "graphs/W06.svg",
+    "gold_sha256": "7a749cec089ce5200f53dbac292d87cf02063941f62c6cd77eeabd3d7eea4da4",
+    "chart": "graphs/WF09.svg",
     "stats": {
-      "events": 56,
-      "observed_cases": 56,
-      "activities": 3,
-      "dfg_edges": 0,
+      "events": 112,
+      "observed_cases": 6,
+      "activities": 6,
+      "dfg_edges": 7,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
-      "Request Checked": 28,
-      "Request Released": 24,
-      "Request Held": 4
+      "Picking Started": 22,
+      "Picking Completed": 22,
+      "Packing Started": 18,
+      "Packing Completed": 17,
+      "Loading Started": 17,
+      "Loading Completed": 16
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Loading Completed",
+        "target": "Picking Started",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Loading Started",
+        "target": "Loading Completed",
+        "count": 16,
+        "tie_affected": 0
+      },
+      {
+        "source": "Packing Completed",
+        "target": "Loading Started",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Packing Started",
+        "target": "Packing Completed",
+        "count": 17,
+        "tie_affected": 0
+      },
+      {
+        "source": "Picking Completed",
+        "target": "Packing Started",
+        "count": 18,
+        "tie_affected": 0
+      },
+      {
+        "source": "Picking Completed",
+        "target": "Picking Started",
+        "count": 4,
+        "tie_affected": 0
+      },
+      {
+        "source": "Picking Started",
+        "target": "Picking Completed",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "request_action": 56
+      "handling_history": 17,
+      "warehouse_task_history": 40
     },
     "unmatched_gold_rows": 0
   },

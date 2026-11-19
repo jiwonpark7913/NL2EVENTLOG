@@ -16,8 +16,8 @@
 {"id": "HF01P", "question": "Build a complete timeline of all recorded care events for every patient."}
 {"id": "HF02", "question": "Extract the full recorded lifecycle for each hospital admission."}
 {"id": "HF02P", "question": "Show the entire recorded history of each individual hospital stay."}
-{"id": "HF03", "question": "Extract the full recorded lifecycle for each order history record."}
-{"id": "HF03P", "question": "Show the complete recorded history of every individual order history record."}
+{"id": "HF03", "question": "Extract the full recorded laboratory-testing lifecycle for each hospital admission."}
+{"id": "HF03P", "question": "For every hospital stay, reconstruct the entire recorded history of its laboratory testing."}
 {"id": "HF04", "question": "Extract the full recorded lifecycle for each laboratory order."}
 {"id": "HF04P", "question": "Show everything recorded over the life of each laboratory order."}
 {"id": "HF05", "question": "Extract the full recorded lifecycle for each medication order."}
@@ -30,8 +30,8 @@
 {"id": "H11P", "question": "Build a timeline for every patient showing their entries into hospital and their moves to a different hospital care unit."}
 {"id": "HF07", "question": "Extract the full recorded lifecycle for each lab measurement."}
 {"id": "HF07P", "question": "Show the entire recorded history of each individual laboratory measurement."}
-{"id": "HF08", "question": "Extract the full recorded lifecycle for each medication administration."}
-{"id": "HF08P", "question": "Build the complete recorded history of every individual medication administration record."}
+{"id": "HF08", "question": "Extract the full recorded medication-treatment lifecycle for each patient."}
+{"id": "HF08P", "question": "For every patient, reconstruct the complete recorded history of their medication treatment."}
 {"id": "HF09", "question": "Extract the full recorded lifecycle for each procedure episode."}
 {"id": "HF09P", "question": "Trace each individual procedure episode through its whole recorded lifecycle."}
 {"id": "HF10", "question": "Extract the full recorded lifecycle for each pharmacy dispensing record."}

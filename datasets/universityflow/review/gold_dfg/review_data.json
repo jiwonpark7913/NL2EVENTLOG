@@ -2454,16 +2454,16 @@
     "dataset": "universityflow",
     "id": "OU10",
     "type": "Q3",
-    "question": "Extract the full recorded lifecycle event log for each assignment grading record.",
+    "question": "Extract the full recorded grading and regrading history for each instructor.",
     "answerable": true,
     "pair_of": null,
-    "gold_sha256": "86780522189342a9d0a37bef9a8659c7e1c0924d05a6d352fec7610b355a1256",
+    "gold_sha256": "2690b4a988a3f5b40b4852a73d31ec31ba9d027fc2c04f6e86fd72472c3aadee",
     "chart": "graphs/OU10.svg",
     "stats": {
       "events": 25,
-      "observed_cases": 25,
+      "observed_cases": 3,
       "activities": 2,
-      "dfg_edges": 0,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -2473,7 +2473,26 @@
       "Assignment Graded": 18,
       "Assignment Regraded": 7
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Regraded",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Graded",
+        "count": 6,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "assignment_grading": 25
     },
@@ -5114,16 +5133,16 @@
     "dataset": "universityflow",
     "id": "OU10P",
     "type": "Q4",
-    "question": "Show the complete recorded history associated with each assignment grading record.",
+    "question": "For every instructor, reconstruct the entire recorded history of their initial assignment assessments and reassessments.",
     "answerable": true,
     "pair_of": "OU10",
-    "gold_sha256": "86780522189342a9d0a37bef9a8659c7e1c0924d05a6d352fec7610b355a1256",
-    "chart": "graphs/OU10.svg",
+    "gold_sha256": "2690b4a988a3f5b40b4852a73d31ec31ba9d027fc2c04f6e86fd72472c3aadee",
+    "chart": "graphs/OU10P.svg",
     "stats": {
       "events": 25,
-      "observed_cases": 25,
+      "observed_cases": 3,
       "activities": 2,
-      "dfg_edges": 0,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -5133,7 +5152,26 @@
       "Assignment Graded": 18,
       "Assignment Regraded": 7
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Graded",
+        "count": 9,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Graded",
+        "target": "Assignment Regraded",
+        "count": 7,
+        "tie_affected": 0
+      },
+      {
+        "source": "Assignment Regraded",
+        "target": "Assignment Graded",
+        "count": 6,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "assignment_grading": 25
     },

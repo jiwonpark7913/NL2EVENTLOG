@@ -6,7 +6,7 @@
   "prompt_template": "Paraphrase the following English extraction request. Preserve its case concept, population, activity kinds, requested start/completion phases and answerability. For Q1 use natural wording where possible; for Q3 ask for its full recorded lifecycle without enumerating activities. Do not add time or attribute filters. Return one paraphrase. Source: {question}",
   "outputs": {
     "W03": "For every dispatch order, show when dispatch was requested and when it was approved.",
-    "W06": "For each individual request action record, show the checking, holding or releasing action that was recorded.",
+    "W06": "For every receiving request, show when it was checked, put on hold and released from hold.",
     "W07": "For every warehouse task, show the recorded beginnings and completions of putaway, picking or packing, as applicable.",
     "W08": "For each handling record, show when unloading or loading began and finished, as applicable.",
     "W09": "For each warehouse, show the beginnings and completions of its stock audits, putaway work and loading work.",
@@ -21,10 +21,11 @@
     "WF04": "Trace each receiving request through its complete recorded lifecycle.",
     "WF05": "Show the entire recorded history associated with each individual receipt record.",
     "WF06": "Build a complete recorded timeline for every dispatch order.",
-    "WF08": "Trace each individual stock movement record through its entire recorded history.",
-    "WF09": "Show the complete recorded history of every individual request action record.",
+    "WF08": "For every goods type, reconstruct the complete recorded history of its inbound receiving process.",
+    "WF09": "For every worker, reconstruct the complete recorded history of their work on outbound fulfillment.",
     "WF10": "Build the full recorded lifecycle of each warehouse task.",
     "WF11": "Trace every individual handling record through its complete recorded history."
   },
-  "semantic_review": "Assistant compared outputs with frozen seeds, including exact phase scope. Pair ES/CSV equality is checked by code. This is author review, not an independent paraphrase-quality assessment."
+  "semantic_review": "Assistant compared outputs with frozen seeds, including exact phase scope. Pair ES/CSV equality is checked by code. This is author review, not an independent paraphrase-quality assessment.",
+  "post_generation_edit": "Affected paraphrases author-revised 2026-11-20; not a new original-LLM run."
 }

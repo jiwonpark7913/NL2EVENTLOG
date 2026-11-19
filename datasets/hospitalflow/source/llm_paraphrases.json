@@ -14,14 +14,14 @@
     "H07": "For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures.",
     "HF01": "Build a complete timeline of all recorded care events for every patient.",
     "HF02": "Show the entire recorded history of each individual hospital stay.",
-    "HF03": "Show the complete recorded history of every individual order history record.",
+    "HF03": "For every hospital stay, reconstruct the entire recorded history of its laboratory testing.",
     "HF04": "Show everything recorded over the life of each laboratory order.",
     "HF05": "Build the complete recorded history of each medication order.",
     "HF06": "Trace the whole recorded lifecycle of every procedure order.",
     "H09": "Show when each patient moved to a different hospital care unit.",
     "H11": "Build a timeline for every patient showing their entries into hospital and their moves to a different hospital care unit.",
     "HF07": "Show the entire recorded history of each individual laboratory measurement.",
-    "HF08": "Build the complete recorded history of every individual medication administration record.",
+    "HF08": "For every patient, reconstruct the complete recorded history of their medication treatment.",
     "HF09": "Trace each individual procedure episode through its whole recorded lifecycle.",
     "HF10": "Show the complete recorded course associated with each individual pharmacy dispensing record.",
     "H12": "Group the medication dispensing, subsequent doses given and doses not given by the pharmacy dispensing record they refer to."
@@ -48,5 +48,6 @@
       "prompt": "Paraphrase the revised H03 seed: For each laboratory order, extract Specimen Collected, Lab Result Available and Lab Results Verified events. Preserve all three activities and the laboratory-order case grain.",
       "review": "The seed was revised before this paraphrase. Collection replaces ambiguous measurement charting; availability and verification are retained."
     }
-  ]
+  ],
+  "post_generation_edit": "Affected paraphrases author-revised 2026-11-20; not a new original-LLM run."
 }

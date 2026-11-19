@@ -44,7 +44,7 @@ Supporting Gold types: Care Unit Transfer, Lab Measurement, Medication Administr
 
 ## Evaluation evidence
 
-- Gold SQL/CSV pairs executable and consistent: 40; compared event rows across questions: 6646.
+- Gold SQL/CSV pairs executable and consistent: 40; compared event rows across questions: 6982.
 - [Gold source inventory](../gold_dfg/event_graph.md)
 - [Question-level Gold DFGs](../gold_dfg/README.md)
 - [Editable Draw.io schema](../../docs/schema.drawio)

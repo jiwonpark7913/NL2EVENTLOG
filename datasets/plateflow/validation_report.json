@@ -330,5 +330,14 @@
     "dictionary_files_without_encoding_or_carrier_labels": 6,
     "model_input_allowlist_checked": true,
     "actual_llm_discovery_or_classification_run": false
+  },
+  "reference_audit_2026_11_20": {
+    "questions_checked": 40,
+    "source_reference_missing": 0,
+    "source_reference_extra": 0,
+    "unmatched_source_rows": 0,
+    "sql_csv_consistent": true,
+    "paired_logs_equal": true,
+    "scope": "Completeness and consistency relative to documented source definitions, attribution paths and process focus."
   }
 }
