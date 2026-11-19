@@ -1,5 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1710" width="1700" height="1710">
+<defs><marker id="fk-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#0f766e"/></marker></defs>
 <rect width="100%" height="100%" fill="white"/>
+<path d="M233 273 V335 H233 V623" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>orders.customer_id → customers.customer_id</title></path>
+<path d="M655 273 V319 H241 V273" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_items.order_id → orders.order_id</title></path>
+<path d="M639 273 V359 H1053 V623" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_items.product_id → products.product_id</title></path>
+<path d="M647 273 V371 H647 V623" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_items.seller_id → sellers.seller_id</title></path>
+<path d="M1069 273 V370 H241 V273" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_payments.order_id → orders.order_id</title></path>
+<path d="M1467 273 V285 H225 V273" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_reviews.order_id → orders.order_id</title></path>
 <text x="35" y="35" font-size="22" font-weight="bold" fill="#0f172a">Order &amp; Fulfillment</text>
 <g><rect x="35" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
 <rect x="35" y="63" width="395" height="32" fill="#e2e8f0"/>
