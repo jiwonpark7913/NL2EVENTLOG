@@ -1,0 +1,1101 @@
+{
+  "name": "Olist Brazilian E-Commerce Public Dataset",
+  "language": "en",
+  "dbms": "SQLite",
+  "description": "Unmodified Olist business records from the published nine-file CSV release. SQLite keys and references are source-structure interpretations, not upstream SQL DDL. The dictionary excludes author gold labels.",
+  "tables": [
+    {
+      "table": "customers",
+      "source_schema": "olist",
+      "definition": "Customer identifier and location; customer_unique_id identifies a customer across orders.",
+      "source_file": "olist_customers_dataset.csv",
+      "columns": [
+        {
+          "name": "customer_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "Order-specific customer identifier.",
+          "foreign_keys": [],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "00012a2ce6f8dcda20d059ce98491703",
+            "000161a058600d5901f007fab4c27140",
+            "0001fd6190edaaf884bcaf3d49edf079"
+          ]
+        },
+        {
+          "name": "customer_unique_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Identifier that can repeat across customer records for the same individual.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "861eff4711a542e4b93843c6dd7febb0",
+            "290c77bc529b7ac935b93aa66c333dc3",
+            "060e732b5b29e8181a18229c7b0b2b5e"
+          ]
+        },
+        {
+          "name": "customer_zip_code_prefix",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "customer zip code prefix.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "14409",
+            "09790",
+            "01151"
+          ]
+        },
+        {
+          "name": "customer_city",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "customer city.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "franca",
+            "sao bernardo do campo",
+            "sao paulo"
+          ]
+        },
+        {
+          "name": "customer_state",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "customer state.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "SP",
+            "SC",
+            "MG"
+          ]
+        }
+      ],
+      "primary_key": [
+        "customer_id"
+      ],
+      "foreign_keys": [],
+      "sql_definition": "CREATE TABLE \"customers\" (\n  \"customer_id\" TEXT NOT NULL,\n  \"customer_unique_id\" TEXT,\n  \"customer_zip_code_prefix\" TEXT,\n  \"customer_city\" TEXT,\n  \"customer_state\" TEXT,\n  PRIMARY KEY (\"customer_id\")\n)"
+    },
+    {
+      "table": "sellers",
+      "source_schema": "olist",
+      "definition": "Seller identifier and location.",
+      "source_file": "olist_sellers_dataset.csv",
+      "columns": [
+        {
+          "name": "seller_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "seller id.",
+          "foreign_keys": [],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "0015a82c2db000af6aaaf3ae2ecb0532",
+            "001cca7ae9ae17fb1caed9dfb1094831",
+            "001e6ad469a905060d959994f1b41e4f"
+          ]
+        },
+        {
+          "name": "seller_zip_code_prefix",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "seller zip code prefix.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "13023",
+            "13844",
+            "20031"
+          ]
+        },
+        {
+          "name": "seller_city",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "seller city.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "campinas",
+            "mogi guacu",
+            "rio de janeiro"
+          ]
+        },
+        {
+          "name": "seller_state",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "seller state.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "SP",
+            "RJ",
+            "PE"
+          ]
+        }
+      ],
+      "primary_key": [
+        "seller_id"
+      ],
+      "foreign_keys": [],
+      "sql_definition": "CREATE TABLE \"sellers\" (\n  \"seller_id\" TEXT NOT NULL,\n  \"seller_zip_code_prefix\" TEXT,\n  \"seller_city\" TEXT,\n  \"seller_state\" TEXT,\n  PRIMARY KEY (\"seller_id\")\n)"
+    },
+    {
+      "table": "products",
+      "source_schema": "olist",
+      "definition": "Products, their categories, and product dimensions.",
+      "source_file": "olist_products_dataset.csv",
+      "columns": [
+        {
+          "name": "product_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "product id.",
+          "foreign_keys": [],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "00066f42aeeb9f3007548bb9d3f33c38",
+            "00088930e925c41fd95ebfe695fd2655",
+            "0009406fd7479715e4bef61dd91f2462"
+          ]
+        },
+        {
+          "name": "product_category_name",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Product category in Portuguese.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "perfumaria",
+            "artes",
+            "esporte_lazer"
+          ]
+        },
+        {
+          "name": "product_name_lenght",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product name lenght.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            40,
+            44,
+            46
+          ]
+        },
+        {
+          "name": "product_description_lenght",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product description lenght.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            287,
+            276,
+            250
+          ]
+        },
+        {
+          "name": "product_photos_qty",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product photos qty.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            1,
+            4,
+            2
+          ]
+        },
+        {
+          "name": "product_weight_g",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product weight g.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            225,
+            1000,
+            154
+          ]
+        },
+        {
+          "name": "product_length_cm",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product length cm.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            16,
+            30,
+            18
+          ]
+        },
+        {
+          "name": "product_height_cm",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product height cm.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            10,
+            18,
+            9
+          ]
+        },
+        {
+          "name": "product_width_cm",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "product width cm.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            14,
+            20,
+            15
+          ]
+        }
+      ],
+      "primary_key": [
+        "product_id"
+      ],
+      "foreign_keys": [],
+      "sql_definition": "CREATE TABLE \"products\" (\n  \"product_id\" TEXT NOT NULL,\n  \"product_category_name\" TEXT,\n  \"product_name_lenght\" INTEGER,\n  \"product_description_lenght\" INTEGER,\n  \"product_photos_qty\" INTEGER,\n  \"product_weight_g\" INTEGER,\n  \"product_length_cm\" INTEGER,\n  \"product_height_cm\" INTEGER,\n  \"product_width_cm\" INTEGER,\n  PRIMARY KEY (\"product_id\")\n)"
+    },
+    {
+      "table": "geolocation",
+      "source_schema": "olist",
+      "definition": "Geographic records at ZIP-code-prefix level; multiple records can share a prefix.",
+      "source_file": "olist_geolocation_dataset.csv",
+      "columns": [
+        {
+          "name": "geolocation_zip_code_prefix",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Postal prefix; not unique in the source records.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "01037",
+            "01046",
+            "01041"
+          ]
+        },
+        {
+          "name": "geolocation_lat",
+          "source_type": "decimal",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "geolocation lat.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "-23.54562128115268",
+            "-23.546081127035535",
+            "-23.54612896641469"
+          ]
+        },
+        {
+          "name": "geolocation_lng",
+          "source_type": "decimal",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "geolocation lng.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "-46.63929204800168",
+            "-46.64482029837157",
+            "-46.64295148361138"
+          ]
+        },
+        {
+          "name": "geolocation_city",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "geolocation city.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "sao paulo",
+            "são paulo",
+            "sao bernardo do campo"
+          ]
+        },
+        {
+          "name": "geolocation_state",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "geolocation state.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "SP",
+            "RN",
+            "AC"
+          ]
+        }
+      ],
+      "primary_key": [],
+      "foreign_keys": [],
+      "sql_definition": "CREATE TABLE \"geolocation\" (\n  \"geolocation_zip_code_prefix\" TEXT,\n  \"geolocation_lat\" TEXT,\n  \"geolocation_lng\" TEXT,\n  \"geolocation_city\" TEXT,\n  \"geolocation_state\" TEXT\n)"
+    },
+    {
+      "table": "product_category_name_translation",
+      "source_schema": "olist",
+      "definition": "Portuguese-to-English product category labels.",
+      "source_file": "product_category_name_translation.csv",
+      "columns": [
+        {
+          "name": "product_category_name",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "Product category in Portuguese.",
+          "foreign_keys": [],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "agro_industria_e_comercio",
+            "alimentos",
+            "alimentos_bebidas"
+          ]
+        },
+        {
+          "name": "product_category_name_english",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "English category translation.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "health_beauty",
+            "computers_accessories",
+            "auto"
+          ]
+        }
+      ],
+      "primary_key": [
+        "product_category_name"
+      ],
+      "foreign_keys": [],
+      "sql_definition": "CREATE TABLE \"product_category_name_translation\" (\n  \"product_category_name\" TEXT NOT NULL,\n  \"product_category_name_english\" TEXT,\n  PRIMARY KEY (\"product_category_name\")\n)"
+    },
+    {
+      "table": "orders",
+      "source_schema": "olist",
+      "definition": "Order status and recorded ordering, approval, carrier handoff and delivery times.",
+      "source_file": "olist_orders_dataset.csv",
+      "columns": [
+        {
+          "name": "order_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "Order identifier.",
+          "foreign_keys": [],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "00010242fe8c5a6d1ba2dd792cb16214",
+            "00018f77f2f0320c557190d7a144bdd3",
+            "000229ec398224ef6ca0657da4fc703e"
+          ]
+        },
+        {
+          "name": "customer_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Order-specific customer identifier.",
+          "foreign_keys": [
+            {
+              "table": "customers",
+              "column": "customer_id"
+            }
+          ],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "9ef432eb6251297304e76186b10a928d",
+            "b0830fb4747a6c6d20dea0b8c802d7ef",
+            "41ce2a54c0b03bf3443c3d931a367089"
+          ]
+        },
+        {
+          "name": "order_status",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Current order status, not a timestamped status transition history.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "delivered",
+            "invoiced",
+            "shipped"
+          ]
+        },
+        {
+          "name": "order_purchase_timestamp",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Timestamp of purchase/order placement.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2017-10-02 10:56:33",
+            "2018-07-24 20:41:37",
+            "2018-08-08 08:38:49"
+          ]
+        },
+        {
+          "name": "order_approved_at",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Recorded order approval timestamp.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2017-10-02 11:07:15",
+            "2018-07-26 03:24:27",
+            "2018-08-08 08:55:23"
+          ]
+        },
+        {
+          "name": "order_delivered_carrier_date",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Timestamp the order was handed to the carrier.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2017-10-04 19:55:00",
+            "2018-07-26 14:31:00",
+            "2018-08-08 13:50:00"
+          ]
+        },
+        {
+          "name": "order_delivered_customer_date",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Timestamp the order was delivered to the customer.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2017-10-10 21:25:13",
+            "2018-08-07 15:27:45",
+            "2018-08-17 18:06:29"
+          ]
+        },
+        {
+          "name": "order_estimated_delivery_date",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Planned delivery date, not the actual delivery event.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2017-10-18 00:00:00",
+            "2018-08-13 00:00:00",
+            "2018-09-04 00:00:00"
+          ]
+        }
+      ],
+      "primary_key": [
+        "order_id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "FK_orders_customers_customer_id",
+          "columns": [
+            "customer_id"
+          ],
+          "referenced_table": "customers",
+          "referenced_columns": [
+            "customer_id"
+          ]
+        }
+      ],
+      "sql_definition": "CREATE TABLE \"orders\" (\n  \"order_id\" TEXT NOT NULL,\n  \"customer_id\" TEXT,\n  \"order_status\" TEXT,\n  \"order_purchase_timestamp\" TEXT,\n  \"order_approved_at\" TEXT,\n  \"order_delivered_carrier_date\" TEXT,\n  \"order_delivered_customer_date\" TEXT,\n  \"order_estimated_delivery_date\" TEXT,\n  PRIMARY KEY (\"order_id\"),\n  FOREIGN KEY (\"customer_id\") REFERENCES \"customers\" (\"customer_id\")\n)"
+    },
+    {
+      "table": "order_items",
+      "source_schema": "olist",
+      "definition": "Ordered items, product and seller references, shipping deadline, price and freight.",
+      "source_file": "olist_order_items_dataset.csv",
+      "columns": [
+        {
+          "name": "order_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "Order identifier.",
+          "foreign_keys": [
+            {
+              "table": "orders",
+              "column": "order_id"
+            }
+          ],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "00010242fe8c5a6d1ba2dd792cb16214",
+            "00018f77f2f0320c557190d7a144bdd3",
+            "000229ec398224ef6ca0657da4fc703e"
+          ]
+        },
+        {
+          "name": "order_item_id",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": true,
+          "definition": "Item sequence within the order.",
+          "foreign_keys": [],
+          "primary_key_position": 2,
+          "default": null,
+          "sample_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "name": "product_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "product id.",
+          "foreign_keys": [
+            {
+              "table": "products",
+              "column": "product_id"
+            }
+          ],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "4244733e06e7ecb4970a6e2683c13e61",
+            "e5f2d52b802189ee658865ca93d83a8f",
+            "c777355d18b72b67abbeef9df44fd0fd"
+          ]
+        },
+        {
+          "name": "seller_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "seller id.",
+          "foreign_keys": [
+            {
+              "table": "sellers",
+              "column": "seller_id"
+            }
+          ],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "48436dade18ac8b2bce089ec2a041202",
+            "dd7ddc04e1b6c2c614352b383efe2d36",
+            "5b51032eddd242adc84c38acab88f23d"
+          ]
+        },
+        {
+          "name": "shipping_limit_date",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Seller shipping deadline; a planned time, not carrier handoff.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2017-09-19 09:45:35",
+            "2017-05-03 11:05:13",
+            "2018-01-18 14:48:30"
+          ]
+        },
+        {
+          "name": "price",
+          "source_type": "decimal",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "price.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "58.90",
+            "239.90",
+            "199.00"
+          ]
+        },
+        {
+          "name": "freight_value",
+          "source_type": "decimal",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "freight value.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "13.29",
+            "19.93",
+            "17.87"
+          ]
+        }
+      ],
+      "primary_key": [
+        "order_id",
+        "order_item_id"
+      ],
+      "foreign_keys": [
+        {
+          "name": "FK_order_items_orders_order_id",
+          "columns": [
+            "order_id"
+          ],
+          "referenced_table": "orders",
+          "referenced_columns": [
+            "order_id"
+          ]
+        },
+        {
+          "name": "FK_order_items_products_product_id",
+          "columns": [
+            "product_id"
+          ],
+          "referenced_table": "products",
+          "referenced_columns": [
+            "product_id"
+          ]
+        },
+        {
+          "name": "FK_order_items_sellers_seller_id",
+          "columns": [
+            "seller_id"
+          ],
+          "referenced_table": "sellers",
+          "referenced_columns": [
+            "seller_id"
+          ]
+        }
+      ],
+      "sql_definition": "CREATE TABLE \"order_items\" (\n  \"order_id\" TEXT NOT NULL,\n  \"order_item_id\" INTEGER NOT NULL,\n  \"product_id\" TEXT,\n  \"seller_id\" TEXT,\n  \"shipping_limit_date\" TEXT,\n  \"price\" TEXT,\n  \"freight_value\" TEXT,\n  PRIMARY KEY (\"order_id\", \"order_item_id\"),\n  FOREIGN KEY (\"order_id\") REFERENCES \"orders\" (\"order_id\"),\n  FOREIGN KEY (\"product_id\") REFERENCES \"products\" (\"product_id\"),\n  FOREIGN KEY (\"seller_id\") REFERENCES \"sellers\" (\"seller_id\")\n)"
+    },
+    {
+      "table": "order_payments",
+      "source_schema": "olist",
+      "definition": "Payment details per order and payment sequence; this table has no payment occurrence timestamp.",
+      "source_file": "olist_order_payments_dataset.csv",
+      "columns": [
+        {
+          "name": "order_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": true,
+          "definition": "Order identifier.",
+          "foreign_keys": [
+            {
+              "table": "orders",
+              "column": "order_id"
+            }
+          ],
+          "primary_key_position": 1,
+          "default": null,
+          "sample_values": [
+            "00010242fe8c5a6d1ba2dd792cb16214",
+            "00018f77f2f0320c557190d7a144bdd3",
+            "000229ec398224ef6ca0657da4fc703e"
+          ]
+        },
+        {
+          "name": "payment_sequential",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": true,
+          "definition": "Payment sequence within the order.",
+          "foreign_keys": [],
+          "primary_key_position": 2,
+          "default": null,
+          "sample_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "name": "payment_type",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Payment method or category.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "credit_card",
+            "boleto",
+            "voucher"
+          ]
+        },
+        {
+          "name": "payment_installments",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "Installment count.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            8,
+            1,
+            2
+          ]
+        },
+        {
+          "name": "payment_value",
+          "source_type": "decimal",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Payment monetary amount.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "99.33",
+            "24.39",
+            "65.71"
+          ]
+        }
+      ],
+      "primary_key": [
+        "order_id",
+        "payment_sequential"
+      ],
+      "foreign_keys": [
+        {
+          "name": "FK_order_payments_orders_order_id",
+          "columns": [
+            "order_id"
+          ],
+          "referenced_table": "orders",
+          "referenced_columns": [
+            "order_id"
+          ]
+        }
+      ],
+      "sql_definition": "CREATE TABLE \"order_payments\" (\n  \"order_id\" TEXT NOT NULL,\n  \"payment_sequential\" INTEGER NOT NULL,\n  \"payment_type\" TEXT,\n  \"payment_installments\" INTEGER,\n  \"payment_value\" TEXT,\n  PRIMARY KEY (\"order_id\", \"payment_sequential\"),\n  FOREIGN KEY (\"order_id\") REFERENCES \"orders\" (\"order_id\")\n)"
+    },
+    {
+      "table": "order_reviews",
+      "source_schema": "olist",
+      "definition": "Review content, survey-creation time and response time; review_id alone need not be unique.",
+      "source_file": "olist_order_reviews_dataset.csv",
+      "columns": [
+        {
+          "name": "review_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Review identifier; uniqueness is not assumed.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "7bc2406110b926393aa56f80a40eba40",
+            "80e641a11e56f04c1ad469d5645fdfde",
+            "228ce5500dc1d8e020d8d1322874b6f0"
+          ]
+        },
+        {
+          "name": "order_id",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Order identifier.",
+          "foreign_keys": [
+            {
+              "table": "orders",
+              "column": "order_id"
+            }
+          ],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "73fc7af87114b39712e6da79b0a377eb",
+            "a548910a1c6147796b98fdf73dbeba33",
+            "f9e4b658b201a9f2ecdecbb34bed034b"
+          ]
+        },
+        {
+          "name": "review_score",
+          "source_type": "integer",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "INTEGER",
+          "computed": false,
+          "required": false,
+          "definition": "review score.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "review_comment_title",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "review comment title.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "recomendo",
+            "Super recomendo",
+            "Não chegou meu produto "
+          ]
+        },
+        {
+          "name": "review_comment_message",
+          "source_type": "text",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "review comment message.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "Recebi bem antes do prazo estipulado.",
+            "Parabéns lojas lannister adorei comprar pela Internet seguro e prático Parabéns a todos feliz Páscoa",
+            "aparelho eficiente. no site a marca do aparelho esta impresso como 3desinfector e ao chegar esta com outro nome...atualizar com a marca correta uma vez que é o mesmo aparelho"
+          ]
+        },
+        {
+          "name": "review_creation_date",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Date the review survey was created/sent.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2018-01-18 00:00:00",
+            "2018-03-10 00:00:00",
+            "2018-02-17 00:00:00"
+          ]
+        },
+        {
+          "name": "review_answer_timestamp",
+          "source_type": "datetime",
+          "source_declaration": "CSV header; no upstream DDL",
+          "sql_type": "TEXT",
+          "computed": false,
+          "required": false,
+          "definition": "Timestamp of the review answer.",
+          "foreign_keys": [],
+          "primary_key_position": 0,
+          "default": null,
+          "sample_values": [
+            "2018-01-18 21:46:59",
+            "2018-03-11 03:05:13",
+            "2018-02-18 14:36:24"
+          ]
+        }
+      ],
+      "primary_key": [],
+      "foreign_keys": [
+        {
+          "name": "FK_order_reviews_orders_order_id",
+          "columns": [
+            "order_id"
+          ],
+          "referenced_table": "orders",
+          "referenced_columns": [
+            "order_id"
+          ]
+        }
+      ],
+      "sql_definition": "CREATE TABLE \"order_reviews\" (\n  \"review_id\" TEXT,\n  \"order_id\" TEXT,\n  \"review_score\" INTEGER,\n  \"review_comment_title\" TEXT,\n  \"review_comment_message\" TEXT,\n  \"review_creation_date\" TEXT,\n  \"review_answer_timestamp\" TEXT,\n  FOREIGN KEY (\"order_id\") REFERENCES \"orders\" (\"order_id\")\n)"
+    }
+  ]
+}

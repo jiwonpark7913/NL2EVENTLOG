@@ -1,0 +1,36 @@
+{
+  "official_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "mirror_repository": "infobarbosa/dataset-olist",
+  "mirror_commit": "6e7f3d9b614655007f94dda9063ac3d5fb14fed9",
+  "license": "CC BY-NC-SA 4.0",
+  "table_count": 9,
+  "column_count": 52,
+  "row_count": 1550922,
+  "row_counts": {
+    "customers": 99441,
+    "sellers": 3095,
+    "products": 32951,
+    "geolocation": 1000163,
+    "product_category_name_translation": 71,
+    "orders": 99441,
+    "order_items": 112650,
+    "order_payments": 103886,
+    "order_reviews": 99224
+  },
+  "foreign_key_count": 6,
+  "sqlite_integrity": "ok",
+  "foreign_key_violations": 0,
+  "sqlite_sha256": "3a31c8e768c53afbeb1d44b92609379687aab3ca3240ccfbe3fc0dff82a263dc",
+  "dictionary_sha256": "f12f1190862c5d21e911712a1664a84c067cce085b359fa086e574fb010086b7",
+  "original_csv_git_blob_hashes": {
+    "olist_customers_dataset.csv.gz": "19827a3fb35f38d2afc547cb0eeb377b6250a363",
+    "olist_geolocation_dataset.csv.gz": "9518908c2cbd07fea55b62d05a56d02deec704d8",
+    "olist_order_items_dataset.csv.gz": "c50553a243083d1c852b51bc39469e47cda70797",
+    "olist_order_payments_dataset.csv.gz": "75a249a47c49a23b348c727b6c0f854124224892",
+    "olist_order_reviews_dataset.csv.gz": "395514e1fa7494e28bdb580991b006fbf5bd4362",
+    "olist_orders_dataset.csv.gz": "6f1031b86d4a2733609ae174d8e7d2f226cec585",
+    "olist_products_dataset.csv.gz": "812934cf67c824aed03efad61d7c75d78699ebc0",
+    "olist_sellers_dataset.csv.gz": "56fb22057c521810d1ea9334508d96058164a669",
+    "product_category_name_translation.csv.gz": "fbe1f82413854f84759cd0f6ca818155a4e1ac95"
+  }
+}

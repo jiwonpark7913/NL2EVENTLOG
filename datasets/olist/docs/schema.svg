@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1710" width="1700" height="1710">
+<rect width="100%" height="100%" fill="white"/>
+<text x="35" y="35" font-size="22" font-weight="bold" fill="#0f172a">Order &amp; Fulfillment</text>
+<g><rect x="35" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="35" y="63" width="395" height="32" fill="#e2e8f0"/>
+<text x="45" y="85" font-size="15" fill="#0f172a" font-weight="bold">orders</text>
+<rect x="40" y="99" width="385" height="23" fill="#c9edff"/>
+<text x="46" y="116" font-size="12" fill="#334155">order_delivered_carrier_date</text>
+<rect x="40" y="122" width="385" height="23" fill="#c9edff"/>
+<text x="46" y="139" font-size="12" fill="#334155">order_delivered_customer_date</text>
+<rect x="40" y="145" width="385" height="23" fill="#c9edff"/>
+<text x="46" y="162" font-size="12" fill="#334155">order_estimated_delivery_date</text>
+<rect x="40" y="168" width="385" height="23" fill="#c9edff"/>
+<text x="46" y="185" font-size="12" fill="#334155">order_purchase_timestamp</text>
+<rect x="40" y="191" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="208" font-size="12" fill="#334155">customer_id</text>
+<rect x="40" y="214" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="231" font-size="12" fill="#334155">order_approved_at</text>
+<rect x="40" y="237" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="254" font-size="12" fill="#334155">order_id</text>
+</g>
+<g><rect x="449" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="449" y="63" width="395" height="32" fill="#e2e8f0"/>
+<text x="459" y="85" font-size="15" fill="#0f172a" font-weight="bold">order_items</text>
+<rect x="454" y="99" width="385" height="23" fill="#c9edff"/>
+<text x="460" y="116" font-size="12" fill="#334155">shipping_limit_date</text>
+<rect x="454" y="122" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="139" font-size="12" fill="#334155">freight_value</text>
+<rect x="454" y="145" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="162" font-size="12" fill="#334155">order_id</text>
+<rect x="454" y="168" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="185" font-size="12" fill="#334155">order_item_id</text>
+<rect x="454" y="191" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="208" font-size="12" fill="#334155">price</text>
+<rect x="454" y="214" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="231" font-size="12" fill="#334155">product_id</text>
+<rect x="454" y="237" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="254" font-size="12" fill="#334155">seller_id</text>
+</g>
+<g><rect x="863" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="863" y="63" width="395" height="32" fill="#e2e8f0"/>
+<text x="873" y="85" font-size="15" fill="#0f172a" font-weight="bold">order_payments</text>
+<rect x="868" y="99" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="116" font-size="12" fill="#334155">order_id</text>
+<rect x="868" y="122" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="139" font-size="12" fill="#334155">payment_installments</text>
+<rect x="868" y="145" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="162" font-size="12" fill="#334155">payment_sequential</text>
+<rect x="868" y="168" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="185" font-size="12" fill="#334155">payment_type</text>
+<rect x="868" y="191" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="208" font-size="12" fill="#334155">payment_value</text>
+</g>
+<g><rect x="1277" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="1277" y="63" width="395" height="32" fill="#e2e8f0"/>
+<text x="1287" y="85" font-size="15" fill="#0f172a" font-weight="bold">order_reviews</text>
+<rect x="1282" y="99" width="385" height="23" fill="#c9edff"/>
+<text x="1288" y="116" font-size="12" fill="#334155">review_answer_timestamp</text>
+<rect x="1282" y="122" width="385" height="23" fill="#c9edff"/>
+<text x="1288" y="139" font-size="12" fill="#334155">review_creation_date</text>
+<rect x="1282" y="145" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="162" font-size="12" fill="#334155">order_id</text>
+<rect x="1282" y="168" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="185" font-size="12" fill="#334155">review_comment_message</text>
+<rect x="1282" y="191" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="208" font-size="12" fill="#334155">review_comment_title</text>
+<rect x="1282" y="214" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="231" font-size="12" fill="#334155">review_id</text>
+<rect x="1282" y="237" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="254" font-size="12" fill="#334155">review_score</text>
+</g>
+<text x="35" y="595" font-size="22" font-weight="bold" fill="#0f172a">People &amp; Catalog</text>
+<g><rect x="35" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="35" y="623" width="395" height="32" fill="#e2e8f0"/>
+<text x="45" y="645" font-size="15" fill="#0f172a" font-weight="bold">customers</text>
+<rect x="40" y="659" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="676" font-size="12" fill="#334155">customer_city</text>
+<rect x="40" y="682" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="699" font-size="12" fill="#334155">customer_id</text>
+<rect x="40" y="705" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="722" font-size="12" fill="#334155">customer_state</text>
+<rect x="40" y="728" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="745" font-size="12" fill="#334155">customer_unique_id</text>
+<rect x="40" y="751" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="768" font-size="12" fill="#334155">customer_zip_code_prefix</text>
+</g>
+<g><rect x="449" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="449" y="623" width="395" height="32" fill="#e2e8f0"/>
+<text x="459" y="645" font-size="15" fill="#0f172a" font-weight="bold">sellers</text>
+<rect x="454" y="659" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="676" font-size="12" fill="#334155">seller_city</text>
+<rect x="454" y="682" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="699" font-size="12" fill="#334155">seller_id</text>
+<rect x="454" y="705" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="722" font-size="12" fill="#334155">seller_state</text>
+<rect x="454" y="728" width="385" height="23" fill="#ffffff"/>
+<text x="460" y="745" font-size="12" fill="#334155">seller_zip_code_prefix</text>
+</g>
+<g><rect x="863" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="863" y="623" width="395" height="32" fill="#e2e8f0"/>
+<text x="873" y="645" font-size="15" fill="#0f172a" font-weight="bold">products</text>
+<rect x="868" y="659" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="676" font-size="12" fill="#334155">product_category_name</text>
+<rect x="868" y="682" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="699" font-size="12" fill="#334155">product_description_lenght</text>
+<rect x="868" y="705" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="722" font-size="12" fill="#334155">product_height_cm</text>
+<rect x="868" y="728" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="745" font-size="12" fill="#334155">product_id</text>
+<rect x="868" y="751" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="768" font-size="12" fill="#334155">product_length_cm</text>
+<rect x="868" y="774" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="791" font-size="12" fill="#334155">product_name_lenght</text>
+<rect x="868" y="797" width="385" height="23" fill="#ffffff"/>
+<text x="874" y="814" font-size="12" fill="#334155">product_photos_qty</text>
+</g>
+<g><rect x="1277" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="1277" y="623" width="395" height="32" fill="#e2e8f0"/>
+<text x="1287" y="645" font-size="15" fill="#0f172a" font-weight="bold">product_category_name_translation</text>
+<rect x="1282" y="659" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="676" font-size="12" fill="#334155">product_category_name</text>
+<rect x="1282" y="682" width="385" height="23" fill="#ffffff"/>
+<text x="1288" y="699" font-size="12" fill="#334155">product_category_name_english</text>
+</g>
+<text x="35" y="1155" font-size="22" font-weight="bold" fill="#0f172a">Location Reference</text>
+<g><rect x="35" y="1183" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
+<rect x="35" y="1183" width="395" height="32" fill="#e2e8f0"/>
+<text x="45" y="1205" font-size="15" fill="#0f172a" font-weight="bold">geolocation</text>
+<rect x="40" y="1219" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="1236" font-size="12" fill="#334155">geolocation_city</text>
+<rect x="40" y="1242" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="1259" font-size="12" fill="#334155">geolocation_lat</text>
+<rect x="40" y="1265" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="1282" font-size="12" fill="#334155">geolocation_lng</text>
+<rect x="40" y="1288" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="1305" font-size="12" fill="#334155">geolocation_state</text>
+<rect x="40" y="1311" width="385" height="23" fill="#ffffff"/>
+<text x="46" y="1328" font-size="12" fill="#334155">geolocation_zip_code_prefix</text>
+</g>
+</svg>
