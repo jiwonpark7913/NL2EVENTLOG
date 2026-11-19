@@ -1,11 +1,298 @@
-<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Olist schema</title><style>body{font:14px Arial,sans-serif;color:#172033;margin:25px;background:#f8fafc}
-.diagram-scroll{max-width:100%;overflow:auto;border:1px solid #cbd5e1;border-radius:10px;background:white;padding:10px}
-.diagram-scroll img{display:block;width:2220px;height:auto;max-width:none}
-.lane{display:flex;flex-wrap:nowrap;gap:22px;overflow-x:auto;padding:10px 0 24px}
-.table{min-width:340px;max-width:450px;flex:1;background:white;border:1px solid #94a3b8;border-radius:10px;overflow:hidden}
-h3{margin:0;padding:12px 15px;background:#dfe7f2}small{color:#475569;font-size:11px}
-.column{padding:7px 15px;border-bottom:1px solid #e2e8f0}
-.timestamp{background:#c9edff}.maintenance{background:#fff0b2}
-.key{font-size:11px;color:#115e59}
-aside{padding:10px 15px;font-size:12px;background:#f1f5f9;line-height:1.7}
-aside ul{margin:5px 0;padding-left:20px}a{color:#0f766e}</style></head><body><h1>Olist — relational database schema</h1><p>9 tables · 52 columns · 6 declared FK relations. Arrows point from child FK to parent PK. Blue: timestamp; yellow: maintenance time. Planned times may not represent observed events.</p><div class='diagram-scroll'><img src='schema.svg' alt='Olist ERD with nine tables and six directed FK relationships'></div><h2>Table &amp; column explorer</h2><h2>Order &amp; Fulfillment</h2><div class='lane'><section class='table' id='orders'><h3>orders <small>99,441 records</small></h3><div class='column timestamp'>order_approved_at <small>TEXT</small></div><div class='column timestamp'>order_delivered_carrier_date <small>TEXT</small></div><div class='column timestamp'>order_delivered_customer_date <small>TEXT</small></div><div class='column timestamp'>order_estimated_delivery_date <small>TEXT</small></div><div class='column timestamp'>order_purchase_timestamp <small>TEXT</small></div><div class='column '><b class='key'>FK</b> customer_id <small>TEXT</small></div><div class='column '><b class='key'>PK</b> order_id <small>TEXT</small></div><div class='column '>order_status <small>TEXT</small></div><aside><strong>FK: Child → Parent</strong><ul><li>orders.customer_id → <a href='#customers'>customers.customer_id</a></li></ul></aside></section><section class='table' id='order_items'><h3>order_items <small>112,650 records</small></h3><div class='column timestamp'>shipping_limit_date <small>TEXT</small></div><div class='column '>freight_value <small>TEXT</small></div><div class='column '><b class='key'>PK / FK</b> order_id <small>TEXT</small></div><div class='column '><b class='key'>PK</b> order_item_id <small>INTEGER</small></div><div class='column '>price <small>TEXT</small></div><div class='column '><b class='key'>FK</b> product_id <small>TEXT</small></div><div class='column '><b class='key'>FK</b> seller_id <small>TEXT</small></div><aside><strong>FK: Child → Parent</strong><ul><li>order_items.order_id → <a href='#orders'>orders.order_id</a></li><li>order_items.product_id → <a href='#products'>products.product_id</a></li><li>order_items.seller_id → <a href='#sellers'>sellers.seller_id</a></li></ul></aside></section><section class='table' id='order_payments'><h3>order_payments <small>103,886 records</small></h3><div class='column '><b class='key'>PK / FK</b> order_id <small>TEXT</small></div><div class='column '>payment_installments <small>INTEGER</small></div><div class='column '><b class='key'>PK</b> payment_sequential <small>INTEGER</small></div><div class='column '>payment_type <small>TEXT</small></div><div class='column '>payment_value <small>TEXT</small></div><aside><strong>FK: Child → Parent</strong><ul><li>order_payments.order_id → <a href='#orders'>orders.order_id</a></li></ul></aside></section><section class='table' id='order_reviews'><h3>order_reviews <small>99,224 records</small></h3><div class='column timestamp'>review_answer_timestamp <small>TEXT</small></div><div class='column timestamp'>review_creation_date <small>TEXT</small></div><div class='column '><b class='key'>FK</b> order_id <small>TEXT</small></div><div class='column '>review_comment_message <small>TEXT</small></div><div class='column '>review_comment_title <small>TEXT</small></div><div class='column '>review_id <small>TEXT</small></div><div class='column '>review_score <small>INTEGER</small></div><aside><strong>FK: Child → Parent</strong><ul><li>order_reviews.order_id → <a href='#orders'>orders.order_id</a></li></ul></aside></section></div><h2>People &amp; Catalog</h2><div class='lane'><section class='table' id='customers'><h3>customers <small>99,441 records</small></h3><div class='column '>customer_city <small>TEXT</small></div><div class='column '><b class='key'>PK</b> customer_id <small>TEXT</small></div><div class='column '>customer_state <small>TEXT</small></div><div class='column '>customer_unique_id <small>TEXT</small></div><div class='column '>customer_zip_code_prefix <small>TEXT</small></div></section><section class='table' id='sellers'><h3>sellers <small>3,095 records</small></h3><div class='column '>seller_city <small>TEXT</small></div><div class='column '><b class='key'>PK</b> seller_id <small>TEXT</small></div><div class='column '>seller_state <small>TEXT</small></div><div class='column '>seller_zip_code_prefix <small>TEXT</small></div></section><section class='table' id='products'><h3>products <small>32,951 records</small></h3><div class='column '>product_category_name <small>TEXT</small></div><div class='column '>product_description_lenght <small>INTEGER</small></div><div class='column '>product_height_cm <small>INTEGER</small></div><div class='column '><b class='key'>PK</b> product_id <small>TEXT</small></div><div class='column '>product_length_cm <small>INTEGER</small></div><div class='column '>product_name_lenght <small>INTEGER</small></div><div class='column '>product_photos_qty <small>INTEGER</small></div><div class='column '>product_weight_g <small>INTEGER</small></div><div class='column '>product_width_cm <small>INTEGER</small></div></section><section class='table' id='product_category_name_translation'><h3>product_category_name_translation <small>71 records</small></h3><div class='column '><b class='key'>PK</b> product_category_name <small>TEXT</small></div><div class='column '>product_category_name_english <small>TEXT</small></div></section></div><h2>Location Reference</h2><div class='lane'><section class='table' id='geolocation'><h3>geolocation <small>1,000,163 records</small></h3><div class='column '>geolocation_city <small>TEXT</small></div><div class='column '>geolocation_lat <small>TEXT</small></div><div class='column '>geolocation_lng <small>TEXT</small></div><div class='column '>geolocation_state <small>TEXT</small></div><div class='column '>geolocation_zip_code_prefix <small>TEXT</small></div></section></div></body></html>
+<!doctype html><html><head><meta charset='utf-8'><title>Olist schema</title><style>body{font:14px Arial,sans-serif;color:#172033;margin:25px;background:#f8fafc}
+    .lane{display:flex;flex-wrap:nowrap;gap:22px;overflow-x:auto;padding:10px 0 24px}
+    .table{min-width:340px;max-width:450px;flex:1;background:white;border:1px solid #94a3b8;border-radius:10px;overflow:hidden}
+    h3{margin:0;padding:12px 15px;background:#e2e8f0}small{color:#475569;font-size:11px}
+    .column{padding:7px 15px;border-bottom:1px solid #e2e8f0}
+    .timestamp{background:#c9edff}.maintenance{background:#fff0b2}
+    .pkcol{font-weight:bold}.ref{color:#0f766e;font-size:12px;font-weight:normal}.ref a{color:inherit}
+    .badge{display:inline-block;min-width:20px;margin-right:5px;padding:1px 3px;border-radius:3px;color:#fff;font-size:10px;font-weight:bold;text-align:center}
+    .pk{background:#1e3a8a}.fk{background:#0f766e}
+    .erd{overflow:auto;background:white;border:1px solid #cbd5e1;border-radius:10px;padding:10px;margin-bottom:20px}
+    aside{padding:10px 15px;font-size:12px;background:#f1f5f9;line-height:1.7}</style></head><body><h1>Olist — relational database schema</h1><p>Blue: time fields; yellow: modification time. Planned times are blue too, not necessarily occurrence times. FK links are structural, not semantic event attribution. Arrows point from the child FK column to the parent PK column.</p><div class='erd'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1880 790" width="1880" height="790" font-family="Arial, Helvetica, sans-serif">
+<title>Olist relational database schema</title>
+<defs><marker id="fk-arrow" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#0f766e"/></marker><marker id="fk-tail" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" refX="4" refY="4"><circle cx="4" cy="4" r="3.2" fill="#0f766e"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="40" y="44" font-size="24" font-weight="bold" fill="#0f172a">Olist — relational database schema</text>
+<text x="40" y="70" font-size="13" fill="#475569">9 tables · 6 declared foreign keys · arrows point from the child FK column to the parent PK column (Child → Parent)</text>
+<rect x="40" y="85" width="24" height="17" rx="3" fill="#1e3a8a"/><text x="52" y="98" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">PK</text><text x="72" y="98" font-size="12" fill="#334155">primary key</text>
+<rect x="170" y="85" width="24" height="17" rx="3" fill="#0f766e"/><text x="182" y="98" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">FK</text><text x="202" y="98" font-size="12" fill="#334155">foreign key (→ referenced table.column)</text>
+<rect x="470" y="85" width="24" height="17" fill="#c9edff" stroke="#94a3b8"/><text x="502" y="98" font-size="12" fill="#334155">timestamp column</text>
+<path d="M630 94 H676" stroke="#0f766e" stroke-width="2.2" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)"/><text x="686" y="98" font-size="12" fill="#334155">FK child → PK parent</text>
+<rect x="840" y="85" width="24" height="17" rx="3" fill="#fff" stroke="#94a3b8" stroke-dasharray="4 3"/><text x="872" y="98" font-size="12" fill="#334155">no declared FK</text>
+<path id="FK_orders_customers_customer_id" d="M500 220 L380 220" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linejoin="round" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)" data-child="orders.customer_id" data-parent="customers.customer_id"><title>orders.customer_id → customers.customer_id (FK_orders_customers_customer_id)</title></path>
+<path id="FK_order_items_orders_order_id" d="M1000 187 L840 187" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linejoin="round" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)" data-child="order_items.order_id" data-parent="orders.order_id"><title>order_items.order_id → orders.order_id (FK_order_items_orders_order_id)</title></path>
+<path id="FK_order_items_products_product_id" d="M1340 244 L1420 244 L1420 196 L1500 196" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linejoin="round" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)" data-child="order_items.product_id" data-parent="products.product_id"><title>order_items.product_id → products.product_id (FK_order_items_products_product_id)</title></path>
+<path id="FK_order_items_sellers_seller_id" d="M1340 268 L1460 268 L1460 512 L1500 512" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linejoin="round" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)" data-child="order_items.seller_id" data-parent="sellers.seller_id"><title>order_items.seller_id → sellers.seller_id (FK_order_items_sellers_seller_id)</title></path>
+<path id="FK_order_payments_orders_order_id" d="M840 492 L860 492 L860 205 L840 205" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linejoin="round" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)" data-child="order_payments.order_id" data-parent="orders.order_id"><title>order_payments.order_id → orders.order_id (FK_order_payments_orders_order_id)</title></path>
+<path id="FK_order_reviews_orders_order_id" d="M1000 492 L940 492 L940 196 L840 196" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linejoin="round" marker-start="url(#fk-tail)" marker-end="url(#fk-arrow)" data-child="order_reviews.order_id" data-parent="orders.order_id"><title>order_reviews.order_id → orders.order_id (FK_order_reviews_orders_order_id)</title></path>
+<g id="table-customers" data-lane="People &amp; Catalog">
+<rect x="40" y="174" width="340" height="162" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M40 181 Q40 174 47 174 H373 Q380 174 380 181 V208 H40 Z" fill="#e2e8f0"/>
+<text x="50" y="196" font-size="15" font-weight="bold" fill="#0f172a">customers</text>
+<text x="370" y="196" font-size="11" fill="#475569" text-anchor="end">99,441 rows</text>
+<rect x="41" y="208" width="338" height="24" fill="#ffffff"/>
+<rect x="48" y="212" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="59" y="224" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="100" y="224" font-size="12" fill="#0f172a" font-weight="bold">customer_id<title>referenced by FK</title></text>
+<text x="372" y="224" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="232" width="338" height="24" fill="#ffffff"/>
+<path d="M41 232 H379" stroke="#e2e8f0"/>
+<text x="100" y="248" font-size="12" fill="#0f172a">customer_unique_id</text>
+<text x="372" y="248" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="256" width="338" height="24" fill="#ffffff"/>
+<path d="M41 256 H379" stroke="#e2e8f0"/>
+<text x="100" y="272" font-size="12" fill="#0f172a">customer_zip_code_prefix</text>
+<text x="372" y="272" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="280" width="338" height="24" fill="#ffffff"/>
+<path d="M41 280 H379" stroke="#e2e8f0"/>
+<text x="100" y="296" font-size="12" fill="#0f172a">customer_city</text>
+<text x="372" y="296" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="304" width="338" height="24" fill="#ffffff"/>
+<path d="M41 304 H379" stroke="#e2e8f0"/>
+<text x="100" y="320" font-size="12" fill="#0f172a">customer_state</text>
+<text x="372" y="320" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-orders" data-lane="Order &amp; Fulfillment">
+<rect x="500" y="150" width="340" height="234" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M500 157 Q500 150 507 150 H833 Q840 150 840 157 V184 H500 Z" fill="#e2e8f0"/>
+<text x="510" y="172" font-size="15" font-weight="bold" fill="#0f172a">orders</text>
+<text x="830" y="172" font-size="11" fill="#475569" text-anchor="end">99,441 rows</text>
+<rect x="501" y="184" width="338" height="24" fill="#ffffff"/>
+<rect x="508" y="188" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="519" y="200" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="560" y="200" font-size="12" fill="#0f172a" font-weight="bold">order_id<title>referenced by FK</title></text>
+<text x="832" y="200" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="208" width="338" height="24" fill="#ffffff"/>
+<path d="M501 208 H839" stroke="#e2e8f0"/>
+<rect x="533" y="212" width="22" height="16" rx="3" fill="#0f766e"/><text x="544" y="224" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">FK</text>
+<text x="560" y="224" font-size="12" fill="#0f172a">customer_id</text>
+<text x="832" y="224" font-size="11" fill="#0f766e" text-anchor="end">→ customers.customer_id</text>
+<rect x="501" y="232" width="338" height="24" fill="#ffffff"/>
+<path d="M501 232 H839" stroke="#e2e8f0"/>
+<text x="560" y="248" font-size="12" fill="#0f172a">order_status</text>
+<text x="832" y="248" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="256" width="338" height="24" fill="#c9edff"/>
+<path d="M501 256 H839" stroke="#e2e8f0"/>
+<text x="560" y="272" font-size="12" fill="#0f172a">order_purchase_timestamp</text>
+<text x="832" y="272" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="280" width="338" height="24" fill="#ffffff"/>
+<path d="M501 280 H839" stroke="#e2e8f0"/>
+<text x="560" y="296" font-size="12" fill="#0f172a">order_approved_at</text>
+<text x="832" y="296" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="304" width="338" height="24" fill="#c9edff"/>
+<path d="M501 304 H839" stroke="#e2e8f0"/>
+<text x="560" y="320" font-size="12" fill="#0f172a">order_delivered_carrier_date</text>
+<text x="832" y="320" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="328" width="338" height="24" fill="#c9edff"/>
+<path d="M501 328 H839" stroke="#e2e8f0"/>
+<text x="560" y="344" font-size="12" fill="#0f172a">order_delivered_customer_date</text>
+<text x="832" y="344" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="352" width="338" height="24" fill="#c9edff"/>
+<path d="M501 352 H839" stroke="#e2e8f0"/>
+<text x="560" y="368" font-size="12" fill="#0f172a">order_estimated_delivery_date</text>
+<text x="832" y="368" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-order_items" data-lane="Order &amp; Fulfillment">
+<rect x="1000" y="150" width="340" height="210" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M1000 157 Q1000 150 1007 150 H1333 Q1340 150 1340 157 V184 H1000 Z" fill="#e2e8f0"/>
+<text x="1010" y="172" font-size="15" font-weight="bold" fill="#0f172a">order_items</text>
+<text x="1330" y="172" font-size="11" fill="#475569" text-anchor="end">112,650 rows</text>
+<rect x="1001" y="184" width="338" height="24" fill="#ffffff"/>
+<rect x="1008" y="188" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="1019" y="200" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<rect x="1033" y="188" width="22" height="16" rx="3" fill="#0f766e"/><text x="1044" y="200" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">FK</text>
+<text x="1060" y="200" font-size="12" fill="#0f172a" font-weight="bold">order_id</text>
+<text x="1332" y="200" font-size="11" fill="#0f766e" text-anchor="end">→ orders.order_id</text>
+<rect x="1001" y="208" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 208 H1339" stroke="#e2e8f0"/>
+<rect x="1008" y="212" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="1019" y="224" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="1060" y="224" font-size="12" fill="#0f172a" font-weight="bold">order_item_id</text>
+<text x="1332" y="224" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1001" y="232" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 232 H1339" stroke="#e2e8f0"/>
+<rect x="1033" y="236" width="22" height="16" rx="3" fill="#0f766e"/><text x="1044" y="248" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">FK</text>
+<text x="1060" y="248" font-size="12" fill="#0f172a">product_id</text>
+<text x="1332" y="248" font-size="11" fill="#0f766e" text-anchor="end">→ products.product_id</text>
+<rect x="1001" y="256" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 256 H1339" stroke="#e2e8f0"/>
+<rect x="1033" y="260" width="22" height="16" rx="3" fill="#0f766e"/><text x="1044" y="272" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">FK</text>
+<text x="1060" y="272" font-size="12" fill="#0f172a">seller_id</text>
+<text x="1332" y="272" font-size="11" fill="#0f766e" text-anchor="end">→ sellers.seller_id</text>
+<rect x="1001" y="280" width="338" height="24" fill="#c9edff"/>
+<path d="M1001 280 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="296" font-size="12" fill="#0f172a">shipping_limit_date</text>
+<text x="1332" y="296" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1001" y="304" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 304 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="320" font-size="12" fill="#0f172a">price</text>
+<text x="1332" y="320" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1001" y="328" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 328 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="344" font-size="12" fill="#0f172a">freight_value</text>
+<text x="1332" y="344" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-products" data-lane="People &amp; Catalog">
+<rect x="1500" y="150" width="340" height="258" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M1500 157 Q1500 150 1507 150 H1833 Q1840 150 1840 157 V184 H1500 Z" fill="#e2e8f0"/>
+<text x="1510" y="172" font-size="15" font-weight="bold" fill="#0f172a">products</text>
+<text x="1830" y="172" font-size="11" fill="#475569" text-anchor="end">32,951 rows</text>
+<rect x="1501" y="184" width="338" height="24" fill="#ffffff"/>
+<rect x="1508" y="188" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="1519" y="200" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="1560" y="200" font-size="12" fill="#0f172a" font-weight="bold">product_id<title>referenced by FK</title></text>
+<text x="1832" y="200" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1501" y="208" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 208 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="224" font-size="12" fill="#0f172a">product_category_name</text>
+<text x="1832" y="224" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1501" y="232" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 232 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="248" font-size="12" fill="#0f172a">product_name_lenght</text>
+<text x="1832" y="248" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1501" y="256" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 256 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="272" font-size="12" fill="#0f172a">product_description_lenght</text>
+<text x="1832" y="272" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1501" y="280" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 280 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="296" font-size="12" fill="#0f172a">product_photos_qty</text>
+<text x="1832" y="296" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1501" y="304" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 304 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="320" font-size="12" fill="#0f172a">product_weight_g</text>
+<text x="1832" y="320" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1501" y="328" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 328 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="344" font-size="12" fill="#0f172a">product_length_cm</text>
+<text x="1832" y="344" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1501" y="352" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 352 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="368" font-size="12" fill="#0f172a">product_height_cm</text>
+<text x="1832" y="368" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1501" y="376" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 376 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="392" font-size="12" fill="#0f172a">product_width_cm</text>
+<text x="1832" y="392" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+</g>
+<g id="table-sellers" data-lane="People &amp; Catalog">
+<rect x="1500" y="466" width="340" height="138" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M1500 473 Q1500 466 1507 466 H1833 Q1840 466 1840 473 V500 H1500 Z" fill="#e2e8f0"/>
+<text x="1510" y="488" font-size="15" font-weight="bold" fill="#0f172a">sellers</text>
+<text x="1830" y="488" font-size="11" fill="#475569" text-anchor="end">3,095 rows</text>
+<rect x="1501" y="500" width="338" height="24" fill="#ffffff"/>
+<rect x="1508" y="504" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="1519" y="516" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="1560" y="516" font-size="12" fill="#0f172a" font-weight="bold">seller_id<title>referenced by FK</title></text>
+<text x="1832" y="516" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1501" y="524" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 524 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="540" font-size="12" fill="#0f172a">seller_zip_code_prefix</text>
+<text x="1832" y="540" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1501" y="548" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 548 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="564" font-size="12" fill="#0f172a">seller_city</text>
+<text x="1832" y="564" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1501" y="572" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 572 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="588" font-size="12" fill="#0f172a">seller_state</text>
+<text x="1832" y="588" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-geolocation" data-lane="Location Reference">
+<rect x="40" y="446" width="340" height="162" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3" stroke-dasharray="6 4"/>
+<path d="M40 453 Q40 446 47 446 H373 Q380 446 380 453 V480 H40 Z" fill="#e2e8f0"/>
+<text x="50" y="468" font-size="15" font-weight="bold" fill="#0f172a">geolocation</text>
+<text x="370" y="468" font-size="11" fill="#475569" text-anchor="end">1,000,163 rows</text>
+<rect x="41" y="480" width="338" height="24" fill="#ffffff"/>
+<text x="100" y="496" font-size="12" fill="#0f172a">geolocation_zip_code_prefix</text>
+<text x="372" y="496" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="504" width="338" height="24" fill="#ffffff"/>
+<path d="M41 504 H379" stroke="#e2e8f0"/>
+<text x="100" y="520" font-size="12" fill="#0f172a">geolocation_lat</text>
+<text x="372" y="520" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="528" width="338" height="24" fill="#ffffff"/>
+<path d="M41 528 H379" stroke="#e2e8f0"/>
+<text x="100" y="544" font-size="12" fill="#0f172a">geolocation_lng</text>
+<text x="372" y="544" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="552" width="338" height="24" fill="#ffffff"/>
+<path d="M41 552 H379" stroke="#e2e8f0"/>
+<text x="100" y="568" font-size="12" fill="#0f172a">geolocation_city</text>
+<text x="372" y="568" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="41" y="576" width="338" height="24" fill="#ffffff"/>
+<path d="M41 576 H379" stroke="#e2e8f0"/>
+<text x="100" y="592" font-size="12" fill="#0f172a">geolocation_state</text>
+<text x="372" y="592" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-order_payments" data-lane="Order &amp; Fulfillment">
+<rect x="500" y="446" width="340" height="162" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M500 453 Q500 446 507 446 H833 Q840 446 840 453 V480 H500 Z" fill="#e2e8f0"/>
+<text x="510" y="468" font-size="15" font-weight="bold" fill="#0f172a">order_payments</text>
+<text x="830" y="468" font-size="11" fill="#475569" text-anchor="end">103,886 rows</text>
+<rect x="501" y="480" width="338" height="24" fill="#ffffff"/>
+<rect x="508" y="484" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="519" y="496" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<rect x="533" y="484" width="22" height="16" rx="3" fill="#0f766e"/><text x="544" y="496" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">FK</text>
+<text x="560" y="496" font-size="12" fill="#0f172a" font-weight="bold">order_id</text>
+<text x="832" y="496" font-size="11" fill="#0f766e" text-anchor="end">→ orders.order_id</text>
+<rect x="501" y="504" width="338" height="24" fill="#ffffff"/>
+<path d="M501 504 H839" stroke="#e2e8f0"/>
+<rect x="508" y="508" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="519" y="520" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="560" y="520" font-size="12" fill="#0f172a" font-weight="bold">payment_sequential</text>
+<text x="832" y="520" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="501" y="528" width="338" height="24" fill="#ffffff"/>
+<path d="M501 528 H839" stroke="#e2e8f0"/>
+<text x="560" y="544" font-size="12" fill="#0f172a">payment_type</text>
+<text x="832" y="544" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="501" y="552" width="338" height="24" fill="#ffffff"/>
+<path d="M501 552 H839" stroke="#e2e8f0"/>
+<text x="560" y="568" font-size="12" fill="#0f172a">payment_installments</text>
+<text x="832" y="568" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="501" y="576" width="338" height="24" fill="#ffffff"/>
+<path d="M501 576 H839" stroke="#e2e8f0"/>
+<text x="560" y="592" font-size="12" fill="#0f172a">payment_value</text>
+<text x="832" y="592" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-order_reviews" data-lane="Order &amp; Fulfillment">
+<rect x="1000" y="446" width="340" height="210" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3"/>
+<path d="M1000 453 Q1000 446 1007 446 H1333 Q1340 446 1340 453 V480 H1000 Z" fill="#e2e8f0"/>
+<text x="1010" y="468" font-size="15" font-weight="bold" fill="#0f172a">order_reviews</text>
+<text x="1330" y="468" font-size="11" fill="#475569" text-anchor="end">99,224 rows</text>
+<rect x="1001" y="480" width="338" height="24" fill="#ffffff"/>
+<rect x="1033" y="484" width="22" height="16" rx="3" fill="#0f766e"/><text x="1044" y="496" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">FK</text>
+<text x="1060" y="496" font-size="12" fill="#0f172a">order_id</text>
+<text x="1332" y="496" font-size="11" fill="#0f766e" text-anchor="end">→ orders.order_id</text>
+<rect x="1001" y="504" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 504 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="520" font-size="12" fill="#0f172a">review_id</text>
+<text x="1332" y="520" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1001" y="528" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 528 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="544" font-size="12" fill="#0f172a">review_score</text>
+<text x="1332" y="544" font-size="10" fill="#64748b" text-anchor="end">INTEGER</text>
+<rect x="1001" y="552" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 552 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="568" font-size="12" fill="#0f172a">review_comment_title</text>
+<text x="1332" y="568" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1001" y="576" width="338" height="24" fill="#ffffff"/>
+<path d="M1001 576 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="592" font-size="12" fill="#0f172a">review_comment_message</text>
+<text x="1332" y="592" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1001" y="600" width="338" height="24" fill="#c9edff"/>
+<path d="M1001 600 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="616" font-size="12" fill="#0f172a">review_creation_date</text>
+<text x="1332" y="616" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1001" y="624" width="338" height="24" fill="#c9edff"/>
+<path d="M1001 624 H1339" stroke="#e2e8f0"/>
+<text x="1060" y="640" font-size="12" fill="#0f172a">review_answer_timestamp</text>
+<text x="1332" y="640" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<g id="table-product_category_name_translation" data-lane="People &amp; Catalog">
+<rect x="1500" y="650" width="340" height="90" rx="7" fill="#fff" stroke="#64748b" stroke-width="1.3" stroke-dasharray="6 4"/>
+<path d="M1500 657 Q1500 650 1507 650 H1833 Q1840 650 1840 657 V684 H1500 Z" fill="#e2e8f0"/>
+<text x="1510" y="672" font-size="15" font-weight="bold" fill="#0f172a">product_category_name_translation</text>
+<text x="1830" y="672" font-size="11" fill="#475569" text-anchor="end">71 rows</text>
+<rect x="1501" y="684" width="338" height="24" fill="#ffffff"/>
+<rect x="1508" y="688" width="22" height="16" rx="3" fill="#1e3a8a"/><text x="1519" y="700" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">PK</text>
+<text x="1560" y="700" font-size="12" fill="#0f172a" font-weight="bold">product_category_name</text>
+<text x="1832" y="700" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+<rect x="1501" y="708" width="338" height="24" fill="#ffffff"/>
+<path d="M1501 708 H1839" stroke="#e2e8f0"/>
+<text x="1560" y="724" font-size="12" fill="#0f172a">product_category_name_english</text>
+<text x="1832" y="724" font-size="10" fill="#64748b" text-anchor="end">TEXT</text>
+</g>
+<text x="40" y="772" font-size="12" fill="#475569">geolocation and product_category_name_translation have no declared FK in the SQLite schema, so no connector is drawn for them. FK links are structural, not semantic event attribution.</text>
+</svg>
+</div><h2>Order &amp; Fulfillment</h2><div class='lane'><section class='table' id='orders'><h3>orders <small>99441 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span>order_id <small>TEXT</small></div><div class='column '><span class='badge fk'>FK</span>customer_id <small>TEXT</small> <span class='ref'>→ <a href='#customers'>customers.customer_id</a></span></div><div class='column '>order_status <small>TEXT</small></div><div class='column timestamp'>order_purchase_timestamp <small>TEXT</small></div><div class='column '>order_approved_at <small>TEXT</small></div><div class='column timestamp'>order_delivered_carrier_date <small>TEXT</small></div><div class='column timestamp'>order_delivered_customer_date <small>TEXT</small></div><div class='column timestamp'>order_estimated_delivery_date <small>TEXT</small></div><aside>FK: customer_id → customers(customer_id)<br>Referenced by: order_items.order_id → order_id; order_payments.order_id → order_id; order_reviews.order_id → order_id</aside></section><section class='table' id='order_items'><h3>order_items <small>112650 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span><span class='badge fk'>FK</span>order_id <small>TEXT</small> <span class='ref'>→ <a href='#orders'>orders.order_id</a></span></div><div class='column  pkcol'><span class='badge pk'>PK</span>order_item_id <small>INTEGER</small></div><div class='column '><span class='badge fk'>FK</span>product_id <small>TEXT</small> <span class='ref'>→ <a href='#products'>products.product_id</a></span></div><div class='column '><span class='badge fk'>FK</span>seller_id <small>TEXT</small> <span class='ref'>→ <a href='#sellers'>sellers.seller_id</a></span></div><div class='column timestamp'>shipping_limit_date <small>TEXT</small></div><div class='column '>price <small>TEXT</small></div><div class='column '>freight_value <small>TEXT</small></div><aside>FK: order_id → orders(order_id); product_id → products(product_id); seller_id → sellers(seller_id)</aside></section><section class='table' id='order_payments'><h3>order_payments <small>103886 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span><span class='badge fk'>FK</span>order_id <small>TEXT</small> <span class='ref'>→ <a href='#orders'>orders.order_id</a></span></div><div class='column  pkcol'><span class='badge pk'>PK</span>payment_sequential <small>INTEGER</small></div><div class='column '>payment_type <small>TEXT</small></div><div class='column '>payment_installments <small>INTEGER</small></div><div class='column '>payment_value <small>TEXT</small></div><aside>FK: order_id → orders(order_id)</aside></section><section class='table' id='order_reviews'><h3>order_reviews <small>99224 records</small></h3><div class='column '><span class='badge fk'>FK</span>order_id <small>TEXT</small> <span class='ref'>→ <a href='#orders'>orders.order_id</a></span></div><div class='column '>review_id <small>TEXT</small></div><div class='column '>review_score <small>INTEGER</small></div><div class='column '>review_comment_title <small>TEXT</small></div><div class='column '>review_comment_message <small>TEXT</small></div><div class='column timestamp'>review_creation_date <small>TEXT</small></div><div class='column timestamp'>review_answer_timestamp <small>TEXT</small></div><aside>FK: order_id → orders(order_id)</aside></section></div><h2>People &amp; Catalog</h2><div class='lane'><section class='table' id='customers'><h3>customers <small>99441 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span>customer_id <small>TEXT</small></div><div class='column '>customer_unique_id <small>TEXT</small></div><div class='column '>customer_zip_code_prefix <small>TEXT</small></div><div class='column '>customer_city <small>TEXT</small></div><div class='column '>customer_state <small>TEXT</small></div><aside>Referenced by: orders.customer_id → customer_id</aside></section><section class='table' id='sellers'><h3>sellers <small>3095 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span>seller_id <small>TEXT</small></div><div class='column '>seller_zip_code_prefix <small>TEXT</small></div><div class='column '>seller_city <small>TEXT</small></div><div class='column '>seller_state <small>TEXT</small></div><aside>Referenced by: order_items.seller_id → seller_id</aside></section><section class='table' id='products'><h3>products <small>32951 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span>product_id <small>TEXT</small></div><div class='column '>product_category_name <small>TEXT</small></div><div class='column '>product_name_lenght <small>INTEGER</small></div><div class='column '>product_description_lenght <small>INTEGER</small></div><div class='column '>product_photos_qty <small>INTEGER</small></div><div class='column '>product_weight_g <small>INTEGER</small></div><div class='column '>product_length_cm <small>INTEGER</small></div><div class='column '>product_height_cm <small>INTEGER</small></div><div class='column '>product_width_cm <small>INTEGER</small></div><aside>Referenced by: order_items.product_id → product_id</aside></section><section class='table' id='product_category_name_translation'><h3>product_category_name_translation <small>71 records</small></h3><div class='column  pkcol'><span class='badge pk'>PK</span>product_category_name <small>TEXT</small></div><div class='column '>product_category_name_english <small>TEXT</small></div><aside>No declared FK.</aside></section></div><h2>Location Reference</h2><div class='lane'><section class='table' id='geolocation'><h3>geolocation <small>1000163 records</small></h3><div class='column '>geolocation_zip_code_prefix <small>TEXT</small></div><div class='column '>geolocation_lat <small>TEXT</small></div><div class='column '>geolocation_lng <small>TEXT</small></div><div class='column '>geolocation_city <small>TEXT</small></div><div class='column '>geolocation_state <small>TEXT</small></div><aside>No declared FK.</aside></section></div></body></html>
