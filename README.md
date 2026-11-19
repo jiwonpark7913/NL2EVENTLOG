@@ -17,6 +17,7 @@ Four evaluation datasets, an AdventureWorks source database, and author review t
 | [PlateFlow](datasets/plateflow/) | [SQLite + dictionary](datasets/plateflow/input/) | [Inspection](datasets/plateflow/review/database/) | [DFG](datasets/plateflow/review/gold_dfg/) |
 | [WarehouseFlow](datasets/warehouseflow/) | [SQLite + dictionary](datasets/warehouseflow/input/) | [Inspection](datasets/warehouseflow/review/database/) | [DFG](datasets/warehouseflow/review/gold_dfg/) |
 | [Microsoft AdventureWorks OLTP](datasets/adventureworks/) | [SQLite + official dictionary](datasets/adventureworks/input/) | [Inspection](datasets/adventureworks/review/database/) | Not yet authored |
+| [Olist Brazilian E-Commerce](datasets/olist/) | [SQLite + dictionary](datasets/olist/input/) | [ERD and review](datasets/olist/docs/schema.html) | Not yet authored |
 
 ### Strict boundary
 
