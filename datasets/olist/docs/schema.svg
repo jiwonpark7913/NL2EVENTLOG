@@ -1,147 +1,130 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1710" width="1700" height="1710">
-<defs><marker id="fk-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#0f766e"/></marker></defs>
-<rect width="100%" height="100%" fill="white"/>
-<path d="M233 273 V335 H233 V623" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>orders.customer_id → customers.customer_id</title></path>
-<path d="M655 273 V319 H241 V273" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_items.order_id → orders.order_id</title></path>
-<path d="M639 273 V359 H1053 V623" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_items.product_id → products.product_id</title></path>
-<path d="M647 273 V371 H647 V623" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_items.seller_id → sellers.seller_id</title></path>
-<path d="M1069 273 V370 H241 V273" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_payments.order_id → orders.order_id</title></path>
-<path d="M1467 273 V285 H225 V273" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>order_reviews.order_id → orders.order_id</title></path>
-<text x="35" y="35" font-size="22" font-weight="bold" fill="#0f172a">Order &amp; Fulfillment</text>
-<g><rect x="35" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="35" y="63" width="395" height="32" fill="#e2e8f0"/>
-<text x="45" y="85" font-size="15" fill="#0f172a" font-weight="bold">orders</text>
-<rect x="40" y="99" width="385" height="23" fill="#c9edff"/>
-<text x="46" y="116" font-size="12" fill="#334155">order_delivered_carrier_date</text>
-<rect x="40" y="122" width="385" height="23" fill="#c9edff"/>
-<text x="46" y="139" font-size="12" fill="#334155">order_delivered_customer_date</text>
-<rect x="40" y="145" width="385" height="23" fill="#c9edff"/>
-<text x="46" y="162" font-size="12" fill="#334155">order_estimated_delivery_date</text>
-<rect x="40" y="168" width="385" height="23" fill="#c9edff"/>
-<text x="46" y="185" font-size="12" fill="#334155">order_purchase_timestamp</text>
-<rect x="40" y="191" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="208" font-size="12" fill="#334155">customer_id</text>
-<rect x="40" y="214" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="231" font-size="12" fill="#334155">order_approved_at</text>
-<rect x="40" y="237" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="254" font-size="12" fill="#334155">order_id</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2220 1840" width="2220" height="1840" role="img" aria-labelledby="schema-title schema-desc">
+<title id="schema-title">Olist relational database schema</title>
+<desc id="schema-desc">Nine complete tables, fifty-two columns and six directed foreign keys; arrows point from child tables to referenced parent tables.</desc>
+<defs><marker id="fk-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 5 L0 10 Z" fill="#0f766e"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafc"/>
+<text x="100" y="51" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#0f172a">Olist — Relational Database Schema</text>
+<text x="100" y="77" font-family="Arial,sans-serif" font-size="15" fill="#475569">9 tables · 52 columns · 6 declared FK relations · arrows: Child → Parent</text>
+<rect x="1350" y="35" width="22" height="19" fill="#c9edff" stroke="#94a3b8"/><text x="1379" y="51" font-family="Arial,sans-serif" font-size="14" fill="#334155">Timestamp</text>
+<rect x="1510" y="35" width="22" height="19" fill="#fff0b2" stroke="#94a3b8"/><text x="1539" y="51" font-family="Arial,sans-serif" font-size="14" fill="#334155">Maintenance time</text>
+<text x="1750" y="51" font-family="Arial,sans-serif" font-size="14" fill="#334155">PK = Primary Key   FK = Foreign Key</text>
+<text x="100" y="1381" font-family="Arial,sans-serif" font-size="16" font-weight="600" fill="#64748b">Independent reference tables (no declared FK)</text>
+<path data-fk="FK_orders_customers_customer_id" data-child="orders" data-parent="customers" d="M1100 420 V306" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round" marker-end="url(#fk-arrow)"><title>orders.customer_id → customers.customer_id</title></path>
+<g transform="translate(1110,368)"><rect x="-9" y="-17" width="203" height="24" rx="5" fill="white" stroke="#99c3ba"/><text x="0" y="0" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#115e59">customer_id → customer_id</text></g>
+<path data-fk="FK_order_items_orders_order_id" data-child="order_items" data-parent="orders" d="M1100 930 V716" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round" marker-end="url(#fk-arrow)"><title>order_items.order_id → orders.order_id</title></path>
+<g transform="translate(1110,823)"><rect x="-9" y="-17" width="158.6" height="24" rx="5" fill="white" stroke="#99c3ba"/><text x="0" y="0" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#115e59">order_id → order_id</text></g>
+<path data-fk="FK_order_items_products_product_id" data-child="order_items" data-parent="products" d="M1010 1189 V1280 H800 V1390" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round" marker-end="url(#fk-arrow)"><title>order_items.product_id → products.product_id</title></path>
+<g transform="translate(823,1311)"><rect x="-9" y="-17" width="188.20000000000002" height="24" rx="5" fill="white" stroke="#99c3ba"/><text x="0" y="0" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#115e59">product_id → product_id</text></g>
+<path data-fk="FK_order_items_sellers_seller_id" data-child="order_items" data-parent="sellers" d="M1190 1189 V1305 H1400 V1390" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round" marker-end="url(#fk-arrow)"><title>order_items.seller_id → sellers.seller_id</title></path>
+<g transform="translate(1260,1337)"><rect x="-9" y="-17" width="173.4" height="24" rx="5" fill="white" stroke="#99c3ba"/><text x="0" y="0" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#115e59">seller_id → seller_id</text></g>
+<path data-fk="FK_order_payments_orders_order_id" data-child="order_payments" data-parent="orders" d="M660 568 H900" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round" marker-end="url(#fk-arrow)"><title>order_payments.order_id → orders.order_id</title></path>
+<g transform="translate(760,541)"><rect x="-9" y="-17" width="158.6" height="24" rx="5" fill="white" stroke="#99c3ba"/><text x="0" y="0" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#115e59">order_id → order_id</text></g>
+<path data-fk="FK_order_reviews_orders_order_id" data-child="order_reviews" data-parent="orders" d="M1570 568 H1300" fill="none" stroke="#0f766e" stroke-width="3.5" stroke-linejoin="round" marker-end="url(#fk-arrow)"><title>order_reviews.order_id → orders.order_id</title></path>
+<g transform="translate(1392,541)"><rect x="-9" y="-17" width="158.6" height="24" rx="5" fill="white" stroke="#99c3ba"/><text x="0" y="0" font-family="Arial,sans-serif" font-size="13" font-weight="600" fill="#115e59">order_id → order_id</text></g>
+<g id="table-customers" data-table="customers">
+<rect x="900" y="100" width="400" height="201" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M909 100 H1291 Q1300 100 1300 109 V148 H900 V109 Q900 100 909 100 Z" fill="#dfe7f2"/>
+<text x="915" y="130" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">customers</text>
+<text x="1284" y="129" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">99,441 rows</text>
+<g class="field" data-column="customers.customer_city"><rect x="905" y="148" width="390" height="29" fill="#ffffff"/><text x="914" y="167" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">customer_city</text></g>
+<g class="field" data-column="customers.customer_id"><rect x="905" y="177" width="390" height="29" fill="#ffffff"/><text x="914" y="196" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">customer_id</text><text x="1284" y="196" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="customers.customer_state"><rect x="905" y="206" width="390" height="29" fill="#ffffff"/><text x="914" y="225" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">customer_state</text></g>
+<g class="field" data-column="customers.customer_unique_id"><rect x="905" y="235" width="390" height="29" fill="#ffffff"/><text x="914" y="254" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">customer_unique_id</text></g>
+<g class="field" data-column="customers.customer_zip_code_prefix"><rect x="905" y="264" width="390" height="29" fill="#ffffff"/><text x="914" y="283" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">customer_zip_code_prefix</text></g>
 </g>
-<g><rect x="449" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="449" y="63" width="395" height="32" fill="#e2e8f0"/>
-<text x="459" y="85" font-size="15" fill="#0f172a" font-weight="bold">order_items</text>
-<rect x="454" y="99" width="385" height="23" fill="#c9edff"/>
-<text x="460" y="116" font-size="12" fill="#334155">shipping_limit_date</text>
-<rect x="454" y="122" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="139" font-size="12" fill="#334155">freight_value</text>
-<rect x="454" y="145" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="162" font-size="12" fill="#334155">order_id</text>
-<rect x="454" y="168" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="185" font-size="12" fill="#334155">order_item_id</text>
-<rect x="454" y="191" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="208" font-size="12" fill="#334155">price</text>
-<rect x="454" y="214" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="231" font-size="12" fill="#334155">product_id</text>
-<rect x="454" y="237" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="254" font-size="12" fill="#334155">seller_id</text>
+<g id="table-sellers" data-table="sellers">
+<rect x="1200" y="1390" width="400" height="172" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M1209 1390 H1591 Q1600 1390 1600 1399 V1438 H1200 V1399 Q1200 1390 1209 1390 Z" fill="#dfe7f2"/>
+<text x="1215" y="1420" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">sellers</text>
+<text x="1584" y="1419" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">3,095 rows</text>
+<g class="field" data-column="sellers.seller_city"><rect x="1205" y="1438" width="390" height="29" fill="#ffffff"/><text x="1214" y="1457" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">seller_city</text></g>
+<g class="field" data-column="sellers.seller_id"><rect x="1205" y="1467" width="390" height="29" fill="#ffffff"/><text x="1214" y="1486" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">seller_id</text><text x="1584" y="1486" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="sellers.seller_state"><rect x="1205" y="1496" width="390" height="29" fill="#ffffff"/><text x="1214" y="1515" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">seller_state</text></g>
+<g class="field" data-column="sellers.seller_zip_code_prefix"><rect x="1205" y="1525" width="390" height="29" fill="#ffffff"/><text x="1214" y="1544" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">seller_zip_code_prefix</text></g>
 </g>
-<g><rect x="863" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="863" y="63" width="395" height="32" fill="#e2e8f0"/>
-<text x="873" y="85" font-size="15" fill="#0f172a" font-weight="bold">order_payments</text>
-<rect x="868" y="99" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="116" font-size="12" fill="#334155">order_id</text>
-<rect x="868" y="122" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="139" font-size="12" fill="#334155">payment_installments</text>
-<rect x="868" y="145" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="162" font-size="12" fill="#334155">payment_sequential</text>
-<rect x="868" y="168" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="185" font-size="12" fill="#334155">payment_type</text>
-<rect x="868" y="191" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="208" font-size="12" fill="#334155">payment_value</text>
+<g id="table-products" data-table="products">
+<rect x="600" y="1390" width="400" height="317" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M609 1390 H991 Q1000 1390 1000 1399 V1438 H600 V1399 Q600 1390 609 1390 Z" fill="#dfe7f2"/>
+<text x="615" y="1420" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">products</text>
+<text x="984" y="1419" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">32,951 rows</text>
+<g class="field" data-column="products.product_category_name"><rect x="605" y="1438" width="390" height="29" fill="#ffffff"/><text x="614" y="1457" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_category_name</text></g>
+<g class="field" data-column="products.product_description_lenght"><rect x="605" y="1467" width="390" height="29" fill="#ffffff"/><text x="614" y="1486" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_description_lenght</text></g>
+<g class="field" data-column="products.product_height_cm"><rect x="605" y="1496" width="390" height="29" fill="#ffffff"/><text x="614" y="1515" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_height_cm</text></g>
+<g class="field" data-column="products.product_id"><rect x="605" y="1525" width="390" height="29" fill="#ffffff"/><text x="614" y="1544" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_id</text><text x="984" y="1544" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="products.product_length_cm"><rect x="605" y="1554" width="390" height="29" fill="#ffffff"/><text x="614" y="1573" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_length_cm</text></g>
+<g class="field" data-column="products.product_name_lenght"><rect x="605" y="1583" width="390" height="29" fill="#ffffff"/><text x="614" y="1602" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_name_lenght</text></g>
+<g class="field" data-column="products.product_photos_qty"><rect x="605" y="1612" width="390" height="29" fill="#ffffff"/><text x="614" y="1631" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_photos_qty</text></g>
+<g class="field" data-column="products.product_weight_g"><rect x="605" y="1641" width="390" height="29" fill="#ffffff"/><text x="614" y="1660" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_weight_g</text></g>
+<g class="field" data-column="products.product_width_cm"><rect x="605" y="1670" width="390" height="29" fill="#ffffff"/><text x="614" y="1689" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_width_cm</text></g>
 </g>
-<g><rect x="1277" y="63" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="1277" y="63" width="395" height="32" fill="#e2e8f0"/>
-<text x="1287" y="85" font-size="15" fill="#0f172a" font-weight="bold">order_reviews</text>
-<rect x="1282" y="99" width="385" height="23" fill="#c9edff"/>
-<text x="1288" y="116" font-size="12" fill="#334155">review_answer_timestamp</text>
-<rect x="1282" y="122" width="385" height="23" fill="#c9edff"/>
-<text x="1288" y="139" font-size="12" fill="#334155">review_creation_date</text>
-<rect x="1282" y="145" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="162" font-size="12" fill="#334155">order_id</text>
-<rect x="1282" y="168" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="185" font-size="12" fill="#334155">review_comment_message</text>
-<rect x="1282" y="191" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="208" font-size="12" fill="#334155">review_comment_title</text>
-<rect x="1282" y="214" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="231" font-size="12" fill="#334155">review_id</text>
-<rect x="1282" y="237" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="254" font-size="12" fill="#334155">review_score</text>
+<g id="table-geolocation" data-table="geolocation">
+<rect x="100" y="1490" width="400" height="201" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M109 1490 H491 Q500 1490 500 1499 V1538 H100 V1499 Q100 1490 109 1490 Z" fill="#dfe7f2"/>
+<text x="115" y="1520" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">geolocation</text>
+<text x="484" y="1519" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">1,000,163 rows</text>
+<g class="field" data-column="geolocation.geolocation_city"><rect x="105" y="1538" width="390" height="29" fill="#ffffff"/><text x="114" y="1557" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">geolocation_city</text></g>
+<g class="field" data-column="geolocation.geolocation_lat"><rect x="105" y="1567" width="390" height="29" fill="#ffffff"/><text x="114" y="1586" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">geolocation_lat</text></g>
+<g class="field" data-column="geolocation.geolocation_lng"><rect x="105" y="1596" width="390" height="29" fill="#ffffff"/><text x="114" y="1615" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">geolocation_lng</text></g>
+<g class="field" data-column="geolocation.geolocation_state"><rect x="105" y="1625" width="390" height="29" fill="#ffffff"/><text x="114" y="1644" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">geolocation_state</text></g>
+<g class="field" data-column="geolocation.geolocation_zip_code_prefix"><rect x="105" y="1654" width="390" height="29" fill="#ffffff"/><text x="114" y="1673" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">geolocation_zip_code_prefix</text></g>
 </g>
-<text x="35" y="595" font-size="22" font-weight="bold" fill="#0f172a">People &amp; Catalog</text>
-<g><rect x="35" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="35" y="623" width="395" height="32" fill="#e2e8f0"/>
-<text x="45" y="645" font-size="15" fill="#0f172a" font-weight="bold">customers</text>
-<rect x="40" y="659" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="676" font-size="12" fill="#334155">customer_city</text>
-<rect x="40" y="682" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="699" font-size="12" fill="#334155">customer_id</text>
-<rect x="40" y="705" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="722" font-size="12" fill="#334155">customer_state</text>
-<rect x="40" y="728" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="745" font-size="12" fill="#334155">customer_unique_id</text>
-<rect x="40" y="751" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="768" font-size="12" fill="#334155">customer_zip_code_prefix</text>
+<g id="table-product_category_name_translation" data-table="product_category_name_translation">
+<rect x="1700" y="1490" width="400" height="114" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M1709 1490 H2091 Q2100 1490 2100 1499 V1538 H1700 V1499 Q1700 1490 1709 1490 Z" fill="#dfe7f2"/>
+<text x="1715" y="1520" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">product_category_name_translation</text>
+<text x="2084" y="1519" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">71 rows</text>
+<g class="field" data-column="product_category_name_translation.product_category_name"><rect x="1705" y="1538" width="390" height="29" fill="#ffffff"/><text x="1714" y="1557" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_category_name</text><text x="2084" y="1557" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="product_category_name_translation.product_category_name_english"><rect x="1705" y="1567" width="390" height="29" fill="#ffffff"/><text x="1714" y="1586" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_category_name_english</text></g>
 </g>
-<g><rect x="449" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="449" y="623" width="395" height="32" fill="#e2e8f0"/>
-<text x="459" y="645" font-size="15" fill="#0f172a" font-weight="bold">sellers</text>
-<rect x="454" y="659" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="676" font-size="12" fill="#334155">seller_city</text>
-<rect x="454" y="682" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="699" font-size="12" fill="#334155">seller_id</text>
-<rect x="454" y="705" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="722" font-size="12" fill="#334155">seller_state</text>
-<rect x="454" y="728" width="385" height="23" fill="#ffffff"/>
-<text x="460" y="745" font-size="12" fill="#334155">seller_zip_code_prefix</text>
+<g id="table-orders" data-table="orders">
+<rect x="900" y="420" width="400" height="288" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M909 420 H1291 Q1300 420 1300 429 V468 H900 V429 Q900 420 909 420 Z" fill="#dfe7f2"/>
+<text x="915" y="450" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">orders</text>
+<text x="1284" y="449" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">99,441 rows</text>
+<g class="field" data-column="orders.order_approved_at"><rect x="905" y="468" width="390" height="29" fill="#c9edff"/><text x="914" y="487" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_approved_at</text></g>
+<g class="field" data-column="orders.order_delivered_carrier_date"><rect x="905" y="497" width="390" height="29" fill="#c9edff"/><text x="914" y="516" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_delivered_carrier_date</text></g>
+<g class="field" data-column="orders.order_delivered_customer_date"><rect x="905" y="526" width="390" height="29" fill="#c9edff"/><text x="914" y="545" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_delivered_customer_date</text></g>
+<g class="field" data-column="orders.order_estimated_delivery_date"><rect x="905" y="555" width="390" height="29" fill="#c9edff"/><text x="914" y="574" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_estimated_delivery_date</text></g>
+<g class="field" data-column="orders.order_purchase_timestamp"><rect x="905" y="584" width="390" height="29" fill="#c9edff"/><text x="914" y="603" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_purchase_timestamp</text></g>
+<g class="field" data-column="orders.customer_id"><rect x="905" y="613" width="390" height="29" fill="#ffffff"/><text x="914" y="632" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">customer_id</text><text x="1284" y="632" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">FK</text></g>
+<g class="field" data-column="orders.order_id"><rect x="905" y="642" width="390" height="29" fill="#ffffff"/><text x="914" y="661" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_id</text><text x="1284" y="661" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="orders.order_status"><rect x="905" y="671" width="390" height="29" fill="#ffffff"/><text x="914" y="690" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_status</text></g>
 </g>
-<g><rect x="863" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="863" y="623" width="395" height="32" fill="#e2e8f0"/>
-<text x="873" y="645" font-size="15" fill="#0f172a" font-weight="bold">products</text>
-<rect x="868" y="659" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="676" font-size="12" fill="#334155">product_category_name</text>
-<rect x="868" y="682" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="699" font-size="12" fill="#334155">product_description_lenght</text>
-<rect x="868" y="705" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="722" font-size="12" fill="#334155">product_height_cm</text>
-<rect x="868" y="728" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="745" font-size="12" fill="#334155">product_id</text>
-<rect x="868" y="751" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="768" font-size="12" fill="#334155">product_length_cm</text>
-<rect x="868" y="774" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="791" font-size="12" fill="#334155">product_name_lenght</text>
-<rect x="868" y="797" width="385" height="23" fill="#ffffff"/>
-<text x="874" y="814" font-size="12" fill="#334155">product_photos_qty</text>
+<g id="table-order_items" data-table="order_items">
+<rect x="900" y="930" width="400" height="259" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M909 930 H1291 Q1300 930 1300 939 V978 H900 V939 Q900 930 909 930 Z" fill="#dfe7f2"/>
+<text x="915" y="960" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">order_items</text>
+<text x="1284" y="959" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">112,650 rows</text>
+<g class="field" data-column="order_items.shipping_limit_date"><rect x="905" y="978" width="390" height="29" fill="#c9edff"/><text x="914" y="997" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">shipping_limit_date</text></g>
+<g class="field" data-column="order_items.freight_value"><rect x="905" y="1007" width="390" height="29" fill="#ffffff"/><text x="914" y="1026" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">freight_value</text></g>
+<g class="field" data-column="order_items.order_id"><rect x="905" y="1036" width="390" height="29" fill="#ffffff"/><text x="914" y="1055" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_id</text><text x="1284" y="1055" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK / FK</text></g>
+<g class="field" data-column="order_items.order_item_id"><rect x="905" y="1065" width="390" height="29" fill="#ffffff"/><text x="914" y="1084" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_item_id</text><text x="1284" y="1084" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="order_items.price"><rect x="905" y="1094" width="390" height="29" fill="#ffffff"/><text x="914" y="1113" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">price</text></g>
+<g class="field" data-column="order_items.product_id"><rect x="905" y="1123" width="390" height="29" fill="#ffffff"/><text x="914" y="1142" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">product_id</text><text x="1284" y="1142" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">FK</text></g>
+<g class="field" data-column="order_items.seller_id"><rect x="905" y="1152" width="390" height="29" fill="#ffffff"/><text x="914" y="1171" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">seller_id</text><text x="1284" y="1171" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">FK</text></g>
 </g>
-<g><rect x="1277" y="623" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="1277" y="623" width="395" height="32" fill="#e2e8f0"/>
-<text x="1287" y="645" font-size="15" fill="#0f172a" font-weight="bold">product_category_name_translation</text>
-<rect x="1282" y="659" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="676" font-size="12" fill="#334155">product_category_name</text>
-<rect x="1282" y="682" width="385" height="23" fill="#ffffff"/>
-<text x="1288" y="699" font-size="12" fill="#334155">product_category_name_english</text>
+<g id="table-order_payments" data-table="order_payments">
+<rect x="260" y="465" width="400" height="201" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M269 465 H651 Q660 465 660 474 V513 H260 V474 Q260 465 269 465 Z" fill="#dfe7f2"/>
+<text x="275" y="495" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">order_payments</text>
+<text x="644" y="494" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">103,886 rows</text>
+<g class="field" data-column="order_payments.order_id"><rect x="265" y="513" width="390" height="29" fill="#ffffff"/><text x="274" y="532" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_id</text><text x="644" y="532" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK / FK</text></g>
+<g class="field" data-column="order_payments.payment_installments"><rect x="265" y="542" width="390" height="29" fill="#ffffff"/><text x="274" y="561" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">payment_installments</text></g>
+<g class="field" data-column="order_payments.payment_sequential"><rect x="265" y="571" width="390" height="29" fill="#ffffff"/><text x="274" y="590" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">payment_sequential</text><text x="644" y="590" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">PK</text></g>
+<g class="field" data-column="order_payments.payment_type"><rect x="265" y="600" width="390" height="29" fill="#ffffff"/><text x="274" y="619" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">payment_type</text></g>
+<g class="field" data-column="order_payments.payment_value"><rect x="265" y="629" width="390" height="29" fill="#ffffff"/><text x="274" y="648" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">payment_value</text></g>
 </g>
-<text x="35" y="1155" font-size="22" font-weight="bold" fill="#0f172a">Location Reference</text>
-<g><rect x="35" y="1183" width="395" height="210" rx="7" fill="#fff" stroke="#64748b"/>
-<rect x="35" y="1183" width="395" height="32" fill="#e2e8f0"/>
-<text x="45" y="1205" font-size="15" fill="#0f172a" font-weight="bold">geolocation</text>
-<rect x="40" y="1219" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="1236" font-size="12" fill="#334155">geolocation_city</text>
-<rect x="40" y="1242" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="1259" font-size="12" fill="#334155">geolocation_lat</text>
-<rect x="40" y="1265" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="1282" font-size="12" fill="#334155">geolocation_lng</text>
-<rect x="40" y="1288" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="1305" font-size="12" fill="#334155">geolocation_state</text>
-<rect x="40" y="1311" width="385" height="23" fill="#ffffff"/>
-<text x="46" y="1328" font-size="12" fill="#334155">geolocation_zip_code_prefix</text>
+<g id="table-order_reviews" data-table="order_reviews">
+<rect x="1570" y="455" width="400" height="259" rx="9" fill="white" stroke="#64748b" stroke-width="1.8"/>
+<path d="M1579 455 H1961 Q1970 455 1970 464 V503 H1570 V464 Q1570 455 1579 455 Z" fill="#dfe7f2"/>
+<text x="1585" y="485" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f172a">order_reviews</text>
+<text x="1954" y="484" text-anchor="end" font-family="Arial,sans-serif" font-size="12" fill="#475569">99,224 rows</text>
+<g class="field" data-column="order_reviews.review_answer_timestamp"><rect x="1575" y="503" width="390" height="29" fill="#c9edff"/><text x="1584" y="522" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">review_answer_timestamp</text></g>
+<g class="field" data-column="order_reviews.review_creation_date"><rect x="1575" y="532" width="390" height="29" fill="#c9edff"/><text x="1584" y="551" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">review_creation_date</text></g>
+<g class="field" data-column="order_reviews.order_id"><rect x="1575" y="561" width="390" height="29" fill="#ffffff"/><text x="1584" y="580" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">order_id</text><text x="1954" y="580" text-anchor="end" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#0f766e">FK</text></g>
+<g class="field" data-column="order_reviews.review_comment_message"><rect x="1575" y="590" width="390" height="29" fill="#ffffff"/><text x="1584" y="609" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">review_comment_message</text></g>
+<g class="field" data-column="order_reviews.review_comment_title"><rect x="1575" y="619" width="390" height="29" fill="#ffffff"/><text x="1584" y="638" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">review_comment_title</text></g>
+<g class="field" data-column="order_reviews.review_id"><rect x="1575" y="648" width="390" height="29" fill="#ffffff"/><text x="1584" y="667" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">review_id</text></g>
+<g class="field" data-column="order_reviews.review_score"><rect x="1575" y="677" width="390" height="29" fill="#ffffff"/><text x="1584" y="696" font-family="Arial,sans-serif" font-size="13.3" fill="#334155">review_score</text></g>
 </g>
 </svg>

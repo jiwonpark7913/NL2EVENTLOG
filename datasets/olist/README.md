@@ -33,11 +33,18 @@ This is **CC BY-NC-SA 4.0**, for noncommercial research and education, with attr
 | product_category_name_translation | 71 |
 | **Total** | **1,550,922** |
 
+## Schema Overview
+
+![Olist Relational Database Schema](docs/schema.svg)
+
+The diagram shows all 9 tables and 6 declared FK relationships (arrows: child FK → parent PK). Timestamp columns are highlighted in blue.
+
+- [Interactive Schema Explorer](docs/schema.html)
+- [Editable ERD](docs/schema.drawio)
+- [Data Dictionary](docs/data_dictionary.md)
+
 ## DB review
 
-- [Scrollable schema explorer](docs/schema.html): browser-friendly layout, groups by business area, blue time columns, yellow modification columns.
-- [Editable draw.io diagram](docs/schema.drawio), [SVG overview](docs/schema.svg).
-- [Readable data dictionary](docs/data_dictionary.md).
 - [Database structure DDL](evaluation/schema.sql).
 - [Provenance and validation](source/provenance.json).
 - After materialization, the shared reviewer can generate **actual first 10 source rows** with `python tools/build_dataset_review.py --dataset olist`.
