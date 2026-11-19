@@ -109,7 +109,36 @@ def generate(data, counts):
     # Compact SVG ERD table map (full columns in draw.io and HTML).
     width, height = 1700, 1710
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">',
+           '<defs><marker id="fk-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#0f766e"/></marker></defs>',
            '<rect width="100%" height="100%" fill="white"/>']
+    # All declared child-FK -> parent-PK edges, routed outside table boxes.
+    # Draw connectors first so table cards remain above connectors.
+    box_xy = {}
+    for gi, (_, names) in enumerate(GROUPS):
+        for idx, name in enumerate(names):
+            box_xy[name] = (35 + (idx % 4) * 414, 35 + gi * 560 + 28 + (idx // 4) * 230)
+    route_index = 0
+    for name, table in tables.items():
+        for fk in table["foreign_keys"]:
+            parent = fk["referenced_table"]
+            if parent not in box_xy or name not in box_xy:
+                continue
+            sx, sy = box_xy[name]
+            px, py = box_xy[parent]
+            route_index += 1
+            start_x = sx + 190 + (route_index % 3) * 8
+            end_x = px + 190 + (route_index % 3) * 8
+            if sy == py:
+                # Same-row child and parent: use a separate corridor below cards.
+                gap_y = sy + 210 + (route_index % 6) * 17 + 12
+                # Arrow toward parent from below.
+                path = f"M{start_x} {sy+210} V{gap_y} H{end_x} V{py+210}"
+            else:
+                gap_y = sy + 260 + (route_index % 5) * 12
+                path = f"M{start_x} {sy+210} V{gap_y} H{end_x} V{py}"
+            label = (name + "." + ",".join(fk["columns"]) + " → " +
+                     parent + "." + ",".join(fk["referenced_columns"]))
+            svg.append(f'<path d="{path}" fill="none" stroke="#0f766e" stroke-width="2.5" opacity="0.85" marker-end="url(#fk-arrow)"><title>{html.escape(label)}</title></path>')
     for gi, (lane, names) in enumerate(GROUPS):
         by = 35 + gi * 560
         svg.append(f'<text x="35" y="{by}" font-size="22" font-weight="bold" fill="#0f172a">{html.escape(lane)}</text>')
