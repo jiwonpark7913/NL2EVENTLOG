@@ -1,7 +1,7 @@
 {
   "timestamp_columns": 24,
-  "event_timestamp_columns": 15,
-  "other_timestamp_columns": 9,
+  "event_timestamp_columns": 19,
+  "other_timestamp_columns": 5,
   "baseline_timestamp_columns": 24,
   "columns": [
     {
@@ -91,8 +91,8 @@
     {
       "table": "furnace_operation_history",
       "column": "started_at",
-      "role": "Actual interval start; not separately emitted",
-      "used_as_event_time": false,
+      "role": "Actual interval start",
+      "used_as_event_time": true,
       "non_null_rows": 70
     },
     {
@@ -105,8 +105,8 @@
     {
       "table": "rolling_operation_history",
       "column": "started_at",
-      "role": "Actual interval start; not separately emitted",
-      "used_as_event_time": false,
+      "role": "Actual interval start",
+      "used_as_event_time": true,
       "non_null_rows": 44
     },
     {
@@ -140,8 +140,8 @@
     {
       "table": "finishing_operation_history",
       "column": "started_at",
-      "role": "Actual interval start; not separately emitted",
-      "used_as_event_time": false,
+      "role": "Actual interval start",
+      "used_as_event_time": true,
       "non_null_rows": 130
     },
     {
@@ -161,8 +161,8 @@
     {
       "table": "plate_quality_review",
       "column": "started_at",
-      "role": "Actual interval start; not separately emitted",
-      "used_as_event_time": false,
+      "role": "Actual interval start",
+      "used_as_event_time": true,
       "non_null_rows": 46
     },
     {

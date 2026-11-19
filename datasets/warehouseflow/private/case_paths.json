@@ -95,6 +95,10 @@
     "handling_history": {
       "case_key": "s.worker_id",
       "joins": ""
+    },
+    "goods_movement": {
+      "case_key": "r.receiver_id",
+      "joins": " JOIN goods_receipt r ON r.receipt_id=s.receipt_id"
     }
   },
   "Receiving Request": {

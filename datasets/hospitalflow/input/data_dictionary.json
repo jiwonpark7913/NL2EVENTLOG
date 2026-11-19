@@ -195,8 +195,9 @@
       ],
       "logical_relationships": [],
       "table_checks": [
-        "CHECK(edregtime IS NULL OR edregtime<=admittime)",
-        "CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime)"
+        "CHECK(dischtime IS NULL OR admittime<=dischtime)",
+        "CHECK(edouttime IS NULL OR edregtime IS NOT NULL)",
+        "CHECK(edouttime IS NULL OR edregtime<=edouttime)"
       ],
       "sql_definition": "CREATE TABLE \"admissions\"(\n        hadm_id INTEGER PRIMARY KEY NOT NULL,\n        subject_id INTEGER NOT NULL REFERENCES patients(subject_id),\n        admittime TEXT NOT NULL,\n        dischtime TEXT,\n        deathtime TEXT,\n        admission_type TEXT NOT NULL,\n        admit_provider_id TEXT,\n        admission_location TEXT,\n        discharge_location TEXT,\n        insurance TEXT,\n        language TEXT,\n        marital_status TEXT,\n        race TEXT,\n        edregtime TEXT,\n        edouttime TEXT,\n        hospital_expire_flag INTEGER NOT NULL DEFAULT 0 CHECK(hospital_expire_flag IN (0,1)),\n        CHECK(dischtime IS NULL OR admittime<=dischtime),\n        CHECK(edouttime IS NULL OR edregtime IS NOT NULL),\n        CHECK(edouttime IS NULL OR edregtime<=edouttime)\n    )",
       "columns": [
@@ -585,9 +586,7 @@
           "sample_values": [0]
         }
       ],
-      "constraint_notes": [
-        "CHECK(dischtime IS NULL OR discharge_authorized_at<=dischtime) rejects a known authorization time later than discharge. When discharge_authorized_at is NULL and dischtime is present, the expression evaluates to UNKNOWN and SQLite permits the row. Authorization is not mandatory for a recorded discharge."
-      ]
+      "constraint_notes": []
     },
     {
       "table": "admission_detail",
@@ -2301,7 +2300,12 @@
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "code_meanings": {},
-          "foreign_keys": [],
+          "foreign_keys": [
+            {
+              "table": "patients",
+              "column": "subject_id"
+            }
+          ],
           "primary_key_position": 0,
           "sample_values": [10000001, 10000002, 10000003]
         },
@@ -2320,7 +2324,12 @@
             "Synthetic HospitalFlow; MIMIC-IV hosp schema names (not MIMIC patient records)"
           ],
           "code_meanings": {},
-          "foreign_keys": [],
+          "foreign_keys": [
+            {
+              "table": "admissions",
+              "column": "hadm_id"
+            }
+          ],
           "primary_key_position": 0,
           "sample_values": [20000001, 20000002, 20000003]
         },
@@ -2425,7 +2434,6 @@
   ],
   "business_rules": [
     "A patient can have multiple hospital admissions; hadm_id identifies an admission and subject_id identifies a patient.",
-    "Supplementary profile rows use the patient identifier documented in patients; their logical relationship is not enforced by an SQL foreign key.",
     "A signed discharge summary uses the identifier of its hospital admission. Draft documents are not stored in admission_detail.",
     "Laboratory, medication and procedure requests use separate local identifier namespaces.",
     "An order-action history row has exactly one populated order-reference column; repeated reviews are separate records.",
@@ -2435,7 +2443,6 @@
     "NULL is interpreted by the column-specific rule: an unrecorded clinical timestamp gives unknown occurrence status; a non-applicable order-reference column and an absent admission association have their separately defined structural meanings.",
     "Laboratory charttime represents specimen collection; storetime represents result availability. Medication and procedure storetime values represent system documentation times.",
     "Lab concept codes 1001, 1002 and 1003 mean Creatinine (mg/dL), Sodium (mmol/L) and Hemoglobin (g/dL), respectively.",
-    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
     "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
     "MIMIC-IV-inspired structure with wholly synthetic patients and movements; no original patient record is used.",
     "Patient demographics live only in patients, with admission-specific attributes in admissions.",

@@ -6,7 +6,7 @@ WarehouseFlow is a synthetic warehouse operations database covering goods, recei
 
 | Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
-| 12 | 12 | 5 | 50 |
+| 12 | 12 | 5 | 40 |
 
 ## Explore the dataset
 
@@ -32,23 +32,15 @@ Event timestamps and activity codes are interpreted using the Data Dictionary an
 
 [**Full question list, types and answerability**](docs/questions.md) · [Question texts (JSONL)](evaluation/model_questions.jsonl) · [Question-level Gold DFGs and source records](review/gold_dfg/README.md)
 
-The checked-in question file contains **54 requests**. Explicit requests enumerate activities; implicit requests ask for a recorded lifecycle. Paired paraphrases, where present, are listed in the question documentation.
+The checked-in question file contains **40 requests**. Explicit requests enumerate activities; implicit requests ask for a recorded lifecycle. Paired paraphrases, where present, are listed in the question documentation.
 
 <details>
-<summary>Browse all 54 question texts</summary>
+<summary>Browse all 40 question texts</summary>
 
 | ID | Request |
 |---|---|
-| W01 | For each receiving request, extract Receiving Request Submitted events. |
-| W01P | For every receiving request, show when it was submitted. |
-| W02 | For each receipt record, extract Receipt Registered events. |
-| W02P | For each individual receipt record, show when the receipt was registered. |
 | W03 | For each dispatch order, extract Dispatch Requested and Dispatch Approved events. |
 | W03P | For every dispatch order, show when dispatch was requested and when it was approved. |
-| W04 | For each stock audit, extract Stock Audit Started and Stock Audit Completed events. |
-| W04P | Show when each stock audit began and when it finished. |
-| W05 | For each stock movement record, extract Goods Received and Goods Dispatched events. |
-| W05P | For every stock movement record, show the recorded receipt into stock or dispatch from stock, as applicable. |
 | W06 | For each request action record, extract Request Checked, Request Held and Request Released events. |
 | W06P | For each individual request action record, show the checking, holding or releasing action that was recorded. |
 | W07 | For each warehouse task, extract Putaway Started, Putaway Completed, Picking Started, Picking Completed, Packing Started and Packing Completed events. |
@@ -67,10 +59,6 @@ The checked-in question file contains **54 requests**. Explicit requests enumera
 | W13P | For each goods type, show its recorded receipts into warehouse stock and dispatches from stock. |
 | W14 | For each receipt record, extract Receipt Registered and Goods Received events. |
 | W14P | For every individual receipt record, show its registration and the corresponding receipt of goods into stock. |
-| W15 | For each warehouse, extract Invoice Paid events. |
-| W15P | For every warehouse, show when its invoices were paid. |
-| W16 | For each dispatch order, extract Customer Delivery Completed events. |
-| W16P | For each dispatch order, show when delivery to the customer was completed. |
 | WF01 | Extract the full recorded lifecycle for each warehouse. |
 | WF01P | Show the complete recorded history of each warehouse. |
 | WF02 | Extract the full recorded lifecycle for each goods type. |
@@ -83,8 +71,6 @@ The checked-in question file contains **54 requests**. Explicit requests enumera
 | WF05P | Show the entire recorded history associated with each individual receipt record. |
 | WF06 | Extract the full recorded lifecycle for each dispatch order. |
 | WF06P | Build a complete recorded timeline for every dispatch order. |
-| WF07 | Extract the full recorded lifecycle for each stock audit. |
-| WF07P | Show the full recorded history of each stock audit. |
 | WF08 | Extract the full recorded lifecycle for each stock movement record. |
 | WF08P | Trace each individual stock movement record through its entire recorded history. |
 | WF09 | Extract the full recorded lifecycle for each request action record. |

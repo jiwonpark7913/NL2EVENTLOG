@@ -6,7 +6,7 @@ HospitalFlow models synthetic patient encounters, clinical orders, medication ad
 
 | Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
-| 12 | 11 | 5 | 42 |
+| 12 | 11 | 5 | 40 |
 
 ## Explore the dataset
 
@@ -32,10 +32,10 @@ Event timestamps and activity codes are interpreted using the Data Dictionary an
 
 [**Full question list, types and answerability**](docs/questions.md) · [Question texts (JSONL)](evaluation/model_questions.jsonl) · [Question-level Gold DFGs and source records](review/gold_dfg/README.md)
 
-The checked-in question-text file contains **44 requests**. Explicit requests enumerate activities; implicit requests ask for a recorded lifecycle. Paired paraphrases, where present, are listed in the full question documentation.
+The checked-in question-text file contains **40 requests**. Explicit requests enumerate activities; implicit requests ask for a recorded lifecycle. Paired paraphrases, where present, are listed in the full question documentation.
 
 <details>
-<summary>Browse all 44 question texts</summary>
+<summary>Browse all 40 question texts</summary>
 
 | ID | Request |
 |---|---|
@@ -53,8 +53,6 @@ The checked-in question-text file contains **44 requests**. Explicit requests en
 | H06P | For every hospital stay, show arrival registration in the emergency department, admission, departure from the emergency department and actual discharge. |
 | H07 | For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events. |
 | H07P | For each patient, collect the recorded hospital entries and departures, availability of laboratory findings, medicine administrations and finishes of procedures. |
-| H08 | For each hospital admission, extract Insurance Claim Paid events. |
-| H08P | For each hospital stay, show when its insurance claim was settled by payment. |
 | HF01 | Extract the full recorded lifecycle for each patient. |
 | HF01P | Build a complete timeline of all recorded care events for every patient. |
 | HF02 | Extract the full recorded lifecycle for each hospital admission. |
@@ -69,10 +67,8 @@ The checked-in question-text file contains **44 requests**. Explicit requests en
 | HF06P | Trace the whole recorded lifecycle of every procedure order. |
 | H09 | For each patient, extract Care Unit Transferred events. |
 | H09P | Show when each patient moved to a different hospital care unit. |
-| H10 | For each hospital admission, extract Discharge Summary Signed events. |
-| H10P | For each hospital stay, show when its discharge summary was signed. |
-| H11 | For each patient, extract Patient Profile Verified and Hospital Admitted events. |
-| H11P | Build a timeline for every patient showing verification of their supplementary personal information and their entries into hospital. |
+| H11 | For each patient, extract Hospital Admitted and Care Unit Transferred events. |
+| H11P | Build a timeline for every patient showing their entries into hospital and their moves to a different hospital care unit. |
 | HF07 | Extract the full recorded lifecycle for each lab measurement. |
 | HF07P | Show the entire recorded history of each individual laboratory measurement. |
 | HF08 | Extract the full recorded lifecycle for each medication administration. |
@@ -111,7 +107,7 @@ Supporting Gold types: Care Unit Transfer, Lab Measurement, Medication Administr
 
 ## Evaluation evidence
 
-- Gold SQL/CSV pairs executable and consistent: 42; compared event rows across questions: 6656.
+- Gold SQL/CSV pairs executable and consistent: 40; compared event rows across questions: 6646.
 - [Gold source inventory](review/gold_dfg/event_graph.md)
 - [Question-level Gold DFGs](review/gold_dfg/README.md)
 - [Editable Draw.io schema](docs/schema.drawio)

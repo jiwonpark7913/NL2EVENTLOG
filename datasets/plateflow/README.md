@@ -6,7 +6,7 @@ PlateFlow is a synthetic steel-plate production database with slab receiving, ro
 
 | Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |
 |---:|---:|---:|---:|
-| 12 | 12 | 6 | 50 |
+| 12 | 12 | 6 | 40 |
 
 ## Explore the dataset
 
@@ -32,10 +32,10 @@ Event timestamps and activity codes are interpreted using the Data Dictionary an
 
 [**Full question list, types and answerability**](docs/questions.md) · [Question texts (JSONL)](evaluation/model_questions.jsonl) · [Question-level Gold DFGs and source records](review/gold_dfg/README.md)
 
-The checked-in question-text file contains **54 requests**. Explicit requests enumerate activities; implicit requests ask for a recorded lifecycle. Paired paraphrases, where present, are listed in the full question documentation.
+The checked-in question-text file contains **40 requests**. Explicit requests enumerate activities; implicit requests ask for a recorded lifecycle. Paired paraphrases, where present, are listed in the full question documentation.
 
 <details>
-<summary>Browse all 54 question texts</summary>
+<summary>Browse all 40 question texts</summary>
 
 | ID | Request |
 |---|---|
@@ -55,22 +55,10 @@ The checked-in question-text file contains **54 requests**. Explicit requests en
 | N07P | For every plate piece, show when its dimensional inspections and quality reviews finished. |
 | N08 | For each plate piece, extract Plate Identified, Plate Released and Plate Packed events. |
 | N08P | For each plate piece, show when it was identified, released and packed. |
-| N09 | For each dimension inspection record, extract Dimensional Inspection Completed events. |
-| N09P | For each individual dimensional inspection record, show when the inspection finished. |
-| N10 | For each quality review record, extract Plate Quality Review Completed events. |
-| N10P | For each individual quality review record, show when the review finished. |
 | N11 | For each equipment unit, extract Heating Completed and Heat Treatment Completed events. |
 | N11P | For each equipment unit, show the completion of heating and of heat treatment. |
 | N12 | For each furnace operation record, extract Furnace Charged, Heating Completed and Furnace Discharged events. |
 | N12P | For every furnace operation record, show the recorded completion of furnace charging, heating or furnace discharge, as applicable. |
-| N13 | For each rolling operation record, extract Rough Rolling Completed and Finish Rolling Completed events. |
-| N13P | For every rolling operation record, show the recorded completion of rough rolling or finish rolling, as applicable. |
-| N14 | For each finishing operation record, extract Leveling Completed, Heat Treatment Completed and Surface Finishing Completed events. |
-| N14P | For every finishing operation record, show the recorded completion of leveling, heat treatment or surface finishing, as applicable. |
-| N15 | For each slab, extract Steel Cast events. |
-| N15P | For each slab, show when the steel was cast. |
-| N16 | For each plate piece, extract Truck Dispatched events. |
-| N16P | For each plate piece, show when its truck was dispatched. |
 | NF01 | Extract the full recorded lifecycle for each slab. |
 | NF01P | Show the complete recorded history of each slab. |
 | NF02 | Extract the full recorded lifecycle for each rolling plan. |
@@ -81,8 +69,6 @@ The checked-in question-text file contains **54 requests**. Explicit requests en
 | NF04P | Show the whole recorded lifecycle of every mother material. |
 | NF05 | Extract the full recorded lifecycle for each plate piece. |
 | NF05P | Build a complete timeline of the recorded history of each plate piece. |
-| NF06 | Extract the full recorded lifecycle for each dimension inspection record. |
-| NF06P | Show the entire recorded history of every individual dimensional inspection record. |
 | NF07 | Extract the full recorded lifecycle for each quality review record. |
 | NF07P | Trace each individual quality review record through its complete recorded history. |
 | NF08 | Extract the full recorded lifecycle for each equipment unit. |
@@ -121,7 +107,7 @@ Supporting Gold types: Dimension Inspection, Finishing Operation Record, Furnace
 
 ## Evaluation evidence
 
-- Gold SQL/CSV pairs executable and consistent: 50; compared event rows across questions: 7384.
+- Gold SQL/CSV pairs executable and consistent: 40; compared event rows across questions: 11366.
 - [Gold source inventory](review/gold_dfg/event_graph.md)
 - [Question-level Gold DFGs](review/gold_dfg/README.md)
 - [Editable Draw.io schema](docs/schema.drawio)

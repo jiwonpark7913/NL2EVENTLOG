@@ -36,8 +36,6 @@ Timestamp ties are ordered using event_id only for deterministic display; this d
 | HF06P | 103 | 17 | 6 | [Graph](graphs/HF06P.svg) | [SQL](../../private/gold_sql/HF06P.sql) |
 | H09 | 10 | 8 | 1 | [Graph](graphs/H09.svg) | [SQL](../../private/gold_sql/H09.sql) |
 | H09P | 10 | 8 | 1 | [Graph](graphs/H09P.svg) | [SQL](../../private/gold_sql/H09P.sql) |
-| H10 | 5 | 5 | 1 | [Graph](graphs/H10.svg) | [SQL](../../private/gold_sql/H10.sql) |
-| H10P | 5 | 5 | 1 | [Graph](graphs/H10P.svg) | [SQL](../../private/gold_sql/H10P.sql) |
 | H11 | 25 | 11 | 2 | [Graph](graphs/H11.svg) | [SQL](../../private/gold_sql/H11.sql) |
 | H11P | 25 | 11 | 2 | [Graph](graphs/H11P.svg) | [SQL](../../private/gold_sql/H11P.sql) |
 | HF07 | 124 | 62 | 2 | [Graph](graphs/HF07.svg) | [SQL](../../private/gold_sql/HF07.sql) |

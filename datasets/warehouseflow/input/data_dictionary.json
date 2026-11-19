@@ -713,7 +713,7 @@
       "primary_key": [
         "movement_id"
       ],
-      "sql_definition": "CREATE TABLE goods_movement(movement_id TEXT PRIMARY KEY NOT NULL, warehouse_id TEXT NOT NULL REFERENCES warehouse(warehouse_id), goods_id TEXT NOT NULL REFERENCES goods(goods_id), quantity INTEGER NOT NULL CHECK(quantity>0), receipt_id TEXT UNIQUE REFERENCES goods_receipt(receipt_id), dispatch_id TEXT UNIQUE REFERENCES dispatch_order(dispatch_id), code_family TEXT NOT NULL DEFAULT 'MOVEMENT' CHECK(code_family='MOVEMENT'), movement_code TEXT NOT NULL, occurred_at TEXT NOT NULL, FOREIGN KEY(code_family,movement_code) REFERENCES work_code(code_family,code), CHECK((movement_code='IN' AND receipt_id IS NOT NULL AND dispatch_id IS NULL) OR (movement_code='OUT' AND receipt_id IS NULL AND dispatch_id IS NOT NULL)))"
+      "sql_definition": "CREATE TABLE goods_movement(movement_id TEXT PRIMARY KEY NOT NULL, warehouse_id TEXT NOT NULL REFERENCES warehouse(warehouse_id), goods_id TEXT NOT NULL REFERENCES goods(goods_id), quantity INTEGER NOT NULL CHECK(quantity>0), receipt_id TEXT UNIQUE REFERENCES goods_receipt(receipt_id), dispatch_id TEXT UNIQUE REFERENCES dispatch_order(dispatch_id), code_family TEXT NOT NULL DEFAULT 'MOVEMENT' CHECK(code_family='MOVEMENT'), movement_code TEXT NOT NULL, occurred_at TEXT NOT NULL, FOREIGN KEY(code_family,movement_code) REFERENCES work_code(code_family,code), CHECK((movement_code='I' AND receipt_id IS NOT NULL AND dispatch_id IS NULL) OR (movement_code='O' AND receipt_id IS NULL AND dispatch_id IS NOT NULL)))"
     },
     {
       "table": "request_action",
@@ -971,7 +971,7 @@
       "primary_key": [
         "task_id"
       ],
-      "sql_definition": "CREATE TABLE warehouse_task_history(task_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'TASK' CHECK(code_family='TASK'), task_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, outcome_code TEXT NOT NULL CHECK(outcome_code IN ('OK','RETRY','PENDING')), FOREIGN KEY(code_family,task_code) REFERENCES work_code(code_family,code), CHECK((task_code='PUTAWAY' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (task_code IN ('PICK','PACK') AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK((completed_at IS NULL AND outcome_code='PENDING') OR (completed_at IS NOT NULL AND started_at<completed_at AND outcome_code IN ('OK','RETRY'))))"
+      "sql_definition": "CREATE TABLE warehouse_task_history(task_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'TASK' CHECK(code_family='TASK'), task_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, outcome_code TEXT NOT NULL CHECK(outcome_code IN ('OK','RETRY','PENDING')), FOREIGN KEY(code_family,task_code) REFERENCES work_code(code_family,code), CHECK((task_code='A' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (task_code IN ('K','B') AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK((completed_at IS NULL AND outcome_code='PENDING') OR (completed_at IS NOT NULL AND started_at<completed_at AND outcome_code IN ('OK','RETRY'))))"
     },
     {
       "table": "handling_history",
@@ -1108,7 +1108,7 @@
       "primary_key": [
         "handling_id"
       ],
-      "sql_definition": "CREATE TABLE handling_history(handling_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'HANDLING' CHECK(code_family='HANDLING'), handling_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, FOREIGN KEY(code_family,handling_code) REFERENCES work_code(code_family,code), CHECK((handling_code='UNLOAD' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (handling_code='LOAD' AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK(completed_at IS NULL OR started_at<completed_at))"
+      "sql_definition": "CREATE TABLE handling_history(handling_id TEXT PRIMARY KEY NOT NULL, request_id TEXT REFERENCES receiving_request(request_id), dispatch_id TEXT REFERENCES dispatch_order(dispatch_id), worker_id TEXT NOT NULL REFERENCES worker(worker_id), code_family TEXT NOT NULL DEFAULT 'HANDLING' CHECK(code_family='HANDLING'), handling_code TEXT NOT NULL, started_at TEXT NOT NULL, completed_at TEXT, FOREIGN KEY(code_family,handling_code) REFERENCES work_code(code_family,code), CHECK((handling_code='U' AND request_id IS NOT NULL AND dispatch_id IS NULL) OR (handling_code='L' AND dispatch_id IS NOT NULL AND request_id IS NULL)), CHECK(completed_at IS NULL OR started_at<completed_at))"
     }
   ],
   "code_values": [
@@ -1172,7 +1172,6 @@
     "Goods category, dispatch urgency, goods condition, worker role, audit result and task outcome describe their respective business contexts rather than different kinds of action.",
     "A handling/task occurrence refers either to a receiving request or to a dispatch order as constrained by its work kind.",
     "All rows, code conventions, times and quantities are synthetic.",
-    "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone.",
     "Business-action codes are namespace-specific. Identical physical codes in different business contexts can mean different actions. Use the code's business definition or referenced code table; do not infer meaning from the raw code alone."
   ]
 }

@@ -1,6 +1,6 @@
 [
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N01",
     "type": "Q1",
     "question": "For each slab, extract Slab Received, Slab Verified and Slab Released events.",
@@ -43,7 +43,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N01P",
     "type": "Q2",
     "question": "Build a timeline for each slab showing its receipt, verification and release.",
@@ -86,7 +86,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N02",
     "type": "Q1",
     "question": "For each rolling plan, extract Rolling Plan Submitted, Rolling Plan Approved and Rolling Plan Released events.",
@@ -129,7 +129,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N02P",
     "type": "Q2",
     "question": "For every rolling plan, show when it was submitted, approved and released.",
@@ -172,7 +172,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N03",
     "type": "Q1",
     "question": "For each rolling instruction, extract Rolling Instruction Issued, Heating Completed and Finish Rolling Completed events.",
@@ -217,7 +217,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N03P",
     "type": "Q2",
     "question": "For every rolling instruction, show its issue, the completion of heating and the completion of finish rolling.",
@@ -262,7 +262,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N04",
     "type": "Q1",
     "question": "For each mother material, extract Furnace Charged, Heating Completed, Furnace Discharged, Rough Rolling Completed and Finish Rolling Completed events.",
@@ -320,7 +320,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N04P",
     "type": "Q2",
     "question": "For each mother material, show the completion of charging into the furnace, heating, discharge from the furnace, rough rolling and finish rolling.",
@@ -378,7 +378,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N05",
     "type": "Q1",
     "question": "For each mother material, extract Heat Treatment Completed, Surface Finishing Completed and Dimensional Inspection Completed events, including those of its descendant plate pieces.",
@@ -428,7 +428,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N05P",
     "type": "Q2",
     "question": "For every mother material, show when heat treatment, surface finishing and dimensional inspection were completed, including work on all plate pieces derived from it.",
@@ -478,7 +478,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N06",
     "type": "Q1",
     "question": "For each plate piece, extract Leveling Completed, Heat Treatment Completed and Surface Finishing Completed events, retaining repeated occurrences.",
@@ -527,7 +527,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N06P",
     "type": "Q2",
     "question": "For each plate piece, show every completed leveling, heat-treatment and surface-finishing operation, including repeat work.",
@@ -576,7 +576,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N07",
     "type": "Q1",
     "question": "For each plate piece, extract Dimensional Inspection Completed and Plate Quality Review Completed events.",
@@ -619,7 +619,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N07P",
     "type": "Q2",
     "question": "For every plate piece, show when its dimensional inspections and quality reviews finished.",
@@ -662,7 +662,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N08",
     "type": "Q1",
     "question": "For each plate piece, extract Plate Identified, Plate Released and Plate Packed events.",
@@ -705,7 +705,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N08P",
     "type": "Q2",
     "question": "For each plate piece, show when it was identified, released and packed.",
@@ -748,119 +748,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
-    "id": "N09",
-    "type": "Q1",
-    "question": "For each dimension inspection record, extract Dimensional Inspection Completed events.",
-    "answerable": true,
-    "pair_of": "N09P",
-    "gold_sha256": "16d1c2eae29bedb5034cad13b769ca65ce98bb0d636d932f0f99ec4a4a20d86f",
-    "chart": "graphs/N09.svg",
-    "stats": {
-      "events": 46,
-      "observed_cases": 46,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Dimensional Inspection Completed": 46
-    },
-    "edges": [],
-    "source_tables": {
-      "dimension_inspection": 46
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N09P",
-    "type": "Q2",
-    "question": "For each individual dimensional inspection record, show when the inspection finished.",
-    "answerable": true,
-    "pair_of": "N09",
-    "gold_sha256": "16d1c2eae29bedb5034cad13b769ca65ce98bb0d636d932f0f99ec4a4a20d86f",
-    "chart": "graphs/N09.svg",
-    "stats": {
-      "events": 46,
-      "observed_cases": 46,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Dimensional Inspection Completed": 46
-    },
-    "edges": [],
-    "source_tables": {
-      "dimension_inspection": 46
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N10",
-    "type": "Q1",
-    "question": "For each quality review record, extract Plate Quality Review Completed events.",
-    "answerable": true,
-    "pair_of": "N10P",
-    "gold_sha256": "9cf589b5075a47cccfc3ff1710f7ba34191f5974a260e5a3afa4ff8d724e84e1",
-    "chart": "graphs/N10.svg",
-    "stats": {
-      "events": 43,
-      "observed_cases": 43,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Plate Quality Review Completed": 43
-    },
-    "edges": [],
-    "source_tables": {
-      "plate_quality_review": 43
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N10P",
-    "type": "Q2",
-    "question": "For each individual quality review record, show when the review finished.",
-    "answerable": true,
-    "pair_of": "N10",
-    "gold_sha256": "9cf589b5075a47cccfc3ff1710f7ba34191f5974a260e5a3afa4ff8d724e84e1",
-    "chart": "graphs/N10.svg",
-    "stats": {
-      "events": 43,
-      "observed_cases": 43,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Plate Quality Review Completed": 43
-    },
-    "edges": [],
-    "source_tables": {
-      "plate_quality_review": 43
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N11",
     "type": "Q1",
     "question": "For each equipment unit, extract Heating Completed and Heat Treatment Completed events.",
@@ -903,7 +791,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N11P",
     "type": "Q2",
     "question": "For each equipment unit, show the completion of heating and of heat treatment.",
@@ -946,7 +834,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N12",
     "type": "Q1",
     "question": "For each furnace operation record, extract Furnace Charged, Heating Completed and Furnace Discharged events.",
@@ -976,7 +864,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "N12P",
     "type": "Q2",
     "question": "For every furnace operation record, show the recorded completion of furnace charging, heating or furnace discharge, as applicable.",
@@ -1006,181 +894,19 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
-    "id": "N13",
-    "type": "Q1",
-    "question": "For each rolling operation record, extract Rough Rolling Completed and Finish Rolling Completed events.",
-    "answerable": true,
-    "pair_of": "N13P",
-    "gold_sha256": "698bbfb2e6417fbd0b9cba1a61ef9236f4f3059b710a88ff543a983a4bd6aec3",
-    "chart": "graphs/N13.svg",
-    "stats": {
-      "events": 42,
-      "observed_cases": 42,
-      "activities": 2,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Rough Rolling Completed": 22,
-      "Finish Rolling Completed": 20
-    },
-    "edges": [],
-    "source_tables": {
-      "rolling_operation_history": 42
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N13P",
-    "type": "Q2",
-    "question": "For every rolling operation record, show the recorded completion of rough rolling or finish rolling, as applicable.",
-    "answerable": true,
-    "pair_of": "N13",
-    "gold_sha256": "698bbfb2e6417fbd0b9cba1a61ef9236f4f3059b710a88ff543a983a4bd6aec3",
-    "chart": "graphs/N13.svg",
-    "stats": {
-      "events": 42,
-      "observed_cases": 42,
-      "activities": 2,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Rough Rolling Completed": 22,
-      "Finish Rolling Completed": 20
-    },
-    "edges": [],
-    "source_tables": {
-      "rolling_operation_history": 42
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N14",
-    "type": "Q1",
-    "question": "For each finishing operation record, extract Leveling Completed, Heat Treatment Completed and Surface Finishing Completed events.",
-    "answerable": true,
-    "pair_of": "N14P",
-    "gold_sha256": "ced9fe7c8458f1fa6de3994748737a9175d58774c0934d97a8340347a8d927aa",
-    "chart": "graphs/N14.svg",
-    "stats": {
-      "events": 130,
-      "observed_cases": 130,
-      "activities": 3,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Leveling Completed": 38,
-      "Heat Treatment Completed": 46,
-      "Surface Finishing Completed": 46
-    },
-    "edges": [],
-    "source_tables": {
-      "finishing_operation_history": 130
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N14P",
-    "type": "Q2",
-    "question": "For every finishing operation record, show the recorded completion of leveling, heat treatment or surface finishing, as applicable.",
-    "answerable": true,
-    "pair_of": "N14",
-    "gold_sha256": "ced9fe7c8458f1fa6de3994748737a9175d58774c0934d97a8340347a8d927aa",
-    "chart": "graphs/N14.svg",
-    "stats": {
-      "events": 130,
-      "observed_cases": 130,
-      "activities": 3,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Leveling Completed": 38,
-      "Heat Treatment Completed": 46,
-      "Surface Finishing Completed": 46
-    },
-    "edges": [],
-    "source_tables": {
-      "finishing_operation_history": 130
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N15",
-    "type": "Q1",
-    "question": "For each slab, extract Steel Cast events.",
-    "answerable": false,
-    "pair_of": "N15P",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding casting or dispatch records or actual times are stored."
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N15P",
-    "type": "Q2",
-    "question": "For each slab, show when the steel was cast.",
-    "answerable": false,
-    "pair_of": "N15",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding casting or dispatch records or actual times are stored."
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N16",
-    "type": "Q1",
-    "question": "For each plate piece, extract Truck Dispatched events.",
-    "answerable": false,
-    "pair_of": "N16P",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding casting or dispatch records or actual times are stored."
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "N16P",
-    "type": "Q2",
-    "question": "For each plate piece, show when its truck was dispatched.",
-    "answerable": false,
-    "pair_of": "N16",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding casting or dispatch records or actual times are stored."
-  },
-  {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF01",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each slab.",
     "answerable": true,
     "pair_of": "NF01P",
-    "gold_sha256": "dc071added8098aff92e9cc1de8e481595d6754d3fb2ad6afc817d1e77e00da8",
+    "gold_sha256": "f4c64a7505c0f68db46775f4f97ce0480b81c60667794e5b596bc2a71c6c1761",
     "chart": "graphs/NF01.svg",
     "stats": {
-      "events": 620,
+      "events": 910,
       "observed_cases": 30,
-      "activities": 20,
-      "dfg_edges": 23,
+      "activities": 29,
+      "dfg_edges": 32,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -1194,16 +920,25 @@
       "Rolling Plan Approved": 26,
       "Rolling Plan Released": 26,
       "Rolling Instruction Issued": 26,
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20,
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -1211,14 +946,8 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Identified",
-        "count": 1,
-        "tie_affected": 0
-      },
-      {
-        "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
@@ -1228,38 +957,74 @@
         "tie_affected": 0
       },
       {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
         "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
+        "target": "Heating Started",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Discharged",
-        "target": "Rough Rolling Completed",
-        "count": 22,
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
+        "source": "Furnace Discharge Started",
         "target": "Furnace Discharged",
         "count": 22,
         "tie_affected": 0
       },
       {
-        "source": "Leveling Completed",
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
         "source": "Plate Identified",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 38,
         "tie_affected": 0
       },
@@ -1271,7 +1036,7 @@
       },
       {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -1279,6 +1044,18 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -1295,7 +1072,7 @@
       },
       {
         "source": "Rolling Instruction Issued",
-        "target": "Furnace Charged",
+        "target": "Furnace Charging Started",
         "count": 24,
         "tie_affected": 0
       },
@@ -1319,8 +1096,14 @@
       },
       {
         "source": "Rough Rolling Completed",
-        "target": "Finish Rolling Completed",
-        "count": 20,
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
         "tie_affected": 0
       },
       {
@@ -1346,35 +1129,41 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
+      "furnace_operation_history": 70,
       "planned_rolling_instruction": 28,
       "plate_material": 38,
-      "plate_quality_review": 43,
+      "plate_quality_review": 46,
       "rolling_instruction": 26,
-      "rolling_operation_history": 42,
+      "rolling_operation_history": 44,
       "slab_material": 30
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF01P",
     "type": "Q4",
     "question": "Show the complete recorded history of each slab.",
     "answerable": true,
     "pair_of": "NF01",
-    "gold_sha256": "dc071added8098aff92e9cc1de8e481595d6754d3fb2ad6afc817d1e77e00da8",
+    "gold_sha256": "f4c64a7505c0f68db46775f4f97ce0480b81c60667794e5b596bc2a71c6c1761",
     "chart": "graphs/NF01.svg",
     "stats": {
-      "events": 620,
+      "events": 910,
       "observed_cases": 30,
-      "activities": 20,
-      "dfg_edges": 23,
+      "activities": 29,
+      "dfg_edges": 32,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -1388,16 +1177,25 @@
       "Rolling Plan Approved": 26,
       "Rolling Plan Released": 26,
       "Rolling Instruction Issued": 26,
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20,
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -1405,14 +1203,8 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Identified",
-        "count": 1,
-        "tie_affected": 0
-      },
-      {
-        "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
@@ -1422,38 +1214,74 @@
         "tie_affected": 0
       },
       {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
         "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
+        "target": "Heating Started",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Discharged",
-        "target": "Rough Rolling Completed",
-        "count": 22,
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
+        "source": "Furnace Discharge Started",
         "target": "Furnace Discharged",
         "count": 22,
         "tie_affected": 0
       },
       {
-        "source": "Leveling Completed",
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
         "source": "Plate Identified",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 38,
         "tie_affected": 0
       },
@@ -1465,7 +1293,7 @@
       },
       {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -1473,6 +1301,18 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -1489,7 +1329,7 @@
       },
       {
         "source": "Rolling Instruction Issued",
-        "target": "Furnace Charged",
+        "target": "Furnace Charging Started",
         "count": 24,
         "tie_affected": 0
       },
@@ -1513,8 +1353,14 @@
       },
       {
         "source": "Rough Rolling Completed",
-        "target": "Finish Rolling Completed",
-        "count": 20,
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
         "tie_affected": 0
       },
       {
@@ -1540,35 +1386,41 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
+      "furnace_operation_history": 70,
       "planned_rolling_instruction": 28,
       "plate_material": 38,
-      "plate_quality_review": 43,
+      "plate_quality_review": 46,
       "rolling_instruction": 26,
-      "rolling_operation_history": 42,
+      "rolling_operation_history": 44,
       "slab_material": 30
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF02",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each rolling plan.",
     "answerable": true,
     "pair_of": "NF02P",
-    "gold_sha256": "c4aad16ae4da5bee31cd6eb22eedea01a5dc7d7b87941863988c51d090f28cc4",
+    "gold_sha256": "794a96e1d2adf9b89f73b7750cd97d63ab3f51d7edf61bd3b78591b2cad8f51a",
     "chart": "graphs/NF02.svg",
     "stats": {
-      "events": 106,
+      "events": 824,
       "observed_cases": 28,
-      "activities": 4,
-      "dfg_edges": 3,
+      "activities": 26,
+      "dfg_edges": 29,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -1578,9 +1430,163 @@
       "Rolling Plan Submitted": 28,
       "Rolling Plan Approved": 26,
       "Rolling Plan Released": 26,
-      "Rolling Instruction Issued": 26
+      "Rolling Instruction Issued": 26,
+      "Furnace Charging Started": 24,
+      "Furnace Charged": 24,
+      "Heating Started": 24,
+      "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
+      "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
+      "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
+      "Finish Rolling Completed": 20,
+      "Plate Identified": 38,
+      "Leveling Started": 38,
+      "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
+      "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
+      "Surface Finishing Completed": 46,
+      "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
+      "Plate Quality Review Completed": 43,
+      "Plate Released": 35,
+      "Plate Packed": 26
     },
     "edges": [
+      {
+        "source": "Dimensional Inspection Completed",
+        "target": "Plate Quality Review Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Finish Rolling Completed",
+        "target": "Plate Identified",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Charged",
+        "target": "Heating Started",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharge Started",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
+        "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Identified",
+        "target": "Leveling Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Packed",
+        "target": "Plate Identified",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Completed",
+        "target": "Heat Treatment Started",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Completed",
+        "target": "Plate Released",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Released",
+        "target": "Plate Identified",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Released",
+        "target": "Plate Packed",
+        "count": 26,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rolling Instruction Issued",
+        "target": "Furnace Charging Started",
+        "count": 24,
+        "tie_affected": 0
+      },
       {
         "source": "Rolling Plan Approved",
         "target": "Rolling Plan Released",
@@ -1598,28 +1604,58 @@
         "target": "Rolling Plan Approved",
         "count": 26,
         "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Completed",
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Completed",
+        "target": "Dimensional Inspection Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 70,
       "planned_rolling_instruction": 28,
-      "rolling_instruction": 26
+      "plate_material": 38,
+      "plate_quality_review": 46,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF02P",
     "type": "Q4",
     "question": "Build the entire recorded timeline for every rolling plan.",
     "answerable": true,
     "pair_of": "NF02",
-    "gold_sha256": "c4aad16ae4da5bee31cd6eb22eedea01a5dc7d7b87941863988c51d090f28cc4",
+    "gold_sha256": "794a96e1d2adf9b89f73b7750cd97d63ab3f51d7edf61bd3b78591b2cad8f51a",
     "chart": "graphs/NF02.svg",
     "stats": {
-      "events": 106,
+      "events": 824,
       "observed_cases": 28,
-      "activities": 4,
-      "dfg_edges": 3,
+      "activities": 26,
+      "dfg_edges": 29,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -1629,9 +1665,163 @@
       "Rolling Plan Submitted": 28,
       "Rolling Plan Approved": 26,
       "Rolling Plan Released": 26,
-      "Rolling Instruction Issued": 26
+      "Rolling Instruction Issued": 26,
+      "Furnace Charging Started": 24,
+      "Furnace Charged": 24,
+      "Heating Started": 24,
+      "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
+      "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
+      "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
+      "Finish Rolling Completed": 20,
+      "Plate Identified": 38,
+      "Leveling Started": 38,
+      "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
+      "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
+      "Surface Finishing Completed": 46,
+      "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
+      "Plate Quality Review Completed": 43,
+      "Plate Released": 35,
+      "Plate Packed": 26
     },
     "edges": [
+      {
+        "source": "Dimensional Inspection Completed",
+        "target": "Plate Quality Review Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Finish Rolling Completed",
+        "target": "Plate Identified",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Charged",
+        "target": "Heating Started",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharge Started",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
+        "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Identified",
+        "target": "Leveling Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Packed",
+        "target": "Plate Identified",
+        "count": 12,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Completed",
+        "target": "Heat Treatment Started",
+        "count": 8,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Completed",
+        "target": "Plate Released",
+        "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Released",
+        "target": "Plate Identified",
+        "count": 5,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Released",
+        "target": "Plate Packed",
+        "count": 26,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rolling Instruction Issued",
+        "target": "Furnace Charging Started",
+        "count": 24,
+        "tie_affected": 0
+      },
       {
         "source": "Rolling Plan Approved",
         "target": "Rolling Plan Released",
@@ -1649,28 +1839,58 @@
         "target": "Rolling Plan Approved",
         "count": 26,
         "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Completed",
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Completed",
+        "target": "Dimensional Inspection Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
+      "dimension_inspection": 46,
+      "finishing_operation_history": 130,
+      "furnace_operation_history": 70,
       "planned_rolling_instruction": 28,
-      "rolling_instruction": 26
+      "plate_material": 38,
+      "plate_quality_review": 46,
+      "rolling_instruction": 26,
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF03",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each rolling instruction.",
     "answerable": true,
     "pair_of": "NF03P",
-    "gold_sha256": "a6100bf05c194771ac923e32c84a23219d1025ac4e007113f1fc8cad7a1ecd92",
+    "gold_sha256": "3a8994b2fa70548a6425c2371366d47a9860b774606589dbd06a402805d50bd9",
     "chart": "graphs/NF03.svg",
     "stats": {
-      "events": 454,
+      "events": 744,
       "observed_cases": 26,
-      "activities": 14,
-      "dfg_edges": 17,
+      "activities": 23,
+      "dfg_edges": 26,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -1678,16 +1898,25 @@
     },
     "activity_counts": {
       "Rolling Instruction Issued": 26,
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20,
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -1695,14 +1924,8 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Identified",
-        "count": 1,
-        "tie_affected": 0
-      },
-      {
-        "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
@@ -1712,38 +1935,74 @@
         "tie_affected": 0
       },
       {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
         "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
+        "target": "Heating Started",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Discharged",
-        "target": "Rough Rolling Completed",
-        "count": 22,
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
+        "source": "Furnace Discharge Started",
         "target": "Furnace Discharged",
         "count": 22,
         "tie_affected": 0
       },
       {
-        "source": "Leveling Completed",
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
         "source": "Plate Identified",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 38,
         "tie_affected": 0
       },
@@ -1755,7 +2014,7 @@
       },
       {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -1763,6 +2022,18 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -1779,14 +2050,20 @@
       },
       {
         "source": "Rolling Instruction Issued",
-        "target": "Furnace Charged",
+        "target": "Furnace Charging Started",
         "count": 24,
         "tie_affected": 0
       },
       {
         "source": "Rough Rolling Completed",
-        "target": "Finish Rolling Completed",
-        "count": 20,
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
         "tie_affected": 0
       },
       {
@@ -1794,33 +2071,39 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
+      "furnace_operation_history": 70,
       "plate_material": 38,
-      "plate_quality_review": 43,
+      "plate_quality_review": 46,
       "rolling_instruction": 26,
-      "rolling_operation_history": 42
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF03P",
     "type": "Q4",
     "question": "Trace each rolling instruction through its full recorded history.",
     "answerable": true,
     "pair_of": "NF03",
-    "gold_sha256": "a6100bf05c194771ac923e32c84a23219d1025ac4e007113f1fc8cad7a1ecd92",
+    "gold_sha256": "3a8994b2fa70548a6425c2371366d47a9860b774606589dbd06a402805d50bd9",
     "chart": "graphs/NF03.svg",
     "stats": {
-      "events": 454,
+      "events": 744,
       "observed_cases": 26,
-      "activities": 14,
-      "dfg_edges": 17,
+      "activities": 23,
+      "dfg_edges": 26,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -1828,16 +2111,25 @@
     },
     "activity_counts": {
       "Rolling Instruction Issued": 26,
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20,
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -1845,14 +2137,8 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Identified",
-        "count": 1,
-        "tie_affected": 0
-      },
-      {
-        "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
@@ -1862,38 +2148,74 @@
         "tie_affected": 0
       },
       {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
         "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
+        "target": "Heating Started",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Discharged",
-        "target": "Rough Rolling Completed",
-        "count": 22,
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
+        "source": "Furnace Discharge Started",
         "target": "Furnace Discharged",
         "count": 22,
         "tie_affected": 0
       },
       {
-        "source": "Leveling Completed",
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
         "source": "Plate Identified",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 38,
         "tie_affected": 0
       },
@@ -1905,7 +2227,7 @@
       },
       {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -1913,6 +2235,18 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -1929,14 +2263,20 @@
       },
       {
         "source": "Rolling Instruction Issued",
-        "target": "Furnace Charged",
+        "target": "Furnace Charging Started",
         "count": 24,
         "tie_affected": 0
       },
       {
         "source": "Rough Rolling Completed",
-        "target": "Finish Rolling Completed",
-        "count": 20,
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
         "tie_affected": 0
       },
       {
@@ -1944,49 +2284,64 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
+      "furnace_operation_history": 70,
       "plate_material": 38,
-      "plate_quality_review": 43,
+      "plate_quality_review": 46,
       "rolling_instruction": 26,
-      "rolling_operation_history": 42
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF04",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each mother material.",
     "answerable": true,
     "pair_of": "NF04P",
-    "gold_sha256": "b0f0fdc3b3cd8b7c6fa19efdaa49336b95433142df269a2b51b202ace0e05c39",
+    "gold_sha256": "1500231421b0b1b934bca960813632ce93900cf3e72e80349b7bffb3c3c92627",
     "chart": "graphs/NF04.svg",
     "stats": {
-      "events": 428,
+      "events": 718,
       "observed_cases": 24,
-      "activities": 13,
-      "dfg_edges": 16,
+      "activities": 22,
+      "dfg_edges": 25,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20,
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -1994,14 +2349,8 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Identified",
-        "count": 1,
-        "tie_affected": 0
-      },
-      {
-        "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
@@ -2011,38 +2360,74 @@
         "tie_affected": 0
       },
       {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
         "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
+        "target": "Heating Started",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Discharged",
-        "target": "Rough Rolling Completed",
-        "count": 22,
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
+        "source": "Furnace Discharge Started",
         "target": "Furnace Discharged",
         "count": 22,
         "tie_affected": 0
       },
       {
-        "source": "Leveling Completed",
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
         "source": "Plate Identified",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 38,
         "tie_affected": 0
       },
@@ -2054,7 +2439,7 @@
       },
       {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -2062,6 +2447,18 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -2078,8 +2475,14 @@
       },
       {
         "source": "Rough Rolling Completed",
-        "target": "Finish Rolling Completed",
-        "count": 20,
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
         "tie_affected": 0
       },
       {
@@ -2087,48 +2490,63 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
+      "furnace_operation_history": 70,
       "plate_material": 38,
-      "plate_quality_review": 43,
-      "rolling_operation_history": 42
+      "plate_quality_review": 46,
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF04P",
     "type": "Q4",
     "question": "Show the whole recorded lifecycle of every mother material.",
     "answerable": true,
     "pair_of": "NF04",
-    "gold_sha256": "b0f0fdc3b3cd8b7c6fa19efdaa49336b95433142df269a2b51b202ace0e05c39",
+    "gold_sha256": "1500231421b0b1b934bca960813632ce93900cf3e72e80349b7bffb3c3c92627",
     "chart": "graphs/NF04.svg",
     "stats": {
-      "events": 428,
+      "events": 718,
       "observed_cases": 24,
-      "activities": 13,
-      "dfg_edges": 16,
+      "activities": 22,
+      "dfg_edges": 25,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20,
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -2136,14 +2554,8 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Identified",
-        "count": 1,
-        "tie_affected": 0
-      },
-      {
-        "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
@@ -2153,38 +2565,74 @@
         "tie_affected": 0
       },
       {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
         "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
+        "target": "Heating Started",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Discharged",
-        "target": "Rough Rolling Completed",
-        "count": 22,
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
         "tie_affected": 0
       },
       {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
+        "source": "Furnace Discharge Started",
         "target": "Furnace Discharged",
         "count": 22,
         "tie_affected": 0
       },
       {
-        "source": "Leveling Completed",
+        "source": "Furnace Discharged",
+        "target": "Rough Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
         "source": "Plate Identified",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 38,
         "tie_affected": 0
       },
@@ -2196,7 +2644,7 @@
       },
       {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -2204,6 +2652,18 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Identified",
+        "count": 1,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -2220,8 +2680,14 @@
       },
       {
         "source": "Rough Rolling Completed",
-        "target": "Finish Rolling Completed",
-        "count": 20,
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
         "tie_affected": 0
       },
       {
@@ -2229,32 +2695,38 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
+      "furnace_operation_history": 70,
       "plate_material": 38,
-      "plate_quality_review": 43,
-      "rolling_operation_history": 42
+      "plate_quality_review": 46,
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF05",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each plate piece.",
     "answerable": true,
     "pair_of": "NF05P",
-    "gold_sha256": "c8249496cd433c032e27d781f958ce5d77a1f1f052322a9c48cf20d19e571616",
+    "gold_sha256": "d6462c74152cf87fde7cbf528b3859f2ac0d062d82ac873578a53eac1d1fce05",
     "chart": "graphs/NF05.svg",
     "stats": {
-      "events": 318,
+      "events": 494,
       "observed_cases": 38,
-      "activities": 8,
-      "dfg_edges": 8,
+      "activities": 12,
+      "dfg_edges": 12,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -2262,10 +2734,14 @@
     },
     "activity_counts": {
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -2273,31 +2749,43 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
         "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
+        "target": "Heat Treatment Completed",
         "count": 46,
         "tie_affected": 0
       },
       {
         "source": "Leveling Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 38,
         "tie_affected": 0
       },
       {
-        "source": "Plate Identified",
+        "source": "Leveling Started",
         "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
+        "source": "Plate Identified",
+        "target": "Leveling Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -2305,6 +2793,12 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -2318,30 +2812,36 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
       "plate_material": 38,
-      "plate_quality_review": 43
+      "plate_quality_review": 46
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF05P",
     "type": "Q4",
     "question": "Build a complete timeline of the recorded history of each plate piece.",
     "answerable": true,
     "pair_of": "NF05",
-    "gold_sha256": "c8249496cd433c032e27d781f958ce5d77a1f1f052322a9c48cf20d19e571616",
+    "gold_sha256": "d6462c74152cf87fde7cbf528b3859f2ac0d062d82ac873578a53eac1d1fce05",
     "chart": "graphs/NF05.svg",
     "stats": {
-      "events": 318,
+      "events": 494,
       "observed_cases": 38,
-      "activities": 8,
-      "dfg_edges": 8,
+      "activities": 12,
+      "dfg_edges": 12,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -2349,10 +2849,14 @@
     },
     "activity_counts": {
       "Plate Identified": 38,
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
       "Dimensional Inspection Completed": 46,
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43,
       "Plate Released": 35,
       "Plate Packed": 26
@@ -2360,31 +2864,43 @@
     "edges": [
       {
         "source": "Dimensional Inspection Completed",
-        "target": "Plate Quality Review Completed",
-        "count": 43,
+        "target": "Plate Quality Review Started",
+        "count": 46,
         "tie_affected": 0
       },
       {
         "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
+        "target": "Heat Treatment Completed",
         "count": 46,
         "tie_affected": 0
       },
       {
         "source": "Leveling Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 38,
         "tie_affected": 0
       },
       {
-        "source": "Plate Identified",
+        "source": "Leveling Started",
         "target": "Leveling Completed",
         "count": 38,
         "tie_affected": 0
       },
       {
+        "source": "Plate Identified",
+        "target": "Leveling Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
         "source": "Plate Quality Review Completed",
-        "target": "Heat Treatment Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
@@ -2392,6 +2908,12 @@
         "source": "Plate Quality Review Completed",
         "target": "Plate Released",
         "count": 35,
+        "tie_affected": 0
+      },
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
         "tie_affected": 0
       },
       {
@@ -2405,509 +2927,705 @@
         "target": "Dimensional Inspection Completed",
         "count": 46,
         "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
       }
     ],
     "source_tables": {
       "dimension_inspection": 46,
       "finishing_operation_history": 130,
       "plate_material": 38,
-      "plate_quality_review": 43
+      "plate_quality_review": 46
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
-    "id": "NF06",
-    "type": "Q3",
-    "question": "Extract the full recorded lifecycle for each dimension inspection record.",
-    "answerable": true,
-    "pair_of": "NF06P",
-    "gold_sha256": "16d1c2eae29bedb5034cad13b769ca65ce98bb0d636d932f0f99ec4a4a20d86f",
-    "chart": "graphs/N09.svg",
-    "stats": {
-      "events": 46,
-      "observed_cases": 46,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Dimensional Inspection Completed": 46
-    },
-    "edges": [],
-    "source_tables": {
-      "dimension_inspection": 46
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
-    "id": "NF06P",
-    "type": "Q4",
-    "question": "Show the entire recorded history of every individual dimensional inspection record.",
-    "answerable": true,
-    "pair_of": "NF06",
-    "gold_sha256": "16d1c2eae29bedb5034cad13b769ca65ce98bb0d636d932f0f99ec4a4a20d86f",
-    "chart": "graphs/N09.svg",
-    "stats": {
-      "events": 46,
-      "observed_cases": 46,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Dimensional Inspection Completed": 46
-    },
-    "edges": [],
-    "source_tables": {
-      "dimension_inspection": 46
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF07",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each quality review record.",
     "answerable": true,
     "pair_of": "NF07P",
-    "gold_sha256": "9cf589b5075a47cccfc3ff1710f7ba34191f5974a260e5a3afa4ff8d724e84e1",
-    "chart": "graphs/N10.svg",
+    "gold_sha256": "2a3ac8e3fec2214fffa297ff416114a54c13ccc771674ad3126bb6169b6ee638",
+    "chart": "graphs/NF07.svg",
     "stats": {
-      "events": 43,
-      "observed_cases": 43,
-      "activities": 1,
-      "dfg_edges": 0,
+      "events": 89,
+      "observed_cases": 46,
+      "activities": 2,
+      "dfg_edges": 1,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "plate_quality_review": 43
+      "plate_quality_review": 46
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF07P",
     "type": "Q4",
     "question": "Trace each individual quality review record through its complete recorded history.",
     "answerable": true,
     "pair_of": "NF07",
-    "gold_sha256": "9cf589b5075a47cccfc3ff1710f7ba34191f5974a260e5a3afa4ff8d724e84e1",
-    "chart": "graphs/N10.svg",
+    "gold_sha256": "2a3ac8e3fec2214fffa297ff416114a54c13ccc771674ad3126bb6169b6ee638",
+    "chart": "graphs/NF07.svg",
     "stats": {
-      "events": 43,
-      "observed_cases": 43,
-      "activities": 1,
-      "dfg_edges": 0,
+      "events": 89,
+      "observed_cases": 46,
+      "activities": 2,
+      "dfg_edges": 1,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Plate Quality Review Started": 46,
       "Plate Quality Review Completed": 43
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Plate Quality Review Started",
+        "target": "Plate Quality Review Completed",
+        "count": 43,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "plate_quality_review": 43
+      "plate_quality_review": 46
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF08",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each equipment unit.",
     "answerable": true,
     "pair_of": "NF08P",
-    "gold_sha256": "537b358a3d87f1479485307bd5f257d3baa573d1f28a93e6d41de87fac2d4f7f",
+    "gold_sha256": "b46314ea1144b805011936442fe9dd73e0dc3053025b82e379b69c48609891cf",
     "chart": "graphs/NF08.svg",
     "stats": {
-      "events": 240,
+      "events": 484,
       "observed_cases": 6,
-      "activities": 8,
-      "dfg_edges": 11,
+      "activities": 16,
+      "dfg_edges": 19,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20
     },
     "edges": [
       {
         "source": "Finish Rolling Completed",
-        "target": "Rough Rolling Completed",
+        "target": "Rough Rolling Started",
         "count": 18,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Charged",
-        "target": "Furnace Charged",
-        "count": 2,
-        "tie_affected": 0
-      },
-      {
-        "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
-        "tie_affected": 0
-      },
-      {
-        "source": "Furnace Discharged",
-        "target": "Furnace Charged",
-        "count": 20,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
-        "target": "Furnace Discharged",
-        "count": 22,
-        "tie_affected": 0
-      },
-      {
-        "source": "Leveling Completed",
-        "target": "Heat Treatment Completed",
-        "count": 38,
-        "tie_affected": 0
-      },
-      {
-        "source": "Rough Rolling Completed",
+        "source": "Finish Rolling Started",
         "target": "Finish Rolling Completed",
         "count": 20,
         "tie_affected": 0
       },
       {
-        "source": "Rough Rolling Completed",
-        "target": "Rough Rolling Completed",
+        "source": "Finish Rolling Started",
+        "target": "Rough Rolling Started",
         "count": 2,
         "tie_affected": 0
       },
       {
-        "source": "Surface Finishing Completed",
+        "source": "Furnace Charged",
+        "target": "Heating Started",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharge Started",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharged",
+        "target": "Furnace Charging Started",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Furnace Charging Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Completed",
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
       {
         "source": "Surface Finishing Completed",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 36,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
         "tie_affected": 0
       }
     ],
     "source_tables": {
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
-      "rolling_operation_history": 42
+      "furnace_operation_history": 70,
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF08P",
     "type": "Q4",
     "question": "Show the full recorded history associated with every equipment unit.",
     "answerable": true,
     "pair_of": "NF08",
-    "gold_sha256": "537b358a3d87f1479485307bd5f257d3baa573d1f28a93e6d41de87fac2d4f7f",
+    "gold_sha256": "b46314ea1144b805011936442fe9dd73e0dc3053025b82e379b69c48609891cf",
     "chart": "graphs/NF08.svg",
     "stats": {
-      "events": 240,
+      "events": 484,
       "observed_cases": 6,
-      "activities": 8,
-      "dfg_edges": 11,
+      "activities": 16,
+      "dfg_edges": 19,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46,
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22,
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20
     },
     "edges": [
       {
         "source": "Finish Rolling Completed",
-        "target": "Rough Rolling Completed",
+        "target": "Rough Rolling Started",
         "count": 18,
         "tie_affected": 0
       },
       {
-        "source": "Furnace Charged",
-        "target": "Furnace Charged",
-        "count": 2,
-        "tie_affected": 0
-      },
-      {
-        "source": "Furnace Charged",
-        "target": "Heating Completed",
-        "count": 22,
-        "tie_affected": 0
-      },
-      {
-        "source": "Furnace Discharged",
-        "target": "Furnace Charged",
-        "count": 20,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heat Treatment Completed",
-        "target": "Surface Finishing Completed",
-        "count": 46,
-        "tie_affected": 0
-      },
-      {
-        "source": "Heating Completed",
-        "target": "Furnace Discharged",
-        "count": 22,
-        "tie_affected": 0
-      },
-      {
-        "source": "Leveling Completed",
-        "target": "Heat Treatment Completed",
-        "count": 38,
-        "tie_affected": 0
-      },
-      {
-        "source": "Rough Rolling Completed",
+        "source": "Finish Rolling Started",
         "target": "Finish Rolling Completed",
         "count": 20,
         "tie_affected": 0
       },
       {
-        "source": "Rough Rolling Completed",
-        "target": "Rough Rolling Completed",
+        "source": "Finish Rolling Started",
+        "target": "Rough Rolling Started",
         "count": 2,
         "tie_affected": 0
       },
       {
-        "source": "Surface Finishing Completed",
+        "source": "Furnace Charged",
+        "target": "Heating Started",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharge Started",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharged",
+        "target": "Furnace Charging Started",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Completed",
+        "target": "Surface Finishing Started",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heat Treatment Started",
         "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Completed",
+        "target": "Furnace Discharge Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Furnace Charging Started",
+        "count": 2,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Completed",
+        "target": "Heat Treatment Started",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Completed",
+        "target": "Finish Rolling Started",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Completed",
+        "target": "Heat Treatment Started",
         "count": 8,
         "tie_affected": 0
       },
       {
         "source": "Surface Finishing Completed",
-        "target": "Leveling Completed",
+        "target": "Leveling Started",
         "count": 36,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
         "tie_affected": 0
       }
     ],
     "source_tables": {
       "finishing_operation_history": 130,
-      "furnace_operation_history": 68,
-      "rolling_operation_history": 42
+      "furnace_operation_history": 70,
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF09",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each furnace operation record.",
     "answerable": true,
     "pair_of": "NF09P",
-    "gold_sha256": "61e96ffa8455b4b018140224166126bb32e3724d6e7c27fee982a395e12227fd",
-    "chart": "graphs/N12.svg",
+    "gold_sha256": "ee5e607dc0f92d4e81e2a5fd695fbdd44a4b6a80c7480f247649a097855d0acf",
+    "chart": "graphs/NF09.svg",
     "stats": {
-      "events": 68,
-      "observed_cases": 68,
-      "activities": 3,
-      "dfg_edges": 0,
+      "events": 138,
+      "observed_cases": 70,
+      "activities": 6,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharge Started",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "furnace_operation_history": 68
+      "furnace_operation_history": 70
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF09P",
     "type": "Q4",
     "question": "Build the complete recorded timeline of each individual furnace operation record.",
     "answerable": true,
     "pair_of": "NF09",
-    "gold_sha256": "61e96ffa8455b4b018140224166126bb32e3724d6e7c27fee982a395e12227fd",
-    "chart": "graphs/N12.svg",
+    "gold_sha256": "ee5e607dc0f92d4e81e2a5fd695fbdd44a4b6a80c7480f247649a097855d0acf",
+    "chart": "graphs/NF09.svg",
     "stats": {
-      "events": 68,
-      "observed_cases": 68,
-      "activities": 3,
-      "dfg_edges": 0,
+      "events": 138,
+      "observed_cases": 70,
+      "activities": 6,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Furnace Charging Started": 24,
       "Furnace Charged": 24,
+      "Heating Started": 24,
       "Heating Completed": 22,
+      "Furnace Discharge Started": 22,
       "Furnace Discharged": 22
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Furnace Charging Started",
+        "target": "Furnace Charged",
+        "count": 24,
+        "tie_affected": 0
+      },
+      {
+        "source": "Furnace Discharge Started",
+        "target": "Furnace Discharged",
+        "count": 22,
+        "tie_affected": 0
+      },
+      {
+        "source": "Heating Started",
+        "target": "Heating Completed",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "furnace_operation_history": 68
+      "furnace_operation_history": 70
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF10",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each rolling operation record.",
     "answerable": true,
     "pair_of": "NF10P",
-    "gold_sha256": "698bbfb2e6417fbd0b9cba1a61ef9236f4f3059b710a88ff543a983a4bd6aec3",
-    "chart": "graphs/N13.svg",
+    "gold_sha256": "6305a3539ecbd89277ba26939ef2b7eb308b0e7fa43915efe50462f8c2134af6",
+    "chart": "graphs/NF10.svg",
     "stats": {
-      "events": 42,
-      "observed_cases": 42,
-      "activities": 2,
-      "dfg_edges": 0,
+      "events": 86,
+      "observed_cases": 44,
+      "activities": 4,
+      "dfg_edges": 2,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "rolling_operation_history": 42
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF10P",
     "type": "Q4",
     "question": "Show the whole recorded history of each individual rolling operation record.",
     "answerable": true,
     "pair_of": "NF10",
-    "gold_sha256": "698bbfb2e6417fbd0b9cba1a61ef9236f4f3059b710a88ff543a983a4bd6aec3",
-    "chart": "graphs/N13.svg",
+    "gold_sha256": "6305a3539ecbd89277ba26939ef2b7eb308b0e7fa43915efe50462f8c2134af6",
+    "chart": "graphs/NF10.svg",
     "stats": {
-      "events": 42,
-      "observed_cases": 42,
-      "activities": 2,
-      "dfg_edges": 0,
+      "events": 86,
+      "observed_cases": 44,
+      "activities": 4,
+      "dfg_edges": 2,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Rough Rolling Started": 22,
       "Rough Rolling Completed": 22,
+      "Finish Rolling Started": 22,
       "Finish Rolling Completed": 20
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Finish Rolling Started",
+        "target": "Finish Rolling Completed",
+        "count": 20,
+        "tie_affected": 0
+      },
+      {
+        "source": "Rough Rolling Started",
+        "target": "Rough Rolling Completed",
+        "count": 22,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
-      "rolling_operation_history": 42
+      "rolling_operation_history": 44
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF11",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each finishing operation record.",
     "answerable": true,
     "pair_of": "NF11P",
-    "gold_sha256": "ced9fe7c8458f1fa6de3994748737a9175d58774c0934d97a8340347a8d927aa",
-    "chart": "graphs/N14.svg",
+    "gold_sha256": "c1fe2cd5bc58e1eecca2eb98ca6cec38a18a90bce3888faafde31db3c16070f7",
+    "chart": "graphs/NF11.svg",
     "stats": {
-      "events": 130,
+      "events": 260,
       "observed_cases": 130,
-      "activities": 3,
-      "dfg_edges": 0,
+      "activities": 6,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Heat Treatment Started",
+        "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "finishing_operation_history": 130
     },
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "plateflow_new",
+    "dataset": "plateflow",
     "id": "NF11P",
     "type": "Q4",
     "question": "Trace the entire recorded history of every individual finishing operation record.",
     "answerable": true,
     "pair_of": "NF11",
-    "gold_sha256": "ced9fe7c8458f1fa6de3994748737a9175d58774c0934d97a8340347a8d927aa",
-    "chart": "graphs/N14.svg",
+    "gold_sha256": "c1fe2cd5bc58e1eecca2eb98ca6cec38a18a90bce3888faafde31db3c16070f7",
+    "chart": "graphs/NF11.svg",
     "stats": {
-      "events": 130,
+      "events": 260,
       "observed_cases": 130,
-      "activities": 3,
-      "dfg_edges": 0,
+      "activities": 6,
+      "dfg_edges": 3,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
       "observed_outside_gold_scope": []
     },
     "activity_counts": {
+      "Leveling Started": 38,
       "Leveling Completed": 38,
+      "Heat Treatment Started": 46,
       "Heat Treatment Completed": 46,
+      "Surface Finishing Started": 46,
       "Surface Finishing Completed": 46
     },
-    "edges": [],
+    "edges": [
+      {
+        "source": "Heat Treatment Started",
+        "target": "Heat Treatment Completed",
+        "count": 46,
+        "tie_affected": 0
+      },
+      {
+        "source": "Leveling Started",
+        "target": "Leveling Completed",
+        "count": 38,
+        "tie_affected": 0
+      },
+      {
+        "source": "Surface Finishing Started",
+        "target": "Surface Finishing Completed",
+        "count": 46,
+        "tie_affected": 0
+      }
+    ],
     "source_tables": {
       "finishing_operation_history": 130
     },

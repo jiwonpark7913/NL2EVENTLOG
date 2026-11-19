@@ -25,22 +25,30 @@
       "ot": "Finishing Operation Record",
       "activities": [
         "Heat Treatment Completed",
+        "Heat Treatment Started",
         "Leveling Completed",
-        "Surface Finishing Completed"
+        "Leveling Started",
+        "Surface Finishing Completed",
+        "Surface Finishing Started"
       ],
       "timestamps": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     "furnace_operation_history": {
       "ot": "Furnace Operation Record",
       "activities": [
         "Furnace Charged",
+        "Furnace Charging Started",
+        "Furnace Discharge Started",
         "Furnace Discharged",
-        "Heating Completed"
+        "Heating Completed",
+        "Heating Started"
       ],
       "timestamps": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     "planned_rolling_instruction": {
@@ -72,10 +80,12 @@
     "plate_quality_review": {
       "ot": "Quality Review",
       "activities": [
-        "Plate Quality Review Completed"
+        "Plate Quality Review Completed",
+        "Plate Quality Review Started"
       ],
       "timestamps": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     "process_code": {
@@ -96,10 +106,13 @@
       "ot": "Rolling Operation Record",
       "activities": [
         "Finish Rolling Completed",
-        "Rough Rolling Completed"
+        "Finish Rolling Started",
+        "Rough Rolling Completed",
+        "Rough Rolling Started"
       ],
       "timestamps": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     "slab_material": {

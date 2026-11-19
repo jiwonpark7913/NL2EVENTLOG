@@ -44,7 +44,7 @@ Supporting Gold types: Dimension Inspection, Finishing Operation Record, Furnace
 
 ## Evaluation evidence
 
-- Gold SQL/CSV pairs executable and consistent: 50; compared event rows across questions: 7384.
+- Gold SQL/CSV pairs executable and consistent: 40; compared event rows across questions: 11366.
 - [Gold source inventory](../gold_dfg/event_graph.md)
 - [Question-level Gold DFGs](../gold_dfg/README.md)
 - [Editable Draw.io schema](../../docs/schema.drawio)

@@ -56,10 +56,10 @@
     "activities": [
       "Emergency Department Registered",
       "Hospital Admitted",
-      "Discharge Authorized",
+      "Emergency Department Departed",
       "Hospital Discharged"
     ],
-    "question": "For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Discharge Authorized and Hospital Discharged events."
+    "question": "For each hospital admission, extract Emergency Department Registered, Hospital Admitted, Emergency Department Departed and Hospital Discharged events."
   },
   {
     "id": "H07",
@@ -72,15 +72,6 @@
       "Hospital Discharged"
     ],
     "question": "For each patient, extract Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed and Hospital Discharged events."
-  },
-  {
-    "id": "H08",
-    "view": "Hospital Admission",
-    "activities": [
-      "Insurance Claim Paid"
-    ],
-    "question": "For each hospital admission, extract Insurance Claim Paid events.",
-    "answerable": false
   },
   {
     "id": "HF01",
@@ -116,26 +107,18 @@
     "id": "H09",
     "view": "Patient",
     "activities": [
-      "Patient Profile Verified"
+      "Care Unit Transferred"
     ],
-    "question": "For each patient, extract Patient Profile Verified events."
-  },
-  {
-    "id": "H10",
-    "view": "Hospital Admission",
-    "activities": [
-      "Discharge Summary Signed"
-    ],
-    "question": "For each hospital admission, extract Discharge Summary Signed events."
+    "question": "For each patient, extract Care Unit Transferred events."
   },
   {
     "id": "H11",
     "view": "Patient",
     "activities": [
-      "Patient Profile Verified",
-      "Hospital Admitted"
+      "Hospital Admitted",
+      "Care Unit Transferred"
     ],
-    "question": "For each patient, extract Patient Profile Verified and Hospital Admitted events."
+    "question": "For each patient, extract Hospital Admitted and Care Unit Transferred events."
   },
   {
     "id": "HF07",

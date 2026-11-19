@@ -56,6 +56,36 @@
       "case_key": "s.plan_id",
       "joins": "",
       "distinct": false
+    },
+    "furnace_operation_history": {
+      "case_key": "i.plan_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id JOIN rolling_instruction i ON i.instruction_id=m.instruction_id",
+      "distinct": false
+    },
+    "rolling_operation_history": {
+      "case_key": "i.plan_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.material_id JOIN rolling_instruction i ON i.instruction_id=m.instruction_id",
+      "distinct": false
+    },
+    "plate_material": {
+      "case_key": "i.plan_id",
+      "joins": " JOIN as_rolled_material m ON m.material_id=s.mother_material_id JOIN rolling_instruction i ON i.instruction_id=m.instruction_id",
+      "distinct": false
+    },
+    "finishing_operation_history": {
+      "case_key": "i.plan_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id JOIN rolling_instruction i ON i.instruction_id=m.instruction_id",
+      "distinct": false
+    },
+    "dimension_inspection": {
+      "case_key": "i.plan_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id JOIN rolling_instruction i ON i.instruction_id=m.instruction_id",
+      "distinct": false
+    },
+    "plate_quality_review": {
+      "case_key": "i.plan_id",
+      "joins": " JOIN plate_material piece ON piece.plate_id=s.plate_id JOIN as_rolled_material m ON m.material_id=piece.mother_material_id JOIN rolling_instruction i ON i.instruction_id=m.instruction_id",
+      "distinct": false
     }
   },
   "Rolling Instruction": {

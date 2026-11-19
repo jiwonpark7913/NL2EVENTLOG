@@ -18,8 +18,6 @@ Generated from Gold metadata; this is an evaluation-only review file.
 | H06P | Q2 | answerable | Emergency Department Registered, Hospital Admitted, Emergency Department Departed, Hospital Discharged | 44 |
 | H07 | Q1 | answerable | Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed, Hospital Discharged | 158 |
 | H07P | Q2 | answerable | Hospital Admitted, Lab Result Available, Medication Administered, Procedure Completed, Hospital Discharged | 158 |
-| H08 | Q1 | non_answerable | — | 0 |
-| H08P | Q2 | non_answerable | — | 0 |
 | HF01 | Q3 | answerable | Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Care Unit Transferred, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 627 |
 | HF01P | Q4 | answerable | Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Care Unit Transferred, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 627 |
 | HF02 | Q3 | answerable | Care Unit Transferred, Emergency Department Departed, Discharge Summary Signed, Emergency Department Registered, Hospital Admitted, Hospital Discharged, Lab Result Available, Lab Results Verified, Medication Administered, Medication Dispensed, Medication Not Given, Medication Stopped, Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started, Specimen Collected, Specimen Received | 600 |
@@ -34,8 +32,6 @@ Generated from Gold metadata; this is an evaluation-only review file.
 | HF06P | Q4 | answerable | Order Cancelled, Order Entered, Order Reviewed, Procedure Completed, Procedure Preparation Completed, Procedure Started | 103 |
 | H09 | Q1 | answerable | Care Unit Transferred | 10 |
 | H09P | Q2 | answerable | Care Unit Transferred | 10 |
-| H10 | Q1 | answerable | Discharge Summary Signed | 5 |
-| H10P | Q2 | answerable | Discharge Summary Signed | 5 |
 | H11 | Q1 | answerable | Care Unit Transferred, Hospital Admitted | 25 |
 | H11P | Q2 | answerable | Care Unit Transferred, Hospital Admitted | 25 |
 | HF07 | Q3 | answerable | Lab Result Available, Specimen Collected | 124 |

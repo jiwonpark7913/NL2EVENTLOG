@@ -129,11 +129,15 @@
       "identification_rule_validation": "pending",
       "legacy_source_activity_labels": [
         "Heat Treatment Completed",
+        "Heat Treatment Started",
         "Leveling Completed",
-        "Surface Finishing Completed"
+        "Leveling Started",
+        "Surface Finishing Completed",
+        "Surface Finishing Started"
       ],
       "legacy_source_time_columns": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     {
@@ -183,11 +187,15 @@
       "identification_rule_validation": "pending",
       "legacy_source_activity_labels": [
         "Furnace Charged",
+        "Furnace Charging Started",
+        "Furnace Discharge Started",
         "Furnace Discharged",
-        "Heating Completed"
+        "Heating Completed",
+        "Heating Started"
       ],
       "legacy_source_time_columns": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     {
@@ -276,10 +284,12 @@
       "semantic_et_validation": "pending",
       "identification_rule_validation": "pending",
       "legacy_source_activity_labels": [
-        "Plate Quality Review Completed"
+        "Plate Quality Review Completed",
+        "Plate Quality Review Started"
       ],
       "legacy_source_time_columns": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     {
@@ -370,10 +380,13 @@
       "identification_rule_validation": "pending",
       "legacy_source_activity_labels": [
         "Finish Rolling Completed",
-        "Rough Rolling Completed"
+        "Finish Rolling Started",
+        "Rough Rolling Completed",
+        "Rough Rolling Started"
       ],
       "legacy_source_time_columns": [
-        "finished_at"
+        "finished_at",
+        "started_at"
       ]
     },
     {

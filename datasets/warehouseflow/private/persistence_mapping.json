@@ -82,9 +82,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "movement_code",
-      "value": "IN"
+      "value": "I"
     },
-    "event_sql": "SELECT 'M:'||movement_id event_id,'Goods Received' activity,occurred_at timestamp,movement_id source_key FROM goods_movement WHERE occurred_at IS NOT NULL AND (movement_code='IN')"
+    "event_sql": "SELECT 'M:'||movement_id event_id,'Goods Received' activity,occurred_at timestamp,movement_id source_key FROM goods_movement WHERE occurred_at IS NOT NULL AND (movement_code='I')"
   },
   {
     "table": "goods_movement",
@@ -97,9 +97,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "movement_code",
-      "value": "OUT"
+      "value": "O"
     },
-    "event_sql": "SELECT 'M:'||movement_id event_id,'Goods Dispatched' activity,occurred_at timestamp,movement_id source_key FROM goods_movement WHERE occurred_at IS NOT NULL AND (movement_code='OUT')"
+    "event_sql": "SELECT 'M:'||movement_id event_id,'Goods Dispatched' activity,occurred_at timestamp,movement_id source_key FROM goods_movement WHERE occurred_at IS NOT NULL AND (movement_code='O')"
   },
   {
     "table": "request_action",
@@ -112,9 +112,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "action_code",
-      "value": "CHECK"
+      "value": "A"
     },
-    "event_sql": "SELECT 'C:'||action_id event_id,'Request Checked' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='CHECK')"
+    "event_sql": "SELECT 'C:'||action_id event_id,'Request Checked' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='A')"
   },
   {
     "table": "request_action",
@@ -127,9 +127,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "action_code",
-      "value": "HOLD"
+      "value": "H"
     },
-    "event_sql": "SELECT 'C:'||action_id event_id,'Request Held' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='HOLD')"
+    "event_sql": "SELECT 'C:'||action_id event_id,'Request Held' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='H')"
   },
   {
     "table": "request_action",
@@ -142,9 +142,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "action_code",
-      "value": "RELEASE"
+      "value": "R"
     },
-    "event_sql": "SELECT 'C:'||action_id event_id,'Request Released' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='RELEASE')"
+    "event_sql": "SELECT 'C:'||action_id event_id,'Request Released' activity,occurred_at timestamp,action_id source_key FROM request_action WHERE occurred_at IS NOT NULL AND (action_code='R')"
   },
   {
     "table": "warehouse_task_history",
@@ -157,9 +157,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "task_code",
-      "value": "PUTAWAY"
+      "value": "A"
     },
-    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Putaway Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='PUTAWAY')"
+    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Putaway Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='A')"
   },
   {
     "table": "warehouse_task_history",
@@ -172,9 +172,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "task_code",
-      "value": "PUTAWAY"
+      "value": "A"
     },
-    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Putaway Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='PUTAWAY')"
+    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Putaway Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='A')"
   },
   {
     "table": "warehouse_task_history",
@@ -187,9 +187,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "task_code",
-      "value": "PICK"
+      "value": "K"
     },
-    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Picking Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='PICK')"
+    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Picking Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='K')"
   },
   {
     "table": "warehouse_task_history",
@@ -202,9 +202,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "task_code",
-      "value": "PICK"
+      "value": "K"
     },
-    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Picking Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='PICK')"
+    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Picking Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='K')"
   },
   {
     "table": "warehouse_task_history",
@@ -217,9 +217,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "task_code",
-      "value": "PACK"
+      "value": "B"
     },
-    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Packing Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='PACK')"
+    "event_sql": "SELECT 'T:'||task_id||':start' event_id,'Packing Started' activity,started_at timestamp,task_id source_key FROM warehouse_task_history WHERE started_at IS NOT NULL AND (task_code='B')"
   },
   {
     "table": "warehouse_task_history",
@@ -232,9 +232,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "task_code",
-      "value": "PACK"
+      "value": "B"
     },
-    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Packing Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='PACK')"
+    "event_sql": "SELECT 'T:'||task_id||':complete' event_id,'Packing Completed' activity,completed_at timestamp,task_id source_key FROM warehouse_task_history WHERE completed_at IS NOT NULL AND (task_code='B')"
   },
   {
     "table": "handling_history",
@@ -247,9 +247,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "handling_code",
-      "value": "UNLOAD"
+      "value": "U"
     },
-    "event_sql": "SELECT 'H:'||handling_id||':start' event_id,'Unloading Started' activity,started_at timestamp,handling_id source_key FROM handling_history WHERE started_at IS NOT NULL AND (handling_code='UNLOAD')"
+    "event_sql": "SELECT 'H:'||handling_id||':start' event_id,'Unloading Started' activity,started_at timestamp,handling_id source_key FROM handling_history WHERE started_at IS NOT NULL AND (handling_code='U')"
   },
   {
     "table": "handling_history",
@@ -262,9 +262,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "handling_code",
-      "value": "UNLOAD"
+      "value": "U"
     },
-    "event_sql": "SELECT 'H:'||handling_id||':complete' event_id,'Unloading Completed' activity,completed_at timestamp,handling_id source_key FROM handling_history WHERE completed_at IS NOT NULL AND (handling_code='UNLOAD')"
+    "event_sql": "SELECT 'H:'||handling_id||':complete' event_id,'Unloading Completed' activity,completed_at timestamp,handling_id source_key FROM handling_history WHERE completed_at IS NOT NULL AND (handling_code='U')"
   },
   {
     "table": "handling_history",
@@ -277,9 +277,9 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "handling_code",
-      "value": "LOAD"
+      "value": "L"
     },
-    "event_sql": "SELECT 'H:'||handling_id||':start' event_id,'Loading Started' activity,started_at timestamp,handling_id source_key FROM handling_history WHERE started_at IS NOT NULL AND (handling_code='LOAD')"
+    "event_sql": "SELECT 'H:'||handling_id||':start' event_id,'Loading Started' activity,started_at timestamp,handling_id source_key FROM handling_history WHERE started_at IS NOT NULL AND (handling_code='L')"
   },
   {
     "table": "handling_history",
@@ -292,8 +292,8 @@
     "occurrence_suffix": "",
     "row_filter": {
       "column": "handling_code",
-      "value": "LOAD"
+      "value": "L"
     },
-    "event_sql": "SELECT 'H:'||handling_id||':complete' event_id,'Loading Completed' activity,completed_at timestamp,handling_id source_key FROM handling_history WHERE completed_at IS NOT NULL AND (handling_code='LOAD')"
+    "event_sql": "SELECT 'H:'||handling_id||':complete' event_id,'Loading Completed' activity,completed_at timestamp,handling_id source_key FROM handling_history WHERE completed_at IS NOT NULL AND (handling_code='L')"
   }
 ]

@@ -1,118 +1,6 @@
 [
   {
-    "dataset": "warehouseflow_new",
-    "id": "W01",
-    "type": "Q1",
-    "question": "For each receiving request, extract Receiving Request Submitted events.",
-    "answerable": true,
-    "pair_of": "W01P",
-    "gold_sha256": "1c005b16b2128738b94c39bc5600d9b50585a63fccb23dd2b8f24cbf09b03467",
-    "chart": "graphs/W01.svg",
-    "stats": {
-      "events": 26,
-      "observed_cases": 26,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Receiving Request Submitted": 26
-    },
-    "edges": [],
-    "source_tables": {
-      "receiving_request": 26
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W01P",
-    "type": "Q2",
-    "question": "For every receiving request, show when it was submitted.",
-    "answerable": true,
-    "pair_of": "W01",
-    "gold_sha256": "1c005b16b2128738b94c39bc5600d9b50585a63fccb23dd2b8f24cbf09b03467",
-    "chart": "graphs/W01.svg",
-    "stats": {
-      "events": 26,
-      "observed_cases": 26,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Receiving Request Submitted": 26
-    },
-    "edges": [],
-    "source_tables": {
-      "receiving_request": 26
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W02",
-    "type": "Q1",
-    "question": "For each receipt record, extract Receipt Registered events.",
-    "answerable": true,
-    "pair_of": "W02P",
-    "gold_sha256": "4a70c9b6c363d03a822fc35e47d39ce9890dddf1d589a3d802159f44054ac833",
-    "chart": "graphs/W02.svg",
-    "stats": {
-      "events": 23,
-      "observed_cases": 23,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Receipt Registered": 23
-    },
-    "edges": [],
-    "source_tables": {
-      "goods_receipt": 23
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W02P",
-    "type": "Q2",
-    "question": "For each individual receipt record, show when the receipt was registered.",
-    "answerable": true,
-    "pair_of": "W02",
-    "gold_sha256": "4a70c9b6c363d03a822fc35e47d39ce9890dddf1d589a3d802159f44054ac833",
-    "chart": "graphs/W02.svg",
-    "stats": {
-      "events": 23,
-      "observed_cases": 23,
-      "activities": 1,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Receipt Registered": 23
-    },
-    "edges": [],
-    "source_tables": {
-      "goods_receipt": 23
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W03",
     "type": "Q1",
     "question": "For each dispatch order, extract Dispatch Requested and Dispatch Approved events.",
@@ -148,7 +36,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W03P",
     "type": "Q2",
     "question": "For every dispatch order, show when dispatch was requested and when it was approved.",
@@ -184,137 +72,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
-    "id": "W04",
-    "type": "Q1",
-    "question": "For each stock audit, extract Stock Audit Started and Stock Audit Completed events.",
-    "answerable": true,
-    "pair_of": "W04P",
-    "gold_sha256": "1133cce597e7f59cc887a8b7eefc05cfc523c5248d3f31a1d99f5df3ed19e2fd",
-    "chart": "graphs/W04.svg",
-    "stats": {
-      "events": 17,
-      "observed_cases": 9,
-      "activities": 2,
-      "dfg_edges": 1,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Stock Audit Started": 9,
-      "Stock Audit Completed": 8
-    },
-    "edges": [
-      {
-        "source": "Stock Audit Started",
-        "target": "Stock Audit Completed",
-        "count": 8,
-        "tie_affected": 0
-      }
-    ],
-    "source_tables": {
-      "warehouse_audit": 9
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W04P",
-    "type": "Q2",
-    "question": "Show when each stock audit began and when it finished.",
-    "answerable": true,
-    "pair_of": "W04",
-    "gold_sha256": "1133cce597e7f59cc887a8b7eefc05cfc523c5248d3f31a1d99f5df3ed19e2fd",
-    "chart": "graphs/W04.svg",
-    "stats": {
-      "events": 17,
-      "observed_cases": 9,
-      "activities": 2,
-      "dfg_edges": 1,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Stock Audit Started": 9,
-      "Stock Audit Completed": 8
-    },
-    "edges": [
-      {
-        "source": "Stock Audit Started",
-        "target": "Stock Audit Completed",
-        "count": 8,
-        "tie_affected": 0
-      }
-    ],
-    "source_tables": {
-      "warehouse_audit": 9
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W05",
-    "type": "Q1",
-    "question": "For each stock movement record, extract Goods Received and Goods Dispatched events.",
-    "answerable": true,
-    "pair_of": "W05P",
-    "gold_sha256": "aacdf84e0396c8e7f1661269e797012864d3b590056688abae0447dc181c4548",
-    "chart": "graphs/W05.svg",
-    "stats": {
-      "events": 39,
-      "observed_cases": 39,
-      "activities": 2,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Goods Received": 23,
-      "Goods Dispatched": 16
-    },
-    "edges": [],
-    "source_tables": {
-      "goods_movement": 39
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W05P",
-    "type": "Q2",
-    "question": "For every stock movement record, show the recorded receipt into stock or dispatch from stock, as applicable.",
-    "answerable": true,
-    "pair_of": "W05",
-    "gold_sha256": "aacdf84e0396c8e7f1661269e797012864d3b590056688abae0447dc181c4548",
-    "chart": "graphs/W05.svg",
-    "stats": {
-      "events": 39,
-      "observed_cases": 39,
-      "activities": 2,
-      "dfg_edges": 0,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Goods Received": 23,
-      "Goods Dispatched": 16
-    },
-    "edges": [],
-    "source_tables": {
-      "goods_movement": 39
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W06",
     "type": "Q1",
     "question": "For each request action record, extract Request Checked, Request Held and Request Released events.",
@@ -344,7 +102,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W06P",
     "type": "Q2",
     "question": "For each individual request action record, show the checking, holding or releasing action that was recorded.",
@@ -374,7 +132,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W07",
     "type": "Q1",
     "question": "For each warehouse task, extract Putaway Started, Putaway Completed, Picking Started, Picking Completed, Packing Started and Packing Completed events.",
@@ -426,7 +184,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W07P",
     "type": "Q2",
     "question": "For every warehouse task, show the recorded beginnings and completions of putaway, picking or packing, as applicable.",
@@ -478,7 +236,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W08",
     "type": "Q1",
     "question": "For each handling record, extract Unloading Started, Unloading Completed, Loading Started and Loading Completed events.",
@@ -522,7 +280,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W08P",
     "type": "Q2",
     "question": "For each handling record, show when unloading or loading began and finished, as applicable.",
@@ -566,7 +324,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W09",
     "type": "Q1",
     "question": "For each warehouse, extract Stock Audit Started, Stock Audit Completed, Putaway Started, Putaway Completed, Loading Started and Loading Completed events.",
@@ -662,7 +420,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W09P",
     "type": "Q2",
     "question": "For each warehouse, show the beginnings and completions of its stock audits, putaway work and loading work.",
@@ -758,7 +516,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W10",
     "type": "Q1",
     "question": "For each receiving request, extract Unloading Started, Unloading Completed, Receipt Registered, Goods Received, Putaway Started and Putaway Completed events.",
@@ -825,7 +583,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W10P",
     "type": "Q2",
     "question": "For every receiving request, show the start and completion of unloading, registration of the receipt, receipt into warehouse stock, and the start and completion of putaway.",
@@ -892,7 +650,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W11",
     "type": "Q1",
     "question": "For each dispatch order, extract Picking Started, Picking Completed, Packing Started, Packing Completed, Loading Started, Loading Completed and Goods Dispatched events.",
@@ -971,7 +729,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W11P",
     "type": "Q2",
     "question": "For each dispatch order, show when picking, packing and loading began and finished, together with the dispatch of goods from stock.",
@@ -1050,7 +808,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W12",
     "type": "Q1",
     "question": "For each worker, extract Stock Audit Started, Stock Audit Completed, Picking Started and Picking Completed events.",
@@ -1113,7 +871,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W12P",
     "type": "Q2",
     "question": "For every worker, show when their stock audits and picking work began and finished.",
@@ -1176,7 +934,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W13",
     "type": "Q1",
     "question": "For each goods type, extract Goods Received and Goods Dispatched events.",
@@ -1224,7 +982,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W13P",
     "type": "Q2",
     "question": "For each goods type, show its recorded receipts into warehouse stock and dispatches from stock.",
@@ -1272,7 +1030,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W14",
     "type": "Q1",
     "question": "For each receipt record, extract Receipt Registered and Goods Received events.",
@@ -1309,7 +1067,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "W14P",
     "type": "Q2",
     "question": "For every individual receipt record, show its registration and the corresponding receipt of goods into stock.",
@@ -1346,51 +1104,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
-    "id": "W15",
-    "type": "Q1",
-    "question": "For each warehouse, extract Invoice Paid events.",
-    "answerable": false,
-    "pair_of": "W15P",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding invoicing or carrier delivery records exist in this DB."
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W15P",
-    "type": "Q2",
-    "question": "For every warehouse, show when its invoices were paid.",
-    "answerable": false,
-    "pair_of": "W15",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding invoicing or carrier delivery records exist in this DB."
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W16",
-    "type": "Q1",
-    "question": "For each dispatch order, extract Customer Delivery Completed events.",
-    "answerable": false,
-    "pair_of": "W16P",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding invoicing or carrier delivery records exist in this DB."
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "W16P",
-    "type": "Q2",
-    "question": "For each dispatch order, show when delivery to the customer was completed.",
-    "answerable": false,
-    "pair_of": "W16",
-    "gold_sha256": null,
-    "chart": null,
-    "reason": "No corresponding invoicing or carrier delivery records exist in this DB."
-  },
-  {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF01",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each warehouse.",
@@ -1620,7 +1334,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF01P",
     "type": "Q4",
     "question": "Show the complete recorded history of each warehouse.",
@@ -1850,7 +1564,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF02",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each goods type.",
@@ -2053,7 +1767,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF02P",
     "type": "Q4",
     "question": "Build the entire recorded timeline associated with every goods type.",
@@ -2256,19 +1970,19 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF03",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each worker.",
     "answerable": true,
     "pair_of": "WF03P",
-    "gold_sha256": "5abd7610a62d377cf6ffcdf2a2a84c2cf97b6a5b8757196a7696d189fb7eb021",
+    "gold_sha256": "60dbfa419db7220b1d77bb30b34f99fe3525d428ae41e3f35044db6d94be5eff",
     "chart": "graphs/WF03.svg",
     "stats": {
-      "events": 299,
+      "events": 322,
       "observed_cases": 6,
-      "activities": 16,
-      "dfg_edges": 24,
+      "activities": 17,
+      "dfg_edges": 25,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -2280,6 +1994,7 @@
       "Unloading Started": 24,
       "Unloading Completed": 23,
       "Receipt Registered": 23,
+      "Goods Received": 23,
       "Putaway Started": 23,
       "Putaway Completed": 21,
       "Picking Started": 22,
@@ -2293,6 +2008,12 @@
       "Request Held": 4
     },
     "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Putaway Started",
+        "count": 23,
+        "tie_affected": 0
+      },
       {
         "source": "Loading Completed",
         "target": "Picking Started",
@@ -2379,7 +2100,7 @@
       },
       {
         "source": "Receipt Registered",
-        "target": "Putaway Started",
+        "target": "Goods Received",
         "count": 23,
         "tie_affected": 0
       },
@@ -2439,6 +2160,7 @@
       }
     ],
     "source_tables": {
+      "goods_movement": 23,
       "goods_receipt": 23,
       "handling_history": 41,
       "request_action": 56,
@@ -2448,19 +2170,19 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF03P",
     "type": "Q4",
     "question": "Show every worker's full recorded history.",
     "answerable": true,
     "pair_of": "WF03",
-    "gold_sha256": "5abd7610a62d377cf6ffcdf2a2a84c2cf97b6a5b8757196a7696d189fb7eb021",
+    "gold_sha256": "60dbfa419db7220b1d77bb30b34f99fe3525d428ae41e3f35044db6d94be5eff",
     "chart": "graphs/WF03.svg",
     "stats": {
-      "events": 299,
+      "events": 322,
       "observed_cases": 6,
-      "activities": 16,
-      "dfg_edges": 24,
+      "activities": 17,
+      "dfg_edges": 25,
       "duplicate_case_event_pairs": 0,
       "tied_timestamp_groups": 0,
       "requested_but_not_observed": [],
@@ -2472,6 +2194,7 @@
       "Unloading Started": 24,
       "Unloading Completed": 23,
       "Receipt Registered": 23,
+      "Goods Received": 23,
       "Putaway Started": 23,
       "Putaway Completed": 21,
       "Picking Started": 22,
@@ -2485,6 +2208,12 @@
       "Request Held": 4
     },
     "edges": [
+      {
+        "source": "Goods Received",
+        "target": "Putaway Started",
+        "count": 23,
+        "tie_affected": 0
+      },
       {
         "source": "Loading Completed",
         "target": "Picking Started",
@@ -2571,7 +2300,7 @@
       },
       {
         "source": "Receipt Registered",
-        "target": "Putaway Started",
+        "target": "Goods Received",
         "count": 23,
         "tie_affected": 0
       },
@@ -2631,6 +2360,7 @@
       }
     ],
     "source_tables": {
+      "goods_movement": 23,
       "goods_receipt": 23,
       "handling_history": 41,
       "request_action": 56,
@@ -2640,7 +2370,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF04",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each receiving request.",
@@ -2743,7 +2473,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF04P",
     "type": "Q4",
     "question": "Trace each receiving request through its complete recorded lifecycle.",
@@ -2846,7 +2576,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF05",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each receipt record.",
@@ -2883,7 +2613,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF05P",
     "type": "Q4",
     "question": "Show the entire recorded history associated with each individual receipt record.",
@@ -2920,7 +2650,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF06",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each dispatch order.",
@@ -3014,7 +2744,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF06P",
     "type": "Q4",
     "question": "Build a complete recorded timeline for every dispatch order.",
@@ -3108,86 +2838,14 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
-    "id": "WF07",
-    "type": "Q3",
-    "question": "Extract the full recorded lifecycle for each stock audit.",
-    "answerable": true,
-    "pair_of": "WF07P",
-    "gold_sha256": "1133cce597e7f59cc887a8b7eefc05cfc523c5248d3f31a1d99f5df3ed19e2fd",
-    "chart": "graphs/W04.svg",
-    "stats": {
-      "events": 17,
-      "observed_cases": 9,
-      "activities": 2,
-      "dfg_edges": 1,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Stock Audit Started": 9,
-      "Stock Audit Completed": 8
-    },
-    "edges": [
-      {
-        "source": "Stock Audit Started",
-        "target": "Stock Audit Completed",
-        "count": 8,
-        "tie_affected": 0
-      }
-    ],
-    "source_tables": {
-      "warehouse_audit": 9
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
-    "id": "WF07P",
-    "type": "Q4",
-    "question": "Show the full recorded history of each stock audit.",
-    "answerable": true,
-    "pair_of": "WF07",
-    "gold_sha256": "1133cce597e7f59cc887a8b7eefc05cfc523c5248d3f31a1d99f5df3ed19e2fd",
-    "chart": "graphs/W04.svg",
-    "stats": {
-      "events": 17,
-      "observed_cases": 9,
-      "activities": 2,
-      "dfg_edges": 1,
-      "duplicate_case_event_pairs": 0,
-      "tied_timestamp_groups": 0,
-      "requested_but_not_observed": [],
-      "observed_outside_gold_scope": []
-    },
-    "activity_counts": {
-      "Stock Audit Started": 9,
-      "Stock Audit Completed": 8
-    },
-    "edges": [
-      {
-        "source": "Stock Audit Started",
-        "target": "Stock Audit Completed",
-        "count": 8,
-        "tie_affected": 0
-      }
-    ],
-    "source_tables": {
-      "warehouse_audit": 9
-    },
-    "unmatched_gold_rows": 0
-  },
-  {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF08",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each stock movement record.",
     "answerable": true,
     "pair_of": "WF08P",
     "gold_sha256": "aacdf84e0396c8e7f1661269e797012864d3b590056688abae0447dc181c4548",
-    "chart": "graphs/W05.svg",
+    "chart": "graphs/WF08.svg",
     "stats": {
       "events": 39,
       "observed_cases": 39,
@@ -3209,14 +2867,14 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF08P",
     "type": "Q4",
     "question": "Trace each individual stock movement record through its entire recorded history.",
     "answerable": true,
     "pair_of": "WF08",
     "gold_sha256": "aacdf84e0396c8e7f1661269e797012864d3b590056688abae0447dc181c4548",
-    "chart": "graphs/W05.svg",
+    "chart": "graphs/WF08.svg",
     "stats": {
       "events": 39,
       "observed_cases": 39,
@@ -3238,7 +2896,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF09",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each request action record.",
@@ -3268,7 +2926,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF09P",
     "type": "Q4",
     "question": "Show the complete recorded history of every individual request action record.",
@@ -3298,7 +2956,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF10",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each warehouse task.",
@@ -3350,7 +3008,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF10P",
     "type": "Q4",
     "question": "Build the full recorded lifecycle of each warehouse task.",
@@ -3402,7 +3060,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF11",
     "type": "Q3",
     "question": "Extract the full recorded lifecycle for each handling record.",
@@ -3446,7 +3104,7 @@
     "unmatched_gold_rows": 0
   },
   {
-    "dataset": "warehouseflow_new",
+    "dataset": "warehouseflow",
     "id": "WF11P",
     "type": "Q4",
     "question": "Trace every individual handling record through its complete recorded history.",

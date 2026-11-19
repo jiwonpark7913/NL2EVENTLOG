@@ -1,21 +1,5 @@
 [
   {
-    "id": "W01",
-    "view": "Receiving Request",
-    "activities": [
-      "Receiving Request Submitted"
-    ],
-    "question": "For each receiving request, extract Receiving Request Submitted events."
-  },
-  {
-    "id": "W02",
-    "view": "Receipt",
-    "activities": [
-      "Receipt Registered"
-    ],
-    "question": "For each receipt record, extract Receipt Registered events."
-  },
-  {
     "id": "W03",
     "view": "Dispatch Order",
     "activities": [
@@ -23,24 +7,6 @@
       "Dispatch Approved"
     ],
     "question": "For each dispatch order, extract Dispatch Requested and Dispatch Approved events."
-  },
-  {
-    "id": "W04",
-    "view": "Stock Audit",
-    "activities": [
-      "Stock Audit Started",
-      "Stock Audit Completed"
-    ],
-    "question": "For each stock audit, extract Stock Audit Started and Stock Audit Completed events."
-  },
-  {
-    "id": "W05",
-    "view": "Stock Movement",
-    "activities": [
-      "Goods Received",
-      "Goods Dispatched"
-    ],
-    "question": "For each stock movement record, extract Goods Received and Goods Dispatched events."
   },
   {
     "id": "W06",
@@ -146,24 +112,6 @@
     "question": "For each receipt record, extract Receipt Registered and Goods Received events."
   },
   {
-    "id": "W15",
-    "view": "Warehouse",
-    "activities": [
-      "Invoice Paid"
-    ],
-    "answerable": false,
-    "question": "For each warehouse, extract Invoice Paid events."
-  },
-  {
-    "id": "W16",
-    "view": "Dispatch Order",
-    "activities": [
-      "Customer Delivery Completed"
-    ],
-    "answerable": false,
-    "question": "For each dispatch order, extract Customer Delivery Completed events."
-  },
-  {
     "id": "WF01",
     "view": "Warehouse",
     "question": "Extract the full recorded lifecycle for each warehouse."
@@ -192,11 +140,6 @@
     "id": "WF06",
     "view": "Dispatch Order",
     "question": "Extract the full recorded lifecycle for each dispatch order."
-  },
-  {
-    "id": "WF07",
-    "view": "Stock Audit",
-    "question": "Extract the full recorded lifecycle for each stock audit."
   },
   {
     "id": "WF08",

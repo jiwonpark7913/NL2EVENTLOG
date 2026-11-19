@@ -7,14 +7,14 @@
 | as_rolled_material | Mother Material | — |
 | dimension_inspection | Dimension Inspection | Dimensional Inspection Completed |
 | equipment | Equipment | — |
-| finishing_operation_history | Finishing Operation Record | Heat Treatment Completed, Leveling Completed, Surface Finishing Completed |
-| furnace_operation_history | Furnace Operation Record | Furnace Charged, Furnace Discharged, Heating Completed |
+| finishing_operation_history | Finishing Operation Record | Heat Treatment Completed, Heat Treatment Started, Leveling Completed, Leveling Started, Surface Finishing Completed, Surface Finishing Started |
+| furnace_operation_history | Furnace Operation Record | Furnace Charged, Furnace Charging Started, Furnace Discharge Started, Furnace Discharged, Heating Completed, Heating Started |
 | planned_rolling_instruction | Rolling Plan | Rolling Plan Approved, Rolling Plan Released, Rolling Plan Submitted |
 | plate_material | Plate Piece | Plate Identified, Plate Packed, Plate Released |
-| plate_quality_review | Quality Review | Plate Quality Review Completed |
+| plate_quality_review | Quality Review | Plate Quality Review Completed, Plate Quality Review Started |
 | process_code | process_code | — |
 | rolling_instruction | Rolling Instruction | Rolling Instruction Issued |
-| rolling_operation_history | Rolling Operation Record | Finish Rolling Completed, Rough Rolling Completed |
+| rolling_operation_history | Rolling Operation Record | Finish Rolling Completed, Finish Rolling Started, Rough Rolling Completed, Rough Rolling Started |
 | slab_material | Slab | Slab Received, Slab Released, Slab Verified |
 
 This is a source-binding projection. The model is not given this file.
