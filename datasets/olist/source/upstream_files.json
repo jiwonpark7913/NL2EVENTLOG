@@ -1,0 +1,135 @@
+{
+  "dataset": "Olist Brazilian E-Commerce Public Dataset",
+  "official_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "mirror_repository": "infobarbosa/dataset-olist",
+  "mirror_commit": "6e7f3d9b614655007f94dda9063ac3d5fb14fed9",
+  "mirror_prefix": "data/",
+  "license": "CC BY-NC-SA 4.0",
+  "expected_total_rows": 1550922,
+  "files": [
+    {
+      "filename": "olist_customers_dataset.csv.gz",
+      "table": "customers",
+      "expected_rows": 99441,
+      "git_blob_sha": "19827a3fb35f38d2afc547cb0eeb377b6250a363",
+      "columns": [
+        "customer_id",
+        "customer_unique_id",
+        "customer_zip_code_prefix",
+        "customer_city",
+        "customer_state"
+      ]
+    },
+    {
+      "filename": "olist_geolocation_dataset.csv.gz",
+      "table": "geolocation",
+      "expected_rows": 1000163,
+      "git_blob_sha": "9518908c2cbd07fea55b62d05a56d02deec704d8",
+      "columns": [
+        "geolocation_zip_code_prefix",
+        "geolocation_lat",
+        "geolocation_lng",
+        "geolocation_city",
+        "geolocation_state"
+      ]
+    },
+    {
+      "filename": "olist_order_items_dataset.csv.gz",
+      "table": "order_items",
+      "expected_rows": 112650,
+      "git_blob_sha": "c50553a243083d1c852b51bc39469e47cda70797",
+      "columns": [
+        "order_id",
+        "order_item_id",
+        "product_id",
+        "seller_id",
+        "shipping_limit_date",
+        "price",
+        "freight_value"
+      ]
+    },
+    {
+      "filename": "olist_order_payments_dataset.csv.gz",
+      "table": "order_payments",
+      "expected_rows": 103886,
+      "git_blob_sha": "75a249a47c49a23b348c727b6c0f854124224892",
+      "columns": [
+        "order_id",
+        "payment_sequential",
+        "payment_type",
+        "payment_installments",
+        "payment_value"
+      ]
+    },
+    {
+      "filename": "olist_order_reviews_dataset.csv.gz",
+      "table": "order_reviews",
+      "expected_rows": 99224,
+      "git_blob_sha": "395514e1fa7494e28bdb580991b006fbf5bd4362",
+      "columns": [
+        "review_id",
+        "order_id",
+        "review_score",
+        "review_comment_title",
+        "review_comment_message",
+        "review_creation_date",
+        "review_answer_timestamp"
+      ]
+    },
+    {
+      "filename": "olist_orders_dataset.csv.gz",
+      "table": "orders",
+      "expected_rows": 99441,
+      "git_blob_sha": "6f1031b86d4a2733609ae174d8e7d2f226cec585",
+      "columns": [
+        "order_id",
+        "customer_id",
+        "order_status",
+        "order_purchase_timestamp",
+        "order_approved_at",
+        "order_delivered_carrier_date",
+        "order_delivered_customer_date",
+        "order_estimated_delivery_date"
+      ]
+    },
+    {
+      "filename": "olist_products_dataset.csv.gz",
+      "table": "products",
+      "expected_rows": 32951,
+      "git_blob_sha": "812934cf67c824aed03efad61d7c75d78699ebc0",
+      "columns": [
+        "product_id",
+        "product_category_name",
+        "product_name_lenght",
+        "product_description_lenght",
+        "product_photos_qty",
+        "product_weight_g",
+        "product_length_cm",
+        "product_height_cm",
+        "product_width_cm"
+      ]
+    },
+    {
+      "filename": "olist_sellers_dataset.csv.gz",
+      "table": "sellers",
+      "expected_rows": 3095,
+      "git_blob_sha": "56fb22057c521810d1ea9334508d96058164a669",
+      "columns": [
+        "seller_id",
+        "seller_zip_code_prefix",
+        "seller_city",
+        "seller_state"
+      ]
+    },
+    {
+      "filename": "product_category_name_translation.csv.gz",
+      "table": "product_category_name_translation",
+      "expected_rows": 71,
+      "git_blob_sha": "fbe1f82413854f84759cd0f6ca818155a4e1ac95",
+      "columns": [
+        "product_category_name",
+        "product_category_name_english"
+      ]
+    }
+  ]
+}
