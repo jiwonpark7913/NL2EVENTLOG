@@ -1,0 +1,3239 @@
+{
+  "name": "Operations ledger",
+  "timezone": "UTC",
+  "business_process_overview": [
+    "Intake covers Fault Reported, Request Opened, Request Triaged, Risk Assessed, Request Approved.",
+    "Work planning covers Work Order Opened, Technician Assigned, Inspection Performed, Scope Agreed, Work Released.",
+    "Parts covers Reservation Opened, Part Allocated, Stock Checked, Part Issued, Reservation Settled.",
+    "Field work covers Work Item Started, Adjustment Made, Component Replaced, Function Tested, Work Item Finished.",
+    "Acceptance covers Verification Started, Reading Taken, Equipment Accepted, Work Order Closed, Request Closed."
+  ],
+  "tables": [
+    {
+      "table": "T51",
+      "definition": "One registered equipment per row.",
+      "columns": [
+        {
+          "name": "C26",
+          "type": "TEXT",
+          "definition": "Stable identifier of one equipment."
+        }
+      ],
+      "primary_key": [
+        "C26"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T74",
+      "definition": "One registered maintenance request per row.",
+      "columns": [
+        {
+          "name": "C26",
+          "type": "TEXT",
+          "definition": "Stable identifier of one maintenance request."
+        }
+      ],
+      "primary_key": [
+        "C26"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T33",
+      "definition": "One registered work order per row.",
+      "columns": [
+        {
+          "name": "C26",
+          "type": "TEXT",
+          "definition": "Stable identifier of one work order."
+        }
+      ],
+      "primary_key": [
+        "C26"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T07",
+      "definition": "One registered work item per row.",
+      "columns": [
+        {
+          "name": "C26",
+          "type": "TEXT",
+          "definition": "Stable identifier of one work item."
+        }
+      ],
+      "primary_key": [
+        "C26"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T29",
+      "definition": "One registered part reservation per row.",
+      "columns": [
+        {
+          "name": "C26",
+          "type": "TEXT",
+          "definition": "Stable identifier of one part reservation."
+        }
+      ],
+      "primary_key": [
+        "C26"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T78",
+      "definition": "One registered technician per row.",
+      "columns": [
+        {
+          "name": "C26",
+          "type": "TEXT",
+          "definition": "Stable identifier of one technician."
+        }
+      ],
+      "primary_key": [
+        "C26"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T08",
+      "definition": "Business object assignments for one operational record.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Assignment identifier."
+        },
+        {
+          "name": "C07",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable."
+        },
+        {
+          "name": "C28",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable."
+        },
+        {
+          "name": "C29",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable."
+        },
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C07",
+          "parent_table": "T51",
+          "parent_column": "C26"
+        },
+        {
+          "column": "C28",
+          "parent_table": "T74",
+          "parent_column": "C26"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T33",
+          "parent_column": "C26"
+        },
+        {
+          "column": "C29",
+          "parent_table": "T07",
+          "parent_column": "C26"
+        },
+        {
+          "column": "C21",
+          "parent_table": "T29",
+          "parent_column": "C26"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T78",
+          "parent_column": "C26"
+        }
+      ]
+    },
+    {
+      "table": "T45",
+      "definition": "Individual allocation that refers to the assignment bundle.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Allocation identifier."
+        },
+        {
+          "name": "C14",
+          "type": "TEXT",
+          "definition": "Business assignment reference."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C14",
+          "parent_table": "T08",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T03",
+      "definition": "Operational status journal entries.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry.",
+          "value_domain": {
+            "K13": "Request Triaged",
+            "K23": "Inspection Performed",
+            "K35": "Reservation Settled",
+            "K43": "Component Replaced"
+          }
+        },
+        {
+          "name": "C10",
+          "type": "TEXT",
+          "definition": "When the operational action occurred (UTC)."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "Assignment reference for this operational record."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Administrative posting time."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "Planned processing time."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Record maintenance time."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Data export time."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C09",
+          "parent_table": "T45",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T110",
+      "definition": "Operational milestone pair entries.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Business milestone pair category.",
+          "value_domain": {
+            "K1": "Fault Reported (first) / Request Opened (second)",
+            "K3": "Reservation Opened (first) / Part Allocated (second)",
+            "K5": "Verification Started (first) / Reading Taken (second)"
+          }
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "When the first named milestone occurred, if present."
+        },
+        {
+          "name": "C02",
+          "type": "TEXT",
+          "definition": "When the second named milestone occurred, if present."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "Assignment reference for this operational record."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Administrative posting time."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "Planned processing time."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Record maintenance time."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Data export time."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C09",
+          "parent_table": "T45",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T31",
+      "definition": "Operational progress sheet entries.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C12",
+          "type": "TEXT",
+          "definition": "UTC instant of Work Order Opened when performed."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "UTC instant of Technician Assigned when performed."
+        },
+        {
+          "name": "C06",
+          "type": "TEXT",
+          "definition": "UTC instant of Stock Checked when performed."
+        },
+        {
+          "name": "C13",
+          "type": "TEXT",
+          "definition": "UTC instant of Part Issued when performed."
+        },
+        {
+          "name": "C25",
+          "type": "TEXT",
+          "definition": "UTC instant of Work Item Started when performed."
+        },
+        {
+          "name": "C27",
+          "type": "TEXT",
+          "definition": "UTC instant of Adjustment Made when performed."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "Assignment reference for this operational record."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Administrative posting time."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "Planned processing time."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Record maintenance time."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Data export time."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C09",
+          "parent_table": "T45",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T118",
+      "definition": "Operational closure receipt entries.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C10",
+          "type": "TEXT",
+          "definition": "UTC instant of Request Closed. One row per Request Closed occurrence."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "Assignment reference for this operational record."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Administrative posting time."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "Planned processing time."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Record maintenance time."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Data export time."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C09",
+          "parent_table": "T45",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T75",
+      "definition": "Operational dated journal entries.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry.",
+          "value_domain": {
+            "K14": "Risk Assessed",
+            "K24": "Scope Agreed",
+            "K44": "Function Tested",
+            "K53": "Equipment Accepted"
+          }
+        },
+        {
+          "name": "C08",
+          "type": "TEXT",
+          "definition": "UTC calendar date the action happened."
+        },
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "UTC time of day the action happened."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "Assignment reference for this operational record."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Administrative posting time."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "Planned processing time."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Record maintenance time."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Data export time."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C09",
+          "parent_table": "T45",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T109",
+      "definition": "Operational message ledger entries.",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry.",
+          "value_domain": {
+            "K15": "Request Approved",
+            "K25": "Work Released",
+            "K45": "Work Item Finished",
+            "K54": "Work Order Closed"
+          }
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "JSON payload. The $.at field is the UTC instant the action happened."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "Assignment reference for this operational record."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Administrative posting time."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "Planned processing time."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Record maintenance time."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Data export time."
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C09",
+          "parent_table": "T45",
+          "parent_column": "C23"
+        }
+      ]
+    },
+    {
+      "table": "T96",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T24",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T102",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T36",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T02",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T120",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T68",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T98",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T11",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T82",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T47",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T12",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T85",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T92",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T91",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T46",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T14",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T23",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T37",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T77",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T113",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T79",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T62",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T83",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T32",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T44",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T101",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T112",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T16",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T18",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T65",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T89",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T84",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T48",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T100",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T20",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T57",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T80",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T105",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T40",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T111",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T53",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T70",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T108",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T69",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T13",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T76",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T58",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T10",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T88",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T22",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T95",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T52",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T19",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T26",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T67",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T50",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T15",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T42",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T116",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T21",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T04",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T59",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T61",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T114",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T103",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T73",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T72",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T30",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T71",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T25",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T117",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T17",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T09",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T39",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T01",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T99",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T41",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T94",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T27",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T43",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T107",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T56",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T05",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T63",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T106",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T90",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T06",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T49",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T93",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T97",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T60",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T104",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T35",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T55",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T38",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T115",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T54",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T119",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T86",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T64",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T34",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T81",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T28",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T66",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T87",
+      "definition": "",
+      "columns": [
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": ""
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": ""
+        }
+      ],
+      "primary_key": [
+        "C23"
+      ],
+      "foreign_keys": []
+    }
+  ]
+}

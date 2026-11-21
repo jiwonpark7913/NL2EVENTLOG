@@ -1,0 +1,854 @@
+{
+  "name": "Operations ledger",
+  "timezone": "UTC",
+  "business_process_overview": [
+    "Sourcing covers Requisition Filed, Funding Checked, Quotation Received, Bid Evaluated, Requisition Approved.",
+    "Ordering covers Order Issued, Line Released, Order Acknowledged, Quantity Confirmed, Delivery Booked.",
+    "Receiving covers Receipt Opened, Goods Unloaded, Lot Inspected, Quantity Accepted, Receipt Posted.",
+    "Invoicing covers Invoice Received, Invoice Registered, Match Attempted, Dispute Resolved, Invoice Approved.",
+    "Settlement covers Payment Initiated, Payment Authorized, Transfer Sent, Remittance Received, Payment Cleared."
+  ],
+  "tables": [
+    {
+      "table": "T12",
+      "definition": "One registered purchase requisition per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one purchase requisition."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T10",
+      "definition": "One registered purchase order per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one purchase order."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T14",
+      "definition": "One registered purchase order line per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one purchase order line."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T03",
+      "definition": "One registered receipt per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one receipt."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T07",
+      "definition": "One registered invoice per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one invoice."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T09",
+      "definition": "One registered payment per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one payment."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T06",
+      "definition": "One registered supplier per row.",
+      "columns": [
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "Stable identifier of one supplier."
+        }
+      ],
+      "primary_key": [
+        "C19"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T02",
+      "definition": "Business object assignments for one operational record.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Assignment identifier."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    },
+    {
+      "table": "T05",
+      "definition": "Individual allocation that refers to the assignment bundle.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Allocation identifier."
+        },
+        {
+          "name": "C08",
+          "type": "TEXT",
+          "definition": "Business assignment reference."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C08",
+          "parent_table": "T02",
+          "parent_column": "C18"
+        }
+      ]
+    },
+    {
+      "table": "T01",
+      "definition": "Operational status journal entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry.",
+          "value_domain": {
+            "K13": "Quotation Received",
+            "K23": "Order Acknowledged",
+            "K35": "Receipt Posted",
+            "K43": "Match Attempted"
+          }
+        },
+        {
+          "name": "C06",
+          "type": "TEXT",
+          "definition": "When the operational action occurred (UTC)."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    },
+    {
+      "table": "T13",
+      "definition": "Operational milestone pair entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Business milestone pair category.",
+          "value_domain": {
+            "K1": "Requisition Filed (first) / Funding Checked (second)",
+            "K3": "Receipt Opened (first) / Goods Unloaded (second)",
+            "K5": "Payment Initiated (first) / Payment Authorized (second)"
+          }
+        },
+        {
+          "name": "C12",
+          "type": "TEXT",
+          "definition": "When the first named milestone occurred, if present."
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": "When the second named milestone occurred, if present."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    },
+    {
+      "table": "T04",
+      "definition": "Operational progress sheet entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "UTC instant of Order Issued when performed."
+        },
+        {
+          "name": "C02",
+          "type": "TEXT",
+          "definition": "UTC instant of Line Released when performed."
+        },
+        {
+          "name": "C13",
+          "type": "TEXT",
+          "definition": "UTC instant of Lot Inspected when performed."
+        },
+        {
+          "name": "C07",
+          "type": "TEXT",
+          "definition": "UTC instant of Quantity Accepted when performed."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "UTC instant of Invoice Received when performed."
+        },
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "UTC instant of Invoice Registered when performed."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    },
+    {
+      "table": "T15",
+      "definition": "Operational closure receipt entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C06",
+          "type": "TEXT",
+          "definition": "UTC instant of Payment Cleared. One row per Payment Cleared occurrence."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    },
+    {
+      "table": "T08",
+      "definition": "Operational dated journal entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry.",
+          "value_domain": {
+            "K14": "Bid Evaluated",
+            "K24": "Quantity Confirmed",
+            "K44": "Dispute Resolved",
+            "K53": "Transfer Sent"
+          }
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "UTC calendar date the action happened."
+        },
+        {
+          "name": "C14",
+          "type": "TEXT",
+          "definition": "UTC time of day the action happened."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    },
+    {
+      "table": "T11",
+      "definition": "Operational message ledger entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry.",
+          "value_domain": {
+            "K15": "Requisition Approved",
+            "K25": "Delivery Booked",
+            "K45": "Invoice Approved",
+            "K54": "Remittance Received"
+          }
+        },
+        {
+          "name": "C10",
+          "type": "TEXT",
+          "definition": "JSON payload. The $.at field is the UTC instant the action happened."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C23",
+          "parent_table": "T12",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C17",
+          "parent_table": "T10",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C11",
+          "parent_table": "T14",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C05",
+          "parent_table": "T03",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C22",
+          "parent_table": "T07",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T09",
+          "parent_column": "C19"
+        },
+        {
+          "column": "C20",
+          "parent_table": "T06",
+          "parent_column": "C19"
+        }
+      ]
+    }
+  ]
+}

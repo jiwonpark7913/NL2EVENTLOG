@@ -1,0 +1,77 @@
+{
+  "model_questions_sha256": "0cb450019f3d16bbc6aa94ef884df1f22905c744d54c921397083906fb06e345",
+  "variants": [
+    {
+      "variant": "base",
+      "input_path": "input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "50ae574854268c21c3b09c8abab23e0019b24ae49659e5d52c259712b08010da",
+        "data_dictionary.json": "45478139b857e9ca579d960811020abe640fcf45225267457717789c2ebc9a48"
+      }
+    },
+    {
+      "variant": "x1_max",
+      "input_path": "variants/x1_max/input",
+      "tables": 120,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "25279d71a05bd3a53160ed628ee68f6c4aa578c78d250c3babfa5251af87f7d5",
+        "data_dictionary.json": "34b3aa949291de79181241b883153465358420a4be0a0a3778d827717e495ac4"
+      }
+    },
+    {
+      "variant": "x2_max",
+      "input_path": "variants/x2_max/input",
+      "tables": 15,
+      "max_fk_hops": 3,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "e6377e3525793f351cfb20114046dc117af1cba3f47f17596399be906eed71d1",
+        "data_dictionary.json": "0bf2625f5c01867acc0459fe7cd8e85498dce5a6d9e53928d647c0248869fd67"
+      }
+    },
+    {
+      "variant": "x3_max",
+      "input_path": "variants/x3_max/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N3",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "82a222e22eba126c69dd444ee025e8bcb82a004e932611ab6b2ef20efeedba52",
+        "data_dictionary.json": "cd55d7e0279d7e0c2da6e3d3966ba0da9b6e28a9763feeb1bf9fa76ddc2bba2c"
+      }
+    },
+    {
+      "variant": "x4_max",
+      "input_path": "variants/x4_max/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 4,
+      "sha256": {
+        "database.sqlite": "27a78520f75a2ad6c552ead456f6137af602d5a996fdc1da8c9615d7f2438297",
+        "data_dictionary.json": "08864f7c166f09682670fb28632023c0a37881ce1ce1e65a2a9f234f18558929"
+      }
+    },
+    {
+      "variant": "stress",
+      "input_path": "variants/stress/input",
+      "tables": 120,
+      "max_fk_hops": 3,
+      "naming": "N3",
+      "additional_timestamps_per_event_table": 4,
+      "sha256": {
+        "database.sqlite": "4cc32ad6047110d15c631273e26e5dd974bbc4f22a038b54bd71602b36b48f6b",
+        "data_dictionary.json": "40e5ba3ef248229528dca95bfffc86a9ed519e054dc8fdc68f89d2d8b13ad7df"
+      }
+    }
+  ]
+}

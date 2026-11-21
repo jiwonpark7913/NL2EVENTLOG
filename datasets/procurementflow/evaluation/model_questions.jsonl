@@ -1,0 +1,40 @@
+{"question_id": "P01", "text": "Create an event log for all purchase requisitions that contains only the activities Requisition Filed and Requisition Approved."}
+{"question_id": "P01P", "text": "For every purchase requisition, give me an event log restricted to two steps: the requisition being submitted and the requisition being signed off."}
+{"question_id": "P02", "text": "Create an event log for all payments that contains only the activity Transfer Sent."}
+{"question_id": "P02P", "text": "For every payment, I want an event log showing just one step: the funds transfer being dispatched."}
+{"question_id": "P03", "text": "Create an event log for all invoices that contains only the activity Dispute Resolved."}
+{"question_id": "P03P", "text": "For every invoice, produce an event log with a single step, namely a disagreement about the invoice being sorted out."}
+{"question_id": "P04", "text": "Create an event log for all receipts that contains only the activities Goods Unloaded and Lot Inspected."}
+{"question_id": "P04P", "text": "For every receipt, I need an event log made up of just two steps: the goods being taken off the delivery vehicle and the batch being examined."}
+{"question_id": "P05", "text": "Create an event log for all purchase order lines that contains only the activities Order Issued, Delivery Booked, Goods Unloaded, Lot Inspected and Invoice Received."}
+{"question_id": "P05P", "text": "For every purchase order line, build an event log from these five steps only: the order being sent out, the delivery being scheduled, the goods being taken off the delivery vehicle, the batch being examined, and the invoice arriving."}
+{"question_id": "P06", "text": "Create an event log for all purchase orders that contains only the activities Order Issued, Receipt Posted, Invoice Approved and Payment Cleared."}
+{"question_id": "P06P", "text": "For every purchase order, I want an event log limited to four steps: the order being sent out, the receipt being written to the ledger, the invoice being signed off, and the payment having fully gone through at the bank."}
+{"question_id": "P07", "text": "Create an event log for all suppliers that contains only the activities Quotation Received, Bid Evaluated, Order Issued, Invoice Received and Payment Initiated."}
+{"question_id": "P07P", "text": "For every supplier, assemble an event log restricted to five steps: a quote arriving, a bid being assessed, an order being sent out, an invoice arriving, and a payment being started."}
+{"question_id": "P08", "text": "Create an event log for all invoices that contains only the activities Invoice Registered, Match Attempted, Payment Authorized and Remittance Received."}
+{"question_id": "P08P", "text": "For every invoice, I need an event log with only four steps: the invoice being formally recorded, a try at pairing the invoice with its supporting records, the payment being given the green light, and the remittance coming in."}
+{"question_id": "P09", "text": "Create an event log for all purchase requisitions that contains only the activities Funding Checked, Bid Evaluated, Requisition Approved, Order Issued and Delivery Booked."}
+{"question_id": "P09P", "text": "For every purchase requisition, put together an event log from five steps only: the available funds being verified, the bid being assessed, the requisition being signed off, the order being sent out, and the delivery being scheduled."}
+{"question_id": "P10", "text": "Create an event log for all receipts that contains only the activities Receipt Opened, Receipt Posted and Invoice Registered."}
+{"question_id": "P10P", "text": "For every receipt, give me an event log covering only three steps: the receipt being started, the receipt being written to the ledger, and the invoice being formally recorded."}
+{"question_id": "P11", "text": "Create an event log for all purchase orders that covers the complete history of each purchase order, with every activity associated with purchase orders across all of their phases."}
+{"question_id": "P11P", "text": "For every purchase order, I want the full end-to-end event log: everything associated with purchase orders in any phase, with nothing left out."}
+{"question_id": "P12", "text": "Create an event log for all suppliers that covers the complete history of each supplier, with every activity associated with suppliers across all of their phases."}
+{"question_id": "P12P", "text": "Give me the entire event log of every supplier, taking in whatever is associated with suppliers in each and every phase and leaving nothing out."}
+{"question_id": "P13", "text": "Create an event log for all purchase requisitions that covers the complete history of each purchase requisition, with every activity associated with purchase requisitions across all of their phases."}
+{"question_id": "P13P", "text": "I need the whole story of every purchase requisition as an event log, including all that is associated with purchase requisitions in every one of their phases, without omissions."}
+{"question_id": "P14", "text": "Create an event log for all invoices that covers the complete history of each invoice, with every activity associated with invoices across all of their phases."}
+{"question_id": "P14P", "text": "For every invoice, produce an event log of its full history, spanning everything associated with invoices in all of their phases with no exceptions."}
+{"question_id": "P15", "text": "Create an event log for all purchase requisitions that covers everything that happens in the sourcing phase for each purchase requisition."}
+{"question_id": "P15P", "text": "For every purchase requisition, I need an event log of all that takes place during the sourcing phase, and nothing from any other phase."}
+{"question_id": "P16", "text": "Create an event log for all purchase order lines that covers everything that happens in the ordering phase for each purchase order line."}
+{"question_id": "P16P", "text": "Show me, for every purchase order line, an event log of the whole ordering phase: everything that occurs for the line in that phase and nothing outside it."}
+{"question_id": "P17", "text": "Create an event log for all purchase orders that covers everything that happens in the receiving phase for each purchase order."}
+{"question_id": "P17P", "text": "For every purchase order, give me an event log restricted to the receiving phase, capturing all that goes on for the purchase order in that phase and nothing from the other phases."}
+{"question_id": "P18", "text": "Create an event log for all receipts that covers everything that happens in the invoicing phase for each receipt."}
+{"question_id": "P18P", "text": "For every receipt, I want an event log confined to the invoicing phase, taking in all that goes on for the receipt in that phase and nothing from elsewhere."}
+{"question_id": "P19", "text": "Create an event log for all invoices that covers everything that happens in the settlement phase for each invoice."}
+{"question_id": "P19P", "text": "For every invoice, build an event log of the settlement phase alone: all that occurs for the invoice within that phase, excluding whatever belongs to any other phase."}
+{"question_id": "P20", "text": "Create an event log for all suppliers that covers everything that happens in the ordering phase for each supplier."}
+{"question_id": "P20P", "text": "I need an event log for every supplier that is limited to the ordering phase and includes all that takes place for the supplier in that phase, with nothing drawn from other phases."}

@@ -1,0 +1,824 @@
+{
+  "name": "Operations ledger",
+  "timezone": "UTC",
+  "business_process_overview": [
+    "Intake covers Fault Reported, Request Opened, Request Triaged, Risk Assessed, Request Approved.",
+    "Work planning covers Work Order Opened, Technician Assigned, Inspection Performed, Scope Agreed, Work Released.",
+    "Parts covers Reservation Opened, Part Allocated, Stock Checked, Part Issued, Reservation Settled.",
+    "Field work covers Work Item Started, Adjustment Made, Component Replaced, Function Tested, Work Item Finished.",
+    "Acceptance covers Verification Started, Reading Taken, Equipment Accepted, Work Order Closed, Request Closed."
+  ],
+  "tables": [
+    {
+      "table": "equipment_registry",
+      "definition": "One registered equipment per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one equipment. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "maintenance_request_registry",
+      "definition": "One registered maintenance request per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one maintenance request. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "work_order_registry",
+      "definition": "One registered work order per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one work order. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "work_item_registry",
+      "definition": "One registered work item per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one work item. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "part_reservation_registry",
+      "definition": "One registered part reservation per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one part reservation. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "technician_registry",
+      "definition": "One registered technician per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one technician. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "assignment_bundle",
+      "definition": "Business object assignments for one operational record.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Assignment identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "assignment_entry",
+      "definition": "Individual allocation that refers to the assignment bundle.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Allocation identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "bundle_ref",
+          "type": "TEXT",
+          "definition": "Business assignment reference. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "bundle_ref",
+          "parent_table": "assignment_bundle",
+          "parent_column": "record_key"
+        }
+      ]
+    },
+    {
+      "table": "status_journal",
+      "definition": "Operational status journal entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K13": "Request Triaged",
+            "K23": "Inspection Performed",
+            "K35": "Reservation Settled",
+            "K43": "Component Replaced"
+          }
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "definition": "When the operational action occurred (UTC)."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "recorded_at",
+          "type": "TEXT",
+          "definition": "Administrative posting time. This administrative timestamp may differ from the underlying action."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "milestone_pair",
+      "definition": "Operational milestone pair entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Business milestone pair category. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K1": "Fault Reported (first) / Request Opened (second)",
+            "K3": "Reservation Opened (first) / Part Allocated (second)",
+            "K5": "Verification Started (first) / Reading Taken (second)"
+          }
+        },
+        {
+          "name": "opened_at",
+          "type": "TEXT",
+          "definition": "When the first named milestone occurred, if present."
+        },
+        {
+          "name": "advanced_at",
+          "type": "TEXT",
+          "definition": "When the second named milestone occurred, if present."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "recorded_at",
+          "type": "TEXT",
+          "definition": "Administrative posting time. This administrative timestamp may differ from the underlying action."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "progress_sheet",
+      "definition": "Operational progress sheet entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "work_order_opened_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Work Order Opened when performed."
+        },
+        {
+          "name": "technician_assigned_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Technician Assigned when performed."
+        },
+        {
+          "name": "stock_checked_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Stock Checked when performed."
+        },
+        {
+          "name": "part_issued_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Part Issued when performed."
+        },
+        {
+          "name": "work_item_started_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Work Item Started when performed."
+        },
+        {
+          "name": "adjustment_made_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Adjustment Made when performed."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "recorded_at",
+          "type": "TEXT",
+          "definition": "Administrative posting time. This administrative timestamp may differ from the underlying action."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "closure_receipt",
+      "definition": "Operational closure receipt entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Request Closed. One row per Request Closed occurrence."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "recorded_at",
+          "type": "TEXT",
+          "definition": "Administrative posting time. This administrative timestamp may differ from the underlying action."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "dated_journal",
+      "definition": "Operational dated journal entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K14": "Risk Assessed",
+            "K24": "Scope Agreed",
+            "K44": "Function Tested",
+            "K53": "Equipment Accepted"
+          }
+        },
+        {
+          "name": "business_date",
+          "type": "TEXT",
+          "definition": "UTC calendar date the action happened."
+        },
+        {
+          "name": "business_clock",
+          "type": "TEXT",
+          "definition": "UTC time of day the action happened."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "recorded_at",
+          "type": "TEXT",
+          "definition": "Administrative posting time. This administrative timestamp may differ from the underlying action."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "message_ledger",
+      "definition": "Operational message ledger entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K15": "Request Approved",
+            "K25": "Work Released",
+            "K45": "Work Item Finished",
+            "K54": "Work Order Closed"
+          }
+        },
+        {
+          "name": "message_body",
+          "type": "TEXT",
+          "definition": "JSON payload. The $.at field is the UTC instant the action happened."
+        },
+        {
+          "name": "equipment_ref",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "maintenance_request_ref",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_order_ref",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "work_item_ref",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "part_reservation_ref",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "technician_ref",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "recorded_at",
+          "type": "TEXT",
+          "definition": "Administrative posting time. This administrative timestamp may differ from the underlying action."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "equipment_ref",
+          "parent_table": "equipment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "maintenance_request_ref",
+          "parent_table": "maintenance_request_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_order_ref",
+          "parent_table": "work_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "work_item_ref",
+          "parent_table": "work_item_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "part_reservation_ref",
+          "parent_table": "part_reservation_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "technician_ref",
+          "parent_table": "technician_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "central_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    }
+  ]
+}

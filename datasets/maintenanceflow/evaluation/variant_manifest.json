@@ -1,0 +1,161 @@
+{
+  "model_questions_sha256": "aa40a194eccd48ad47d48eeaebdde7564da2a1f4ea95e07bfe716933a3e777f7",
+  "variants": [
+    {
+      "variant": "base",
+      "input_path": "input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "ec3a875bd92e01716b3f4a4363253a84dedb9b3fe9b469cc1f1e292b8e41b26d",
+        "data_dictionary.json": "7a28fcbc96f4372d3ae1f9422e9afc9acf37afa998fc6b52803bc90883c3d643"
+      }
+    },
+    {
+      "variant": "x1_30",
+      "input_path": "variants/x1_30/input",
+      "tables": 30,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "a7cd95a996fd996d510db3d82cf5fc8f7ed0ac1e8b110b83fd4a0077da62487c",
+        "data_dictionary.json": "ba310ad382e199f721fedf2d842917823be07970e52220986fd29d39914970de"
+      }
+    },
+    {
+      "variant": "x1_60",
+      "input_path": "variants/x1_60/input",
+      "tables": 60,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "d165c24cbc4e3d0c827422e5f39a20faaeb24731ea4122f9f6cfc200515fa2ac",
+        "data_dictionary.json": "06db38b101d9e7506e4342f6e9b894d45a56595b55c062491e0ecb5b24382aec"
+      }
+    },
+    {
+      "variant": "x1_max",
+      "input_path": "variants/x1_max/input",
+      "tables": 120,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "84e3560c00cb114241f9719d27ae2355c0302796d4fceaf48fae827ae8b5388a",
+        "data_dictionary.json": "74c72b10d53c20cafcf4be1c2007bddf558cc864262efaedba5b8ef0351990b4"
+      }
+    },
+    {
+      "variant": "x2_2",
+      "input_path": "variants/x2_2/input",
+      "tables": 15,
+      "max_fk_hops": 2,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "a9dcaae5b996a954411abab67661180144b1f7cee8ad3bd7ead7af3c4045248a",
+        "data_dictionary.json": "8af4ad2314d46fdda752ae584e8e6ac5e7c006086987a2115affa698dfa597a2"
+      }
+    },
+    {
+      "variant": "x2_max",
+      "input_path": "variants/x2_max/input",
+      "tables": 15,
+      "max_fk_hops": 3,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "a5f58a7fab7a8dd3b0c4af3d31dc4ab04346cb771256dd1e6d38573bc3fa72e6",
+        "data_dictionary.json": "65f3c5744e788b3e7794de843a7086847fbda0542e8e20c44fb9ff0a0f1ce2b0"
+      }
+    },
+    {
+      "variant": "x3_n1",
+      "input_path": "variants/x3_n1/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N1",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "3936a5b5fbd6db6ed0c91bd7bff4735b60bac6c9796d5482abfec801a8c2f55a",
+        "data_dictionary.json": "fbffc46501a34e747262920b7ddc7a72e194fd0cbcb70397d404a702b2ee5cd1"
+      }
+    },
+    {
+      "variant": "x3_n2",
+      "input_path": "variants/x3_n2/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N2",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "f29641d9849698bb378d8d57dac072f07e0ba59285aaa892aba14c5e46fae374",
+        "data_dictionary.json": "673691405c869e5dd14326c76368880e3f59d385efbbaed625a527ed96853849"
+      }
+    },
+    {
+      "variant": "x3_max",
+      "input_path": "variants/x3_max/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N3",
+      "additional_timestamps_per_event_table": 0,
+      "sha256": {
+        "database.sqlite": "f29641d9849698bb378d8d57dac072f07e0ba59285aaa892aba14c5e46fae374",
+        "data_dictionary.json": "837ef052c57bb880657a3deb0d6e031ddced721a6ac570612b9fb2dedaacd589"
+      }
+    },
+    {
+      "variant": "x4_1",
+      "input_path": "variants/x4_1/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 1,
+      "sha256": {
+        "database.sqlite": "c16b1dd63396be99ba6bcaac407b90d6a1ad907c309bb8348113b8418039c5ad",
+        "data_dictionary.json": "a428b65de0bb7d40c78e1c0f6401ebd095fdab9d6f8c2e75b17a084e2c925ed0"
+      }
+    },
+    {
+      "variant": "x4_2",
+      "input_path": "variants/x4_2/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 2,
+      "sha256": {
+        "database.sqlite": "b5d2f0fe4990c8a2a34a4ca9ac3624c72a935bc50c32b959dc4c20d97b75aa77",
+        "data_dictionary.json": "c7e634c98a11c6d85c2322d1a60744c5d4f055e593b0d6c3806648da4bd1f54b"
+      }
+    },
+    {
+      "variant": "x4_max",
+      "input_path": "variants/x4_max/input",
+      "tables": 15,
+      "max_fk_hops": 1,
+      "naming": "N0",
+      "additional_timestamps_per_event_table": 4,
+      "sha256": {
+        "database.sqlite": "c79ec922cb002953ccb6e6e32d21cedf1703e5beda332d0664fedcec80429b70",
+        "data_dictionary.json": "ef2f64b4c451d8e3771519e57427eae86998c84a9fd1194b18cb1a574c550eeb"
+      }
+    },
+    {
+      "variant": "stress",
+      "input_path": "variants/stress/input",
+      "tables": 120,
+      "max_fk_hops": 3,
+      "naming": "N3",
+      "additional_timestamps_per_event_table": 4,
+      "sha256": {
+        "database.sqlite": "5c54df24d72a16c3f03ebe89ce26b7b85131f078909818abf6130e274c1f8043",
+        "data_dictionary.json": "69c65221d5ce5315bcef5343807ae26c37a5483b165e4f753b6acdac7abe77e0"
+      }
+    }
+  ]
+}

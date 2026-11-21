@@ -1,0 +1,40 @@
+{"question_id": "M01", "text": "Create an event log for all Maintenance Request cases that contains only the activities Request Opened and Request Closed."}
+{"question_id": "M01P", "text": "For every Maintenance Request, give me an event log limited to two events: the request being raised and the request being concluded."}
+{"question_id": "M02", "text": "Build an event log for all Part Reservation cases that contains only the activity Part Issued."}
+{"question_id": "M02P", "text": "For every Part Reservation, I need an event log that keeps a single kind of event: a part being handed out from the store."}
+{"question_id": "M03", "text": "Produce an event log for all Work Order cases that contains only the activities Work Order Opened and Work Order Closed."}
+{"question_id": "M03P", "text": "Give me an event log covering every Work Order, limited to two events: the work order being created and the work order being brought to a close."}
+{"question_id": "M04", "text": "Create an event log for all Technician cases that contains only the activities Technician Assigned, Work Item Started and Work Item Finished."}
+{"question_id": "M04P", "text": "For every Technician, build an event log limited to three events: the technician being designated for a job, a work item being commenced and a work item being completed."}
+{"question_id": "M05", "text": "Build an event log for all Equipment cases that contains only the activities Fault Reported, Inspection Performed, Component Replaced, Function Tested and Equipment Accepted."}
+{"question_id": "M05P", "text": "For every piece of Equipment, give me an event log limited to five events: a malfunction being flagged, an inspection being carried out, a component being swapped out, a functional test being run and the equipment being signed off as fit for service."}
+{"question_id": "M06", "text": "Produce an event log for all Work Item cases that contains only the activities Part Allocated, Part Issued, Component Replaced and Work Item Finished."}
+{"question_id": "M06P", "text": "For every Work Item, I need an event log limited to four events: a part being earmarked for the job, a part being handed out from the store, a component being swapped out and the work item being completed."}
+{"question_id": "M07", "text": "Create an event log for all Maintenance Request cases that contains only the activities Request Triaged, Risk Assessed and Request Approved."}
+{"question_id": "M07P", "text": "Give me an event log covering every Maintenance Request, limited to three events: the request being prioritized by urgency, the risk being evaluated and the request being authorized."}
+{"question_id": "M08", "text": "Build an event log for all Work Order cases that contains only the activities Reservation Opened, Part Allocated, Stock Checked and Part Issued."}
+{"question_id": "M08P", "text": "For every Work Order, build an event log limited to four events: a parts reservation being created, a part being earmarked for the job, inventory availability being looked up and a part being handed out from the store."}
+{"question_id": "M09", "text": "Produce an event log for all Equipment cases that contains only the activities Adjustment Made and Component Replaced."}
+{"question_id": "M09P", "text": "For every piece of Equipment, I need an event log limited to two events: an adjustment being carried out and a component being swapped out."}
+{"question_id": "M10", "text": "Create an event log for all Technician cases that contains only the activities Inspection Performed, Function Tested, Verification Started and Reading Taken."}
+{"question_id": "M10P", "text": "Give me an event log covering every Technician, limited to four events: an inspection being conducted, a functional test being run, the verification getting under way and a measurement being recorded."}
+{"question_id": "M11", "text": "Create an event log for all Equipment cases that covers the complete history of each case, that is, every activity associated with Equipment across all of its phases."}
+{"question_id": "M11P", "text": "For every piece of Equipment, give me the full event log: everything that happens to it in every phase it takes part in, with nothing left out."}
+{"question_id": "M12", "text": "Build an event log for all Maintenance Request cases with the complete history of each case, including every activity associated with a Maintenance Request across all of its phases."}
+{"question_id": "M12P", "text": "I need the entire story of every Maintenance Request as an event log, covering whatever happens to it in each of the phases it belongs to."}
+{"question_id": "M13", "text": "Produce an event log for all Work Item cases covering the complete history of each case: every activity associated with a Work Item across all of its phases."}
+{"question_id": "M13P", "text": "For every Work Item, build an event log of its whole history, spanning all the phases it is involved in and omitting nothing that happens to it."}
+{"question_id": "M14", "text": "Create an event log for all Technician cases that contains the complete history of each case, meaning every activity associated with a Technician across all of its phases."}
+{"question_id": "M14P", "text": "Give me an event log covering every Technician in full: all that is associated with the Technician across every phase the Technician takes part in."}
+{"question_id": "M15", "text": "Create an event log for all Maintenance Request cases covering everything that happens in the intake phase for each case."}
+{"question_id": "M15P", "text": "For every Maintenance Request, I need an event log limited to the intake phase, containing all that takes place for the request in that phase."}
+{"question_id": "M16", "text": "Build an event log for all Work Order cases covering everything that happens in the parts phase for each case."}
+{"question_id": "M16P", "text": "Give me an event log for every Work Order that is confined to the parts phase and includes all that occurs for the work order within that phase."}
+{"question_id": "M17", "text": "Produce an event log for all Technician cases covering everything that happens in the field work phase for each case."}
+{"question_id": "M17P", "text": "For every Technician, build an event log restricted to the field work phase, with the whole of what happens for the Technician during that phase."}
+{"question_id": "M18", "text": "Create an event log for all Equipment cases covering everything that happens in the acceptance phase for each case."}
+{"question_id": "M18P", "text": "For every piece of Equipment, I need an event log of the acceptance phase only, including all that takes place for the Equipment in that phase."}
+{"question_id": "M19", "text": "Build an event log for all Work Order cases covering everything that happens in the work planning phase for each case."}
+{"question_id": "M19P", "text": "Give me an event log covering every Work Order within the work planning phase alone, with all that occurs for the work order in that phase."}
+{"question_id": "M20", "text": "Produce an event log for all Work Item cases covering everything that happens in the parts phase for each case."}
+{"question_id": "M20P", "text": "For every Work Item, build an event log that stays within the parts phase and contains the whole of what happens for the Work Item there."}

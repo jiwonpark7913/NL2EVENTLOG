@@ -1,0 +1,3479 @@
+{
+  "name": "Operations ledger",
+  "timezone": "UTC",
+  "business_process_overview": [
+    "Sourcing covers Requisition Filed, Funding Checked, Quotation Received, Bid Evaluated, Requisition Approved.",
+    "Ordering covers Order Issued, Line Released, Order Acknowledged, Quantity Confirmed, Delivery Booked.",
+    "Receiving covers Receipt Opened, Goods Unloaded, Lot Inspected, Quantity Accepted, Receipt Posted.",
+    "Invoicing covers Invoice Received, Invoice Registered, Match Attempted, Dispute Resolved, Invoice Approved.",
+    "Settlement covers Payment Initiated, Payment Authorized, Transfer Sent, Remittance Received, Payment Cleared."
+  ],
+  "tables": [
+    {
+      "table": "purchase_requisition_registry",
+      "definition": "One registered purchase requisition per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one purchase requisition. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_registry",
+      "definition": "One registered purchase order per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one purchase order. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_line_registry",
+      "definition": "One registered purchase order line per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one purchase order line. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "receipt_registry",
+      "definition": "One registered receipt per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one receipt. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "invoice_registry",
+      "definition": "One registered invoice per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one invoice. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "payment_registry",
+      "definition": "One registered payment per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one payment. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "supplier_registry",
+      "definition": "One registered supplier per row.",
+      "columns": [
+        {
+          "name": "business_key",
+          "type": "TEXT",
+          "definition": "Stable identifier of one supplier. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "business_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "assignment_bundle",
+      "definition": "Business object assignments for one operational record.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Assignment identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "assignment_entry",
+      "definition": "Individual allocation that refers to the assignment bundle.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Allocation identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "bundle_ref",
+          "type": "TEXT",
+          "definition": "Business assignment reference. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "bundle_ref",
+          "parent_table": "assignment_bundle",
+          "parent_column": "record_key"
+        }
+      ]
+    },
+    {
+      "table": "status_journal",
+      "definition": "Operational status journal entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K13": "Quotation Received",
+            "K23": "Order Acknowledged",
+            "K35": "Receipt Posted",
+            "K43": "Match Attempted"
+          }
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "definition": "When the operational action occurred (UTC)."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "milestone_pair",
+      "definition": "Operational milestone pair entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Business milestone pair category. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K1": "Requisition Filed (first) / Funding Checked (second)",
+            "K3": "Receipt Opened (first) / Goods Unloaded (second)",
+            "K5": "Payment Initiated (first) / Payment Authorized (second)"
+          }
+        },
+        {
+          "name": "opened_at",
+          "type": "TEXT",
+          "definition": "When the first named milestone occurred, if present."
+        },
+        {
+          "name": "advanced_at",
+          "type": "TEXT",
+          "definition": "When the second named milestone occurred, if present."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "progress_sheet",
+      "definition": "Operational progress sheet entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "order_issued_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Order Issued when performed."
+        },
+        {
+          "name": "line_released_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Line Released when performed."
+        },
+        {
+          "name": "lot_inspected_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Lot Inspected when performed."
+        },
+        {
+          "name": "quantity_accepted_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Quantity Accepted when performed."
+        },
+        {
+          "name": "invoice_received_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Invoice Received when performed."
+        },
+        {
+          "name": "invoice_registered_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Invoice Registered when performed."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "closure_receipt",
+      "definition": "Operational closure receipt entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "definition": "UTC instant of Payment Cleared. One row per Payment Cleared occurrence."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "dated_journal",
+      "definition": "Operational dated journal entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K14": "Bid Evaluated",
+            "K24": "Quantity Confirmed",
+            "K44": "Dispute Resolved",
+            "K53": "Transfer Sent"
+          }
+        },
+        {
+          "name": "business_date",
+          "type": "TEXT",
+          "definition": "UTC calendar date the action happened."
+        },
+        {
+          "name": "business_clock",
+          "type": "TEXT",
+          "definition": "UTC time of day the action happened."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "message_ledger",
+      "definition": "Operational message ledger entries.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "kind_code",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K15": "Requisition Approved",
+            "K25": "Delivery Booked",
+            "K45": "Invoice Approved",
+            "K54": "Remittance Received"
+          }
+        },
+        {
+          "name": "message_body",
+          "type": "TEXT",
+          "definition": "JSON payload. The $.at field is the UTC instant the action happened."
+        },
+        {
+          "name": "purchase_requisition_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase requisition identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "purchase_order_line_ref",
+          "type": "TEXT",
+          "definition": "Associated purchase order line identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "receipt_ref",
+          "type": "TEXT",
+          "definition": "Associated receipt identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "invoice_ref",
+          "type": "TEXT",
+          "definition": "Associated invoice identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "payment_ref",
+          "type": "TEXT",
+          "definition": "Associated payment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "supplier_ref",
+          "type": "TEXT",
+          "definition": "Associated supplier identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": [
+        {
+          "column": "purchase_requisition_ref",
+          "parent_table": "purchase_requisition_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_ref",
+          "parent_table": "purchase_order_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "purchase_order_line_ref",
+          "parent_table": "purchase_order_line_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "receipt_ref",
+          "parent_table": "receipt_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "invoice_ref",
+          "parent_table": "invoice_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "payment_ref",
+          "parent_table": "payment_registry",
+          "parent_column": "business_key"
+        },
+        {
+          "column": "supplier_ref",
+          "parent_table": "supplier_registry",
+          "parent_column": "business_key"
+        }
+      ]
+    },
+    {
+      "table": "central_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_notice_display",
+      "definition": "Local office register for notice display at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_parking_permit",
+      "definition": "Local office register for parking permit at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_notation_5",
+      "definition": "Local office register for desk allocation at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_key_handover",
+      "definition": "Local office register for key handover at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_building_access",
+      "definition": "Local office register for building access at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_stationery_issue",
+      "definition": "Local office register for stationery issue at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_cabinet_check",
+      "definition": "Local office register for cabinet check at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_line_notation_10",
+      "definition": "Local office register for training attendance at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_archive_transfer",
+      "definition": "Local office register for archive transfer at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "central_canteen_booking",
+      "definition": "Local office register for canteen booking at the central site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "receipt_notation_15",
+      "definition": "Local office register for notice display at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_parking_permit",
+      "definition": "Local office register for parking permit at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_desk_allocation",
+      "definition": "Local office register for desk allocation at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_key_handover",
+      "definition": "Local office register for key handover at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_building_access",
+      "definition": "Local office register for building access at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "invoice_notation_20",
+      "definition": "Local office register for stationery issue at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_cabinet_check",
+      "definition": "Local office register for cabinet check at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_training_attendance",
+      "definition": "Local office register for training attendance at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_archive_transfer",
+      "definition": "Local office register for archive transfer at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "north_canteen_booking",
+      "definition": "Local office register for canteen booking at the north site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "payment_notation_25",
+      "definition": "Local office register for visitor badge issue at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_notice_display",
+      "definition": "Local office register for notice display at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_parking_permit",
+      "definition": "Local office register for parking permit at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_desk_allocation",
+      "definition": "Local office register for desk allocation at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "supplier_notation_30",
+      "definition": "Local office register for key handover at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_building_access",
+      "definition": "Local office register for building access at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_stationery_issue",
+      "definition": "Local office register for stationery issue at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_cabinet_check",
+      "definition": "Local office register for cabinet check at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_training_attendance",
+      "definition": "Local office register for training attendance at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_requisition_notation_35",
+      "definition": "Local office register for archive transfer at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "south_canteen_booking",
+      "definition": "Local office register for canteen booking at the south site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_notice_display",
+      "definition": "Local office register for notice display at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_notation_40",
+      "definition": "Local office register for parking permit at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_desk_allocation",
+      "definition": "Local office register for desk allocation at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_key_handover",
+      "definition": "Local office register for key handover at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_building_access",
+      "definition": "Local office register for building access at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_stationery_issue",
+      "definition": "Local office register for stationery issue at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_line_notation_45",
+      "definition": "Local office register for cabinet check at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_training_attendance",
+      "definition": "Local office register for training attendance at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_archive_transfer",
+      "definition": "Local office register for archive transfer at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "east_canteen_booking",
+      "definition": "Local office register for canteen booking at the east site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "receipt_notation_50",
+      "definition": "Local office register for meeting room booking at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_notice_display",
+      "definition": "Local office register for notice display at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_parking_permit",
+      "definition": "Local office register for parking permit at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_desk_allocation",
+      "definition": "Local office register for desk allocation at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_key_handover",
+      "definition": "Local office register for key handover at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "invoice_notation_55",
+      "definition": "Local office register for building access at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_stationery_issue",
+      "definition": "Local office register for stationery issue at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_cabinet_check",
+      "definition": "Local office register for cabinet check at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_training_attendance",
+      "definition": "Local office register for training attendance at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "west_archive_transfer",
+      "definition": "Local office register for archive transfer at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "payment_notation_60",
+      "definition": "Local office register for canteen booking at the west site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_notice_display",
+      "definition": "Local office register for notice display at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_parking_permit",
+      "definition": "Local office register for parking permit at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "supplier_notation_65",
+      "definition": "Local office register for desk allocation at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_key_handover",
+      "definition": "Local office register for key handover at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_building_access",
+      "definition": "Local office register for building access at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_stationery_issue",
+      "definition": "Local office register for stationery issue at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_cabinet_check",
+      "definition": "Local office register for cabinet check at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_requisition_notation_70",
+      "definition": "Local office register for training attendance at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_archive_transfer",
+      "definition": "Local office register for archive transfer at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "riverside_canteen_booking",
+      "definition": "Local office register for canteen booking at the riverside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_notation_75",
+      "definition": "Local office register for notice display at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_parking_permit",
+      "definition": "Local office register for parking permit at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_desk_allocation",
+      "definition": "Local office register for desk allocation at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_key_handover",
+      "definition": "Local office register for key handover at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_building_access",
+      "definition": "Local office register for building access at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_order_line_notation_80",
+      "definition": "Local office register for stationery issue at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_cabinet_check",
+      "definition": "Local office register for cabinet check at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_training_attendance",
+      "definition": "Local office register for training attendance at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_archive_transfer",
+      "definition": "Local office register for archive transfer at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "hill_canteen_booking",
+      "definition": "Local office register for canteen booking at the hill site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "receipt_notation_85",
+      "definition": "Local office register for visitor badge issue at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_notice_display",
+      "definition": "Local office register for notice display at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_parking_permit",
+      "definition": "Local office register for parking permit at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_desk_allocation",
+      "definition": "Local office register for desk allocation at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "invoice_notation_90",
+      "definition": "Local office register for key handover at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_building_access",
+      "definition": "Local office register for building access at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_stationery_issue",
+      "definition": "Local office register for stationery issue at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_cabinet_check",
+      "definition": "Local office register for cabinet check at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_training_attendance",
+      "definition": "Local office register for training attendance at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "payment_notation_95",
+      "definition": "Local office register for archive transfer at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "lakeside_canteen_booking",
+      "definition": "Local office register for canteen booking at the lakeside site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_visitor_badge_issue",
+      "definition": "Local office register for visitor badge issue at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_meeting_room_booking",
+      "definition": "Local office register for meeting room booking at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_notice_display",
+      "definition": "Local office register for notice display at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "supplier_notation_100",
+      "definition": "Local office register for parking permit at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_desk_allocation",
+      "definition": "Local office register for desk allocation at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_key_handover",
+      "definition": "Local office register for key handover at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_building_access",
+      "definition": "Local office register for building access at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "downtown_stationery_issue",
+      "definition": "Local office register for stationery issue at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "purchase_requisition_notation_105",
+      "definition": "Local office register for cabinet check at the downtown site.",
+      "columns": [
+        {
+          "name": "record_key",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "filed_at",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "notation",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "record_key"
+      ],
+      "foreign_keys": []
+    }
+  ]
+}

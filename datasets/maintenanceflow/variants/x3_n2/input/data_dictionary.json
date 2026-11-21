@@ -1,0 +1,794 @@
+{
+  "name": "Operations ledger",
+  "timezone": "UTC",
+  "business_process_overview": [
+    "Intake covers Fault Reported, Request Opened, Request Triaged, Risk Assessed, Request Approved.",
+    "Work planning covers Work Order Opened, Technician Assigned, Inspection Performed, Scope Agreed, Work Released.",
+    "Parts covers Reservation Opened, Part Allocated, Stock Checked, Part Issued, Reservation Settled.",
+    "Field work covers Work Item Started, Adjustment Made, Component Replaced, Function Tested, Work Item Finished.",
+    "Acceptance covers Verification Started, Reading Taken, Equipment Accepted, Work Order Closed, Request Closed."
+  ],
+  "tables": [
+    {
+      "table": "T08",
+      "definition": "One registered equipment per row.",
+      "columns": [
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Stable identifier of one equipment. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "C21"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T09",
+      "definition": "One registered maintenance request per row.",
+      "columns": [
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Stable identifier of one maintenance request. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "C21"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T06",
+      "definition": "One registered work order per row.",
+      "columns": [
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Stable identifier of one work order. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "C21"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T02",
+      "definition": "One registered work item per row.",
+      "columns": [
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Stable identifier of one work item. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "C21"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T04",
+      "definition": "One registered part reservation per row.",
+      "columns": [
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Stable identifier of one part reservation. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "C21"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T11",
+      "definition": "One registered technician per row.",
+      "columns": [
+        {
+          "name": "C21",
+          "type": "TEXT",
+          "definition": "Stable identifier of one technician. This key is required and unique within this register."
+        }
+      ],
+      "primary_key": [
+        "C21"
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table": "T03",
+      "definition": "Business object assignments for one operational record.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Assignment identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T07",
+      "definition": "Individual allocation that refers to the assignment bundle.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Allocation identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C11",
+          "type": "TEXT",
+          "definition": "Business assignment reference. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C11",
+          "parent_table": "T03",
+          "parent_column": "C18"
+        }
+      ]
+    },
+    {
+      "table": "T01",
+      "definition": "Operational status journal entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K13": "Request Triaged",
+            "K23": "Inspection Performed",
+            "K35": "Reservation Settled",
+            "K43": "Component Replaced"
+          }
+        },
+        {
+          "name": "C07",
+          "type": "TEXT",
+          "definition": "When the operational action occurred (UTC)."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T14",
+      "definition": "Operational milestone pair entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Business milestone pair category. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K1": "Fault Reported (first) / Request Opened (second)",
+            "K3": "Reservation Opened (first) / Part Allocated (second)",
+            "K5": "Verification Started (first) / Reading Taken (second)"
+          }
+        },
+        {
+          "name": "C13",
+          "type": "TEXT",
+          "definition": "When the first named milestone occurred, if present."
+        },
+        {
+          "name": "C02",
+          "type": "TEXT",
+          "definition": "When the second named milestone occurred, if present."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T05",
+      "definition": "Operational progress sheet entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C09",
+          "type": "TEXT",
+          "definition": "UTC instant of Work Order Opened when performed."
+        },
+        {
+          "name": "C19",
+          "type": "TEXT",
+          "definition": "UTC instant of Technician Assigned when performed."
+        },
+        {
+          "name": "C04",
+          "type": "TEXT",
+          "definition": "UTC instant of Stock Checked when performed."
+        },
+        {
+          "name": "C10",
+          "type": "TEXT",
+          "definition": "UTC instant of Part Issued when performed."
+        },
+        {
+          "name": "C20",
+          "type": "TEXT",
+          "definition": "UTC instant of Work Item Started when performed."
+        },
+        {
+          "name": "C22",
+          "type": "TEXT",
+          "definition": "UTC instant of Adjustment Made when performed."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T15",
+      "definition": "Operational closure receipt entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C07",
+          "type": "TEXT",
+          "definition": "UTC instant of Request Closed. One row per Request Closed occurrence."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T10",
+      "definition": "Operational dated journal entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K14": "Risk Assessed",
+            "K24": "Scope Agreed",
+            "K44": "Function Tested",
+            "K53": "Equipment Accepted"
+          }
+        },
+        {
+          "name": "C06",
+          "type": "TEXT",
+          "definition": "UTC calendar date the action happened."
+        },
+        {
+          "name": "C14",
+          "type": "TEXT",
+          "definition": "UTC time of day the action happened."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T13",
+      "definition": "Operational message ledger entries.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Unique physical record identifier. This key is required and unique within this register."
+        },
+        {
+          "name": "C17",
+          "type": "TEXT",
+          "definition": "Operational action recorded in this entry. The accompanying code vocabulary supplies the business meaning.",
+          "value_domain": {
+            "K15": "Request Approved",
+            "K25": "Work Released",
+            "K45": "Work Item Finished",
+            "K54": "Work Order Closed"
+          }
+        },
+        {
+          "name": "C12",
+          "type": "TEXT",
+          "definition": "JSON payload. The $.at field is the UTC instant the action happened."
+        },
+        {
+          "name": "C05",
+          "type": "TEXT",
+          "definition": "Associated equipment identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C23",
+          "type": "TEXT",
+          "definition": "Associated maintenance request identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C15",
+          "type": "TEXT",
+          "definition": "Associated work order identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C24",
+          "type": "TEXT",
+          "definition": "Associated work item identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C16",
+          "type": "TEXT",
+          "definition": "Associated part reservation identifier, when applicable. The declared foreign key identifies the corresponding register."
+        },
+        {
+          "name": "C03",
+          "type": "TEXT",
+          "definition": "Associated technician identifier, when applicable. The declared foreign key identifies the corresponding register."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": [
+        {
+          "column": "C05",
+          "parent_table": "T08",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C23",
+          "parent_table": "T09",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C15",
+          "parent_table": "T06",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C24",
+          "parent_table": "T02",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C16",
+          "parent_table": "T04",
+          "parent_column": "C21"
+        },
+        {
+          "column": "C03",
+          "parent_table": "T11",
+          "parent_column": "C21"
+        }
+      ]
+    },
+    {
+      "table": "T12",
+      "definition": "Local office register for visitor badge issue at the central site.",
+      "columns": [
+        {
+          "name": "C18",
+          "type": "TEXT",
+          "definition": "Register key. This key is required and unique within this register."
+        },
+        {
+          "name": "C01",
+          "type": "TEXT",
+          "definition": "Administrative filing time."
+        },
+        {
+          "name": "C08",
+          "type": "TEXT",
+          "definition": "Reference note."
+        }
+      ],
+      "primary_key": [
+        "C18"
+      ],
+      "foreign_keys": []
+    }
+  ]
+}
