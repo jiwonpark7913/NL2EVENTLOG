@@ -7,7 +7,7 @@ from readability import format_documents
 ROOT = Path(__file__).resolve().parents[2]
 def esc(s):return html.escape(str(s))
 def build(name,positions,title):
- p=ROOT/"datasets"/name;out=p/"docs";out.mkdir(exist_ok=True)
+ p=ROOT/"datasets/synthetic"/name;out=p/"docs";out.mkdir(exist_ok=True)
  d=annotate(p);tables=d["tables"]
  # Author-only overview formatting; no classifications are added to the business JSON.
  if name=="hospitalflow":
@@ -158,7 +158,6 @@ def build(name,positions,title):
  overview+="\n## Relationships\n\n| Parent | Child | Child FK | Parent key | Parent-to-child count | Kind |\n|---|---|---|---|---|---|\n"
  for r in relationships:overview+="| "+r["parent"]+" | "+r["child"]+" | "+r["from_col"]+" | "+r["to_col"]+" | "+r["label"]+" | "+("logical" if r["logical"] else "declared")+" |\n"
  (out/"schema_overview.md").write_text(overview)
- readme=p/"README.md";s=re.sub(r"\n## Schema and documentation\n.*?(?=\n## |\Z)","",readme.read_text(),flags=re.S);s+="\n## Schema and documentation\n\n"+("" if "![Schema](docs/schema.png)" in s else "![Schema](docs/schema.png)\n\n")+"- [Table inventory and relationships](docs/schema_overview.md)\n- [English column dictionary](docs/data_dictionary.md)\n- [CSV dictionary](docs/data_dictionary.csv)\n- [Editable draw.io diagram](docs/schema.drawio)\n- [Object-based Gold logs and coverage](docs/object_event_logs.md)\n";readme.write_text(s)
  con.close()
  if name=="hospitalflow":
   from hospital_dictionary import render as render_hospital
@@ -171,10 +170,10 @@ build("hospitalflow",{"patients":(65,130),"patient_profile":(575,130),"admission
 # This dataset has a clean business-dictionary renderer; do not apply legacy answer annotations.
 import subprocess,sys
 for variant in ["plateflow","warehouseflow"]:
- subprocess.run([sys.executable,str(ROOT/"datasets"/variant/"documentation.py")],check=True)
+ subprocess.run([sys.executable,str(ROOT/"datasets/synthetic"/variant/"documentation.py")],check=True)
 format_documents(ROOT)
 
 from timestamp_inventory import refresh
 refresh()
 from dictionary_standard import render
-for name in ["warehouseflow","universityflow","plateflow","hospitalflow"]:render(ROOT/"datasets"/name)
+for name in ["warehouseflow","universityflow","plateflow","hospitalflow"]:render(ROOT/"datasets/synthetic"/name)

@@ -7,6 +7,8 @@ generated under docs/ and is NOT a source of benchmark Gold annotations.
 from __future__ import annotations
 import argparse,json
 from pathlib import Path
+from dataset_paths import dataset_path
+
 ROOT=Path(__file__).resolve().parents[1]
 NAMES=["adventureworks","mimic","hospitalflow","universityflow","plateflow","warehouseflow"]
 VERSION="NL2EVENTLOG-DD-v1"
@@ -54,7 +56,7 @@ def normalize(dataset,raw):
   "note":"Lossless metadata intent, not full legacy-field fidelity: original dictionary is authoritative for unmapped fields. Missing definitions remain null."
  }
 def main(dataset):
- src=ROOT/"datasets"/dataset/"input/data_dictionary.json"
+ src=dataset_path(ROOT, dataset)/"input/data_dictionary.json"
  if not src.exists():raise FileNotFoundError(src)
  data=normalize(dataset,json.loads(src.read_text()))
  dest=src.parent.parent/"docs/data_dictionary.standard.json"

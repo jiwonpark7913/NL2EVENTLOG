@@ -32,7 +32,7 @@ SNAPSHOTS={
 }
 
 def check(name):
-    base=ROOT/"datasets"/name
+    base=ROOT/"datasets/synthetic"/name
     db=base/"input/database.sqlite"
     con=sqlite3.connect(f"file:{db}?mode=ro",uri=True)
     assert con.execute("PRAGMA integrity_check").fetchone()[0]=="ok",name

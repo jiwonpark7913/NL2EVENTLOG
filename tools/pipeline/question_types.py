@@ -81,4 +81,4 @@ def construct(p):
  for q in qs.values():doc+='| '+q['question_id']+' | '+q['question_type']+' '+q['question_type_name']+' | '+(q['pair_of'] or '—')+' | '+('O' if q['answerability']=='answerable' else 'X')+' | '+str(q['requested_activity_count'])+' | '+str(q['extractable_activity_count'])+' | '+q['text']+' |\n'
  (p/'docs/questions.md').write_text(doc);con.close();from question_summary import refresh;refresh();return report
 if __name__=='__main__':
- for n in ['warehouseflow','universityflow','plateflow']:r=construct(ROOT/'datasets'/n);print(n,r['total_questions'],r['answerable_questions'],r['question_type_counts'])
+ for n in ['warehouseflow','universityflow','plateflow']:r=construct(ROOT/'datasets/synthetic'/n);print(n,r['total_questions'],r['answerable_questions'],r['question_type_counts'])

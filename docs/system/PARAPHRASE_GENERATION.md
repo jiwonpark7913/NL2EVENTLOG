@@ -43,7 +43,7 @@ python paraphrase_questions.py prepare
 - Q1·Q3의 원문, ID, ES와 정답 이벤트를 보존합니다.
 - 활성 질문 파일, 모델 입력 파일, gold 메타데이터에서 기존 Q2·Q4를 제거합니다.
 - 기존 Q2·Q4의 gold SQL/CSV와 이전 paraphrase 출력 캐시도 제거합니다.
-- 각 원문과 생성할 질문 ID의 대응을 `datasets/*/source/paraphrase_plan.jsonl`에 저장합니다.
+- 각 원문과 생성할 질문 ID의 대응을 `datasets/*/*/source/paraphrase_plan.jsonl`에 저장합니다.
 - 이 단계의 결과는 Q1·Q3 총 150개, gold CSV 141개입니다. 기존 pair를 필수로 요구하는 domain validator는 이 중간 상태에 맞지 않습니다. 아래 전용 `validate`를 사용하세요.
 
 `prepare`는 명시적인 초기화입니다. **생성 중단 후 이어서 할 때는 prepare를 다시 실행하지 마세요.** 캐시를 초기화합니다. 기존 데이터는 Git 기록으로 복구할 수 있습니다.

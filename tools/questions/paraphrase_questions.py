@@ -331,7 +331,7 @@ def update_inventory_counts(doc, questions, answerable, dataset=None):
             in_inventory = False
         if not in_inventory or row.startswith('|---'):
             continue
-        if dataset and 'datasets/'+dataset+'/README.md' not in row:
+        if dataset and 'datasets/synthetic/'+dataset+'/README.md' not in row:
             continue
         parts = row.split('|')
         if len(parts)==11:
@@ -345,7 +345,7 @@ def refresh_docs():
     allrows, changes = [], {}
     header = '| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |\n|---|---:|---:|---:|---:|\n'
     for name in DATASETS:
-        p = ROOT/'datasets'/name
+        p = ROOT/'datasets/synthetic'/name
         questions = readjl(question_file(p))
         rows = []
         for typ in NAMES:
@@ -371,7 +371,7 @@ def refresh_docs():
     table = '| Dataset | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |\n|---|---|---:|---:|---:|---:|\n'+''.join(f'| {name} | {t} | {n} | {a} | {u} | {avg:.2f} |\n' for name,t,n,a,u,avg in allrows)
     doc = re.sub(r'\| Dataset \| Type \|.*?(?=\n\n)',table.rstrip(),doc,count=1,flags=re.S)
     for name in DATASETS:
-        questions = readjl(question_file(ROOT/'datasets'/name))
+        questions = readjl(question_file(ROOT/'datasets/synthetic'/name))
         doc = update_inventory_counts(doc,len(questions),sum(q.get('answerable',q.get('answerability')=='answerable') for q in questions),name)
     changes[path] = doc.encode()
     write_transaction(changes)
@@ -389,7 +389,7 @@ def main():
     args = parser.parse_args()
     if args.attempts<1 or (args.limit is not None and args.limit<1):
         parser.error('--attempts and --limit must be positive')
-    paths = [ROOT/'datasets'/n for n in dict.fromkeys(args.datasets)]
+    paths = [ROOT/'datasets/synthetic'/n for n in dict.fromkeys(args.datasets)]
     if args.command=='prepare':
         changes = {}
         for p in paths:

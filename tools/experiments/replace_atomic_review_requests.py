@@ -27,7 +27,7 @@ ACTS={
  'OU10':['Assignment Graded','Assignment Regraded']}
 def run():
  for ds,changes in CHANGES.items():
-  b=ROOT/'datasets'/ds;gold=load(b/'private/gold.jsonl');by={identity(g):g for g in gold};db=sqlite3.connect(f'file:{b}/input/database.sqlite?mode=ro',uri=True);db.row_factory=sqlite3.Row;fix={};oldtext={}
+  b=ROOT/'datasets/synthetic'/ds;gold=load(b/'private/gold.jsonl');by={identity(g):g for g in gold};db=sqlite3.connect(f'file:{b}/input/database.sqlite?mode=ro',uri=True);db.row_factory=sqlite3.Row;fix={};oldtext={}
   for target,(parent,focus,text,para) in changes.items():
    t=copy.deepcopy(by[parent]);acts=ACTS[target]
    if ds=='hospitalflow':

@@ -3,10 +3,10 @@ on:
   push:
     branches: [main]
     paths:
-      - 'datasets/olist/build.py'
-      - 'datasets/olist/validate.py'
-      - 'datasets/olist/diagram.py'
-      - 'datasets/olist/source/upstream_files.json'
+      - 'datasets/source_relational/olist/build.py'
+      - 'datasets/source_relational/olist/validate.py'
+      - 'datasets/source_relational/olist/diagram.py'
+      - 'datasets/source_relational/olist/source/upstream_files.json'
       - '.github/workflows/olist-dataset.yml'
   workflow_dispatch:
 permissions:
@@ -27,14 +27,14 @@ jobs:
           python-version: '3.11'
       - name: Build complete pinned source data and validate SQL
         run: |
-          python datasets/olist/build.py --cache "$RUNNER_TEMP/olist-source"
-          python datasets/olist/validate.py
+          python datasets/source_relational/olist/build.py --cache "$RUNNER_TEMP/olist-source"
+          python datasets/source_relational/olist/validate.py
           git diff --check
       - name: Publish full compressed snapshot, dictionary and review artifacts
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add datasets/olist/input/database.sqlite.gz datasets/olist/input/data_dictionary.json datasets/olist/evaluation/schema.sql datasets/olist/source/provenance.json datasets/olist/docs
+          git add datasets/source_relational/olist/input/database.sqlite.gz datasets/source_relational/olist/input/data_dictionary.json datasets/source_relational/olist/evaluation/schema.sql datasets/source_relational/olist/source/provenance.json datasets/source_relational/olist/docs
           if ! git diff --cached --quiet; then
             git commit -m 'data: publish validated Olist SQLite snapshot [skip ci]'
             git pull --rebase origin "${GITHUB_REF_NAME}"

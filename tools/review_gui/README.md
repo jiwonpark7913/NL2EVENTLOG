@@ -11,9 +11,9 @@ The four datasets listed in the sidebar are **MIMIC-IV Demo**, **Microsoft Adven
 
 ### Critical availability distinctions
 
-- `datasets/mimic/input/data_dictionary.json` and `datasets/adventureworks/input/data_dictionary.json` exist in the repository.
+- `datasets/source_relational/mimic/input/data_dictionary.json` and `datasets/source_relational/adventureworks/input/data_dictionary.json` exist in the repository.
 - MIMIC SQLite may be stored as `input/database.sqlite.gz`; decompress it to `input/database.sqlite` locally. Do not accidentally commit uncompressed copies.
-- The BPI 2019 and Order Management OCEL converted databases are **generated GitHub Actions artifacts**, not necessarily committed under `datasets/`. Download the workflow artifacts, extract `input/database.sqlite` and `input/data_dictionary.json` into `datasets/bpi2019_ocel/` and `datasets/order_management_ocel/`.
+- The BPI 2019 and Order Management OCEL converted databases are **generated GitHub Actions artifacts**, not necessarily committed under `datasets/`. Download the workflow artifacts, extract `input/database.sqlite` and `input/data_dictionary.json` into `datasets/from_event_logs/bpi2019_ocel/` and `datasets/from_event_logs/order_management_ocel/`.
 - **There are not yet verified runtime EEG outputs for these four datasets in this repository.** The schema ERD or an authored Gold evidence graph is *not* a Step 1 EEG. The EEG tab is intentionally empty until given a real export. See `CODEX_EEG_INTEGRATION.md` for the implementation handoff.
 
 ### Direct runtime integration
@@ -29,13 +29,13 @@ The external script must accept `--database`, `--dictionary`, `--dataset` and `-
 
 ### OCEL dictionary publication
 
-The OCEL converter already generated `data_dictionary.json`, but the build workflow previously uploaded it only as a temporary artifact. The workflow now has a second job to publish **validated Data Dictionary JSON files** to `datasets/bpi2019_ocel/input/data_dictionary.json` and `datasets/order_management_ocel/input/data_dictionary.json` on successful main-branch builds. Source SQLite snapshots and reviewer Gold are **not** committed by this job. On a fresh checkout before that job succeeds, the GUI will still report missing files; use the workflow artifact or run the documented OCEL converter. An unfinished/failed conversion is never marked as a published dictionary.
+The OCEL converter already generated `data_dictionary.json`, but the build workflow previously uploaded it only as a temporary artifact. The workflow now has a second job to publish **validated Data Dictionary JSON files** to `datasets/from_event_logs/bpi2019_ocel/input/data_dictionary.json` and `datasets/from_event_logs/order_management_ocel/input/data_dictionary.json` on successful main-branch builds. Source SQLite snapshots and reviewer Gold are **not** committed by this job. On a fresh checkout before that job succeeds, the GUI will still report missing files; use the workflow artifact or run the documented OCEL converter. An unfinished/failed conversion is never marked as a published dictionary.
 
 ### Actual EEG export adapter
 
 The dashboard requires a lightweight **view/export** produced from the genuine Step 1 runtime graph. Do not generate an EEG by simply turning all timestamp columns into events or by reading Gold artifacts.
 
-Write `datasets/<dataset>/review/eeg/actual_eeg.json` with:
+Write `datasets/<group>/<dataset>/review/eeg/actual_eeg.json` with:
 
 ```json
 {

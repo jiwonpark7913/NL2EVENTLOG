@@ -17,7 +17,7 @@ from pathlib import Path
 import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from run_eeg import execute as execute_eeg, validate_graph as validate_actual_graph
+from run_eeg import dataset_path, execute as execute_eeg, validate_graph as validate_actual_graph
 
 ROOT = Path(__file__).resolve().parents[2]
 DATASETS = {
@@ -32,7 +32,7 @@ st.caption("Physical DB → Data Dictionary → actual EEG evidence → request-
 with st.sidebar:
     dataset = st.selectbox("Dataset", list(DATASETS))
     slug = DATASETS[dataset]
-    root = ROOT / "datasets" / slug
+    root = dataset_path(ROOT, slug)
     st.markdown("**Data source**")
     st.code(str(root), language=None)
     st.info("The OCEL relational databases are generated as GitHub Actions artifacts and may need to be downloaded into datasets/.")
@@ -115,7 +115,7 @@ def read_log(path):
 
 dd = read_json(root / "input/data_dictionary.json")
 if dd is None:
-    st.warning("Data Dictionary가 로컬에 없습니다. 특히 OCEL은 Actions artifact를 먼저 다운로드해 datasets/<name>/input/에 배치하세요.")
+    st.warning("Data Dictionary가 로컬에 없습니다. 특히 OCEL은 Actions artifact를 먼저 다운로드해 datasets/<group>/<name>/input/에 배치하세요.")
     uploaded_dd = st.file_uploader("Load data_dictionary.json", type="json")
     if uploaded_dd:
         dd = json.load(uploaded_dd)

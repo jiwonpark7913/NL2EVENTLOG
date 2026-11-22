@@ -5,7 +5,7 @@ datasets whose question sets were audited in 2026-11: hospitalflow, plateflow, w
 Author/evaluation tooling only. It reads private Gold files and never writes below input/.
 It reuses the DFG extraction and SVG layout of ``build_gold_dfg_review.py`` and the source-row
 evidence panels of ``gold_source_rows.py``, but resolves files in the current repository layout
-(``datasets/<name>/review/gold_dfg``) and takes event bindings from
+(``datasets/<group>/<name>/review/gold_dfg``) and takes event bindings from
 ``private/persistence_mapping.json`` for every dataset.
 
 Usage:  python tools/rebuild_question_gold_review.py [dataset ...]
@@ -53,7 +53,7 @@ def rebuild_rich(name):
     dfg = load("build_gold_dfg_review", ROOT / "tools/build_gold_dfg_review.py")
     from gold_source_rows import SourceRows, render_review_evidence
 
-    base = ROOT / "datasets" / name
+    base = ROOT / "datasets/synthetic" / name
     out = base / "review/gold_dfg"
     graphs = out / "graphs"
     graphs.mkdir(parents=True, exist_ok=True)
@@ -107,7 +107,7 @@ def rebuild_rich(name):
         source_tables, sql_reads, unmatched, related = sources.inspect((base / "private/gold_sql" / f"{ident}.sql").read_text(), rows)
         record["source_tables"] = {table: len(matches) for table, _, matches in source_tables}
         record["unmatched_gold_rows"] = unmatched
-        evidence = render_review_evidence(source_tables, unmatched, related, dataset_path=f"../../../datasets/{name}", question_id=ident)
+        evidence = render_review_evidence(source_tables, unmatched, related, dataset_path="../..", question_id=ident)
         md.append(
             f"\nEvents: **{len(rows)}** · Cases with events: **{cases}** · Activities: **{len(activities)}** "
             f"· Edges: **{len(d['edges'])}** · Source tables: **{len(source_tables)}** · SQL tables: **{len(sql_reads)}**\n\n"
@@ -131,7 +131,7 @@ def rebuild_hospital():
     hosp = load("rebuild_hospital_gold_review", ROOT / "tools/experiments/rebuild_hospital_gold_review.py")
     from collections import Counter, defaultdict
 
-    base = ROOT / "datasets" / name
+    base = ROOT / "datasets/synthetic" / name
     out = base / "review/gold_dfg"
     graphs = out / "graphs"
     graphs.mkdir(parents=True, exist_ok=True)
@@ -179,7 +179,7 @@ def main(argv):
             print(json.dumps(rebuild_rich(name)))
         elif name == "hospitalflow":
             counts, rows = rebuild_hospital()
-            readme = ROOT / "datasets/hospitalflow/review/gold_dfg/README.md"
+            readme = ROOT / "datasets/synthetic/hospitalflow/review/gold_dfg/README.md"
             old = readme.read_text().splitlines()
             # keep whatever footer followed the question table in the checked-in file
             tail_start = max((i for i, line in enumerate(old) if line.startswith("| ")), default=len(old) - 1) + 1

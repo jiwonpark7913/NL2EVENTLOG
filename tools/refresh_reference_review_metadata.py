@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def run():
  audit=json.loads((ROOT/'docs/reference_gold_audit_2026-11-20.json').read_text())
  for ds in ['hospitalflow','plateflow','warehouseflow','universityflow']:
-  b=ROOT/'datasets'/ds;qp=next(p for p in [b/'private/questions.jsonl',b/'evaluation/questions.jsonl'] if p.exists());qs=[json.loads(l) for l in qp.read_text().splitlines() if l.strip()];gs={g['question_id']:g for g in map(json.loads,(b/'private/gold.jsonl').read_text().splitlines())}
+  b=ROOT/'datasets/synthetic'/ds;qp=next(p for p in [b/'private/questions.jsonl',b/'evaluation/questions.jsonl'] if p.exists());qs=[json.loads(l) for l in qp.read_text().splitlines() if l.strip()];gs={g['question_id']:g for g in map(json.loads,(b/'private/gold.jsonl').read_text().splitlines())}
   lines=[f'# {ds} — Question definitions and Gold review','', '[Interactive question / DFG / source-row review](../review/gold_dfg/index.html)','', 'Q1: explicit; Q2: explicit paraphrase; Q3: lifecycle; Q4: lifecycle paraphrase. Pairs retain the same scope and Gold log. Revised requests and paraphrases are author edits following the 2026-11-20 audit.','', '| ID | Type | Pair | Case | Process focus | Answerability | Supported activities | Observed activities | Events | Question |','|---|---|---|---|---|---|---:|---:|---:|---|']
   for q in qs:
    id=q.get('question_id',q.get('id'));g=gs[id];p=b/f'private/gold_logs/{id}.csv';rs=list(csv.DictReader(p.open())) if p.exists() else [];pv=g.get('process_view',{})

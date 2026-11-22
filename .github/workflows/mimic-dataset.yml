@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'datasets/mimic/build.py'
-      - 'datasets/mimic/enrich_dictionary.py'
+      - 'datasets/source_relational/mimic/build.py'
+      - 'datasets/source_relational/mimic/enrich_dictionary.py'
       - 'tools/normalize_data_dictionaries.py'
       - 'tools/add_dictionary_samples.py'
       - 'tools/temporal_candidates.py'
@@ -29,7 +29,7 @@ jobs:
       - name: Preflight syntax and MIMIC smoke tests
         run: |
           set -euo pipefail
-          python -m py_compile datasets/mimic/build.py tests/test_mimic_builder.py
+          python -m py_compile datasets/source_relational/mimic/build.py tests/test_mimic_builder.py
           python -u tests/test_mimic_builder.py
           python -u tests/test_temporal_candidates.py
       - name: Download official public MIMIC demo
@@ -52,11 +52,11 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install cairosvg==2.8.2
-          python datasets/mimic/build.py --source "$RUNNER_TEMP/mimic-iv-demo" --png
+          python datasets/source_relational/mimic/build.py --source "$RUNNER_TEMP/mimic-iv-demo" --png
           python - <<'PY'
           import json,sqlite3
           from pathlib import Path
-          p=Path('datasets/mimic/input')
+          p=Path('datasets/source_relational/mimic/input')
           dd=json.loads((p/'data_dictionary.json').read_text())
           assert len(dd['tables'])>=20,dd['statistics']
           conn=sqlite3.connect(p/'database.sqlite')
@@ -69,14 +69,14 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install 'beautifulsoup4>=4.12,<5'
-          python -m py_compile datasets/mimic/enrich_dictionary.py tools/normalize_data_dictionaries.py
-          python -u datasets/mimic/enrich_dictionary.py --dictionary datasets/mimic/input/data_dictionary.json
+          python -m py_compile datasets/source_relational/mimic/enrich_dictionary.py tools/normalize_data_dictionaries.py
+          python -u datasets/source_relational/mimic/enrich_dictionary.py --dictionary datasets/source_relational/mimic/input/data_dictionary.json
           python tools/add_dictionary_samples.py --dataset mimic --require-db
           python tools/normalize_data_dictionaries.py --dataset mimic
           python - <<'PY'
           import json
           from pathlib import Path
-          path=Path("datasets/mimic/input/data_dictionary.json")
+          path=Path("datasets/source_relational/mimic/input/data_dictionary.json")
           dd=json.loads(path.read_text())
           assert dd["metadata_coverage"]["documented_columns"]>=20
           assert dd["tables"]["admissions"]["columns"][2]["definition"]
@@ -86,7 +86,7 @@ jobs:
       - name: Audit MIMIC SQLite, dictionary, schema and references
         run: |
           set -euo pipefail
-          python -u tools/audit_benchmark.py --dataset mimic --report datasets/mimic/review/integrity_audit.json
+          python -u tools/audit_benchmark.py --dataset mimic --report datasets/source_relational/mimic/review/integrity_audit.json
       - name: Commit generated datasets and diagrams
         run: |
           set -euo pipefail
@@ -95,7 +95,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import gzip,shutil
-          db=Path("datasets/mimic/input/database.sqlite")
+          db=Path("datasets/source_relational/mimic/input/database.sqlite")
           if db.stat().st_size > 90_000_000:
               compressed=Path(str(db)+".gz")
               # Stable gzip header: default gzip.open() embeds a changing mtime,
@@ -114,7 +114,7 @@ jobs:
           for attempt in 1 2 3 4 5; do
             git fetch origin "${GITHUB_REF_NAME}"
             git reset --mixed "origin/${GITHUB_REF_NAME}"
-            git add datasets/mimic/input datasets/mimic/docs datasets/mimic/review/database datasets/mimic/review/integrity_audit.json
+            git add datasets/source_relational/mimic/input datasets/source_relational/mimic/docs datasets/source_relational/mimic/review/database datasets/source_relational/mimic/review/integrity_audit.json
             if git diff --cached --quiet; then
               echo "Generated MIMIC artifacts match the latest remote snapshot; nothing to publish."
               exit 0
@@ -137,5 +137,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: mimic-integrity-audit
-          path: datasets/mimic/review/integrity_audit.json
+          path: datasets/source_relational/mimic/review/integrity_audit.json
           if-no-files-found: warn

@@ -3,7 +3,7 @@ on:
   push:
     branches: [feature/hospitalflow-mimic-patients-transfers]
     paths:
-      - 'datasets/hospitalflow/validate.py'
+      - 'datasets/synthetic/hospitalflow/validate.py'
       - '.github/workflows/hospital-mimic-validate.yml'
   workflow_dispatch:
 permissions:
@@ -17,4 +17,4 @@ jobs:
         with:
           python-version: '3.11'
       - name: Validate new schema identity and all Gold SQL/CSV results
-        run: python datasets/hospitalflow/validate.py
+        run: python datasets/synthetic/hospitalflow/validate.py

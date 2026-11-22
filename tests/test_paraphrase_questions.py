@@ -73,10 +73,10 @@ class WorkflowTests(unittest.TestCase):
             shutil.copy(m.ROOT/'README.md',root/'README.md')
             for file in m.ROOT.glob('*.py'):
                 shutil.copy(file,root/file.name)
-            baseline = {str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.glob('datasets/*/private/gold_logs/*.csv')}
+            baseline = {str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in root.glob('datasets/*/*/private/gold_logs/*.csv')}
             original_sources = {}
             for name in m.DATASETS:
-                for q in m.readjl(m.question_file(root/'datasets'/name)):
+                for q in m.readjl(m.question_file(root/'datasets/synthetic'/name)):
                     if q['question_type'] in m.TARGET:
                         original_sources[name,m.qid(q)] = m.text(q)
             output = io.StringIO()
@@ -85,7 +85,7 @@ class WorkflowTests(unittest.TestCase):
                     with patch.object(sys,'argv',['paraphrase_questions.py',*args]):
                         m.main()
                 run(['prepare'])
-                seeds = sum(len(m.readjl(m.question_file(root/'datasets'/name))) for name in m.DATASETS)
+                seeds = sum(len(m.readjl(m.question_file(root/'datasets/synthetic'/name))) for name in m.DATASETS)
                 self.assertEqual(seeds,150)
                 for path,prior in baseline.items():
                     f = root/path
@@ -93,13 +93,13 @@ class WorkflowTests(unittest.TestCase):
                         self.assertEqual(hashlib.sha256(f.read_bytes()).hexdigest(),prior)
                 run(['prepare'])  # idempotent IDs and sources
                 run(['generate','--model','offline-fixture','--limit','2'])
-                self.assertEqual(sum(len(m.readjl(m.question_file(root/'datasets'/name))) for name in m.DATASETS),150)
+                self.assertEqual(sum(len(m.readjl(m.question_file(root/'datasets/synthetic'/name))) for name in m.DATASETS),150)
                 FakeAPI.calls = 0
                 run(['generate','--model','offline-fixture'])
                 self.assertEqual(FakeAPI.calls,296)  # two cached pairs, 148 x (generate + verify)
-                self.assertEqual(sum(len(m.readjl(m.question_file(root/'datasets'/name))) for name in m.DATASETS),300)
+                self.assertEqual(sum(len(m.readjl(m.question_file(root/'datasets/synthetic'/name))) for name in m.DATASETS),300)
                 for name in m.DATASETS:
-                    for q in m.readjl(m.question_file(root/'datasets'/name)):
+                    for q in m.readjl(m.question_file(root/'datasets/synthetic'/name)):
                         if q['question_type'] in m.TARGET:
                             self.assertEqual(m.text(q),original_sources[name,m.qid(q)])
                 for path,prior in baseline.items():

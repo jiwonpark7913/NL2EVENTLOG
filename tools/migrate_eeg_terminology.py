@@ -88,7 +88,7 @@ def update_readme(path, dataset, level):
     if level == 'dataset':
         marker = '## Entity terminology'
         section = (marker + '\n\n' + CASE_NOTE + '\n\n'
-            '[Canonical terminology and stage contracts](../../docs/system/EEG_ENTITY_MODEL.md). '
+            '[Canonical terminology and stage contracts](../../../docs/system/EEG_ENTITY_MODEL.md). '
             'Step 2 uses explicit activities or implicit recorded history with optional process focus; '
             'legacy reference logs retain their original scopes.\n')
         if marker not in text:
@@ -184,9 +184,8 @@ def root_readme():
 def main():
     counts = {}
     for name in NAMES:
-        base = ROOT / 'datasets' / name
+        base = ROOT / 'datasets/synthetic' / name
         changed = 0
-        changed += update_readme(base / 'README.md', name, 'dataset')
         changed += update_readme(base / 'review/database/README.md', name, 'database')
         changed += update_readme(base / 'review/gold_dfg/README.md', name, 'gold')
         changed += review_inventory(base / 'review/gold_dfg/event_graph.md')

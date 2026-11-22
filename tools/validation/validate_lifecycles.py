@@ -3,7 +3,7 @@ import csv,json,sqlite3,hashlib,subprocess,sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 for name in ['warehouseflow','universityflow','plateflow']:
- p=ROOT/'datasets'/name;con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row
+ p=ROOT/'datasets/synthetic'/name;con=sqlite3.connect(p/'input/database.sqlite');con.row_factory=sqlite3.Row
  assert not list(con.execute('PRAGMA foreign_key_check'))
  assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
  blank=sqlite3.connect(':memory:');blank.executescript((p/'input/schema.sql').read_text())
@@ -34,7 +34,7 @@ for name in ['warehouseflow','universityflow','plateflow']:
     times=[e['timestamp'] for e in hist.values() if e['case_id']==r['material_id'] and e['activity']=='Rolling Completed'];assert times and acts['Heating Completed']<acts['Furnace Discharge Confirmed']<times[0]
  print(name,':',count,'Gold logs verified; schemas, typed FKs, case links and stage ordering passed')
 # HospitalFlow has explicit semantic types and subtype-union checks in its domain validator.
-subprocess.run([sys.executable,str(ROOT/'datasets/hospitalflow/validate.py')],check=True)
+subprocess.run([sys.executable,str(ROOT/'datasets/synthetic/hospitalflow/validate.py')],check=True)
 
 # Carrier-based variant validates clean model inputs and completion-only extraction.
 subprocess.run([sys.executable,str(ROOT/'datasets/plateflow_new/validate.py')],check=True)

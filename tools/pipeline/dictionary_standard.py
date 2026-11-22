@@ -46,4 +46,4 @@ def render(p):
   with (p/'docs'/filename).open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
  (p/'docs/dictionary_basic_information.json').write_text(json.dumps(basic,indent=2)+'\n');con.close()
 if __name__=='__main__':
- for p in (ROOT/'datasets').iterdir():render(p)
+ for p in (ROOT/'datasets/synthetic').iterdir():render(p)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate four dataset review diagrams and final-user README pages.
+"""Regenerate four datasets’ review diagrams and evidence pages.
 
 Immutable: SQLite, Data Dictionary, case questions, Gold SQL and Gold CSV.
 Evidence graph is a documented *projection* of table OT membership and
@@ -197,29 +197,6 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
           "The patient master contains gender, anchor_age, anchor_year, anchor_year_group and dod. The admissions record uses admittime, dischtime, deathtime, edregtime and edouttime. Transfer intervals use eventtype, careunit, intime and outtime.",
           "All individual records are synthetic."]
     (review/"README.md").write_text("\n".join(readme)+"\n")
-    top=["# "+DISPLAY[n],"",DESCRIPTION[n],"",
-      "## Dataset overview","",
-      "| Tables | Entity Type candidates | Core business concepts | Gold SQL/CSV pairs verified |",
-      "|---:|---:|---:|---:|",
-      "| "+str(len(tables))+" | "+str(len(set(ot.values())))+" | "+str(len(core & set(ot.values())))+" | "+str(goldqueries)+" |",
-      "","## Explore the dataset","",
-      "- "+gitmd("Gold Event Extraction Graph (EEG) Source Projection and real table records","review/database/README.md"),
-      "- "+gitmd("Editable Draw.io relational diagram","docs/schema.drawio"),
-      "- "+gitmd("Per-question Gold DFGs","review/gold_dfg/README.md"),
-      "- "+gitmd("Business Data Dictionary","input/data_dictionary.json"),
-      "- "+gitmd("Gold object membership and source bindings","review/gold_dfg/event_graph.md"),
-      "","## Schema and process semantics","",
-      "Entity Types classify business targets by meaning and instance granularity; Tables preserve physical storage. Semantic ET grouping and instance identity resolution are separate tasks.",
-      "Event timestamps and activity codes are interpreted using the Data Dictionary and their source-table context. The Gold event-log oracle is stored separately from normal model inputs.",""]
-    previous=(base/"README.md").read_text() if (base/"README.md").exists() else ""
-    question_section=re.search(r"^## Questions\n.*",previous,re.M|re.S)
-    top += ["", "## Evidence and relational schema", "",
-        "![Legacy source projection](review/database/gold_evidence_graph.svg)", "",
-        "![Relational database schema](review/database/schema.svg)", ""]
-    if question_section: top.append(question_section.group(0).rstrip())
-    (base/"README.md").write_text("\n".join(top)+"\n")
-    # The README describes only the final public dataset.
-    assert all(w not in (base/"README.md").read_text().lower() for w in ["_new","was removed","previous version","formerly","new dataset"])
     # Review inventory reproduces legacy author labels as ET candidates, not verified semantic ET Gold.
     inv=["# "+DISPLAY[n]+" — Gold source inventory","","**Author annotations (legacy ET candidates).** Physical nodes are Tables; legacy table labels are not a complete Entity identification model. Event-to-entity attribution is a separate relation and same-ET does not imply same entity instance.","",
       "| Physical table | Entity Type candidate | Gold activity source labels |","|---|---|---|"]
@@ -243,7 +220,7 @@ def readme_update(base,n,db,ot,acts,times,core,goldqueries,goldrows):
 def run():
     report=[]
     for n in DATASETS:
-        b=ROOT/"datasets"/n
+        b=ROOT/"datasets/synthetic"/n
         con=sqlite3.connect("file:"+str(b/"input/database.sqlite")+"?mode=ro",uri=True)
         assert con.execute("PRAGMA integrity_check").fetchone()[0]=="ok"
         assert not list(con.execute("PRAGMA foreign_key_check"))

@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tools/audit_benchmark.py'
-      - 'datasets/adventureworks/validate.py'
+      - 'datasets/source_relational/adventureworks/validate.py'
       - '.github/workflows/audit-adventureworks.yml'
 permissions:
   contents: read

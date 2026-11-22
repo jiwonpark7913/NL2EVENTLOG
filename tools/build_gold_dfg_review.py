@@ -24,7 +24,7 @@ def digest(path):
 
 
 def input_snapshot():
-    return {str(p.relative_to(ROOT)):digest(p) for p in sorted((ROOT/'datasets').glob('*/input/**/*')) if p.is_file()}
+    return {str(p.relative_to(ROOT)):digest(p) for p in sorted((ROOT/'datasets').glob('*/*/input/**/*')) if p.is_file()}
 
 
 def loadjl(path):
@@ -45,7 +45,7 @@ def dataset_overview(name, questions):
         anchor = f'{ident.lower()}--{typ.lower()}'
         rows.append(f'<tr><td><a href="#{anchor}">{ident}</a></td><td>{typ}</td><td>{question}</td></tr>')
 
-    dataset = f'../../../datasets/{name}'
+    dataset = f'../../../datasets/synthetic/{name}'
     schema = (
         f'<h3>Database schema</h3><p><a href="{dataset}/docs/schema.png">'
         f'<img src="{dataset}/docs/schema.png" alt="{name} database schema"></a></p>'
@@ -195,15 +195,15 @@ def main():
     before=input_snapshot();OUT.mkdir(parents=True,exist_ok=True)
     all_data=[];all_changes=[];index=[];total=Counter()
     for name in DATASETS:
-        p=ROOT/'datasets'/name;folder=OUT/name;folder.mkdir(exist_ok=True);(folder/'graphs').mkdir(exist_ok=True)
+        p=ROOT/'datasets/synthetic'/name;folder=OUT/name;folder.mkdir(exist_ok=True);(folder/'graphs').mkdir(exist_ok=True)
         qpath=p/('private/questions.jsonl' if name.endswith('_new') else 'input/questions.jsonl')
         questions=loadjl(qpath);gold={identity(g):g for g in loadjl(p/'private/gold.jsonl')}
         cards=[];markdown=[f'# {name}: questions and Gold DFGs\n\n**EVALUATION ONLY — NEVER PROVIDE TO A MODEL.**\n\nSource commit: `{commit}`. Open index.html for search, review notes and complete case traces.\n\nNode counts = event occurrences. Edge counts = adjacent selected events within a case. Dashed amber edges touch timestamp ties and depend on the tie-break rule. DFGs are projections of the selected log, not causal models.\n']
         if name == 'hospitalflow':
             markdown.append(
                 '\nAll HospitalFlow records and row examples are synthetic. See the '
-                '[dataset provenance](../../../datasets/hospitalflow/README.md) and '
-                '[simulation code](../../../datasets/hospitalflow/simulation.py).\n'
+                '[dataset provenance](../../../datasets/synthetic/hospitalflow/README.md) and '
+                '[simulation code](../../../datasets/synthetic/hospitalflow/simulation.py).\n'
             )
         markdown.append('\n[Reference inventory · tables, legacy type labels and activity sources](event_graph.md)\n')
         markdown.append('\n**Source tables** produced matched Gold events. **SQL tables** are all physical tables read by the Gold SQL, including join tables and shared CTE branches.\n')
@@ -239,7 +239,7 @@ def main():
                 body+='<p>Focus activity: <select class="focus"><option value="">All activities</option>'+''.join('<option>'+html.escape(a)+'</option>' for a in activities)+'</select></p>'
                 body+='<div class="graph">'+svg.replace('id="arr"',f'id="arr-{ident}"').replace('url(#arr)',f'url(#arr-{ident})')+'</div>'
                 body+='<p class="muted">Blue fill: observed start activity. Green outline: observed end activity. Scroll inside the graph; open the SVG separately for browser zoom.</p>'
-                body+=f'<p><a href="graphs/{filename}" target="_blank">Open full-size DFG</a> · <a href="https://github.com/jiwonpark7913/NL2EVENTLOG/blob/{commit}/datasets/{name}/private/gold_logs/{ident}.csv">Gold CSV</a></p>'
+                body+=f'<p><a href="graphs/{filename}" target="_blank">Open full-size DFG</a> · <a href="https://github.com/jiwonpark7913/NL2EVENTLOG/blob/{commit}/datasets/synthetic/{name}/private/gold_logs/{ident}.csv">Gold CSV</a></p>'
                 body += '</section><section class="source-panel">'+render_source_panel(source_tables, unmatched, related)+'</section></div>'
                 body+='<details><summary>All directly-follows edges and counts</summary><table><tr><th>From</th><th>To</th><th>Transitions</th><th>Tie-affected</th></tr>'+''.join('<tr><td>'+html.escape(a)+'</td><td>'+html.escape(b)+f'</td><td>{n}</td><td>{d["ambiguous"][(a,b)]}</td></tr>' for (a,b),n in sorted(d['edges'].items()))+'</table></details>'
                 body+='<details><summary>Activity counts and boundary counts</summary><table><tr><th>Activity</th><th>Events</th><th>Start cases</th><th>End cases</th></tr>'+''.join(f'<tr><td>{html.escape(a)}</td><td>{d["nodes"][a]}</td><td>{d["starts"][a]}</td><td>{d["ends"][a]}</td></tr>' for a in activities)+'</table></details>'
@@ -251,7 +251,7 @@ def main():
                 body += f'<p>Source tables: {source_count} · SQL tables: {sql_count}</p>'
                 evidence = render_review_evidence(
                     source_tables, unmatched, related,
-                    dataset_path=f'../../../datasets/{name}', question_id=ident,
+                    dataset_path=f'../../../datasets/synthetic/{name}', question_id=ident,
                 )
                 markdown.append(
                     f'\nEvents: **{len(rows)}** · Cases with events: **{cases}** · Activities: **{len(activities)}** '
@@ -281,7 +281,7 @@ def main():
     (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     links=''.join(f'<article><h2>{r["dataset"]}</h2><p>{r["questions"]} questions · {r["gold_logs"]} Gold logs · {r["graphs"]} distinct DFGs</p><a href="{r["dataset"]}/index.html">Open interactive review</a> · <a href="{r["dataset"]}/README.md">GitHub Markdown view</a></article>' for r in index)
     (OUT/'index.html').write_text('<!doctype html><html lang="ko"><meta charset="utf-8"><title>Gold DFG review</title><style>'+STYLE+'</style><header><h1>Gold event log · DFG 검수</h1><p>EVALUATION ONLY — 모델 입력 금지. 각 질의와 DFG, 전체 case trace를 나란히 확인하세요. 메모는 브라우저에 저장되며 JSON으로 내보낼 수 있습니다.</p></header><main>'+links+'</main></html>')
-    readme='# Gold event log DFG review\n\n**EVALUATION ONLY / PRIVATE GOLD — NEVER PASS THESE FILES TO ANY MODEL.**\n\nThis folder is separate from datasets/*/input and is absent from every model-input allowlist. No model-input bytes or manifests were changed. Keep it out of repository-wide retrieval/RAG/evaluation prompts.\n\nSource commit: `'+commit+'`. The current remote snapshot still includes Q2/Q4; each HTML page defaults to Q1/Q3 and optionally reveals those existing pairs. This renderer does not delete or regenerate questions.\n\n| Dataset | Questions | Gold logs | Distinct DFGs | GitHub view | Event graph |\n|---|---:|---:|---:|---|---|\n'+''.join(f'| {r["dataset"]} | {r["questions"]} | {r["gold_logs"]} | {r["graphs"]} | [Questions + DFGs]({r["dataset"]}/README.md) | [Inventory]({r["dataset"]}/event_graph.md) |\n' for r in index)+'\n## Local interactive review\n\nDownload and extract [review_bundle.zip](review_bundle.zip), then open index.html. To generate HTML pages from a local checkout, run the renderer first. Alternatively run `python -m http.server 8000` at the repository root and visit http://localhost:8000/review/gold_dfg/. Each dataset page has search, optional Q2/Q4 display, per-case timestamped traces, review status and notes, and JSON export. Review notes remain on that browser/device until exported. GitHub renders the dataset Markdown pages with SVG graphs; it does not execute HTML/JavaScript.\n\n## Reading the graph\n\n- The right panel shows original SQLite rows matched to Gold events. On GitHub, open a source table to compare up to three original rows (all columns) with their Gold events. The links above each preview open the exact SQL, Gold CSV and full SQLite database.\n- Nodes: activity label, event occurrences, observed start/end case counts. Blue fill = starts; green outline = ends.\n- Edges: adjacent selected events per case, with transition counts. All observed edges and activities are included; no frequency threshold hides rare behavior. Identical paired logs reuse the same DFG asset.\n- Order: timestamp, then event_id (then original row index). Dashed amber edges touch tied timestamp groups and depend on tie-breaking. Start/end assignments at tied boundaries are also ambiguous. This is a display convention, not proof of order.\n- Adjacency is measured in the question-specific projection. Removing intermediate activities can create a new edge. DFGs describe the selected traces, not a causal model or evidence that all cases follow one process.\n- Unsupported requests have no DFG. Requested-but-unobserved labels, timestamp ties and duplicate case/event IDs are review flags, not automatic judgments of correctness.\n\nRegenerate with `python tools/build_gold_dfg_review.py --commit HEAD` from a clean checkout of the intended source snapshot. The script verifies all input-file hashes before/after. Gold CSVs are read only.\n'
+    readme='# Gold event log DFG review\n\n**EVALUATION ONLY / PRIVATE GOLD — NEVER PASS THESE FILES TO ANY MODEL.**\n\nThis folder is separate from datasets/*/*/input and is absent from every model-input allowlist. No model-input bytes or manifests were changed. Keep it out of repository-wide retrieval/RAG/evaluation prompts.\n\nSource commit: `'+commit+'`. The current remote snapshot still includes Q2/Q4; each HTML page defaults to Q1/Q3 and optionally reveals those existing pairs. This renderer does not delete or regenerate questions.\n\n| Dataset | Questions | Gold logs | Distinct DFGs | GitHub view | Event graph |\n|---|---:|---:|---:|---|---|\n'+''.join(f'| {r["dataset"]} | {r["questions"]} | {r["gold_logs"]} | {r["graphs"]} | [Questions + DFGs]({r["dataset"]}/README.md) | [Inventory]({r["dataset"]}/event_graph.md) |\n' for r in index)+'\n## Local interactive review\n\nDownload and extract [review_bundle.zip](review_bundle.zip), then open index.html. To generate HTML pages from a local checkout, run the renderer first. Alternatively run `python -m http.server 8000` at the repository root and visit http://localhost:8000/review/gold_dfg/. Each dataset page has search, optional Q2/Q4 display, per-case timestamped traces, review status and notes, and JSON export. Review notes remain on that browser/device until exported. GitHub renders the dataset Markdown pages with SVG graphs; it does not execute HTML/JavaScript.\n\n## Reading the graph\n\n- The right panel shows original SQLite rows matched to Gold events. On GitHub, open a source table to compare up to three original rows (all columns) with their Gold events. The links above each preview open the exact SQL, Gold CSV and full SQLite database.\n- Nodes: activity label, event occurrences, observed start/end case counts. Blue fill = starts; green outline = ends.\n- Edges: adjacent selected events per case, with transition counts. All observed edges and activities are included; no frequency threshold hides rare behavior. Identical paired logs reuse the same DFG asset.\n- Order: timestamp, then event_id (then original row index). Dashed amber edges touch tied timestamp groups and depend on tie-breaking. Start/end assignments at tied boundaries are also ambiguous. This is a display convention, not proof of order.\n- Adjacency is measured in the question-specific projection. Removing intermediate activities can create a new edge. DFGs describe the selected traces, not a causal model or evidence that all cases follow one process.\n- Unsupported requests have no DFG. Requested-but-unobserved labels, timestamp ties and duplicate case/event IDs are review flags, not automatic judgments of correctness.\n\nRegenerate with `python tools/build_gold_dfg_review.py --commit HEAD` from a clean checkout of the intended source snapshot. The script verifies all input-file hashes before/after. Gold CSVs are read only.\n'
     (OUT/'README.md').write_text(readme)
     with zipfile.ZipFile(OUT/'review_bundle.zip','w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as bundle:
         for path in sorted(OUT.rglob('*')):

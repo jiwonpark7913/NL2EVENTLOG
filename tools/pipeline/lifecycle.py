@@ -155,4 +155,4 @@ def extend(p):
  (p/'docs/object_activity_design.md').write_text(doc)
  rp=p/'design/requirements.md';text=rp.read_text().split('\n## Authored lifecycle extension')[0];rp.write_text(text+'\n## Authored lifecycle extension\n\n'+doc)
 if __name__=='__main__':
- for n in CONFIG:extend(ROOT/'datasets'/n)
+ for n in CONFIG:extend(ROOT/'datasets/synthetic'/n)

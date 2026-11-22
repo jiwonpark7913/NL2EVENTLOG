@@ -5,9 +5,9 @@ on:
     paths:
       - 'tools/validation/audit_hospital_gold_docs.py'
       - '.github/workflows/hospital-gold-doc-audit.yml'
-      - 'datasets/hospitalflow/private/gold.jsonl'
-      - 'datasets/hospitalflow/docs/**'
-      - 'datasets/hospitalflow/evaluation/task_scope_catalog.json'
+      - 'datasets/synthetic/hospitalflow/private/gold.jsonl'
+      - 'datasets/synthetic/hospitalflow/docs/**'
+      - 'datasets/synthetic/hospitalflow/evaluation/task_scope_catalog.json'
   workflow_dispatch:
 permissions:
   contents: write
@@ -27,6 +27,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add datasets/hospitalflow/docs datasets/hospitalflow/review
+          git add datasets/synthetic/hospitalflow/docs datasets/synthetic/hospitalflow/review
           git diff --cached --quiet || git commit -m 'docs: regenerate HospitalFlow Gold diagram and current metadata documentation'
           git push

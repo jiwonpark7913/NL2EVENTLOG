@@ -151,5 +151,5 @@ def build(base):
 
 
 if __name__=='__main__':
-    for folder in sorted((ROOT/'datasets').glob('*/review/gold_dfg')):
+    for folder in sorted((ROOT/'datasets').glob('*/*/review/gold_dfg')):
         print(json.dumps(build(folder.parents[1])),flush=True)

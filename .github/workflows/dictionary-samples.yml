@@ -31,7 +31,7 @@ jobs:
           for d in adventureworks hospitalflow universityflow plateflow warehouseflow; do
             python tools/add_dictionary_samples.py --dataset "$d" --require-db
           done
-          gzip -dc datasets/mimic/input/database.sqlite.gz > "$RUNNER_TEMP/mimic.sqlite"
+          gzip -dc datasets/source_relational/mimic/input/database.sqlite.gz > "$RUNNER_TEMP/mimic.sqlite"
           python tools/add_dictionary_samples.py --dataset mimic --database "$RUNNER_TEMP/mimic.sqlite" --require-db
           for d in adventureworks hospitalflow universityflow plateflow warehouseflow mimic; do
             python tools/normalize_data_dictionaries.py --dataset "$d"
@@ -40,7 +40,7 @@ jobs:
           import json
           from pathlib import Path
           for name in ['adventureworks','hospitalflow','universityflow','plateflow','warehouseflow','mimic']:
-              path=Path('datasets')/name/'input/data_dictionary.json'
+              path=next(Path('datasets').glob(f'*/{name}'))/'input/data_dictionary.json'
               data=json.loads(path.read_text())
               tables=data['tables'].values() if isinstance(data['tables'],dict) else data['tables']
               cols=[c for t in tables for c in t['columns']]
@@ -59,7 +59,7 @@ jobs:
             git fetch origin "${GITHUB_REF_NAME}"
             git reset --mixed "origin/${GITHUB_REF_NAME}"
             for d in adventureworks mimic hospitalflow universityflow plateflow warehouseflow; do
-              git add "datasets/$d/input/data_dictionary.json" "datasets/$d/docs/data_dictionary.standard.json"
+              git add datasets/*/"$d"/input/data_dictionary.json datasets/*/"$d"/docs/data_dictionary.standard.json
             done
             if git diff --cached --quiet; then exit 0; fi
             git diff --cached --check

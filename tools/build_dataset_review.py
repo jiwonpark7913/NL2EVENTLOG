@@ -8,6 +8,8 @@ import sqlite3
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from dataset_paths import dataset_path
+
 ROOT = Path(__file__).resolve().parents[1]
 DATASETS = ("hospitalflow", "universityflow", "plateflow", "warehouseflow", "adventureworks")
 
@@ -119,7 +121,7 @@ def svg_erd(conn,tables):
     return "\n".join(s),fks
 
 def build(dataset):
-    base=ROOT/"datasets"/dataset
+    base=dataset_path(ROOT, dataset)
     db=base/"input"/"database.sqlite"
     if not db.exists(): raise FileNotFoundError(db)
     dest=base/"review"/"database"
