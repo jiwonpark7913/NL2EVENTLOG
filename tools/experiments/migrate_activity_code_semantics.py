@@ -175,13 +175,13 @@ def main():
     with tempfile.TemporaryDirectory() as temp:
         root=Path(temp)
         for name in CONFIG:
-            base=ROOT/"datasets"/name
+            base=ROOT/"datasets/synthetic"/name
             target=root/name
             target.mkdir()
             report.append(transform(base,target))
         if args.apply:
             for name in CONFIG:
-                base=ROOT/"datasets"/name
+                base=ROOT/"datasets/synthetic"/name
                 target=root/name
                 shutil.copy2(target/"database.sqlite",base/"input/database.sqlite")
                 shutil.copy2(target/"data_dictionary.json",base/"input/data_dictionary.json")

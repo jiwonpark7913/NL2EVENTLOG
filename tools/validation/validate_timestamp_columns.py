@@ -2,7 +2,7 @@
 import json,csv,sqlite3
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-for p in (ROOT/'datasets').iterdir():
+for p in (ROOT/'datasets/synthetic').iterdir():
  if p.name in ['plateflow_new','warehouseflow_new']:
   import subprocess,sys
   subprocess.run([sys.executable,str(p/'validate.py')],check=True);continue

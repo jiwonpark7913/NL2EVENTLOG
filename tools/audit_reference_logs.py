@@ -32,7 +32,7 @@ def hospital(db,pm,concept,focus):
    if case is not None:out.append(dict(e,case_id=case))
  return out
 def audit(name):
- base=ROOT/'datasets'/name;db=sqlite3.connect(f'file:{base}/input/database.sqlite?mode=ro',uri=True);db.row_factory=sqlite3.Row
+ base=ROOT/'datasets/synthetic'/name;db=sqlite3.connect(f'file:{base}/input/database.sqlite?mode=ro',uri=True);db.row_factory=sqlite3.Row
  assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok';assert not db.execute('PRAGMA foreign_key_check').fetchall()
  gold=read(base/'private/gold.jsonl');qp=base/('evaluation/questions.jsonl' if name=='hospitalflow' else 'private/questions.jsonl');qs={M.identity(r):r for r in read(qp)};models={M.identity(r):r for r in read(base/'evaluation/model_questions.jsonl')}
  pm=bindings(base);source=SourceRows(base);paths=json.loads((base/'private/case_paths.json').read_text()) if name!='hospitalflow' else None;cache={};records=[]

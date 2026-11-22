@@ -9,6 +9,8 @@ from __future__ import annotations
 import argparse,json,re,sqlite3
 from pathlib import Path
 
+from dataset_paths import dataset_path
+
 ROOT=Path(__file__).resolve().parents[1]
 NAMES=["adventureworks","mimic","hospitalflow","universityflow","plateflow","warehouseflow","bpi2019_ocel","order_management_ocel"]
 MAX_ROWS=5000
@@ -91,6 +93,6 @@ if __name__=="__main__":
     p.add_argument("--database",type=Path)
     p.add_argument("--require-db",action="store_true")
     args=p.parse_args()
-    folder=ROOT/"datasets"/args.dataset/"input"
+    folder=dataset_path(ROOT, args.dataset)/"input"
     main(args.dictionary or folder/"data_dictionary.json",
          args.database or folder/"database.sqlite",args.require_db)

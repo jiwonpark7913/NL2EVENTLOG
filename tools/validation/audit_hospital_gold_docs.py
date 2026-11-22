@@ -3,7 +3,7 @@
 from pathlib import Path
 from collections import defaultdict, Counter
 import sqlite3, csv, json, html, re
-BASE=Path(__file__).resolve().parents[2]/"datasets/hospitalflow"
+BASE=Path(__file__).resolve().parents[2]/"datasets/synthetic/hospitalflow"
 P=BASE/"private"
 DOC=BASE/"docs"
 REV=BASE/"review"

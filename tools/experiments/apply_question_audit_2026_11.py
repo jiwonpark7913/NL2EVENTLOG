@@ -33,7 +33,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "datasets"
+DATA = ROOT / "datasets/synthetic"
 
 # Request pairs to remove (each id also removes its paraphrase "<id>P").
 # Unanswerable requests and one-activity requests go first; the remaining choices are the

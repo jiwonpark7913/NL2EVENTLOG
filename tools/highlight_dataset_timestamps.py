@@ -28,7 +28,7 @@ def event_names(name,base):
 def main():
     counts={}
     for name in NAMES:
-        base=ROOT/"datasets"/name
+        base=ROOT/"datasets/synthetic"/name
         dd=json.loads((base/"input/data_dictionary.json").read_text())
         cols={t["table"]:{c["name"]:c for c in t["columns"]} for t in dd["tables"]}
         events=event_names(name,base)

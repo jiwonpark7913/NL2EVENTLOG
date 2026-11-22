@@ -109,4 +109,4 @@ def extend_dataset(p):
  doc+=''.join('- **'+x['case_table']+':** '+x['reason']+'\n' for x in unavailable) if unavailable else '- Every keyed table in this database has an actual recorded-event view.\n'
  (p/'docs/object_event_logs.md').write_text(doc);con.close();return dict(dataset=name,added_logs=len(coverage),total_questions=len(questions),answerable_questions=report['answerable_questions'],unavailable=unavailable)
 if __name__=='__main__':
- for n in ['warehouseflow','universityflow','plateflow']:print(json.dumps(extend_dataset(ROOT/'datasets'/n)))
+ for n in ['warehouseflow','universityflow','plateflow']:print(json.dumps(extend_dataset(ROOT/'datasets/synthetic'/n)))

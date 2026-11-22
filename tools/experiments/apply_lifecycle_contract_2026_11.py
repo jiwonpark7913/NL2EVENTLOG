@@ -41,7 +41,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "datasets"
+DATA = ROOT / "datasets/synthetic"
 spec = importlib.util.spec_from_file_location("audit1", Path(__file__).with_name("apply_question_audit_2026_11.py"))
 A = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(A)

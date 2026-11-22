@@ -25,6 +25,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add datasets/*/review/database datasets/*/docs/schema.drawio
+          git add datasets/*/*/review/database datasets/*/*/docs/schema.drawio
           git diff --cached --quiet || git commit -m 'docs: refresh actual SQL table previews after code migration'
           git push

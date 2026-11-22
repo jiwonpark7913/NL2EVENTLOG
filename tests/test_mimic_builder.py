@@ -1,7 +1,7 @@
 """Small deterministic MIMIC-IV Demo builder smoke test (does not require network)."""
 import csv,json,sqlite3,subprocess,sys,tempfile
 from pathlib import Path
-BUILDER=Path(__file__).resolve().parents[1]/"datasets/mimic/build.py"
+BUILDER=Path(__file__).resolve().parents[1]/"datasets/source_relational/mimic/build.py"
 def main():
  with tempfile.TemporaryDirectory() as folder:
   root=Path(folder);src=root/"source"

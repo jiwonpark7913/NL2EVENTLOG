@@ -13,7 +13,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
-BASE=ROOT/"datasets/hospitalflow"
+BASE=ROOT/"datasets/synthetic/hospitalflow"
 P=BASE/"private"
 E=BASE/"evaluation"
 REVIEW=BASE/"review"

@@ -13,11 +13,11 @@ def stats(p):
 HEADER='| Type | Questions | Answerable | Non-answerable | Avg. requested activity types |\n|---|---:|---:|---:|---:|\n'
 def refresh():
  for n in ['warehouseflow','warehouseflow_new','universityflow','plateflow','hospitalflow','plateflow_new']:
-  f=ROOT/'datasets'/n/('private/questions.jsonl' if n in ['plateflow_new','warehouseflow_new'] else 'input/questions.jsonl')
+  f=ROOT/'datasets/synthetic'/n/('private/questions.jsonl' if n in ['plateflow_new','warehouseflow_new'] else 'input/questions.jsonl')
   if not f.exists() or any('question_type' not in json.loads(x) for x in f.read_text().splitlines()):return []
  allrows=[]
  for name,title in [('warehouseflow','WarehouseFlow'),('warehouseflow_new','WarehouseFlow New'),('universityflow','UniversityFlow'),('plateflow','PlateFlow'),('hospitalflow','HospitalFlow'),('plateflow_new','PlateFlow New')]:
-  p=ROOT/'datasets'/name;rows=stats(p);table=HEADER+''.join(f'| {t} | {n} | {a} | {x} | {avg:.2f} |\n' for t,n,a,x,avg in rows);readme=p/'README.md';s=readme.read_text();start=s.index('## Question types and pairs');head=s[:start];tail=s[start:]
+  p=ROOT/'datasets/synthetic'/name;rows=stats(p);table=HEADER+''.join(f'| {t} | {n} | {a} | {x} | {avg:.2f} |\n' for t,n,a,x,avg in rows);readme=p/'README.md';s=readme.read_text();start=s.index('## Question types and pairs');head=s[:start];tail=s[start:]
   tail=re.sub(r'\| Type \| Questions \|.*?(?=\n\n)',table.rstrip(),tail,count=1,flags=re.S);tail=re.sub(r'\n- Avg\. requested activity types =[^\n]*\n','\n',tail);tail=tail.replace(table.rstrip(),table.rstrip()+'\n\n'+NOTE.rstrip(),1);readme.write_text(re.sub(r"\n{3,}","\n\n",head+tail))
   allrows.extend((title,*r) for r in rows)
  p=ROOT/'README.md';s=p.read_text();s=s.replace('## Question counts by type','### Question statistics by dataset and type');table='| Dataset | Type | Questions | Answerable | Non-answerable | Avg. requested activity types |\n|---|---|---:|---:|---:|---:|\n'+''.join(f'| {name} | {t} | {n} | {a} | {x} | {avg:.2f} |\n' for name,t,n,a,x,avg in allrows)

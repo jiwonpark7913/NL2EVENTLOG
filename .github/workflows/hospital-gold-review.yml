@@ -24,6 +24,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add datasets/hospitalflow/README.md datasets/hospitalflow/review/gold_dfg
+          git add datasets/synthetic/hospitalflow/README.md datasets/synthetic/hospitalflow/review/gold_dfg
           git diff --cached --quiet || git commit -m 'docs: refresh all hospital Gold DFGs against new transfer event logs'
           git push

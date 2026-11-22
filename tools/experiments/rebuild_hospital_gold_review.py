@@ -8,7 +8,7 @@ from collections import Counter,defaultdict
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
-P=ROOT/"datasets/hospitalflow"
+P=ROOT/"datasets/synthetic/hospitalflow"
 OUT=P/"review/gold_dfg"
 def make_svg(path,activity,edges,start,end):
     names=sorted(activity)
@@ -78,27 +78,5 @@ def run():
     (OUT/"README.md").write_text("\n".join(rows)+"\n")
     # A current summary of the dataset, not the previous identity-split design.
     report=json.loads((P/"validation_report.json").read_text())
-    summary=["# HospitalFlow — MIMIC-IV-inspired synthetic hospital database","",
-      "The database uses MIMIC-IV-inspired schema and timestamp names but wholly synthetic patient, admission and transfer records.",
-      "No real MIMIC-IV individual-level patient data are included.","",
-      "## Current benchmark summary","",
-      "| Tables | Patients | Admissions | Transfer rows | Object types | Distinct events | Answerable questions |",
-      "|---:|---:|---:|---:|---:|---:|---:|",
-      "| "+str(len(report["table_rows"]))+" | "+str(report["table_rows"]["patients"])+" | "+str(report["table_rows"]["admissions"])+" | "+str(report["table_rows"]["transfers"])+" | "+str(report["semantic_object_types"])+" | "+str(report["events"])+" | "+str(report["answerable_questions"])+" |",
-      "","## Design changes","",
-      "- Patient demographics and anchor metadata now reside in patients; patient_profile and preferred_language were removed.",
-      "- Original MIMIC admission timestamp names used: admittime, dischtime, deathtime, edregtime, edouttime.",
-      "- transfers contains eventtype, careunit, intime and outtime and is linked to patient and hospital admission.",
-      "- Only actual transfer eventtype rows create Care Unit Transferred events; admission/discharge intervals are not counted twice.",
-      "- Gold SQL and event logs were regenerated, including a new Care Unit Transferred activity.",
-      "","## Inspection","",
-      "- [Database and first 10 rows per table](review/database/README.md)",
-      "- [Gold DFGs](review/gold_dfg/README.md)",
-      "- [Gold source evidence inventory](review/gold_dfg/event_graph.md)",
-      "- [Editable Draw.io ERD](docs/schema.drawio)",
-      "- [MIMIC-IV hospital schema documentation](https://mimic.mit.edu/docs/iv/modules/hosp/)",
-      "","All files under private and review are author-only, never model inputs."
-    ]
-    (P/"README.md").write_text("\n".join(summary)+"\n")
     print(json.dumps({"question_graphs":len(counts),"events":report["events"],"current_tables":len(report["table_rows"])}))
 if __name__=="__main__":run()

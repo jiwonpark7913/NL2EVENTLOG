@@ -109,7 +109,7 @@ def audit(p):
     return dict(dataset=p.name, tables=result, event_tables=sum(bool(v) for v in by_table.values()), events=len(actual), gold_logs_verified=checked)
 
 def main():
-    reports = [audit(ROOT/'datasets'/name) for name in CARRIERS]
+    reports = [audit(ROOT/'datasets/synthetic'/name) for name in CARRIERS]
     report = dict(scope='One local carrier column, or table/time-column semantics; no composite/multiple carriers, mixed encoding or split activity/time storage.',
                   method='Manual carrier contracts plus executable source-binding, canonical-history and Gold SQL/CSV checks. Not a general SQL semantic proof or model evaluation.',
                   table_count=sum(len(r['tables']) for r in reports), event_table_count=sum(r['event_tables'] for r in reports),

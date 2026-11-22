@@ -3,9 +3,9 @@ on:
   push:
     branches: [main]
     paths:
-      - 'datasets/adventureworks/build.py'
+      - 'datasets/source_relational/adventureworks/build.py'
       - 'tools/add_dictionary_samples.py'
-      - 'datasets/adventureworks/source/upstream_files.json'
+      - 'datasets/source_relational/adventureworks/source/upstream_files.json'
       - '.github/workflows/adventureworks-dataset.yml'
   workflow_dispatch:
 permissions:
@@ -26,15 +26,15 @@ jobs:
           python-version: '3.11'
       - name: Build all official source rows and verify DB, DD and diagrams
         run: |
-          python datasets/adventureworks/build.py --cache "$RUNNER_TEMP/adventureworks-source"
-          python datasets/adventureworks/validate.py
+          python datasets/source_relational/adventureworks/build.py --cache "$RUNNER_TEMP/adventureworks-source"
+          python datasets/source_relational/adventureworks/validate.py
           python tools/build_dataset_review.py --dataset adventureworks
           git diff --check
       - name: Commit validated database and generated artifacts
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add datasets/adventureworks/input datasets/adventureworks/docs datasets/adventureworks/evaluation/schema.sql datasets/adventureworks/source/provenance.json datasets/adventureworks/review/database
+          git add datasets/source_relational/adventureworks/input datasets/source_relational/adventureworks/docs datasets/source_relational/adventureworks/evaluation/schema.sql datasets/source_relational/adventureworks/source/provenance.json datasets/source_relational/adventureworks/review/database
           if ! git diff --cached --quiet; then
             git commit -m 'data: materialize validated AdventureWorks OLTP snapshot'
             git push origin "HEAD:${GITHUB_REF_NAME}"

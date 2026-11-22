@@ -19,7 +19,7 @@ def attach(db):
 def structure(conn):
  return {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")}
 def audit_mimic(report,root):
- p=root/"datasets/mimic";manifest=p/"input/data_dictionary.json"
+ p=root/"datasets/source_relational/mimic";manifest=p/"input/data_dictionary.json"
  dd=json.loads(manifest.read_text())
  db=p/"input/database.sqlite";gz=p/"input/database.sqlite.gz"
  with tempfile.TemporaryDirectory() as tmp:
@@ -101,7 +101,7 @@ def audit_mimic(report,root):
         (p/"input/database.sqlite").exists(),"README advertises database.sqlite but GitHub stores database.sqlite.gz",warning=True)
 
 def audit_adventure(report,root):
- p=root/"datasets/adventureworks"
+ p=root/"datasets/source_relational/adventureworks"
  script=p/"validate.py"
  if script.exists():
   result=subprocess.run([sys.executable,str(script)],cwd=p,capture_output=True,text=True)
@@ -114,7 +114,7 @@ def audit_adventure(report,root):
        "No approved case-specific Reference Event Log/Gold SQL is included",warning=True)
 
 def audit_ocel(report,root,dataset,source):
- p=root/"datasets"/(dataset+"_ocel")
+ p=root/"datasets/from_event_logs"/(dataset+"_ocel")
  db=p/"input/database.sqlite";reference=p/"review/gold_flatten"
  check(report,dataset+".database_exists",db.exists())
  check(report,dataset+".source_exists",source is not None and source.exists(),

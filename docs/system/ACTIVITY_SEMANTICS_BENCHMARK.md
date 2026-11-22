@@ -19,8 +19,8 @@ This benchmark tests whether a model separates **physical code values** from **s
 | UniversityFlow | `registration.status` | Current-state snapshot; no new transition event inferred |
 
 ## Counterfactual diagnostic inputs (NOT baseline)
-- `datasets/warehouseflow/evaluation/activity_semantics/conflicting_dictionary.json`: intentionally makes a DD explanation contradict the `work_code` reference table. Expected result is `conflicting` without ungrounded resolution.
-- `datasets/hospitalflow/evaluation/activity_semantics/insufficient_dictionary.json`: withholds the action-code explanation. Expected result is `unresolved` unless other reliable evidence is independently available.
+- `datasets/synthetic/warehouseflow/evaluation/activity_semantics/conflicting_dictionary.json`: intentionally makes a DD explanation contradict the `work_code` reference table. Expected result is `conflicting` without ungrounded resolution.
+- `datasets/synthetic/hospitalflow/evaluation/activity_semantics/insufficient_dictionary.json`: withholds the action-code explanation. Expected result is `unresolved` unless other reliable evidence is independently available.
 
 These overlays do **not** alter the physical SQLite database or the Gold logs and are **not** normal model input. They are separate semantic-status diagnostics, not additional end-to-end F1 samples. See `docs/system/activity_semantics_evaluation_cases.json` for machine-readable expectations.
 

@@ -15,6 +15,9 @@ import tempfile
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+from dataset_paths import dataset_path
+
 ALLOWED={"mimic","adventureworks","bpi2019_ocel","order_management_ocel"}
 
 def sha256(path):
@@ -44,7 +47,7 @@ def execute(slug, runner=None, timeout=3600):
         raise RuntimeError("BLOCKED_NO_RUNTIME: Set NL2EVENTLOG_EEG_RUNNER to the real Step 1 executable. Dataset repository does not implement Step 1.")
     cmd=shlex.split(runner)
     if not cmd:raise RuntimeError("BLOCKED_NO_RUNTIME: empty runner")
-    folder=ROOT/"datasets"/slug
+    folder=dataset_path(ROOT, slug)
     db=folder/"input/database.sqlite"
     dd=folder/"input/data_dictionary.json"
     if not db.is_file() or not dd.is_file():
