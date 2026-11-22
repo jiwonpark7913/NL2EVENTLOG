@@ -1289,7 +1289,12 @@
           ],
           "required": true,
           "primary_key_position": 0,
-          "foreign_keys": [],
+          "foreign_keys": [
+            {
+              "table": "patients",
+              "column": "subject_id"
+            }
+          ],
           "unit": null,
           "sample_values": [10000001, 10000002, 10000003]
         },
@@ -1304,7 +1309,12 @@
           ],
           "required": false,
           "primary_key_position": 0,
-          "foreign_keys": [],
+          "foreign_keys": [
+            {
+              "table": "admissions",
+              "column": "hadm_id"
+            }
+          ],
           "unit": null,
           "sample_values": [20000001, 20000002, 20000003]
         },
