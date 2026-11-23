@@ -1,5 +1,5 @@
-{"question_id": "T", "text": "입항부터 다음 출항까지의 턴어라운드를 비교하고 싶습니다. 턴어라운드별로 입항편 착륙과 주기장 도착, 지상조업 시작, 하차·수하물 하역·청소·급유·기내식 적재 완료, 출항편 탑승 시작과 마감, 수하물 탑재 마감, 준비 완료, 주기장 출발과 이륙을 시간순으로 보여주세요."}
-{"question_id": "D", "text": "정시편과 지연편의 출발 준비 과정을 비교하고 싶습니다. 운항편별로 승객 탑승 시작과 마감, 수하물 탑재 작업 마감, 항공기 출발 준비 완료, 실제 주기장 출발을 시간순으로 보여주세요."}
-{"question_id": "P", "text": "승객의 탑승 구간별로 실제 체크인을 완료하고 탑승구에서 탑승이 확인되기까지의 기록을 보여주세요."}
-{"question_id": "S", "text": "보안검색에서 줄을 기다리는 시간과 검색에 걸리는 시간을 따로 분석하고 싶습니다. 검색장 방문 한 건마다 줄에 선 시점, 검색 시작, 검색 완료를 시간순으로 보여주세요."}
-{"question_id": "B", "text": "승객이 비행기 한 편을 이용한 구간마다 체크인 완료와 탑승 확인을 보여주세요. 맡긴 가방이 있으면 각 가방이 접수되고 탑재된 기록도 함께 보여주세요."}
+{"question_id": "T", "text": "I want to compare aircraft turnarounds from an inbound arrival to the next departure. For each turnaround, show the inbound flight's landing and in-block arrival, the start of ground handling, completion of passenger disembarkation, baggage unloading, cabin cleaning, refuelling and catering loading, then the outbound flight's boarding start and close, baggage loading close, aircraft ready time, off-block departure and take-off. List the events in chronological order."}
+{"question_id": "D", "text": "I want to compare departure preparation for on-time and delayed flights. For each outbound flight, show when boarding started and closed, when baggage loading closed, when the aircraft was ready, and when it actually went off-block. List the events in chronological order."}
+{"question_id": "P", "text": "For each passenger flight leg, show the records for completed check-in and confirmed boarding at the gate."}
+{"question_id": "S", "text": "I want to analyse security queue time and screening time separately. For each security checkpoint visit, show when the passenger joined the queue, when screening began and when it finished, in chronological order."}
+{"question_id": "B", "text": "For each passenger flight leg, show completed check-in and confirmed boarding. If the passenger checked any bags, also show when each bag was accepted and loaded."}

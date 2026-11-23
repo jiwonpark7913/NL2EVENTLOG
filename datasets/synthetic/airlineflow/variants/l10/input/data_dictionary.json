@@ -1,215 +1,215 @@
 {
   "flights": {
-    "description": "날짜별 운항편. 입항편과 출항편 모두 저장한다. 편명은 날짜가 다르면 반복된다.",
+    "description": "Dated operating legs, including both inbound and outbound flights. Flight numbers repeat across dates.",
     "columns": {
       "flight_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "운항편 ID"
+        "description": "Operating leg identifier."
       },
       "flight_no": {
         "declaration": "TEXT NOT NULL",
-        "description": "공시 편명"
+        "description": "Published flight number."
       },
       "scheduled_offblock": {
         "declaration": "TEXT NOT NULL",
-        "description": "계획 주기장 출발 시각"
+        "description": "Scheduled off-block time."
       },
       "scheduled_inblock": {
         "declaration": "TEXT NOT NULL",
-        "description": "계획 주기장 도착 시각"
+        "description": "Scheduled in-block time."
       }
     }
   },
   "turnarounds": {
-    "description": "동일 기체의 입항편과 다음 출항편을 잇는 지상 체류 건. 본 예시는 기체 교체 없이 각 입항·출항이 한 번만 연결된다.",
+    "description": "Ground stay linking an inbound leg to the next outbound leg operated by the same aircraft. This dataset assumes no aircraft swaps and at most one link per leg in each role.",
     "columns": {
       "turn_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "턴어라운드 ID"
+        "description": "Turnaround identifier."
       },
       "inbound_id": {
         "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
-        "description": "입항 운항편"
+        "description": "Inbound operating leg."
       },
       "outbound_id": {
         "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
-        "description": "다음 출항 운항편"
+        "description": "Next outbound operating leg."
       },
       "handling_started_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "지상조업 실제 시작 시각"
+        "description": "Actual start of ground handling."
       },
       "ready_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "항공기 출발 준비 완료 시각"
+        "description": "Actual aircraft ready time."
       }
     }
   },
   "boarding_sessions": {
-    "description": "편 단위 탑승 운영 세션. 예시에서는 회항·재개 없음.",
+    "description": "Flight-level boarding sessions. This example does not model diversions or reopened boarding.",
     "columns": {
       "session_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "세션 ID"
+        "description": "Boarding session identifier."
       },
       "flight_id": {
         "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
-        "description": "운항편"
+        "description": "Operating leg."
       },
       "started_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "승객 탑승 개시 시각"
+        "description": "Actual start of passenger boarding."
       },
       "closed_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "승객 탑승 마감 시각"
+        "description": "Actual close of passenger boarding."
       }
     }
   },
   "handling_jobs": {
-    "description": "지상조업 작업 지시 및 완료 기록.",
+    "description": "Ground handling work orders and completion records.",
     "columns": {
       "job_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "작업 ID"
+        "description": "Handling job identifier."
       },
       "turn_id": {
         "declaration": "TEXT NOT NULL REFERENCES turnarounds(turn_id)",
-        "description": "담당 지상준비 건"
+        "description": "Turnaround served by the job."
       },
       "job_code": {
         "declaration": "TEXT NOT NULL",
-        "description": "BL = 수하물 탑재 마감, CL = 청소, DP = 승객 하차, UL = 수하물 하역, FU = 급유, CA = 기내식 적재"
+        "description": "BL = baggage loading close; CL = cabin cleaning; DP = disembarkation; UL = baggage unloading; FU = refuelling; CA = catering loading."
       },
       "started_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "현장 작업 시작 시각"
+        "description": "Actual job start time."
       },
       "finished_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "현장 작업 완료 시각"
+        "description": "Actual job completion time."
       },
       "posted_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "전산 등록 시각"
+        "description": "Time the record was posted to the system."
       }
     }
   },
   "movement_reports": {
-    "description": "입항·출항 운항편의 예정·실제 운항 메시지.",
+    "description": "Estimated and actual movement messages for inbound and outbound operating legs.",
     "columns": {
       "report_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "메시지 ID"
+        "description": "Movement report identifier."
       },
       "flight_id": {
         "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
-        "description": "운항편"
+        "description": "Operating leg."
       },
       "kind": {
         "declaration": "TEXT NOT NULL",
-        "description": "EST = 예상 주기장 출발, OUT = 실제 주기장 출발, AIR = 실제 이륙, LAND = 실제 착륙, IN = 실제 주기장 도착"
+        "description": "EST = estimated off-block; OUT = actual off-block; AIR = actual take-off; LAND = actual landing; IN = actual in-block."
       },
       "value_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "메시지가 가리키는 시각"
+        "description": "Timestamp represented by the message."
       },
       "received_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "메시지 수신 시각"
+        "description": "Time the message was received."
       }
     }
   },
   "bookings": {
-    "description": "일행의 예약.",
+    "description": "Reservations for groups of travellers.",
     "columns": {
       "booking_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "예약 ID"
+        "description": "Booking identifier."
       },
       "booked_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "예약 생성 시각"
+        "description": "Time the booking was created."
       }
     }
   },
   "passengers": {
-    "description": "가명 승객 명부. 국적은 예시에서 기록된 단일 국적이며 출생국·거주국·여권 발급국과 구분한다. 생년월일은 사건 발생 시각이 아니다.",
+    "description": "Synthetic passenger register. The dataset records a single nationality, distinct from country of birth, residence or passport issuance. Date of birth is a passenger attribute.",
     "columns": {
       "passenger_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "내부 합성 승객 식별자. 여권 번호가 아님"
+        "description": "Internal synthetic passenger identifier, distinct from a passport number."
       },
       "display_name": {
         "declaration": "TEXT NOT NULL",
-        "description": "가상 승객 표시명"
+        "description": "Synthetic passenger display name."
       },
       "date_of_birth": {
         "declaration": "DATE NOT NULL",
-        "description": "생년월일. YYYY-MM-DD. 사건 발생 시각이 아닌 승객 속성"
+        "description": "Date of birth in YYYY-MM-DD format. A passenger attribute rather than an event timestamp."
       },
       "nationality_code": {
         "declaration": "TEXT CHECK (nationality_code IS NULL OR length(nationality_code)=2)",
-        "description": "기록된 국적의 두 자리 코드. KR/JP/US/DE/SG. 예시 가정상 하나만 기록, NULL은 미확인"
+        "description": "Recorded two-letter nationality code (KR, JP, US, DE or SG). NULL means unknown."
       },
       "gender_code": {
         "declaration": "TEXT NOT NULL CHECK (gender_code IN ('MALE','FEMALE','UNKNOWN'))",
-        "description": "원천 승객 정보의 성별 코드. 예시 로컬 코드 체계이며 UNKNOWN은 미확인"
+        "description": "Source gender code using the local values MALE, FEMALE and UNKNOWN."
       }
     }
   },
   "tickets": {
-    "description": "승객에게 발행한 항공권.",
+    "description": "Tickets issued to passengers.",
     "columns": {
       "ticket_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "항공권 ID"
+        "description": "Ticket identifier."
       },
       "booking_id": {
         "declaration": "TEXT NOT NULL REFERENCES bookings(booking_id)",
-        "description": "관련 예약"
+        "description": "Associated booking."
       },
       "passenger_id": {
         "declaration": "TEXT NOT NULL REFERENCES passengers(passenger_id)",
-        "description": "명의 승객"
+        "description": "Passenger named on the ticket."
       }
     }
   },
   "passenger_legs": {
-    "description": "승객이 특정 편을 이용하는 항공권 구간.",
+    "description": "Ticketed segments linking a passenger ticket to a particular operating leg.",
     "columns": {
       "leg_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "승객 탑승 구간 ID"
+        "description": "Passenger flight leg identifier."
       },
       "ticket_id": {
         "declaration": "TEXT NOT NULL REFERENCES tickets(ticket_id)",
-        "description": "항공권"
+        "description": "Associated ticket."
       },
       "flight_id": {
         "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
-        "description": "운항편"
+        "description": "Operating leg."
       }
     }
   },
   "passenger_actions": {
-    "description": "승객 탑승 구간의 출발수속 기록.",
+    "description": "Departure processing records for passenger flight legs.",
     "columns": {
       "action_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "처리 기록 ID"
+        "description": "Passenger action identifier."
       },
       "leg_id": {
         "declaration": "TEXT NOT NULL REFERENCES passenger_legs(leg_id)",
-        "description": "탑승 구간"
+        "description": "Passenger flight leg."
       },
       "action_code": {
         "declaration": "TEXT NOT NULL",
-        "description": "CK = 체크인 완료, BD = 탑승 확인, RJ = 판독 거절"
+        "description": "CK = check-in completed; BD = boarding confirmed; RJ = scan rejected."
       },
       "action_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "현장 처리 시각"
+        "description": "Time the action occurred."
       }
     }
   }

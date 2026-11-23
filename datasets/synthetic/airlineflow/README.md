@@ -25,7 +25,7 @@ Earlier tables and rows are identical across successive variants. These sizes in
 
 ## Pilot requests and references
 
-The [model question file](evaluation/model_questions.jsonl) has question_id and text fields. Requests are in Korean.
+The [model question file](evaluation/model_questions.jsonl) has question_id and text fields. Requests and data dictionaries are in English.
 
 | ID | Case | Requested events | Minimum tables | Cases | Reference events |
 |---|---|---|---:|---:|---:|
