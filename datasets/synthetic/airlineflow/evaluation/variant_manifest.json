@@ -1,0 +1,119 @@
+[
+  {
+    "variant_id": "l05",
+    "table_count": 5,
+    "row_count": 720,
+    "table_rows": {
+      "boarding_sessions": 48,
+      "flights": 96,
+      "handling_jobs": 288,
+      "movement_reports": 240,
+      "turnarounds": 48
+    },
+    "database_path": "variants/l05/input/database.sqlite",
+    "dictionary_path": "variants/l05/input/data_dictionary.json",
+    "database_sha256": "8bb95d543547940505597cb1d1824d68506ef77cde9f5130de8c04f3c6187b04",
+    "dictionary_sha256": "64161d5ab57c021048a7e75404cefae2482a3e9cf5ce02a35f5b58532a1efbf1",
+    "question_ids": [
+      "T",
+      "D"
+    ]
+  },
+  {
+    "variant_id": "l10",
+    "table_count": 10,
+    "row_count": 1992,
+    "table_rows": {
+      "boarding_sessions": 48,
+      "bookings": 72,
+      "flights": 96,
+      "handling_jobs": 288,
+      "movement_reports": 240,
+      "passenger_actions": 624,
+      "passenger_legs": 288,
+      "passengers": 144,
+      "tickets": 144,
+      "turnarounds": 48
+    },
+    "database_path": "variants/l10/input/database.sqlite",
+    "dictionary_path": "variants/l10/input/data_dictionary.json",
+    "database_sha256": "e5064c258607b580d3ed82198c68739719fe1013db26f61855cf1c6d089511d6",
+    "dictionary_sha256": "54de798ca7e09b954890d778394a1bd9bf74562407f7020697134c241cbfde6c",
+    "question_ids": [
+      "T",
+      "D",
+      "P"
+    ]
+  },
+  {
+    "variant_id": "l15",
+    "table_count": 15,
+    "row_count": 3578,
+    "table_rows": {
+      "bag_legs": 144,
+      "bag_scans": 288,
+      "boarding_sessions": 48,
+      "bookings": 72,
+      "checkpoints": 2,
+      "flights": 96,
+      "handling_jobs": 288,
+      "movement_reports": 240,
+      "passenger_actions": 624,
+      "passenger_legs": 288,
+      "passengers": 144,
+      "security_events": 864,
+      "security_visits": 288,
+      "tickets": 144,
+      "turnarounds": 48
+    },
+    "database_path": "variants/l15/input/database.sqlite",
+    "dictionary_path": "variants/l15/input/data_dictionary.json",
+    "database_sha256": "d6f98dff33db9fdf8f3123e9937fd46c19dc1ec49dd0b492c1f012fe34899a01",
+    "dictionary_sha256": "1059c68175dfbf405eadf2b2008e87c4bcab31ece9bc336cb7bf5de6405b9c9a",
+    "question_ids": [
+      "T",
+      "D",
+      "P",
+      "S",
+      "B"
+    ]
+  },
+  {
+    "variant_id": "l20",
+    "table_count": 20,
+    "row_count": 3685,
+    "table_rows": {
+      "aircraft": 4,
+      "airlines": 2,
+      "airports": 3,
+      "bag_legs": 144,
+      "bag_scans": 288,
+      "boarding_sessions": 48,
+      "bookings": 72,
+      "checkpoints": 2,
+      "employees": 2,
+      "flight_dispatch": 96,
+      "flights": 96,
+      "handling_jobs": 288,
+      "movement_reports": 240,
+      "passenger_actions": 624,
+      "passenger_legs": 288,
+      "passengers": 144,
+      "security_events": 864,
+      "security_visits": 288,
+      "tickets": 144,
+      "turnarounds": 48
+    },
+    "database_path": "variants/l20/input/database.sqlite",
+    "dictionary_path": "variants/l20/input/data_dictionary.json",
+    "database_sha256": "79eae048e8dcb6cbba26896d7b53a747aa84348a5561f298da66e37e53549e04",
+    "dictionary_sha256": "bdb002594395de00ff65824494b19515167f435a5e1ac49a47c2b8f4700f425d",
+    "question_ids": [
+      "T",
+      "D",
+      "P",
+      "S",
+      "B"
+    ]
+  }
+]

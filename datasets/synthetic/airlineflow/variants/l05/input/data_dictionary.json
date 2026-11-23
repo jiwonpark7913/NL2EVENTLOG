@@ -1,0 +1,123 @@
+{
+  "flights": {
+    "description": "날짜별 운항편. 입항편과 출항편 모두 저장한다. 편명은 날짜가 다르면 반복된다.",
+    "columns": {
+      "flight_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "운항편 ID"
+      },
+      "flight_no": {
+        "declaration": "TEXT NOT NULL",
+        "description": "공시 편명"
+      },
+      "scheduled_offblock": {
+        "declaration": "TEXT NOT NULL",
+        "description": "계획 주기장 출발 시각"
+      },
+      "scheduled_inblock": {
+        "declaration": "TEXT NOT NULL",
+        "description": "계획 주기장 도착 시각"
+      }
+    }
+  },
+  "turnarounds": {
+    "description": "동일 기체의 입항편과 다음 출항편을 잇는 지상 체류 건. 본 예시는 기체 교체 없이 각 입항·출항이 한 번만 연결된다.",
+    "columns": {
+      "turn_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "턴어라운드 ID"
+      },
+      "inbound_id": {
+        "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
+        "description": "입항 운항편"
+      },
+      "outbound_id": {
+        "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
+        "description": "다음 출항 운항편"
+      },
+      "handling_started_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "지상조업 실제 시작 시각"
+      },
+      "ready_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "항공기 출발 준비 완료 시각"
+      }
+    }
+  },
+  "boarding_sessions": {
+    "description": "편 단위 탑승 운영 세션. 예시에서는 회항·재개 없음.",
+    "columns": {
+      "session_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "세션 ID"
+      },
+      "flight_id": {
+        "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
+        "description": "운항편"
+      },
+      "started_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "승객 탑승 개시 시각"
+      },
+      "closed_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "승객 탑승 마감 시각"
+      }
+    }
+  },
+  "handling_jobs": {
+    "description": "지상조업 작업 지시 및 완료 기록.",
+    "columns": {
+      "job_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "작업 ID"
+      },
+      "turn_id": {
+        "declaration": "TEXT NOT NULL REFERENCES turnarounds(turn_id)",
+        "description": "담당 지상준비 건"
+      },
+      "job_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "BL = 수하물 탑재 마감, CL = 청소, DP = 승객 하차, UL = 수하물 하역, FU = 급유, CA = 기내식 적재"
+      },
+      "started_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "현장 작업 시작 시각"
+      },
+      "finished_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "현장 작업 완료 시각"
+      },
+      "posted_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "전산 등록 시각"
+      }
+    }
+  },
+  "movement_reports": {
+    "description": "입항·출항 운항편의 예정·실제 운항 메시지.",
+    "columns": {
+      "report_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "메시지 ID"
+      },
+      "flight_id": {
+        "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
+        "description": "운항편"
+      },
+      "kind": {
+        "declaration": "TEXT NOT NULL",
+        "description": "EST = 예상 주기장 출발, OUT = 실제 주기장 출발, AIR = 실제 이륙, LAND = 실제 착륙, IN = 실제 주기장 도착"
+      },
+      "value_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "메시지가 가리키는 시각"
+      },
+      "received_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "메시지 수신 시각"
+      }
+    }
+  }
+}

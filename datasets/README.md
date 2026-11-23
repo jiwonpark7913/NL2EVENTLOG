@@ -6,7 +6,7 @@ Choose by **how the relational input was produced**. Record origin is a separate
 |---|---:|---|
 | [Import upstream relational tables](source_relational/) | 3 | Study extraction on schemas defined outside this benchmark |
 | [Convert an upstream event log](from_event_logs/) | 2 | Compare recovered events and case assignments with direct event–object links in the source log |
-| [Generate a domain database](synthetic/) | 6 | Evaluate against authored references or compare controlled physical layouts |
+| [Generate a domain database](synthetic/) | 7 | Evaluate against authored references or compare controlled physical layouts |
 
 ## Choose a domain
 
@@ -23,6 +23,8 @@ Choose by **how the relational input was produced**. Record origin is a separate
 | [WarehouseFlow](synthetic/warehouseflow/) | RSchema warehouse requirements | 12 | 40 requests, 40 reference logs |
 | [MaintenanceFlow](synthetic/maintenanceflow/) | Equipment maintenance, 13 layouts | 15 | 40 requests shared across layouts |
 | [ProcurementFlow](synthetic/procurementflow/) | Procurement to payment, 6 layouts | 15 | 40 requests shared across layouts |
+
+| [AirlineFlow](synthetic/airlineflow/) | Aviation operations, four nested pilot schemas | 5 | 5 requests, authored references; 5/10/15/20-table variants |
 
 Table counts refer to the base SQLite layout or, for converted event logs, the published dictionary. A reference-log count is the number of question-specific CSV files. Variant counts include the base layout.
 
