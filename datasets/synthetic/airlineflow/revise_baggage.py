@@ -165,7 +165,7 @@ for size,data in raw.items():
             for row in original['bag_scans']['rows']:
                 if row[sid] in updates: row[idx]=updates[row[sid]]
         for t in original:
-            assert sorted(original[t]['rows'],key=lambda x:x[0])==data[t]['rows'],(size,t)
+            assert [tuple(x) for x in sorted(original[t]['rows'],key=lambda x:x[0])]==data[t]['rows'],(size,t)
         return m[1]+json.dumps(original,ensure_ascii=False,separators=(',',':'))+m[2]
     page,n=re.subn(patt,update_raw,page);assert n==1
 for table,fields in patch.items():
