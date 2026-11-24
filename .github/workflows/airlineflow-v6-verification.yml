@@ -1,0 +1,12 @@
+name: Verify AirlineFlow v6
+on:
+  push:
+    branches: [verify/airlineflow-v6-20261125]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python datasets/synthetic/airlineflow/verify.py
