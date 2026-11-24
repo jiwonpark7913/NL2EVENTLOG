@@ -10,7 +10,7 @@ All records are synthetic. The study window contains 48 inbound flights, 48 outb
 
 The left ERD column marks PK, FK and single-column UQ constraints. Arrows point from child references to parent keys. The schema also declares a composite UNIQUE(ticket_id, flight_id) constraint in passenger_legs.
 
-Download and open the [scenario viewer](docs/scenario.html) in a browser to view all four ERDs, embedded dictionaries and an example turnaround trace.
+Download and open the [scenario viewer](docs/scenario.html) in a browser to view all four ERDs, embedded dictionaries and an example turnaround trace. Open **Raw tables** to browse SQLite rows or download a complete table as CSV.
 
 ## Four database sizes
 
@@ -52,7 +52,8 @@ This runs all 15 supported request/variant combinations, checks foreign keys and
 - flights identifies dated operating legs. Flight numbers repeat across dates.
 - turnarounds connects an inbound_id and an outbound_id using UNIQUE foreign keys. The example assumes one aircraft and no swaps. At l20, the aircraft and connecting airport agree across the pair.
 - movement_reports distinguishes LAND (landing), IN (in-block), OUT (off-block), AIR (take-off) and EST (estimated off-block). Use value_at for the represented time and received_at for message receipt.
-- handling_jobs stores actual start/completion and posting time. Jobs can overlap.
+- handling_jobs stores actual start/completion and posting time. Jobs can overlap. Its service_provider_code, priority_code and work_zone_code describe ground operations.
+- Movement reports include source_code, validation_code and message_format_code. These operational attributes are synthetic. The existing kind and job_code values identify activities.
 - passenger_id is an internal synthetic person key. passengers stores date_of_birth, a single recorded nationality and a locally coded gender. Date of birth is an attribute. Age is not calculated.
 - tickets links to passengers by passenger_id. Copied passenger snapshots at issuance are not modeled.
 - Security timestamps assume an airport feed linked to a passenger leg. Airline availability of such a feed is an explicit scenario assumption.

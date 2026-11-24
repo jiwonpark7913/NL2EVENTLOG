@@ -92,6 +92,18 @@
       "posted_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the record was posted to the system."
+      },
+      "service_provider_code": {
+        "declaration": "TEXT",
+        "description": "Provider assigned to the job. Codes are synthetic and cover airline ground operations and contracted providers."
+      },
+      "priority_code": {
+        "declaration": "TEXT",
+        "description": "Dispatch priority assigned to the job. STANDARD, HIGH and CRITICAL are synthetic operational categories."
+      },
+      "work_zone_code": {
+        "declaration": "TEXT",
+        "description": "Zone where the work was carried out, such as aircraft cabin, cargo hold, ramp or passenger bridge."
       }
     }
   },
@@ -117,6 +129,18 @@
       "received_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the message was received."
+      },
+      "source_code": {
+        "declaration": "TEXT",
+        "description": "Origin of the report, such as an airport operations database (AODB), a ground handling system (GHS), or an aircraft communications feed (ACARS)."
+      },
+      "validation_code": {
+        "declaration": "TEXT",
+        "description": "How a report was checked. AUTO_CHECKED means automated checks. OPS_REVIEWED means operations staff reviewed it."
+      },
+      "message_format_code": {
+        "declaration": "TEXT",
+        "description": "Format of the ingested record, such as AIDX, MVT or a local system record."
       }
     }
   }
