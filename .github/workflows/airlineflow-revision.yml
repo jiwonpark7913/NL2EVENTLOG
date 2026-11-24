@@ -1,0 +1,26 @@
+name: Revise AirlineFlow nested databases
+on:
+  push:
+    branches: [data/airlineflow-revision-20261124]
+    paths: ['datasets/synthetic/airlineflow/revise.py']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  revise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python datasets/synthetic/airlineflow/revise.py
+      - run: python datasets/synthetic/airlineflow/verify.py
+      - name: Publish verified SQLite and references
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/synthetic/airlineflow
+          git diff --cached --quiet || git commit -m 'data: publish validated AirlineFlow revision'
+          git push
