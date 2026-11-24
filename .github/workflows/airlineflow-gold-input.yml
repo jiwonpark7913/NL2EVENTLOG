@@ -1,0 +1,22 @@
+name: AirlineFlow pinned Gold inputs
+on:
+  push:
+    branches: [data/airlineflow-gold-v3]
+    paths: ['.github/workflows/airlineflow-gold-input.yml']
+permissions:
+  contents: read
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python datasets/synthetic/airlineflow/verify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AirlineFlow-Gold-inputs
+          path: |
+            datasets/synthetic/airlineflow/variants/l05/input/
+            datasets/synthetic/airlineflow/private/D_events.csv
+            datasets/synthetic/airlineflow/private/T_events.csv
+            datasets/synthetic/airlineflow/evaluation/variant_manifest.json
+          retention-days: 1
