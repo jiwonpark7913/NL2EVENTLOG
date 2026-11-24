@@ -21,7 +21,7 @@
     }
   },
   "turnarounds": {
-    "description": "Ground stay linking an inbound leg to the next outbound leg operated by the same aircraft. This dataset assumes no aircraft swaps and at most one link per leg in each role.",
+    "description": "Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start is the start of coordination, which can precede individual jobs.",
     "columns": {
       "turn_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
@@ -46,7 +46,7 @@
     }
   },
   "boarding_sessions": {
-    "description": "Flight-level boarding sessions. This example does not model diversions or reopened boarding.",
+    "description": "Flight-level boarding sessions at the origin of every dated operating leg. One session per flight in this example; inbound legs also have origin boarding records.",
     "columns": {
       "session_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
@@ -108,7 +108,7 @@
     }
   },
   "movement_reports": {
-    "description": "Estimated and actual movement messages for inbound and outbound operating legs.",
+    "description": "Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. Both inbound and outbound legs have all four actual movements; EST estimates origin off-block.",
     "columns": {
       "report_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",

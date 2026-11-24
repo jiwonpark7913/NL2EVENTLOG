@@ -2,7 +2,7 @@
 
 AirlineFlow is an authored synthetic aviation example for NL2EventLog. It provides four nested databases with **5, 10, 15 and 20 tables**, together with five pilot requests. It covers inbound-to-outbound aircraft turnaround, departure preparation, passenger processing, checked baggage and airport-linked security visits.
 
-All records are synthetic. The study window contains 48 inbound flights, 48 outbound flights and 48 turnarounds across 12 days. The sample passengers and bags represent selected example records. Flight-level operational completion is recorded separately from individual scans. All timestamps use KST.
+All records are synthetic. The study window contains 48 inbound flights, 48 outbound flights and 48 turnarounds across 12 days. The sample passengers and bags represent selected example records. Flight-level operational completion is recorded separately from individual scans. Each of the 96 legs has an origin boarding session and origin/departure and destination/arrival actual movement messages. All timestamps use KST.
 
 ## Inspect the scenario
 
@@ -46,6 +46,10 @@ python verify.py
 ```
 
 This runs all 15 supported request/variant combinations, checks foreign keys and checksums, and compares SQL output with authored CSV references. LLM extraction has not yet been run on this dataset.
+
+## Dataset revision (2026-11-24)
+
+The original databases were migrated in place across all nested sizes with deterministic seed 20261124. Core tables remain unchanged in schema. Independent surrogate identifiers replace aligned flight, turnaround, boarding, job and movement IDs. Both arrival and departure legs now carry all four actual movements; receipt delays, taxi durations and handling timing vary. The additional boarding sessions represent inbound flights boarding at their origin, not reopened boarding. Outbound flight and turnaround remain one-to-one within the focal-airport scope; strict original case-ID comparison is required. D and T references use the turnaround role to exclude movements at the other airport.
 
 ## Representation choices
 
