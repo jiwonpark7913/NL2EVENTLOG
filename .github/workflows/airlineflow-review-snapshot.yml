@@ -1,0 +1,21 @@
+name: AirlineFlow review snapshot
+on:
+  push:
+    branches: [data/airlineflow-review-snapshot-20261125]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python datasets/synthetic/airlineflow/verify.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: airlineflow-review-snapshot
+          path: |
+            datasets/synthetic/airlineflow/variants/
+            datasets/synthetic/airlineflow/evaluation/
+            datasets/synthetic/airlineflow/private/
+            datasets/synthetic/airlineflow/docs/scenario.html
+          retention-days: 1
