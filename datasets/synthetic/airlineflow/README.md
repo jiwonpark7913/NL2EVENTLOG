@@ -51,6 +51,10 @@ This runs all 15 supported request/variant combinations, checks foreign keys and
 
 The original databases were migrated in place across all nested sizes with deterministic seed 20261124. Core tables remain unchanged in schema. Independent surrogate identifiers replace aligned flight, turnaround, boarding, job and movement IDs. Both arrival and departure legs now carry all four actual movements; receipt delays, taxi durations and handling timing vary. The additional boarding sessions represent inbound flights boarding at their origin, not reopened boarding. Outbound flight and turnaround remain one-to-one within the focal-airport scope; strict original case-ID comparison is required. D and T references use the turnaround role to exclude movements at the other airport.
 
+## Baggage record revision (2026-11-25)
+
+Individual bag loading observations in L15 and L20 now vary within the ground-handling work interval. The recorded completion of the baggage loading job is unchanged. The checked baggage records cover a sample of bags. The operation-level and individual-bag records have distinct granularity; the dictionaries describe their business meaning without specifying extraction rules. The five core tables and all schemas remain unchanged. See [revision audit](evaluation/baggage_revision_audit.json).
+
 ## Representation choices
 
 - flights identifies dated operating legs. Flight numbers repeat across dates.

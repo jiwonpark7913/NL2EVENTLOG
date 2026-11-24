@@ -1,0 +1,87 @@
+{
+  "seed": 20261125,
+  "old_gap_distribution": {
+    "3": 48
+  },
+  "new_gap_distribution": {
+    "1": 7,
+    "2": 5,
+    "3": 3,
+    "4": 6,
+    "5": 6,
+    "6": 6,
+    "7": 4,
+    "8": 9,
+    "9": 2
+  },
+  "variants": {
+    "l05": {
+      "database_before": "da67f36b639997248ba27de01ba7937137f558536302ca84661cc0c1ef5ab31c",
+      "changed_ld_rows": 0,
+      "database_after": "da67f36b639997248ba27de01ba7937137f558536302ca84661cc0c1ef5ab31c",
+      "dictionary_before": "6c032d249c0195cafe178e9fc849bff7b1e0efe3755fdecea5af88ff07c0b3e6",
+      "dictionary_after": "01249501c1724605be41cc6b32ac5ff379c94cc4aa2693c27a7874a67f1c4d20"
+    },
+    "l10": {
+      "database_before": "95b1df4efdc62dce2a6d684a3ef5d45670f5ade15cef997f1197de06c10d3a64",
+      "changed_ld_rows": 0,
+      "database_after": "95b1df4efdc62dce2a6d684a3ef5d45670f5ade15cef997f1197de06c10d3a64",
+      "dictionary_before": "fcf4f712db06cda2298bd55ff7d8401231062588892c29adf22e5324146a0f2f",
+      "dictionary_after": "55c6d29955d699ae439d9b3c0c44e79709afe1ab804247fcc38de5beea0cf376"
+    },
+    "l15": {
+      "database_before": "6bd402c366638fcad56f7c78b2b8f7a0222e307e7603679841bdac0a8dffc5f1",
+      "changed_ld_rows": 135,
+      "gap_minutes_distribution": {
+        "1": 7,
+        "2": 5,
+        "3": 3,
+        "4": 6,
+        "5": 6,
+        "6": 6,
+        "7": 4,
+        "8": 9,
+        "9": 2
+      },
+      "q03_max_ld_mutant": {
+        "tp": 192,
+        "fp": 48,
+        "fn": 48,
+        "f1": 0.8,
+        "exact": false
+      },
+      "database_after": "9733b34d5df5a0510499dfe82caa37a4cfadceb45b9fdf36744abb0a1123b9b9",
+      "dictionary_before": "f30637ad203fc6def52cea2669dd6ac378f074dc20ebb05ba066d410f5a2a78e",
+      "dictionary_after": "0cea2c45308abebe8b7b533b1bba0c1f6c9c302d688daad878fc9fea5d733f9e"
+    },
+    "l20": {
+      "database_before": "1cef4f735a0251983d4b15ea55077549f9a61a8a236611c9b829b4acf55f2427",
+      "changed_ld_rows": 135,
+      "gap_minutes_distribution": {
+        "1": 7,
+        "2": 5,
+        "3": 3,
+        "4": 6,
+        "5": 6,
+        "6": 6,
+        "7": 4,
+        "8": 9,
+        "9": 2
+      },
+      "q03_max_ld_mutant": {
+        "tp": 192,
+        "fp": 48,
+        "fn": 48,
+        "f1": 0.8,
+        "exact": false
+      },
+      "database_after": "74a0dbf7add6c65f37749d8bacbf2bb5dc371774a8257b63b34955eefe724298",
+      "dictionary_before": "401c9cae9d811cea1d546f9c2a42a048d760974f02bc5c8eea84f8fe14973d28",
+      "dictionary_after": "936b944cb7d5884d9f48f9a073494c07ddaa14325c748e8b0ae47d47f7cd6769"
+    }
+  },
+  "legacy_B_event_count": 864,
+  "core_rows_unchanged": true,
+  "schema_unchanged": true,
+  "note": "Q03/D mutant uses legacy D activity labels. All 48 closure timestamps differ from last sampled LD; core pilot reference events unchanged."
+}

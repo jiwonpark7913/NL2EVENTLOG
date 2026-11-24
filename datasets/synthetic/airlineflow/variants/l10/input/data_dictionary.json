@@ -67,7 +67,7 @@
     }
   },
   "handling_jobs": {
-    "description": "Ground handling work orders and completion records.",
+    "description": "Ground handling work orders associated with aircraft turnarounds.",
     "columns": {
       "job_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
@@ -75,23 +75,23 @@
       },
       "turn_id": {
         "declaration": "TEXT NOT NULL REFERENCES turnarounds(turn_id)",
-        "description": "Turnaround served by the job."
+        "description": "Aircraft turnaround associated with the job."
       },
       "job_code": {
         "declaration": "TEXT NOT NULL",
-        "description": "BL = baggage loading close; CL = cabin cleaning; DP = disembarkation; UL = baggage unloading; FU = refuelling; CA = catering loading."
+        "description": "Type of ground handling operation. BL = Baggage loading; CL = Cabin cleaning; DP = Passenger disembarkation; UL = Baggage unloading; FU = Refuelling; CA = Catering loading."
       },
       "started_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Actual job start time."
+        "description": "Actual start time of the assigned job."
       },
       "finished_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Actual job completion time."
+        "description": "Time at which completion of the assigned operation was confirmed."
       },
       "posted_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Time the record was posted to the system."
+        "description": "Time at which the job record was posted to the system."
       },
       "service_provider_code": {
         "declaration": "TEXT",

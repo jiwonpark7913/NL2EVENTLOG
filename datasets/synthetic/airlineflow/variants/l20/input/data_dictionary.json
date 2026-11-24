@@ -67,7 +67,7 @@
     }
   },
   "handling_jobs": {
-    "description": "Ground handling work orders and completion records.",
+    "description": "Ground handling work orders associated with aircraft turnarounds.",
     "columns": {
       "job_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
@@ -75,23 +75,23 @@
       },
       "turn_id": {
         "declaration": "TEXT NOT NULL REFERENCES turnarounds(turn_id)",
-        "description": "Turnaround served by the job."
+        "description": "Aircraft turnaround associated with the job."
       },
       "job_code": {
         "declaration": "TEXT NOT NULL",
-        "description": "BL = baggage loading close; CL = cabin cleaning; DP = disembarkation; UL = baggage unloading; FU = refuelling; CA = catering loading."
+        "description": "Type of ground handling operation. BL = Baggage loading; CL = Cabin cleaning; DP = Passenger disembarkation; UL = Baggage unloading; FU = Refuelling; CA = Catering loading."
       },
       "started_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Actual job start time."
+        "description": "Actual start time of the assigned job."
       },
       "finished_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Actual job completion time."
+        "description": "Time at which completion of the assigned operation was confirmed."
       },
       "posted_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Time the record was posted to the system."
+        "description": "Time at which the job record was posted to the system."
       },
       "service_provider_code": {
         "declaration": "TEXT",
@@ -238,40 +238,40 @@
     }
   },
   "bag_legs": {
-    "description": "Transport records for checked bags on individual passenger flight legs.",
+    "description": "Transport records for a sample of checked bags associated with passenger flight legs.",
     "columns": {
       "bag_leg_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "Bag leg identifier."
+        "description": "Baggage transport record identifier."
       },
       "leg_id": {
         "declaration": "TEXT NOT NULL REFERENCES passenger_legs(leg_id)",
-        "description": "Passenger flight leg under which the bag was checked."
+        "description": "Passenger flight leg associated with the checked bag."
       },
       "bag_tag": {
         "declaration": "TEXT NOT NULL",
-        "description": "Baggage tag."
+        "description": "Baggage tag identifier."
       }
     }
   },
   "bag_scans": {
-    "description": "Individual checked baggage scans.",
+    "description": "Individual baggage tracking records for the checked bags represented in the dataset.",
     "columns": {
       "scan_id": {
         "declaration": "TEXT PRIMARY KEY NOT NULL",
-        "description": "Scan identifier."
+        "description": "Baggage scan record identifier."
       },
       "bag_leg_id": {
         "declaration": "TEXT NOT NULL REFERENCES bag_legs(bag_leg_id)",
-        "description": "Bag leg."
+        "description": "Baggage transport record associated with the scan."
       },
       "scan_code": {
         "declaration": "TEXT NOT NULL",
-        "description": "ACC = bag accepted; LD = bag loaded into the aircraft hold."
+        "description": "Baggage tracking event code. ACC = Bag accepted; LD = Bag loaded into the aircraft hold."
       },
       "scanned_at": {
         "declaration": "TEXT NOT NULL",
-        "description": "Time of the physical scan."
+        "description": "Date and time of the baggage scan."
       }
     }
   },
