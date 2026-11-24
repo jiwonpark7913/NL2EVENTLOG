@@ -1,6 +1,6 @@
 # AirlineFlow
 
-AirlineFlow is an authored synthetic aviation example for NL2EventLog. It provides four nested databases with **5, 10, 15 and 20 tables**, together with five pilot requests. It covers inbound-to-outbound aircraft turnaround, departure preparation, passenger processing, checked baggage and airport-linked security visits.
+AirlineFlow is an authored synthetic aviation example for NL2EventLog. It provides four nested databases with **5, 10, 15 and 20 tables**, together with twelve current pilot requests. It covers inbound-to-outbound aircraft turnaround, departure preparation, passenger processing, checked baggage and airport-linked security visits.
 
 All records are synthetic. The study window contains 48 inbound flights, 48 outbound flights and 48 turnarounds across 12 days. The sample passengers and bags represent selected example records. Flight-level operational completion is recorded separately from individual scans. Each of the 96 legs has an origin boarding session and origin/departure and destination/arrival actual movement messages. All timestamps use KST.
 
@@ -25,27 +25,13 @@ Earlier tables and rows are identical across successive variants. These sizes in
 
 ## Pilot requests and references
 
-The [model question file](evaluation/model_questions.jsonl) has question_id and text fields. Requests and data dictionaries are in English.
+Use [model_questions.jsonl](evaluation/model_questions.jsonl) for the **current Q01–Q12 pilot (query registry v6)**. The [bilingual query registry](evaluation/query_registry.json) contains the same English texts and Korean translations. Q01 asks about average passenger boarding duration; the requested output remains the start/end event log for each boarding session. Q03 wording is still pending final approval. All other v5 query texts and Gold event tuples are unchanged.
 
-| ID | Case | Requested events | Minimum tables | Cases | Reference events |
-|---|---|---|---:|---:|---:|
-| D | Outbound flight | Boarding start/close, baggage loading close, aircraft ready, off-block | 5 | 48 | 240 |
-| T | Turnaround | Inbound landing/in-block, handling milestones, outbound preparation and take-off | 5 | 48 | 672 |
-| P | Passenger flight leg | Check-in and boarding confirmation | 10 | 288 | 576 |
-| B | Passenger flight leg | Check-in/boarding and each checked bag's acceptance/loading | 15 | 288 | 864 |
-| S | Security visit | Queue entry, screening start and screening completion | 15 | 288 | 864 |
+The [scenario viewer](docs/scenario.html#extraction-requests) displays these twelve requests. The [variant manifest](evaluation/variant_manifest.json) lists the current question IDs for all four variants. For a controlled scalability comparison, use the same twelve requests on L05, L10, L15 and L20. The Q01–Q12 evaluator Gold package is maintained separately from these model inputs; the historical repository verifier does not certify the current twelve Gold logs.
 
-The [variant manifest](evaluation/variant_manifest.json) records allowed requests, paths, row counts and checksums. Start with D and T on all four variants to compare the same requests and reference events as the catalog grows. Each request is an explicit pilot request. Implicit scope and paraphrase pairs can be added after the first run.
+For regression compatibility, the previous T/D/P/S/B request texts are preserved in [legacy_model_questions.jsonl](evaluation/legacy_model_questions.jsonl). The manifest's legacy_question_ids identify the original reference SQL/CSV files under [private/](private/). This is evaluator material; the directory name does not impose access controls. Supply only the selected database, data dictionary and the English text of one current request to the model. Preserve original case IDs and event multiplicities.
 
-Authored [reference SQL and event logs](private/) are evaluator material. The directory name identifies its role and does not impose access controls. Supply the model only its selected variant's database, dictionary and one question. Use the existing one-to-one activity-label matching evaluator consistently when evaluating generated labels. Preserve event multiplicities.
-
-Run the reference verification from this folder:
-
-```bash
-python verify.py
-```
-
-This runs all 15 supported request/variant combinations, checks foreign keys and checksums, and compares SQL output with authored CSV references. LLM extraction has not yet been run on this dataset.
+Run `python verify.py` for the database integrity, nested-record and legacy reference regression checks (15 combinations). The script additionally verifies that the current model-input and bilingual registry texts and manifest IDs agree. It does not run the LLM or evaluate the separate Q01–Q12 Gold package.
 
 ## Dataset revision (2026-11-24)
 

@@ -1,0 +1,62 @@
+[
+  {
+    "question_id": "Q01",
+    "question_en": "I want to find out how long passenger boarding takes on average. Create an event log containing the start and end of passenger boarding for each boarding session.",
+    "question_kr": "승객 탑승에 평균적으로 얼마나 시간이 걸리는지 확인하고 싶어. 각 탑승 세션별로 승객 탑승 시작 및 종료 이벤트를 추출해줘."
+  },
+  {
+    "question_id": "Q02",
+    "question_en": "I'd like to understand how long individual ground-handling jobs take, regardless of the type of work. Reconstruct the lifecycle of each job. Focus on actual work execution.",
+    "question_kr": "작업 종류와 관계없이 개별 지상조업 작업에 얼마나 시간이 걸리는지 파악하고 싶어. 각 작업의 진행 과정을 재구성해줘. 실제 작업 수행에 집중해줘."
+  },
+  {
+    "question_id": "Q03",
+    "question_en": "Where are the bottlenecks in the final stages of departure preparation, from boarding to off-block? For each outbound flight, include boarding start and close, baggage loading completion, aircraft readiness and actual off-block departure.",
+    "question_kr": "탑승부터 블록아웃까지 최종 출발 준비 과정에서 병목이 발생하는 구간은 어디야? 각 출발편의 탑승 시작·종료, 수하물 적재 완료, 항공기 준비 완료 및 실제 블록아웃을 포함해줘."
+  },
+  {
+    "question_id": "Q04",
+    "question_en": "Where is time lost during aircraft turnarounds? For each turnaround, build an event log covering actual inbound arrival movements, the overall start of ground handling, completion of every ground service, boarding start and close, aircraft readiness, and actual outbound departure movements, from inbound landing to outbound take-off.",
+    "question_kr": "항공기 턴어라운드 중 어느 구간에서 시간이 지체되는지 파악하고 싶어. 각 턴어라운드에 대해 도착편 착륙부터 출발편 이륙까지 실제 도착 단계의 이동, 전체 지상조업 시작, 모든 지상조업 작업의 완료, 탑승 시작·종료, 항공기 준비 완료 및 실제 출발 단계의 이동을 포함하는 이벤트 로그를 만들어줘."
+  },
+  {
+    "question_id": "Q05",
+    "question_en": "For each turnaround, include the overall start of ground handling, completion of cabin cleaning and refuelling, and aircraft readiness. I want to see how cleaning and refuelling fit into the preparation process.",
+    "question_kr": "각 턴어라운드의 전체 지상조업 시작, 객실 청소 및 급유 완료, 항공기 준비 완료를 포함해줘. 객실 청소와 급유가 출발 준비 과정에서 어떻게 진행되는지 파악하고 싶어."
+  },
+  {
+    "question_id": "Q06",
+    "question_en": "I want to understand how long it takes to get a flight away once boarding starts. For each outbound flight, include boarding start and close, actual off-block departure and take-off.",
+    "question_kr": "탑승 시작 이후 실제 출발까지 얼마나 시간이 걸리는지 파악하고 싶어. 각 출발편별로 탑승 시작·종료, 실제 블록아웃 및 이륙 이벤트를 추출해줘."
+  },
+  {
+    "question_id": "Q07",
+    "question_en": "I want to review the ground services that prepared each outbound flight. Include completion of baggage unloading from the arriving aircraft, cabin cleaning, refuelling, catering loading and baggage loading during the turnaround that prepared the flight.",
+    "question_kr": "각 출발편의 출발 준비를 위한 지상조업 과정을 살펴보고 싶어. 해당 출발편을 준비한 턴어라운드에서 도착 항공기의 수하물 하역, 객실 청소, 급유, 기내식 적재 및 수하물 적재 완료 이벤트를 출발편 단위로 추출해줘."
+  },
+  {
+    "question_id": "Q08",
+    "question_en": "Trace the actual aircraft movements from arrival to the next departure for each turnaround. Include only arrival and departure movement milestones, from inbound landing to outbound take-off.",
+    "question_kr": "각 턴어라운드에서 도착 후 다음 출발까지 항공기의 실제 이동 흐름을 추적해줘. 도착편 착륙부터 출발편 이륙까지 도착 및 출발 단계의 이동 이벤트만 포함해줘."
+  },
+  {
+    "question_id": "Q09",
+    "question_en": "How long do departures following a turnaround take from leaving the stand to take-off? Create an event log of actual off-block and take-off events.",
+    "question_kr": "턴어라운드 이후의 출발에서 블록아웃부터 이륙까지 얼마나 걸려? 실제 블록아웃과 이륙 이벤트를 포함하는 이벤트 로그를 만들어줘."
+  },
+  {
+    "question_id": "Q10",
+    "question_en": "I want to review the boarding-to-departure sequence for each flight on each operating date, without grouping flights that share the same flight number. Include boarding start, boarding close and actual off-block departure for each outbound flight.",
+    "question_kr": "편명이 같더라도 날짜별 개별 운항편을 따로 구분해서 탑승부터 출발까지의 흐름을 살펴보고 싶어. 각 출발편별로 탑승 시작·종료와 실제 블록아웃 이벤트를 추출해줘."
+  },
+  {
+    "question_id": "Q11",
+    "question_en": "I'd like to compare boarding durations across boarding sessions. Create an event log of the session-level boarding lifecycle, rather than individual passengers' boarding actions.",
+    "question_kr": "탑승 세션별 소요시간을 비교하고 싶어. 개별 승객의 탑승 기록이 아니라 탑승 세션 수준의 진행 과정을 담은 이벤트 로그를 만들어줘."
+  },
+  {
+    "question_id": "Q12",
+    "question_en": "How does boarding progress into take-off for departures following a turnaround? Build an event log containing only flight-level boarding milestones and actual departure movements, from the beginning of boarding to take-off.",
+    "question_kr": "턴어라운드 이후의 출발에서 탑승부터 이륙까지 어떤 흐름으로 진행되는지 알고 싶어. 항공편 수준의 탑승 단계와 실제 출발 이동 이벤트만 포함하는 이벤트 로그를 만들어줘."
+  }
+]

@@ -15,9 +15,27 @@
     "database_sha256": "da67f36b639997248ba27de01ba7937137f558536302ca84661cc0c1ef5ab31c",
     "dictionary_sha256": "01249501c1724605be41cc6b32ac5ff379c94cc4aa2693c27a7874a67f1c4d20",
     "question_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "legacy_question_ids": [
       "T",
       "D"
-    ]
+    ],
+    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
+    "model_questions_path": "evaluation/model_questions.jsonl",
+    "query_registry_version": "v6",
+    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved. Core reference logs unchanged."
   },
   {
     "variant_id": "l10",
@@ -40,10 +58,28 @@
     "database_sha256": "95b1df4efdc62dce2a6d684a3ef5d45670f5ade15cef997f1197de06c10d3a64",
     "dictionary_sha256": "55c6d29955d699ae439d9b3c0c44e79709afe1ab804247fcc38de5beea0cf376",
     "question_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "legacy_question_ids": [
       "T",
       "D",
       "P"
-    ]
+    ],
+    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
+    "model_questions_path": "evaluation/model_questions.jsonl",
+    "query_registry_version": "v6",
+    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved. Core reference logs unchanged."
   },
   {
     "variant_id": "l15",
@@ -71,12 +107,30 @@
     "database_sha256": "9733b34d5df5a0510499dfe82caa37a4cfadceb45b9fdf36744abb0a1123b9b9",
     "dictionary_sha256": "0cea2c45308abebe8b7b533b1bba0c1f6c9c302d688daad878fc9fea5d733f9e",
     "question_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "legacy_question_ids": [
       "T",
       "D",
       "P",
       "S",
       "B"
-    ]
+    ],
+    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
+    "model_questions_path": "evaluation/model_questions.jsonl",
+    "query_registry_version": "v6",
+    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved. Core reference logs unchanged."
   },
   {
     "variant_id": "l20",
@@ -109,11 +163,29 @@
     "database_sha256": "74a0dbf7add6c65f37749d8bacbf2bb5dc371774a8257b63b34955eefe724298",
     "dictionary_sha256": "936b944cb7d5884d9f48f9a073494c07ddaa14325c748e8b0ae47d47f7cd6769",
     "question_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "legacy_question_ids": [
       "T",
       "D",
       "P",
       "S",
       "B"
-    ]
+    ],
+    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
+    "model_questions_path": "evaluation/model_questions.jsonl",
+    "query_registry_version": "v6",
+    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved. Core reference logs unchanged."
   }
 ]
