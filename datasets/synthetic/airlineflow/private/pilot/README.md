@@ -1,0 +1,15 @@
+# AirlineFlow pilot Gold v7 (evaluator only)
+
+The 12 approved natural-language requests are in [the bilingual registry](../../evaluation/query_registry.json) and [model inputs](../../evaluation/model_questions.jsonl). Q03 uses the confirmed closure of the baggage loading operation. The v6 event multiset digests are pinned in [gold_contract.json](gold_contract.json); Q03 wording changes do not change the Gold event tuples. PI/ESpec preserve the authored v6 evaluator contract (Q03 notes clarify closure). SQL uses UNION ALL and preserves multiplicity. The independent row-based oracle does not consume SQL or ESpec. [Gold summary](gold_summary.csv), [regression report](regression_report.json). Each gold/Q01–Q12 directory contains PI, ESpec, SQL, CSV and timestamp-bucket DFG (JSON, DOT, SVG). Equal timestamps have no invented internal order.
+
+## Scoring
+
+- Primary Exact Match and event micro P/R/F1: compare the canonical (case_id, activity, timestamp) multiset, no case remapping, prefix stripping or timestamp tolerance. Extra events are FP; missing events are FN. Aggregate TP/FP/FN across requests for micro metrics. The scorer assumes an evaluator-approved one-to-one activity label mapping has already been applied; integration of the real experiment's label matcher remains a separate task.
+- Policy C applies only to Q09/Q12. Flight is the primary case. Only an actual declared outbound_id relationship with a 1:1 mapping over the evaluated request scope, and exact full-log equality after converting Turnaround IDs to Flight IDs, permits the separate secondary flag. The primary metrics remain unchanged. Q12 session equivalence is diagnostic only. Q06 is explicitly Flight; Q06/Q12 differ in both activity and case explicitness.
+- Q02 Job Posted is extra; substituting posted_at for completion is FP+FN when timestamps differ.
+- Q03 last sampled LD scan cannot substitute for confirmed operation closure. Score event tuples normally and annotate a semantically incorrect source separately; different but semantically equivalent extraction paths are not inherently wrong. No unapproved automatic table-column-only source penalty.
+- Keep this folder and all other evaluator references out of model inputs. A public GitHub directory named private is not an access control boundary. The production pipeline integration and final human review are not certified by these tests.
+
+## Verify
+
+From the dataset directory: `python verify.py` (also runs `private/pilot/verify_pilot.py`). The standalone pilot verification is read-only. It checks 48 DB–request combinations (12 unique requests), frozen v6 multiset digests, independent row oracle, ESpec/SQL/CSV, DFG, strict and Policy C, and the 19 supplied negative-control types (applicable subsets per database, all 19 on L20; equivalent SQL versions). Use `--materialize` only for explicit artifact regeneration after validating the pinned contract; Graphviz is needed to regenerate SVG. Never change the digest contract just to make a failure pass.

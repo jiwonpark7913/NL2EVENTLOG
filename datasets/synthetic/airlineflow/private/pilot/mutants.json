@@ -1,0 +1,122 @@
+[
+  {
+    "id": "M1",
+    "query_id": "Q09",
+    "requires": [],
+    "sql": "SELECT m.flight_id,CASE m.kind WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,m.received_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind IN ('OUT','AIR')"
+  },
+  {
+    "id": "M2a",
+    "query_id": "Q09",
+    "requires": [],
+    "sql": "SELECT m.flight_id,CASE m.kind WHEN 'EST' THEN 'Off-block' ELSE 'Take-off' END,m.value_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind IN ('EST','AIR')"
+  },
+  {
+    "id": "M2b",
+    "query_id": "Q09",
+    "requires": [],
+    "sql": "SELECT f.flight_id,'Off-block',f.scheduled_offblock FROM flights f JOIN turnarounds t ON t.outbound_id=f.flight_id UNION ALL SELECT m.flight_id,'Take-off',m.value_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind='AIR'"
+  },
+  {
+    "id": "M2c",
+    "query_id": "Q09",
+    "requires": [],
+    "sql": "SELECT m.flight_id,CASE m.kind WHEN 'OUT' THEN 'Off-block' WHEN 'AIR' THEN 'Take-off' ELSE 'Estimated Off-block' END,m.value_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind IN ('OUT','AIR','EST')"
+  },
+  {
+    "id": "M3",
+    "query_id": "Q09",
+    "requires": [],
+    "sql": "SELECT flight_id,CASE kind WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,value_at FROM movement_reports WHERE kind IN ('OUT','AIR')"
+  },
+  {
+    "id": "M3b",
+    "query_id": "Q06",
+    "requires": [],
+    "sql": "SELECT flight_id,'Boarding Start',started_at FROM boarding_sessions UNION ALL SELECT flight_id,'Boarding Close',closed_at FROM boarding_sessions UNION ALL SELECT flight_id,CASE kind WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,value_at FROM movement_reports WHERE kind IN ('OUT','AIR')"
+  },
+  {
+    "id": "M4",
+    "query_id": "Q05",
+    "requires": [],
+    "sql": "SELECT j.turn_id,'Handling Start',min(j.started_at) FROM handling_jobs j GROUP BY 1 UNION ALL SELECT turn_id,'Cabin Cleaning Complete',finished_at FROM handling_jobs WHERE job_code='CL' UNION ALL SELECT turn_id,'Refuelling Complete',finished_at FROM handling_jobs WHERE job_code='FU' UNION ALL SELECT turn_id,'Aircraft Ready',ready_at FROM turnarounds"
+  },
+  {
+    "id": "M5",
+    "query_id": "Q10",
+    "requires": [],
+    "sql": "SELECT f.flight_no,'Boarding Start',b.started_at FROM boarding_sessions b JOIN flights f USING(flight_id) JOIN turnarounds t ON t.outbound_id=b.flight_id UNION ALL SELECT f.flight_no,'Boarding Close',b.closed_at FROM boarding_sessions b JOIN flights f USING(flight_id) JOIN turnarounds t ON t.outbound_id=b.flight_id UNION ALL SELECT f.flight_no,'Off-block',m.value_at FROM movement_reports m JOIN flights f USING(flight_id) JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind='OUT'"
+  },
+  {
+    "id": "M6",
+    "query_id": "Q08",
+    "requires": [],
+    "sql": "SELECT t.turn_id,CASE m.kind WHEN 'LAND' THEN 'Landing' WHEN 'IN' THEN 'In-block' WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,m.value_at FROM movement_reports m JOIN turnarounds t ON m.flight_id IN(t.inbound_id,t.outbound_id) WHERE m.kind IN ('LAND','IN','OUT','AIR')"
+  },
+  {
+    "id": "M6b",
+    "query_id": "Q08",
+    "requires": [],
+    "sql": "SELECT t.turn_id,CASE m.kind WHEN 'LAND' THEN 'Landing' WHEN 'IN' THEN 'In-block' WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,m.value_at FROM movement_reports m JOIN turnarounds t ON (m.flight_id=t.outbound_id AND m.kind IN ('LAND','IN')) OR (m.flight_id=t.inbound_id AND m.kind IN ('OUT','AIR'))"
+  },
+  {
+    "id": "M7",
+    "query_id": "Q09",
+    "requires": [],
+    "sql": "SELECT t.turn_id,CASE m.kind WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,m.value_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind IN ('OUT','AIR')"
+  },
+  {
+    "id": "M7b",
+    "query_id": "Q09",
+    "requires": [
+      "flight_dispatch"
+    ],
+    "sql": "SELECT d.tail_id,CASE m.kind WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,m.value_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id JOIN flight_dispatch d ON d.flight_id=m.flight_id WHERE m.kind IN ('OUT','AIR')"
+  },
+  {
+    "id": "M7c",
+    "query_id": "Q12",
+    "requires": [],
+    "sql": "SELECT b.session_id,'Boarding Start',b.started_at FROM boarding_sessions b JOIN turnarounds t ON t.outbound_id=b.flight_id UNION ALL SELECT b.session_id,'Boarding Close',b.closed_at FROM boarding_sessions b JOIN turnarounds t ON t.outbound_id=b.flight_id UNION ALL SELECT b.session_id,CASE m.kind WHEN 'OUT' THEN 'Off-block' ELSE 'Take-off' END,m.value_at FROM movement_reports m JOIN boarding_sessions b USING(flight_id) JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind IN ('OUT','AIR')"
+  },
+  {
+    "id": "M8",
+    "query_id": "Q02",
+    "requires": [],
+    "sql": "SELECT job_id,'Job Start',started_at FROM handling_jobs UNION ALL SELECT job_id,'Job Complete',finished_at FROM handling_jobs UNION ALL SELECT job_id,'Job Posted',posted_at FROM handling_jobs"
+  },
+  {
+    "id": "M8b",
+    "query_id": "Q02",
+    "requires": [],
+    "sql": "SELECT job_id,'Job Start',started_at FROM handling_jobs UNION ALL SELECT job_id,'Job Complete',posted_at FROM handling_jobs"
+  },
+  {
+    "id": "M9",
+    "query_id": "Q07",
+    "requires": [],
+    "sql": "SELECT j.turn_id,CASE job_code WHEN 'UL' THEN 'Baggage Unloading Complete' WHEN 'CL' THEN 'Cabin Cleaning Complete' WHEN 'FU' THEN 'Refuelling Complete' WHEN 'CA' THEN 'Catering Loading Complete' ELSE 'Baggage Loading Close' END,finished_at FROM handling_jobs j WHERE job_code<>'DP'"
+  },
+  {
+    "id": "M9b",
+    "query_id": "Q07",
+    "requires": [],
+    "sql": "SELECT t.inbound_id,CASE job_code WHEN 'UL' THEN 'Baggage Unloading Complete' WHEN 'CL' THEN 'Cabin Cleaning Complete' WHEN 'FU' THEN 'Refuelling Complete' WHEN 'CA' THEN 'Catering Loading Complete' ELSE 'Baggage Loading Close' END,finished_at FROM handling_jobs j JOIN turnarounds t USING(turn_id) WHERE job_code<>'DP'"
+  },
+  {
+    "id": "M10",
+    "query_id": "Q11",
+    "requires": [
+      "passenger_actions"
+    ],
+    "sql": "SELECT b.session_id,'Passenger Boarded',a.action_at FROM passenger_actions a JOIN passenger_legs pl USING(leg_id) JOIN boarding_sessions b ON b.flight_id=pl.flight_id WHERE a.action_code='BD'"
+  },
+  {
+    "id": "M11",
+    "query_id": "Q03",
+    "requires": [
+      "bag_scans"
+    ],
+    "sql": "SELECT b.flight_id,'Boarding Start',b.started_at FROM boarding_sessions b JOIN turnarounds t ON t.outbound_id=b.flight_id UNION ALL SELECT b.flight_id,'Boarding Close',b.closed_at FROM boarding_sessions b JOIN turnarounds t ON t.outbound_id=b.flight_id UNION ALL SELECT pl.flight_id,'Baggage Loading Close',max(s.scanned_at) FROM bag_scans s JOIN bag_legs bl USING(bag_leg_id) JOIN passenger_legs pl USING(leg_id) JOIN turnarounds t ON t.outbound_id=pl.flight_id WHERE s.scan_code='LD' GROUP BY pl.flight_id UNION ALL SELECT t.outbound_id,'Aircraft Ready',t.ready_at FROM turnarounds t UNION ALL SELECT m.flight_id,'Off-block',m.value_at FROM movement_reports m JOIN turnarounds t ON t.outbound_id=m.flight_id WHERE m.kind='OUT'"
+  }
+]
