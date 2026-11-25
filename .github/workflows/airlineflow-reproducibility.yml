@@ -1,0 +1,23 @@
+name: AirlineFlow reproducibility
+on:
+  push:
+    paths:
+      - 'datasets/synthetic/airlineflow/**'
+      - '.github/workflows/airlineflow-reproducibility.yml'
+  pull_request:
+    paths:
+      - 'datasets/synthetic/airlineflow/**'
+      - '.github/workflows/airlineflow-reproducibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python datasets/synthetic/airlineflow/generate.py --check
