@@ -1,0 +1,1240 @@
+{
+  "cases": 48,
+  "events": 672,
+  "activities": 14,
+  "activity_counts": {
+    "Landing": 48,
+    "In-block": 48,
+    "Handling Start": 48,
+    "Disembarkation Complete": 48,
+    "Baggage Unloading Complete": 48,
+    "Refuelling Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Catering Loading Complete": 48,
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Baggage Loading Close": 48,
+    "Aircraft Ready": 48,
+    "Off-block": 48,
+    "Take-off": 48
+  },
+  "variants": 22,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 28,
+  "tie_groups": 27,
+  "tie_cases": 23,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Landing": 48,
+    "In-block": 32,
+    "Handling Start": 32,
+    "Disembarkation Complete": 48,
+    "Baggage Unloading Complete": 48,
+    "Refuelling Complete": 40,
+    "Cabin Cleaning Complete ∥ Catering Loading Complete": 3,
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Baggage Loading Close": 48,
+    "Aircraft Ready": 48,
+    "Off-block": 48,
+    "Take-off": 48,
+    "Catering Loading Complete": 39,
+    "Cabin Cleaning Complete": 42,
+    "Handling Start ∥ In-block": 16,
+    "Catering Loading Complete ∥ Refuelling Complete": 5,
+    "Cabin Cleaning Complete ∥ Refuelling Complete": 2,
+    "Cabin Cleaning Complete ∥ Catering Loading Complete ∥ Refuelling Complete": 1
+  },
+  "edges": [
+    {
+      "source": "Aircraft Ready",
+      "target": "Off-block",
+      "count": 48
+    },
+    {
+      "source": "Baggage Loading Close",
+      "target": "Aircraft Ready",
+      "count": 36
+    },
+    {
+      "source": "Baggage Loading Close",
+      "target": "Boarding Close",
+      "count": 12
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 33
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Complete ∥ Catering Loading Complete",
+      "count": 1
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Complete ∥ Catering Loading Complete ∥ Refuelling Complete",
+      "count": 1
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Complete ∥ Refuelling Complete",
+      "count": 2
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Catering Loading Complete ∥ Refuelling Complete",
+      "count": 1
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Refuelling Complete",
+      "count": 10
+    },
+    {
+      "source": "Boarding Close",
+      "target": "Aircraft Ready",
+      "count": 12
+    },
+    {
+      "source": "Boarding Close",
+      "target": "Baggage Loading Close",
+      "count": 36
+    },
+    {
+      "source": "Boarding Start",
+      "target": "Baggage Loading Close",
+      "count": 12
+    },
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 36
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Boarding Start",
+      "count": 4
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Catering Loading Complete",
+      "count": 11
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Catering Loading Complete ∥ Refuelling Complete",
+      "count": 4
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 23
+    },
+    {
+      "source": "Cabin Cleaning Complete ∥ Catering Loading Complete",
+      "target": "Boarding Start",
+      "count": 2
+    },
+    {
+      "source": "Cabin Cleaning Complete ∥ Catering Loading Complete",
+      "target": "Refuelling Complete",
+      "count": 1
+    },
+    {
+      "source": "Cabin Cleaning Complete ∥ Catering Loading Complete ∥ Refuelling Complete",
+      "target": "Boarding Start",
+      "count": 1
+    },
+    {
+      "source": "Cabin Cleaning Complete ∥ Refuelling Complete",
+      "target": "Catering Loading Complete",
+      "count": 2
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Boarding Start",
+      "count": 30
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 3
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Refuelling Complete",
+      "count": 6
+    },
+    {
+      "source": "Catering Loading Complete ∥ Refuelling Complete",
+      "target": "Boarding Start",
+      "count": 4
+    },
+    {
+      "source": "Catering Loading Complete ∥ Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 1
+    },
+    {
+      "source": "Disembarkation Complete",
+      "target": "Baggage Unloading Complete",
+      "count": 48
+    },
+    {
+      "source": "Handling Start",
+      "target": "Disembarkation Complete",
+      "count": 32
+    },
+    {
+      "source": "Handling Start ∥ In-block",
+      "target": "Disembarkation Complete",
+      "count": 16
+    },
+    {
+      "source": "In-block",
+      "target": "Handling Start",
+      "count": 32
+    },
+    {
+      "source": "Landing",
+      "target": "Handling Start ∥ In-block",
+      "count": 16
+    },
+    {
+      "source": "Landing",
+      "target": "In-block",
+      "count": 32
+    },
+    {
+      "source": "Off-block",
+      "target": "Take-off",
+      "count": 48
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Boarding Start",
+      "count": 7
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 5
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete ∥ Catering Loading Complete",
+      "count": 2
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Catering Loading Complete",
+      "count": 26
+    }
+  ],
+  "starts": {
+    "Landing": 48
+  },
+  "ends": {
+    "Take-off": 48
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 13
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 5
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 3
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 3
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Cabin Cleaning Complete",
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 2
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 2
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 2
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 2
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 2
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 2
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete",
+          "Catering Loading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Catering Loading Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Handling Start"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete",
+          "Catering Loading Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "Handling Start",
+          "In-block"
+        ],
+        [
+          "Disembarkation Complete"
+        ],
+        [
+          "Baggage Unloading Complete"
+        ],
+        [
+          "Cabin Cleaning Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Catering Loading Complete"
+        ],
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 1
+    }
+  ]
+}

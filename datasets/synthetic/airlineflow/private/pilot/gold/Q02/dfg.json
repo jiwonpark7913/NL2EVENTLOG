@@ -1,0 +1,46 @@
+{
+  "cases": 288,
+  "events": 576,
+  "activities": 2,
+  "activity_counts": {
+    "Job Start": 288,
+    "Job Complete": 288
+  },
+  "variants": 1,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 0,
+  "tie_groups": 0,
+  "tie_cases": 0,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Job Start": 288,
+    "Job Complete": 288
+  },
+  "edges": [
+    {
+      "source": "Job Start",
+      "target": "Job Complete",
+      "count": 288
+    }
+  ],
+  "starts": {
+    "Job Start": 288
+  },
+  "ends": {
+    "Job Complete": 288
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Job Start"
+        ],
+        [
+          "Job Complete"
+        ]
+      ],
+      "count": 288
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "cases": 48,
+  "events": 192,
+  "activities": 4,
+  "activity_counts": {
+    "Landing": 48,
+    "In-block": 48,
+    "Off-block": 48,
+    "Take-off": 48
+  },
+  "variants": 1,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 0,
+  "tie_groups": 0,
+  "tie_cases": 0,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Landing": 48,
+    "In-block": 48,
+    "Off-block": 48,
+    "Take-off": 48
+  },
+  "edges": [
+    {
+      "source": "In-block",
+      "target": "Off-block",
+      "count": 48
+    },
+    {
+      "source": "Landing",
+      "target": "In-block",
+      "count": 48
+    },
+    {
+      "source": "Off-block",
+      "target": "Take-off",
+      "count": 48
+    }
+  ],
+  "starts": {
+    "Landing": 48
+  },
+  "ends": {
+    "Take-off": 48
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Landing"
+        ],
+        [
+          "In-block"
+        ],
+        [
+          "Off-block"
+        ],
+        [
+          "Take-off"
+        ]
+      ],
+      "count": 48
+    }
+  ]
+}

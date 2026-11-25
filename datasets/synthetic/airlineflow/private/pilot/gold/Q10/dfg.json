@@ -1,0 +1,56 @@
+{
+  "cases": 48,
+  "events": 144,
+  "activities": 3,
+  "activity_counts": {
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Off-block": 48
+  },
+  "variants": 1,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 0,
+  "tie_groups": 0,
+  "tie_cases": 0,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Off-block": 48
+  },
+  "edges": [
+    {
+      "source": "Boarding Close",
+      "target": "Off-block",
+      "count": 48
+    },
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 48
+    }
+  ],
+  "starts": {
+    "Boarding Start": 48
+  },
+  "ends": {
+    "Off-block": 48
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Off-block"
+        ]
+      ],
+      "count": 48
+    }
+  ]
+}

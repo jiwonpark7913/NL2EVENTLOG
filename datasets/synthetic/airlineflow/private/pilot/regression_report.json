@@ -1,0 +1,110 @@
+{
+  "query_registry_version": "v7",
+  "unique_queries": 12,
+  "db_query_combinations": 48,
+  "gold_event_multisets_unchanged_from_v6": true,
+  "variants": {
+    "l05": {
+      "queries": 12,
+      "cases": 912,
+      "events": 3120,
+      "mutants": [
+        "M1",
+        "M2a",
+        "M2b",
+        "M2c",
+        "M3",
+        "M3b",
+        "M4",
+        "M5",
+        "M6",
+        "M6b",
+        "M7",
+        "M7c",
+        "M8",
+        "M8b",
+        "M9",
+        "M9b"
+      ],
+      "policy_c": "PASS"
+    },
+    "l10": {
+      "queries": 12,
+      "cases": 912,
+      "events": 3120,
+      "mutants": [
+        "M1",
+        "M2a",
+        "M2b",
+        "M2c",
+        "M3",
+        "M3b",
+        "M4",
+        "M5",
+        "M6",
+        "M6b",
+        "M7",
+        "M7c",
+        "M8",
+        "M8b",
+        "M9",
+        "M9b",
+        "M10"
+      ],
+      "policy_c": "PASS"
+    },
+    "l15": {
+      "queries": 12,
+      "cases": 912,
+      "events": 3120,
+      "mutants": [
+        "M1",
+        "M2a",
+        "M2b",
+        "M2c",
+        "M3",
+        "M3b",
+        "M4",
+        "M5",
+        "M6",
+        "M6b",
+        "M7",
+        "M7c",
+        "M8",
+        "M8b",
+        "M9",
+        "M9b",
+        "M10",
+        "M11"
+      ],
+      "policy_c": "PASS"
+    },
+    "l20": {
+      "queries": 12,
+      "cases": 912,
+      "events": 3120,
+      "mutants": [
+        "M1",
+        "M2a",
+        "M2b",
+        "M2c",
+        "M3",
+        "M3b",
+        "M4",
+        "M5",
+        "M6",
+        "M6b",
+        "M7",
+        "M7b",
+        "M7c",
+        "M8",
+        "M8b",
+        "M9",
+        "M9b",
+        "M10",
+        "M11"
+      ],
+      "policy_c": "PASS"
+    }
+  }
+}

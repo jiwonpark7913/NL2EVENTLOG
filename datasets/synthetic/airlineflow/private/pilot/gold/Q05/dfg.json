@@ -1,0 +1,124 @@
+{
+  "cases": 48,
+  "events": 192,
+  "activities": 4,
+  "activity_counts": {
+    "Handling Start": 48,
+    "Refuelling Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Aircraft Ready": 48
+  },
+  "variants": 3,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 3,
+  "tie_groups": 3,
+  "tie_cases": 3,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Handling Start": 48,
+    "Refuelling Complete": 45,
+    "Cabin Cleaning Complete": 45,
+    "Aircraft Ready": 48,
+    "Cabin Cleaning Complete ∥ Refuelling Complete": 3
+  },
+  "edges": [
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Aircraft Ready",
+      "count": 11
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 34
+    },
+    {
+      "source": "Cabin Cleaning Complete ∥ Refuelling Complete",
+      "target": "Aircraft Ready",
+      "count": 3
+    },
+    {
+      "source": "Handling Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 34
+    },
+    {
+      "source": "Handling Start",
+      "target": "Cabin Cleaning Complete ∥ Refuelling Complete",
+      "count": 3
+    },
+    {
+      "source": "Handling Start",
+      "target": "Refuelling Complete",
+      "count": 11
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Aircraft Ready",
+      "count": 34
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 11
+    }
+  ],
+  "starts": {
+    "Handling Start": 48
+  },
+  "ends": {
+    "Aircraft Ready": 48
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Handling Start"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Aircraft Ready"
+        ]
+      ],
+      "count": 34
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Handling Start"
+        ],
+        [
+          "Refuelling Complete"
+        ],
+        [
+          "Cabin Cleaning Complete"
+        ],
+        [
+          "Aircraft Ready"
+        ]
+      ],
+      "count": 11
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Handling Start"
+        ],
+        [
+          "Cabin Cleaning Complete",
+          "Refuelling Complete"
+        ],
+        [
+          "Aircraft Ready"
+        ]
+      ],
+      "count": 3
+    }
+  ]
+}

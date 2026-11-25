@@ -1,0 +1,46 @@
+{
+  "cases": 96,
+  "events": 192,
+  "activities": 2,
+  "activity_counts": {
+    "Boarding Start": 96,
+    "Boarding Close": 96
+  },
+  "variants": 1,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 0,
+  "tie_groups": 0,
+  "tie_cases": 0,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Boarding Start": 96,
+    "Boarding Close": 96
+  },
+  "edges": [
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 96
+    }
+  ],
+  "starts": {
+    "Boarding Start": 96
+  },
+  "ends": {
+    "Boarding Close": 96
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ]
+      ],
+      "count": 96
+    }
+  ]
+}

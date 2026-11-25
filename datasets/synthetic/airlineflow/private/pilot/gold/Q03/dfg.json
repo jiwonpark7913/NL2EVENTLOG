@@ -1,0 +1,111 @@
+{
+  "cases": 48,
+  "events": 240,
+  "activities": 5,
+  "activity_counts": {
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Baggage Loading Close": 48,
+    "Aircraft Ready": 48,
+    "Off-block": 48
+  },
+  "variants": 2,
+  "singleton_cases": 0,
+  "duplicate_event_rows": 0,
+  "adjacent_timestamp_ties": 0,
+  "tie_groups": 0,
+  "tie_cases": 0,
+  "graph_type": "timestamp_bucket_dfg",
+  "nodes": {
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Baggage Loading Close": 48,
+    "Aircraft Ready": 48,
+    "Off-block": 48
+  },
+  "edges": [
+    {
+      "source": "Aircraft Ready",
+      "target": "Off-block",
+      "count": 48
+    },
+    {
+      "source": "Baggage Loading Close",
+      "target": "Aircraft Ready",
+      "count": 36
+    },
+    {
+      "source": "Baggage Loading Close",
+      "target": "Boarding Close",
+      "count": 12
+    },
+    {
+      "source": "Boarding Close",
+      "target": "Aircraft Ready",
+      "count": 12
+    },
+    {
+      "source": "Boarding Close",
+      "target": "Baggage Loading Close",
+      "count": 36
+    },
+    {
+      "source": "Boarding Start",
+      "target": "Baggage Loading Close",
+      "count": 12
+    },
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 36
+    }
+  ],
+  "starts": {
+    "Boarding Start": 48
+  },
+  "ends": {
+    "Off-block": 48
+  },
+  "variant_counts": [
+    {
+      "timestamp_buckets": [
+        [
+          "Boarding Start"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ]
+      ],
+      "count": 36
+    },
+    {
+      "timestamp_buckets": [
+        [
+          "Boarding Start"
+        ],
+        [
+          "Baggage Loading Close"
+        ],
+        [
+          "Boarding Close"
+        ],
+        [
+          "Aircraft Ready"
+        ],
+        [
+          "Off-block"
+        ]
+      ],
+      "count": 12
+    }
+  ]
+}
