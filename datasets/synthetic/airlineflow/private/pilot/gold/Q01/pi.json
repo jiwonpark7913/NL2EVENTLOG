@@ -1,0 +1,30 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q01",
+  "case_entity": "Boarding Session",
+  "case_identity": {
+    "table": "boarding_sessions",
+    "key": [
+      "session_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in L05",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Boarding Start",
+    "Boarding Close"
+  ],
+  "registry_activity_labels": [
+    "Boarding Start",
+    "Boarding Close"
+  ],
+  "expected_case_count": 96,
+  "expected_event_count": 192,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "동일 행의 두 시간 컬럼을 별도 활동으로 추출. Q11과 동일 Gold Log 기대."
+}

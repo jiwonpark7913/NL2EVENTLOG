@@ -1,0 +1,30 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q09",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_mode": "Implicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Off-block",
+    "Take-off"
+  ],
+  "registry_activity_labels": [
+    "Off-block",
+    "Take-off"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 96,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "Case 단위 미명시: Flight 추론. 분석 대상 공항에서 턴어라운드를 마친 출발편만 포함. Q06의 이동 이벤트 부분집합. Policy C: strict Flight primary; verified Turnaround mapping secondary only. Q12 session mapping diagnostic only."
+}

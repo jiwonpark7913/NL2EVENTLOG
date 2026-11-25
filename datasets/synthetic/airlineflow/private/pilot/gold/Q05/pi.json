@@ -1,0 +1,34 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q05",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in L05",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Handling Start",
+    "Cabin Cleaning Complete",
+    "Refuelling Complete",
+    "Aircraft Ready"
+  ],
+  "registry_activity_labels": [
+    "Handling Start",
+    "Cabin Cleaning Complete",
+    "Refuelling Complete",
+    "Aircraft Ready"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 192,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "Carrier/Non-carrier 결합. 전체 지상조업 시작은 turnarounds.handling_started_at이며 최초 작업 시작의 MIN이 아님."
+}

@@ -34,8 +34,10 @@
     ],
     "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
     "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "v7",
+    "query_status": "Q01-Q12 wording finalized; Q03 confirmed closure approved. Human Gold review / method freeze tracked separately.",
+    "pilot_gold_path": "private/pilot/gold",
+    "pilot_scoring_path": "private/pilot/strict_score.py"
   },
   {
     "variant_id": "l10",
@@ -78,8 +80,10 @@
     ],
     "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
     "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "v7",
+    "query_status": "Q01-Q12 wording finalized; Q03 confirmed closure approved. Human Gold review / method freeze tracked separately.",
+    "pilot_gold_path": "private/pilot/gold",
+    "pilot_scoring_path": "private/pilot/strict_score.py"
   },
   {
     "variant_id": "l15",
@@ -129,8 +133,10 @@
     ],
     "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
     "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "v7",
+    "query_status": "Q01-Q12 wording finalized; Q03 confirmed closure approved. Human Gold review / method freeze tracked separately.",
+    "pilot_gold_path": "private/pilot/gold",
+    "pilot_scoring_path": "private/pilot/strict_score.py"
   },
   {
     "variant_id": "l20",
@@ -185,7 +191,9 @@
     ],
     "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
     "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "v7",
+    "query_status": "Q01-Q12 wording finalized; Q03 confirmed closure approved. Human Gold review / method freeze tracked separately.",
+    "pilot_gold_path": "private/pilot/gold",
+    "pilot_scoring_path": "private/pilot/strict_score.py"
   }
 ]

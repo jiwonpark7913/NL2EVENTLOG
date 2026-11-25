@@ -52,7 +52,7 @@ To rebuild and compare against the published inputs:
 python datasets/synthetic/airlineflow/generate.py --check
 ```
 
-The check compares logical schemas and every table record, validates dictionary checksums and nested records, and runs integrity, foreign-key, temporal and supplementary SQL/CSV reference checks. SQLite binary hashes may differ across fresh builds because of physical page layout or SQLite versions; the manifest records actual file hashes.
+The check compares logical schemas and every table record, validates dictionary checksums and nested records, and runs integrity, foreign-key, temporal and supplementary SQL/CSV reference checks and the current pilot Gold regression. SQLite binary hashes may differ across fresh builds because of physical page layout or SQLite versions; the manifest records actual file hashes.
 
 ## 4. Evaluation protocol
 
@@ -65,7 +65,7 @@ The same twelve requests Q01–Q12 apply to all four variants. They cover boardi
 | [Variant manifest](evaluation/variant_manifest.json) | Table/row counts, hashes and question IDs |
 | [Scenario viewer](docs/scenario.html#extraction-requests) | Requests and evaluator-side reference counts |
 
-Supply the model only the selected SQLite database, data dictionary and English text of one request. Do not supply evaluator references, source records or reference counts. Preserve case IDs, timestamps and event multiplicities. Q03 wording is pending final approval. The Q01–Q12 Gold package is maintained separately.
+Supply the model only the selected SQLite database, data dictionary and English text of one request. Do not supply evaluator references, source records or reference counts. Preserve case IDs, timestamps and event multiplicities. Q01–Q12 wording is finalized (v7). The Q03 baggage-loading event refers to the confirmed closure of the operation. The [evaluator-only pilot Gold package](private/pilot/README.md) contains reference PI, ESpec, SQL, logs, DFG and scoring policy.
 
 The supplementary T/D/P/S/B SQL and CSV references under [private/](private/) and their [request texts](evaluation/legacy_model_questions.jsonl) are used for regression checks (15 variant–reference combinations), not Q01–Q12 scoring. The directory name does not enforce access control.
 
@@ -75,7 +75,7 @@ To validate the published inputs without rebuilding:
 python datasets/synthetic/airlineflow/verify.py
 ```
 
-This checks the fixture and supplementary references, not LLM accuracy or the separate pilot Gold package.
+This checks the fixture, supplementary references, all 48 current DB–request Gold comparisons (12 unique requests), independent extraction, ESpec/SQL consistency, and scoring regressions. It does not measure LLM accuracy or replace human semantic review.
 
 ## 5. Repository layout
 
@@ -93,7 +93,7 @@ airlineflow/
 │                           #       docs/schema.svg
 ├── docs/scenario.html      # Interactive dataset exploration
 ├── evaluation/             # Questions and variant metadata
-└── private/                # Supplementary evaluator SQL/CSV
+└── private/                # Supplementary evaluator SQL/CSV + pilot Gold and scorer
 ```
 
 ## 6. Public design references

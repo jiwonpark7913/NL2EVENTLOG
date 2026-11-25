@@ -1,0 +1,32 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q10",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Boarding Start",
+    "Boarding Close",
+    "Off-block"
+  ],
+  "registry_activity_labels": [
+    "Boarding Start",
+    "Boarding Close",
+    "Off-block"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 144,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "flight_no가 아닌 flight_id 단위의 case 구성. 편명 및 운항 날짜는 case 식별 의도 설명이며 출력 속성 요구가 아님."
+}

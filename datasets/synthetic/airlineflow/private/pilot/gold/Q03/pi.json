@@ -1,0 +1,36 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q03",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Boarding Start",
+    "Boarding Close",
+    "Baggage Loading Close",
+    "Aircraft Ready",
+    "Off-block"
+  ],
+  "registry_activity_labels": [
+    "Boarding Start",
+    "Boarding Close",
+    "Baggage Loading Close",
+    "Aircraft Ready",
+    "Off-block"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 240,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "기존 D의 5개 활동 유지. 탑승~블록아웃 중심의 최종 출발 준비 분석; 별도 지연 속성 및 발생 시각 범위 필터를 요구하지 않음. Confirmed baggage loading closure is the operation-level completion, not the last sampled bag scan."
+}

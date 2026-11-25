@@ -1,0 +1,111 @@
+{
+  "schema": "authored_reference_espec_v4",
+  "query_id": "Q07",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity",
+  "timestamp_policy": "Actual occurrence time; KST as stored; no conversion or synthetic timestamps.",
+  "ordering": [
+    "case_id",
+    "timestamp",
+    "activity"
+  ],
+  "rules": [
+    {
+      "activity": "Baggage Unloading Complete",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "t.outbound_id",
+      "joins": [
+        "JOIN turnarounds t ON t.turn_id=j.turn_id"
+      ],
+      "where": "j.job_code='UL'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Cabin Cleaning Complete",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "t.outbound_id",
+      "joins": [
+        "JOIN turnarounds t ON t.turn_id=j.turn_id"
+      ],
+      "where": "j.job_code='CL'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Refuelling Complete",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "t.outbound_id",
+      "joins": [
+        "JOIN turnarounds t ON t.turn_id=j.turn_id"
+      ],
+      "where": "j.job_code='FU'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Catering Loading Complete",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "t.outbound_id",
+      "joins": [
+        "JOIN turnarounds t ON t.turn_id=j.turn_id"
+      ],
+      "where": "j.job_code='CA'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Baggage Loading Close",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "t.outbound_id",
+      "joins": [
+        "JOIN turnarounds t ON t.turn_id=j.turn_id"
+      ],
+      "where": "j.job_code='BL'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    }
+  ]
+}

@@ -6,6 +6,8 @@ import csv
 import hashlib
 import json
 import sqlite3
+import subprocess
+import sys
 
 root = Path(__file__).resolve().parent
 manifest = json.loads((root / "evaluation/variant_manifest.json").read_text())
@@ -70,3 +72,6 @@ for variant in manifest:
     connection.close()
 print(f"PASS: {len(manifest)} variants, {combinations} legacy reference comparisons, "
       "checksums, keys, nested records, current question registry and temporal consistency.")
+
+# Keep current pilot Gold verification separate from legacy T/D/P/S/B counts.
+subprocess.run([sys.executable, str(root / "private/pilot/verify_pilot.py")], check=True)

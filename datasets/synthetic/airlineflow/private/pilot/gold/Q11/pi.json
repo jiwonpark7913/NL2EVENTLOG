@@ -1,0 +1,30 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q11",
+  "case_entity": "Boarding Session",
+  "case_identity": {
+    "table": "boarding_sessions",
+    "key": [
+      "session_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in L05",
+  "case_mode": "Explicit",
+  "activity_mode": "Implicit",
+  "activities": [
+    "Boarding Start",
+    "Boarding Close"
+  ],
+  "registry_activity_labels": [
+    "Boarding Start",
+    "Boarding Close"
+  ],
+  "expected_case_count": 96,
+  "expected_event_count": 192,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "Q01의 implicit 대응 질의. 세션 수준 Boarding Start/Close만 포함하며 개별 승객 탑승·지상조업 제외. Case 단위는 명시."
+}

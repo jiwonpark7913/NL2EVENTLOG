@@ -1,0 +1,30 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q02",
+  "case_entity": "Handling Job",
+  "case_identity": {
+    "table": "handling_jobs",
+    "key": [
+      "job_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in L05",
+  "case_mode": "Explicit",
+  "activity_mode": "Implicit",
+  "activities": [
+    "Job Start",
+    "Job Complete"
+  ],
+  "registry_activity_labels": [
+    "Job Start",
+    "Job Complete"
+  ],
+  "expected_case_count": 288,
+  "expected_event_count": 576,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "작업 종류별 활동 분리 없이 일반 Job Start/Complete 추출. 실제 시작·완료 시각 사용; job_code로 활동을 세분하지 않음. Actual execution only; Job Posted is out of scope."
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q06",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Boarding Start",
+    "Boarding Close",
+    "Off-block",
+    "Take-off"
+  ],
+  "registry_activity_labels": [
+    "Boarding Start",
+    "Boarding Close",
+    "Off-block",
+    "Take-off"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 192,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "Case 단위 명시: 출발편. Carrier/Non-carrier 결합; 분석 대상 공항의 출발편으로 제한. Q12와 동일 Gold Log; Case Mode는 다름."
+}
