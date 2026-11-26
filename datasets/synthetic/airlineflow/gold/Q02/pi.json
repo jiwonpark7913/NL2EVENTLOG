@@ -12,12 +12,32 @@
   "case_mode": "Explicit",
   "activity_mode": "Implicit",
   "activities": [
-    "Job Start",
-    "Job Complete"
+    "Disembarkation Start",
+    "Disembarkation Complete",
+    "Baggage Unloading Start",
+    "Baggage Unloading Complete",
+    "Cabin Cleaning Start",
+    "Cabin Cleaning Complete",
+    "Refuelling Start",
+    "Refuelling Complete",
+    "Catering Loading Start",
+    "Catering Loading Complete",
+    "Baggage Loading Start",
+    "Baggage Loading Close"
   ],
   "registry_activity_labels": [
-    "Job Start",
-    "Job Complete"
+    "Disembarkation Start",
+    "Disembarkation Complete",
+    "Baggage Unloading Start",
+    "Baggage Unloading Complete",
+    "Cabin Cleaning Start",
+    "Cabin Cleaning Complete",
+    "Refuelling Start",
+    "Refuelling Complete",
+    "Catering Loading Start",
+    "Catering Loading Complete",
+    "Baggage Loading Start",
+    "Baggage Loading Close"
   ],
   "expected_case_count": 288,
   "expected_event_count": 576,
@@ -26,7 +46,7 @@
     "activity",
     "timestamp"
   ],
-  "notes": "기존 진단 질의; 단일 축 통제 실험에 포함하지 않음.",
+  "notes": "Researcher-approved Q02. Keep job types distinct and use actual start and completion clocks.",
   "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
   "alternative_case_policy": "Strict"
 }

@@ -1,5 +1,5 @@
 {
-  "version": "TemporalRevision1-SemanticDD1",
+  "version": "TemporalRevision1-SemanticDD1-CanonicalQ02",
   "seed": 20261126,
   "db_sha256": "480ea0744968e81340565feb7f12793c83ab6299d7a09947b8b72a8a87d34f81",
   "dictionary_sha256": "e8baccf00525eecad94ef054fea37f875a1f587a5de12ca39a56405d653e2e73",
@@ -65,5 +65,19 @@
     "baseline": "TemporalRevision1",
     "historical_timestamp_audit": "unchanged; no timestamps altered",
     "validation": "PASS: fixture, unchanged logical rows, provenance and diagnostic reference SQL; no model run"
+  },
+  "q02_canonical": {
+    "approval": "researcher approved on 2026-11-27 KST",
+    "cases": 288,
+    "events": 576,
+    "activity_classes": 12,
+    "actual_clocks": [
+      "started_at",
+      "finished_at"
+    ],
+    "excluded_clock": "posted_at",
+    "multiset_sha256": "125c3ab46ff46920e0092d3faa27acf80fae0a1bc82fc86a937d88a9d11c8812",
+    "digest_serialization": "sorted (triple, multiplicity) JSON, UTF-8, separators comma and colon",
+    "independent_test_files_preserved": 422
   }
 }

@@ -3,23 +3,68 @@
   "cases": 288,
   "events": 576,
   "nodes": {
-    "Job Start": 288,
-    "Job Complete": 288
+    "Disembarkation Start": 48,
+    "Disembarkation Complete": 48,
+    "Refuelling Start": 48,
+    "Refuelling Complete": 48,
+    "Cabin Cleaning Start": 48,
+    "Cabin Cleaning Complete": 48,
+    "Baggage Unloading Start": 48,
+    "Baggage Unloading Complete": 48,
+    "Catering Loading Start": 48,
+    "Catering Loading Complete": 48,
+    "Baggage Loading Start": 48,
+    "Baggage Loading Close": 48
   },
   "edges": [
     {
-      "source": "Job Start",
-      "target": "Job Complete",
-      "count": 288
+      "source": "Disembarkation Start",
+      "target": "Disembarkation Complete",
+      "count": 48
+    },
+    {
+      "source": "Baggage Unloading Start",
+      "target": "Baggage Unloading Complete",
+      "count": 48
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 48
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Refuelling Complete",
+      "count": 48
+    },
+    {
+      "source": "Catering Loading Start",
+      "target": "Catering Loading Complete",
+      "count": 48
+    },
+    {
+      "source": "Baggage Loading Start",
+      "target": "Baggage Loading Close",
+      "count": 48
     }
   ],
   "starts": {
-    "Job Start": 288
+    "Disembarkation Start": 48,
+    "Baggage Unloading Start": 48,
+    "Cabin Cleaning Start": 48,
+    "Refuelling Start": 48,
+    "Catering Loading Start": 48,
+    "Baggage Loading Start": 48
   },
   "ends": {
-    "Job Complete": 288
+    "Disembarkation Complete": 48,
+    "Baggage Unloading Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Refuelling Complete": 48,
+    "Catering Loading Complete": 48,
+    "Baggage Loading Close": 48
   },
-  "variant_count": 1,
+  "variant_count": 6,
   "tie_excess_events": 0,
   "tie_cases": 0,
   "duplicate_event_rows": 0

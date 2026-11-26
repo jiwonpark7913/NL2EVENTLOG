@@ -1,4 +1,6 @@
-# AirlineFlow — TemporalRevision1-SemanticDD1
+# AirlineFlow — TemporalRevision1-SemanticDD1-CanonicalQ02
+
+The CanonicalQ02 revision preserves 288 jobs and 576 occurrences and distinguishes six job types and their two actual phases. The request remains implicit. The independent Test requests, Gold and reference specifications are unchanged. The current integrated review and CanonicalQ02 bundles accompany this revision.
 
 Minimal semantic fixture revision of TemporalRevision1; no schema, timestamps, case keys, populations, activity labels or Gold event triples changed. Handling job and passenger action DD descriptions are prose with identical intended meanings. Bag scans use B101/B204 and independently sampled opaque scan IDs; shared L15/L20 rows match. All four DD versions use the same prose descriptions wherever the table exists. Reduced DD is a separate L15 input, not the main benchmark dictionary. See `semantic_check/README.md` for 3 additional evaluator-only diagnostics. All 72 original queries and Gold event CSVs are byte-identical; 7 Gold SQL/ESpecs and the legacy B SQL use new code literals. `randomize_timestamps.py` and timestamp audits document the prior historical revision, and should not be rerun on this fixture. `source/records.json` is canonical for reproduction.
 
