@@ -1,0 +1,105 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 864,
+  "nodes": {
+    "Queue Entry": 285,
+    "Screening Start": 285,
+    "Screening Complete": 286,
+    "Screening Complete ∥ Screening Start": 2,
+    "Queue Entry ∥ Queue Entry": 1,
+    "Queue Entry ∥ Screening Start": 1
+  },
+  "edges": [
+    {
+      "source": "Queue Entry",
+      "target": "Queue Entry",
+      "count": 158
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Queue Entry ∥ Queue Entry",
+      "count": 1
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Queue Entry ∥ Screening Start",
+      "count": 1
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Screening Complete",
+      "count": 43
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Screening Complete ∥ Screening Start",
+      "count": 1
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Screening Start",
+      "count": 81
+    },
+    {
+      "source": "Queue Entry ∥ Queue Entry",
+      "target": "Screening Start",
+      "count": 1
+    },
+    {
+      "source": "Queue Entry ∥ Screening Start",
+      "target": "Screening Start",
+      "count": 1
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Queue Entry",
+      "count": 28
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Screening Complete",
+      "count": 96
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Screening Complete ∥ Screening Start",
+      "count": 1
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Screening Start",
+      "count": 113
+    },
+    {
+      "source": "Screening Complete ∥ Screening Start",
+      "target": "Screening Start",
+      "count": 2
+    },
+    {
+      "source": "Screening Start",
+      "target": "Queue Entry",
+      "count": 51
+    },
+    {
+      "source": "Screening Start",
+      "target": "Screening Complete",
+      "count": 147
+    },
+    {
+      "source": "Screening Start",
+      "target": "Screening Start",
+      "count": 87
+    }
+  ],
+  "starts": {
+    "Queue Entry": 48
+  },
+  "ends": {
+    "Screening Complete": 48
+  },
+  "variant_count": 48,
+  "tie_excess_events": 4,
+  "tie_cases": 4,
+  "duplicate_event_rows": 1
+}

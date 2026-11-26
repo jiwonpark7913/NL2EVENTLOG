@@ -1,0 +1,36 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q06",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Boarding Start",
+    "Boarding Close",
+    "Off-block",
+    "Take-off"
+  ],
+  "registry_activity_labels": [
+    "Boarding Start",
+    "Boarding Close",
+    "Off-block",
+    "Take-off"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 192,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "기존 진단 질의; 단일 축 통제 실험에 포함하지 않음.",
+  "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
+  "alternative_case_policy": "Strict"
+}

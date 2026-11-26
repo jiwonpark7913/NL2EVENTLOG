@@ -1,0 +1,59 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 672,
+  "nodes": {
+    "Screening Complete": 288,
+    "Passenger Boarding Confirmed": 286,
+    "Boarding Close": 48,
+    "Aircraft Ready": 48,
+    "Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed": 1
+  },
+  "edges": [
+    {
+      "source": "Boarding Close",
+      "target": "Aircraft Ready",
+      "count": 48
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Boarding Close",
+      "count": 48
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed",
+      "count": 237
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed",
+      "count": 1
+    },
+    {
+      "source": "Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed",
+      "count": 1
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Passenger Boarding Confirmed",
+      "count": 48
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Screening Complete",
+      "count": 240
+    }
+  ],
+  "starts": {
+    "Screening Complete": 48
+  },
+  "ends": {
+    "Aircraft Ready": 48
+  },
+  "variant_count": 2,
+  "tie_excess_events": 1,
+  "tie_cases": 1,
+  "duplicate_event_rows": 1
+}

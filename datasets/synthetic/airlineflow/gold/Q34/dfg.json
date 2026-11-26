@@ -1,0 +1,64 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 672,
+  "nodes": {
+    "Queue Entry": 286,
+    "Screening Complete": 288,
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Queue Entry ∥ Queue Entry": 1
+  },
+  "edges": [
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 48
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Queue Entry",
+      "count": 198
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Queue Entry ∥ Queue Entry",
+      "count": 1
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Screening Complete",
+      "count": 87
+    },
+    {
+      "source": "Queue Entry ∥ Queue Entry",
+      "target": "Queue Entry",
+      "count": 1
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Boarding Start",
+      "count": 48
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Queue Entry",
+      "count": 39
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Screening Complete",
+      "count": 201
+    }
+  ],
+  "starts": {
+    "Queue Entry": 48
+  },
+  "ends": {
+    "Boarding Close": 48
+  },
+  "variant_count": 13,
+  "tie_excess_events": 1,
+  "tie_cases": 1,
+  "duplicate_event_rows": 1
+}

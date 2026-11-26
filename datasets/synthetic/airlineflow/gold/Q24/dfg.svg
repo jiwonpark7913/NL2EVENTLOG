@@ -1,0 +1,95 @@
+<svg width="452pt" height="220pt"
+ viewBox="0.00 0.00 451.50 220.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 202)">
+<title>D</title>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e3f3e8" stroke="#8ba6b6" cx="62.5" cy="-166" rx="27" ry="18"/>
+<text text-anchor="middle" x="62.5" y="-163.5" font-family="Arial" font-size="10.00">Start</text>
+</g>
+<!-- n0 -->
+<g id="node3" class="node">
+<title>n0</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M223.5,-110C223.5,-110 95.5,-110 95.5,-110 89.5,-110 83.5,-104 83.5,-98 83.5,-98 83.5,-86 83.5,-86 83.5,-80 89.5,-74 95.5,-74 95.5,-74 223.5,-74 223.5,-74 229.5,-74 235.5,-80 235.5,-86 235.5,-86 235.5,-98 235.5,-98 235.5,-104 229.5,-110 223.5,-110"/>
+<text text-anchor="middle" x="159.5" y="-95" font-family="Arial" font-size="10.00">Passenger Boarding Confirmed</text>
+<text text-anchor="middle" x="159.5" y="-84" font-family="Arial" font-size="10.00">287 buckets</text>
+</g>
+<!-- start&#45;&gt;n0 -->
+<g id="edge1" class="edge">
+<title>start&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M79.84,-152.13C94.04,-141.59 114.42,-126.46 131.01,-114.15"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="132.61,-115.79 136.47,-110.09 129.9,-112.14 132.61,-115.79"/>
+<text text-anchor="middle" x="123" y="-126.8" font-family="Arial" font-size="9.00">55</text>
+</g>
+<!-- n1 -->
+<g id="node4" class="node">
+<title>n1</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M69,-36C69,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 69,0 69,0 75,0 81,-6 81,-12 81,-12 81,-24 81,-24 81,-30 75,-36 69,-36"/>
+<text text-anchor="middle" x="40.5" y="-21" font-family="Arial" font-size="10.00">Scan Rejected</text>
+<text text-anchor="middle" x="40.5" y="-10" font-family="Arial" font-size="10.00">47 buckets</text>
+</g>
+<!-- start&#45;&gt;n1 -->
+<g id="edge2" class="edge">
+<title>start&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M59.93,-147.97C56.03,-122.06 48.59,-72.66 44.13,-43.09"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="46.34,-42.47 43.12,-36.38 41.84,-43.14 46.34,-42.47"/>
+<text text-anchor="middle" x="60" y="-89.8" font-family="Arial" font-size="9.00">17</text>
+</g>
+<!-- end -->
+<g id="node2" class="node">
+<title>end</title>
+<ellipse fill="#f7e5e1" stroke="#8ba6b6" cx="388.5" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="388.5" y="-15.5" font-family="Arial" font-size="10.00">End</text>
+</g>
+<!-- n0&#45;&gt;end -->
+<g id="edge8" class="edge">
+<title>n0&#45;&gt;end</title>
+<path fill="none" stroke="#667d8b" d="M226.12,-73.98C262.88,-64.03 309.12,-50.57 349.5,-36 353.15,-34.68 356.94,-33.19 360.67,-31.65"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="361.74,-33.67 366.84,-29.03 359.96,-29.48 361.74,-33.67"/>
+<text text-anchor="middle" x="308" y="-52.8" font-family="Arial" font-size="9.00">72</text>
+</g>
+<!-- n0&#45;&gt;n0 -->
+<g id="edge3" class="edge">
+<title>n0&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M235.7,-98.43C250.23,-97.66 260.5,-95.52 260.5,-92 260.5,-89.06 253.32,-87.08 242.48,-86.06"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="242.34,-83.77 235.7,-85.57 242.02,-88.31 242.34,-83.77"/>
+<text text-anchor="middle" x="268.5" y="-89.8" font-family="Arial" font-size="9.00">184</text>
+</g>
+<!-- n0&#45;&gt;n1 -->
+<g id="edge5" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M138.04,-73.92C127.86,-66.18 115.35,-57.18 103.5,-50 97.35,-46.28 90.7,-42.62 84.09,-39.21"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="84.88,-37.06 78.05,-36.14 82.82,-41.11 84.88,-37.06"/>
+<text text-anchor="middle" x="124" y="-52.8" font-family="Arial" font-size="9.00">30</text>
+</g>
+<!-- n2 -->
+<g id="node5" class="node">
+<title>n2</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M324.5,-36C324.5,-36 118.5,-36 118.5,-36 112.5,-36 106.5,-30 106.5,-24 106.5,-24 106.5,-12 106.5,-12 106.5,-6 112.5,0 118.5,0 118.5,0 324.5,0 324.5,0 330.5,0 336.5,-6 336.5,-12 336.5,-12 336.5,-24 336.5,-24 336.5,-30 330.5,-36 324.5,-36"/>
+<text text-anchor="middle" x="221.5" y="-21" font-family="Arial" font-size="10.00">Passenger Boarding Confirmed ∥ Scan Rejected</text>
+<text text-anchor="middle" x="221.5" y="-10" font-family="Arial" font-size="10.00">1 buckets</text>
+</g>
+<!-- n0&#45;&gt;n2 -->
+<g id="edge4" class="edge">
+<title>n0&#45;&gt;n2</title>
+<path fill="none" stroke="#667d8b" d="M165.13,-73.92C168.26,-66.09 172.71,-57.02 178.5,-50 181.27,-46.65 184.48,-43.47 187.88,-40.53"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="189.72,-41.97 193.33,-36.1 186.85,-38.44 189.72,-41.97"/>
+<text text-anchor="middle" x="181.5" y="-52.8" font-family="Arial" font-size="9.00">1</text>
+</g>
+<!-- n1&#45;&gt;n0 -->
+<g id="edge7" class="edge">
+<title>n1&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M58.2,-36.32C66.86,-44.2 77.72,-53.25 88.5,-60 94.91,-64.01 101.94,-67.76 108.99,-71.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="108.06,-73.24 114.91,-73.94 109.99,-69.12 108.06,-73.24"/>
+<text text-anchor="middle" x="94" y="-52.8" font-family="Arial" font-size="9.00">47</text>
+</g>
+<!-- n2&#45;&gt;n0 -->
+<g id="edge6" class="edge">
+<title>n2&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M206.48,-36.44C198.05,-46.23 187.46,-58.53 178.46,-68.98"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="176.71,-67.53 174.19,-73.94 180.16,-70.5 176.71,-67.53"/>
+<text text-anchor="middle" x="196.5" y="-52.8" font-family="Arial" font-size="9.00">1</text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,59 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 672,
+  "nodes": {
+    "Check-in Complete": 286,
+    "Screening Complete": 288,
+    "Boarding Start": 48,
+    "Boarding Close": 48,
+    "Check-in Complete ∥ Check-in Complete": 1
+  },
+  "edges": [
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 48
+    },
+    {
+      "source": "Check-in Complete",
+      "target": "Check-in Complete",
+      "count": 237
+    },
+    {
+      "source": "Check-in Complete",
+      "target": "Check-in Complete ∥ Check-in Complete",
+      "count": 1
+    },
+    {
+      "source": "Check-in Complete",
+      "target": "Screening Complete",
+      "count": 48
+    },
+    {
+      "source": "Check-in Complete ∥ Check-in Complete",
+      "target": "Check-in Complete",
+      "count": 1
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Boarding Start",
+      "count": 48
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Screening Complete",
+      "count": 240
+    }
+  ],
+  "starts": {
+    "Check-in Complete": 48
+  },
+  "ends": {
+    "Boarding Close": 48
+  },
+  "variant_count": 2,
+  "tie_excess_events": 1,
+  "tie_cases": 1,
+  "duplicate_event_rows": 1
+}

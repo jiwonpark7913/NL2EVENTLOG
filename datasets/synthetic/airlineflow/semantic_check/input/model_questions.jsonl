@@ -1,0 +1,3 @@
+{"question_id": "B01", "text": "For each checked bag's transport record, create an event log of scans with scan_code = 'B204', using the original code as the activity label."}
+{"question_id": "B02", "text": "In the baggage tracking records, B204 means the bag was loaded into the aircraft hold. For each checked bag's transport record, extract the Bag Loaded event."}
+{"question_id": "B03", "text": "For each checked bag's transport record, extract the event when the bag was loaded into the aircraft hold."}

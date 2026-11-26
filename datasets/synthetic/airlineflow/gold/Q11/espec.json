@@ -1,0 +1,56 @@
+{
+  "schema": "authored_reference_espec_v4",
+  "query_id": "Q11",
+  "case_entity": "Boarding Session",
+  "case_identity": {
+    "table": "boarding_sessions",
+    "key": [
+      "session_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in the selected database",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity",
+  "timestamp_policy": "Actual occurrence time; KST as stored; no conversion or synthetic timestamps.",
+  "ordering": [
+    "case_id",
+    "timestamp",
+    "activity"
+  ],
+  "rules": [
+    {
+      "activity": "Boarding Start",
+      "source_table": "boarding_sessions",
+      "source_alias": "b",
+      "source_row_key": "session_id",
+      "timestamp_column": "started_at",
+      "case_expression": "b.session_id",
+      "joins": [],
+      "where": "",
+      "carrier_column": null,
+      "encoding": "Non-carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "all applicable cases",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Boarding Close",
+      "source_table": "boarding_sessions",
+      "source_alias": "b",
+      "source_row_key": "session_id",
+      "timestamp_column": "closed_at",
+      "case_expression": "b.session_id",
+      "joins": [],
+      "where": "",
+      "carrier_column": null,
+      "encoding": "Non-carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "all applicable cases",
+      "temporal_semantics": "actual occurrence time"
+    }
+  ]
+}

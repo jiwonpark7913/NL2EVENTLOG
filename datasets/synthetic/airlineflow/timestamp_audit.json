@@ -1,0 +1,84 @@
+{
+  "seed": 20261126,
+  "variants": {
+    "l05": {
+      "timestamp_cells_changed": 2010,
+      "by_table": {
+        "flights": 0,
+        "turnarounds": 95,
+        "boarding_sessions": 191,
+        "handling_jobs": 862,
+        "movement_reports": 862
+      },
+      "db_sha256": "d6486ae1747f9bcce6f2d0bb94b98dbdb9f216bed41d9313a2140f1c07bb815e",
+      "rows": 960
+    },
+    "l10": {
+      "timestamp_cells_changed": 2704,
+      "by_table": {
+        "flights": 0,
+        "turnarounds": 95,
+        "boarding_sessions": 191,
+        "handling_jobs": 862,
+        "movement_reports": 862,
+        "bookings": 72,
+        "passengers": 0,
+        "tickets": 0,
+        "passenger_legs": 0,
+        "passenger_actions": 622
+      },
+      "db_sha256": "826159f0856164a8a8486ba5a20ceaff4e2fa1e069fcf447c6a8e116679ea4e3",
+      "rows": 2232
+    },
+    "l15": {
+      "timestamp_cells_changed": 4719,
+      "by_table": {
+        "flights": 0,
+        "turnarounds": 95,
+        "boarding_sessions": 191,
+        "handling_jobs": 862,
+        "movement_reports": 862,
+        "bookings": 72,
+        "passengers": 0,
+        "tickets": 0,
+        "passenger_legs": 0,
+        "passenger_actions": 622,
+        "bag_legs": 0,
+        "bag_scans": 288,
+        "checkpoints": 0,
+        "security_visits": 0,
+        "security_events": 1727
+      },
+      "db_sha256": "73706f489855eae5e000ce45acb9a4780f50815d5cb40fbf9ea85bc98ea7e2ba",
+      "rows": 3818
+    },
+    "l20": {
+      "timestamp_cells_changed": 4719,
+      "by_table": {
+        "flights": 0,
+        "turnarounds": 95,
+        "boarding_sessions": 191,
+        "handling_jobs": 862,
+        "movement_reports": 862,
+        "bookings": 72,
+        "passengers": 0,
+        "tickets": 0,
+        "passenger_legs": 0,
+        "passenger_actions": 622,
+        "bag_legs": 0,
+        "bag_scans": 288,
+        "checkpoints": 0,
+        "security_visits": 0,
+        "security_events": 1727,
+        "airlines": 0,
+        "airports": 0,
+        "aircraft": 0,
+        "employees": 0,
+        "flight_dispatch": 0
+      },
+      "db_sha256": "5464fbe37c5f1c834732a00402aab84d5e061c32fa6f820496576c5eef978229",
+      "rows": 3925
+    }
+  },
+  "constraints": "PASS; nested rows equal; scheduled clocks and all non-timestamp attributes unchanged"
+}

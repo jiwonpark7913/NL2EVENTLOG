@@ -1,0 +1,84 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 240,
+  "nodes": {
+    "Baggage Unloading Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Refuelling Complete": 48,
+    "Catering Loading Complete": 48,
+    "Baggage Loading Close": 48
+  },
+  "edges": [
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 30
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Catering Loading Complete",
+      "count": 3
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Refuelling Complete",
+      "count": 15
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Baggage Loading Close",
+      "count": 7
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Catering Loading Complete",
+      "count": 14
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 27
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Baggage Loading Close",
+      "count": 34
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 8
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Refuelling Complete",
+      "count": 6
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Baggage Loading Close",
+      "count": 7
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 10
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Catering Loading Complete",
+      "count": 31
+    }
+  ],
+  "starts": {
+    "Baggage Unloading Complete": 48
+  },
+  "ends": {
+    "Baggage Loading Close": 48
+  },
+  "variant_count": 6,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

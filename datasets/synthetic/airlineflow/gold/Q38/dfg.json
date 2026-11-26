@@ -1,0 +1,65 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 192,
+  "nodes": {
+    "Refuelling Start": 48,
+    "Cabin Cleaning Start": 48,
+    "Refuelling Complete": 48,
+    "Cabin Cleaning Complete": 48
+  },
+  "edges": [
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 32
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 30
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Refuelling Complete",
+      "count": 14
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Refuelling Start",
+      "count": 4
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 16
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 2
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Cabin Cleaning Start",
+      "count": 44
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Refuelling Complete",
+      "count": 2
+    }
+  ],
+  "starts": {
+    "Refuelling Start": 44,
+    "Cabin Cleaning Start": 4
+  },
+  "ends": {
+    "Cabin Cleaning Complete": 16,
+    "Refuelling Complete": 32
+  },
+  "variant_count": 4,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

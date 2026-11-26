@@ -1,0 +1,32 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q02",
+  "case_entity": "Handling Job",
+  "case_identity": {
+    "table": "handling_jobs",
+    "key": [
+      "job_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in the selected database",
+  "case_mode": "Explicit",
+  "activity_mode": "Implicit",
+  "activities": [
+    "Job Start",
+    "Job Complete"
+  ],
+  "registry_activity_labels": [
+    "Job Start",
+    "Job Complete"
+  ],
+  "expected_case_count": 288,
+  "expected_event_count": 576,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "기존 진단 질의; 단일 축 통제 실험에 포함하지 않음.",
+  "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
+  "alternative_case_policy": "Strict"
+}

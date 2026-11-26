@@ -1,0 +1,74 @@
+<svg width="235pt" height="294pt"
+ viewBox="0.00 0.00 234.50 294.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 276)">
+<title>D</title>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e3f3e8" stroke="#8ba6b6" cx="85.5" cy="-240" rx="27" ry="18"/>
+<text text-anchor="middle" x="85.5" y="-237.5" font-family="Arial" font-size="10.00">Start</text>
+</g>
+<!-- n0 -->
+<g id="node3" class="node">
+<title>n0</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M69,-184C69,-184 12,-184 12,-184 6,-184 0,-178 0,-172 0,-172 0,-160 0,-160 0,-154 6,-148 12,-148 12,-148 69,-148 69,-148 75,-148 81,-154 81,-160 81,-160 81,-172 81,-172 81,-178 75,-184 69,-184"/>
+<text text-anchor="middle" x="40.5" y="-169" font-family="Arial" font-size="10.00">Scan Rejected</text>
+<text text-anchor="middle" x="40.5" y="-158" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- start&#45;&gt;n0 -->
+<g id="edge1" class="edge">
+<title>start&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M75.51,-223.02C69.44,-213.3 61.58,-200.73 54.85,-189.96"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="56.62,-188.5 51.24,-184.19 52.76,-190.91 56.62,-188.5"/>
+<text text-anchor="middle" x="72" y="-200.8" font-family="Arial" font-size="9.00">24</text>
+</g>
+<!-- n1 -->
+<g id="node4" class="node">
+<title>n1</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M145.5,-110C145.5,-110 17.5,-110 17.5,-110 11.5,-110 5.5,-104 5.5,-98 5.5,-98 5.5,-86 5.5,-86 5.5,-80 11.5,-74 17.5,-74 17.5,-74 145.5,-74 145.5,-74 151.5,-74 157.5,-80 157.5,-86 157.5,-86 157.5,-98 157.5,-98 157.5,-104 151.5,-110 145.5,-110"/>
+<text text-anchor="middle" x="81.5" y="-95" font-family="Arial" font-size="10.00">Passenger Boarding Confirmed</text>
+<text text-anchor="middle" x="81.5" y="-84" font-family="Arial" font-size="10.00">288 buckets</text>
+</g>
+<!-- start&#45;&gt;n1 -->
+<g id="edge2" class="edge">
+<title>start&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M89,-221.87C92.27,-203.57 96.27,-173.7 93.5,-148 92.38,-137.58 90.09,-126.24 87.81,-116.57"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="90,-115.96 86.25,-110.18 85.58,-117.04 90,-115.96"/>
+<text text-anchor="middle" x="102.5" y="-163.8" font-family="Arial" font-size="9.00">120</text>
+</g>
+<!-- end -->
+<g id="node2" class="node">
+<title>end</title>
+<ellipse fill="#f7e5e1" stroke="#8ba6b6" cx="81.5" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="81.5" y="-15.5" font-family="Arial" font-size="10.00">End</text>
+</g>
+<!-- n0&#45;&gt;n1 -->
+<g id="edge5" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M38.24,-147.82C37.99,-140.15 38.79,-131.23 42.5,-124 44.18,-120.73 46.37,-117.69 48.87,-114.9"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="50.65,-116.34 53.64,-110.13 47.43,-113.12 50.65,-116.34"/>
+<text text-anchor="middle" x="48" y="-126.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+<!-- n1&#45;&gt;end -->
+<g id="edge6" class="edge">
+<title>n1&#45;&gt;end</title>
+<path fill="none" stroke="#667d8b" d="M81.5,-73.94C81.5,-64.75 81.5,-53.25 81.5,-43.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="83.78,-42.94 81.5,-36.44 79.23,-42.94 83.78,-42.94"/>
+<text text-anchor="middle" x="89.5" y="-52.8" font-family="Arial" font-size="9.00">144</text>
+</g>
+<!-- n1&#45;&gt;n0 -->
+<g id="edge4" class="edge">
+<title>n1&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M71.57,-110.44C66.15,-119.96 59.37,-131.86 53.53,-142.12"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="51.46,-141.16 50.22,-147.94 55.41,-143.41 51.46,-141.16"/>
+<text text-anchor="middle" x="69" y="-126.8" font-family="Arial" font-size="9.00">24</text>
+</g>
+<!-- n1&#45;&gt;n1 -->
+<g id="edge3" class="edge">
+<title>n1&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M157.7,-98.43C172.23,-97.66 182.5,-95.52 182.5,-92 182.5,-89.06 175.32,-87.08 164.48,-86.06"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="164.34,-83.77 157.7,-85.57 164.02,-88.31 164.34,-83.77"/>
+<text text-anchor="middle" x="190.5" y="-89.8" font-family="Arial" font-size="9.00">120</text>
+</g>
+</g>
+</svg>

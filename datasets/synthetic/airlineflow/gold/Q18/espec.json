@@ -1,0 +1,102 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q18",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Flight",
+  "rules": [
+    {
+      "key": "SQ",
+      "activity": "Queue Entry",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "Q",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ],
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 3,
+      "physical_depth": 2,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "SS",
+      "activity": "Screening Start",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "S",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ],
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 3,
+      "physical_depth": 2,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "SC",
+      "activity": "Screening Complete",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "C",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ],
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 3,
+      "physical_depth": 2,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

@@ -1,0 +1,263 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 576,
+  "nodes": {
+    "Baggage Unloading Start": 48,
+    "Disembarkation Start": 48,
+    "Refuelling Start": 48,
+    "Disembarkation Complete": 48,
+    "Catering Loading Start": 48,
+    "Cabin Cleaning Start": 47,
+    "Baggage Unloading Complete": 47,
+    "Refuelling Complete": 48,
+    "Catering Loading Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Baggage Loading Start": 48,
+    "Baggage Loading Close": 48,
+    "Baggage Unloading Complete ∥ Cabin Cleaning Start": 1
+  },
+  "edges": [
+    {
+      "source": "Baggage Loading Start",
+      "target": "Baggage Loading Close",
+      "count": 34
+    },
+    {
+      "source": "Baggage Loading Start",
+      "target": "Catering Loading Complete",
+      "count": 11
+    },
+    {
+      "source": "Baggage Loading Start",
+      "target": "Refuelling Complete",
+      "count": 3
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 18
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Cabin Cleaning Start",
+      "count": 5
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Catering Loading Complete",
+      "count": 3
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Catering Loading Start",
+      "count": 7
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Disembarkation Complete",
+      "count": 4
+    },
+    {
+      "source": "Baggage Unloading Complete",
+      "target": "Refuelling Complete",
+      "count": 10
+    },
+    {
+      "source": "Baggage Unloading Complete ∥ Cabin Cleaning Start",
+      "target": "Catering Loading Start",
+      "count": 1
+    },
+    {
+      "source": "Baggage Unloading Start",
+      "target": "Disembarkation Complete",
+      "count": 9
+    },
+    {
+      "source": "Baggage Unloading Start",
+      "target": "Disembarkation Start",
+      "count": 22
+    },
+    {
+      "source": "Baggage Unloading Start",
+      "target": "Refuelling Start",
+      "count": 17
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Baggage Loading Start",
+      "count": 11
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Catering Loading Complete",
+      "count": 11
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 26
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Baggage Unloading Complete",
+      "count": 15
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 1
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Catering Loading Start",
+      "count": 28
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Refuelling Complete",
+      "count": 1
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Refuelling Start",
+      "count": 2
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Baggage Loading Close",
+      "count": 12
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Baggage Loading Start",
+      "count": 24
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 8
+    },
+    {
+      "source": "Catering Loading Complete",
+      "target": "Refuelling Complete",
+      "count": 4
+    },
+    {
+      "source": "Catering Loading Start",
+      "target": "Baggage Unloading Complete",
+      "count": 21
+    },
+    {
+      "source": "Catering Loading Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 11
+    },
+    {
+      "source": "Catering Loading Start",
+      "target": "Cabin Cleaning Start",
+      "count": 10
+    },
+    {
+      "source": "Catering Loading Start",
+      "target": "Refuelling Complete",
+      "count": 4
+    },
+    {
+      "source": "Catering Loading Start",
+      "target": "Refuelling Start",
+      "count": 2
+    },
+    {
+      "source": "Disembarkation Complete",
+      "target": "Baggage Unloading Complete",
+      "count": 2
+    },
+    {
+      "source": "Disembarkation Complete",
+      "target": "Baggage Unloading Complete ∥ Cabin Cleaning Start",
+      "count": 1
+    },
+    {
+      "source": "Disembarkation Complete",
+      "target": "Cabin Cleaning Start",
+      "count": 28
+    },
+    {
+      "source": "Disembarkation Complete",
+      "target": "Catering Loading Start",
+      "count": 7
+    },
+    {
+      "source": "Disembarkation Complete",
+      "target": "Refuelling Start",
+      "count": 10
+    },
+    {
+      "source": "Disembarkation Start",
+      "target": "Baggage Unloading Start",
+      "count": 26
+    },
+    {
+      "source": "Disembarkation Start",
+      "target": "Disembarkation Complete",
+      "count": 5
+    },
+    {
+      "source": "Disembarkation Start",
+      "target": "Refuelling Start",
+      "count": 17
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Baggage Loading Close",
+      "count": 2
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Baggage Loading Start",
+      "count": 13
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 10
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Catering Loading Complete",
+      "count": 23
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Baggage Unloading Complete",
+      "count": 9
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Cabin Cleaning Start",
+      "count": 4
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Catering Loading Start",
+      "count": 5
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Disembarkation Complete",
+      "count": 30
+    }
+  ],
+  "starts": {
+    "Baggage Unloading Start": 22,
+    "Disembarkation Start": 26
+  },
+  "ends": {
+    "Baggage Loading Close": 48
+  },
+  "variant_count": 40,
+  "tie_excess_events": 1,
+  "tie_cases": 1,
+  "duplicate_event_rows": 0
+}

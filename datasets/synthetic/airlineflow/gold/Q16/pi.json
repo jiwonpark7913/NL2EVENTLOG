@@ -1,0 +1,24 @@
+{
+  "schema": "authored_reference_pi",
+  "query_id": "Q16",
+  "case_entity": "Security Visit",
+  "case_identity": {
+    "table": "security_visits",
+    "key": [
+      "visit_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Security Visit",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Queue Entry",
+    "Screening Start",
+    "Screening Complete"
+  ],
+  "expected_case_count": 288,
+  "expected_event_count": 864,
+  "notes": "원천·사건 인스턴스·활동·인코딩 고정. Case ET와 trace 분포 변화는 잔여 교란; JOIN 수와 논리 깊이 분리. Case 집계 효과가 함께 변하므로 순수 JOIN 인과효과로 해석하지 않음. 인접 수준이 데이터상 1:1일 수 있음. 이 DB에서 인접 Case가 1:1 동형임; ID 치환 효과와 구조 추론을 구분. 동일 Gold Q16,Q53,Q54,Q55,Q56: 다른 실험 조건은 유지하되 독립 표본으로 중복 집계하지 않음. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
+  "case_key_policy": "Canonical visit_id; passenger leg is a different entity, not primary.",
+  "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized."
+}

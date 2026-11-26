@@ -1,0 +1,94 @@
+{
+  "schema": "authored_reference_espec_v4",
+  "query_id": "Q12",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity",
+  "timestamp_policy": "Actual occurrence time; KST as stored; no conversion or synthetic timestamps.",
+  "ordering": [
+    "case_id",
+    "timestamp",
+    "activity"
+  ],
+  "rules": [
+    {
+      "activity": "Boarding Start",
+      "source_table": "boarding_sessions",
+      "source_alias": "b",
+      "source_row_key": "session_id",
+      "timestamp_column": "started_at",
+      "case_expression": "b.flight_id",
+      "joins": [
+        "JOIN turnarounds t ON t.outbound_id=b.flight_id"
+      ],
+      "where": "",
+      "carrier_column": null,
+      "encoding": "Non-carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Boarding Close",
+      "source_table": "boarding_sessions",
+      "source_alias": "b",
+      "source_row_key": "session_id",
+      "timestamp_column": "closed_at",
+      "case_expression": "b.flight_id",
+      "joins": [
+        "JOIN turnarounds t ON t.outbound_id=b.flight_id"
+      ],
+      "where": "",
+      "carrier_column": null,
+      "encoding": "Non-carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Off-block",
+      "source_table": "movement_reports",
+      "source_alias": "m",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "case_expression": "m.flight_id",
+      "joins": [
+        "JOIN turnarounds t ON t.outbound_id=m.flight_id"
+      ],
+      "where": "m.kind='OUT'",
+      "carrier_column": "kind",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Take-off",
+      "source_table": "movement_reports",
+      "source_alias": "m",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "case_expression": "m.flight_id",
+      "joins": [
+        "JOIN turnarounds t ON t.outbound_id=m.flight_id"
+      ],
+      "where": "m.kind='AIR'",
+      "carrier_column": "kind",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "outbound role",
+      "temporal_semantics": "actual occurrence time"
+    }
+  ]
+}

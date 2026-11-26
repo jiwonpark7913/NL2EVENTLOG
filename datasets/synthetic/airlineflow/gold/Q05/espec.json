@@ -1,0 +1,86 @@
+{
+  "schema": "authored_reference_espec_v4",
+  "query_id": "Q05",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in the selected database",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity",
+  "timestamp_policy": "Actual occurrence time; KST as stored; no conversion or synthetic timestamps.",
+  "ordering": [
+    "case_id",
+    "timestamp",
+    "activity"
+  ],
+  "rules": [
+    {
+      "activity": "Handling Start",
+      "source_table": "turnarounds",
+      "source_alias": "t",
+      "source_row_key": "turn_id",
+      "timestamp_column": "handling_started_at",
+      "case_expression": "t.turn_id",
+      "joins": [],
+      "where": "",
+      "carrier_column": null,
+      "encoding": "Non-carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "all applicable cases",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Cabin Cleaning Complete",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "j.turn_id",
+      "joins": [],
+      "where": "j.job_code='CL'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "all applicable cases",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Refuelling Complete",
+      "source_table": "handling_jobs",
+      "source_alias": "j",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "case_expression": "j.turn_id",
+      "joins": [],
+      "where": "j.job_code='FU'",
+      "carrier_column": "job_code",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "all applicable cases",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Aircraft Ready",
+      "source_table": "turnarounds",
+      "source_alias": "t",
+      "source_row_key": "turn_id",
+      "timestamp_column": "ready_at",
+      "case_expression": "t.turn_id",
+      "joins": [],
+      "where": "",
+      "carrier_column": null,
+      "encoding": "Non-carrier-driven",
+      "attribution_join_depth": 0,
+      "case_scope": "all applicable cases",
+      "temporal_semantics": "actual occurrence time"
+    }
+  ]
+}

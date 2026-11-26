@@ -1,0 +1,59 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q41",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Turnaround",
+  "rules": [
+    {
+      "key": "BLC",
+      "activity": "Baggage Loading Close",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "BL",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "OUT",
+      "activity": "Off-block",
+      "source_table": "movement_reports",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "carrier_column": "kind",
+      "carrier_value": "OUT",
+      "path": [
+        [
+          "flight_id",
+          "turnarounds",
+          "outbound_id"
+        ]
+      ],
+      "case_key": "turn_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

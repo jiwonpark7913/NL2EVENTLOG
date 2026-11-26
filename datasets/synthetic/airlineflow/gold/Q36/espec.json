@@ -1,0 +1,102 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q36",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Flight; outbound flights only",
+  "rules": [
+    {
+      "key": "SC",
+      "activity": "Screening Complete",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "C",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ],
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 3,
+      "physical_depth": 2,
+      "scope_outbound": true,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BD",
+      "activity": "Passenger Boarding Confirmed",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "BD",
+      "path": [
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": true,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BC",
+      "activity": "Boarding Close",
+      "source_table": "boarding_sessions",
+      "source_row_key": "session_id",
+      "timestamp_column": "closed_at",
+      "carrier_column": null,
+      "carrier_value": null,
+      "path": [],
+      "case_key": "flight_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": true,
+      "role": "outbound",
+      "encoding": "Non-carrier-driven"
+    },
+    {
+      "key": "READY",
+      "activity": "Aircraft Ready",
+      "source_table": "turnarounds",
+      "source_row_key": "turn_id",
+      "timestamp_column": "ready_at",
+      "carrier_column": null,
+      "carrier_value": null,
+      "path": [],
+      "case_key": "outbound_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Non-carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

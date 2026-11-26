@@ -1,0 +1,26 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 96,
+  "events": 192,
+  "nodes": {
+    "Boarding Start": 96,
+    "Boarding Close": 96
+  },
+  "edges": [
+    {
+      "source": "Boarding Start",
+      "target": "Boarding Close",
+      "count": 96
+    }
+  ],
+  "starts": {
+    "Boarding Start": 96
+  },
+  "ends": {
+    "Boarding Close": 96
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

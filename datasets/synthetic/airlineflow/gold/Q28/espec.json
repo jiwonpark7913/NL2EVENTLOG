@@ -1,0 +1,129 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q28",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Turnaround",
+  "rules": [
+    {
+      "key": "DPC",
+      "activity": "Disembarkation Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "DP",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "ULC",
+      "activity": "Baggage Unloading Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "UL",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "CLC",
+      "activity": "Cabin Cleaning Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CL",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "FUC",
+      "activity": "Refuelling Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "FU",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BS",
+      "activity": "Boarding Start",
+      "source_table": "boarding_sessions",
+      "source_row_key": "session_id",
+      "timestamp_column": "started_at",
+      "carrier_column": null,
+      "carrier_value": null,
+      "path": [
+        [
+          "flight_id",
+          "turnarounds",
+          "outbound_id"
+        ]
+      ],
+      "case_key": "turn_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Non-carrier-driven"
+    },
+    {
+      "key": "BC",
+      "activity": "Boarding Close",
+      "source_table": "boarding_sessions",
+      "source_row_key": "session_id",
+      "timestamp_column": "closed_at",
+      "carrier_column": null,
+      "carrier_value": null,
+      "path": [
+        [
+          "flight_id",
+          "turnarounds",
+          "outbound_id"
+        ]
+      ],
+      "case_key": "turn_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Non-carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

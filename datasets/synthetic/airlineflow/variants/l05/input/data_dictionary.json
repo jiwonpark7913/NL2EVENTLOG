@@ -79,7 +79,7 @@
       },
       "job_code": {
         "declaration": "TEXT NOT NULL",
-        "description": "Type of ground handling operation. BL = Baggage loading; CL = Cabin cleaning; DP = Passenger disembarkation; UL = Baggage unloading; FU = Refuelling; CA = Catering loading."
+        "description": "Ground crews use CL for cabin cleaning and FU for refuelling. Catering loading is recorded under CA, and baggage loading under BL. DP identifies passenger disembarkation, while UL identifies baggage unloading."
       },
       "started_at": {
         "declaration": "TEXT NOT NULL",

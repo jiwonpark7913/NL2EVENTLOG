@@ -1,0 +1,38 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 192,
+  "nodes": {
+    "Baggage Loading Start": 48,
+    "Baggage Loading Close": 48,
+    "Off-block": 48,
+    "Take-off": 48
+  },
+  "edges": [
+    {
+      "source": "Baggage Loading Close",
+      "target": "Off-block",
+      "count": 48
+    },
+    {
+      "source": "Baggage Loading Start",
+      "target": "Baggage Loading Close",
+      "count": 48
+    },
+    {
+      "source": "Off-block",
+      "target": "Take-off",
+      "count": 48
+    }
+  ],
+  "starts": {
+    "Baggage Loading Start": 48
+  },
+  "ends": {
+    "Take-off": 48
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

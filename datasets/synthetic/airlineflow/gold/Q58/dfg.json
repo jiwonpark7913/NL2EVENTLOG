@@ -1,0 +1,55 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 288,
+  "events": 1488,
+  "nodes": {
+    "Check-in Complete": 288,
+    "Queue Entry": 288,
+    "Screening Start": 288,
+    "Screening Complete": 288,
+    "Scan Rejected": 48,
+    "Passenger Boarding Confirmed": 288
+  },
+  "edges": [
+    {
+      "source": "Check-in Complete",
+      "target": "Queue Entry",
+      "count": 288
+    },
+    {
+      "source": "Queue Entry",
+      "target": "Screening Start",
+      "count": 288
+    },
+    {
+      "source": "Scan Rejected",
+      "target": "Passenger Boarding Confirmed",
+      "count": 48
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Passenger Boarding Confirmed",
+      "count": 240
+    },
+    {
+      "source": "Screening Complete",
+      "target": "Scan Rejected",
+      "count": 48
+    },
+    {
+      "source": "Screening Start",
+      "target": "Screening Complete",
+      "count": 288
+    }
+  ],
+  "starts": {
+    "Check-in Complete": 288
+  },
+  "ends": {
+    "Passenger Boarding Confirmed": 288
+  },
+  "variant_count": 2,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

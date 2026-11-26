@@ -1,0 +1,33 @@
+{
+  "schema": "authored_reference_pi",
+  "query_id": "Q40",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Turnaround",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Cabin Cleaning Start",
+    "Cabin Cleaning Complete",
+    "Refuelling Start",
+    "Refuelling Complete",
+    "Catering Loading Start",
+    "Catering Loading Complete",
+    "Baggage Loading Start",
+    "Baggage Loading Close",
+    "Disembarkation Start",
+    "Disembarkation Complete",
+    "Baggage Unloading Start",
+    "Baggage Unloading Complete"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 576,
+  "notes": "Case·원천 집합·인코딩 고정; 기존 활동 유지. 사건 수와 일부 경로별 비중은 증가/변화. 12 ACT 조건은 Family별 다른 Gold. 전체 6종 job_code의 시작·완료를 포함하므로 동일한 라벨 생성이 가능하면 필터 생략 SQL도 정답. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
+  "case_key_policy": "Canonical primary key; other key representations not authorized unless separately pre-approved as same entity.",
+  "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized."
+}

@@ -1,0 +1,103 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 384,
+  "nodes": {
+    "Refuelling Start": 48,
+    "Cabin Cleaning Start": 48,
+    "Refuelling Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Baggage Loading Start": 48,
+    "Baggage Loading Close": 48,
+    "Off-block": 48,
+    "Take-off": 48
+  },
+  "edges": [
+    {
+      "source": "Baggage Loading Close",
+      "target": "Off-block",
+      "count": 48
+    },
+    {
+      "source": "Baggage Loading Start",
+      "target": "Baggage Loading Close",
+      "count": 45
+    },
+    {
+      "source": "Baggage Loading Start",
+      "target": "Refuelling Complete",
+      "count": 3
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Baggage Loading Start",
+      "count": 19
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 29
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 30
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Refuelling Complete",
+      "count": 14
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Refuelling Start",
+      "count": 4
+    },
+    {
+      "source": "Off-block",
+      "target": "Take-off",
+      "count": 48
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Baggage Loading Close",
+      "count": 3
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Baggage Loading Start",
+      "count": 29
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 16
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 2
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Cabin Cleaning Start",
+      "count": 44
+    },
+    {
+      "source": "Refuelling Start",
+      "target": "Refuelling Complete",
+      "count": 2
+    }
+  ],
+  "starts": {
+    "Refuelling Start": 44,
+    "Cabin Cleaning Start": 4
+  },
+  "ends": {
+    "Take-off": 48
+  },
+  "variant_count": 5,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

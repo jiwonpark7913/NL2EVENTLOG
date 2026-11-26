@@ -1,0 +1,130 @@
+<svg width="262pt" height="442pt"
+ viewBox="0.00 0.00 261.73 442.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 424)">
+<title>D</title>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e3f3e8" stroke="#8ba6b6" cx="163.73" cy="-388" rx="27" ry="18"/>
+<text text-anchor="middle" x="163.73" y="-385.5" font-family="Arial" font-size="10.00">Start</text>
+</g>
+<!-- n0 -->
+<g id="node3" class="node">
+<title>n0</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M146.73,-332C146.73,-332 86.73,-332 86.73,-332 80.73,-332 74.73,-326 74.73,-320 74.73,-320 74.73,-308 74.73,-308 74.73,-302 80.73,-296 86.73,-296 86.73,-296 146.73,-296 146.73,-296 152.73,-296 158.73,-302 158.73,-308 158.73,-308 158.73,-320 158.73,-320 158.73,-326 152.73,-332 146.73,-332"/>
+<text text-anchor="middle" x="116.73" y="-317" font-family="Arial" font-size="10.00">Refuelling Start</text>
+<text text-anchor="middle" x="116.73" y="-306" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- start&#45;&gt;n0 -->
+<g id="edge1" class="edge">
+<title>start&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M153.3,-371.02C146.9,-361.21 138.6,-348.5 131.53,-337.66"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="133.41,-336.39 127.96,-332.19 129.6,-338.88 133.41,-336.39"/>
+<text text-anchor="middle" x="148.23" y="-348.8" font-family="Arial" font-size="9.00">44</text>
+</g>
+<!-- n1 -->
+<g id="node4" class="node">
+<title>n1</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M117.23,-258C117.23,-258 34.23,-258 34.23,-258 28.23,-258 22.23,-252 22.23,-246 22.23,-246 22.23,-234 22.23,-234 22.23,-228 28.23,-222 34.23,-222 34.23,-222 117.23,-222 117.23,-222 123.23,-222 129.23,-228 129.23,-234 129.23,-234 129.23,-246 129.23,-246 129.23,-252 123.23,-258 117.23,-258"/>
+<text text-anchor="middle" x="75.73" y="-243" font-family="Arial" font-size="10.00">Cabin Cleaning Start</text>
+<text text-anchor="middle" x="75.73" y="-232" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- start&#45;&gt;n1 -->
+<g id="edge2" class="edge">
+<title>start&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M170.66,-370.31C177.47,-351.04 185.09,-319.05 171.73,-296 162.98,-280.89 148.33,-269.57 133.08,-261.26"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="133.8,-259.08 126.99,-258.11 131.71,-263.12 133.8,-259.08"/>
+<text text-anchor="middle" x="181.73" y="-311.8" font-family="Arial" font-size="9.00">4</text>
+</g>
+<!-- end -->
+<g id="node2" class="node">
+<title>end</title>
+<ellipse fill="#f7e5e1" stroke="#8ba6b6" cx="122.73" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="122.73" y="-15.5" font-family="Arial" font-size="10.00">End</text>
+</g>
+<!-- n0&#45;&gt;n1 -->
+<g id="edge9" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M87.66,-295.67C83.27,-291.74 79.35,-287.18 76.73,-282 74.1,-276.79 73.05,-270.72 72.84,-264.87"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="75.12,-264.69 72.94,-258.16 70.57,-264.63 75.12,-264.69"/>
+<text text-anchor="middle" x="82.23" y="-274.8" font-family="Arial" font-size="9.00">44</text>
+</g>
+<!-- n2 -->
+<g id="node5" class="node">
+<title>n2</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M112.23,-110C112.23,-110 31.23,-110 31.23,-110 25.23,-110 19.23,-104 19.23,-98 19.23,-98 19.23,-86 19.23,-86 19.23,-80 25.23,-74 31.23,-74 31.23,-74 112.23,-74 112.23,-74 118.23,-74 124.23,-80 124.23,-86 124.23,-86 124.23,-98 124.23,-98 124.23,-104 118.23,-110 112.23,-110"/>
+<text text-anchor="middle" x="71.73" y="-95" font-family="Arial" font-size="10.00">Refuelling Complete</text>
+<text text-anchor="middle" x="71.73" y="-84" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- n0&#45;&gt;n2 -->
+<g id="edge10" class="edge">
+<title>n0&#45;&gt;n2</title>
+<path fill="none" stroke="#667d8b" d="M74.5,-302.9C51.04,-294.89 23.82,-281.09 9.73,-258 -19.02,-210.89 23.51,-148.27 51.16,-115.37"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="52.96,-116.77 55.46,-110.35 49.5,-113.81 52.96,-116.77"/>
+<text text-anchor="middle" x="6.73" y="-200.8" font-family="Arial" font-size="9.00">2</text>
+</g>
+<!-- n3 -->
+<g id="node6" class="node">
+<title>n3</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M213.73,-184C213.73,-184 109.73,-184 109.73,-184 103.73,-184 97.73,-178 97.73,-172 97.73,-172 97.73,-160 97.73,-160 97.73,-154 103.73,-148 109.73,-148 109.73,-148 213.73,-148 213.73,-148 219.73,-148 225.73,-154 225.73,-160 225.73,-160 225.73,-172 225.73,-172 225.73,-178 219.73,-184 213.73,-184"/>
+<text text-anchor="middle" x="161.73" y="-169" font-family="Arial" font-size="10.00">Cabin Cleaning Complete</text>
+<text text-anchor="middle" x="161.73" y="-158" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- n0&#45;&gt;n3 -->
+<g id="edge8" class="edge">
+<title>n0&#45;&gt;n3</title>
+<path fill="none" stroke="#667d8b" d="M125.81,-295.55C131.05,-284.92 137.42,-270.94 141.73,-258 149.2,-235.58 154.66,-209.12 157.97,-190.53"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="160.22,-190.85 159.09,-184.06 155.74,-190.07 160.22,-190.85"/>
+<text text-anchor="middle" x="153.73" y="-237.8" font-family="Arial" font-size="9.00">2</text>
+</g>
+<!-- n1&#45;&gt;n0 -->
+<g id="edge6" class="edge">
+<title>n1&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M85.66,-258.44C91.09,-267.96 97.86,-279.86 103.7,-290.12"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="101.82,-291.41 107.02,-295.94 105.78,-289.16 101.82,-291.41"/>
+<text text-anchor="middle" x="100.73" y="-274.8" font-family="Arial" font-size="9.00">4</text>
+</g>
+<!-- n1&#45;&gt;n2 -->
+<g id="edge5" class="edge">
+<title>n1&#45;&gt;n2</title>
+<path fill="none" stroke="#667d8b" d="M75.27,-221.97C74.56,-196.06 73.2,-146.66 72.39,-117.09"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="74.66,-116.81 72.21,-110.38 70.11,-116.94 74.66,-116.81"/>
+<text text-anchor="middle" x="79.23" y="-163.8" font-family="Arial" font-size="9.00">14</text>
+</g>
+<!-- n1&#45;&gt;n3 -->
+<g id="edge4" class="edge">
+<title>n1&#45;&gt;n3</title>
+<path fill="none" stroke="#667d8b" d="M96.11,-221.94C108.02,-211.97 123.17,-199.29 135.91,-188.62"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="137.68,-190.11 141.2,-184.19 134.76,-186.62 137.68,-190.11"/>
+<text text-anchor="middle" x="129.23" y="-200.8" font-family="Arial" font-size="9.00">30</text>
+</g>
+<!-- n2&#45;&gt;end -->
+<g id="edge12" class="edge">
+<title>n2&#45;&gt;end</title>
+<path fill="none" stroke="#667d8b" d="M83.82,-73.94C91.04,-63.74 100.28,-50.71 107.93,-39.89"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="109.88,-41.09 111.78,-34.47 106.16,-38.46 109.88,-41.09"/>
+<text text-anchor="middle" x="105.23" y="-52.8" font-family="Arial" font-size="9.00">32</text>
+</g>
+<!-- n2&#45;&gt;n3 -->
+<g id="edge7" class="edge">
+<title>n2&#45;&gt;n3</title>
+<path fill="none" stroke="#667d8b" d="M97.87,-110.12C104.17,-114.48 110.79,-119.28 116.73,-124 124.12,-129.87 131.83,-136.62 138.73,-142.94"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="137.52,-144.92 143.84,-147.66 140.61,-141.58 137.52,-144.92"/>
+<text text-anchor="middle" x="133.23" y="-126.8" font-family="Arial" font-size="9.00">16</text>
+</g>
+<!-- n3&#45;&gt;end -->
+<g id="edge11" class="edge">
+<title>n3&#45;&gt;end</title>
+<path fill="none" stroke="#667d8b" d="M157.18,-147.97C150.2,-121.81 136.81,-71.7 128.94,-42.24"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="131.13,-41.62 127.25,-35.93 126.73,-42.79 131.13,-41.62"/>
+<text text-anchor="middle" x="152.23" y="-89.8" font-family="Arial" font-size="9.00">16</text>
+</g>
+<!-- n3&#45;&gt;n2 -->
+<g id="edge3" class="edge">
+<title>n3&#45;&gt;n2</title>
+<path fill="none" stroke="#667d8b" d="M124.06,-147.83C116.96,-143.79 109.85,-139.15 103.73,-134 97.47,-128.73 91.63,-122.06 86.7,-115.63"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="88.48,-114.2 82.79,-110.32 84.82,-116.9 88.48,-114.2"/>
+<text text-anchor="middle" x="109.23" y="-126.8" font-family="Arial" font-size="9.00">32</text>
+</g>
+</g>
+</svg>

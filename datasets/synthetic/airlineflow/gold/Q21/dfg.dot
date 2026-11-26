@@ -1,0 +1,15 @@
+digraph D {
+graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
+node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
+edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
+start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
+end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
+n0 [label="Check-in Complete\n288 buckets"];
+n1 [label="Passenger Boarding Confirmed\n288 buckets"];
+start -> n0 [label="72"];
+n0 -> n0 [label="144"];
+n0 -> n1 [label="144"];
+n1 -> n0 [label="72"];
+n1 -> n1 [label="144"];
+n1 -> end [label="72"];
+}

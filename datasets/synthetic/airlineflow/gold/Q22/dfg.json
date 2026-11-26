@@ -1,0 +1,27 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 288,
+  "events": 336,
+  "nodes": {
+    "Scan Rejected": 48,
+    "Passenger Boarding Confirmed": 288
+  },
+  "edges": [
+    {
+      "source": "Scan Rejected",
+      "target": "Passenger Boarding Confirmed",
+      "count": 48
+    }
+  ],
+  "starts": {
+    "Scan Rejected": 48,
+    "Passenger Boarding Confirmed": 240
+  },
+  "ends": {
+    "Passenger Boarding Confirmed": 288
+  },
+  "variant_count": 2,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

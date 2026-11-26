@@ -1,0 +1,26 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 96,
+  "nodes": {
+    "Landing": 48,
+    "Take-off": 48
+  },
+  "edges": [
+    {
+      "source": "Landing",
+      "target": "Take-off",
+      "count": 48
+    }
+  ],
+  "starts": {
+    "Landing": 48
+  },
+  "ends": {
+    "Take-off": 48
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

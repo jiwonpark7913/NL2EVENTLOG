@@ -1,0 +1,26 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 288,
+  "events": 576,
+  "nodes": {
+    "Job Start": 288,
+    "Job Complete": 288
+  },
+  "edges": [
+    {
+      "source": "Job Start",
+      "target": "Job Complete",
+      "count": 288
+    }
+  ],
+  "starts": {
+    "Job Start": 288
+  },
+  "ends": {
+    "Job Complete": 288
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

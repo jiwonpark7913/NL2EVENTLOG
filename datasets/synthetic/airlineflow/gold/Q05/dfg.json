@@ -1,0 +1,53 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 192,
+  "nodes": {
+    "Handling Start": 48,
+    "Refuelling Complete": 48,
+    "Cabin Cleaning Complete": 48,
+    "Aircraft Ready": 48
+  },
+  "edges": [
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Aircraft Ready",
+      "count": 16
+    },
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Refuelling Complete",
+      "count": 32
+    },
+    {
+      "source": "Handling Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 32
+    },
+    {
+      "source": "Handling Start",
+      "target": "Refuelling Complete",
+      "count": 16
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Aircraft Ready",
+      "count": 32
+    },
+    {
+      "source": "Refuelling Complete",
+      "target": "Cabin Cleaning Complete",
+      "count": 16
+    }
+  ],
+  "starts": {
+    "Handling Start": 48
+  },
+  "ends": {
+    "Aircraft Ready": 48
+  },
+  "variant_count": 2,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q70",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Turnaround",
+  "rules": [
+    {
+      "key": "IN",
+      "activity": "In-block",
+      "source_table": "movement_reports",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "carrier_column": "kind",
+      "carrier_value": "IN",
+      "path": [
+        [
+          "flight_id",
+          "turnarounds",
+          "inbound_id"
+        ]
+      ],
+      "case_key": "turn_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "inbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BS",
+      "activity": "Boarding Start",
+      "source_table": "boarding_sessions",
+      "source_row_key": "session_id",
+      "timestamp_column": "started_at",
+      "carrier_column": null,
+      "carrier_value": null,
+      "path": [
+        [
+          "flight_id",
+          "turnarounds",
+          "inbound_id"
+        ]
+      ],
+      "case_key": "turn_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "inbound",
+      "encoding": "Non-carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

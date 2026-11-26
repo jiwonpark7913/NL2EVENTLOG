@@ -1,0 +1,32 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 288,
+  "events": 864,
+  "nodes": {
+    "Queue Entry": 288,
+    "Screening Start": 288,
+    "Screening Complete": 288
+  },
+  "edges": [
+    {
+      "source": "Queue Entry",
+      "target": "Screening Start",
+      "count": 288
+    },
+    {
+      "source": "Screening Start",
+      "target": "Screening Complete",
+      "count": 288
+    }
+  ],
+  "starts": {
+    "Queue Entry": 288
+  },
+  "ends": {
+    "Screening Complete": 288
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

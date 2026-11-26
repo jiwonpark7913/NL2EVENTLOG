@@ -1,0 +1,14 @@
+-- evaluator-only Q27
+SELECT case_id,activity,timestamp FROM (
+SELECT s0.turn_id AS case_id, 'Cabin Cleaning Complete' AS activity, s0.finished_at AS timestamp FROM handling_jobs s0 WHERE s0.job_code='CL'
+UNION ALL
+SELECT s0.turn_id AS case_id, 'Refuelling Complete' AS activity, s0.finished_at AS timestamp FROM handling_jobs s0 WHERE s0.job_code='FU'
+UNION ALL
+SELECT s1.turn_id AS case_id, 'Off-block' AS activity, s0.value_at AS timestamp FROM movement_reports s0 JOIN turnarounds s1 ON s0.flight_id=s1.outbound_id WHERE s0.kind='OUT'
+UNION ALL
+SELECT s1.turn_id AS case_id, 'Take-off' AS activity, s0.value_at AS timestamp FROM movement_reports s0 JOIN turnarounds s1 ON s0.flight_id=s1.outbound_id WHERE s0.kind='AIR'
+UNION ALL
+SELECT s1.turn_id AS case_id, 'Boarding Close' AS activity, s0.closed_at AS timestamp FROM boarding_sessions s0 JOIN turnarounds s1 ON s0.flight_id=s1.outbound_id
+UNION ALL
+SELECT s0.turn_id AS case_id, 'Aircraft Ready' AS activity, s0.ready_at AS timestamp FROM turnarounds s0
+) ORDER BY case_id,timestamp,activity;

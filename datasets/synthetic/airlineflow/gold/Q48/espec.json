@@ -1,0 +1,285 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q48",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Flight; outbound flights only",
+  "rules": [
+    {
+      "key": "CLC",
+      "activity": "Cabin Cleaning Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CL",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BD",
+      "activity": "Passenger Boarding Confirmed",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "BD",
+      "path": [
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": true,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "CLS",
+      "activity": "Cabin Cleaning Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CL",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "CK",
+      "activity": "Check-in Complete",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "CK",
+      "path": [
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "flight_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": true,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "FUS",
+      "activity": "Refuelling Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "FU",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "FUC",
+      "activity": "Refuelling Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "FU",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "CAS",
+      "activity": "Catering Loading Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CA",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "CAC",
+      "activity": "Catering Loading Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CA",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BLS",
+      "activity": "Baggage Loading Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "BL",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BLC",
+      "activity": "Baggage Loading Close",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "BL",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "ULS",
+      "activity": "Baggage Unloading Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "UL",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "ULC",
+      "activity": "Baggage Unloading Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "UL",
+      "path": [
+        [
+          "turn_id",
+          "turnarounds",
+          "turn_id"
+        ]
+      ],
+      "case_key": "outbound_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "outbound",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

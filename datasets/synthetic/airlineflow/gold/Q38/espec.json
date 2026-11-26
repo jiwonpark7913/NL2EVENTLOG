@@ -1,0 +1,85 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q38",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Turnaround",
+  "rules": [
+    {
+      "key": "CLS",
+      "activity": "Cabin Cleaning Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CL",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "CLC",
+      "activity": "Cabin Cleaning Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "CL",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "FUS",
+      "activity": "Refuelling Start",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "started_at",
+      "carrier_column": "job_code",
+      "carrier_value": "FU",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "FUC",
+      "activity": "Refuelling Complete",
+      "source_table": "handling_jobs",
+      "source_row_key": "job_id",
+      "timestamp_column": "finished_at",
+      "carrier_column": "job_code",
+      "carrier_value": "FU",
+      "path": [],
+      "case_key": "turn_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

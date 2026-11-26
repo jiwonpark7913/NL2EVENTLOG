@@ -12,8 +12,8 @@
     },
     "database_path": "variants/l05/input/database.sqlite",
     "dictionary_path": "variants/l05/input/data_dictionary.json",
-    "database_sha256": "da67f36b639997248ba27de01ba7937137f558536302ca84661cc0c1ef5ab31c",
-    "dictionary_sha256": "01249501c1724605be41cc6b32ac5ff379c94cc4aa2693c27a7874a67f1c4d20",
+    "database_sha256": "d6486ae1747f9bcce6f2d0bb94b98dbdb9f216bed41d9313a2140f1c07bb815e",
+    "dictionary_sha256": "50ae745ab79acb8f16f87814f79f452e536be39a9529966595d7e0235306adaf",
     "question_ids": [
       "Q01",
       "Q02",
@@ -28,14 +28,7 @@
       "Q11",
       "Q12"
     ],
-    "legacy_question_ids": [
-      "T",
-      "D"
-    ],
-    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
-    "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "TemporalRevision1-SemanticDD1"
   },
   {
     "variant_id": "l10",
@@ -55,8 +48,8 @@
     },
     "database_path": "variants/l10/input/database.sqlite",
     "dictionary_path": "variants/l10/input/data_dictionary.json",
-    "database_sha256": "95b1df4efdc62dce2a6d684a3ef5d45670f5ade15cef997f1197de06c10d3a64",
-    "dictionary_sha256": "55c6d29955d699ae439d9b3c0c44e79709afe1ab804247fcc38de5beea0cf376",
+    "database_sha256": "826159f0856164a8a8486ba5a20ceaff4e2fa1e069fcf447c6a8e116679ea4e3",
+    "dictionary_sha256": "98599e121ca985882a75115f05a1771bc71a43b165fb1dbc1fa387fcf15a9f76",
     "question_ids": [
       "Q01",
       "Q02",
@@ -71,15 +64,7 @@
       "Q11",
       "Q12"
     ],
-    "legacy_question_ids": [
-      "T",
-      "D",
-      "P"
-    ],
-    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
-    "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "TemporalRevision1-SemanticDD1"
   },
   {
     "variant_id": "l15",
@@ -104,8 +89,8 @@
     },
     "database_path": "variants/l15/input/database.sqlite",
     "dictionary_path": "variants/l15/input/data_dictionary.json",
-    "database_sha256": "9733b34d5df5a0510499dfe82caa37a4cfadceb45b9fdf36744abb0a1123b9b9",
-    "dictionary_sha256": "0cea2c45308abebe8b7b533b1bba0c1f6c9c302d688daad878fc9fea5d733f9e",
+    "database_sha256": "480ea0744968e81340565feb7f12793c83ab6299d7a09947b8b72a8a87d34f81",
+    "dictionary_sha256": "e8baccf00525eecad94ef054fea37f875a1f587a5de12ca39a56405d653e2e73",
     "question_ids": [
       "Q01",
       "Q02",
@@ -118,19 +103,69 @@
       "Q09",
       "Q10",
       "Q11",
-      "Q12"
+      "Q12",
+      "Q13",
+      "Q14",
+      "Q15",
+      "Q16",
+      "Q17",
+      "Q18",
+      "Q19",
+      "Q20",
+      "Q21",
+      "Q22",
+      "Q23",
+      "Q24",
+      "Q25",
+      "Q26",
+      "Q27",
+      "Q28",
+      "Q29",
+      "Q30",
+      "Q31",
+      "Q32",
+      "Q33",
+      "Q34",
+      "Q35",
+      "Q36",
+      "Q37",
+      "Q38",
+      "Q39",
+      "Q40",
+      "Q41",
+      "Q42",
+      "Q43",
+      "Q44",
+      "Q45",
+      "Q46",
+      "Q47",
+      "Q48",
+      "Q49",
+      "Q50",
+      "Q51",
+      "Q52",
+      "Q53",
+      "Q54",
+      "Q55",
+      "Q56",
+      "Q57",
+      "Q58",
+      "Q59",
+      "Q60",
+      "Q61",
+      "Q62",
+      "Q63",
+      "Q64",
+      "Q65",
+      "Q66",
+      "Q67",
+      "Q68",
+      "Q69",
+      "Q70",
+      "Q71",
+      "Q72"
     ],
-    "legacy_question_ids": [
-      "T",
-      "D",
-      "P",
-      "S",
-      "B"
-    ],
-    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
-    "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "TemporalRevision1-SemanticDD1"
   },
   {
     "variant_id": "l20",
@@ -160,8 +195,8 @@
     },
     "database_path": "variants/l20/input/database.sqlite",
     "dictionary_path": "variants/l20/input/data_dictionary.json",
-    "database_sha256": "74a0dbf7add6c65f37749d8bacbf2bb5dc371774a8257b63b34955eefe724298",
-    "dictionary_sha256": "936b944cb7d5884d9f48f9a073494c07ddaa14325c748e8b0ae47d47f7cd6769",
+    "database_sha256": "6a592473ad67fac95955fe485d7984e28adf80b6dc2eff8849b29b43d0b5295a",
+    "dictionary_sha256": "f8f1a6068c220dff02964be284cdd378a4426f29e2cb7db69d8535611547bad8",
     "question_ids": [
       "Q01",
       "Q02",
@@ -176,16 +211,6 @@
       "Q11",
       "Q12"
     ],
-    "legacy_question_ids": [
-      "T",
-      "D",
-      "P",
-      "S",
-      "B"
-    ],
-    "legacy_model_questions_path": "evaluation/legacy_model_questions.jsonl",
-    "model_questions_path": "evaluation/model_questions.jsonl",
-    "query_registry_version": "v6",
-    "query_status": "Q03 wording pending final approval; Q01/Q02/Q09/Q12 approved."
+    "query_registry_version": "TemporalRevision1-SemanticDD1"
   }
 ]

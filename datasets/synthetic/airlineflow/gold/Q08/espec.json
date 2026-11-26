@@ -1,0 +1,94 @@
+{
+  "schema": "authored_reference_espec_v4",
+  "query_id": "Q08",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in the selected database",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity",
+  "timestamp_policy": "Actual occurrence time; KST as stored; no conversion or synthetic timestamps.",
+  "ordering": [
+    "case_id",
+    "timestamp",
+    "activity"
+  ],
+  "rules": [
+    {
+      "activity": "Landing",
+      "source_table": "movement_reports",
+      "source_alias": "m",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "case_expression": "t.turn_id",
+      "joins": [
+        "JOIN turnarounds t ON t.inbound_id=m.flight_id"
+      ],
+      "where": "m.kind='LAND'",
+      "carrier_column": "kind",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "inbound_id",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "In-block",
+      "source_table": "movement_reports",
+      "source_alias": "m",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "case_expression": "t.turn_id",
+      "joins": [
+        "JOIN turnarounds t ON t.inbound_id=m.flight_id"
+      ],
+      "where": "m.kind='IN'",
+      "carrier_column": "kind",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "inbound_id",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Off-block",
+      "source_table": "movement_reports",
+      "source_alias": "m",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "case_expression": "t.turn_id",
+      "joins": [
+        "JOIN turnarounds t ON t.outbound_id=m.flight_id"
+      ],
+      "where": "m.kind='OUT'",
+      "carrier_column": "kind",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound_id",
+      "temporal_semantics": "actual occurrence time"
+    },
+    {
+      "activity": "Take-off",
+      "source_table": "movement_reports",
+      "source_alias": "m",
+      "source_row_key": "report_id",
+      "timestamp_column": "value_at",
+      "case_expression": "t.turn_id",
+      "joins": [
+        "JOIN turnarounds t ON t.outbound_id=m.flight_id"
+      ],
+      "where": "m.kind='AIR'",
+      "carrier_column": "kind",
+      "encoding": "Carrier-driven",
+      "attribution_join_depth": 1,
+      "case_scope": "outbound_id",
+      "temporal_semantics": "actual occurrence time"
+    }
+  ]
+}

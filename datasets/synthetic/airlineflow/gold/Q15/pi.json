@@ -1,0 +1,23 @@
+{
+  "schema": "authored_reference_pi",
+  "query_id": "Q15",
+  "case_entity": "Flight",
+  "case_identity": {
+    "table": "flights",
+    "key": [
+      "flight_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Flight",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Bag Accepted",
+    "Bag Loaded"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 288,
+  "notes": "원천·사건 인스턴스·활동·인코딩 고정. Case ET와 trace 분포 변화는 잔여 교란; JOIN 수와 논리 깊이 분리. Case 집계 효과가 함께 변하므로 순수 JOIN 인과효과로 해석하지 않음. 인접 수준이 데이터상 1:1일 수 있음. Aggregated case log does not identify each individual passenger/bag; do not infer individual duration or comparison. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
+  "case_key_policy": "Canonical flight_id; structured (flight_no, operating_date=date(scheduled_offblock)) accepted after full-scope bijection; no inferred composite strings.",
+  "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized."
+}

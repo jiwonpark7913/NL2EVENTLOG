@@ -1,0 +1,135 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q58",
+  "case_entity": "Passenger Leg",
+  "case_identity": {
+    "table": "passenger_legs",
+    "key": [
+      "leg_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Passenger Leg",
+  "rules": [
+    {
+      "key": "CK",
+      "activity": "Check-in Complete",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "CK",
+      "path": [],
+      "case_key": "leg_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "SQ",
+      "activity": "Queue Entry",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "Q",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ]
+      ],
+      "case_key": "leg_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "SS",
+      "activity": "Screening Start",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "S",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ]
+      ],
+      "case_key": "leg_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "SC",
+      "activity": "Screening Complete",
+      "source_table": "security_events",
+      "source_row_key": "event_id",
+      "timestamp_column": "observed_at",
+      "carrier_column": "point",
+      "carrier_value": "C",
+      "path": [
+        [
+          "visit_id",
+          "security_visits",
+          "visit_id"
+        ]
+      ],
+      "case_key": "leg_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BD",
+      "activity": "Passenger Boarding Confirmed",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "BD",
+      "path": [],
+      "case_key": "leg_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "RJ",
+      "activity": "Scan Rejected",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "RJ",
+      "path": [],
+      "case_key": "leg_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

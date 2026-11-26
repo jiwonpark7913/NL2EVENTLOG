@@ -1,0 +1,23 @@
+{
+  "schema": "authored_reference_pi",
+  "query_id": "Q51",
+  "case_entity": "Bag Leg",
+  "case_identity": {
+    "table": "bag_legs",
+    "key": [
+      "bag_leg_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Bag Leg",
+  "case_mode": "Implicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Bag Accepted",
+    "Bag Loaded"
+  ],
+  "expected_case_count": 144,
+  "expected_event_count": 288,
+  "notes": "Family 내 물리적 사건·Case·Activity·Gold 완전 동일. 의미 단서의 타당성 독립 검수 필요. 동일 목적의 2×2 조건. 암묵 조건은 업무 단서로 추론하며 단순 ET 미표기가 아님; D-F3의 단계 수준 단서는 세부 활동을 모두 열거하지 않음. 동일 Gold Q13,Q49,Q50,Q51,Q52: 다른 실험 조건은 유지하되 독립 표본으로 중복 집계하지 않음. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum. Potential alternate ET interpretation remains; follow predeclared secondary policy only where authorized. Human approval pending.",
+  "case_key_policy": "Canonical bag_leg_id; structured (bag_tag, flight_id) accepted after full-scope bijection; tag alone secondary only for Q51/Q52.",
+  "alternative_case_policy": "Primary Bag Leg. Bag tag (Bag) only secondary with verified request-scope 1:1 and full exact log after mapping; Passenger Leg diagnostic only."
+}

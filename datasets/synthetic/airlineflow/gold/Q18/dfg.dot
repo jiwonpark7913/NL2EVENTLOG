@@ -1,0 +1,31 @@
+digraph D {
+graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
+node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
+edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
+start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
+end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
+n0 [label="Queue Entry\n285 buckets"];
+n1 [label="Screening Start\n285 buckets"];
+n2 [label="Screening Complete\n286 buckets"];
+n3 [label="Screening Complete ∥ Screening Start\n2 buckets"];
+n4 [label="Queue Entry ∥ Queue Entry\n1 buckets"];
+n5 [label="Queue Entry ∥ Screening Start\n1 buckets"];
+start -> n0 [label="48"];
+n0 -> n0 [label="158"];
+n0 -> n4 [label="1"];
+n0 -> n5 [label="1"];
+n0 -> n2 [label="43"];
+n0 -> n3 [label="1"];
+n0 -> n1 [label="81"];
+n4 -> n1 [label="1"];
+n5 -> n1 [label="1"];
+n2 -> n0 [label="28"];
+n2 -> n2 [label="96"];
+n2 -> n3 [label="1"];
+n2 -> n1 [label="113"];
+n3 -> n1 [label="2"];
+n1 -> n0 [label="51"];
+n1 -> n2 [label="147"];
+n1 -> n1 [label="87"];
+n2 -> end [label="48"];
+}

@@ -1,0 +1,26 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 144,
+  "events": 288,
+  "nodes": {
+    "Bag Accepted": 144,
+    "Bag Loaded": 144
+  },
+  "edges": [
+    {
+      "source": "Bag Accepted",
+      "target": "Bag Loaded",
+      "count": 144
+    }
+  ],
+  "starts": {
+    "Bag Accepted": 144
+  },
+  "ends": {
+    "Bag Loaded": 144
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

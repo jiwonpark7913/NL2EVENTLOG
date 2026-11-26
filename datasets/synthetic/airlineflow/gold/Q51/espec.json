@@ -1,0 +1,53 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q51",
+  "case_entity": "Bag Leg",
+  "case_identity": {
+    "table": "bag_legs",
+    "key": [
+      "bag_leg_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Bag Leg",
+  "rules": [
+    {
+      "key": "B101",
+      "activity": "Bag Accepted",
+      "source_table": "bag_scans",
+      "source_row_key": "scan_id",
+      "timestamp_column": "scanned_at",
+      "carrier_column": "scan_code",
+      "carrier_value": "B101",
+      "path": [],
+      "case_key": "bag_leg_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "B204",
+      "activity": "Bag Loaded",
+      "source_table": "bag_scans",
+      "source_row_key": "scan_id",
+      "timestamp_column": "scanned_at",
+      "carrier_column": "scan_code",
+      "carrier_value": "B204",
+      "path": [],
+      "case_key": "bag_leg_id",
+      "logical_depth": 1,
+      "physical_depth": 0,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

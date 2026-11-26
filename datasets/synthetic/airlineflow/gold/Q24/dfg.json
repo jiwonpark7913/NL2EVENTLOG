@@ -1,0 +1,48 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 72,
+  "events": 336,
+  "nodes": {
+    "Passenger Boarding Confirmed": 287,
+    "Scan Rejected": 47,
+    "Passenger Boarding Confirmed ∥ Scan Rejected": 1
+  },
+  "edges": [
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed",
+      "count": 184
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed ∥ Scan Rejected",
+      "count": 1
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Scan Rejected",
+      "count": 30
+    },
+    {
+      "source": "Passenger Boarding Confirmed ∥ Scan Rejected",
+      "target": "Passenger Boarding Confirmed",
+      "count": 1
+    },
+    {
+      "source": "Scan Rejected",
+      "target": "Passenger Boarding Confirmed",
+      "count": 47
+    }
+  ],
+  "starts": {
+    "Passenger Boarding Confirmed": 55,
+    "Scan Rejected": 17
+  },
+  "ends": {
+    "Passenger Boarding Confirmed": 72
+  },
+  "variant_count": 6,
+  "tie_excess_events": 1,
+  "tie_cases": 1,
+  "duplicate_event_rows": 0
+}

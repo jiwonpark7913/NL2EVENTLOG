@@ -1,0 +1,23 @@
+{
+  "schema": "authored_reference_pi",
+  "query_id": "Q41",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Turnaround",
+  "case_mode": "Explicit",
+  "activity_mode": "Explicit",
+  "activities": [
+    "Baggage Loading Close",
+    "Off-block"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 96,
+  "notes": "Case·원천 집합·인코딩 고정; 기존 활동 유지. 사건 수와 일부 경로별 비중은 증가/변화. 12 ACT 조건은 Family별 다른 Gold. 초기 업무상 의미 있는 2개 활동부터 누적 추가; 최종 활동 집합 유지. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
+  "case_key_policy": "Canonical primary key; other key representations not authorized unless separately pre-approved as same entity.",
+  "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized."
+}

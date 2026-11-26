@@ -1,0 +1,26 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 288,
+  "events": 576,
+  "nodes": {
+    "Check-in Complete": 288,
+    "Passenger Boarding Confirmed": 288
+  },
+  "edges": [
+    {
+      "source": "Check-in Complete",
+      "target": "Passenger Boarding Confirmed",
+      "count": 288
+    }
+  ],
+  "starts": {
+    "Check-in Complete": 288
+  },
+  "ends": {
+    "Passenger Boarding Confirmed": 288
+  },
+  "variant_count": 1,
+  "tie_excess_events": 0,
+  "tie_cases": 0,
+  "duplicate_event_rows": 0
+}

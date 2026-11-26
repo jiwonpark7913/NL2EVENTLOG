@@ -1,0 +1,56 @@
+{
+  "schema": "authored_reference_pi_v4",
+  "query_id": "Q04",
+  "case_entity": "Turnaround",
+  "case_identity": {
+    "table": "turnarounds",
+    "key": [
+      "turn_id"
+    ]
+  },
+  "case_scope": "all records of the case entity in the selected database",
+  "case_mode": "Explicit",
+  "activity_mode": "Implicit",
+  "activities": [
+    "Landing",
+    "In-block",
+    "Handling Start",
+    "Disembarkation Complete",
+    "Baggage Unloading Complete",
+    "Cabin Cleaning Complete",
+    "Refuelling Complete",
+    "Catering Loading Complete",
+    "Baggage Loading Close",
+    "Boarding Start",
+    "Boarding Close",
+    "Aircraft Ready",
+    "Off-block",
+    "Take-off"
+  ],
+  "registry_activity_labels": [
+    "Landing",
+    "In-block",
+    "Handling Start",
+    "Disembarkation Complete",
+    "Baggage Unloading Complete",
+    "Cabin Cleaning Complete",
+    "Refuelling Complete",
+    "Catering Loading Complete",
+    "Boarding Start",
+    "Boarding Close",
+    "Baggage Loading Close",
+    "Aircraft Ready",
+    "Off-block",
+    "Take-off"
+  ],
+  "expected_case_count": 48,
+  "expected_event_count": 672,
+  "output_attributes": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "notes": "기존 진단 질의; 단일 축 통제 실험에 포함하지 않음.",
+  "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
+  "alternative_case_policy": "Strict"
+}

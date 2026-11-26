@@ -1,0 +1,65 @@
+{
+  "schema": "authored_l15_reference_v1",
+  "query_id": "Q20",
+  "case_entity": "Ticket",
+  "case_identity": {
+    "table": "tickets",
+    "key": [
+      "ticket_id"
+    ]
+  },
+  "case_scope": "Observed events attributed to Ticket",
+  "rules": [
+    {
+      "key": "CK",
+      "activity": "Check-in Complete",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "CK",
+      "path": [
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "ticket_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    },
+    {
+      "key": "BD",
+      "activity": "Passenger Boarding Confirmed",
+      "source_table": "passenger_actions",
+      "source_row_key": "action_id",
+      "timestamp_column": "action_at",
+      "carrier_column": "action_code",
+      "carrier_value": "BD",
+      "path": [
+        [
+          "leg_id",
+          "passenger_legs",
+          "leg_id"
+        ]
+      ],
+      "case_key": "ticket_id",
+      "logical_depth": 2,
+      "physical_depth": 1,
+      "scope_outbound": false,
+      "role": "none",
+      "encoding": "Carrier-driven"
+    }
+  ],
+  "timestamp_policy": "Actual occurrence; KST as stored",
+  "output_columns": [
+    "case_id",
+    "activity",
+    "timestamp"
+  ],
+  "event_combination": "UNION ALL; preserve multiplicity"
+}

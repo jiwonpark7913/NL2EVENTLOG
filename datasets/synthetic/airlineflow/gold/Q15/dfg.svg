@@ -1,0 +1,67 @@
+<svg width="149pt" height="294pt"
+ viewBox="0.00 0.00 149.00 294.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 276)">
+<title>D</title>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e3f3e8" stroke="#8ba6b6" cx="38.5" cy="-240" rx="27" ry="18"/>
+<text text-anchor="middle" x="38.5" y="-237.5" font-family="Arial" font-size="10.00">Start</text>
+</g>
+<!-- n0 -->
+<g id="node3" class="node">
+<title>n0</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M65,-184C65,-184 12,-184 12,-184 6,-184 0,-178 0,-172 0,-172 0,-160 0,-160 0,-154 6,-148 12,-148 12,-148 65,-148 65,-148 71,-148 77,-154 77,-160 77,-160 77,-172 77,-172 77,-178 71,-184 65,-184"/>
+<text text-anchor="middle" x="38.5" y="-169" font-family="Arial" font-size="10.00">Bag Accepted</text>
+<text text-anchor="middle" x="38.5" y="-158" font-family="Arial" font-size="10.00">144 buckets</text>
+</g>
+<!-- start&#45;&gt;n0 -->
+<g id="edge1" class="edge">
+<title>start&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M38.5,-221.94C38.5,-212.75 38.5,-201.25 38.5,-191.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="40.78,-190.94 38.5,-184.44 36.23,-190.94 40.78,-190.94"/>
+<text text-anchor="middle" x="44" y="-200.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+<!-- end -->
+<g id="node2" class="node">
+<title>end</title>
+<ellipse fill="#f7e5e1" stroke="#8ba6b6" cx="38.5" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="38.5" y="-15.5" font-family="Arial" font-size="10.00">End</text>
+</g>
+<!-- n0&#45;&gt;n0 -->
+<g id="edge2" class="edge">
+<title>n0&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M77.25,-172.75C90.91,-172.85 102,-170.61 102,-166 102,-162.19 94.4,-159.99 84.03,-159.41"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="83.8,-157.13 77.25,-159.25 83.7,-161.68 83.8,-157.13"/>
+<text text-anchor="middle" x="107.5" y="-163.8" font-family="Arial" font-size="9.00">96</text>
+</g>
+<!-- n1 -->
+<g id="node4" class="node">
+<title>n1</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M61.5,-110C61.5,-110 15.5,-110 15.5,-110 9.5,-110 3.5,-104 3.5,-98 3.5,-98 3.5,-86 3.5,-86 3.5,-80 9.5,-74 15.5,-74 15.5,-74 61.5,-74 61.5,-74 67.5,-74 73.5,-80 73.5,-86 73.5,-86 73.5,-98 73.5,-98 73.5,-104 67.5,-110 61.5,-110"/>
+<text text-anchor="middle" x="38.5" y="-95" font-family="Arial" font-size="10.00">Bag Loaded</text>
+<text text-anchor="middle" x="38.5" y="-84" font-family="Arial" font-size="10.00">144 buckets</text>
+</g>
+<!-- n0&#45;&gt;n1 -->
+<g id="edge3" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M38.5,-147.94C38.5,-138.75 38.5,-127.25 38.5,-117.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="40.78,-116.94 38.5,-110.44 36.23,-116.94 40.78,-116.94"/>
+<text text-anchor="middle" x="44" y="-126.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+<!-- n1&#45;&gt;end -->
+<g id="edge5" class="edge">
+<title>n1&#45;&gt;end</title>
+<path fill="none" stroke="#667d8b" d="M38.5,-73.94C38.5,-64.75 38.5,-53.25 38.5,-43.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="40.78,-42.94 38.5,-36.44 36.23,-42.94 40.78,-42.94"/>
+<text text-anchor="middle" x="44" y="-52.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+<!-- n1&#45;&gt;n1 -->
+<g id="edge4" class="edge">
+<title>n1&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M73.63,-98.72C87.21,-99.02 98.5,-96.78 98.5,-92 98.5,-88.04 90.76,-85.82 80.38,-85.35"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="80.15,-83.07 73.63,-85.28 80.1,-87.62 80.15,-83.07"/>
+<text text-anchor="middle" x="104" y="-89.8" font-family="Arial" font-size="9.00">96</text>
+</g>
+</g>
+</svg>

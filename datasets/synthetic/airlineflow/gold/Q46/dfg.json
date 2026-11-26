@@ -1,0 +1,70 @@
+{
+  "type": "timestamp bucket DFG",
+  "cases": 48,
+  "events": 672,
+  "nodes": {
+    "Check-in Complete": 286,
+    "Cabin Cleaning Start": 48,
+    "Cabin Cleaning Complete": 48,
+    "Passenger Boarding Confirmed": 286,
+    "Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed": 1,
+    "Check-in Complete ∥ Check-in Complete": 1
+  },
+  "edges": [
+    {
+      "source": "Cabin Cleaning Complete",
+      "target": "Passenger Boarding Confirmed",
+      "count": 48
+    },
+    {
+      "source": "Cabin Cleaning Start",
+      "target": "Cabin Cleaning Complete",
+      "count": 48
+    },
+    {
+      "source": "Check-in Complete",
+      "target": "Cabin Cleaning Start",
+      "count": 48
+    },
+    {
+      "source": "Check-in Complete",
+      "target": "Check-in Complete",
+      "count": 237
+    },
+    {
+      "source": "Check-in Complete",
+      "target": "Check-in Complete ∥ Check-in Complete",
+      "count": 1
+    },
+    {
+      "source": "Check-in Complete ∥ Check-in Complete",
+      "target": "Check-in Complete",
+      "count": 1
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed",
+      "count": 237
+    },
+    {
+      "source": "Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed",
+      "count": 1
+    },
+    {
+      "source": "Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed",
+      "target": "Passenger Boarding Confirmed",
+      "count": 1
+    }
+  ],
+  "starts": {
+    "Check-in Complete": 48
+  },
+  "ends": {
+    "Passenger Boarding Confirmed": 48
+  },
+  "variant_count": 3,
+  "tie_excess_events": 2,
+  "tie_cases": 2,
+  "duplicate_event_rows": 2
+}

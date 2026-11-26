@@ -1,0 +1,53 @@
+<svg width="164pt" height="294pt"
+ viewBox="0.00 0.00 164.00 294.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 276)">
+<title>D</title>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e3f3e8" stroke="#8ba6b6" cx="64" cy="-240" rx="27" ry="18"/>
+<text text-anchor="middle" x="64" y="-237.5" font-family="Arial" font-size="10.00">Start</text>
+</g>
+<!-- n0 -->
+<g id="node3" class="node">
+<title>n0</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M105.5,-184C105.5,-184 22.5,-184 22.5,-184 16.5,-184 10.5,-178 10.5,-172 10.5,-172 10.5,-160 10.5,-160 10.5,-154 16.5,-148 22.5,-148 22.5,-148 105.5,-148 105.5,-148 111.5,-148 117.5,-154 117.5,-160 117.5,-160 117.5,-172 117.5,-172 117.5,-178 111.5,-184 105.5,-184"/>
+<text text-anchor="middle" x="64" y="-169" font-family="Arial" font-size="10.00">Cabin Cleaning Start</text>
+<text text-anchor="middle" x="64" y="-158" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- start&#45;&gt;n0 -->
+<g id="edge1" class="edge">
+<title>start&#45;&gt;n0</title>
+<path fill="none" stroke="#667d8b" d="M64,-221.94C64,-212.75 64,-201.25 64,-191.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="66.28,-190.94 64,-184.44 61.73,-190.94 66.28,-190.94"/>
+<text text-anchor="middle" x="69.5" y="-200.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+<!-- end -->
+<g id="node2" class="node">
+<title>end</title>
+<ellipse fill="#f7e5e1" stroke="#8ba6b6" cx="64" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="64" y="-15.5" font-family="Arial" font-size="10.00">End</text>
+</g>
+<!-- n1 -->
+<g id="node4" class="node">
+<title>n1</title>
+<path fill="#edf4f7" stroke="#8ba6b6" d="M116,-110C116,-110 12,-110 12,-110 6,-110 0,-104 0,-98 0,-98 0,-86 0,-86 0,-80 6,-74 12,-74 12,-74 116,-74 116,-74 122,-74 128,-80 128,-86 128,-86 128,-98 128,-98 128,-104 122,-110 116,-110"/>
+<text text-anchor="middle" x="64" y="-95" font-family="Arial" font-size="10.00">Cabin Cleaning Complete</text>
+<text text-anchor="middle" x="64" y="-84" font-family="Arial" font-size="10.00">48 buckets</text>
+</g>
+<!-- n0&#45;&gt;n1 -->
+<g id="edge2" class="edge">
+<title>n0&#45;&gt;n1</title>
+<path fill="none" stroke="#667d8b" d="M64,-147.94C64,-138.75 64,-127.25 64,-117.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="66.28,-116.94 64,-110.44 61.73,-116.94 66.28,-116.94"/>
+<text text-anchor="middle" x="69.5" y="-126.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+<!-- n1&#45;&gt;end -->
+<g id="edge3" class="edge">
+<title>n1&#45;&gt;end</title>
+<path fill="none" stroke="#667d8b" d="M64,-73.94C64,-64.75 64,-53.25 64,-43.16"/>
+<polygon fill="#667d8b" stroke="#667d8b" points="66.28,-42.94 64,-36.44 61.73,-42.94 66.28,-42.94"/>
+<text text-anchor="middle" x="69.5" y="-52.8" font-family="Arial" font-size="9.00">48</text>
+</g>
+</g>
+</svg>

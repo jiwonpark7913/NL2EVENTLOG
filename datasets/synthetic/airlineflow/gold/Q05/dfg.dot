@@ -1,0 +1,19 @@
+digraph D {
+graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
+node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
+edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
+start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
+end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
+n0 [label="Handling Start\n48 buckets"];
+n1 [label="Refuelling Complete\n48 buckets"];
+n2 [label="Cabin Cleaning Complete\n48 buckets"];
+n3 [label="Aircraft Ready\n48 buckets"];
+start -> n0 [label="48"];
+n2 -> n3 [label="16"];
+n2 -> n1 [label="32"];
+n0 -> n2 [label="32"];
+n0 -> n1 [label="16"];
+n1 -> n3 [label="32"];
+n1 -> n2 [label="16"];
+n3 -> end [label="48"];
+}
