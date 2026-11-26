@@ -1,28 +1,130 @@
-# AirlineFlow — TemporalRevision1-SemanticDD1-CanonicalQ02
+# AirlineFlow
 
-The CanonicalQ02 revision preserves 288 jobs and 576 occurrences and distinguishes six job types and their two actual phases. The request remains implicit. The independent Test requests, Gold and reference specifications are unchanged. The current integrated review and CanonicalQ02 bundles accompany this revision.
+**A synthetic relational benchmark for natural-language event-log extraction and process mining.**
 
-Minimal semantic fixture revision of TemporalRevision1; no schema, timestamps, case keys, populations, activity labels or Gold event triples changed. Handling job and passenger action DD descriptions are prose with identical intended meanings. Bag scans use B101/B204 and independently sampled opaque scan IDs; shared L15/L20 rows match. All four DD versions use the same prose descriptions wherever the table exists. Reduced DD is a separate L15 input, not the main benchmark dictionary. See `semantic_check/README.md` for 3 additional evaluator-only diagnostics. All 72 original queries and Gold event CSVs are byte-identical; 7 Gold SQL/ESpecs and the legacy B SQL use new code literals. `randomize_timestamps.py` and timestamp audits document the prior historical revision, and should not be rerun on this fixture. `source/records.json` is canonical for reproduction.
+AirlineFlow models aircraft turnarounds at a focal airport, connecting arriving and departing flight legs to ground services, boarding, passenger processing, baggage and security records. Given a natural-language analysis request, a system extracts an event log with `case_id`, `activity`, and `timestamp` from a relational database and its general data dictionary.
 
-## Historical baseline (Temporal Revision 1; preceding this update)
+**72 requests · 108 DB–request conditions · 4 nested schemas · 28 reference activity types**
 
-## Scope
-- L05/L10/L15/L20 unchanged schemas, row counts, identities, codes and published scheduled flight clocks. Actual and record clocks revised together from the original L20 rows with seed 20261126. Common tables remain identical across all nested variants. No benchmark-dependent timestamp adjustment or deduplication. Timestamps are KST strings at second precision, not timezone-converted. Date of birth, scheduled clocks and administrative dispatch assignment timestamps were not randomized.
-- Anchored actual inbound in-block / outbound off-block near original values; sample taxi intervals, coordination and job times, boarding windows, passenger processing, security, baggage scans, recording lag and booking time within constraint-aware ranges. Overlapping independent jobs may change relative order. Retain realistic within-case ties if they occur. Range choices are synthetic modeling assumptions, not fitted airport data.
-- Query split: Q01–Q12 Pilot retained verbatim (new timestamps require model reruns), Q13–Q72 L15 Test. Never count Pilot in Test performance. All 72 Gold logs regenerated; Q57–60 also include the 48 actual rejected scans, making 6 activities and 1,488 events per condition. No optional-event scoring exclusion. B templates rotated by Family; Q14/Q17 explicit case, Q15/Q18/Q24/Q37/Q71 purposes clarified. E remains a categorical role test, not an ordinal difficulty axis.
-- Same-entity structured keys may be normalized only if explicitly approved and a full-scope bijection is verified. (flight_no, operating_date=date(scheduled_offblock)), (ticket_id, flight_id), (passenger_id, flight_id), (bag_tag, flight_id) are eligible for corresponding entities. Distinct ETs remain wrong in primary; Q09/Q12/Q51/Q52/Q55/Q56 use predeclared secondary/diagnostic policy only. No arbitrary string parsing or post-hoc case mapping. `normalize_case_keys.py` is a tested standalone evaluator reference, not integrated into the actual experiment runner. Label equivalence must be pre-approved upstream. Multiplicity remains strict: lost duplicate tuples are FN, not excused.
+[Database variants](#database-variants) · [Dataset analysis](#dataset-analysis) · [Queries and gold logs](#queries-and-gold-logs) · [Quick start](#quick-start) · [Validation and limitations](#validation-and-limitations)
 
-## Verification
-- 108/108 current DB-query comparisons (Pilot 12 x 4 + Test 60 x L15), 15/15 legacy, 72/72 provenance timestamp replay, 18/18 technical Family checks. Data dictionary unchanged. All 48 shortcut checks per relevant relation distinguish actual session/coordination/closure from MIN/MAX proxies. Read `evaluation/verification.json`, `interval_audit.csv`, `timestamp_query_audit.csv`, `variant_manifest.json` and root `timestamp_audit.json`.
-- Query-level aggregated timestamp tie cases: 504 -> 21; exact duplicate event tuples: 336 -> 13; Q18 48 -> 1 duplicate tuples. Counts sum over query logs, not distinct DB rows. Bucket variants do not need to increase in every query; simple workflows legitimately retain the same sequence. DFG preserves unordered equal-time buckets.
-- Source provenance replay uses the previously authored references, not an independent business-semantic oracle. Human semantic approval, production scorer integration and method freeze are still pending. No LLM experiments executed. New Test queries not run on L05/L10/L20. Existing 1:1 relationships, event population and single-role realism limitations remain; this is not a structural redesign. Old model results/EEG caches must not be mixed with new hashes.
+## What can you use this dataset for?
 
-## Usage
-- `python verify.py` read-only fixture/reference check. `python generate.py /tmp/airlineflow-new` fresh DB build from canonical records and schema; logical rows checked against this fixture (binary SQLite hashes may change). `randomize_timestamps.py ORIGINAL_SNAPSHOT NEW_DIRECTORY` is the explicit revision recipe for the prior original four-DB snapshot; do not apply twice. `input/` duplicates L15 model input for compatibility. `variants/` has four DBs, ERD, schemas and dictionaries. `evaluation/` and `gold/`, `private/`, source records, verification, all evaluator metadata are not model inputs.
-- This release is the SemanticDD1 fixture; the manifest identifies the current input fingerprints. Runner integration and final model evaluation are not implied by fixture publication.
+| Use case | What AirlineFlow provides |
+|---|---|
+| Natural-language event-log extraction | English requests, SQLite inputs, and reference event triples |
+| Process mining | Event logs at flight, turnaround, job, boarding session, passenger-leg and other case granularities |
+| Schema scalability | Four nested schemas with unchanged shared records and 12 common pilot requests |
+| Semantic and structural difficulty | Five matched-family test dimensions: depth, source diversity, activity count, explicitness, role attribution |
+| Reproducible evaluation | Gold SQL, PI, ESpec, CSV, DFG and record-level inspection |
 
-## Review and evaluation
-- [Integrated review (72 queries)](docs/scenario.html)
-- [Full registry](evaluation/query_registry.csv) · [Test-only registry](evaluation/test_registry.csv)
-- [Semantic evidence diagnostics](semantic_check/README.md)
-- [Verification receipt](evaluation/verification.json)
+## Database variants
+
+The four variants add five tables at each level. L15 is the main test database. L05–L20 form a nested schema-expansion series, not four independent datasets.
+
+| Variant | Tables | Columns | Rows | Domain extension | Files |
+|---|---:|---:|---:|---|---|
+| [L05](variants/l05/README.md) | 5 | 30 | 960 | Core aircraft turnaround | [SQLite](variants/l05/input/database.sqlite) · [ERD](variants/l05/docs/schema.svg) · [DD](variants/l05/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l05) |
+| [L10](variants/l10/README.md) | 10 | 47 | 2,232 | Passenger and booking | [SQLite](variants/l10/input/database.sqlite) · [ERD](variants/l10/docs/schema.svg) · [DD](variants/l10/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l10) |
+| [L15](variants/l15/README.md) | 15 | 64 | 3,818 | Baggage and security | [SQLite](variants/l15/input/database.sqlite) · [ERD](variants/l15/docs/schema.svg) · [DD](variants/l15/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l15) |
+| [L20](variants/l20/README.md) | 20 | 81 | 3,925 | Operating resources | [SQLite](variants/l20/input/database.sqlite) · [ERD](variants/l20/docs/schema.svg) · [DD](variants/l20/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l20) |
+
+### Entity–relationship diagram (L20)
+
+![AirlineFlow L20 ERD with color-coded schema layers](variants/l20/docs/schema.svg)
+
+**Header colors:** blue = L05 core operations; green = L10 passenger/booking; amber = L15 baggage/security; purple = L20 resources/dispatch. The same colors are retained in all smaller diagrams.
+
+<details>
+<summary>L05 ERD — Core aircraft turnaround</summary>
+
+![L05 ERD](variants/l05/docs/schema.svg)
+
+</details>
+
+<details>
+<summary>L10 ERD — Passenger and booking</summary>
+
+![L10 ERD](variants/l10/docs/schema.svg)
+
+</details>
+
+<details>
+<summary>L15 ERD — Baggage and security</summary>
+
+![L15 ERD](variants/l15/docs/schema.svg)
+
+</details>
+
+The readable dictionaries describe the business meaning, keys and timestamp columns. The model-facing version is the original JSON. [Reference EEG examples](docs/eeg_examples.md) demonstrate how selected event definitions can be connected to case entities; these are explanatory, not generated EEG outputs or inputs.
+
+## Dataset analysis
+
+![Test-set analysis](docs/dataset_statistics.svg)
+
+The test set contains **60 requests / 49 distinct reference logs / 18 families**. Each of the five axes has 12 requests.
+
+| Split / dimension | Requests | Evaluation conditions |
+|---|---:|---:|
+| Pilot / schema expansion | 12 | 48 |
+| A · Attribution depth | 12 | 12 |
+| B · Source diversity | 12 | 12 |
+| C · Activity count | 12 | 12 |
+| D · Semantic complexity | 12 | 12 |
+| E · Attribution role | 12 | 12 |
+| Total | 72 | 108 |
+
+[Full dataset analysis and distribution tables](docs/dataset_analysis.md) · [Statistics JSON](docs/dataset_statistics.json) · [Reproduction script](docs/analyze_dataset.py).
+
+## Queries and gold logs
+
+The following request illustrates how a case and event scope are expressed.
+
+> Where is time lost during aircraft turnarounds? For each turnaround, build an event log covering actual inbound arrival movements, the overall start of ground handling, completion of every ground service, boarding start and close, aircraft readiness, and actual outbound departure movements, from inbound landing to outbound take-off.
+
+Q04 has 48 turnaround cases, 14 activity types and 672 event rows. The same business event may be attributed to different cases in other requests.
+
+![Q04 gold DFG](gold/Q04/dfg.svg)
+
+[Q04 Event Log](gold/Q04/events.csv) · [Gold SQL](gold/Q04/gold.sql) · [PI](gold/Q04/pi.json) · [ESpec](gold/Q04/espec.json)
+
+[Browse all 72 requests and references](docs/queries.md) · [Pilot model questions](evaluation/model_questions.jsonl) · [Test model questions](evaluation/model_questions_test.jsonl) · [Full query registry](evaluation/query_registry.csv) · [Test registry](evaluation/test_registry.csv) · [Gold summary](evaluation/gold_summary.csv).
+
+[Integrated reference review (download HTML)](https://raw.githubusercontent.com/jiwonpark7913/NL2EVENTLOG/main/datasets/synthetic/airlineflow/docs/scenario.html) — save the linked file and open it locally to inspect each reference log, DFG, source row and extraction path. It is evaluator-only.
+
+## Quick start
+
+Clone the repository or download the selected SQLite and JSON dictionary from the variant table.
+
+```bash
+cd datasets/synthetic/airlineflow
+python verify.py
+python generate.py /tmp/airlineflow-new
+python docs/analyze_dataset.py
+```
+
+`verify.py` checks the published fixture against its references; `generate.py` reconstructs the current logical database from the canonical synthetic records in `source/records.json` and the schema DDLs. Use an empty output directory. The regenerated SQLite binary hashes may differ while logical records remain identical.
+
+For model evaluation, provide only the appropriate `variants/lXX/input/database.sqlite`, `data_dictionary.json` and the request text. Do not include reference EEG examples, Gold, evaluator registries, review pages, source records or diagnostic answers in the model input.
+
+## Repository guide
+
+| Path | Purpose |
+|---|---|
+| [variants/](variants/) | Four SQLite databases, DDL, diagrams and dictionaries |
+| [evaluation/](evaluation/README.md) | Requests, registry, manifest, technical receipts and scoring-policy references |
+| [gold/](gold/README.md) | Per-request reference logs, SQL, PI, ESpec and DFG |
+| [docs/](docs/README.md) | User-facing analysis, examples and inspection tools |
+| [source/](source/README.md) | Canonical synthetic records for reproducibility |
+| [semantic_check/](semantic_check/README.md) | Separate semantic-evidence diagnostics (not part of the 108 conditions) |
+| [private/](private/) | Legacy evaluator-only references retained for compatibility |
+
+## Validation and limitations
+
+The published technical receipt reports 108/108 database–request comparisons. A separate evaluator-side semantic audit reports 72/72 reference multiset comparisons from the canonical records. These are dataset validation records, not model results or proof of completed external human review.
+
+[Semantic review](evaluation/semantic_gold_review_20261127.md) · [Verification receipt](evaluation/verification.json) · [Case policy](evaluation/case_key_policy.json) · [Release history](docs/archive/release_history_20261127.md).
+
+The data is synthetic, with fixed populations and simplified operational assumptions. Shared records and repeated reference logs imply dependence across requests. Test results should be reported separately from pilot; A–C are sensitivity analyses, not fully isolated causal experiments. The standalone scorer is an evaluator reference, not confirmation of production-runner integration. The release preserves timestamp multiplicity and treats equal-time events without inventing order.
+
+Data fixture: `TemporalRevision1-SemanticDD1-CanonicalQ02` · [pinned input and reference commit](https://github.com/jiwonpark7913/NL2EVENTLOG/tree/e4bb9d19081bc8914e45db4acb750e4c581ea3f2/datasets/synthetic/airlineflow/).

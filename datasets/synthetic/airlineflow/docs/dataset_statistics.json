@@ -1,0 +1,86 @@
+{
+  "schema_version": "TemporalRevision1-SemanticDD1-CanonicalQ02",
+  "source_commit": "e4bb9d19081bc8914e45db4acb750e4c581ea3f2",
+  "requests": 72,
+  "pilot": 12,
+  "test": 60,
+  "conditions": 108,
+  "distinct_test_gold": 49,
+  "reference_event_rows": 32208,
+  "test_event_rows": 29088,
+  "test_family_count": 18,
+  "by_group": {
+    "A": 12,
+    "B": 12,
+    "C": 12,
+    "D": 12,
+    "E": 12,
+    "Pilot": 12
+  },
+  "test_case": {
+    "Bag Leg": 5,
+    "Booking": 2,
+    "Flight": 12,
+    "Passenger Leg": 8,
+    "Security Visit": 5,
+    "Ticket": 2,
+    "Turnaround": 26
+  },
+  "test_activity_count": {
+    "2": 28,
+    "3": 7,
+    "4": 9,
+    "6": 10,
+    "8": 3,
+    "12": 3
+  },
+  "test_source_count": {
+    "1": 30,
+    "2": 22,
+    "3": 4,
+    "4": 4
+  },
+  "test_logical_depth": {
+    "1": 16,
+    "2": 34,
+    "3": 10
+  },
+  "test_max_sql_join_depth": {
+    "0": 16,
+    "1": 30,
+    "2": 8,
+    "3": 6
+  },
+  "test_explicitness": {
+    "Explicit / Explicit": 51,
+    "Explicit / Implicit": 3,
+    "Implicit / Explicit": 3,
+    "Implicit / Implicit": 3
+  },
+  "test_encoding": {
+    "Both": 18,
+    "Carrier-driven": 42
+  },
+  "variants": {
+    "l05": {
+      "tables": 5,
+      "columns": 30,
+      "rows": 960
+    },
+    "l10": {
+      "tables": 10,
+      "columns": 47,
+      "rows": 2232
+    },
+    "l15": {
+      "tables": 15,
+      "columns": 64,
+      "rows": 3818
+    },
+    "l20": {
+      "tables": 20,
+      "columns": 81,
+      "rows": 3925
+    }
+  }
+}
