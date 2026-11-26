@@ -1,0 +1,68 @@
+name: Publish verified AirlineFlow SemanticDD final
+on:
+  push:
+    branches: [data/airlineflow-semanticdd-final-20261126]
+    paths: ['.airlineflow-release/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify and install exact release
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, zipfile, gzip, shutil, json, csv
+          transport=Path('.airlineflow-release')
+          root=Path('datasets/synthetic/airlineflow')
+          archive=transport/'SemanticDD_Final_Gold_72.zip'
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()=='1965bebe9bf4f16dc65f2c237b30b46e6afebfdce937907c95b817a6f92992c5'
+          html=gzip.decompress((transport/'Integrated_Review_72_SemanticDD_Final.html.gz').read_bytes())
+          assert hashlib.sha256(html).hexdigest()=='eeb954f83b603b4c104ade48f522c5a0b008ec1930a50e0f495bc5837cdeffe5'
+          old_registry=json.loads((root/'evaluation/query_registry.json').read_text())
+          with zipfile.ZipFile(archive) as z:
+              assert len(z.namelist())==563
+              assert all(not Path(n).is_absolute() and '..' not in Path(n).parts for n in z.namelist())
+              z.extractall(root)
+          with (root/'evaluation/query_registry.csv').open(encoding='utf-8-sig',newline='') as f:
+              rows=list(csv.DictReader(f))
+          assert len(rows)==72
+          assert [r['QUERY ID'] for r in rows]==[f'Q{i:02d}' for i in range(1,73)]
+          # Keep the legacy JSON registry contract in sync with the pilot input.
+          pilot={r['QUERY ID']:r for r in rows[:12]}
+          for q in old_registry:
+              r=pilot[q['question_id']]
+              en,kr=r['QUERY (EN / KR)'].split('\n',1)
+              q['question_en']=en
+              q['question_kr']=kr
+          (root/'evaluation/query_registry.json').write_text(json.dumps(old_registry,ensure_ascii=False,indent=2)+'\n')
+          (root/'docs').mkdir(exist_ok=True)
+          (root/'docs/scenario.html').write_bytes(html)
+          rd=root/'README.md'
+          content=rd.read_text()
+          content=content.replace('This local revision is not pushed to GitHub. Original repository commit e645e6a (data) / 4bd8e2e (standalone constructor) is not the new data fingerprint. Before publishing regenerate repository scenario HTML/manifest and synchronize runner; only release after user approval.','This release is the SemanticDD1 fixture; the manifest identifies the current input fingerprints. Runner integration and final model evaluation are not implied by fixture publication.')
+          content += '\n## Review and evaluation\n- [Integrated review (72 queries)](docs/scenario.html)\n- [Full registry](evaluation/query_registry.csv) · [Test-only registry](evaluation/test_registry.csv)\n- [Semantic evidence diagnostics](semantic_check/README.md)\n- [Verification receipt](evaluation/verification.json)\n'
+          rd.write_text(content)
+          PY
+          python datasets/synthetic/airlineflow/verify.py
+          python datasets/synthetic/airlineflow/generate.py "$RUNNER_TEMP/airlineflow-rebuilt"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/synthetic/airlineflow
+          git reset -- datasets/synthetic/airlineflow/__pycache__ || true
+          git commit -m "data: publish verified AirlineFlow SemanticDD final"
+          git push origin HEAD:refs/heads/data/airlineflow-semanticdd-final-20261126
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = '4bd8e2ec2bd920546d0fc179086702fc78625ba6'
+          git push origin HEAD:refs/heads/main
