@@ -6,23 +6,23 @@
   },
   {
     "question_id": "Q02",
-    "question_en": "I'd like to understand how long individual ground-handling jobs take. Reconstruct the actual lifecycle of each job and keep different types of work distinct in the activity names.",
-    "question_kr": "개별 지상조업 작업에 얼마나 시간이 걸리는지 파악하고 싶어. 각 작업의 실제 수행 과정을 재구성하고 작업 유형별 차이가 활동명에 드러나도록 해줘."
+    "question_en": "For each aircraft turnaround, reconstruct the actual ground-handling process from the start of overall ground-handling coordination until the aircraft is ready. Keep different types of work distinct and include their actual start and completion so I can examine how jobs progress and overlap.",
+    "question_kr": "각 항공기 턴어라운드에서 전체 지상조업 조정 시작부터 항공기 준비 완료까지 실제 조업 과정을 재구성해줘. 작업 유형을 구분하고 각 작업의 실제 시작과 완료를 포함하여 수행 순서와 병렬 진행을 분석하고 싶어."
   },
   {
     "question_id": "Q03",
-    "question_en": "Where are the bottlenecks in the final stages of departure preparation, from boarding to off-block? For each outbound flight, include boarding start and close, confirmed closure of the baggage loading operation, aircraft readiness and actual off-block departure.",
-    "question_kr": "탑승부터 블록아웃까지 최종 출발 준비 과정에서 병목이 발생하는 구간은 어디야? 각 출발편의 탑승 시작·종료, 수하물 적재 작업의 마감 확인, 항공기 준비 완료 및 실제 블록아웃을 포함해줘."
+    "question_en": "For each outbound flight, show the final departure-preparation milestones so I can compare elapsed intervals between boarding and actual off-block. Include only boarding start and close, confirmed closure of the baggage loading operation, aircraft readiness and actual off-block.",
+    "question_kr": "각 출발편의 탑승부터 실제 블록아웃까지 주요 출발 준비 시점 사이의 경과시간을 비교하고 싶어. 탑승 시작·종료, 수하물 적재 작업 마감 확인, 항공기 준비 완료, 실제 블록아웃만 포함해줘."
   },
   {
     "question_id": "Q04",
-    "question_en": "Where is time lost during aircraft turnarounds? For each turnaround, build an event log covering actual inbound arrival movements, the overall start of ground handling, completion of every ground service, boarding start and close, aircraft readiness, and actual outbound departure movements, from inbound landing to outbound take-off.",
-    "question_kr": "항공기 턴어라운드 중 어느 구간에서 시간이 지체되는지 파악하고 싶어. 각 턴어라운드에 대해 도착편 착륙부터 출발편 이륙까지 실제 도착 단계의 이동, 전체 지상조업 시작, 모든 지상조업 작업의 완료, 탑승 시작·종료, 항공기 준비 완료 및 실제 출발 단계의 이동을 포함하는 이벤트 로그를 만들어줘."
+    "question_en": "Where is time lost during aircraft turnarounds? For each turnaround, reconstruct the actual process from inbound landing to outbound take-off, including arrival movements, the overall start of ground handling, the actual start and completion of every ground service, boarding start and close, aircraft readiness, and departure movements.",
+    "question_kr": "각 항공기 턴어라운드에서 어느 구간에 시간이 소요되는지 파악하고 싶어. 도착편 착륙부터 출발편 이륙까지 실제 도착 이동, 전체 지상조업 시작, 모든 개별 조업의 실제 시작·완료, 탑승 시작·종료, 항공기 준비 완료 및 실제 출발 이동을 포함해줘."
   },
   {
     "question_id": "Q05",
-    "question_en": "For each turnaround, include the overall start of ground handling, completion of cabin cleaning and refuelling, and aircraft readiness. I want to see how cleaning and refuelling fit into the preparation process.",
-    "question_kr": "각 턴어라운드의 전체 지상조업 시작, 객실 청소 및 급유 완료, 항공기 준비 완료를 포함해줘. 객실 청소와 급유가 출발 준비 과정에서 어떻게 진행되는지 파악하고 싶어."
+    "question_en": "For each turnaround, include the overall start of ground handling, the actual start and completion of cabin cleaning and refuelling, and aircraft readiness. I want to compare cleaning and refuelling durations and see how these jobs overlap during preparation.",
+    "question_kr": "각 턴어라운드에서 전체 지상조업 시작, 객실 청소와 급유의 실제 시작·완료, 항공기 준비 완료를 포함해줘. 청소와 급유의 수행시간 및 병렬 진행을 비교하고 싶어."
   },
   {
     "question_id": "Q06",
@@ -31,8 +31,8 @@
   },
   {
     "question_id": "Q07",
-    "question_en": "I want to review the ground services that prepared each outbound flight. Include completion of baggage unloading from the arriving aircraft, cabin cleaning, refuelling, catering loading and baggage loading during the turnaround that prepared the flight.",
-    "question_kr": "각 출발편의 출발 준비를 위한 지상조업 과정을 살펴보고 싶어. 해당 출발편을 준비한 턴어라운드에서 도착 항공기의 수하물 하역, 객실 청소, 급유, 기내식 적재 및 수하물 적재 완료 이벤트를 출발편 단위로 추출해줘."
+    "question_en": "For each outbound flight, compare the order and timing of selected ground-service completion milestones during the turnaround that prepared it. Include only completion of baggage unloading from the arriving aircraft, cabin cleaning, refuelling, catering loading and confirmed closure of baggage loading.",
+    "question_kr": "각 출발편을 준비한 턴어라운드에서 선택한 지상조업의 완료 순서와 시점을 비교하고 싶어. 도착 항공기 수하물 하역, 객실 청소, 급유, 기내식 적재의 완료 및 수하물 적재 작업 마감 확인만 포함해줘."
   },
   {
     "question_id": "Q08",

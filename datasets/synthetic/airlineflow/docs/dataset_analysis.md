@@ -11,11 +11,11 @@ All counts are derived from the frozen request registry and reference logs, not 
 - 72 unique natural-language requests: 12 pilot and 60 held-out evaluation requests.
 - 108 database–request conditions: 12 pilot requests at each of four levels (48) and 60 test requests at L15.
 - 49 distinct test reference event logs; 18 test families. Repeated references are intentional (matched comparisons).
-- 32,208 event rows across 72 references, including 29,088 test rows. The count includes multiplicity and overlap between requests; it is not a count of independent database events.
+- 32,688 event rows across 72 references, including 29,088 test rows. The count includes multiplicity and overlap between requests; it is not a count of independent database events.
 
 | Group | IDs | Requests | Families | Reference rows | Purpose |
 |---|---|---:|---:|---:|---|
-| Pilot | Q01–Q12 | 12 | 6 | 3,120 | Development and schema expansion |
+| Pilot | Q01–Q12 | 12 | 6 | 3,600 | Development and schema expansion |
 | A | Q13–Q24 | 12 | 4 | 6,192 | Attribution depth: 0/1/2 physical attribution joins |
 | B | Q25–Q36 | 12 | 4 | 5,760 | Source diversity: 2/3/4 event-source tables |
 | C | Q37–Q48 | 12 | 3 | 5,424 | Activity count: 2/4/8/12 definitions |

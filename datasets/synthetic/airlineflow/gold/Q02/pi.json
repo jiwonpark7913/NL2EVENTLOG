@@ -1,17 +1,18 @@
 {
   "schema": "authored_reference_pi_v4",
   "query_id": "Q02",
-  "case_entity": "Handling Job",
+  "case_entity": "Turnaround",
   "case_identity": {
-    "table": "handling_jobs",
+    "table": "turnarounds",
     "key": [
-      "job_id"
+      "turn_id"
     ]
   },
   "case_scope": "all records of the case entity in the selected database",
   "case_mode": "Explicit",
   "activity_mode": "Implicit",
   "activities": [
+    "Handling Start",
     "Disembarkation Start",
     "Disembarkation Complete",
     "Baggage Unloading Start",
@@ -23,9 +24,11 @@
     "Catering Loading Start",
     "Catering Loading Complete",
     "Baggage Loading Start",
-    "Baggage Loading Close"
+    "Baggage Loading Close",
+    "Aircraft Ready"
   ],
   "registry_activity_labels": [
+    "Handling Start",
     "Disembarkation Start",
     "Disembarkation Complete",
     "Baggage Unloading Start",
@@ -37,16 +40,17 @@
     "Catering Loading Start",
     "Catering Loading Complete",
     "Baggage Loading Start",
-    "Baggage Loading Close"
+    "Baggage Loading Close",
+    "Aircraft Ready"
   ],
-  "expected_case_count": 288,
-  "expected_event_count": 576,
+  "expected_case_count": 48,
+  "expected_event_count": 672,
   "output_attributes": [
     "case_id",
     "activity",
     "timestamp"
   ],
-  "notes": "Researcher-approved Q02. Keep job types distinct and use actual start and completion clocks.",
+  "notes": "Turnaround별 전체 조업 수행시간·순서·중첩 분석. 6개 작업 유형의 실제 시작·완료와 coordination/readiness 경계 포함. posted_at 제외.",
   "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
   "alternative_case_policy": "Strict"
 }

@@ -13,7 +13,7 @@ AirlineFlow models aircraft turnarounds at a focal airport, connecting arriving 
 | Use case | What AirlineFlow provides |
 |---|---|
 | Natural-language event-log extraction | English requests, SQLite inputs, and reference event triples |
-| Process mining | Event logs at flight, turnaround, job, boarding session, passenger-leg and other case granularities |
+| Process mining | Event logs at flight, turnaround, boarding session, passenger-leg and other case granularities |
 | Schema scalability | Four nested schemas with unchanged shared records and 12 common pilot requests |
 | Semantic and structural difficulty | Five matched-family test dimensions: depth, source diversity, activity count, explicitness, role attribution |
 | Reproducible evaluation | Gold SQL, PI, ESpec, CSV, DFG and record-level inspection |
@@ -80,9 +80,9 @@ The test set contains **60 requests / 49 distinct reference logs / 18 families**
 
 The following request illustrates how a case and event scope are expressed.
 
-> Where is time lost during aircraft turnarounds? For each turnaround, build an event log covering actual inbound arrival movements, the overall start of ground handling, completion of every ground service, boarding start and close, aircraft readiness, and actual outbound departure movements, from inbound landing to outbound take-off.
+> Where is time lost during aircraft turnarounds? For each turnaround, reconstruct the actual process from inbound landing to outbound take-off, including arrival movements, the overall start of ground handling, the actual start and completion of every ground service, boarding start and close, aircraft readiness, and departure movements.
 
-Q04 has 48 turnaround cases, 14 activity types and 672 event rows. The same business event may be attributed to different cases in other requests.
+Q04 has 48 turnaround cases, 20 activity types and 960 event rows. The same business event may be attributed to different cases in other requests.
 
 ![Q04 gold DFG](gold/Q04/dfg.svg)
 
@@ -121,10 +121,10 @@ For model evaluation, provide only the appropriate `variants/lXX/input/database.
 
 ## Validation and limitations
 
-The published technical receipt reports 108/108 database–request comparisons. A separate evaluator-side semantic audit reports 72/72 reference multiset comparisons from the canonical records. These are dataset validation records, not model results or proof of completed external human review.
+The previous release reported 108/108 database–request and 72/72 semantic comparisons. In PM-Scope1, revised Pilot references were reconstructed from canonical records; SQLite replay remains pending. These are dataset validation records, not model results or proof of completed external human review.
 
 [Semantic review](evaluation/semantic_gold_review_20261127.md) · [Verification receipt](evaluation/verification.json) · [Case policy](evaluation/case_key_policy.json) · [Release history](docs/archive/release_history_20261127.md).
 
 The data is synthetic, with fixed populations and simplified operational assumptions. Shared records and repeated reference logs imply dependence across requests. Test results should be reported separately from pilot; A–C are sensitivity analyses, not fully isolated causal experiments. The standalone scorer is an evaluator reference, not confirmation of production-runner integration. The release preserves timestamp multiplicity and treats equal-time events without inventing order.
 
-Data fixture: `TemporalRevision1-SemanticDD1-CanonicalQ02` · [pinned input and reference commit](https://github.com/jiwonpark7913/NL2EVENTLOG/tree/e4bb9d19081bc8914e45db4acb750e4c581ea3f2/datasets/synthetic/airlineflow/).
+Data fixture: `TemporalRevision1-SemanticDD1-PM-Scope1` · database binaries unchanged · [Revision record](evaluation/pm_scope_revision_20261127.md).

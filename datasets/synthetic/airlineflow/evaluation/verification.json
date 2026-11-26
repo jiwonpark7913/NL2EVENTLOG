@@ -1,83 +1,63 @@
 {
-  "version": "TemporalRevision1-SemanticDD1-CanonicalQ02",
+  "version": "TemporalRevision1-SemanticDD1-PM-Scope1",
   "seed": 20261126,
   "db_sha256": "480ea0744968e81340565feb7f12793c83ab6299d7a09947b8b72a8a87d34f81",
   "dictionary_sha256": "e8baccf00525eecad94ef054fea37f875a1f587a5de12ca39a56405d653e2e73",
   "test_queries": 60,
   "pilot_queries": 12,
-  "sql_provenance_replay": 72,
-  "db_query_combinations": 108,
-  "legacy_comparisons": 15,
-  "family_controls": 18,
-  "gold_groups_test": 49,
-  "D_F3_added_RJ_per_query": 48,
-  "limitations": [
-    "Human semantic approval and production scorer integration pending.",
-    "No model rerun; old model scores are not directly comparable.",
-    "Test on L15 only; shared nested data verified.",
-    "Existing 1:1 relationships unchanged.",
-    "No requirement to eliminate genuine ties; multiplicity remains strict."
-  ],
-  "shortcut_checks": {
-    "board_start_ne_min": {
-      "different": 48,
-      "total": 48
+  "prior_release": "TemporalRevision1-SemanticDD1-CanonicalQ02",
+  "prior_verified_conditions": 108,
+  "current_modified_conditions": 20,
+  "current_sqlite_replay": "PENDING",
+  "source_reconstruction": {
+    "Q02": {
+      "cases": 48,
+      "activities": 14,
+      "events": 672,
+      "variants": 40,
+      "tie_cases": 1,
+      "duplicate_rows": 0,
+      "source_reconstruction": "PASS"
     },
-    "board_end_ne_max": {
-      "different": 48,
-      "total": 48
+    "Q03": {
+      "cases": 48,
+      "activities": 5,
+      "events": 240,
+      "variants": 2,
+      "tie_cases": 0,
+      "duplicate_rows": 0,
+      "source_reconstruction": "PASS"
     },
-    "handle_start_ne_min": {
-      "different": 48,
-      "total": 48
+    "Q04": {
+      "cases": 48,
+      "activities": 20,
+      "events": 960,
+      "variants": 44,
+      "tie_cases": 1,
+      "duplicate_rows": 0,
+      "source_reconstruction": "PASS"
     },
-    "load_start_ne_min": {
-      "different": 48,
-      "total": 48
+    "Q05": {
+      "cases": 48,
+      "activities": 6,
+      "events": 288,
+      "variants": 4,
+      "tie_cases": 0,
+      "duplicate_rows": 0,
+      "source_reconstruction": "PASS"
     },
-    "load_end_ne_max": {
-      "different": 48,
-      "total": 48
+    "Q07": {
+      "cases": 48,
+      "activities": 5,
+      "events": 240,
+      "variants": 6,
+      "tie_cases": 0,
+      "duplicate_rows": 0,
+      "source_reconstruction": "PASS"
     }
   },
-  "standalone_scorer_test": "PASS; runner integration pending",
-  "semantic_fixture": {
-    "old_ids_replaced": 288,
-    "code_counts": {
-      "B101": 144,
-      "B204": 144
-    },
-    "updated_gold_sql": [
-      "Q13",
-      "Q14",
-      "Q15",
-      "Q49",
-      "Q50",
-      "Q51",
-      "Q52"
-    ],
-    "unchanged_gold_logs": 72,
-    "source_occurrence_replay_rows": 2016,
-    "reduced_dd_sha256": "a871cc933fc8c4701586674191da98bbae1eca92e0efe9c4c049b33d703846ca",
-    "reduced_dd_model_tests": "NOT RUN",
-    "normal_dd_model_tests": "NOT RUN",
-    "diagnostic_queries": 3,
-    "baseline": "TemporalRevision1",
-    "historical_timestamp_audit": "unchanged; no timestamps altered",
-    "validation": "PASS: fixture, unchanged logical rows, provenance and diagnostic reference SQL; no model run"
-  },
-  "q02_canonical": {
-    "approval": "researcher approved on 2026-11-27 KST",
-    "cases": 288,
-    "events": 576,
-    "activity_classes": 12,
-    "actual_clocks": [
-      "started_at",
-      "finished_at"
-    ],
-    "excluded_clock": "posted_at",
-    "multiset_sha256": "125c3ab46ff46920e0092d3faa27acf80fae0a1bc82fc86a937d88a9d11c8812",
-    "digest_serialization": "sorted (triple, multiplicity) JSON, UTF-8, separators comma and colon",
-    "independent_test_files_preserved": 422
-  }
+  "limitations": [
+    "Prior SQL verification is historical; revised release requires SQLite replay and production scorer preflight.",
+    "Historical compressed archives are not current. No model inference; Test Gold unchanged."
+  ]
 }
