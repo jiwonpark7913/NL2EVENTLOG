@@ -83,7 +83,7 @@ function check(qid,event){
 }
 bindReviewControls();
 q='Q01';variant='l15';restoreReview();
-const note='한글 검수 메모: Case/Activity 검토\nSecond line';
+const note=['한글 검수 메모: Case/Activity 검토','Second line'].join(String.fromCharCode(10));
 elem('notes').value=note;elem('verdict').value='Revise';elem('notes').handlers.input();
 assert.equal(decisions['l15:Q01'].notes,note);
 assert.equal(JSON.parse(storage.get(storageKey()))['l15:Q01'].notes,note);
