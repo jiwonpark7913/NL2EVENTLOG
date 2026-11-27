@@ -1,4 +1,4 @@
-# L10 — Stochastic-v2-ShortIDs-20261127
+# L10 — Stochastic-v2-CompactIDs-20261127
 
 10 tables; 34563 rows.
 

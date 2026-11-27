@@ -24,5 +24,5 @@
   "notes": "Family 내 Case·활동 수·사건 수·Carrier 비율 고정. 활동 정체성·귀속 깊이/역할 분포 변화는 잔여 교란. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
   "case_key_policy": "Canonical primary key; other key representations not authorized unless separately pre-approved as same entity.",
   "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
-  "fixture_version": "Stochastic-v2-ShortIDs-20261127"
+  "fixture_version": "Stochastic-v2-CompactIDs-20261127"
 }

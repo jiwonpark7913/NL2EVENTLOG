@@ -5,3 +5,5 @@ Compare Recovery OFF/ON and Direct SQL, distinguishing fixed PI from free parsin
 Stochastic v2: the old scan-ID remapping receipt is retired; scan IDs are opaque at generation. B01–B03 reference CSVs were replayed against the new L15 input. This is not a completed semantic recovery experiment.
 
 Stochastic v2: the old scan-ID remapping receipt is retired; scan IDs are opaque at generation. B01–B03 reference CSVs were replayed against the new L15 input. This is not a completed semantic recovery experiment.
+
+Stochastic v2: the old scan-ID remapping receipt is retired; scan IDs are opaque at generation. B01–B03 reference CSVs were replayed against the new L15 input. This is not a completed semantic recovery experiment.

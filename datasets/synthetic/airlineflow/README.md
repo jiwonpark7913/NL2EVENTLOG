@@ -1,6 +1,6 @@
-# AirlineFlow — Stochastic-v2-ShortIDs-20261127
+# AirlineFlow — Stochastic-v2-CompactIDs-20261127
 
-Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, 6,885 passenger legs; 72 requests / 108 DB–request conditions. Short opaque identifiers (4–5 digits); flight number remains a distinct operational attribute.**
+Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, 6,885 passenger legs; 72 requests / 108 DB–request conditions. Compact management identifiers (e.g. F001, J001); flight number remains a distinct operational attribute.**
 
 ## Database variants
 | Variant | Tables | Rows | Inputs |
@@ -19,9 +19,8 @@ Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 oper
 ## Reproduce
 Run node source/generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY to regenerate records. Run python verify.py for read-only checks. The release build script regenerate_v2.py requires Node, Python and Graphviz and is intended for an isolated checkout.
 
+## Canonical vs enriched reference logs
+Each Gold directory includes `events.csv` (scoring only) and `events_enriched.csv` (inspection/analysis). The review has separate flight number/date fields and the selected source table's original data dictionary.
+
 ## Validation
 108 SQLite-query comparisons and 72 independent occurrence reconstructions passed in the release build. Human review and production scorer integration remain pending. No model inference performed. The older PM-Scope1 fixture remains in git history. Model input is only the chosen DB, its general DD, and request text. Never include evaluator metadata or the review HTML.
-
-## Canonical vs enriched reference logs
-
-Each Gold directory includes `events.csv` (scoring only) and `events_enriched.csv` (inspection/analysis). The integrated review provides both modes and independent `flight_no` / `operating_date` columns. Short numeric IDs remain the primary case identifiers. See [Gold log documentation](gold/README.md) and [verification](evaluation/verification.json).

@@ -30,5 +30,5 @@
   "notes": "Case·원천 집합·인코딩 고정; 기존 활동 유지. 사건 수와 일부 경로별 비중은 증가/변화. 12 ACT 조건은 Family별 다른 Gold. 전체 6종 job_code의 시작·완료를 포함하므로 동일한 라벨 생성이 가능하면 필터 생략 SQL도 정답. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
   "case_key_policy": "Canonical primary key; other key representations not authorized unless separately pre-approved as same entity.",
   "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
-  "fixture_version": "Stochastic-v2-ShortIDs-20261127"
+  "fixture_version": "Stochastic-v2-CompactIDs-20261127"
 }

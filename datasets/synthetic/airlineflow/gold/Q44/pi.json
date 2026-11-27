@@ -30,5 +30,5 @@
   "notes": "Case·원천 집합·인코딩 고정; 기존 활동 유지. 사건 수와 일부 경로별 비중은 증가/변화. 12 ACT 조건은 Family별 다른 Gold. 초기 업무상 의미 있는 2개 활동부터 누적 추가; 최종 활동 집합 유지. 도착 승객 하기 작업을 포함하고 하역은 제외하는 원래 terminal set 유지(지상조업→출발 이동 목적). Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
   "case_key_policy": "Canonical primary key; other key representations not authorized unless separately pre-approved as same entity.",
   "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
-  "fixture_version": "Stochastic-v2-ShortIDs-20261127"
+  "fixture_version": "Stochastic-v2-CompactIDs-20261127"
 }

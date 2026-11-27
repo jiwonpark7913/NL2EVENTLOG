@@ -21,5 +21,5 @@
   "notes": "원천·사건 인스턴스·활동·인코딩 고정. Case ET와 trace 분포 변화는 잔여 교란; JOIN 수와 논리 깊이 분리. Case 집계 효과가 함께 변하므로 순수 JOIN 인과효과로 해석하지 않음. 인접 수준이 데이터상 1:1일 수 있음. 이 DB에서 인접 Case가 1:1 동형임; ID 치환 효과와 구조 추론을 구분. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum. Distinct target ET even when source case maps 1:1; explicit entity must be respected.",
   "case_key_policy": "Canonical leg_id; structured (ticket_id, flight_id) or (passenger_id, flight_id) accepted after full-scope bijection; no inferred strings.",
   "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
-  "fixture_version": "Stochastic-v2-ShortIDs-20261127"
+  "fixture_version": "Stochastic-v2-CompactIDs-20261127"
 }

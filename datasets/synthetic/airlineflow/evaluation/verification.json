@@ -1,5 +1,5 @@
 {
-  "version": "Stochastic-v2-ShortIDs-20261127",
+  "version": "Stochastic-v2-CompactIDs-20261127",
   "seed": 20261127,
   "status": "candidate; human review and production scorer pending",
   "sqlite_conditions_passed": 108,
@@ -82,7 +82,7 @@
     },
     "duplicate_flight_boarding_triples": 920,
     "checks": "generator-level checks passed; SQLite and Gold not yet validated",
-    "identifier_policy": "short opaque seeded numeric IDs (4–5 digits; no business-role encoding)",
+    "identifier_policy": "compact entity management numbers; minimum 3 digits, deterministic allocation independent of event time and role",
     "identifier_count": 86173
   },
   "production_scorer": "NOT_RUN",
