@@ -103,5 +103,13 @@
     "canonical_gold_unchanged": true,
     "database_sha256_unchanged": true,
     "format": "Separate columns; evaluator-only, not part of scoring"
+  },
+  "activity_dfg": {
+    "status": "PASS",
+    "queries": 72,
+    "policy": "one node per activity; adjacent distinct timestamp groups, occurrence-pair counts; no within-tie edge",
+    "non_graph_payload_sha256": "f512f89091b363a50b02fc4f231a4b197b8e984085e9315ddd2ab30824fc8558",
+    "query_gold_pi_espec_sql_html_match": true,
+    "node_and_edge_svg_checks": true
   }
 }

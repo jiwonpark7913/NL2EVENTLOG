@@ -1,5 +1,5 @@
 digraph G {
-rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.3,ranksep=0.5]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=10]; edge [color="#728899",fontname="Arial",fontsize=9];
+rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.35,ranksep=0.6]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=11]; edge [color="#728899",fontname="Arial",fontsize=10];
 start [label="Start",shape=oval,fillcolor="#e1f2e7"]; end [label="End",shape=oval,fillcolor="#f7e4e4"];
 n0 [label="Check-in Complete\n6747"];
 n1 [label="Passenger Boarding Confirmed\n6540"];
