@@ -1,72 +1,89 @@
 {
-  "version": "TemporalRevision1-SemanticDD1-PM-Scope1",
-  "seed": 20261126,
-  "db_sha256": "480ea0744968e81340565feb7f12793c83ab6299d7a09947b8b72a8a87d34f81",
-  "dictionary_sha256": "e8baccf00525eecad94ef054fea37f875a1f587a5de12ca39a56405d653e2e73",
-  "test_queries": 60,
-  "pilot_queries": 12,
-  "prior_release": "TemporalRevision1-SemanticDD1-CanonicalQ02",
-  "prior_verified_conditions": 108,
-  "current_modified_conditions": 20,
-  "current_sqlite_replay": "PASS",
-  "current_sqlite_replay_detail": {
-    "date": "2026-11-27",
-    "commit": "5cd9d57e3b0f92d93ca0c0b1f4f1edd971913cd5",
-    "conditions": 108,
-    "matched": 108,
-    "modified_conditions_matched": 20,
-    "comparison": "gold.sql executed read-only on each manifest database; exact multiset and row order equal to events.csv",
-    "verify_py": "PASS"
+  "version": "Stochastic-v2-20261127",
+  "seed": 20261127,
+  "status": "candidate; human review and production scorer pending",
+  "sqlite_conditions_passed": 108,
+  "independent_occurrence_comparisons": 72,
+  "nested_schema_check": "PASS",
+  "integrity_and_fk": "PASS",
+  "generator_summary": {
+    "seed": 20261127,
+    "counts": {
+      "flights": 200,
+      "turnarounds": 100,
+      "boarding_sessions": 200,
+      "handling_jobs": 600,
+      "movement_reports": 1000,
+      "bookings": 2537,
+      "passengers": 4505,
+      "tickets": 4505,
+      "passenger_legs": 6885,
+      "passenger_actions": 14031,
+      "bag_legs": 5887,
+      "bag_scans": 11595,
+      "checkpoints": 3,
+      "security_visits": 7030,
+      "security_events": 20999,
+      "airlines": 2,
+      "airports": 3,
+      "aircraft": 5,
+      "employees": 2,
+      "flight_dispatch": 200
+    },
+    "flight_population": {
+      "min": 20,
+      "max": 50,
+      "total": 6885
+    },
+    "party_histogram": {
+      "1": 1316,
+      "2": 765,
+      "3": 247,
+      "4": 135,
+      "5": 66,
+      "6": 8
+    },
+    "ticket_leg_histogram": {
+      "1": 2463,
+      "2": 1765,
+      "3": 216,
+      "4": 61
+    },
+    "passenger_state_histogram": {
+      "normal": 6196,
+      "incomplete": 207,
+      "retry": 344,
+      "no_show": 138
+    },
+    "bags_per_leg": {
+      "0": 2534,
+      "1": 3023,
+      "2": 1120,
+      "3": 208
+    },
+    "visits_per_leg": {
+      "0": 186,
+      "1": 6368,
+      "2": 331
+    },
+    "rejections_per_leg": {
+      "0": 6500,
+      "1": 148,
+      "2": 115,
+      "3": 122
+    },
+    "turnaround_scenarios": {
+      "normal": 52,
+      "clean": 12,
+      "bag": 10,
+      "overlap": 10,
+      "boarding": 9,
+      "fuel": 7
+    },
+    "duplicate_flight_boarding_triples": 920,
+    "checks": "generator-level checks passed; SQLite and Gold not yet validated"
   },
-  "source_reconstruction": {
-    "Q02": {
-      "cases": 48,
-      "activities": 14,
-      "events": 672,
-      "variants": 40,
-      "tie_cases": 1,
-      "duplicate_rows": 0,
-      "source_reconstruction": "PASS"
-    },
-    "Q03": {
-      "cases": 48,
-      "activities": 5,
-      "events": 240,
-      "variants": 2,
-      "tie_cases": 0,
-      "duplicate_rows": 0,
-      "source_reconstruction": "PASS"
-    },
-    "Q04": {
-      "cases": 48,
-      "activities": 20,
-      "events": 960,
-      "variants": 44,
-      "tie_cases": 1,
-      "duplicate_rows": 0,
-      "source_reconstruction": "PASS"
-    },
-    "Q05": {
-      "cases": 48,
-      "activities": 6,
-      "events": 288,
-      "variants": 4,
-      "tie_cases": 0,
-      "duplicate_rows": 0,
-      "source_reconstruction": "PASS"
-    },
-    "Q07": {
-      "cases": 48,
-      "activities": 5,
-      "events": 240,
-      "variants": 6,
-      "tie_cases": 0,
-      "duplicate_rows": 0,
-      "source_reconstruction": "PASS"
-    }
-  },
-  "limitations": [
-    "SQLite replay of the revised release passed on 2026-11-27 (108/108); production scorer preflight is still required.",
-    "Historical compressed archives are not current. No model inference; Test Gold unchanged."
-  ]
+  "production_scorer": "NOT_RUN",
+  "human_semantic_review": "PENDING",
+  "model_inference": "NOT_RUN"
 }

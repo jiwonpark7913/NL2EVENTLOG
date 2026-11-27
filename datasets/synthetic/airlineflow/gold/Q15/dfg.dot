@@ -1,14 +1,23 @@
-digraph D {
-graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
-node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
-edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
-start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
-end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
-n0 [label="Bag Accepted\n144 buckets"];
-n1 [label="Bag Loaded\n144 buckets"];
-start -> n0 [label="48"];
-n0 -> n0 [label="96"];
-n0 -> n1 [label="48"];
-n1 -> n1 [label="96"];
-n1 -> end [label="48"];
+digraph G {
+rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.3,ranksep=0.5]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=10]; edge [color="#728899",fontname="Arial",fontsize=9];
+start [label="Start",shape=oval,fillcolor="#e1f2e7"]; end [label="End",shape=oval,fillcolor="#f7e4e4"];
+n0 [label="Bag Accepted\n5800"];
+n1 [label="Bag Accepted ∥ Bag Accepted\n42"];
+n2 [label="Bag Accepted ∥ Bag Accepted ∥ Bag Accepted\n1"];
+n3 [label="Bag Loaded\n5624"];
+n4 [label="Bag Loaded ∥ Bag Loaded\n42"];
+n0 -> n0 [label="5558"];
+n0 -> n1 [label="42"];
+n0 -> n2 [label="1"];
+n0 -> n3 [label="198"];
+n0 -> n4 [label="1"];
+n1 -> n0 [label="41"];
+n1 -> n3 [label="1"];
+n2 -> n0 [label="1"];
+n3 -> n3 [label="5385"];
+n3 -> n4 [label="41"];
+n3 -> end [label="198"];
+n4 -> n3 [label="40"];
+n4 -> end [label="2"];
+start -> n0 [label="200"];
 }

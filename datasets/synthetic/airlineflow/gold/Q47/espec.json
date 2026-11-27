@@ -8,7 +8,7 @@
       "flight_id"
     ]
   },
-  "case_scope": "Observed events attributed to Flight; outbound flights only",
+  "case_scope": "Observed requested events, retaining occurrence multiplicity and partial traces within the natural-language scope.",
   "rules": [
     {
       "key": "CLC",
@@ -193,5 +193,8 @@
     "activity",
     "timestamp"
   ],
-  "event_combination": "UNION ALL; preserve multiplicity"
+  "event_combination": "UNION ALL; preserve multiplicity",
+  "expected_case_count": 100,
+  "expected_event_count": 7059,
+  "fixture_version": "Stochastic-v2-20261127"
 }

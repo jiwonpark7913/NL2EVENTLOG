@@ -11,7 +11,7 @@
         "passenger_id",
         "flight_id"
       ],
-      "verified_rows": 288,
+      "verified_rows": 6885,
       "approved_keys": [
         [
           "leg_id"
@@ -32,7 +32,7 @@
         "bag_tag",
         "flight_id"
       ],
-      "verified_rows": 144,
+      "verified_rows": 5887,
       "approved_keys": [
         [
           "bag_leg_id"
@@ -50,12 +50,12 @@
         "operating_date"
       ],
       "date_definition": "date(scheduled_offblock), not actual date; verified in frozen request scope",
-      "verified_rows": 96
+      "verified_rows": 200
     }
   },
   "secondary": {
     "Q51/Q52": "Bag tag alone secondary after scope 1:1 and whole log exact; Passenger Leg diagnostic only.",
-    "Q55/Q56": "Passenger Leg secondary after scope 1:1 and whole log exact.",
+    "Q55/Q56": "Passenger Leg secondary only with full-scope bijection; current fixture has repeat visits, so not equivalent.",
     "Q09/Q12": "Frozen Pilot Policy C; no change."
   },
   "scope": "All model families identical policy; no post-hoc key guessing or accidental partition equivalence.",

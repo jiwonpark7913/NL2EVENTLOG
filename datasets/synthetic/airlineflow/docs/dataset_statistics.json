@@ -1,14 +1,4 @@
 {
-  "schema_version": "TemporalRevision1-SemanticDD1-PM-Scope1",
-  "source_commit": "f54bb40f258119c537f376807bbe2638b6385524",
-  "requests": 72,
-  "pilot": 12,
-  "test": 60,
-  "conditions": 108,
-  "distinct_test_gold": 49,
-  "reference_event_rows": 32688,
-  "test_event_rows": 29088,
-  "test_family_count": 18,
   "by_group": {
     "A": 12,
     "B": 12,
@@ -16,6 +6,20 @@
     "D": 12,
     "E": 12,
     "Pilot": 12
+  },
+  "conditions": 108,
+  "distinct_test_gold": 49,
+  "pilot": 12,
+  "reference_event_rows": 514324,
+  "requests": 72,
+  "test": 60,
+  "test_activity_count": {
+    "12": 3,
+    "2": 28,
+    "3": 7,
+    "4": 9,
+    "6": 10,
+    "8": 3
   },
   "test_case": {
     "Bag Leg": 5,
@@ -26,20 +30,18 @@
     "Ticket": 2,
     "Turnaround": 26
   },
-  "test_activity_count": {
-    "2": 28,
-    "3": 7,
-    "4": 9,
-    "6": 10,
-    "8": 3,
-    "12": 3
+  "test_encoding": {
+    "Both": 18,
+    "Carrier-driven": 42
   },
-  "test_source_count": {
-    "1": 30,
-    "2": 22,
-    "3": 4,
-    "4": 4
+  "test_event_rows": 506824,
+  "test_explicitness": {
+    "Explicit / Explicit": 51,
+    "Explicit / Implicit": 3,
+    "Implicit / Explicit": 3,
+    "Implicit / Implicit": 3
   },
+  "test_family_count": 18,
   "test_logical_depth": {
     "1": 16,
     "2": 34,
@@ -51,36 +53,32 @@
     "2": 8,
     "3": 6
   },
-  "test_explicitness": {
-    "Explicit / Explicit": 51,
-    "Explicit / Implicit": 3,
-    "Implicit / Explicit": 3,
-    "Implicit / Implicit": 3
-  },
-  "test_encoding": {
-    "Both": 18,
-    "Carrier-driven": 42
+  "test_source_count": {
+    "1": 30,
+    "2": 22,
+    "3": 4,
+    "4": 4
   },
   "variants": {
     "l05": {
-      "tables": 5,
       "columns": 30,
-      "rows": 960
+      "rows": 2100,
+      "tables": 5
     },
     "l10": {
-      "tables": 10,
       "columns": 47,
-      "rows": 2232
+      "rows": 34563,
+      "tables": 10
     },
     "l15": {
-      "tables": 15,
       "columns": 64,
-      "rows": 3818
+      "rows": 80077,
+      "tables": 15
     },
     "l20": {
-      "tables": 20,
       "columns": 81,
-      "rows": 3925
+      "rows": 80289,
+      "tables": 20
     }
   }
 }

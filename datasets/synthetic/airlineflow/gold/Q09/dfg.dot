@@ -1,12 +1,9 @@
-digraph D {
-graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
-node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
-edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
-start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
-end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
-n0 [label="Off-block\n48 buckets"];
-n1 [label="Take-off\n48 buckets"];
-start -> n0 [label="48"];
-n0 -> n1 [label="48"];
-n1 -> end [label="48"];
+digraph G {
+rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.3,ranksep=0.5]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=10]; edge [color="#728899",fontname="Arial",fontsize=9];
+start [label="Start",shape=oval,fillcolor="#e1f2e7"]; end [label="End",shape=oval,fillcolor="#f7e4e4"];
+n0 [label="Off-block\n100"];
+n1 [label="Take-off\n100"];
+n0 -> n1 [label="100"];
+start -> n0 [label="100"];
+n1 -> end [label="100"];
 }

@@ -8,7 +8,7 @@
       "flight_id"
     ]
   },
-  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_scope": "Observed requested events, retaining occurrence multiplicity and partial traces within the natural-language scope.",
   "case_mode": "Explicit",
   "activity_mode": "Explicit",
   "activities": [
@@ -25,8 +25,8 @@
     "Catering Loading Complete",
     "Baggage Loading Close"
   ],
-  "expected_case_count": 48,
-  "expected_event_count": 240,
+  "expected_case_count": 100,
+  "expected_event_count": 500,
   "output_attributes": [
     "case_id",
     "activity",
@@ -34,5 +34,6 @@
   ],
   "notes": "출발편에 귀속된 5개 조업 완료 Milestone 비교. 하객 및 개별 작업 시작은 명시적으로 범위 밖; 수행시간 분석 아님.",
   "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
-  "alternative_case_policy": "Strict"
+  "alternative_case_policy": "Strict",
+  "fixture_version": "Stochastic-v2-20261127"
 }

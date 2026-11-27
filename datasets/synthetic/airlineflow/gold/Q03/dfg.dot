@@ -1,21 +1,20 @@
-digraph D {
-graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
-node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
-edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
-start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
-end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
-n0 [label="Boarding Start\n48 buckets"];
-n1 [label="Baggage Loading Close\n48 buckets"];
-n2 [label="Boarding Close\n48 buckets"];
-n3 [label="Aircraft Ready\n48 buckets"];
-n4 [label="Off-block\n48 buckets"];
-start -> n0 [label="48"];
-n3 -> n4 [label="48"];
-n1 -> n3 [label="29"];
-n1 -> n2 [label="19"];
-n2 -> n3 [label="19"];
-n2 -> n1 [label="29"];
-n0 -> n1 [label="19"];
-n0 -> n2 [label="29"];
-n4 -> end [label="48"];
+digraph G {
+rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.3,ranksep=0.5]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=10]; edge [color="#728899",fontname="Arial",fontsize=9];
+start [label="Start",shape=oval,fillcolor="#e1f2e7"]; end [label="End",shape=oval,fillcolor="#f7e4e4"];
+n0 [label="Aircraft Ready\n100"];
+n1 [label="Baggage Loading Close\n100"];
+n2 [label="Boarding Close\n100"];
+n3 [label="Boarding Start\n100"];
+n4 [label="Off-block\n100"];
+n0 -> n4 [label="100"];
+n1 -> n0 [label="4"];
+n1 -> n2 [label="31"];
+n1 -> n3 [label="65"];
+n2 -> n0 [label="96"];
+n2 -> n1 [label="4"];
+n3 -> n1 [label="31"];
+n3 -> n2 [label="69"];
+n4 -> end [label="100"];
+start -> n1 [label="65"];
+start -> n3 [label="35"];
 }

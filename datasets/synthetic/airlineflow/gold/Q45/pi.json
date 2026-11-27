@@ -8,16 +8,17 @@
       "flight_id"
     ]
   },
-  "case_scope": "Observed events attributed to Flight; outbound flights only",
+  "case_scope": "Observed requested events, retaining occurrence multiplicity and partial traces within the natural-language scope.",
   "case_mode": "Explicit",
   "activity_mode": "Explicit",
   "activities": [
     "Cabin Cleaning Complete",
     "Passenger Boarding Confirmed"
   ],
-  "expected_case_count": 48,
-  "expected_event_count": 336,
+  "expected_case_count": 100,
+  "expected_event_count": 3270,
   "notes": "Case·원천 집합·인코딩 고정; 기존 활동 유지. 사건 수와 일부 경로별 비중은 증가/변화. 12 ACT 조건은 Family별 다른 Gold. 초기 업무상 의미 있는 2개 활동부터 누적 추가; 최종 활동 집합 유지. Aggregated case log does not identify each individual passenger/bag; do not infer individual duration or comparison. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum. Population scope explicitly restricted; join depth is the authored path, not a lower bound on SQL alternatives.",
   "case_key_policy": "Canonical flight_id; structured (flight_no, operating_date=date(scheduled_offblock)) accepted after full-scope bijection; no inferred composite strings.",
-  "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized."
+  "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
+  "fixture_version": "Stochastic-v2-20261127"
 }

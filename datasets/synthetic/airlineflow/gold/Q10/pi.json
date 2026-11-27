@@ -8,7 +8,7 @@
       "flight_id"
     ]
   },
-  "case_scope": "outbound flights linked by turnarounds.outbound_id",
+  "case_scope": "Observed requested events, retaining occurrence multiplicity and partial traces within the natural-language scope.",
   "case_mode": "Explicit",
   "activity_mode": "Explicit",
   "activities": [
@@ -21,8 +21,8 @@
     "Boarding Close",
     "Off-block"
   ],
-  "expected_case_count": 48,
-  "expected_event_count": 144,
+  "expected_case_count": 100,
+  "expected_event_count": 300,
   "output_attributes": [
     "case_id",
     "activity",
@@ -30,5 +30,6 @@
   ],
   "notes": "기존 진단 질의; 단일 축 통제 실험에 포함하지 않음.",
   "case_key_policy": "Frozen Pilot scoring policy; unchanged.",
-  "alternative_case_policy": "Strict"
+  "alternative_case_policy": "Strict",
+  "fixture_version": "Stochastic-v2-20261127"
 }

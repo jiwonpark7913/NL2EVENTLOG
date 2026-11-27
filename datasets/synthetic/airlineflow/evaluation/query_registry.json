@@ -6,8 +6,8 @@
   },
   {
     "question_id": "Q02",
-    "question_en": "For each aircraft turnaround, reconstruct the actual ground-handling process from the start of overall ground-handling coordination until the aircraft is ready. Keep different types of work distinct and include their actual start and completion so I can examine how jobs progress and overlap.",
-    "question_kr": "각 항공기 턴어라운드에서 전체 지상조업 조정 시작부터 항공기 준비 완료까지 실제 조업 과정을 재구성해줘. 작업 유형을 구분하고 각 작업의 실제 시작과 완료를 포함하여 수행 순서와 병렬 진행을 분석하고 싶어."
+    "question_en": "For each aircraft turnaround, reconstruct the actual ground-service jobs. Include overall ground-handling coordination start and aircraft readiness as events, and the actual start and completion of each type of ground-service job. Exclude passenger boarding. I want to examine how the jobs progress and overlap.",
+    "question_kr": "각 항공기 턴어라운드에서 전체 지상조업 조정 시작과 항공기 준비 완료를 이벤트로 포함하고, 각 개별 지상조업 유형의 실제 시작과 완료를 추출해줘. 승객 탑승은 제외하고 조업의 진행과 중첩을 분석하고 싶어."
   },
   {
     "question_id": "Q03",
@@ -16,8 +16,8 @@
   },
   {
     "question_id": "Q04",
-    "question_en": "Where is time lost during aircraft turnarounds? For each turnaround, reconstruct the actual process from inbound landing to outbound take-off, including arrival movements, the overall start of ground handling, the actual start and completion of every ground service, boarding start and close, aircraft readiness, and departure movements.",
-    "question_kr": "각 항공기 턴어라운드에서 어느 구간에 시간이 소요되는지 파악하고 싶어. 도착편 착륙부터 출발편 이륙까지 실제 도착 이동, 전체 지상조업 시작, 모든 개별 조업의 실제 시작·완료, 탑승 시작·종료, 항공기 준비 완료 및 실제 출발 이동을 포함해줘."
+    "question_en": "Where is time lost during aircraft turnarounds? For each turnaround, reconstruct the actual process from inbound landing to outbound take-off, including arrival movements, the overall start of ground handling, the actual start and completion of every ground service, the departing flight’s boarding start and close, aircraft readiness, and departure movements.",
+    "question_kr": "각 턴어라운드에서 도착편 착륙부터 다음 출발편 이륙까지 도착 이동, 전체 조업 시작, 모든 개별 조업의 실제 시작·완료, 다음 출발편의 탑승 시작·종료, 항공기 준비 완료 및 출발 이동을 추출해 잠재적 병목 구간을 살펴보고 싶어."
   },
   {
     "question_id": "Q05",
@@ -57,6 +57,6 @@
   {
     "question_id": "Q12",
     "question_en": "How does boarding progress into take-off for departures following a turnaround? Build an event log containing only flight-level boarding milestones and actual departure movements, from the beginning of boarding to take-off.",
-    "question_kr": "턴어라운드 이후의 출발에서 탑승부터 이륙까지 어떤 흐름으로 진행되는지 알고 싶어. 항공편 수준의 탑승 단계와 실제 출발 이동 이벤트만 포함하는 이벤트 로그를 만들어줘."
+    "question_kr": "턴어라운드 이후 출발편의 탑승 시작부터 실제 이륙까지 어떤 흐름으로 진행되는지 알고 싶어. 항공편 수준의 탑승 단계와 실제 출발 이동 이벤트만 포함해줘."
   }
 ]

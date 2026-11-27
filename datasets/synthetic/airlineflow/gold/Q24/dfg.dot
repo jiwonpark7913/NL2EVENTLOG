@@ -1,18 +1,24 @@
-digraph D {
-graph [rankdir=TB, bgcolor="transparent", pad=0.25, nodesep=0.35, ranksep=0.38];
-node [shape=box,style="rounded,filled",color="#8ba6b6",fillcolor="#edf4f7",fontname="Arial",fontsize=10];
-edge [color="#667d8b",fontname="Arial",fontsize=9,arrowsize=.65];
-start [shape=ellipse,label="Start",fillcolor="#e3f3e8"];
-end [shape=ellipse,label="End",fillcolor="#f7e5e1"];
-n0 [label="Passenger Boarding Confirmed\n287 buckets"];
-n1 [label="Scan Rejected\n47 buckets"];
-n2 [label="Passenger Boarding Confirmed ∥ Scan Rejected\n1 buckets"];
-start -> n0 [label="55"];
-start -> n1 [label="17"];
-n0 -> n0 [label="184"];
-n0 -> n2 [label="1"];
-n0 -> n1 [label="30"];
-n2 -> n0 [label="1"];
-n1 -> n0 [label="47"];
-n0 -> end [label="72"];
+digraph G {
+rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.3,ranksep=0.5]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=10]; edge [color="#728899",fontname="Arial",fontsize=9];
+start [label="Start",shape=oval,fillcolor="#e1f2e7"]; end [label="End",shape=oval,fillcolor="#f7e4e4"];
+n0 [label="Passenger Boarding Confirmed\n6458"];
+n1 [label="Passenger Boarding Confirmed ∥ Passenger Boarding Confirmed\n40"];
+n2 [label="Passenger Boarding Confirmed ∥ Scan Rejected\n2"];
+n3 [label="Scan Rejected\n742"];
+n0 -> end [label="2458"];
+n0 -> n0 [label="3741"];
+n0 -> n1 [label="25"];
+n0 -> n2 [label="2"];
+n0 -> n3 [label="232"];
+n1 -> end [label="10"];
+n1 -> n0 [label="29"];
+n1 -> n3 [label="1"];
+n2 -> n3 [label="2"];
+n3 -> end [label="24"];
+n3 -> n0 [label="353"];
+n3 -> n1 [label="7"];
+n3 -> n3 [label="358"];
+start -> n0 [label="2335"];
+start -> n1 [label="8"];
+start -> n3 [label="149"];
 }

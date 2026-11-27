@@ -1,73 +1,73 @@
-﻿query_id,old_events,new_events,old_tie_cases,new_tie_cases,old_duplicate_tuples,new_duplicate_tuples,old_variants,new_variants
-Q01,192,192,0,0,0,0,1,1
-Q02,672,672,21,1,0,0,22,40
-Q03,240,240,0,0,0,0,2,2
-Q04,960,960,31,1,0,0,33,44
-Q05,288,288,3,0,0,0,3,4
-Q06,192,192,0,0,0,0,1,1
-Q07,240,240,11,0,0,0,10,6
-Q08,192,192,0,0,0,0,1,1
-Q09,96,96,0,0,0,0,1,1
-Q10,144,144,0,0,0,0,1,1
-Q11,192,192,0,0,0,0,1,1
-Q12,192,192,0,0,0,0,1,1
-Q13,288,288,0,0,0,0,1,1
-Q14,288,288,0,0,0,0,1,1
-Q15,288,288,0,0,0,0,1,1
-Q16,864,864,0,0,0,0,1,1
-Q17,864,864,0,0,0,0,1,1
-Q18,864,864,48,4,48,1,1,48
-Q19,576,576,0,0,0,0,1,1
-Q20,576,576,0,0,0,0,1,1
-Q21,576,576,0,0,0,0,1,1
-Q22,336,336,0,0,0,0,2,2
-Q23,336,336,0,0,0,0,2,2
-Q24,336,336,0,1,0,0,2,6
-Q25,288,288,11,0,0,0,16,11
-Q26,288,288,3,0,0,0,3,2
-Q27,288,288,3,0,0,0,3,2
-Q28,288,288,3,0,0,0,3,4
-Q29,288,288,0,0,0,0,1,2
-Q30,288,288,16,0,0,0,2,2
-Q31,672,672,48,2,48,0,1,37
-Q32,672,672,48,1,48,1,1,2
-Q33,672,672,48,1,48,1,1,2
-Q34,672,672,48,1,48,1,1,13
-Q35,672,672,48,1,48,1,1,2
-Q36,672,672,48,1,48,1,1,2
-Q37,96,96,0,0,0,0,1,1
-Q38,192,192,3,0,0,0,3,4
-Q39,384,384,19,0,0,0,13,19
-Q40,576,576,21,1,0,0,22,40
-Q41,96,96,0,0,0,0,1,1
-Q42,192,192,0,0,0,0,1,1
-Q43,384,384,3,0,0,0,3,5
-Q44,576,576,19,0,0,0,13,26
-Q45,336,336,0,1,0,1,1,2
-Q46,672,672,0,2,0,2,1,3
-Q47,864,864,11,2,0,2,10,16
-Q48,1056,1056,19,3,0,2,13,29
-Q49,288,288,0,0,0,0,1,1
-Q50,288,288,0,0,0,0,1,1
-Q51,288,288,0,0,0,0,1,1
-Q52,288,288,0,0,0,0,1,1
-Q53,864,864,0,0,0,0,1,1
-Q54,864,864,0,0,0,0,1,1
-Q55,864,864,0,0,0,0,1,1
-Q56,864,864,0,0,0,0,1,1
-Q57,1440,1488,0,0,0,0,1,2
-Q58,1440,1488,0,0,0,0,1,2
-Q59,1440,1488,0,0,0,0,1,2
-Q60,1440,1488,0,0,0,0,1,2
-Q61,96,96,0,0,0,0,1,1
-Q62,96,96,0,0,0,0,1,1
-Q63,96,96,0,0,0,0,1,1
-Q64,96,96,0,0,0,0,1,1
-Q65,96,96,0,0,0,0,1,1
-Q66,96,96,0,0,0,0,1,1
-Q67,96,96,0,0,0,0,1,1
-Q68,96,96,0,0,0,0,1,1
-Q69,96,96,0,0,0,0,1,1
-Q70,96,96,0,0,0,0,1,1
-Q71,96,96,0,0,0,0,1,1
-Q72,96,96,0,0,0,0,1,1
+﻿query_id,cases,events,ties,variants,status
+Q01,200,400,0,1,source occurrence comparison PASS
+Q02,100,1400,1,91,source occurrence comparison PASS
+Q03,100,500,0,3,source occurrence comparison PASS
+Q04,100,2000,1,92,source occurrence comparison PASS
+Q05,100,600,0,4,source occurrence comparison PASS
+Q06,100,400,0,1,source occurrence comparison PASS
+Q07,100,500,0,18,source occurrence comparison PASS
+Q08,100,400,0,1,source occurrence comparison PASS
+Q09,100,200,0,1,source occurrence comparison PASS
+Q10,100,300,0,1,source occurrence comparison PASS
+Q11,200,400,0,1,source occurrence comparison PASS
+Q12,100,400,0,1,source occurrence comparison PASS
+Q13,5887,11595,0,2,source occurrence comparison PASS
+Q14,4351,11595,8,10,source occurrence comparison PASS
+Q15,200,11595,67,143,source occurrence comparison PASS
+Q16,7030,20999,0,3,source occurrence comparison PASS
+Q17,6699,20999,0,4,source occurrence comparison PASS
+Q18,200,20999,161,200,source occurrence comparison PASS
+Q19,6747,13287,0,2,source occurrence comparison PASS
+Q20,4445,13287,0,8,source occurrence comparison PASS
+Q21,2521,13287,39,82,source occurrence comparison PASS
+Q22,6581,7284,0,7,source occurrence comparison PASS
+Q23,4346,7284,0,48,source occurrence comparison PASS
+Q24,2492,7284,41,164,source occurrence comparison PASS
+Q25,100,600,0,23,source occurrence comparison PASS
+Q26,100,600,0,2,source occurrence comparison PASS
+Q27,100,600,0,2,source occurrence comparison PASS
+Q28,100,600,0,5,source occurrence comparison PASS
+Q29,100,600,0,2,source occurrence comparison PASS
+Q30,100,600,0,2,source occurrence comparison PASS
+Q31,100,6969,57,100,source occurrence comparison PASS
+Q32,100,6867,44,100,source occurrence comparison PASS
+Q33,100,6867,44,100,source occurrence comparison PASS
+Q34,100,6987,59,100,source occurrence comparison PASS
+Q35,100,6748,98,100,source occurrence comparison PASS
+Q36,100,6748,98,100,source occurrence comparison PASS
+Q37,100,200,0,1,source occurrence comparison PASS
+Q38,100,400,0,4,source occurrence comparison PASS
+Q39,100,800,1,79,source occurrence comparison PASS
+Q40,100,1200,1,91,source occurrence comparison PASS
+Q41,100,200,0,1,source occurrence comparison PASS
+Q42,100,400,0,1,source occurrence comparison PASS
+Q43,100,800,0,29,source occurrence comparison PASS
+Q44,100,1200,1,80,source occurrence comparison PASS
+Q45,100,3270,97,100,source occurrence comparison PASS
+Q46,100,6659,97,100,source occurrence comparison PASS
+Q47,100,7059,97,100,source occurrence comparison PASS
+Q48,100,7459,97,100,source occurrence comparison PASS
+Q49,5887,11595,0,2,source occurrence comparison PASS
+Q50,5887,11595,0,2,source occurrence comparison PASS
+Q51,5887,11595,0,2,source occurrence comparison PASS
+Q52,5887,11595,0,2,source occurrence comparison PASS
+Q53,7030,20999,0,3,source occurrence comparison PASS
+Q54,7030,20999,0,3,source occurrence comparison PASS
+Q55,7030,20999,0,3,source occurrence comparison PASS
+Q56,7030,20999,0,3,source occurrence comparison PASS
+Q57,6747,35030,0,18,source occurrence comparison PASS
+Q58,6747,35030,0,18,source occurrence comparison PASS
+Q59,6747,35030,0,18,source occurrence comparison PASS
+Q60,6747,35030,0,18,source occurrence comparison PASS
+Q61,100,200,0,1,source occurrence comparison PASS
+Q62,100,200,0,1,source occurrence comparison PASS
+Q63,100,200,0,1,source occurrence comparison PASS
+Q64,100,200,0,1,source occurrence comparison PASS
+Q65,100,200,0,1,source occurrence comparison PASS
+Q66,100,200,0,1,source occurrence comparison PASS
+Q67,100,200,0,1,source occurrence comparison PASS
+Q68,100,200,0,1,source occurrence comparison PASS
+Q69,100,200,0,1,source occurrence comparison PASS
+Q70,100,200,0,1,source occurrence comparison PASS
+Q71,100,200,0,1,source occurrence comparison PASS
+Q72,100,200,0,1,source occurrence comparison PASS
