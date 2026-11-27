@@ -30,5 +30,49 @@ for q,events in data['events'].items():
         rows,columns=idx[t]
         assert rows[pk][columns[col]]==ts,(q,t,pk,col)
         count+=1
+
+# Exercise actual UI rendering logic with the real release payload, in a Node DOM stub.
+# No fake data: test Q01 (same row, different clock), Q05 (two tables), Q18 (aggregate) and Q56 (visit).
+with tempfile.TemporaryDirectory() as t:
+    js=Path(t)/'review_test.js'
+    subset={k:data[k] for k in ('version','manifest','records','queries','events')}
+    subset['queries']={q:subset['queries'][q] for q in ('Q01','Q05','Q18','Q56')}
+    subset['events']={q:subset['events'][q] for q in subset['queries']}
+    # Only the function declarations, not the boot-up DOM handlers.
+    body=script.split('function drawRules()',1)[0]
+    body=body.replace('const DATA=/*__PAYLOAD__*/null;', 'const DATA='+json.dumps(subset,ensure_ascii=False,separators=(',',':'))+';')
+    stub="""
+const assert=require('node:assert/strict');
+const elements=new Map();
+global.localStorage={getItem:()=>null,setItem:()=>{}};
+function elem(id){if(!elements.has(id))elements.set(id,{value:'',checked:id==='related',innerHTML:'',textContent:'',scrollTop:0,scrollLeft:0,closest:()=>({scrollTop:0}),querySelector:()=>null});return elements.get(id)}
+global.document={getElementById:elem};
+"""
+    tests="""
+function check(qid,event){
+    q=qid;drawSource(event);
+    const html=elem('rawTable').innerHTML, rec=DATA.records[event[3]];
+    assert.equal(rawTableName,event[3]);
+    assert.equal(elem('tableSelect').value,event[3]);
+    assert.ok(html.includes('<tr class="sel">'));
+    assert.ok(html.includes('<td class="mark" title="'+event[2]+'">'+event[2]+'</td>'));
+    assert.ok(html.includes('<th class="mark">'+event[5]+'</th>'));
+    assert.ok(rec.columns.every(x=>html.includes('>'+x+'</th>')));
+    assert.ok(rawRows.some(r=>r[0]===event[4]));
+}
+const pair=DATA.events.Q01.slice(0,2);
+assert.equal(pair[0][4],pair[1][4]);
+check('Q01',pair[0]);check('Q01',pair[1]);
+check('Q05',DATA.events.Q05.find(e=>e[1]==='Cabin Cleaning Start'));
+assert.equal(rawRows.length,6);
+check('Q05',DATA.events.Q05.find(e=>e[1]==='Aircraft Ready'));
+assert.equal(rawRows.length,1);
+check('Q18',DATA.events.Q18[0]);check('Q56',DATA.events.Q56[0]);
+elem('related').checked=false;renderRaw(true);assert.equal(rawRows.length,DATA.records[rawTableName].rows.length);
+console.log('PASS: original-table UI source selection, green row and exact clock, case scope and full-table toggle (Node DOM stub)');
+"""
+    js.write_text(stub+body+tests,encoding='utf-8')
+    subprocess.run(['node',str(js)],check=True)
+
 p.write_text(new,encoding='utf-8')
 print('PASS: review payload unchanged; exact physical timestamp verified for',count,'event occurrences; JavaScript syntax valid; payload SHA256',hashlib.sha256(payload.encode()).hexdigest())
