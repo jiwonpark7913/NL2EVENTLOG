@@ -172,7 +172,9 @@ def render_dfg(q,rows,g):
     traces,variants,nodes,edges,ties=metrics(rows)
     keys={'Start':'start','End':'end'};keys.update({a:'n'+str(i) for i,a in enumerate(sorted(nodes))})
     lines=['digraph G {','rankdir=LR; graph [bgcolor="white",pad=0.2,nodesep=0.3,ranksep=0.5]; node [shape=box,style="rounded,filled",fillcolor="#eaf2f6",color="#607b8b",fontname="Arial",fontsize=10]; edge [color="#728899",fontname="Arial",fontsize=9];','start [label="Start",shape=oval,fillcolor="#e1f2e7"]; end [label="End",shape=oval,fillcolor="#f7e4e4"];']
-    for a,n in sorted(nodes.items()):lines.append(f'{keys[a]} [label={json.dumps(a+"\\n"+str(n),ensure_ascii=False)}];')
+    for a,n in sorted(nodes.items()):
+        label=json.dumps(a+chr(10)+str(n),ensure_ascii=False)
+        lines.append(f'{keys[a]} [label={label}];')
     for (a,b),n in sorted(edges.items()):lines.append(f'{keys[a]} -> {keys[b]} [label="{n}"];')
     lines.append('}')
     (g/'dfg.dot').write_text('\n'.join(lines)+'\n')
