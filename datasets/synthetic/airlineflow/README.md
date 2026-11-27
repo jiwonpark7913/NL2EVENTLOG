@@ -28,10 +28,10 @@ The four variants add five tables at each level. L15 is the main test database. 
 
 | Variant | Tables | Columns | Rows | Domain extension | Files |
 |---|---:|---:|---:|---|---|
-| [L05](variants/l05/README.md) | 5 | 30 | 2,100 | Core aircraft turnaround | [SQLite](variants/l05/input/database.sqlite) · [ERD](variants/l05/docs/schema.svg) · [DD (JSON)](variants/l05/input/data_dictionary.json) · [DD (readable)](variants/l05/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l05) |
-| [L10](variants/l10/README.md) | 10 | 47 | 34,563 | Passenger and booking | [SQLite](variants/l10/input/database.sqlite) · [ERD](variants/l10/docs/schema.svg) · [DD (JSON)](variants/l10/input/data_dictionary.json) · [DD (readable)](variants/l10/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l10) |
-| [L15](variants/l15/README.md) | 15 | 64 | 80,077 | Baggage and security | [SQLite](variants/l15/input/database.sqlite) · [ERD](variants/l15/docs/schema.svg) · [DD (JSON)](variants/l15/input/data_dictionary.json) · [DD (readable)](variants/l15/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l15) |
-| [L20](variants/l20/README.md) | 20 | 81 | 80,289 | Operating resources | [SQLite](variants/l20/input/database.sqlite) · [ERD](variants/l20/docs/schema.svg) · [DD (JSON)](variants/l20/input/data_dictionary.json) · [DD (readable)](variants/l20/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l20) |
+| [L05](variants/l05/README.md) | 5 | 30 | 2,100 | Core aircraft turnaround | [SQLite](variants/l05/input/database.sqlite) · [ERD](variants/l05/docs/schema.svg) · [Original DD](variants/l05/input/data_dictionary.json) · [Standard DD](variants/l05/input/data_dictionary_standard.json) · [DD (readable)](variants/l05/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l05) |
+| [L10](variants/l10/README.md) | 10 | 47 | 34,563 | Passenger and booking | [SQLite](variants/l10/input/database.sqlite) · [ERD](variants/l10/docs/schema.svg) · [Original DD](variants/l10/input/data_dictionary.json) · [Standard DD](variants/l10/input/data_dictionary_standard.json) · [DD (readable)](variants/l10/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l10) |
+| [L15](variants/l15/README.md) | 15 | 64 | 80,077 | Baggage and security | [SQLite](variants/l15/input/database.sqlite) · [ERD](variants/l15/docs/schema.svg) · [Original DD](variants/l15/input/data_dictionary.json) · [Standard DD](variants/l15/input/data_dictionary_standard.json) · [DD (readable)](variants/l15/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l15) |
+| [L20](variants/l20/README.md) | 20 | 81 | 80,289 | Operating resources | [SQLite](variants/l20/input/database.sqlite) · [ERD](variants/l20/docs/schema.svg) · [Original DD](variants/l20/input/data_dictionary.json) · [Standard DD](variants/l20/input/data_dictionary_standard.json) · [DD (readable)](variants/l20/docs/data_dictionary.md) · [EEG example](docs/eeg_examples.md#l20) |
 
 ### Entity–relationship diagram (L20)
 
@@ -60,7 +60,7 @@ The four variants add five tables at each level. L15 is the main test database. 
 
 </details>
 
-The readable dictionaries describe the business meaning, keys and timestamp columns. The model-facing version is the original JSON. [Reference EEG examples](docs/eeg_examples.md) demonstrate how selected event definitions can be connected to case entities; these are explanatory, not generated EEG outputs or inputs.
+The readable dictionaries describe the original business meaning, keys and timestamp columns. Two model-facing JSON editions are available: the original dictionary for frozen-run reproduction, and the standard dictionary for newly configured evaluations. The standard edition removes extraction-specific guidance and fixture-only wording while retaining code definitions, physical declarations, timestamp semantics and operational roles. See the [dictionary review and usage policy](evaluation/dictionary_review/README.md). [Reference EEG examples](docs/eeg_examples.md) demonstrate how selected event definitions can be connected to case entities; these are explanatory, not generated EEG outputs or inputs.
 
 ## Dataset analysis
 
@@ -117,7 +117,7 @@ Regenerate the population from its fixed seed with `node source/generate_records
 
 `verify.py` checks the published fixture against its references; `generate.py` reconstructs the current logical database from the canonical synthetic records in `source/records.json` and the schema DDLs. Use an empty output directory. The regenerated SQLite binary hashes may differ while logical records remain identical.
 
-For model evaluation, provide only the appropriate `variants/lXX/input/database.sqlite`, `data_dictionary.json` and the request text. Do not include reference EEG examples, Gold, evaluator registries, review pages, source records or diagnostic answers in the model input.
+For model evaluation, provide only the appropriate `variants/lXX/input/database.sqlite`, one selected dictionary (`data_dictionary.json` for original frozen runs or `data_dictionary_standard.json` for newly configured evaluations), and the request text. Record the exact dictionary edition and checksum; use the same edition for all compared methods. The existing variant manifest and reproduction commands retain the original dictionary. Do not include reference EEG examples, Gold, evaluator registries, review pages, source records or diagnostic answers in the model input.
 
 ## Repository guide
 

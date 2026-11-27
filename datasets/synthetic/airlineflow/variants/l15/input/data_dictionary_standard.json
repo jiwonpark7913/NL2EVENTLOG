@@ -1,0 +1,333 @@
+{
+  "flights": {
+    "description": "Dated operating legs, including both inbound and outbound flights. Flight numbers repeat across dates.",
+    "columns": {
+      "flight_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Operating leg identifier."
+      },
+      "flight_no": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Published flight number."
+      },
+      "scheduled_offblock": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Scheduled off-block time."
+      },
+      "scheduled_inblock": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Scheduled in-block time."
+      }
+    }
+  },
+  "turnarounds": {
+    "description": "Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start denotes the start of ground-handling coordination.",
+    "columns": {
+      "turn_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Turnaround identifier."
+      },
+      "inbound_id": {
+        "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
+        "description": "Inbound operating leg."
+      },
+      "outbound_id": {
+        "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
+        "description": "Next outbound operating leg."
+      },
+      "handling_started_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Actual start of ground handling."
+      },
+      "ready_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Actual aircraft ready time."
+      }
+    }
+  },
+  "boarding_sessions": {
+    "description": "Flight-level boarding sessions at the origin of their associated operating leg, including legs arriving at the focal airport.",
+    "columns": {
+      "session_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Boarding session identifier."
+      },
+      "flight_id": {
+        "declaration": "TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)",
+        "description": "Operating leg."
+      },
+      "started_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Actual start of passenger boarding."
+      },
+      "closed_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Actual close of passenger boarding."
+      }
+    }
+  },
+  "handling_jobs": {
+    "description": "Ground handling work orders associated with aircraft turnarounds.",
+    "columns": {
+      "job_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Handling job identifier."
+      },
+      "turn_id": {
+        "declaration": "TEXT NOT NULL REFERENCES turnarounds(turn_id)",
+        "description": "Aircraft turnaround associated with the job."
+      },
+      "job_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Ground crews use CL for cabin cleaning and FU for refuelling. Catering loading is recorded under CA, and baggage loading under BL. DP identifies passenger disembarkation, while UL identifies baggage unloading."
+      },
+      "started_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Actual start time of the assigned job."
+      },
+      "finished_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time at which completion of the assigned operation was confirmed."
+      },
+      "posted_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time at which the job record was posted to the system."
+      },
+      "service_provider_code": {
+        "declaration": "TEXT",
+        "description": "Provider assigned to the job. Codes cover airline ground operations and contracted providers."
+      },
+      "priority_code": {
+        "declaration": "TEXT",
+        "description": "Dispatch priority assigned to the job. STANDARD, HIGH and CRITICAL are operational priority categories."
+      },
+      "work_zone_code": {
+        "declaration": "TEXT",
+        "description": "Zone where the work was carried out, such as aircraft cabin, cargo hold, ramp or passenger bridge."
+      }
+    }
+  },
+  "movement_reports": {
+    "description": "Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. EST estimates origin off-block.",
+    "columns": {
+      "report_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Movement report identifier."
+      },
+      "flight_id": {
+        "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
+        "description": "Operating leg."
+      },
+      "kind": {
+        "declaration": "TEXT NOT NULL",
+        "description": "EST = estimated off-block; OUT = actual off-block; AIR = actual take-off; LAND = actual landing; IN = actual in-block."
+      },
+      "value_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Timestamp represented by the message."
+      },
+      "received_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time the message was received."
+      },
+      "source_code": {
+        "declaration": "TEXT",
+        "description": "Origin of the report, such as an airport operations database (AODB), a ground handling system (GHS), or an aircraft communications feed (ACARS)."
+      },
+      "validation_code": {
+        "declaration": "TEXT",
+        "description": "How a report was checked. AUTO_CHECKED means automated checks. OPS_REVIEWED means operations staff reviewed it."
+      },
+      "message_format_code": {
+        "declaration": "TEXT",
+        "description": "Format of the ingested record, such as AIDX, MVT or a local system record."
+      }
+    }
+  },
+  "bookings": {
+    "description": "Reservations for groups of travellers.",
+    "columns": {
+      "booking_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Booking identifier."
+      },
+      "booked_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time the booking was created."
+      }
+    }
+  },
+  "passengers": {
+    "description": "Passenger register. A single nationality is recorded, distinct from country of birth, residence or passport issuance.",
+    "columns": {
+      "passenger_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Internal passenger identifier, distinct from a passport number."
+      },
+      "display_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Passenger display name."
+      },
+      "date_of_birth": {
+        "declaration": "DATE NOT NULL",
+        "description": "Date of birth in YYYY-MM-DD format."
+      },
+      "nationality_code": {
+        "declaration": "TEXT CHECK (nationality_code IS NULL OR length(nationality_code)=2)",
+        "description": "Recorded two-letter nationality code (KR, JP, US, DE or SG). NULL means unknown."
+      },
+      "gender_code": {
+        "declaration": "TEXT NOT NULL CHECK (gender_code IN ('MALE','FEMALE','UNKNOWN'))",
+        "description": "Source gender code using the local values MALE, FEMALE and UNKNOWN."
+      }
+    }
+  },
+  "tickets": {
+    "description": "Tickets issued to passengers.",
+    "columns": {
+      "ticket_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Ticket identifier."
+      },
+      "booking_id": {
+        "declaration": "TEXT NOT NULL REFERENCES bookings(booking_id)",
+        "description": "Associated booking."
+      },
+      "passenger_id": {
+        "declaration": "TEXT NOT NULL REFERENCES passengers(passenger_id)",
+        "description": "Passenger named on the ticket."
+      }
+    }
+  },
+  "passenger_legs": {
+    "description": "Ticketed segments linking a passenger ticket to a particular operating leg.",
+    "columns": {
+      "leg_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Passenger flight leg identifier."
+      },
+      "ticket_id": {
+        "declaration": "TEXT NOT NULL REFERENCES tickets(ticket_id)",
+        "description": "Associated ticket."
+      },
+      "flight_id": {
+        "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
+        "description": "Operating leg."
+      }
+    }
+  },
+  "passenger_actions": {
+    "description": "Departure processing records for passenger flight legs.",
+    "columns": {
+      "action_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Passenger action identifier."
+      },
+      "leg_id": {
+        "declaration": "TEXT NOT NULL REFERENCES passenger_legs(leg_id)",
+        "description": "Passenger flight leg."
+      },
+      "action_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Once check-in is completed, the system records CK. When boarding is confirmed, the system records BD. If a scan is rejected, the system records RJ."
+      },
+      "action_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time the action occurred."
+      }
+    }
+  },
+  "bag_legs": {
+    "description": "Transport records for checked bags associated with passenger flight legs.",
+    "columns": {
+      "bag_leg_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Baggage transport record identifier."
+      },
+      "leg_id": {
+        "declaration": "TEXT NOT NULL REFERENCES passenger_legs(leg_id)",
+        "description": "Passenger flight leg associated with the checked bag."
+      },
+      "bag_tag": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Baggage tag identifier."
+      }
+    }
+  },
+  "bag_scans": {
+    "description": "Individual baggage tracking records for checked bags.",
+    "columns": {
+      "scan_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Baggage scan record identifier."
+      },
+      "bag_leg_id": {
+        "declaration": "TEXT NOT NULL REFERENCES bag_legs(bag_leg_id)",
+        "description": "Baggage transport record associated with the scan."
+      },
+      "scan_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Baggage tracking event code. B101 indicates that a bag has been accepted. B204 indicates that a bag has been loaded into the aircraft hold."
+      },
+      "scanned_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Date and time of the baggage scan."
+      }
+    }
+  },
+  "checkpoints": {
+    "description": "Airport security screening checkpoints.",
+    "columns": {
+      "checkpoint_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Security checkpoint identifier."
+      },
+      "zone": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Screening zone name."
+      }
+    }
+  },
+  "security_visits": {
+    "description": "Airport-provided records of individual passenger visits to security checkpoints.",
+    "columns": {
+      "visit_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Security visit identifier."
+      },
+      "leg_id": {
+        "declaration": "TEXT NOT NULL REFERENCES passenger_legs(leg_id)",
+        "description": "Associated passenger flight leg."
+      },
+      "checkpoint_id": {
+        "declaration": "TEXT NOT NULL REFERENCES checkpoints(checkpoint_id)",
+        "description": "Security checkpoint visited."
+      }
+    }
+  },
+  "security_events": {
+    "description": "Observations recorded during security checkpoint visits.",
+    "columns": {
+      "event_id": {
+        "declaration": "TEXT PRIMARY KEY NOT NULL",
+        "description": "Observation identifier."
+      },
+      "visit_id": {
+        "declaration": "TEXT NOT NULL REFERENCES security_visits(visit_id)",
+        "description": "Associated security visit."
+      },
+      "point": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Q = queue entry; S = screening start; C = screening completion."
+      },
+      "observed_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time the observation was made on site."
+      },
+      "received_at": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Time the receiving system received the record."
+      }
+    }
+  }
+}

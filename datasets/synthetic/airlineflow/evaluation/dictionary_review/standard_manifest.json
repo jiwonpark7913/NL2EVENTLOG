@@ -1,0 +1,40 @@
+{
+  "edition": "standard-v1",
+  "base_commit": "c91a03240750a580c59734d5552fae71c02828d7",
+  "checksum_algorithm": "Git blob SHA (content-addressed Git object; not raw-file SHA-256)",
+  "evaluation_manifest": "../variant_manifest.json",
+  "variants": [
+    {
+      "variant_id": "l05",
+      "original_path": "variants/l05/input/data_dictionary.json",
+      "original_git_blob_sha": "7ebdf5f44733f960364adc7d491b1a23e29b7838",
+      "standard_path": "variants/l05/input/data_dictionary_standard.json",
+      "standard_git_blob_sha": "75cb3decf21a07e495dbf3d5775ca85277cd863d",
+      "database_git_blob_sha": "9a2e8b0be05c83060f17b28df0cbb79b2676405c"
+    },
+    {
+      "variant_id": "l10",
+      "original_path": "variants/l10/input/data_dictionary.json",
+      "original_git_blob_sha": "0425ba38f8f04ed4396c8342f6ec5bcfc4d65773",
+      "standard_path": "variants/l10/input/data_dictionary_standard.json",
+      "standard_git_blob_sha": "e9ac6b4585163023f450840c6d3cadcf0216c867",
+      "database_git_blob_sha": "1ca27f9afaa03d902a92568798958bf1f934533f"
+    },
+    {
+      "variant_id": "l15",
+      "original_path": "variants/l15/input/data_dictionary.json",
+      "original_git_blob_sha": "80f1789436276b5e2e224034fa1817fabb70d29a",
+      "standard_path": "variants/l15/input/data_dictionary_standard.json",
+      "standard_git_blob_sha": "fd309af34ccd6a7852b5a2307f2babf44bb3106a",
+      "database_git_blob_sha": "d82274c24878725a3b8c742e0cc2b4b48f1b547a"
+    },
+    {
+      "variant_id": "l20",
+      "original_path": "variants/l20/input/data_dictionary.json",
+      "original_git_blob_sha": "d51ae35cb193bbce255321beb574d64776cb0a1b",
+      "standard_path": "variants/l20/input/data_dictionary_standard.json",
+      "standard_git_blob_sha": "d88e4726569216c4e85f60932f455d107fdae282",
+      "database_git_blob_sha": "ec1e47fdfb3a862946d4ecbf02c2f65e8ec04171"
+    }
+  ]
+}

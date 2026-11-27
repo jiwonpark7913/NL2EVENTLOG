@@ -7,7 +7,7 @@
 - [Pilot questions (12)](model_questions.jsonl)
 - [Test questions (60)](model_questions_test.jsonl)
 
-Pass only the request text (and database and dictionary) to a model.
+Pass only the request text, database and one selected dictionary to a model. The [standard dictionary edition and review](dictionary_review/README.md) are available for new evaluations; the original manifest continues to identify the original dictionary. Never send evaluator-only review materials or both editions to a model.
 
 ## Evaluator-only files
 

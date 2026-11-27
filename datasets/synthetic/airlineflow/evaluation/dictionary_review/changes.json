@@ -1,0 +1,140 @@
+{
+  "edition": "standard-v1",
+  "base_commit": "c91a03240750a580c59734d5552fae71c02828d7",
+  "unique_description_changes": 12,
+  "changes": [
+    {
+      "field": "turnarounds",
+      "before": "Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start is the start of coordination, which can precede individual jobs.",
+      "after": "Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start denotes the start of ground-handling coordination.",
+      "reason": "Retain coordination semantics; omit a general sequencing hint not needed to define the field.",
+      "variants": [
+        "l05",
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "boarding_sessions",
+      "before": "Flight-level boarding sessions at the origin of every dated operating leg. One session per flight in this example; inbound legs also have origin boarding records.",
+      "after": "Flight-level boarding sessions at the origin of their associated operating leg, including legs arriving at the focal airport.",
+      "reason": "Retain origin and inbound role semantics; remove fixture-specific completeness and one-session statement (uniqueness remains in the declaration).",
+      "variants": [
+        "l05",
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "handling_jobs.service_provider_code",
+      "before": "Provider assigned to the job. Codes are synthetic and cover airline ground operations and contracted providers.",
+      "after": "Provider assigned to the job. Codes cover airline ground operations and contracted providers.",
+      "reason": "Remove fixture-specific wording; retain provider meaning.",
+      "variants": [
+        "l05",
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "handling_jobs.priority_code",
+      "before": "Dispatch priority assigned to the job. STANDARD, HIGH and CRITICAL are synthetic operational categories.",
+      "after": "Dispatch priority assigned to the job. STANDARD, HIGH and CRITICAL are operational priority categories.",
+      "reason": "Retain code meanings; remove fixture-specific wording.",
+      "variants": [
+        "l05",
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "movement_reports",
+      "before": "Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. Both inbound and outbound legs have all four actual movements; EST estimates origin off-block.",
+      "after": "Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. EST estimates origin off-block.",
+      "reason": "Remove fixture completeness statement; retain all code and direction semantics.",
+      "variants": [
+        "l05",
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "passengers",
+      "before": "Synthetic passenger register. The dataset records a single nationality, distinct from country of birth, residence or passport issuance. Date of birth is a passenger attribute.",
+      "after": "Passenger register. A single nationality is recorded, distinct from country of birth, residence or passport issuance.",
+      "reason": "Retain nationality semantics; omit fixture wording and redundant attribute classification.",
+      "variants": [
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "passengers.passenger_id",
+      "before": "Internal synthetic passenger identifier, distinct from a passport number.",
+      "after": "Internal passenger identifier, distinct from a passport number.",
+      "reason": "Retain identifier semantics.",
+      "variants": [
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "passengers.display_name",
+      "before": "Synthetic passenger display name.",
+      "after": "Passenger display name.",
+      "reason": "Remove fixture wording; dataset documentation continues to identify the dataset as synthetic.",
+      "variants": [
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "passengers.date_of_birth",
+      "before": "Date of birth in YYYY-MM-DD format. A passenger attribute rather than an event timestamp.",
+      "after": "Date of birth in YYYY-MM-DD format.",
+      "reason": "Remove explicit event-exclusion guidance.",
+      "variants": [
+        "l10",
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "bag_legs",
+      "before": "Transport records for a sample of checked bags associated with passenger flight legs.",
+      "after": "Transport records for checked bags associated with passenger flight legs.",
+      "reason": "Remove fixture sampling language from operational metadata.",
+      "variants": [
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "bag_scans",
+      "before": "Individual baggage tracking records for the checked bags represented in the dataset.",
+      "after": "Individual baggage tracking records for checked bags.",
+      "reason": "Remove fixture-specific coverage wording.",
+      "variants": [
+        "l15",
+        "l20"
+      ]
+    },
+    {
+      "field": "airlines.name",
+      "before": "Synthetic airline name.",
+      "after": "Airline name.",
+      "reason": "Remove fixture wording; dataset documentation continues to identify the dataset as synthetic.",
+      "variants": [
+        "l20"
+      ]
+    }
+  ]
+}
