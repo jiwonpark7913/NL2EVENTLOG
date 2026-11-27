@@ -1,0 +1,77 @@
+{
+  "seed": 20261127,
+  "counts": {
+    "flights": 200,
+    "turnarounds": 100,
+    "boarding_sessions": 200,
+    "handling_jobs": 600,
+    "movement_reports": 1000,
+    "bookings": 2537,
+    "passengers": 4505,
+    "tickets": 4505,
+    "passenger_legs": 6885,
+    "passenger_actions": 14031,
+    "bag_legs": 5887,
+    "bag_scans": 11595,
+    "checkpoints": 3,
+    "security_visits": 7030,
+    "security_events": 20999,
+    "airlines": 2,
+    "airports": 3,
+    "aircraft": 5,
+    "employees": 2,
+    "flight_dispatch": 200
+  },
+  "flight_population": {
+    "min": 20,
+    "max": 50,
+    "total": 6885
+  },
+  "party_histogram": {
+    "1": 1316,
+    "2": 765,
+    "3": 247,
+    "4": 135,
+    "5": 66,
+    "6": 8
+  },
+  "ticket_leg_histogram": {
+    "1": 2463,
+    "2": 1765,
+    "3": 216,
+    "4": 61
+  },
+  "passenger_state_histogram": {
+    "normal": 6196,
+    "incomplete": 207,
+    "retry": 344,
+    "no_show": 138
+  },
+  "bags_per_leg": {
+    "0": 2534,
+    "1": 3023,
+    "2": 1120,
+    "3": 208
+  },
+  "visits_per_leg": {
+    "0": 186,
+    "1": 6368,
+    "2": 331
+  },
+  "rejections_per_leg": {
+    "0": 6500,
+    "1": 148,
+    "2": 115,
+    "3": 122
+  },
+  "turnaround_scenarios": {
+    "normal": 52,
+    "clean": 12,
+    "bag": 10,
+    "overlap": 10,
+    "boarding": 9,
+    "fuel": 7
+  },
+  "duplicate_flight_boarding_triples": 920,
+  "checks": "generator-level checks passed; SQLite and Gold not yet validated"
+}
