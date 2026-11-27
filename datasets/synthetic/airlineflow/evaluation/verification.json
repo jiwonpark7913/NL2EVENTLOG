@@ -122,5 +122,22 @@
     "gold_sql_conditions": 108,
     "first_five_tables": "unchanged",
     "new_event_timestamps": 0
+  },
+  "release_audit": {
+    "status": "PASS",
+    "schema_revision": "operational-v1",
+    "fixed_seed_reproduction": "PASS",
+    "database_rebuilds": 4,
+    "reproduced_gold_conditions": 108,
+    "protected_gold_files": 360,
+    "protected_inputs_unchanged": true,
+    "gold_files_unchanged": true,
+    "dfg_files_checked": 144,
+    "dfg_byte_changes": [],
+    "dfg_semantic_checks": "PASS",
+    "html_revision": "r12",
+    "ui_english": true,
+    "human_semantic_review": "PENDING",
+    "production_scorer": "NOT_RUN"
   }
 }

@@ -6,6 +6,8 @@ AirlineFlow models aircraft turnarounds at a focal airport, connecting arriving 
 
 **72 requests · 108 DB–request conditions · 4 nested schemas · 28 reference activity types**
 
+Current schema: **Operational v1** · [Operational schema design](docs/operational_schema_v1.md) · [DFG consistency audit](evaluation/dfg_consistency_audit.csv).
+
 Current fixture: `Stochastic-v2-CompactIDs-20261127` · 100 turnarounds · 200 operating legs · 6,885 passenger legs.
 
 [Download current integrated review HTML](https://raw.githubusercontent.com/jiwonpark7913/NL2EVENTLOG/main/datasets/synthetic/airlineflow/docs/scenario.html) · [Verification receipt](evaluation/verification.json)
@@ -108,12 +110,13 @@ Clone the repository or download the selected SQLite and JSON dictionary from th
 
 ```bash
 cd datasets/synthetic/airlineflow
+python generate.py --check
 python verify.py
 python generate.py /tmp/airlineflow-new
 python docs/analyze_dataset.py
 ```
 
-Regenerate the population from its fixed seed with `node source/generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY`. The full release builder `regenerate_v2.py` requires Node, Python and Graphviz and is intended for an isolated checkout. Refresh documentation independently with `python docs/render_readme.py`.
+Regenerate the population from its fixed seed with `node source/generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY`. Use `python publish_review.py` (Node, Python, Graphviz) to validate and refresh derived review assets without changing the released inputs or Gold. Historical migration scripts are not part of the release workflow. Refresh documentation independently with `python docs/render_readme.py`.
 
 `verify.py` checks the published fixture against its references; `generate.py` reconstructs the current logical database from the canonical synthetic records in `source/records.json` and the schema DDLs. Use an empty output directory. The regenerated SQLite binary hashes may differ while logical records remain identical.
 
@@ -133,7 +136,7 @@ For model evaluation, provide only the appropriate `variants/lXX/input/database.
 
 ## Validation and limitations
 
-Current release verification: **108/108 SQLite comparisons · 72/72 independent occurrence reconstructions**. The compact-ID migration preserves source rows and Gold multisets modulo bijective remapping. Enriched logs project exactly onto canonical triples. Human review and production-scorer integration remain pending. These checks are not model results.
+Current release verification: **108/108 SQLite comparisons · 72/72 independent occurrence reconstructions**. The compact-ID migration preserves source rows and Gold multisets modulo bijective remapping. Operational v1 extends 15 tables with 87 attributes while preserving existing event clocks and reference answers. Enriched logs project exactly onto canonical triples. Human review and production-scorer integration remain pending. These checks are not model results.
 
 [Semantic review](evaluation/semantic_gold_review_20261127.md) · [Verification receipt](evaluation/verification.json) · [Case policy](evaluation/case_key_policy.json) · [Release history](docs/archive/release_history_20261127.md).
 
