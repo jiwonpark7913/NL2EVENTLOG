@@ -20,7 +20,7 @@
 #source details{margin-top:9px;font-size:11px}
 #source details summary{font-weight:600;cursor:pointer}
 #source .raw-caption{color:#637581;font-size:11px;margin:4px 0;line-height:1.4}
-.flight-context{font-size:11px;white-space:nowrap}.flight-date{color:#637581;font-size:10px}.flight-sep{color:#637581}.flight-context br{line-height:1.15}</style></head><body><header><h1>AirlineFlow Integrated Gold Review <span class="muted">· Short IDs / Source-table view r4</span></h1><span id="version" class="muted"></span><div id="variants" class="toolbar"></div><span id="dbstat" class="muted"></span><button id="export">Save review JSON</button><label class="muted">Load review <input type="file" id="import" accept=".json"></label></header><div id="layout"><aside class="panel side"><h3>Request catalog</h3><input id="search" placeholder="Search requests" style="width:100%"><div id="nav"></div></aside><main><div class="panel summary" id="summary"></div><div class="grid"><section class="panel"><h3>01 · Reference DFG</h3><div class="muted">Equal-time events are grouped; adjacency is not causality.</div><div id="dfg"></div></section><section class="panel"><h3>03 · Source database and extraction evidence</h3><div id="source"></div></section><section class="panel"><h3>02 · Reference event log</h3><div class="toolbar"><select id="case" style="max-width:65%"></select><input id="filter" placeholder="Activity, flight or timestamp"></div><div class="pager"><button id="prev">‹</button><span id="page"></span><button id="next">›</button></div><div id="events"></div></section><section class="panel"><h3>04 · Reference PI / ESpec / SQL</h3><div class="tabs"><button data-tab="rules">Activity rules</button><button data-tab="pi">PI</button><button data-tab="espec">ESpec</button><button data-tab="sql">SQL</button></div><div id="rules"></div></section></div><section class="panel" style="margin-top:10px"><h3>05 · Selected case timeline</h3><div id="timeline"></div></section></main><aside class="panel review"><h3>Final review</h3><div id="status"></div><div class="warn">Evaluator-only. Automated checks are not human approval. Review decisions stay local until exported.</div><div id="checks"></div><label>Review verdict<select id="verdict" style="width:100%"><option>Pending</option><option>Approve</option><option>Revise</option><option>Reject</option></select></label><label>Reviewer notes<textarea id="notes"></textarea></label><button class="approve" id="approve">Save decision and next request →</button><button id="back">← Previous request</button></aside></div><script>
+.flight-context{font-size:11px;white-space:nowrap}.flight-date{color:#637581;font-size:10px}.flight-sep{color:#637581}.flight-context br{line-height:1.15}.event-scroll{overflow:auto;max-height:300px}.event-scroll table{width:max-content;min-width:100%}.event-scroll th,.event-scroll td{white-space:nowrap;overflow-wrap:normal}.event-scroll th{z-index:1}</style></head><body><header><h1>AirlineFlow Integrated Gold Review <span class="muted">· Short IDs / Canonical + Enriched r5</span></h1><span id="version" class="muted"></span><div id="variants" class="toolbar"></div><span id="dbstat" class="muted"></span><button id="export">Save review JSON</button><label class="muted">Load review <input type="file" id="import" accept=".json"></label></header><div id="layout"><aside class="panel side"><h3>Request catalog</h3><input id="search" placeholder="Search requests" style="width:100%"><div id="nav"></div></aside><main><div class="panel summary" id="summary"></div><div class="grid"><section class="panel"><h3>01 · Reference DFG</h3><div class="muted">Equal-time events are grouped; adjacency is not causality.</div><div id="dfg"></div></section><section class="panel"><h3>03 · Source database and extraction evidence</h3><div id="source"></div></section><section class="panel"><h3>02 · Reference event log</h3><div class="toolbar"><button id="canonicalMode">Canonical</button><button id="enrichedMode">Enriched</button><button id="csvGold">Save CSV</button></div><div class="muted">Canonical = evaluation triples; Enriched = display-only business attributes. CSV exports the full selected log.</div><div class="toolbar"><select id="case" style="max-width:65%"></select><input id="filter" placeholder="Activity, flight or timestamp"></div><div class="pager"><button id="prev">‹</button><span id="page"></span><button id="next">›</button></div><div id="events"></div></section><section class="panel"><h3>04 · Reference PI / ESpec / SQL</h3><div class="tabs"><button data-tab="rules">Activity rules</button><button data-tab="pi">PI</button><button data-tab="espec">ESpec</button><button data-tab="sql">SQL</button></div><div id="rules"></div></section></div><section class="panel" style="margin-top:10px"><h3>05 · Selected case timeline</h3><div id="timeline"></div></section></main><aside class="panel review"><h3>Final review</h3><div id="status"></div><div class="warn">Evaluator-only. Automated checks are not human approval. Review decisions stay local until exported.</div><div id="checks"></div><label>Review verdict<select id="verdict" style="width:100%"><option>Pending</option><option>Approve</option><option>Revise</option><option>Reject</option></select></label><label>Reviewer notes<textarea id="notes"></textarea></label><button class="approve" id="approve">Save decision and next request →</button><button id="back">← Previous request</button></aside></div><script>
 const DATA=/*__PAYLOAD__*/null;
 const $=id=>document.getElementById(id),esc=x=>String(x??'NULL').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const checks=['Business intent / analytical utility','Case and population scope','Activity completeness and granularity','Actual timestamp / temporal semantics','Source and attribution path','DFG / timeline plausibility','Query consistency and scoring fairness'];
@@ -38,23 +38,49 @@ function rowObject(t,id){
   const rec=DATA.records[t],r=recordIndex[t]?.get(id);
   return r?Object.fromEntries(rec.columns.map((c,i)=>[c,r[i]])):null;
 }
-function flightContext(e){
-  const [c,a,t,tn,pk]=e,et=DATA.queries[q].case,r=rowObject(tn,pk);
-  const turn=et==='Turnaround'?rowObject('turnarounds',c):tn==='turnarounds'?r:tn==='handling_jobs'?rowObject('turnarounds',r?.turn_id):null;
-  let ids=[];
-  if(et==='Flight')ids=[c];
-  else if(tn==='movement_reports'||tn==='boarding_sessions')ids=[r?.flight_id];
-  else if(turn)ids=[turn.inbound_id,turn.outbound_id];
-  else if(tn==='passenger_actions')ids=[rowObject('passenger_legs',r?.leg_id)?.flight_id];
-  else if(tn==='bag_scans')ids=[rowObject('passenger_legs',rowObject('bag_legs',r?.bag_leg_id)?.leg_id)?.flight_id];
-  else if(tn==='security_events')ids=[rowObject('passenger_legs',rowObject('security_visits',r?.visit_id)?.leg_id)?.flight_id];
-  return [...new Set(ids.filter(Boolean))].map(id=>{
-    if(!flightMeta.has(id)){const f=rowObject('flights',id);flightMeta.set(id,f?{no:f.flight_no,date:String(f.scheduled_offblock).slice(0,10)}:null)}
-    return flightMeta.get(id)
-  }).filter(Boolean);
+function flightInfo(id){
+  if(!id)return {no:'',date:''};
+  if(!flightMeta.has(id)){const f=rowObject('flights',id);flightMeta.set(id,f?{no:f.flight_no,date:String(f.scheduled_offblock).slice(0,10)}:{no:'',date:''})}
+  return flightMeta.get(id);
 }
-function flightLabel(e){return flightContext(e).map(f=>esc(f.no)+'<br><span class="flight-date">'+esc(f.date)+'</span>').join('<span class="flight-sep"> ↔ </span>')||'—'}
-function drawEvents(){let a=filtered(),max=Math.max(0,Math.ceil(a.length/30)-1);page=Math.min(page,max);$('page').textContent=(page+1)+' / '+(max+1)+' · '+a.length.toLocaleString()+' events';$('events').innerHTML='<table><thead><tr><th>Case ID</th><th>Flight No.<br><small>Operating date</small></th><th>Activity</th><th>Timestamp</th></tr></thead><tbody>'+a.slice(page*30,page*30+30).map((x,i)=>'<tr class="event '+(i===0?'selected':'')+'" data-i="'+(page*30+i)+'">'+'<td>'+esc(x[0])+'</td><td class="flight-context">'+flightLabel(x)+'</td><td>'+esc(x[1])+'</td><td>'+esc(x[2])+'</td>'+'</tr>').join('')+'</tbody></table>';document.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.event').forEach(r=>r.classList.remove('selected'));b.classList.add('selected');drawSource(a[+b.dataset.i])});drawSource(a[page*30]);}
+function eventContext(e,et){
+  const [c,a,t,tn,pk]=e,r=rowObject(tn,pk);
+  let turn=et==='Turnaround'?rowObject('turnarounds',c):tn==='turnarounds'?r:tn==='handling_jobs'?rowObject('turnarounds',r?.turn_id):null;
+  const bag=tn==='bag_scans'?rowObject('bag_legs',r?.bag_leg_id):et==='Bag Leg'?rowObject('bag_legs',c):null;
+  const visit=tn==='security_events'?rowObject('security_visits',r?.visit_id):et==='Security Visit'?rowObject('security_visits',c):null;
+  const leg=rowObject('passenger_legs',tn==='passenger_actions'?r?.leg_id:bag?.leg_id||visit?.leg_id||(et==='Passenger Leg'?c:null));
+  const ticket=rowObject('tickets',leg?.ticket_id||(et==='Ticket'?c:null));
+  const fid=et==='Flight'?c:tn==='movement_reports'||tn==='boarding_sessions'?r?.flight_id:leg?.flight_id;
+  const fi=flightInfo(fid),inb=flightInfo(turn?.inbound_id),out=flightInfo(turn?.outbound_id);
+  return {flight_no:fi.no,operating_date:fi.date,inbound_flight_no:inb.no,inbound_operating_date:inb.date,outbound_flight_no:out.no,outbound_operating_date:out.date,passenger_id:ticket?.passenger_id||'',ticket_id:ticket?.ticket_id||'',booking_id:ticket?.booking_id||(et==='Booking'?c:''),leg_id:leg?.leg_id||'',bag_tag:bag?.bag_tag||'',checkpoint_id:visit?.checkpoint_id||'',job_code:r?.job_code||'',turn_id:turn?.turn_id||''};
+}
+function enrichedColumns(et){
+  const flight=['flight_no','operating_date'];
+  const extras={Flight:flight,'Boarding Session':flight,Turnaround:['inbound_flight_no','inbound_operating_date','outbound_flight_no','outbound_operating_date',...flight],'Handling Job':['job_code','turn_id'],'Passenger Leg':['passenger_id',...flight],'Bag Leg':['bag_tag',...flight],'Security Visit':['leg_id','checkpoint_id',...flight],Ticket:['passenger_id','booking_id',...flight],Booking:['ticket_id','passenger_id',...flight],Passenger:['ticket_id',...flight]};
+  return extras[et]||flight;
+}
+function eventValues(e,et,mode){
+  const core=e.slice(0,3);
+  if(mode==='canonical')return core;
+  const ctx=eventContext(e,et);
+  return core.concat(enrichedColumns(et).map(k=>ctx[k]??''));
+}
+function eventHeaders(et,mode){return ['case_id','activity','timestamp',...(mode==='canonical'?[]:enrichedColumns(et))]}
+function flightContext(e){const ctx=eventContext(e,DATA.queries[q].case);return [ [ctx.flight_no,ctx.operating_date],[ctx.inbound_flight_no,ctx.inbound_operating_date],[ctx.outbound_flight_no,ctx.outbound_operating_date] ].filter(x=>x[0]).map(([no,date])=>({no,date}))}
+let logMode='enriched';
+function drawEvents(){
+  const a=filtered(),max=Math.max(0,Math.ceil(a.length/30)-1),et=DATA.queries[q].case,head=eventHeaders(et,logMode);
+  page=Math.min(page,max);$('page').textContent=(page+1)+' / '+(max+1)+' · '+a.length.toLocaleString()+' events';
+  $('events').innerHTML='<div class="event-scroll"><table><thead><tr>'+head.map(k=>'<th>'+esc(k)+'</th>').join('')+'</tr></thead><tbody>'+a.slice(page*30,page*30+30).map((x,i)=>'<tr class="event '+(i===0?'selected':'')+'" data-i="'+(page*30+i)+'">'+eventValues(x,et,logMode).map(v=>'<td>'+esc(v===''?'—':v)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+  $('canonicalMode').classList.toggle('active',logMode==='canonical');$('enrichedMode').classList.toggle('active',logMode==='enriched');
+  document.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.event').forEach(r=>r.classList.remove('selected'));b.classList.add('selected');drawSource(a[+b.dataset.i])});
+  drawSource(a[page*30]);
+}
+function saveEventCsv(){
+  const et=DATA.queries[q].case,rows=DATA.events[q].map(e=>eventValues(e,et,logMode));
+  const url=URL.createObjectURL(new Blob([rawCsv(eventHeaders(et,logMode),rows)],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');
+  a.href=url;a.download=q+(logMode==='enriched'?'_events_enriched.csv':'_events.csv');a.click();setTimeout(()=>URL.revokeObjectURL(url),500);
+}
 let sourceSelection=null,rawTableName='',rawPage=0,rawRows=[];
 const RAW_PAGE=25;
 const objCache={};
@@ -138,5 +164,5 @@ function drawSource(e){
   const trace=DATA.events[q].filter(x=>x[0]===c);$('timeline').innerHTML='<div class="muted">'+esc(c)+' · '+trace.length+' observed events</div><div class="timeline">'+trace.map(x=>'<div><span>'+esc(x[2])+'</span><b>'+esc(x[1])+'</b></div>').join('')+'</div>';
 }
 function drawRules(){let m=DATA.queries[q];$('rules').innerHTML=tab==='rules'?table(['Activity','Source table','Timestamp','Filter / role','Case mapping'],m.espec.rules.map(r=>[r.activity,r.source_table,r.timestamp_column,r.where||r.carrier_value||r.role||'—',r.case_expression||JSON.stringify(r.path||[])+' → '+r.case_key])):'<pre>'+esc(tab==='sql'?m.sql:JSON.stringify(m[tab],null,2))+'</pre>'}
-$('version').textContent=DATA.version+' · 72 requests / 108 conditions';$('variants').innerHTML=DATA.manifest.map(v=>'<button data-v="'+v.variant_id+'">'+v.variant_id.toUpperCase()+'</button>').join('');document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{persist();variant=b.dataset.v;document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelector('[data-v="l15"]').classList.add('active');$('search').oninput=nav;$('case').onchange=$('filter').oninput=()=>{page=0;drawEvents()};$('prev').onclick=()=>{page=Math.max(0,page-1);drawEvents()};$('next').onclick=()=>{page++;drawEvents()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;drawRules()});$('approve').onclick=()=>{persist();q=list()[Math.min(list().indexOf(q)+1,list().length-1)];render()};$('back').onclick=()=>{persist();q=list()[Math.max(0,list().indexOf(q)-1)];render()};$('export').onclick=()=>{persist();let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({version:DATA.version,decisions},null,2)],{type:'application/json'}));a.download='airlineflow-review.json';a.click();URL.revokeObjectURL(a.href)};$('import').onchange=async e=>{try{let x=JSON.parse(await e.target.files[0].text());if(x.version!==DATA.version)throw Error('Different fixture version');decisions=x.decisions;render()}catch(err){alert(err.message)}};render();
+$('version').textContent=DATA.version+' · 72 requests / 108 conditions';$('variants').innerHTML=DATA.manifest.map(v=>'<button data-v="'+v.variant_id+'">'+v.variant_id.toUpperCase()+'</button>').join('');document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{persist();variant=b.dataset.v;document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('active',x===b));render()});document.querySelector('[data-v="l15"]').classList.add('active');$('search').oninput=nav;$('case').onchange=$('filter').oninput=()=>{page=0;drawEvents()};$('prev').onclick=()=>{page=Math.max(0,page-1);drawEvents()};$('next').onclick=()=>{page++;drawEvents()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{tab=b.dataset.tab;drawRules()});$('approve').onclick=()=>{persist();q=list()[Math.min(list().indexOf(q)+1,list().length-1)];render()};$('back').onclick=()=>{persist();q=list()[Math.max(0,list().indexOf(q)-1)];render()};$('export').onclick=()=>{persist();let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({version:DATA.version,decisions},null,2)],{type:'application/json'}));a.download='airlineflow-review.json';a.click();URL.revokeObjectURL(a.href)};$('import').onchange=async e=>{try{let x=JSON.parse(await e.target.files[0].text());if(x.version!==DATA.version)throw Error('Different fixture version');decisions=x.decisions;render()}catch(err){alert(err.message)}};$('canonicalMode').onclick=()=>{logMode='canonical';drawEvents()};$('enrichedMode').onclick=()=>{logMode='enriched';drawEvents()};$('csvGold').onclick=saveEventCsv;render();
 </script></body></html>

@@ -6,6 +6,7 @@ on:
       - 'datasets/synthetic/airlineflow/regenerate_v2.py'
       - 'datasets/synthetic/airlineflow/docs/review_v2_template.html'
       - 'datasets/synthetic/airlineflow/refresh_review_v2.py'
+      - 'datasets/synthetic/airlineflow/enrich_review.py'
       - '.github/workflows/airlineflow-v2-publish.yml'
   workflow_dispatch:
 permissions:
@@ -41,6 +42,7 @@ jobs:
           else
             python refresh_review_v2.py
           fi
+          python enrich_review.py
           python verify.py
       - name: Publish atomically after checks
         run: |

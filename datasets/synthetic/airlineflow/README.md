@@ -21,3 +21,7 @@ Run node source/generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY to regenerate rec
 
 ## Validation
 108 SQLite-query comparisons and 72 independent occurrence reconstructions passed in the release build. Human review and production scorer integration remain pending. No model inference performed. The older PM-Scope1 fixture remains in git history. Model input is only the chosen DB, its general DD, and request text. Never include evaluator metadata or the review HTML.
+
+## Canonical vs enriched reference logs
+
+Each Gold directory includes `events.csv` (scoring only) and `events_enriched.csv` (inspection/analysis). The integrated review provides both modes and independent `flight_no` / `operating_date` columns. Short numeric IDs remain the primary case identifiers. See [Gold log documentation](gold/README.md) and [verification](evaluation/verification.json).
