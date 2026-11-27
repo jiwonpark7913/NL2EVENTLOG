@@ -8,6 +8,10 @@ AirlineFlow models aircraft turnarounds at a focal airport, connecting arriving 
 
 [Database variants](#database-variants) · [Dataset analysis](#dataset-analysis) · [Queries and gold logs](#queries-and-gold-logs) · [Quick start](#quick-start) · [Validation and limitations](#validation-and-limitations)
 
+## Next fixture revision
+
+[Stochastic operational fixture design (v2)](docs/stochastic_fixture_v2.md) — approved design for variable populations, feasible itineraries, repeated and incomplete events, opaque IDs, and release gates. The published SQLite/Gold files below remain PM-Scope1 until the replacement is generated and validated.
+
 ## What can you use this dataset for?
 
 | Use case | What AirlineFlow provides |

@@ -1,0 +1,50 @@
+# AirlineFlow — Stochastic operational fixture design (v2)
+
+**Status: approved design; implementation/release validation pending.** The existing PM-Scope1 fixture remains the published reference until the replacement passes every release gate. No model inference or method change is authorized by this document.
+
+## 1. Objective and invariant contract
+
+Replace the fixed-cardinality fixture with one reproducible, operationally constrained synthetic population, not a separate stress-test database. Keep the 20-table DDL, general data dictionary (update only genuinely changed semantics), four nested variants L05/L10/L15/L20, 72 request IDs, and 108 DB–request conditions (12 pilot × 4 plus 60 test at L15). All common records and IDs must be identical across schema variants. Model inputs remain DB, ordinary DD, and natural-language request only. Gold consists of a multiset of (case_id, activity, timestamp). Keep the frozen NL2EventLog method and common scorer contract.
+
+## 2. Population and sampling
+
+Proposed synthetic design parameters, not empirical airline estimates. Seed 20261127, independent deterministic random streams for scheduling, itinerary allocation, behavior, time, and identifiers. Generate 100 focal-airport turnarounds, 200 distinct operating legs, 3 airports (ICN, KIX, NRT), 2 airlines, 5–8 aircraft, and an operationally feasible schedule. Every turnaround pairs the arrival and next departure of the same tail at ICN; no overlapping aircraft assignments. Unique (flight number, scheduled operating date) when used as an alternate key. Sample 20–50 ticketed passenger legs on **every** inbound and outbound flight, target roughly 7,000 total, not a census of aircraft occupants.
+
+Allocate reservations to feasible itineraries before generating passenger events. Booking party sizes 1/2/3/4/5/6 with target probabilities .50/.30/.10/.06/.03/.01. Ticket itinerary lengths 1/2/3/4 with target .55/.38/.05/.02. Respect airport continuity, connection feasibility and chronology; parties normally share itinerary. Capacity and itinerary feasibility take priority over target proportions; report realized distributions rather than claiming exact probabilities.
+
+For each checked-in passenger leg, target 0/1/2/3 checked bags with .35/.45/.17/.03. Each bag has its own opaque ID and tag; reuse tag across legs only for the same physical bag if explicitly modeled and semantics remain valid. One passenger leg may own multiple bags. No-show has no departure-processing events. Retain tickets/legs without events in DB; do not fabricate event rows to represent them.
+
+## 3. Operational behavior
+
+Target passenger-leg states: 90% normal successful boarding, 5% successful boarding after 1–3 rejected scans, 3% checked-in but incomplete (before security, during security, before gate, or rejected without success), 2% no-show. Realized counts may differ. Avoid implying a missed connection was completed; limit terminal abandonment to final itinerary segment or explicitly model feasible later travel. Among screened legs target 5% genuine second visits, each with a distinct security visit identifier. Some incomplete journeys have queue entry only or entry and screening start without completion. All complete visits preserve queue entry <= screening start <= screening complete. Security receipt timestamps follow occurrence. Individual boarding confirms only after successful screening and within its flight boarding session. A failed scan is a distinct occurrence; repeated attempts remain separate rows. No synthetic confirmation for a failed or absent event.
+
+Baggage: acceptance after check-in and before loading; most successful legs load each accepted bag, while selected incomplete legs have accepted but not loaded bags. For focal outbound flights all B204 events fall in that turnaround's BL job interval. Inbound origin baggage is governed by its origin flight schedule, not the focal arrival's turnaround jobs. No unmodeled baggage offload or invented event types. Use missing event rows for non-occurrence; NULL only in nullable descriptive columns, not required occurrence timestamps. Generate distinct source events sharing a second naturally; require genuine duplicate output triples in at least one aggregate flight-level query to test multiset scoring.
+
+## 4. Ground operations and clocks
+
+Retain exactly one DP, UL, CL, FU, CA, BL job per turnaround and one boarding session per operating flight in this revision. This deliberately preserves the existing ground-service count/source experiments; do not randomize job counts or expand schema. Draw durations in minutes from constrained ranges: DP 8–25, UL 10–30, CL 15–40, FU 15–45, CA 10–30, BL 15–45. Target scenario weights normal .50, long cleaning .10, long fueling .10, delayed loading .10, delayed boarding .10, high overlap .10. Labels are generator-only, never model-facing. Start delays and overlap vary; enforce aircraft/airport-specific synthetic rules: landing <= in-block <= handling coordination; DP finishes before CL starts; UL completes before BL starts; CL and FU complete before boarding starts; all jobs and boarding close precede readiness <= off-block <= take-off. Posting/receipt clocks remain distinct from occurrence. Actual movements remain LAND/IN/OUT/AIR with EST separate. Keep scheduled and actual clocks distinct and document synthetic safety assumptions.
+
+## 5. Identifier policy and evaluator semantics
+
+All PKs and foreign-key references must use consistent opaque identifiers without role, activity, date, parent ID or row-order leakage. Entity-type prefix is allowed. Randomize row insertion independently. Preserve genuine public operational codes (airport, activity carrier, flight number) and DD descriptions; do not obscure legitimate evidence.
+
+Before building Gold, clarify Q02 boundary inclusion/exclusion, Q04 next outbound boarding, Q25 milestone-only purpose, Q12 Korean translation, and Q58/Q60 passenger processing (exclude individual baggage records without enumerating implicit activities). Review incomplete-trace scope across Q13–Q24 and Q49–Q60. Duration-intent queries preserve observed requested events including partial traces unless the request explicitly restricts completed cases; compute duration only from completed pairs. Align the four D-family variants and ensure equal reference multisets. If a wording change is necessary to resolve conflicting intent, apply before final inference, log it and revalidate the experimental condition. Do not tailor to model outputs.
+
+Recheck approved key normalization against full request scope. Q55/Q56 Passenger Leg secondary equivalence must be disabled wherever visits are no longer bijective. Q51/Q52 bag-tag equivalence requires verified scope bijection; Passenger Leg is not a bag identity. Keep Q09/Q12 policy only if its declared scope and exact-log condition hold. Validate activity aliases consistently without relaxing start/finish distinctions. Score duplicate triples with Counter/multiset semantics.
+
+## 6. Controlled evaluation
+
+A: identical source occurrence IDs across each depth family, variable case attribution. B: preserve selected activity count, case type and source-table counts; report realized event count and any changed event mixture or join complexity. Never delete valid events to force equality. C: keep existing 2/4/8/12 activity sets, nested as authored where applicable. D: preserve explicit/implicit conditions and exact Gold equality per family. E: preserve inbound/outbound/cross-role roles. Schema scaling: all shared rows identical and Pilot Gold equal across variants. Report schema size separately from row counts and prompt size. These are matched sensitivity analyses, not fully isolated causal effects when event mix changes.
+
+## 7. Build and release gates
+
+1. Generate schedule and feasible itineraries; generate event records; validate business constraints; anonymize IDs; emit canonical records.
+2. Build all four SQLite variants and main input from the same canonical records; check integrity, foreign keys and nested equality. Recompute hashes.
+3. Regenerate every Gold CSV from authored SQL; independently reconstruct all 72 from query intent and source records; require identical multisets. Update PI/ESpec counts, scope and definitions, DFG (equal-time buckets), registries, question files, summaries, variant manifests, docs, review HTML, and archives together. Update legacy and semantic_check diagnostics or explicitly version/exclude them from the release. The old verify.py embeds fixed row counts and bijections; replace those checks with current validated contracts before claiming release PASS.
+4. Document actual cardinality/behavior histograms, complete/partial cases, repeated events, true duplicate triples, role coverage, source counts and cost/input-size differences. Require examples of multiple bags, multiple visits, no bags, no events, multiple rejected scans, no confirmation, both flight roles, and unequal party/flight sizes.
+5. Re-run 108/108 SQL comparisons, 72/72 independent reconstructions, D-family equality, role/scope checks, duplicate-sensitive and real production-scorer tests, regenerated review HTML consistency, and no Gold leakage in model-facing inputs.
+6. Keep the old commit reproducible; publish candidate only after all checks and human semantic review. Record final seed, config, version, SHA, and validation receipt. No model evaluation before freeze. If a gate fails, retain prior published fixture and report the failure; never mark unexecuted checks as passed.
+
+## Decisions / limitations
+
+Target frequencies and duration ranges are design values, not fitted airline statistics. The 20–50 range is a sampled ticketed population. Ground-job count and boarding-session cardinality remain fixed intentionally. Some source-diversity event counts may diverge after realistic incomplete/repeated events; disclose that limitation. This document supersedes the fixed-population design for the next release only, not the current verified binaries.
