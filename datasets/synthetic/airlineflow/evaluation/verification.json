@@ -94,5 +94,14 @@
     "preserved_gold_queries": 72,
     "bijection_size": 86173,
     "only_identity_values_changed": true
+  },
+  "enriched_review": {
+    "status": "PASS",
+    "queries": 72,
+    "canonical_projection_rows": 514324,
+    "flight_context": "verified against SQLite",
+    "canonical_gold_unchanged": true,
+    "database_sha256_unchanged": true,
+    "format": "Separate columns; evaluator-only, not part of scoring"
   }
 }
