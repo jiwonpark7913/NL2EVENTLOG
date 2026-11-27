@@ -163,10 +163,23 @@ export function generateAirlineFlow(config) {
       idMap[k]=prefix+'-'+String(n);
     }
   }
-  for(const r of Object.values(records))for(const row of r.rows)for(let i=0;i<row.length;i++)if(typeof row[i]==='string'&&Object.hasOwn(idMap,row[i]))row[i]=idMap[row[i]];
-  summary.identifier_policy='short opaque seeded numeric IDs (4–5 digits; no business-role encoding)';
-  summary.identifier_count=Object.keys(idMap).length;
-  return {records,summary,idMap};
+  // Short sequential management numbers, allocated in a deterministic random
+  // permutation of original opaque keys, not in time or dependency order.
+  const priorMap=idMap,compactMap={},transitionMap={};
+  const prefixes={FL:'F',TU:'TU',BS:'BS',HJ:'J',MR:'MR',BK:'BK',PX:'P',TK:'T',PL:'PL',PA:'PA',BG:'BL',SC:'SC',SV:'SV',SE:'SE',AC:'AC',AL:'AL',EM:'EM',CP:'CP',FD:'FD',TAG:'TAG'};
+  for(const [prefix,values] of [...groups.entries()].sort(([a],[b])=>a.localeCompare(b))){
+    const keys=[...values].sort(),width=Math.max(3,String(keys.length).length);
+    if(!prefixes[prefix])throw Error('unknown identifier prefix '+prefix);
+    for(let i=0;i<keys.length;i++){
+      const k=keys[i],next=prefixes[prefix]+String(i+1).padStart(width,'0');
+      compactMap[k]=next;transitionMap[priorMap[k]]=next;
+    }
+  }
+  if(new Set(Object.values(compactMap)).size!==Object.keys(compactMap).length)throw Error('ID collision');
+  for(const r of Object.values(records))for(const row of r.rows)for(let i=0;i<row.length;i++)if(typeof row[i]==='string'&&Object.hasOwn(compactMap,row[i]))row[i]=compactMap[row[i]];
+  summary.identifier_policy='compact entity management numbers; minimum 3 digits, deterministic allocation independent of event time and role';
+  summary.identifier_count=Object.keys(compactMap).length;
+  return {records,summary,idMap:compactMap,transitionMap};
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv.length !== 3) throw Error('Usage: node generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY');
@@ -174,9 +187,10 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (existsSync(out) && readdirSync(out).length) throw Error('Output must be empty');
   mkdirSync(out,{recursive:true});
   const config=JSON.parse(readFileSync(new URL('./stochastic_v2_config.json',import.meta.url),'utf8'));
-  const {records,summary,idMap}=generateAirlineFlow(config);
+  const {records,summary,idMap,transitionMap}=generateAirlineFlow(config);
   writeFileSync(join(out,'records.json'),JSON.stringify(records)+'\n');
   writeFileSync(join(out,'generator_summary.json'),JSON.stringify(summary,null,2)+'\n');
   writeFileSync(join(out,'identifier_map.json'),JSON.stringify(idMap)+'\n');
+  writeFileSync(join(out,'identifier_transition.json'),JSON.stringify(transitionMap)+'\n');
   console.log(JSON.stringify(summary,null,2));
 }

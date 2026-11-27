@@ -37,7 +37,7 @@ for v in manifest:
     assert hashlib.sha256((R/v['database_path']).read_bytes()).hexdigest()==v['database_sha256']
 with sqlite3.connect(R/'input/database.sqlite') as c:
     flights=dict((k,(n,d)) for k,n,d in c.execute('SELECT flight_id,flight_no,date(scheduled_offblock) FROM flights'))
-    assert len(flights)==200 and all(re.fullmatch(r'FL-\d{4}',x) for x in flights)
+    assert len(flights)==200 and all(re.fullmatch(r'F\d{3}',x) for x in flights)
     assert len(set(flights.values()))==len(flights)
     turns=dict((k,(i,o)) for k,i,o in c.execute('SELECT turn_id,inbound_id,outbound_id FROM turnarounds'))
     legs=dict(c.execute('SELECT leg_id,flight_id FROM passenger_legs'))
@@ -57,7 +57,7 @@ with sqlite3.connect(R/'input/database.sqlite') as c:
         for e,r in zip(es,enriched):
             case,a,ts,tn,pk,col=e
             assert (r['case_id'],r['activity'],r['timestamp'])==(case,a,ts)
-            assert re.fullmatch(r'[A-Z]+-\d{4,5}',case),(q,case)
+            assert re.fullmatch(r'[A-Z]+\d{3,5}',case),(q,case)
             fid=case if et=='Flight' else movement[pk] if tn=='movement_reports' else sessions[pk] if tn=='boarding_sessions' else legs[actions[pk]] if tn=='passenger_actions' else legs[bags[scans[pk]]] if tn=='bag_scans' else legs[visits[sec[pk]]] if tn=='security_events' else None
             if 'flight_no' in r:
                 assert (r['flight_no'],r['operating_date'])==flights.get(fid,('','')),(q,case,tn,pk)

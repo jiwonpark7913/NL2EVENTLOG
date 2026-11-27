@@ -5,7 +5,7 @@ from itertools import product
 import csv, json, sqlite3, hashlib, subprocess, tempfile, shutil, sys, re, html
 R=Path(__file__).resolve().parent
 E=R/'evaluation'
-VERSION='Stochastic-v2-ShortIDs-20261127'
+VERSION='Stochastic-v2-CompactIDs-20261127'
 def load(p): return json.loads(p.read_text(encoding='utf-8-sig'))
 def save(p,x): p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -36,6 +36,11 @@ with tempfile.TemporaryDirectory() as td:
     records=load(Path(td)/'out/records.json')
     summary=load(Path(td)/'out/generator_summary.json')
     id_map=load(Path(td)/'out/identifier_map.json')
+    prior_version=old_manifest[0].get('query_registry_version','')
+    if prior_version.startswith('Stochastic-v2-ShortIDs'):
+        id_map=load(Path(td)/'out/identifier_transition.json')
+    elif prior_version==VERSION:
+        id_map={x:x for x in id_map.values()}
 assert len(id_map)==len(set(id_map.values()))
 if old_is_stochastic:
     for table,r in old_records.items():
@@ -299,14 +304,14 @@ csvwrite(E/'timestamp_query_audit.csv',[{'query_id':q,'cases':m['cases'],'events
 stats=json.loads(subprocess.check_output([sys.executable,str(R/'docs/analyze_dataset.py')],text=True));save(R/'docs/dataset_statistics.json',stats)
 (R/'docs/dataset_analysis.md').write_text('# Stochastic v2 dataset analysis\n\nCurrent counts and actual distributions: [generator preview](../source/stochastic_v2_generator_preview.json) and [statistics](dataset_statistics.json).\n\n| Variant | Tables | Rows |\n|---|---:|---:|\n'+'\n'.join(f"| {v['variant_id']} | {v['table_count']} | {v['row_count']} |" for v in manifest)+'\n\nSource-diversity event counts are not forced equal. Fixed six jobs and one boarding session per flight preserve ground-service experiment structure. Human approval pending.\n')
 # Compact self-contained review payload. Each event includes source table, row identity and occurrence column.
-payload={'version':VERSION,'manifest':manifest,'records':records,'queries':metadata,'events':evidence,'registry':registry,'summary':summary}
+payload={'version':VERSION,'manifest':manifest,'records':records,'queries':metadata,'events':evidence,'registry':registry,'summary':summary,'dictionaries':{v['variant_id']:load(R/v['dictionary_path']) for v in manifest}}
 template=(R/'docs/review_v2_template.html').read_text()
 (R/'docs/scenario.html').write_text(template.replace('/*__PAYLOAD__*/null',json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')))
 # Current top-level documentation generated from actual counts; no stale claims.
 variant_rows='\n'.join(f"| [{v['variant_id'].upper()}](variants/{v['variant_id']}/README.md) | {v['table_count']} | {v['row_count']} | [SQLite]({v['database_path']}) · [DD]({v['dictionary_path']}) |" for v in manifest)
 (R/'README.md').write_text(f"""# AirlineFlow — {VERSION}
 
-Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, {len(legs):,} passenger legs; 72 requests / 108 DB–request conditions. Short opaque identifiers (4–5 digits); flight number remains a distinct operational attribute.**
+Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, {len(legs):,} passenger legs; 72 requests / 108 DB–request conditions. Compact management identifiers (e.g. F001, J001); flight number remains a distinct operational attribute.**
 
 ## Database variants
 | Variant | Tables | Rows | Inputs |
@@ -321,6 +326,9 @@ Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 oper
 
 ## Reproduce
 Run node source/generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY to regenerate records. Run python verify.py for read-only checks. The release build script regenerate_v2.py requires Node, Python and Graphviz and is intended for an isolated checkout.
+
+## Canonical vs enriched reference logs
+Each Gold directory includes `events.csv` (scoring only) and `events_enriched.csv` (inspection/analysis). The review has separate flight number/date fields and the selected source table's original data dictionary.
 
 ## Validation
 108 SQLite-query comparisons and 72 independent occurrence reconstructions passed in the release build. Human review and production scorer integration remain pending. No model inference performed. The older PM-Scope1 fixture remains in git history. Model input is only the chosen DB, its general DD, and request text. Never include evaluator metadata or the review HTML.

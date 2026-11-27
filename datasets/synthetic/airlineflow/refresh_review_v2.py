@@ -9,6 +9,10 @@ suffix=';\nconst $='
 payload=old.split(prefix,1)[1].split(suffix,1)[0]
 data=json.loads(payload)
 assert len(data['queries'])==72 and len(data['events'])==72
+for v in data['manifest']:
+    original=json.loads((R/v['dictionary_path']).read_text())
+    assert data['dictionaries'][v['variant_id']]==original
+    assert set(original)==set(v['table_rows'])
 for q,events in data['events'].items():
     for e in events:
         assert len(e)==6
@@ -35,7 +39,7 @@ for q,events in data['events'].items():
 # No fake data: test Q01 (same row, different clock), Q05 (two tables), Q18 (aggregate) and Q56 (visit).
 with tempfile.TemporaryDirectory() as t:
     js=Path(t)/'review_test.js'
-    subset={k:data[k] for k in ('version','manifest','records','queries','events')}
+    subset={k:data[k] for k in ('version','manifest','records','queries','events','dictionaries')}
     subset['queries']={q:subset['queries'][q] for q in ('Q01','Q05','Q18','Q56')}
     subset['events']={q:subset['events'][q] for q in subset['queries']}
     # Only the function declarations, not the boot-up DOM handlers.
@@ -59,6 +63,9 @@ function check(qid,event){
     assert.ok(html.includes('<th class="mark">'+event[5]+'</th>'));
     assert.ok(rec.columns.every(x=>html.includes('>'+x+'</th>')));
     assert.ok(rawRows.some(r=>r[0]===event[4]));
+    assert.equal(elem('dictionaryTitle').textContent,'Data Dictionary · '+event[3]);
+    assert.ok(elem('dictionaryBody').innerHTML.includes('<tr class="dd-hit"><td>'+event[5]+'</td>'));
+    assert.ok(rec.columns.every(x=>elem('dictionaryBody').innerHTML.includes('>'+x+'</td>')));
 }
 const pair=DATA.events.Q01.slice(0,2);
 assert.equal(pair[0][4],pair[1][4]);
@@ -69,7 +76,7 @@ check('Q05',DATA.events.Q05.find(e=>e[1]==='Aircraft Ready'));
 assert.equal(rawRows.length,1);
 check('Q18',DATA.events.Q18[0]);check('Q56',DATA.events.Q56[0]);
 elem('related').checked=false;renderRaw(true);assert.equal(rawRows.length,DATA.records[rawTableName].rows.length);
-console.log('PASS: original-table UI source selection, green row and exact clock, case scope and full-table toggle (Node DOM stub)');
+console.log('PASS: original-table UI selection, green source cell, Data Dictionary and full-table toggle (Node DOM stub)');
 """
     js.write_text(stub+body+tests,encoding='utf-8')
     subprocess.run(['node',str(js)],check=True)
