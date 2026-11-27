@@ -2,7 +2,7 @@
 
 [All 72 requests and references](../docs/queries.md) · [Gold summary](../evaluation/gold_summary.csv)
 
-Each Qxx directory contains the event log CSV, executable reference SQL, process interpretation (PI), extraction specification (ESpec), and directly-follows graph (DFG). The latter retains equal timestamp buckets. The canonical columns are case_id, activity, timestamp; event multiplicity matters. All files are evaluator-only, never model inputs.
+Each Qxx directory contains the event log CSV, executable reference SQL, process interpretation (PI), extraction specification (ESpec), and directly-follows graph (DFG). The DFG has one node per unique activity, with actual event frequencies. Edges count occurrence pairs across consecutive distinct timestamp groups, without imposing order inside a tie. This is a tie-aware activity adjacency graph, not a linearized conventional DFG. See [DFG audit](../evaluation/dfg_consistency_audit.csv). The canonical columns are case_id, activity, timestamp; event multiplicity matters. All files are evaluator-only, never model inputs.
 
 ## Enriched reference logs
 

@@ -7,6 +7,7 @@ on:
       - 'datasets/synthetic/airlineflow/docs/review_v2_template.html'
       - 'datasets/synthetic/airlineflow/refresh_review_v2.py'
       - 'datasets/synthetic/airlineflow/enrich_review.py'
+      - 'datasets/synthetic/airlineflow/activity_dfg.py'
       - '.github/workflows/airlineflow-v2-publish.yml'
   workflow_dispatch:
 permissions:
@@ -39,10 +40,10 @@ jobs:
             command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
             python regenerate_v2.py
             cp verify_v2.py verify.py
-            python refresh_review_v2.py
-          else
-            python refresh_review_v2.py
           fi
+          command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
+          python activity_dfg.py
+          python refresh_review_v2.py
           python enrich_review.py
           python verify.py
       - name: Publish atomically after checks
