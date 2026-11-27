@@ -83,7 +83,8 @@
     "duplicate_flight_boarding_triples": 920,
     "checks": "generator-level checks passed; SQLite and Gold not yet validated",
     "identifier_policy": "compact entity management numbers; minimum 3 digits, deterministic allocation independent of event time and role",
-    "identifier_count": 86173
+    "identifier_count": 86173,
+    "schema_revision": "operational-v1"
   },
   "production_scorer": "NOT_RUN",
   "human_semantic_review": "PENDING",
@@ -108,8 +109,18 @@
     "status": "PASS",
     "queries": 72,
     "policy": "one node per activity; adjacent distinct timestamp groups, occurrence-pair counts; no within-tie edge",
-    "non_graph_payload_sha256": "f512f89091b363a50b02fc4f231a4b197b8e984085e9315ddd2ab30824fc8558",
+    "non_graph_payload_sha256": "6b290ff1f16f1b6328774c7b49d4120f97f68f8fa466c8267161ac5d79998466",
     "query_gold_pi_espec_sql_html_match": true,
     "node_and_edge_svg_checks": true
+  },
+  "operational_schema": {
+    "revision": "operational-v1",
+    "status": "PASS",
+    "tables_extended": 15,
+    "columns_added": 87,
+    "old_column_projection": "unchanged except fictional passenger display_name",
+    "gold_sql_conditions": 108,
+    "first_five_tables": "unchanged",
+    "new_event_timestamps": 0
   }
 }

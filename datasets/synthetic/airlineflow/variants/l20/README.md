@@ -2,9 +2,9 @@
 
 [Dataset home](../../README.md) · [Analysis](../../docs/dataset_analysis.md)
 
-**20 tables · 81 columns · 80,289 rows**. Extends L15 by five tables; shared records are unchanged.
+**20 tables · 168 columns · 80,289 rows**. Extends L15 by five tables; shared records are unchanged.
 
-[SQLite database](input/database.sqlite) · [Data dictionary (readable)](docs/data_dictionary.md) · [Original dictionary (JSON)](input/data_dictionary.json) · [Standard dictionary (JSON)](input/data_dictionary_standard.json) · [SQL DDL](input/schema.sql) · [Reference EEG example](../../docs/eeg_examples.md#l20) · [ERD SVG](docs/schema.svg)
+[SQLite database](input/database.sqlite) · [Data dictionary (readable)](docs/data_dictionary.md) · [Data dictionary (JSON)](input/data_dictionary.json) · [SQL DDL](input/schema.sql) · [Reference EEG example](../../docs/eeg_examples.md#l20) · [ERD SVG](docs/schema.svg)
 
 ![ERD — L20](docs/schema.svg)
 
@@ -22,6 +22,6 @@ Header colors identify the schema layer: L05 blue, L10 green, L15 amber, L20 pur
 
 ## Evaluation
 
-12 applicable requests. Only SQLite, one selected JSON dictionary and the request text are model inputs. Use the original dictionary for frozen-run reproduction and the standard dictionary for newly configured evaluations; record the selected file and checksum. Do not pass both dictionaries. Reference examples, Gold and review materials are evaluator-only.
+12 applicable requests. Only SQLite, JSON dictionary and the request text are model inputs. Reference examples, Gold and review materials are evaluator-only.
 
 Fixture: Stochastic-v2-CompactIDs-20261127.

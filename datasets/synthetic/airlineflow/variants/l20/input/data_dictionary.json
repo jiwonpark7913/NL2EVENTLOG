@@ -154,6 +154,38 @@
       "booked_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the booking was created."
+      },
+      "record_locator": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Six-character synthetic reservation reference (PNR locator), independent of the internal booking key."
+      },
+      "sales_channel": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Channel used to place the reservation: WEB, MOBILE, AGENCY or CONTACT_CENTER."
+      },
+      "booking_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Reservation status in the final snapshot; CONFIRMED means the itinerary was reserved."
+      },
+      "currency_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "ISO 4217 currency of the booking amounts."
+      },
+      "base_fare_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Total base fare in whole KRW, summed over tickets in this booking."
+      },
+      "tax_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Total taxes and fees in whole KRW, summed over tickets."
+      },
+      "total_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Total fare plus taxes in whole KRW."
+      },
+      "payment_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Payment state at the reservation snapshot. PAID indicates settled payment."
       }
     }
   },
@@ -179,6 +211,22 @@
       "gender_code": {
         "declaration": "TEXT NOT NULL CHECK (gender_code IN ('MALE','FEMALE','UNKNOWN'))",
         "description": "Source gender code using the local values MALE, FEMALE and UNKNOWN."
+      },
+      "given_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Fictional given name; part of the display name."
+      },
+      "family_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Fictional family name; part of the display name."
+      },
+      "preferred_language": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Two-letter service language code, not necessarily the passenger nationality."
+      },
+      "loyalty_tier": {
+        "declaration": "TEXT",
+        "description": "Synthetic frequent-flyer tier; NULL means no tier recorded."
       }
     }
   },
@@ -196,6 +244,38 @@
       "passenger_id": {
         "declaration": "TEXT NOT NULL REFERENCES passengers(passenger_id)",
         "description": "Passenger named on the ticket."
+      },
+      "ticket_number": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic 13-digit electronic document number using a dummy prefix; not valid for travel."
+      },
+      "ticket_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Ticket document snapshot status; ISSUED means the ticket exists, not that every coupon was flown."
+      },
+      "issuing_channel": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Distribution channel through which this document was issued."
+      },
+      "currency_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "ISO 4217 currency for the ticket fare."
+      },
+      "base_fare_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Ticket base fare in whole KRW, summed across its segments."
+      },
+      "tax_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Ticket tax and fee total in whole KRW."
+      },
+      "total_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Ticket base fare plus taxes in whole KRW."
+      },
+      "fare_product": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Commercial fare product: ECONOMY_SAVER, ECONOMY_FLEX or BUSINESS."
       }
     }
   },
@@ -213,6 +293,46 @@
       "flight_id": {
         "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
         "description": "Operating leg."
+      },
+      "coupon_no": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "One-based coupon position in chronological order within the ticket itinerary."
+      },
+      "booking_class": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Reservation booking class code for the segment, using local synthetic Y, M or J values."
+      },
+      "cabin_class": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Cabin associated with the fare product: ECONOMY or BUSINESS."
+      },
+      "fare_basis": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local synthetic fare basis code for the segment."
+      },
+      "seat_no": {
+        "declaration": "TEXT",
+        "description": "Assigned seat designator. NULL means no seat assignment in the observed departure records."
+      },
+      "checkin_sequence": {
+        "declaration": "INTEGER",
+        "description": "Sequence of successful check-in within the dated flight; NULL if no completed check-in exists."
+      },
+      "departure_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Departure-system snapshot derived from observed processing: BOOKED, CHECKED_IN or BOARDED."
+      },
+      "checked_bag_allowance": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Number of included checked bags; additional paid bags can exceed the allowance."
+      },
+      "segment_base_fare": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Allocated segment base fare in whole KRW."
+      },
+      "segment_tax": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Allocated segment taxes and fees in whole KRW."
       }
     }
   },
@@ -234,6 +354,30 @@
       "action_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the action occurred."
+      },
+      "station_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Three-letter airport code where the processing action occurred."
+      },
+      "processing_channel": {
+        "declaration": "TEXT NOT NULL",
+        "description": "WEB, MOBILE, KIOSK, COUNTER or GATE; reflects the system channel."
+      },
+      "terminal_code": {
+        "declaration": "TEXT",
+        "description": "Synthetic terminal designation; NULL for remote web/mobile check-in."
+      },
+      "device_id": {
+        "declaration": "TEXT",
+        "description": "Local synthetic processing device or application identifier."
+      },
+      "result_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Processing result in the source system: OK or REJECTED."
+      },
+      "rejection_reason": {
+        "declaration": "TEXT",
+        "description": "Local synthetic reason code for a rejected boarding scan; NULL for successful actions."
       }
     }
   },
@@ -251,6 +395,30 @@
       "bag_tag": {
         "declaration": "TEXT NOT NULL",
         "description": "Baggage tag identifier."
+      },
+      "tag_license_plate": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Ten-digit synthetic bag-tag license plate using dummy carrier prefix 0999; not an issued tag."
+      },
+      "weight_kg": {
+        "declaration": "REAL NOT NULL",
+        "description": "Measured checked-bag mass in kilograms, synthetic."
+      },
+      "bag_type": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Physical baggage category: STANDARD, OVERSIZE or SPECIAL."
+      },
+      "origin_station": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Three-letter airport code of the associated operating leg's origin."
+      },
+      "destination_station": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Three-letter airport code of the associated operating leg's destination."
+      },
+      "handling_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Last observed tracking state: ACCEPTED or LOADED. No arrival or delivery is inferred."
       }
     }
   },
@@ -272,6 +440,30 @@
       "scanned_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Date and time of the baggage scan."
+      },
+      "station_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Airport where tracking observation was recorded."
+      },
+      "location_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local tracking location: BAG_DROP or AIRCRAFT_LOADING."
+      },
+      "device_id": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic scanner identifier local to the station and location."
+      },
+      "capture_method": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Tracking capture method: BARCODE or RFID."
+      },
+      "container_id": {
+        "declaration": "TEXT",
+        "description": "Synthetic cart/container reference for a loading observation; NULL if not recorded."
+      },
+      "source_system": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local baggage reconciliation or handling system identifier."
       }
     }
   },
@@ -285,6 +477,26 @@
       "zone": {
         "declaration": "TEXT NOT NULL",
         "description": "Screening zone name."
+      },
+      "terminal_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic terminal designation at the airport represented by zone."
+      },
+      "checkpoint_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Human-readable synthetic checkpoint name."
+      },
+      "checkpoint_type": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Passenger checkpoint category used in this benchmark."
+      },
+      "lane_count": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Number of modeled screening lanes at this checkpoint."
+      },
+      "operational_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Checkpoint availability in the master-data snapshot."
       }
     }
   },
@@ -302,6 +514,18 @@
       "checkpoint_id": {
         "declaration": "TEXT NOT NULL REFERENCES checkpoints(checkpoint_id)",
         "description": "Security checkpoint visited."
+      },
+      "queue_type": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local service queue category: STANDARD or PRIORITY."
+      },
+      "lane_no": {
+        "declaration": "INTEGER",
+        "description": "Synthetic lane number; NULL when screening has not started."
+      },
+      "visit_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Last observed visit state: QUEUED, IN_SCREENING or COMPLETED; does not assert a security clearance decision."
       }
     }
   },
@@ -327,6 +551,26 @@
       "received_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the receiving system received the record."
+      },
+      "station_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Airport code of the visit checkpoint."
+      },
+      "source_system": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Observation feed: QUEUE_MONITOR or SCREENING_SYSTEM."
+      },
+      "device_id": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic observation device reference, not a real airport installation."
+      },
+      "capture_method": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local observation capture method: SENSOR or SYSTEM_RECORD."
+      },
+      "quality_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local record quality indicator: VALIDATED or UNREVIEWED."
       }
     }
   },
@@ -340,6 +584,22 @@
       "name": {
         "declaration": "TEXT NOT NULL",
         "description": "Synthetic airline name."
+      },
+      "carrier_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic two-character carrier prefix used by the fixture flight numbers; not an assertion of real IATA assignment."
+      },
+      "country_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic carrier registration country, ISO 3166-1 alpha-2."
+      },
+      "home_base": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Three-letter modeled home airport code."
+      },
+      "carrier_type": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Commercial service category used in the synthetic register."
       }
     }
   },
@@ -353,6 +613,26 @@
       "city": {
         "declaration": "TEXT NOT NULL",
         "description": "City name."
+      },
+      "airport_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Published airport name."
+      },
+      "icao_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Four-letter ICAO location indicator."
+      },
+      "country_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "ISO 3166-1 alpha-2 country code."
+      },
+      "timezone": {
+        "declaration": "TEXT NOT NULL",
+        "description": "IANA timezone of the airport."
+      },
+      "airport_type": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Airport category: international commercial airport."
       }
     }
   },
@@ -370,6 +650,30 @@
       "model": {
         "declaration": "TEXT NOT NULL",
         "description": "Aircraft model."
+      },
+      "registration_ref": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Fictional internal registration reference; not a real civil-aircraft registration."
+      },
+      "manufacturer": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Manufacturer associated with the existing aircraft model."
+      },
+      "aircraft_type_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Aircraft family type designation used in this model."
+      },
+      "manufacture_year": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Synthetic manufacture year."
+      },
+      "seat_capacity": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Modeled total installed seat capacity; passenger records cover a sample, not the full manifest."
+      },
+      "fleet_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Aircraft master-data operating status."
       }
     }
   },
@@ -387,6 +691,26 @@
       "role": {
         "declaration": "TEXT NOT NULL",
         "description": "Job role."
+      },
+      "employee_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Fictional employee display name."
+      },
+      "department": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Organizational unit responsible for the employee's role."
+      },
+      "base_station": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Modeled duty base airport code."
+      },
+      "qualification_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic qualification snapshot, not an actual license or regulatory certification."
+      },
+      "employment_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Employment master-data status."
       }
     }
   },
@@ -420,6 +744,30 @@
       "assigned_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the assignment record was created."
+      },
+      "operation_type": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Modeled flight rules category, IFR."
+      },
+      "alternate_station": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic planned alternate airport code, not a dispatch recommendation."
+      },
+      "planned_fuel_kg": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Illustrative planned block fuel mass in kilograms; not an operational fuel calculation."
+      },
+      "minimum_fuel_kg": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Illustrative minimum fuel mass, not a certified dispatch value."
+      },
+      "release_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Assignment snapshot status; ASSIGNED does not assert a signed dispatch release."
+      },
+      "dispatch_system": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local operations-control system identifier."
       }
     }
   }

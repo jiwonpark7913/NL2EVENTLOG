@@ -75,5 +75,6 @@
   "duplicate_flight_boarding_triples": 920,
   "checks": "generator-level checks passed; SQLite and Gold not yet validated",
   "identifier_policy": "compact entity management numbers; minimum 3 digits, deterministic allocation independent of event time and role",
-  "identifier_count": 86173
+  "identifier_count": 86173,
+  "schema_revision": "operational-v1"
 }

@@ -154,6 +154,38 @@
       "booked_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the booking was created."
+      },
+      "record_locator": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Six-character synthetic reservation reference (PNR locator), independent of the internal booking key."
+      },
+      "sales_channel": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Channel used to place the reservation: WEB, MOBILE, AGENCY or CONTACT_CENTER."
+      },
+      "booking_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Reservation status in the final snapshot; CONFIRMED means the itinerary was reserved."
+      },
+      "currency_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "ISO 4217 currency of the booking amounts."
+      },
+      "base_fare_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Total base fare in whole KRW, summed over tickets in this booking."
+      },
+      "tax_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Total taxes and fees in whole KRW, summed over tickets."
+      },
+      "total_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Total fare plus taxes in whole KRW."
+      },
+      "payment_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Payment state at the reservation snapshot. PAID indicates settled payment."
       }
     }
   },
@@ -179,6 +211,22 @@
       "gender_code": {
         "declaration": "TEXT NOT NULL CHECK (gender_code IN ('MALE','FEMALE','UNKNOWN'))",
         "description": "Source gender code using the local values MALE, FEMALE and UNKNOWN."
+      },
+      "given_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Fictional given name; part of the display name."
+      },
+      "family_name": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Fictional family name; part of the display name."
+      },
+      "preferred_language": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Two-letter service language code, not necessarily the passenger nationality."
+      },
+      "loyalty_tier": {
+        "declaration": "TEXT",
+        "description": "Synthetic frequent-flyer tier; NULL means no tier recorded."
       }
     }
   },
@@ -196,6 +244,38 @@
       "passenger_id": {
         "declaration": "TEXT NOT NULL REFERENCES passengers(passenger_id)",
         "description": "Passenger named on the ticket."
+      },
+      "ticket_number": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Synthetic 13-digit electronic document number using a dummy prefix; not valid for travel."
+      },
+      "ticket_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Ticket document snapshot status; ISSUED means the ticket exists, not that every coupon was flown."
+      },
+      "issuing_channel": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Distribution channel through which this document was issued."
+      },
+      "currency_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "ISO 4217 currency for the ticket fare."
+      },
+      "base_fare_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Ticket base fare in whole KRW, summed across its segments."
+      },
+      "tax_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Ticket tax and fee total in whole KRW."
+      },
+      "total_amount": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Ticket base fare plus taxes in whole KRW."
+      },
+      "fare_product": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Commercial fare product: ECONOMY_SAVER, ECONOMY_FLEX or BUSINESS."
       }
     }
   },
@@ -213,6 +293,46 @@
       "flight_id": {
         "declaration": "TEXT NOT NULL REFERENCES flights(flight_id)",
         "description": "Operating leg."
+      },
+      "coupon_no": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "One-based coupon position in chronological order within the ticket itinerary."
+      },
+      "booking_class": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Reservation booking class code for the segment, using local synthetic Y, M or J values."
+      },
+      "cabin_class": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Cabin associated with the fare product: ECONOMY or BUSINESS."
+      },
+      "fare_basis": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Local synthetic fare basis code for the segment."
+      },
+      "seat_no": {
+        "declaration": "TEXT",
+        "description": "Assigned seat designator. NULL means no seat assignment in the observed departure records."
+      },
+      "checkin_sequence": {
+        "declaration": "INTEGER",
+        "description": "Sequence of successful check-in within the dated flight; NULL if no completed check-in exists."
+      },
+      "departure_status": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Departure-system snapshot derived from observed processing: BOOKED, CHECKED_IN or BOARDED."
+      },
+      "checked_bag_allowance": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Number of included checked bags; additional paid bags can exceed the allowance."
+      },
+      "segment_base_fare": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Allocated segment base fare in whole KRW."
+      },
+      "segment_tax": {
+        "declaration": "INTEGER NOT NULL",
+        "description": "Allocated segment taxes and fees in whole KRW."
       }
     }
   },
@@ -234,6 +354,30 @@
       "action_at": {
         "declaration": "TEXT NOT NULL",
         "description": "Time the action occurred."
+      },
+      "station_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Three-letter airport code where the processing action occurred."
+      },
+      "processing_channel": {
+        "declaration": "TEXT NOT NULL",
+        "description": "WEB, MOBILE, KIOSK, COUNTER or GATE; reflects the system channel."
+      },
+      "terminal_code": {
+        "declaration": "TEXT",
+        "description": "Synthetic terminal designation; NULL for remote web/mobile check-in."
+      },
+      "device_id": {
+        "declaration": "TEXT",
+        "description": "Local synthetic processing device or application identifier."
+      },
+      "result_code": {
+        "declaration": "TEXT NOT NULL",
+        "description": "Processing result in the source system: OK or REJECTED."
+      },
+      "rejection_reason": {
+        "declaration": "TEXT",
+        "description": "Local synthetic reason code for a rejected boarding scan; NULL for successful actions."
       }
     }
   }

@@ -1,6 +1,6 @@
 {
-  "edition": "standard-v1",
-  "base_commit": "c91a03240750a580c59734d5552fae71c02828d7",
+  "edition": "standard-v1-operational-v1",
+  "base_commit": "operational-v1 schema revision",
   "checksum_algorithm": "Git blob SHA (content-addressed Git object; not raw-file SHA-256)",
   "evaluation_manifest": "../variant_manifest.json",
   "variants": [
@@ -15,26 +15,26 @@
     {
       "variant_id": "l10",
       "original_path": "variants/l10/input/data_dictionary.json",
-      "original_git_blob_sha": "0425ba38f8f04ed4396c8342f6ec5bcfc4d65773",
+      "original_git_blob_sha": "0ae40025e700ae4269e071c07f89eccba6a0e6c2",
       "standard_path": "variants/l10/input/data_dictionary_standard.json",
-      "standard_git_blob_sha": "e9ac6b4585163023f450840c6d3cadcf0216c867",
-      "database_git_blob_sha": "1ca27f9afaa03d902a92568798958bf1f934533f"
+      "standard_git_blob_sha": "336c4c3083030e325bdcbc1613880d0d5265eab1",
+      "database_git_blob_sha": "02581ea2484555f22dacf10eff6895d325a3a72b"
     },
     {
       "variant_id": "l15",
       "original_path": "variants/l15/input/data_dictionary.json",
-      "original_git_blob_sha": "80f1789436276b5e2e224034fa1817fabb70d29a",
+      "original_git_blob_sha": "49ef01325121f629934a6dc3ca1610ae53cfcd5f",
       "standard_path": "variants/l15/input/data_dictionary_standard.json",
-      "standard_git_blob_sha": "fd309af34ccd6a7852b5a2307f2babf44bb3106a",
-      "database_git_blob_sha": "d82274c24878725a3b8c742e0cc2b4b48f1b547a"
+      "standard_git_blob_sha": "3020bd067cc8b9c28ae3ad5ddbc6be4786c30258",
+      "database_git_blob_sha": "313e82365dc8442fed2ea5071719e54857a0cb81"
     },
     {
       "variant_id": "l20",
       "original_path": "variants/l20/input/data_dictionary.json",
-      "original_git_blob_sha": "d51ae35cb193bbce255321beb574d64776cb0a1b",
+      "original_git_blob_sha": "7a98aeb41da5352f59f790cc74ac2b2ceca3e473",
       "standard_path": "variants/l20/input/data_dictionary_standard.json",
-      "standard_git_blob_sha": "d88e4726569216c4e85f60932f455d107fdae282",
-      "database_git_blob_sha": "ec1e47fdfb3a862946d4ecbf02c2f65e8ec04171"
+      "standard_git_blob_sha": "973f151f14263b65d9427d71da29be873da9ae41",
+      "database_git_blob_sha": "f3f504fded6de220692b39f4620af87274bad7ef"
     }
   ]
 }

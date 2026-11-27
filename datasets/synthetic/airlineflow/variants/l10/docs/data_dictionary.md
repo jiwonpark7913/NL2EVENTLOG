@@ -2,7 +2,7 @@
 
 [Back to variant](../README.md) · [Original JSON](../input/data_dictionary.json)
 
-10 tables · 47 columns · 34,563 rows
+10 tables · 83 columns · 34,563 rows
 
 ## `boarding_sessions`
 
@@ -23,6 +23,14 @@ Reservations for groups of travellers. (2,537 rows)
 |---|---|---|
 | `booking_id` | `TEXT PRIMARY KEY NOT NULL` | Booking identifier. |
 | `booked_at` | `TEXT NOT NULL` | Time the booking was created. |
+| `record_locator` | `TEXT NOT NULL` | Six-character synthetic reservation reference (PNR locator), independent of the internal booking key. |
+| `sales_channel` | `TEXT NOT NULL` | Channel used to place the reservation: WEB, MOBILE, AGENCY or CONTACT_CENTER. |
+| `booking_status` | `TEXT NOT NULL` | Reservation status in the final snapshot; CONFIRMED means the itinerary was reserved. |
+| `currency_code` | `TEXT NOT NULL` | ISO 4217 currency of the booking amounts. |
+| `base_fare_amount` | `INTEGER NOT NULL` | Total base fare in whole KRW, summed over tickets in this booking. |
+| `tax_amount` | `INTEGER NOT NULL` | Total taxes and fees in whole KRW, summed over tickets. |
+| `total_amount` | `INTEGER NOT NULL` | Total fare plus taxes in whole KRW. |
+| `payment_status` | `TEXT NOT NULL` | Payment state at the reservation snapshot. PAID indicates settled payment. |
 
 ## `flights`
 
@@ -76,6 +84,12 @@ Departure processing records for passenger flight legs. (14,031 rows)
 | `leg_id` | `TEXT NOT NULL REFERENCES passenger_legs(leg_id)` | Passenger flight leg. |
 | `action_code` | `TEXT NOT NULL` | Once check-in is completed, the system records CK. When boarding is confirmed, the system records BD. If a scan is rejected, the system records RJ. |
 | `action_at` | `TEXT NOT NULL` | Time the action occurred. |
+| `station_code` | `TEXT NOT NULL` | Three-letter airport code where the processing action occurred. |
+| `processing_channel` | `TEXT NOT NULL` | WEB, MOBILE, KIOSK, COUNTER or GATE; reflects the system channel. |
+| `terminal_code` | `TEXT` | Synthetic terminal designation; NULL for remote web/mobile check-in. |
+| `device_id` | `TEXT` | Local synthetic processing device or application identifier. |
+| `result_code` | `TEXT NOT NULL` | Processing result in the source system: OK or REJECTED. |
+| `rejection_reason` | `TEXT` | Local synthetic reason code for a rejected boarding scan; NULL for successful actions. |
 
 ## `passenger_legs`
 
@@ -86,6 +100,16 @@ Ticketed segments linking a passenger ticket to a particular operating leg. (6,8
 | `leg_id` | `TEXT PRIMARY KEY NOT NULL` | Passenger flight leg identifier. |
 | `ticket_id` | `TEXT NOT NULL REFERENCES tickets(ticket_id)` | Associated ticket. |
 | `flight_id` | `TEXT NOT NULL REFERENCES flights(flight_id)` | Operating leg. |
+| `coupon_no` | `INTEGER NOT NULL` | One-based coupon position in chronological order within the ticket itinerary. |
+| `booking_class` | `TEXT NOT NULL` | Reservation booking class code for the segment, using local synthetic Y, M or J values. |
+| `cabin_class` | `TEXT NOT NULL` | Cabin associated with the fare product: ECONOMY or BUSINESS. |
+| `fare_basis` | `TEXT NOT NULL` | Local synthetic fare basis code for the segment. |
+| `seat_no` | `TEXT` | Assigned seat designator. NULL means no seat assignment in the observed departure records. |
+| `checkin_sequence` | `INTEGER` | Sequence of successful check-in within the dated flight; NULL if no completed check-in exists. |
+| `departure_status` | `TEXT NOT NULL` | Departure-system snapshot derived from observed processing: BOOKED, CHECKED_IN or BOARDED. |
+| `checked_bag_allowance` | `INTEGER NOT NULL` | Number of included checked bags; additional paid bags can exceed the allowance. |
+| `segment_base_fare` | `INTEGER NOT NULL` | Allocated segment base fare in whole KRW. |
+| `segment_tax` | `INTEGER NOT NULL` | Allocated segment taxes and fees in whole KRW. |
 
 ## `passengers`
 
@@ -98,6 +122,10 @@ Synthetic passenger register. The dataset records a single nationality, distinct
 | `date_of_birth` | `DATE NOT NULL` | Date of birth in YYYY-MM-DD format. A passenger attribute rather than an event timestamp. |
 | `nationality_code` | `TEXT CHECK (nationality_code IS NULL OR length(nationality_code)=2)` | Recorded two-letter nationality code (KR, JP, US, DE or SG). NULL means unknown. |
 | `gender_code` | `TEXT NOT NULL CHECK (gender_code IN ('MALE','FEMALE','UNKNOWN'))` | Source gender code using the local values MALE, FEMALE and UNKNOWN. |
+| `given_name` | `TEXT NOT NULL` | Fictional given name; part of the display name. |
+| `family_name` | `TEXT NOT NULL` | Fictional family name; part of the display name. |
+| `preferred_language` | `TEXT NOT NULL` | Two-letter service language code, not necessarily the passenger nationality. |
+| `loyalty_tier` | `TEXT` | Synthetic frequent-flyer tier; NULL means no tier recorded. |
 
 ## `tickets`
 
@@ -108,6 +136,14 @@ Tickets issued to passengers. (4,505 rows)
 | `ticket_id` | `TEXT PRIMARY KEY NOT NULL` | Ticket identifier. |
 | `booking_id` | `TEXT NOT NULL REFERENCES bookings(booking_id)` | Associated booking. |
 | `passenger_id` | `TEXT NOT NULL REFERENCES passengers(passenger_id)` | Passenger named on the ticket. |
+| `ticket_number` | `TEXT NOT NULL` | Synthetic 13-digit electronic document number using a dummy prefix; not valid for travel. |
+| `ticket_status` | `TEXT NOT NULL` | Ticket document snapshot status; ISSUED means the ticket exists, not that every coupon was flown. |
+| `issuing_channel` | `TEXT NOT NULL` | Distribution channel through which this document was issued. |
+| `currency_code` | `TEXT NOT NULL` | ISO 4217 currency for the ticket fare. |
+| `base_fare_amount` | `INTEGER NOT NULL` | Ticket base fare in whole KRW, summed across its segments. |
+| `tax_amount` | `INTEGER NOT NULL` | Ticket tax and fee total in whole KRW. |
+| `total_amount` | `INTEGER NOT NULL` | Ticket base fare plus taxes in whole KRW. |
+| `fare_product` | `TEXT NOT NULL` | Commercial fare product: ECONOMY_SAVER, ECONOMY_FLEX or BUSINESS. |
 
 ## `turnarounds`
 
