@@ -1,6 +1,6 @@
 """Refresh the review UI while preserving the released fixture payload byte-for-byte."""
 from pathlib import Path
-import hashlib, json, subprocess, tempfile
+import hashlib, json, subprocess, tempfile, csv
 R=Path(__file__).resolve().parent
 p=R/'docs/scenario.html'
 old=p.read_text(encoding='utf-8')
@@ -9,6 +9,20 @@ suffix=';\nconst $='
 payload=old.split(prefix,1)[1].split(suffix,1)[0]
 data=json.loads(payload)
 assert len(data['queries'])==72 and len(data['events'])==72
+with (R/'evaluation/query_registry.csv').open(encoding='utf-8-sig',newline='') as f:
+    released_registry=list(csv.DictReader(f))
+assert data['registry']==released_registry,'HTML registry differs from released CSV'
+classification_discrepancies=[]
+for r in released_registry:
+    q=r['QUERY ID']; m=data['queries'][q]; pi=m['pi']
+    actual={e[1] for e in data['events'][q]}
+    assert int(r['ACT COUNT'])==len(actual)==m['activity_count'],q
+    assert set(r['EXPECTED ACTIVITIES'].split('; '))==actual,q
+    assert int(r['EXPECTED CASE COUNT'])==m['cases'] and int(r['EXPECTED EVENT COUNT'])==m['events'],q
+    assert r['CASE MODE'] in ('Explicit','Implicit') and r['REQUEST MODE'] in ('Explicit','Implicit'),q
+    if r['CASE MODE']!=pi.get('case_mode') or r['REQUEST MODE']!=pi.get('activity_mode'):
+        classification_discrepancies.append(q)
+print('PASS: 72 query summary metrics and activity sets match released Registry and Gold; Registry/PI mode discrepancies:',classification_discrepancies)
 for v in data['manifest']:
     original=json.loads((R/v['dictionary_path']).read_text())
     assert data['dictionaries'][v['variant_id']]==original
@@ -39,7 +53,7 @@ for q,events in data['events'].items():
 # No fake data: test Q01 (same row, different clock), Q05 (two tables), Q18 (aggregate) and Q56 (visit).
 with tempfile.TemporaryDirectory() as t:
     js=Path(t)/'review_test.js'
-    subset={k:data[k] for k in ('version','manifest','records','queries','events','dictionaries')}
+    subset={k:data[k] for k in ('version','manifest','records','queries','events','dictionaries','registry')}
     subset['queries']={q:subset['queries'][q] for q in ('Q01','Q05','Q18','Q56')}
     subset['events']={q:subset['events'][q] for q in subset['queries']}
     # Only the function declarations, not the boot-up DOM handlers.
@@ -67,6 +81,12 @@ function check(qid,event){
     assert.ok(elem('dictionaryBody').innerHTML.includes('<tr class="dd-hit"><td>'+event[5]+'</td>'));
     assert.ok(rec.columns.every(x=>elem('dictionaryBody').innerHTML.includes('>'+x+'</td>')));
 }
+const summary=querySummary('Q01');
+assert.ok(summary.includes('Case mode')&&summary.includes('Activity mode')&&summary.includes('Explicit'));
+assert.ok(summary.includes('Gold activities (2)'));
+const summary2=querySummary('Q05');
+assert.ok(summary2.includes('Gold activities (6)'));
+assert.ok(summary2.includes('검증 목적'));
 const pair=DATA.events.Q01.slice(0,2);
 assert.equal(pair[0][4],pair[1][4]);
 check('Q01',pair[0]);check('Q01',pair[1]);
