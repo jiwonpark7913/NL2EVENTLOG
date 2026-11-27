@@ -121,7 +121,7 @@ For model evaluation, provide only the appropriate `variants/lXX/input/database.
 
 ## Validation and limitations
 
-The previous release reported 108/108 database–request and 72/72 semantic comparisons. In PM-Scope1, revised Pilot references were reconstructed from canonical records; SQLite replay remains pending. These are dataset validation records, not model results or proof of completed external human review.
+The previous release reported 108/108 database–request and 72/72 semantic comparisons. In PM-Scope1, revised Pilot references were reconstructed from canonical records; SQLite replay of all 108 database–request conditions, including the 20 revised Pilot conditions, passed on 2026-11-27 ([receipt](evaluation/verification.json)). These are dataset validation records, not model results or proof of completed external human review.
 
 [Semantic review](evaluation/semantic_gold_review_20261127.md) · [Verification receipt](evaluation/verification.json) · [Case policy](evaluation/case_key_policy.json) · [Release history](docs/archive/release_history_20261127.md).
 

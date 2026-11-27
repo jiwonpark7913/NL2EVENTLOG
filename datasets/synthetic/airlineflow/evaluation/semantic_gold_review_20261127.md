@@ -6,6 +6,18 @@ Reviewed fixture: `e98f51c8602c12620baa028b99396522b7613171` (TemporalRevision1-
 This is an evaluator-side review, not an author approval or a new dataset freeze.
 Q02 has the researcher's previously recorded approval. For all other requests this review recommends retaining the current reference logs; final researcher approval remains pending. No model inference, runtime EEG, predicted PI, or predicted SQL was used. No question, database, dictionary, Gold SQL, CSV, ESpec, or evaluation protocol was modified by this review.
 
+## PM-Scope1 addendum (2026-11-27)
+
+The review below was written against `e98f51c`. PM-Scope1 (`5cd9d57`) later revised three Pilot references, and the ledger rows for Q02, Q04 and Q05 now show the current values:
+
+| ID | At `e98f51c` | Current (`5cd9d57`) |
+|---|---|---|
+| Q02 | Handling Job, 288 cases, 12 activities, 576 events | Turnaround, 48 cases, 14 activities, 672 events (adds Handling Start and Aircraft Ready) |
+| Q04 | Turnaround, 14 activities, 672 events | Turnaround, 20 activities, 960 events (adds the six job starts) |
+| Q05 | Turnaround, 4 activities, 192 events | Turnaround, 6 activities, 288 events (adds Cabin Cleaning Start and Refuelling Start) |
+
+Current totals are 32,688 event records over the 72 requests (Pilot 3,600; Test 29,088); the totals of 32,208 and 3,120 in Results, and the Q02 figures in the activity-contract note, refer to `e98f51c`. On 2026-11-27 all 108 manifest combinations were executed against the four SQLite databases at `5cd9d57` and matched `events.csv` exactly, and a second reconstruction written from the request texts alone matched all 72 references. Test references are unchanged.
+
 ## Review plan and completed checks
 
 1. Read the 72 query registry entries, public dictionary, schema context and all 72 reference SQL files. Check the requested case, population, activity semantics/granularity, actual timestamp, source filters, and role-specific attribution.
@@ -54,10 +66,10 @@ All rows below passed the independent CSV multiset comparison. Counts refer to a
 | ID | Case / intended scope | Activity or selection rationale | Events | Decision |
 |---|---|---|---:|---|
 | Q01 | Boarding Session, all 96 | Session start/close | 192 | R |
-| Q02 | Handling Job, all 288 | Six job types, actual start and finish; no posting | 576 | A |
+| Q02 | Turnaround, all 48 | Coordination start, six job types with actual start and finish, readiness; no posting | 672 | A |
 | Q03 | Outbound Flight | Session start/close, BL close, ready, actual OUT | 240 | R |
-| Q04 | Turnaround | Inbound LAND/IN, coordination start, six job completions, outbound session start/close, ready, OUT/AIR | 672 | R |
-| Q05 | Turnaround | Coordination start, CL/FU complete, ready | 192 | R |
+| Q04 | Turnaround | Inbound LAND/IN, coordination start, six job starts and completions, outbound session start/close, ready, OUT/AIR | 960 | R |
+| Q05 | Turnaround | Coordination start, CL/FU start and complete, ready | 288 | R |
 | Q06 | Outbound Flight | Session start/close, OUT/AIR | 192 | R |
 | Q07 | Outbound Flight | UL/CL/FU/CA/BL completions in preparing turnaround; no DP because not requested | 240 | R |
 | Q08 | Turnaround | Inbound LAND/IN and outbound OUT/AIR only | 192 | R |

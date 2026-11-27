@@ -8,7 +8,16 @@
   "prior_release": "TemporalRevision1-SemanticDD1-CanonicalQ02",
   "prior_verified_conditions": 108,
   "current_modified_conditions": 20,
-  "current_sqlite_replay": "PENDING",
+  "current_sqlite_replay": "PASS",
+  "current_sqlite_replay_detail": {
+    "date": "2026-11-27",
+    "commit": "5cd9d57e3b0f92d93ca0c0b1f4f1edd971913cd5",
+    "conditions": 108,
+    "matched": 108,
+    "modified_conditions_matched": 20,
+    "comparison": "gold.sql executed read-only on each manifest database; exact multiset and row order equal to events.csv",
+    "verify_py": "PASS"
+  },
   "source_reconstruction": {
     "Q02": {
       "cases": 48,
@@ -57,7 +66,7 @@
     }
   },
   "limitations": [
-    "Prior SQL verification is historical; revised release requires SQLite replay and production scorer preflight.",
+    "SQLite replay of the revised release passed on 2026-11-27 (108/108); production scorer preflight is still required.",
     "Historical compressed archives are not current. No model inference; Test Gold unchanged."
   ]
 }
