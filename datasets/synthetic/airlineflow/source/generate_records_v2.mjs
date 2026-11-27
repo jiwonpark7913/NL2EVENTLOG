@@ -2,6 +2,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {enrichOperationalRecords} from './operational_enrichment.mjs';
 export function generateAirlineFlow(config) {
   const seed=config.seed;
   function random(s) {return ()=>{s|=0;s=s+0x6D2B79F5|0;let z=Math.imul(s^s>>>15,1|s);z=z+Math.imul(z^z>>>7,61|z)^z;return ((z^z>>>14)>>>0)/4294967296;};}
@@ -179,6 +180,8 @@ export function generateAirlineFlow(config) {
   for(const r of Object.values(records))for(const row of r.rows)for(let i=0;i<row.length;i++)if(typeof row[i]==='string'&&Object.hasOwn(compactMap,row[i]))row[i]=compactMap[row[i]];
   summary.identifier_policy='compact entity management numbers; minimum 3 digits, deterministic allocation independent of event time and role';
   summary.identifier_count=Object.keys(compactMap).length;
+  enrichOperationalRecords(records,seed);
+  summary.schema_revision='operational-v1';
   return {records,summary,idMap:compactMap,transitionMap};
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

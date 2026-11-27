@@ -8,6 +8,9 @@ on:
       - 'datasets/synthetic/airlineflow/refresh_review_v2.py'
       - 'datasets/synthetic/airlineflow/enrich_review.py'
       - 'datasets/synthetic/airlineflow/activity_dfg.py'
+      - 'datasets/synthetic/airlineflow/migrate_operational_schema.py'
+      - 'datasets/synthetic/airlineflow/source/operational_fields_v1.json'
+      - 'datasets/synthetic/airlineflow/source/operational_enrichment.mjs'
       - '.github/workflows/airlineflow-v2-publish.yml'
   workflow_dispatch:
 permissions:
@@ -36,7 +39,10 @@ jobs:
         run: |
           set -euo pipefail
           cd datasets/synthetic/airlineflow
-          if [ "$EVENT_NAME" = "workflow_dispatch" ] || git diff --name-only --relative "$BEFORE_SHA" HEAD -- regenerate_v2.py | grep -Fxq regenerate_v2.py; then
+          command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
+          if [ "$EVENT_NAME" != "workflow_dispatch" ] && git diff --name-only --relative "$BEFORE_SHA" HEAD | grep -Eq "^(migrate_operational_schema.py|source/operational_(fields_v1.json|enrichment.mjs))$"; then
+            python migrate_operational_schema.py
+          elif [ "$EVENT_NAME" = "workflow_dispatch" ] || git diff --name-only --relative "$BEFORE_SHA" HEAD -- regenerate_v2.py | grep -Fxq regenerate_v2.py; then
             command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
             python regenerate_v2.py
             cp verify_v2.py verify.py
