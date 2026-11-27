@@ -143,7 +143,30 @@ export function generateAirlineFlow(config) {
   assert(bagHist[0]>0&&bagHist[2]>0&&visitHist[2]>0&&rejectHist[2]>0&&stateHist.incomplete>0&&stateHist.no_show>0&&duplicateBoarding>0,"coverage gates");
   for(const r of Object.values(records))shuffle(order,r.rows);
   const summary={seed,counts,flight_population:{min:Math.min(...Object.values(perFlight)),max:Math.max(...Object.values(perFlight)),total:all.length},party_histogram:partyHist,ticket_leg_histogram:lengthHist,passenger_state_histogram:stateHist,bags_per_leg:bagHist,visits_per_leg:visitHist,rejections_per_leg:rejectHist,turnaround_scenarios:scenarios,duplicate_flight_boarding_triples:duplicateBoarding,checks:"generator-level checks passed; SQLite and Gold not yet validated"};
-  return {records,summary};
+  // Keep the original RNG consumption and business fixture exactly unchanged.
+  // Independent seeded, collision-free numeric aliases are assigned only after generation.
+  const groups=new Map();
+  for(const r of Object.values(records))for(const row of r.rows)for(const v of row){
+    if(typeof v==='string'&&keyset.has(v)){
+      const prefix=v.split('-')[0];
+      if(!groups.has(prefix))groups.set(prefix,new Set());
+      groups.get(prefix).add(v);
+    }
+  }
+  const shortRng=random(seed+871923),idMap={};
+  for(const [prefix,values] of [...groups.entries()].sort(([a],[b])=>a.localeCompare(b))){
+    const keys=[...values].sort();
+    const width=keys.length<=1000?4:5,lo=10**(width-1),hi=10**width-1,used=new Set();
+    if(keys.length>hi-lo+1)throw Error('ID capacity '+prefix);
+    for(const k of keys){
+      let n;do{n=int(shortRng,lo,hi);}while(used.has(n));used.add(n);
+      idMap[k]=prefix+'-'+String(n);
+    }
+  }
+  for(const r of Object.values(records))for(const row of r.rows)for(let i=0;i<row.length;i++)if(typeof row[i]==='string'&&Object.hasOwn(idMap,row[i]))row[i]=idMap[row[i]];
+  summary.identifier_policy='short opaque seeded numeric IDs (4–5 digits; no business-role encoding)';
+  summary.identifier_count=Object.keys(idMap).length;
+  return {records,summary,idMap};
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   if (process.argv.length !== 3) throw Error('Usage: node generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY');
@@ -151,8 +174,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (existsSync(out) && readdirSync(out).length) throw Error('Output must be empty');
   mkdirSync(out,{recursive:true});
   const config=JSON.parse(readFileSync(new URL('./stochastic_v2_config.json',import.meta.url),'utf8'));
-  const {records,summary}=generateAirlineFlow(config);
+  const {records,summary,idMap}=generateAirlineFlow(config);
   writeFileSync(join(out,'records.json'),JSON.stringify(records)+'\n');
   writeFileSync(join(out,'generator_summary.json'),JSON.stringify(summary,null,2)+'\n');
+  writeFileSync(join(out,'identifier_map.json'),JSON.stringify(idMap)+'\n');
   console.log(JSON.stringify(summary,null,2));
 }

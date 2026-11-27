@@ -5,7 +5,7 @@ from itertools import product
 import csv, json, sqlite3, hashlib, subprocess, tempfile, shutil, sys, re, html
 R=Path(__file__).resolve().parent
 E=R/'evaluation'
-VERSION='Stochastic-v2-20261127'
+VERSION='Stochastic-v2-ShortIDs-20261127'
 def load(p): return json.loads(p.read_text(encoding='utf-8-sig'))
 def save(p,x): p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -20,10 +20,28 @@ def events(p,rows):
         w=csv.writer(f);w.writerow(['case_id','activity','timestamp']);w.writerows(rows)
 def qid(n): return f'Q{n:02d}'
 def run_sql(c,p): return sorted(c.execute(p.read_text()).fetchall(),key=lambda r:(r[0],r[2],r[1]))
+old_records=load(R/'source/records.json')
+old_manifest=load(E/'variant_manifest.json')
+old_is_stochastic=old_manifest[0].get('query_registry_version','').startswith('Stochastic-v2')
+old_gold={}
+old_evidence=None
+if old_is_stochastic:
+    for n in range(1,73):
+        q=qid(n);old_gold[q]=Counter(tuple(x[k] for k in ('case_id','activity','timestamp')) for x in csvread(R/'gold'/q/'events.csv'))
+    old_html=(R/'docs/scenario.html').read_text()
+    old_evidence=json.loads(old_html.split('const DATA=',1)[1].split(';\nconst $=',1)[0])['events']
+    del old_html
 with tempfile.TemporaryDirectory() as td:
     subprocess.run(['node',str(R/'source/generate_records_v2.mjs'),str(Path(td)/'out')],check=True)
     records=load(Path(td)/'out/records.json')
     summary=load(Path(td)/'out/generator_summary.json')
+    id_map=load(Path(td)/'out/identifier_map.json')
+assert len(id_map)==len(set(id_map.values()))
+if old_is_stochastic:
+    for table,r in old_records.items():
+        assert r['columns']==records[table]['columns']
+        assert [ [id_map.get(x,x) if isinstance(x,str) else x for x in row] for row in r['rows'] ]==records[table]['rows'],table
+    print('PASS: every released source row preserved modulo bijective ID remapping')
 save(R/'source/records.json',records)
 save(R/'source/stochastic_v2_generator_preview.json',summary)
 T={k:[dict(zip(v['columns'],r)) for r in v['rows']] for k,v in records.items()}
@@ -151,11 +169,11 @@ edits={
 'Q60':('How do travellers progress through their own recorded departure processing from check-in through airport security, including waiting, to boarding or their last recorded step if boarding is not completed? Create an event log including unsuccessful attempts, excluding individual baggage tracking.','여행객이 체크인부터 보안검색 대기 및 검색을 거쳐 탑승하거나 미완료 시 마지막 기록에 이르기까지 자신의 출발 처리 과정이 어떻게 진행되는지 알고 싶어. 실패 시도를 포함하고 개별 수하물 추적 기록은 제외한 이벤트 로그를 만들어줘.')}
 for r in registry:
     q=r['QUERY ID'];en,kr=r['QUERY (EN / KR)'].split('\n',1)
-    if q in edits:
+    if not old_is_stochastic and q in edits:
         a,b=edits[q];en=a or en;kr=b or kr
-    if q=='Q25':en=en.replace('preparation and departure milestones','ground-service completion and gate-boarding milestones');kr=kr.replace('출발 준비와 실제 출발의 주요 시점','지상조업 완료와 게이트 탑승의 주요 시점')
+    if not old_is_stochastic and q=='Q25':en=en.replace('preparation and departure milestones','ground-service completion and gate-boarding milestones');kr=kr.replace('출발 준비와 실제 출발의 주요 시점','지상조업 완료와 게이트 탑승의 주요 시점')
     # Observed partial cases are within scope; no synthetic missing event.
-    if q in {'Q13','Q49','Q50','Q51','Q52','Q16','Q53','Q54','Q55','Q56','Q19','Q57','Q59'}:
+    if not old_is_stochastic and q in {'Q13','Q49','Q50','Q51','Q52','Q16','Q53','Q54','Q55','Q56','Q19','Q57','Q59'}:
         en+=' Preserve recorded partial traces; do not invent missing events.'
         kr+=' 기록된 미완료 흐름은 유지하고 없는 이벤트를 생성하지 마.'
     r['QUERY (EN / KR)']=en+'\n'+kr
@@ -185,6 +203,10 @@ all_gold={};evidence={};metadata={};digest_groups=defaultdict(list)
 with sqlite3.connect(R/'input/database.sqlite') as c:
     for r in registry:
         q=r['QUERY ID'];g=R/'gold'/q;ref=independent(q);rows=run_sql(c,g/'gold.sql');assert rows==[x[:3] for x in ref],q
+        if old_is_stochastic:
+            assert Counter(rows)==Counter({(id_map.get(k,k),a,t):n for (k,a,t),n in old_gold[q].items()}),(q,'gold preservation')
+            old_ref=Counter((id_map.get(k,k),a,t,tab,id_map.get(pk,pk),col) for k,a,t,tab,pk,col in old_evidence[q])
+            assert Counter(ref)==old_ref,(q,'source occurrence preservation')
         all_gold[q]=rows;evidence[q]=ref
         events(g/'events.csv',rows);tr,va,no,ed,ti=render_dfg(q,rows,g)
         et,aa=I[q];assert et==r['CASE ENTITY'] and set(aa)==set(r['EXPECTED ACTIVITIES'].split('; ')),q
@@ -202,9 +224,10 @@ with sqlite3.connect(R/'input/database.sqlite') as c:
         r.update({'EXPECTED CASE COUNT':str(len(tr)),'EXPECTED EVENT COUNT':str(len(rows)),'MEAN TRACE LENGTH':str(round(len(rows)/len(tr),6)),'SOURCE OCCURRENCE PROFILE':'; '.join(f'{a}={counts[a]}' for a in aa),'DUPLICATE EVENT ROWS':str(len(rows)-len(set(rows))),'TIMESTAMP TIE CASES':str(ti),'BUCKET VARIANTS':str(len(va)),'GOLD STATUS':'SQLite and independent occurrence reconstruction PASS','SEMANTIC REVIEW':'v2 automated intent, occurrence and source-rule checks; human review pending','REVIEW VERDICT':'Pending final human approval','REVIEW ACTION':'Regenerated for stochastic fixture; review before model inference'})
         if q in ('Q55','Q56'):r['ALTERNATIVE CASE POLICY']='Passenger Leg not equivalent: multiple visits per leg; scope bijection required.'
         if q in ('Q51','Q52'):r['ALTERNATIVE CASE POLICY']='Bag tag secondary only after verified bijection; Passenger Leg not equivalent.'
-        if r['EXPERIMENT']=='B':r['CONTROL / CAVEAT']+='; stochastic event counts and activity mix may differ; not isolated causal effect.'
+        if r['EXPERIMENT']=='B' and 'stochastic event counts' not in r['CONTROL / CAVEAT']:r['CONTROL / CAVEAT']+='; stochastic event counts and activity mix may differ; not isolated causal effect.'
         d=hashlib.sha256(json.dumps(sorted(rows),ensure_ascii=False,separators=(',',':')).encode()).hexdigest();digest_groups[d].append(q)
         metadata[q]={'case':et,'activity_count':len(aa),'cases':len(tr),'events':len(rows),'variants':len(va),'ties':ti,'digest':d,'dfg':(g/'dfg.svg').read_text(),'pi':pi,'espec':es,'sql':(g/'gold.sql').read_text(),'query':r['QUERY (EN / KR)'],'experiment':r['EXPERIMENT'],'sources':r['EVENT SOURCE COUNT'],'activities':aa}
+    csvwrite(R/'private/flight_schedule.csv',[{'case_id':r['flight_id'],'flight_no':r['flight_no'],'scheduled_offblock':r['scheduled_offblock']} for r in sorted(T['flights'],key=lambda x:x['flight_id'])])
     for p in (R/'private').glob('*.sql'):
         events(p.with_name(p.stem+'_events.csv'),run_sql(c,p))
     for q in ('B01','B02','B03'):
@@ -224,6 +247,7 @@ for v in manifest:
             assert run_sql(c,R/'gold'/q/'gold.sql')==all_gold[q],(v['variant_id'],q)
             conditions+=1
 assert conditions==108
+if old_is_stochastic:print('PASS: all 72 Gold multisets and source occurrences preserved modulo bijective ID remapping')
 # Refresh pilot overlap using physical occurrence identity, not coincident timestamp triples.
 pilot=[qid(n) for n in range(1,13)]
 def os(q):return Counter((x[1],x[2],x[3],x[4],x[5]) for x in evidence[q])
@@ -261,6 +285,7 @@ if sm.exists():sm.unlink()
 (R/'semantic_check/README.md').write_text((R/'semantic_check/README.md').read_text()+'\nStochastic v2: the old scan-ID remapping receipt is retired; scan IDs are opaque at generation. B01–B03 reference CSVs were replayed against the new L15 input. This is not a completed semantic recovery experiment.\n')
 # Update documentation without claiming human or production-scorer approval.
 receipt={'version':VERSION,'seed':summary['seed'],'status':'candidate; human review and production scorer pending','sqlite_conditions_passed':conditions,'independent_occurrence_comparisons':len(all_gold),'nested_schema_check':'PASS','integrity_and_fk':'PASS','generator_summary':summary,'production_scorer':'NOT_RUN','human_semantic_review':'PENDING','model_inference':'NOT_RUN'}
+receipt['identifier_migration']={'status':'PASS' if old_is_stochastic else 'no previous stochastic fixture to compare','preserved_source_rows':sum(len(x['rows']) for x in records.values()),'preserved_gold_queries':72 if old_is_stochastic else 0,'bijection_size':len(id_map),'only_identity_values_changed':old_is_stochastic}
 save(E/'verification.json',receipt)
 (R/'docs/queries.md').write_text('# Request catalog — '+VERSION+'\n\n72 requests, 108 DB–request conditions. Evaluator-only references. Human review pending.\n\n| ID | Request (English) | Case | Activities | Cases | Events | Reference files |\n|---|---|---|---:|---:|---:|---|\n'+'\n'.join(f"| {q} | {m['query'].splitlines()[0]} | {m['case']} | {m['activity_count']} | {m['cases']} | {m['events']} | [CSV](../gold/{q}/events.csv) · [DFG](../gold/{q}/dfg.svg) · [SQL](../gold/{q}/gold.sql) · [PI](../gold/{q}/pi.json) · [ESpec](../gold/{q}/espec.json) |" for q,m in metadata.items())+'\n')
 (R/'evaluation/semantic_gold_review_20261127.md').write_text('# Stochastic v2 automated review\n\nThe prior PM-Scope1 review is preserved in git history. Current validation: 108 SQL conditions and 72 independently reconstructed occurrence multisets. Human semantic review and production scorer integration remain pending.\n\n| Query | Case | Activities | Cases | Events |\n|---|---|---:|---:|---:|\n'+'\n'.join(f"| {q} | {m['case']} | {m['activity_count']} | {m['cases']} | {m['events']} |" for q,m in metadata.items())+'\n')
@@ -268,7 +293,8 @@ save(E/'verification.json',receipt)
 for fn in ('timestamp_query_audit.csv','interval_audit.csv','pm_scope_revision_20261127.md'):
     p=E/fn
     if p.exists():
-        archive=R/'docs/archive'/('pm_scope1_'+fn);archive.parent.mkdir(exist_ok=True);shutil.move(p,archive)
+        archive=R/'docs/archive'/('pm_scope1_'+fn);archive.parent.mkdir(exist_ok=True)
+        if not old_is_stochastic:shutil.move(p,archive)
 csvwrite(E/'timestamp_query_audit.csv',[{'query_id':q,'cases':m['cases'],'events':m['events'],'ties':m['ties'],'variants':m['variants'],'status':'source occurrence comparison PASS'} for q,m in metadata.items()])
 stats=json.loads(subprocess.check_output([sys.executable,str(R/'docs/analyze_dataset.py')],text=True));save(R/'docs/dataset_statistics.json',stats)
 (R/'docs/dataset_analysis.md').write_text('# Stochastic v2 dataset analysis\n\nCurrent counts and actual distributions: [generator preview](../source/stochastic_v2_generator_preview.json) and [statistics](dataset_statistics.json).\n\n| Variant | Tables | Rows |\n|---|---:|---:|\n'+'\n'.join(f"| {v['variant_id']} | {v['table_count']} | {v['row_count']} |" for v in manifest)+'\n\nSource-diversity event counts are not forced equal. Fixed six jobs and one boarding session per flight preserve ground-service experiment structure. Human approval pending.\n')
@@ -280,7 +306,7 @@ template=(R/'docs/review_v2_template.html').read_text()
 variant_rows='\n'.join(f"| [{v['variant_id'].upper()}](variants/{v['variant_id']}/README.md) | {v['table_count']} | {v['row_count']} | [SQLite]({v['database_path']}) · [DD]({v['dictionary_path']}) |" for v in manifest)
 (R/'README.md').write_text(f"""# AirlineFlow — {VERSION}
 
-Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, {len(legs):,} passenger legs; 72 requests / 108 DB–request conditions.**
+Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, {len(legs):,} passenger legs; 72 requests / 108 DB–request conditions. Short opaque identifiers (4–5 digits); flight number remains a distinct operational attribute.**
 
 ## Database variants
 | Variant | Tables | Rows | Inputs |
