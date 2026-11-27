@@ -2,11 +2,11 @@
 
 [Back to variant](../README.md) · [Original JSON](../input/data_dictionary.json)
 
-5 tables · 30 columns · 960 rows
+5 tables · 30 columns · 2,100 rows
 
 ## `boarding_sessions`
 
-Flight-level boarding sessions at the origin of every dated operating leg. One session per flight in this example; inbound legs also have origin boarding records. (96 rows)
+Flight-level boarding sessions at the origin of every dated operating leg. One session per flight in this example; inbound legs also have origin boarding records. (200 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -17,7 +17,7 @@ Flight-level boarding sessions at the origin of every dated operating leg. One s
 
 ## `flights`
 
-Dated operating legs, including both inbound and outbound flights. Flight numbers repeat across dates. (96 rows)
+Dated operating legs, including both inbound and outbound flights. Flight numbers repeat across dates. (200 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -28,7 +28,7 @@ Dated operating legs, including both inbound and outbound flights. Flight number
 
 ## `handling_jobs`
 
-Ground handling work orders associated with aircraft turnarounds. (288 rows)
+Ground handling work orders associated with aircraft turnarounds. (600 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -44,7 +44,7 @@ Ground handling work orders associated with aircraft turnarounds. (288 rows)
 
 ## `movement_reports`
 
-Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. Both inbound and outbound legs have all four actual movements; EST estimates origin off-block. (432 rows)
+Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. Both inbound and outbound legs have all four actual movements; EST estimates origin off-block. (1,000 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -59,7 +59,7 @@ Estimated and actual movement messages for operating legs. Actual OUT and AIR re
 
 ## `turnarounds`
 
-Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start is the start of coordination, which can precede individual jobs. (48 rows)
+Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start is the start of coordination, which can precede individual jobs. (100 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -68,3 +68,4 @@ Ground stay at the focal airport linking an arriving operating leg to the next d
 | `outbound_id` | `TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)` | Next outbound operating leg. |
 | `handling_started_at` | `TEXT NOT NULL` | Actual start of ground handling. |
 | `ready_at` | `TEXT NOT NULL` | Actual aircraft ready time. |
+

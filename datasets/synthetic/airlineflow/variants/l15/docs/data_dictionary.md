@@ -2,11 +2,11 @@
 
 [Back to variant](../README.md) · [Original JSON](../input/data_dictionary.json)
 
-15 tables · 64 columns · 3,818 rows
+15 tables · 64 columns · 80,077 rows
 
 ## `bag_legs`
 
-Transport records for a sample of checked bags associated with passenger flight legs. (144 rows)
+Transport records for a sample of checked bags associated with passenger flight legs. (5,887 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -16,7 +16,7 @@ Transport records for a sample of checked bags associated with passenger flight 
 
 ## `bag_scans`
 
-Individual baggage tracking records for the checked bags represented in the dataset. (288 rows)
+Individual baggage tracking records for the checked bags represented in the dataset. (11,595 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -27,7 +27,7 @@ Individual baggage tracking records for the checked bags represented in the data
 
 ## `boarding_sessions`
 
-Flight-level boarding sessions at the origin of every dated operating leg. One session per flight in this example; inbound legs also have origin boarding records. (96 rows)
+Flight-level boarding sessions at the origin of every dated operating leg. One session per flight in this example; inbound legs also have origin boarding records. (200 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -38,7 +38,7 @@ Flight-level boarding sessions at the origin of every dated operating leg. One s
 
 ## `bookings`
 
-Reservations for groups of travellers. (72 rows)
+Reservations for groups of travellers. (2,537 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -47,7 +47,7 @@ Reservations for groups of travellers. (72 rows)
 
 ## `checkpoints`
 
-Airport security screening checkpoints. (2 rows)
+Airport security screening checkpoints. (3 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -56,7 +56,7 @@ Airport security screening checkpoints. (2 rows)
 
 ## `flights`
 
-Dated operating legs, including both inbound and outbound flights. Flight numbers repeat across dates. (96 rows)
+Dated operating legs, including both inbound and outbound flights. Flight numbers repeat across dates. (200 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -67,7 +67,7 @@ Dated operating legs, including both inbound and outbound flights. Flight number
 
 ## `handling_jobs`
 
-Ground handling work orders associated with aircraft turnarounds. (288 rows)
+Ground handling work orders associated with aircraft turnarounds. (600 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -83,7 +83,7 @@ Ground handling work orders associated with aircraft turnarounds. (288 rows)
 
 ## `movement_reports`
 
-Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. Both inbound and outbound legs have all four actual movements; EST estimates origin off-block. (432 rows)
+Estimated and actual movement messages for operating legs. Actual OUT and AIR refer to the origin; LAND and IN refer to the destination. Both inbound and outbound legs have all four actual movements; EST estimates origin off-block. (1,000 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -98,7 +98,7 @@ Estimated and actual movement messages for operating legs. Actual OUT and AIR re
 
 ## `passenger_actions`
 
-Departure processing records for passenger flight legs. (624 rows)
+Departure processing records for passenger flight legs. (14,031 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -109,7 +109,7 @@ Departure processing records for passenger flight legs. (624 rows)
 
 ## `passenger_legs`
 
-Ticketed segments linking a passenger ticket to a particular operating leg. (288 rows)
+Ticketed segments linking a passenger ticket to a particular operating leg. (6,885 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -119,7 +119,7 @@ Ticketed segments linking a passenger ticket to a particular operating leg. (288
 
 ## `passengers`
 
-Synthetic passenger register. The dataset records a single nationality, distinct from country of birth, residence or passport issuance. Date of birth is a passenger attribute. (144 rows)
+Synthetic passenger register. The dataset records a single nationality, distinct from country of birth, residence or passport issuance. Date of birth is a passenger attribute. (4,505 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -131,7 +131,7 @@ Synthetic passenger register. The dataset records a single nationality, distinct
 
 ## `security_events`
 
-Observations recorded during security checkpoint visits. (864 rows)
+Observations recorded during security checkpoint visits. (20,999 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -143,7 +143,7 @@ Observations recorded during security checkpoint visits. (864 rows)
 
 ## `security_visits`
 
-Airport-provided records of individual passenger visits to security checkpoints. (288 rows)
+Airport-provided records of individual passenger visits to security checkpoints. (7,030 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -153,7 +153,7 @@ Airport-provided records of individual passenger visits to security checkpoints.
 
 ## `tickets`
 
-Tickets issued to passengers. (144 rows)
+Tickets issued to passengers. (4,505 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -163,7 +163,7 @@ Tickets issued to passengers. (144 rows)
 
 ## `turnarounds`
 
-Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start is the start of coordination, which can precede individual jobs. (48 rows)
+Ground stay at the focal airport linking an arriving operating leg to the next departing operating leg of the same aircraft. The overall handling start is the start of coordination, which can precede individual jobs. (100 rows)
 
 | Column | Declaration | Description |
 |---|---|---|
@@ -172,3 +172,4 @@ Ground stay at the focal airport linking an arriving operating leg to the next d
 | `outbound_id` | `TEXT NOT NULL UNIQUE REFERENCES flights(flight_id)` | Next outbound operating leg. |
 | `handling_started_at` | `TEXT NOT NULL` | Actual start of ground handling. |
 | `ready_at` | `TEXT NOT NULL` | Actual aircraft ready time. |
+

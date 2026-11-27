@@ -307,34 +307,6 @@ stats=json.loads(subprocess.check_output([sys.executable,str(R/'docs/analyze_dat
 payload={'version':VERSION,'manifest':manifest,'records':records,'queries':metadata,'events':evidence,'registry':registry,'summary':summary,'dictionaries':{v['variant_id']:load(R/v['dictionary_path']) for v in manifest}}
 template=(R/'docs/review_v2_template.html').read_text()
 (R/'docs/scenario.html').write_text(template.replace('/*__PAYLOAD__*/null',json.dumps(payload,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')))
-# Current top-level documentation generated from actual counts; no stale claims.
-variant_rows='\n'.join(f"| [{v['variant_id'].upper()}](variants/{v['variant_id']}/README.md) | {v['table_count']} | {v['row_count']} | [SQLite]({v['database_path']}) · [DD]({v['dictionary_path']}) |" for v in manifest)
-(R/'README.md').write_text(f"""# AirlineFlow — {VERSION}
-
-Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, {len(legs):,} passenger legs; 72 requests / 108 DB–request conditions. Compact management identifiers (e.g. F001, J001); flight number remains a distinct operational attribute.**
-
-## Database variants
-| Variant | Tables | Rows | Inputs |
-|---|---:|---:|---|
-{variant_rows}
-
-## Review
-- [Integrated reference review](docs/scenario.html) (download and open locally; evaluator-only).
-- [Query catalog](docs/queries.md) · [Gold summary](evaluation/gold_summary.csv) · [Registry](evaluation/query_registry.csv)
-- [Design](docs/stochastic_fixture_v2.md) · [Generator configuration](source/stochastic_v2_config.json) · [Realized population](source/stochastic_v2_generator_preview.json)
-- [Verification receipt](evaluation/verification.json) · [Analysis](docs/dataset_analysis.md)
-
-## Reproduce
-Run node source/generate_records_v2.mjs EMPTY_OUTPUT_DIRECTORY to regenerate records. Run python verify.py for read-only checks. The release build script regenerate_v2.py requires Node, Python and Graphviz and is intended for an isolated checkout.
-
-## Canonical vs enriched reference logs
-Each Gold directory includes `events.csv` (scoring only) and `events_enriched.csv` (inspection/analysis). The review has separate flight number/date fields and the selected source table's original data dictionary.
-
-## Validation
-108 SQLite-query comparisons and 72 independent occurrence reconstructions passed in the release build. Human review and production scorer integration remain pending. No model inference performed. The older PM-Scope1 fixture remains in git history. Model input is only the chosen DB, its general DD, and request text. Never include evaluator metadata or the review HTML.
-""")
-for v in manifest:
-    p=R/'variants'/v['variant_id']/'README.md'
-    p.write_text(f"# {v['variant_id'].upper()} — {VERSION}\n\n{v['table_count']} tables; {v['row_count']} rows.\n\n[SQLite](input/database.sqlite) · [Data dictionary](input/data_dictionary.json) · [Schema](input/schema.sql) · [ERD](docs/schema.svg) · [Dataset home](../../README.md)\n")
-(R/'variants/README.md').write_text('# Database variants\n\n| Variant | Tables | Rows |\n|---|---:|---:|\n'+'\n'.join(f"| [{v['variant_id']}]({v['variant_id']}/README.md) | {v['table_count']} | {v['row_count']} |" for v in manifest)+'\n')
+# Render complete manifest-driven documentation, not a shortened README.
+subprocess.run([sys.executable,str(R/'docs/render_readme.py')],check=True)
 print(json.dumps({k:v for k,v in receipt.items() if k!='generator_summary'},indent=2))
