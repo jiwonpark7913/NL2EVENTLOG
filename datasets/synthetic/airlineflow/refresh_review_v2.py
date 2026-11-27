@@ -62,8 +62,8 @@ with tempfile.TemporaryDirectory() as t:
     stub="""
 const assert=require('node:assert/strict');
 const elements=new Map();
-global.localStorage={getItem:()=>null,setItem:()=>{}};
-function elem(id){if(!elements.has(id))elements.set(id,{value:'',checked:id==='related',innerHTML:'',textContent:'',scrollTop:0,scrollLeft:0,closest:()=>({scrollTop:0}),querySelector:()=>null});return elements.get(id)}
+const storage=new Map();global.localStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
+function elem(id){if(!elements.has(id))elements.set(id,{value:'',checked:id==='related',innerHTML:'',textContent:'',scrollTop:0,scrollLeft:0,closest:()=>({scrollTop:0}),querySelector:()=>null,style:{},handlers:{},children:[{}],querySelectorAll:()=>[{checked:true}],addEventListener:function(k,fn){this.handlers[k]=fn}});return elements.get(id)}
 global.document={getElementById:elem};
 """
     tests="""
@@ -81,6 +81,25 @@ function check(qid,event){
     assert.ok(elem('dictionaryBody').innerHTML.includes('<tr class="dd-hit"><td>'+event[5]+'</td>'));
     assert.ok(rec.columns.every(x=>elem('dictionaryBody').innerHTML.includes('>'+x+'</td>')));
 }
+bindReviewControls();
+q='Q01';variant='l15';restoreReview();
+const note='한글 검수 메모: Case/Activity 검토\nSecond line';
+elem('notes').value=note;elem('verdict').value='Revise';elem('notes').handlers.input();
+assert.equal(decisions['l15:Q01'].notes,note);
+assert.equal(JSON.parse(storage.get(storageKey()))['l15:Q01'].notes,note);
+assert.equal(elem('notes').value,note);assert.equal(elem('notes').readOnly,false);
+q='Q05';restoreReview();assert.equal(elem('notes').value,'');
+elem('notes').value='Q05 separate note';elem('notes').handlers.compositionend();
+q='Q01';restoreReview();assert.equal(elem('notes').value,note);
+variant='l05';restoreReview();assert.equal(elem('notes').value,'');elem('notes').value='L05 separate';elem('saveNote').onclick();
+variant='l15';restoreReview();assert.equal(elem('notes').value,note);
+const saved=JSON.parse(storage.get(storageKey()));decisions={};restoreReview();assert.equal(elem('notes').value,'');
+assert.equal(importReviewData({version:DATA.version,decisions:saved}),true);restoreReview();assert.equal(elem('notes').value,note);
+const realSet=localStorage.setItem;localStorage.setItem=()=>{throw Error('blocked')};
+elem('notes').value='storage blocked but retained';elem('notes').handlers.input();assert.equal(decisions['l15:Q01'].notes,'storage blocked but retained');
+assert.ok(elem('noteSaveStatus').textContent.includes('Export review JSON'));localStorage.setItem=realSet;
+console.log('PASS: Korean/multiline notes, input autosave, query/variant isolation, reload/import restoration, and storage-blocked fallback (Node DOM stub)');
+
 const summary=querySummary('Q01');
 assert.ok(summary.includes('Case mode')&&summary.includes('Activity mode')&&summary.includes('Explicit'));
 assert.ok(summary.includes('Gold activities (2)'));
