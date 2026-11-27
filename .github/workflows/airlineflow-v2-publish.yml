@@ -28,24 +28,13 @@ jobs:
         with:
           node-version: '22'
       - name: Generate and independently validate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
         run: |
           set -euo pipefail
           cd datasets/synthetic/airlineflow
-          if [ "${{ github.event_name }}" = "push" ] && git diff --name-only "${{ github.event.before }}" HEAD -- . ':!docs/review_v2_template.html' ':!refresh_review_v2.py' | grep -q '^regenerate_v2.py
-      - name: Publish atomically after checks
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add datasets/synthetic/airlineflow
-          git diff --cached --quiet && exit 0
-          git commit -m "data/docs: publish validated AirlineFlow fixture or review update"
-          git push origin HEAD:main
-; then
-            command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
-            python regenerate_v2.py
-            cp verify_v2.py verify.py
-          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] || git diff --name-only --relative "$BEFORE_SHA" HEAD -- regenerate_v2.py | grep -Fxq regenerate_v2.py; then
             command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
             python regenerate_v2.py
             cp verify_v2.py verify.py
@@ -60,5 +49,5 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add datasets/synthetic/airlineflow
           git diff --cached --quiet && exit 0
-          git commit -m "data: replace AirlineFlow evaluation fixture with validated stochastic v2"
+          git commit -m "data/docs: publish validated AirlineFlow fixture or review update"
           git push origin HEAD:main
