@@ -3,3 +3,5 @@ Use exactly the same L15 `input/database.sqlite` for both conditions. Full DD is
 Compare Recovery OFF/ON and Direct SQL, distinguishing fixed PI from free parsing. Record physical and semantic F1, recovery/abstention, false positives, cost and calls. Model experiments have NOT been run on this revision. Existing codebook experiment remains a separate earlier variant.
 
 Stochastic v2: the old scan-ID remapping receipt is retired; scan IDs are opaque at generation. B01–B03 reference CSVs were replayed against the new L15 input. This is not a completed semantic recovery experiment.
+
+Stochastic v2: the old scan-ID remapping receipt is retired; scan IDs are opaque at generation. B01–B03 reference CSVs were replayed against the new L15 input. This is not a completed semantic recovery experiment.

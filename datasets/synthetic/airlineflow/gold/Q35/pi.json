@@ -22,5 +22,5 @@
   "notes": "Family 내 Case·활동 수·사건 수·Carrier 비율 고정. 활동 정체성·귀속 깊이/역할 분포 변화는 잔여 교란. Aggregated case log does not identify each individual passenger/bag; do not infer individual duration or comparison. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum. Population scope explicitly restricted; join depth is the authored path, not a lower bound on SQL alternatives.",
   "case_key_policy": "Canonical flight_id; structured (flight_no, operating_date=date(scheduled_offblock)) accepted after full-scope bijection; no inferred composite strings.",
   "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
-  "fixture_version": "Stochastic-v2-20261127"
+  "fixture_version": "Stochastic-v2-ShortIDs-20261127"
 }

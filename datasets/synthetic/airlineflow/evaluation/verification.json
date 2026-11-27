@@ -1,5 +1,5 @@
 {
-  "version": "Stochastic-v2-20261127",
+  "version": "Stochastic-v2-ShortIDs-20261127",
   "seed": 20261127,
   "status": "candidate; human review and production scorer pending",
   "sqlite_conditions_passed": 108,
@@ -81,9 +81,18 @@
       "fuel": 7
     },
     "duplicate_flight_boarding_triples": 920,
-    "checks": "generator-level checks passed; SQLite and Gold not yet validated"
+    "checks": "generator-level checks passed; SQLite and Gold not yet validated",
+    "identifier_policy": "short opaque seeded numeric IDs (4–5 digits; no business-role encoding)",
+    "identifier_count": 86173
   },
   "production_scorer": "NOT_RUN",
   "human_semantic_review": "PENDING",
-  "model_inference": "NOT_RUN"
+  "model_inference": "NOT_RUN",
+  "identifier_migration": {
+    "status": "PASS",
+    "preserved_source_rows": 80289,
+    "preserved_gold_queries": 72,
+    "bijection_size": 86173,
+    "only_identity_values_changed": true
+  }
 }

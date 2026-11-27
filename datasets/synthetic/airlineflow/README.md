@@ -1,6 +1,6 @@
-# AirlineFlow — Stochastic-v2-20261127
+# AirlineFlow — Stochastic-v2-ShortIDs-20261127
 
-Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, 6,885 passenger legs; 72 requests / 108 DB–request conditions.**
+Synthetic relational event-log extraction benchmark. **100 turnarounds, 200 operating legs, 6,885 passenger legs; 72 requests / 108 DB–request conditions. Short opaque identifiers (4–5 digits); flight number remains a distinct operational attribute.**
 
 ## Database variants
 | Variant | Tables | Rows | Inputs |

@@ -20,5 +20,5 @@
   "notes": "원천·사건 인스턴스·활동·인코딩 고정. Case ET와 trace 분포 변화는 잔여 교란; JOIN 수와 논리 깊이 분리. Case 집계 효과가 함께 변하므로 순수 JOIN 인과효과로 해석하지 않음. A-F3/A-F4는 경로·일부 사건을 공유하므로 독립 Family로 간주하지 않음. Preserve occurrence multiplicity (UNION ALL); no deduplication or tie-breaking. MAX TOTAL JOIN DEPTH describes authored reference SQL, not a proven minimum.",
   "case_key_policy": "Canonical leg_id; structured (ticket_id, flight_id) or (passenger_id, flight_id) accepted after full-scope bijection; no inferred strings.",
   "alternative_case_policy": "Strict canonical Entity; only approved same-entity key representations normalized.",
-  "fixture_version": "Stochastic-v2-20261127"
+  "fixture_version": "Stochastic-v2-ShortIDs-20261127"
 }

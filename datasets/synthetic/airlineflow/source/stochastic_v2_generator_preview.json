@@ -73,5 +73,7 @@
     "fuel": 7
   },
   "duplicate_flight_boarding_triples": 920,
-  "checks": "generator-level checks passed; SQLite and Gold not yet validated"
+  "checks": "generator-level checks passed; SQLite and Gold not yet validated",
+  "identifier_policy": "short opaque seeded numeric IDs (4–5 digits; no business-role encoding)",
+  "identifier_count": 86173
 }

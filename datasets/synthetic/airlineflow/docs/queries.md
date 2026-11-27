@@ -1,4 +1,4 @@
-# Request catalog — Stochastic-v2-20261127
+# Request catalog — Stochastic-v2-ShortIDs-20261127
 
 72 requests, 108 DB–request conditions. Evaluator-only references. Human review pending.
 
