@@ -5,6 +5,7 @@ on:
     paths:
       - 'datasets/synthetic/airlineflow/regenerate_v2.py'
       - 'datasets/synthetic/airlineflow/docs/review_v2_template.html'
+      - 'datasets/synthetic/airlineflow/refresh_review_v2.py'
       - '.github/workflows/airlineflow-v2-publish.yml'
   workflow_dispatch:
 permissions:
@@ -26,13 +27,31 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
       - name: Generate and independently validate
         run: |
           set -euo pipefail
           cd datasets/synthetic/airlineflow
-          python regenerate_v2.py
-          cp verify_v2.py verify.py
+          if [ "${{ github.event_name }}" = "push" ] && git diff --name-only "${{ github.event.before }}" HEAD -- . ':!docs/review_v2_template.html' ':!refresh_review_v2.py' | grep -q '^regenerate_v2.py
+      - name: Publish atomically after checks
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add datasets/synthetic/airlineflow
+          git diff --cached --quiet && exit 0
+          git commit -m "data/docs: publish validated AirlineFlow fixture or review update"
+          git push origin HEAD:main
+; then
+            command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
+            python regenerate_v2.py
+            cp verify_v2.py verify.py
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
+            python regenerate_v2.py
+            cp verify_v2.py verify.py
+          else
+            python refresh_review_v2.py
+          fi
           python verify.py
       - name: Publish atomically after checks
         run: |
