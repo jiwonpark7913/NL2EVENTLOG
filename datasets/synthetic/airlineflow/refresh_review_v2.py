@@ -83,7 +83,7 @@ function check(qid,event){
 }
 bindReviewControls();
 q='Q01';variant='l15';restoreReview();
-const note=['한글 검수 메모: Case/Activity 검토','Second line'].join(String.fromCharCode(10));
+const note=[String.fromCodePoint(0xd55c,0xae00)+' review note: Case/Activity','Second line'].join(String.fromCharCode(10));
 elem('notes').value=note;elem('verdict').value='Revise';elem('notes').handlers.input();
 assert.equal(decisions['l15:Q01'].notes,note);
 assert.equal(JSON.parse(storage.get(storageKey()))['l15:Q01'].notes,note);
@@ -106,7 +106,7 @@ assert.ok(summary.includes('Case mode')&&summary.includes('Activity mode')&&summ
 assert.ok(summary.includes('Gold activities (2)'));
 const summary2=querySummary('Q05');
 assert.ok(summary2.includes('Gold activities (6)'));
-assert.ok(summary2.includes('검증 목적'));
+assert.ok(summary2.includes('Review focus'));
 const pair=DATA.events.Q01.slice(0,2);
 assert.equal(pair[0][4],pair[1][4]);
 check('Q01',pair[0]);check('Q01',pair[1]);

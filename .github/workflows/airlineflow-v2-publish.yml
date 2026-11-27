@@ -1,16 +1,17 @@
-name: Publish stochastic AirlineFlow v2
+name: Publish AirlineFlow review
 on:
   push:
     branches: [main]
     paths:
-      - 'datasets/synthetic/airlineflow/regenerate_v2.py'
+      - 'datasets/synthetic/airlineflow/publish_review.py'
+      - 'datasets/synthetic/airlineflow/generate.py'
+      - 'datasets/synthetic/airlineflow/verify.py'
       - 'datasets/synthetic/airlineflow/docs/review_v2_template.html'
+      - 'datasets/synthetic/airlineflow/docs/readme_template.md'
+      - 'datasets/synthetic/airlineflow/docs/render_readme.py'
       - 'datasets/synthetic/airlineflow/refresh_review_v2.py'
       - 'datasets/synthetic/airlineflow/enrich_review.py'
       - 'datasets/synthetic/airlineflow/activity_dfg.py'
-      - 'datasets/synthetic/airlineflow/migrate_operational_schema.py'
-      - 'datasets/synthetic/airlineflow/source/operational_fields_v1.json'
-      - 'datasets/synthetic/airlineflow/source/operational_enrichment.mjs'
       - '.github/workflows/airlineflow-v2-publish.yml'
   workflow_dispatch:
 permissions:
@@ -19,45 +20,28 @@ concurrency:
   group: airlineflow-v2-publish
   cancel-in-progress: false
 jobs:
-  regenerate:
+  publish:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Generate and independently validate
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          BEFORE_SHA: ${{ github.event.before }}
+      - name: Reproduce and audit the release
         run: |
           set -euo pipefail
-          cd datasets/synthetic/airlineflow
           command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
-          if [ "$EVENT_NAME" != "workflow_dispatch" ] && git diff --name-only --relative "$BEFORE_SHA" HEAD | grep -Eq "^(migrate_operational_schema.py|source/operational_(fields_v1.json|enrichment.mjs))$"; then
-            python migrate_operational_schema.py
-          elif [ "$EVENT_NAME" = "workflow_dispatch" ] || git diff --name-only --relative "$BEFORE_SHA" HEAD -- regenerate_v2.py | grep -Fxq regenerate_v2.py; then
-            command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
-            python regenerate_v2.py
-            cp verify_v2.py verify.py
-          fi
-          command -v dot || (sudo apt-get update && sudo apt-get install -y graphviz)
-          python activity_dfg.py
-          python refresh_review_v2.py
-          python enrich_review.py
-          python verify.py
-      - name: Publish atomically after checks
+          python datasets/synthetic/airlineflow/publish_review.py
+      - name: Publish validated review assets
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add datasets/synthetic/airlineflow
           git diff --cached --quiet && exit 0
-          git commit -m "data/docs: publish validated AirlineFlow fixture or review update"
+          git commit -m "docs: publish verified AirlineFlow review assets"
           git push origin HEAD:main
