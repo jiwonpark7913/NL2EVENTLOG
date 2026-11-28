@@ -1,0 +1,311 @@
+{
+  "counts": {
+    "pilot": 24,
+    "accepted": 35,
+    "unresolved": 1,
+    "healthcare": 6,
+    "logistics": 6
+  },
+  "roles": {
+    "minimal_intent": 36,
+    "minimal_case": 36,
+    "minimal_events": 35
+  },
+  "method": {
+    "method": "nl2eventlog-refreshed-s0-v1.0.0",
+    "arm": "S0",
+    "source_sha256": "2b1813051845c74f13d2a5dd5316d19803c9312e2189d7abb1cf74f93b46e137",
+    "prompt_sha256": "d85f654c8bf9ab852f9699e52d94d7193acb6e8f8dcdc5d32ed7a3599266aa95",
+    "schema_sha256": "5655725d78e9ad37fa8c307efd2f9eed3b7ae7ec680be5e1ac045865cf7c6c6b"
+  },
+  "conditions": [
+    {
+      "cohort": "pilot",
+      "qid": "Q01",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q01",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q02",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q02",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q03",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q03",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q04",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q04",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q05",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q05",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q06",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q06",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q07",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q07",
+      "model": "claude-haiku-5-5",
+      "status": "unresolved",
+      "logical_roles": 2,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q08",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q08",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q09",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q09",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q10",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q10",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q11",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q11",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q12",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "pilot",
+      "qid": "Q12",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "healthcare",
+      "qid": "H01",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "healthcare",
+      "qid": "H01",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "healthcare",
+      "qid": "H02",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "healthcare",
+      "qid": "H02",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "healthcare",
+      "qid": "H03",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "healthcare",
+      "qid": "H03",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "logistics",
+      "qid": "G01",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "logistics",
+      "qid": "G01",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "logistics",
+      "qid": "G02",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "logistics",
+      "qid": "G02",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "logistics",
+      "qid": "G03",
+      "model": "gemini-3.5-flash-lite",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    },
+    {
+      "cohort": "logistics",
+      "qid": "G03",
+      "model": "claude-haiku-5-5",
+      "status": "accepted",
+      "logical_roles": 3,
+      "development_official_and_m3_equal": true
+    }
+  ]
+}

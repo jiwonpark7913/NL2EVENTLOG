@@ -5,7 +5,10 @@
 - [Method specification](runtime/COMPLETE_METHODOLOGY_SPEC.md)
 - [BISE Main Paper and Supplement synchronization](runtime/MANUSCRIPT_SYNCHRONIZATION_REPORT.md)
 - [Executable schemas and replay input hashes](runtime/verification/)
-- [Release and Method Freeze records](https://github.com/jiwonpark7913/NL2EVENTLOG/releases/tag/nl2eventlog-refreshed-s0-v1.0.0)
+- [Release and Method Freeze assets](https://github.com/jiwonpark7913/NL2EVENTLOG/releases/tag/nl2eventlog-refreshed-s0-v1.0.0)
+- [Final Method Freeze](runtime/FINAL_METHOD_FREEZE.json)
+- [Method Freeze report](runtime/METHOD_FREEZE_REPORT.md)
+- [Verification from GitHub](runtime/RELEASE_VERIFICATION_REPORT.md)
 
 ## Install and verify
 
