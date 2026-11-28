@@ -1,0 +1,14 @@
+# NL2EventLog repository instructions
+
+## Mandatory experiment input preflight
+
+GitHub is the source of truth for dataset releases. Before every new experiment, pilot, ablation, baseline or EEG build, including local-model runs, fetch the latest remote main of https://github.com/jiwonpark7913/NL2EVENTLOG and pin its full commit SHA. Materialize required inputs from that exact commit into an isolated run snapshot. Never silently use an old local database, downloaded archive, dictionary or graph. Historical reproduction is permitted only when explicitly requested, using the specified immutable GitHub commit and a separately labeled run.
+
+1. Record the remote URL, resolved commit, fetch time, dataset and variant. Never overwrite a dirty working tree or change a running experiment.
+2. Obtain the database, dictionary, schema, question cohort, Gold references and applicable manifests from the same commit. For newly configured AirlineFlow evaluations use data_dictionary_standard.json; Original DD is for explicitly designated reproduction or dictionary-comparison conditions. Do not fall back if required inputs are missing. For other datasets explicitly identify the approved model-facing dictionary.
+3. Compare the actual runtime files with the pinned Git blob identities (git hash-object --no-filters for regular files; verify LFS object SHA-256 for LFS files). Also record raw-file SHA-256, SQLite integrity, row/table/column counts, schema/dictionary agreement, question cohort and reference consistency. Validate applicable release manifests. Stop on any mismatch or inability to verify the remote. Gold and evaluator-only materials must never enter model inputs.
+4. Rebuild EEG, Compact EEG and indexes unless DB/DD hashes, builder model, builder code/prompt/config and graph identities match the verified snapshot. Record these identities and verify that each arm uses the intended input files.
+5. Persist an input manifest containing the full commit, actual absolute paths, repository-relative paths, file hashes, dictionary edition, database counts, question/Gold identities, EEG provenance, model/runner/scorer versions and preflight result. Use one pinned snapshot across paired arms, except explicitly registered experimental factors.
+6. Fetch once before each new experiment, not during it. Resuming an existing run requires verification of its original pinned snapshot. Keep historical results and frozen artifacts unchanged.
+
+All experiment entrypoints must invoke a common fail-closed preflight before model inference or API spend. Implement and regression-test this enforcement in the experimental workspace; this document alone is not evidence of implementation. Include stale-input, wrong-dictionary, mixed-commit, stale-EEG and remote-fetch failure tests. No silent fallback. Do not change frozen method contracts merely to enforce input provenance. Repository artifacts and reports must be written in English.
