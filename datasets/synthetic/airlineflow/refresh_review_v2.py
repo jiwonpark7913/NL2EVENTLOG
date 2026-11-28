@@ -101,6 +101,15 @@ assert.ok(elem('noteSaveStatus').textContent.includes('Export review JSON'));loc
 console.log('PASS: Korean/multiline notes, input autosave, query/variant isolation, reload/import restoration, and storage-blocked fallback (Node DOM stub)');
 
 assert.ok(dfgLegend('Q02').includes('14 unique activities · 14 activity nodes'));assert.equal(dfgSummary('Q02').freq.get('Catering Loading Start'),100);
+const fullGraph=graphCounts(DATA.events.Q02);
+assert.equal(fullGraph.nodes.size,14);assert.equal(fullGraph.events,1400);assert.equal(fullGraph.edges.size,71);
+assert.equal(fullGraph.nodes.get('Catering Loading Start'),100);
+const caseGraph=graphCounts(DATA.events.Q02,'TU046');assert.equal(caseGraph.events,14);assert.equal(caseGraph.nodes.size,14);
+assert.equal(caseGraph.edges.has(edgeKey('Catering Loading Start','Refuelling Start')),false);
+assert.equal(caseGraph.edges.has(edgeKey('Refuelling Start','Catering Loading Start')),false);
+assert.ok(caseGraph.trace.some(x=>x[0]==='2026-12-15 08:27:54'&&x[2]===2));
+const filteredGraph=visibleGraph(fullGraph,10,'Handling Start');assert.ok(filteredGraph.edges.size<71);assert.ok([...filteredGraph.edges.values()].every(n=>n>=10));assert.ok(filteredGraph.adjacent.has('Handling Start'));assert.equal(fullGraph.edges.size,71);
+console.log('PASS: interactive DFG aggregation, case trace, tie handling, frequency filtering and highlighting logic');
 const summary=querySummary('Q01');
 assert.ok(summary.includes('Case mode')&&summary.includes('Activity mode')&&summary.includes('Explicit'));
 assert.ok(summary.includes('Gold activities (2)'));
@@ -120,6 +129,55 @@ console.log('PASS: original-table UI selection, green source cell, Data Dictiona
 """
     js.write_text(stub+body+tests,encoding='utf-8')
     subprocess.run(['node',str(js)],check=True)
+
+
+# Exercise the actual controls in Chrome when installed on the runner.
+# Use the same template and a small real-payload subset to keep the smoke test fast.
+import shutil
+chrome=shutil.which('google-chrome') or shutil.which('chromium') or shutil.which('chromium-browser')
+if chrome:
+    with tempfile.TemporaryDirectory() as td:
+        temp=Path(td); page=temp/'review_browser.html'
+        small={k:data[k] for k in ('version','manifest','records','queries','events','dictionaries','registry')}
+        small['queries']={q:data['queries'][q] for q in ('Q01','Q02')}
+        small['events']={q:data['events'][q] for q in small['queries']}
+        small['manifest']=[{**v,'question_ids':['Q01','Q02']} for v in data['manifest']]
+        browser_test="""
+<script>
+try{
+  function check(v,m){if(!v)throw Error(m)}
+  function visible(sel){return [...document.querySelectorAll(sel)].filter(g=>g.style.display!=='none').length}
+  document.querySelector('[data-q="Q02"]').click();
+  check(visible('#dfg g.node')===16,'full graph must have 14 activities plus endpoints');
+  check(visible('#dfg g.edge')===71,'full graph edge count');
+  const min=document.getElementById('dfgMin');min.value=10;min.dispatchEvent(new Event('input'));
+  check(visible('#dfg g.edge')<71,'frequency filter');
+  document.getElementById('dfgReset').click();
+  document.querySelector('#dfg g.node[data-activity="Handling Start"]').dispatchEvent(new MouseEvent('click',{bubbles:true}));
+  check(document.getElementById('dfgActivity').value==='Handling Start','node highlight');
+  check(document.querySelectorAll('#dfg g.edge.dfg-muted').length>0,'edge de-emphasis');
+  const select=document.getElementById('dfgCase');select.value='TU046';select.dispatchEvent(new Event('change'));
+  check(document.getElementById('dfgViewStatus').textContent.includes('14 events'),'case count');
+  check(!document.getElementById('dfgCaseTrace').hidden,'case trace');
+  document.getElementById('dfgExpand').click();
+  check(document.getElementById('dfgDialog').open&&document.querySelector('#dfgDialog #dfgWorkspace'),'enlarge');
+  document.getElementById('dfgPlus').click();check(document.getElementById('dfg').style.width==='110%','zoom');
+  document.getElementById('dfgClose').click();
+  document.getElementById('dfgDialog').dispatchEvent(new Event('close'));
+  check(document.querySelector('#dfgHome #dfgWorkspace'),'return to panel');
+  document.getElementById('dfgReset').click();check(visible('#dfg g.edge')===71,'reset restores all edges');
+  document.body.setAttribute('data-browser-test','PASS');
+}catch(e){document.body.setAttribute('data-browser-test','FAIL: '+e.message)}
+</script>
+"""
+        page.write_text(template.replace('/*__PAYLOAD__*/null',json.dumps(small,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')).replace('</body>',browser_test+'</body>'),encoding='utf-8')
+        result=subprocess.run([chrome,'--headless','--no-sandbox','--disable-dev-shm-usage','--disable-gpu','--no-first-run','--user-data-dir='+str(temp/'profile'),'--dump-dom',page.as_uri()],capture_output=True,text=True,timeout=90)
+        if result.returncode or 'data-browser-test="PASS"' not in result.stdout:
+            import re
+            raise AssertionError('Browser DFG test failed: '+str(re.findall(r'data-browser-test="[^"]*"',result.stdout)[:2])+result.stderr[-1000:])
+        print('PASS: Chrome interactive DFG controls, filter, case selection, highlighting, enlargement, zoom and reset')
+else:
+    print('SKIP: Chrome not available; Node DFG logic tests completed')
 
 p.write_text(new,encoding='utf-8')
 print('PASS: review payload unchanged; exact physical timestamp verified for',count,'event occurrences; JavaScript syntax valid; payload SHA256',hashlib.sha256(payload.encode()).hexdigest())

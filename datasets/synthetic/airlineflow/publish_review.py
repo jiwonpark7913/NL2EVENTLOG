@@ -23,6 +23,6 @@ run('verify.py')
 assert snapshot(gold+inputs)==protected,'Publication altered protected reference answers or released inputs'
 changed=[p for p,h in snapshot(dfgs).items() if h!=before_dfg[p]]
 receipt=R/'evaluation/verification.json';v=json.loads(receipt.read_text())
-v['release_audit']={'status':'PASS','schema_revision':'operational-v1','fixed_seed_reproduction':'PASS','database_rebuilds':4,'reproduced_gold_conditions':108,'protected_gold_files':len(gold),'protected_inputs_unchanged':True,'gold_files_unchanged':True,'dfg_files_checked':len(dfgs),'dfg_byte_changes':changed,'dfg_semantic_checks':'PASS','html_revision':'r12','ui_english':True,'human_semantic_review':'PENDING','production_scorer':'NOT_RUN'}
+v['release_audit']={'status':'PASS','schema_revision':'operational-v1','fixed_seed_reproduction':'PASS','database_rebuilds':4,'reproduced_gold_conditions':108,'protected_gold_files':len(gold),'protected_inputs_unchanged':True,'gold_files_unchanged':True,'dfg_files_checked':len(dfgs),'dfg_byte_changes':changed,'dfg_semantic_checks':'PASS','html_revision':'r13','ui_english':True,'human_semantic_review':'PENDING','production_scorer':'NOT_RUN'}
 receipt.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
 print('PASS: final publication audit; all 360 authored/enriched Gold files and released inputs unchanged; DFG byte changes:',len(changed))
