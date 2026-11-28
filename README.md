@@ -4,6 +4,10 @@ NL2EventLog studies how to extract a process-mining event log from a relational 
 
 This repository publishes benchmark databases, questions, reference extractions and human review tools. The [method specification](docs/system/EEG_ENTITY_MODEL.md) describes how an Event Extraction Graph (EEG) connects database evidence to events and entities. The Step 1 runtime runs separately.
 
+## Official method
+
+[Refreshed S0 v1.0.0](method/) is the source release for EEG construction, process interpretation and deterministic event log extraction. The standalone CLI and evaluation runner use the same runtime.
+
 ## Start with a dataset
 
 | If you want to… | Start here |

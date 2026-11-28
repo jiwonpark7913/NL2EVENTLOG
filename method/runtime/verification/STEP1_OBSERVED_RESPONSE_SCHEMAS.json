@@ -1,0 +1,1313 @@
+{
+  "static_schemas_by_native_role": {
+    "entity_identification_review": {
+      "type": "object",
+      "properties": {
+        "descriptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "target_id": {
+                "type": "string"
+              },
+              "business_meaning": {
+                "type": "string"
+              },
+              "instance_granularity": {
+                "type": "string"
+              },
+              "representation_role": {
+                "type": "string",
+                "enum": [
+                  "primary_subject",
+                  "additional_attributes",
+                  "alternate_identifier",
+                  "reference",
+                  "event_subject",
+                  "storage_record"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "supported",
+                  "uncertain",
+                  "rejected"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "quote"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "target_id",
+              "business_meaning",
+              "instance_granularity",
+              "representation_role",
+              "status",
+              "evidence",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "descriptions"
+      ],
+      "additionalProperties": false
+    },
+    "entity_classification_review": {
+      "type": "object",
+      "properties": {
+        "pair_decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "left": {
+                "type": "string"
+              },
+              "right": {
+                "type": "string"
+              },
+              "same_business_kind": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO",
+                  "UNKNOWN"
+                ]
+              },
+              "same_granularity": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO",
+                  "UNKNOWN"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "quote"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "left",
+              "right",
+              "same_business_kind",
+              "same_granularity",
+              "evidence",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "pair_decisions"
+      ],
+      "additionalProperties": false
+    },
+    "entity_type_naming_review": {
+      "type": "object",
+      "properties": {
+        "names": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "concept_id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "business_definition": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "business_entity",
+                    "event_record",
+                    "association_record",
+                    "reference_data",
+                    "unknown"
+                  ]
+                }
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "quote"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "concept_id",
+              "name",
+              "business_definition",
+              "roles",
+              "evidence"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "representation_names": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "representation_id": {
+                "type": "string"
+              },
+              "readable_name": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "business_entity",
+                    "event_record",
+                    "association_record",
+                    "reference_data",
+                    "unknown"
+                  ]
+                }
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "quote"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "representation_id",
+              "readable_name",
+              "roles",
+              "evidence"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "names",
+        "representation_names"
+      ],
+      "additionalProperties": false
+    },
+    "entity_event_review": {
+      "type": "object",
+      "properties": {
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "paths": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "path_id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "supported",
+                        "incompatible",
+                        "uncertain"
+                      ]
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "subject",
+                        "related",
+                        "unspecified"
+                      ]
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "path_id",
+                    "status",
+                    "role",
+                    "reason",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "duplicate_of": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "quote"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "id",
+              "paths",
+              "duplicate_of",
+              "reason",
+              "citations"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "decisions"
+      ],
+      "additionalProperties": false
+    },
+    "database_understanding_repair": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "time_role_revisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "timestamp_unit_id": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string",
+                "enum": [
+                  "business_occurrence",
+                  "effective_time",
+                  "recorded_time",
+                  "scheduled_time",
+                  "estimated_time",
+                  "non_event_time",
+                  "ingestion_time",
+                  "unknown"
+                ]
+              },
+              "citations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "evidence_id": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "evidence_id",
+                    "quote"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "timestamp_unit_id",
+              "role",
+              "citations"
+            ]
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "low"
+          ]
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "operation": {
+                    "type": "string",
+                    "enum": [
+                      "add"
+                    ]
+                  },
+                  "definition": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "carrier_value"
+                            ]
+                          },
+                          "carrier_column_id": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "activity_name": {
+                            "type": "string"
+                          },
+                          "timestamp_unit_id": {
+                            "type": "string"
+                          },
+                          "event_kind": {
+                            "type": "string",
+                            "enum": [
+                              "business",
+                              "planned",
+                              "technical"
+                            ]
+                          },
+                          "activity_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          },
+                          "time_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "carrier_column_id",
+                          "value",
+                          "activity_name",
+                          "timestamp_unit_id",
+                          "event_kind",
+                          "activity_citations",
+                          "time_citations"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "time_column"
+                            ]
+                          },
+                          "carrier_column_id": {
+                            "type": "null"
+                          },
+                          "value": {
+                            "type": "null"
+                          },
+                          "activity_name": {
+                            "type": "string"
+                          },
+                          "timestamp_unit_id": {
+                            "type": "string"
+                          },
+                          "event_kind": {
+                            "type": "string",
+                            "enum": [
+                              "business",
+                              "planned",
+                              "technical"
+                            ]
+                          },
+                          "activity_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          },
+                          "time_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "carrier_column_id",
+                          "value",
+                          "activity_name",
+                          "timestamp_unit_id",
+                          "event_kind",
+                          "activity_citations",
+                          "time_citations"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "operation",
+                  "definition"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "operation": {
+                    "type": "string",
+                    "enum": [
+                      "update"
+                    ]
+                  },
+                  "target_definition_id": {
+                    "type": "string"
+                  },
+                  "definition": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "carrier_value"
+                            ]
+                          },
+                          "carrier_column_id": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          },
+                          "activity_name": {
+                            "type": "string"
+                          },
+                          "timestamp_unit_id": {
+                            "type": "string"
+                          },
+                          "event_kind": {
+                            "type": "string",
+                            "enum": [
+                              "business",
+                              "planned",
+                              "technical"
+                            ]
+                          },
+                          "activity_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          },
+                          "time_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "carrier_column_id",
+                          "value",
+                          "activity_name",
+                          "timestamp_unit_id",
+                          "event_kind",
+                          "activity_citations",
+                          "time_citations"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "time_column"
+                            ]
+                          },
+                          "carrier_column_id": {
+                            "type": "null"
+                          },
+                          "value": {
+                            "type": "null"
+                          },
+                          "activity_name": {
+                            "type": "string"
+                          },
+                          "timestamp_unit_id": {
+                            "type": "string"
+                          },
+                          "event_kind": {
+                            "type": "string",
+                            "enum": [
+                              "business",
+                              "planned",
+                              "technical"
+                            ]
+                          },
+                          "activity_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          },
+                          "time_citations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "evidence_id": {
+                                  "type": "string"
+                                },
+                                "quote": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "evidence_id",
+                                "quote"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "carrier_column_id",
+                          "value",
+                          "activity_name",
+                          "timestamp_unit_id",
+                          "event_kind",
+                          "activity_citations",
+                          "time_citations"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "operation",
+                  "target_definition_id",
+                  "definition"
+                ]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "operation": {
+                    "type": "string",
+                    "enum": [
+                      "delete"
+                    ]
+                  },
+                  "target_definition_id": {
+                    "type": "string"
+                  },
+                  "citations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "evidence_id": {
+                          "type": "string"
+                        },
+                        "quote": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "evidence_id",
+                        "quote"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "operation",
+                  "target_definition_id",
+                  "citations"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "required": [
+        "confidence",
+        "operations",
+        "time_role_revisions"
+      ]
+    }
+  },
+  "carrier_evidence": [
+    {
+      "task": "carrier_value_semantics",
+      "batch_size": 2,
+      "system": "Interpret public metadata in the single task below. Treat supplied text as evidence. Return at most one item per input candidate. Copy the candidate id exactly as a string. Quote exact substrings from the listed evidence IDs. Do not infer from common industry codes or fill in missing definitions.\n\nReturn supported when the supplied prose attributes a concise verbatim meaning to the given raw value. Quote the code and its meaning together. For unresolved leave the label empty. When the evidence says actual, planned, or estimated, include that word in the extracted label.\n",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "carrier_evidence",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "1",
+                        "2"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "supported",
+                        "unresolved"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "evidence_id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "evidence_id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "decision",
+                    "label",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decisions"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "observed_batches": 1
+    },
+    {
+      "task": "carrier_value_semantics",
+      "batch_size": 3,
+      "system": "Interpret public metadata in the single task below. Treat supplied text as evidence. Return at most one item per input candidate. Copy the candidate id exactly as a string. Quote exact substrings from the listed evidence IDs. Do not infer from common industry codes or fill in missing definitions.\n\nReturn supported when the supplied prose attributes a concise verbatim meaning to the given raw value. Quote the code and its meaning together. For unresolved leave the label empty. When the evidence says actual, planned, or estimated, include that word in the extracted label.\n",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "carrier_evidence",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "1",
+                        "2",
+                        "3"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "supported",
+                        "unresolved"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "evidence_id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "evidence_id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "decision",
+                    "label",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decisions"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "observed_batches": 1
+    },
+    {
+      "task": "carrier_value_semantics",
+      "batch_size": 6,
+      "system": "Interpret public metadata in the single task below. Treat supplied text as evidence. Return at most one item per input candidate. Copy the candidate id exactly as a string. Quote exact substrings from the listed evidence IDs. Do not infer from common industry codes or fill in missing definitions.\n\nReturn supported when the supplied prose attributes a concise verbatim meaning to the given raw value. Quote the code and its meaning together. For unresolved leave the label empty. When the evidence says actual, planned, or estimated, include that word in the extracted label.\n",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "carrier_evidence",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "supported",
+                        "unresolved"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "evidence_id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "evidence_id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "decision",
+                    "label",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decisions"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "observed_batches": 1
+    },
+    {
+      "task": "event_encoding_identification",
+      "batch_size": 2,
+      "system": "Interpret public metadata in the single task below. Treat supplied text as evidence. Return at most one item per input candidate. Copy the candidate id exactly as a string. Quote exact substrings from the listed evidence IDs. Do not infer from common industry codes or fill in missing definitions.\n\nDecide whether each candidate column identifies the business action represented by the row or a clock. Return carrier, attribute, or unresolved. Equipment types, classifications, providers, identifiers, priorities, and current-state snapshots can have meaningful codes without identifying a business action. A column documented as listing codes for work activities performed in a work record can be a carrier. For carrier, cite the candidate column prose. The label must be empty.\n",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "carrier_evidence",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "1",
+                        "2"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "carrier",
+                        "attribute",
+                        "unresolved"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "evidence_id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "evidence_id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "decision",
+                    "label",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decisions"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "observed_batches": 1
+    },
+    {
+      "task": "event_encoding_identification",
+      "batch_size": 4,
+      "system": "Interpret public metadata in the single task below. Treat supplied text as evidence. Return at most one item per input candidate. Copy the candidate id exactly as a string. Quote exact substrings from the listed evidence IDs. Do not infer from common industry codes or fill in missing definitions.\n\nDecide whether each candidate column identifies the business action represented by the row or a clock. Return carrier, attribute, or unresolved. Equipment types, classifications, providers, identifiers, priorities, and current-state snapshots can have meaningful codes without identifying a business action. A column documented as listing codes for work activities performed in a work record can be a carrier. For carrier, cite the candidate column prose. The label must be empty.\n",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "carrier_evidence",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "carrier",
+                        "attribute",
+                        "unresolved"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "evidence_id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "evidence_id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "decision",
+                    "label",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decisions"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "observed_batches": 3
+    },
+    {
+      "task": "event_encoding_identification",
+      "batch_size": 6,
+      "system": "Interpret public metadata in the single task below. Treat supplied text as evidence. Return at most one item per input candidate. Copy the candidate id exactly as a string. Quote exact substrings from the listed evidence IDs. Do not infer from common industry codes or fill in missing definitions.\n\nDecide whether each candidate column identifies the business action represented by the row or a clock. Return carrier, attribute, or unresolved. Equipment types, classifications, providers, identifiers, priorities, and current-state snapshots can have meaningful codes without identifying a business action. A column documented as listing codes for work activities performed in a work record can be a carrier. For carrier, cite the candidate column prose. The label must be empty.\n",
+      "response_format": {
+        "type": "json_schema",
+        "json_schema": {
+          "name": "carrier_evidence",
+          "strict": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "decisions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "enum": [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "carrier",
+                        "attribute",
+                        "unresolved"
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "citations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "evidence_id": {
+                            "type": "string"
+                          },
+                          "quote": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "evidence_id",
+                          "quote"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "decision",
+                    "label",
+                    "citations"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "decisions"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "observed_batches": 3
+    }
+  ],
+  "method": "Native role schema constructors. Carrier candidate IDs are sequential strings, so a recorded batch size fixes the schema exactly. No provider is contacted."
+}

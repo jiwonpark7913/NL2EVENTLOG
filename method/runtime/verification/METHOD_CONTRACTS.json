@@ -1,0 +1,186 @@
+{
+  "method_identity": {
+    "method": "nl2eventlog-refreshed-s0-v1.0.0",
+    "arm": "S0",
+    "source_sha256": "df5b7881ebfff08c8d4b30477e0ee8df1e414ce8740d233e9db5ce2e531ce967",
+    "prompt_sha256": "d85f654c8bf9ab852f9699e52d94d7193acb6e8f8dcdc5d32ed7a3599266aa95",
+    "schema_sha256": "5655725d78e9ad37fa8c307efd2f9eed3b7ae7ec680be5e1ac045865cf7c6c6b"
+  },
+  "model_identifiers": {
+    "haiku": "claude-haiku-5-5",
+    "gemini": "gemini-3.5-flash-lite"
+  },
+  "stage_1": {
+    "configuration": {
+      "sample_size": 20,
+      "ts_scan_limit": 100000,
+      "ts_parse_ratio_strict": 0.95,
+      "ts_parse_ratio_loose": 0.5,
+      "json_ratio": 0.95,
+      "json_max_depth": 3,
+      "max_distinct": 50,
+      "activity_semantic_review_budget": 50,
+      "review_validation_retries": 1,
+      "max_hops": null,
+      "concepts": true,
+      "max_rollup_depth": 2,
+      "inferred_inclusion_threshold": 0.95,
+      "identity_candidate_overlap_threshold": 0.3,
+      "polymorphic_member_share": 0.05,
+      "polymorphic_max_members": 3,
+      "part_of_child_ref_coverage": 0.95,
+      "part_of_multi_parent_ratio": 0.01,
+      "part_of_interval_containment": 0.95,
+      "part_of_temporal_precedes": 0.95,
+      "part_of_tolerance_seconds": 3600,
+      "repair": true,
+      "selective_review": true,
+      "model": "claude-haiku-5-5",
+      "event_binding_version": "v2",
+      "carrier_event_policy": "integrated",
+      "semantic_signatures": true,
+      "global_ot_review": true,
+      "entity_types": true,
+      "pairwise_identity_llm": true,
+      "semantic_signature_batch_size": 20,
+      "dd_time_type_keywords": [
+        "date",
+        "datetime",
+        "time",
+        "timestamp",
+        "instant",
+        "yyyy-mm-dd",
+        "yyyymmdd",
+        "epoch"
+      ],
+      "dd_time_words": [
+        "time",
+        "date",
+        "timestamp",
+        "when",
+        "moment",
+        "occurred",
+        "recorded",
+        "valid from",
+        "valid to"
+      ],
+      "ts_name_tokens": [
+        "at",
+        "on",
+        "ts",
+        "time",
+        "date",
+        "dt",
+        "dttm",
+        "timestamp",
+        "datetime",
+        "stamp",
+        "when",
+        "valid",
+        "from",
+        "to",
+        "start",
+        "end",
+        "begin",
+        "finish",
+        "created",
+        "updated",
+        "modified",
+        "changed",
+        "recorded",
+        "posted",
+        "udate",
+        "utime"
+      ],
+      "activity_keywords": [
+        "activity",
+        "type",
+        "status",
+        "state",
+        "step",
+        "stage",
+        "phase",
+        "action",
+        "event"
+      ]
+    },
+    "effective_configuration_sha256": "be30f7b0f3fbbf58f8e8590284bc81f45b590a7e0591ac2880d39c31d4ba4a13",
+    "model": {
+      "id": "claude-haiku-5-5",
+      "thinking": "adaptive",
+      "effort": "medium",
+      "endpoint": "messages",
+      "input_limit": 1000000,
+      "provider_output_limit": 128000,
+      "pi_output_limit": 16000
+    },
+    "request_independence": true,
+    "entrypoint": "src.eeg.evidence_graph_cache.load_or_build",
+    "snapshot_form": "eeg.json, index.sqlite, snapshot.json"
+  },
+  "stage_2": {
+    "native_inference": {
+      "haiku": {
+        "id": "claude-haiku-5-5",
+        "thinking": "adaptive",
+        "effort": "medium",
+        "endpoint": "messages",
+        "input_limit": 1000000,
+        "provider_output_limit": 128000,
+        "pi_output_limit": 16000
+      },
+      "gemini": {
+        "id": "gemini-3.5-flash-lite",
+        "thinking_level": "MINIMAL",
+        "temperature": 0,
+        "endpoint": "generateContent",
+        "input_limit": 1048576,
+        "provider_output_limit": 65536,
+        "pi_output_limit": 16000,
+        "local_rpm": 10,
+        "http_attempt_limit": 240,
+        "rolling_wire_plus_output_limit": 250000
+      }
+    },
+    "roles": [
+      "minimal_intent",
+      "minimal_case",
+      "minimal_events"
+    ],
+    "max_logical_reservations": 32,
+    "max_estimated_request_input_tokens": 240000,
+    "max_role_output_tokens": 16000,
+    "candidate_policy": "Population-valid complete Case Catalog, then full eligible Case-connected ED/path lookup"
+  },
+  "stage_3": {
+    "selection_contract": "Bound PI and scoped assignment proof",
+    "specification": "ESpec v6",
+    "database": "read-only SQLite",
+    "publication": "One validated extraction pass, or explicit terminal failure"
+  },
+  "entrypoints": {
+    "cli": "python -m src",
+    "api": "src.release_runtime.run_release",
+    "evaluation_runner": "python -m evaluation_harness.final_runner",
+    "evaluation_arm": "M3"
+  },
+  "scope": {
+    "input": "One read-only relational snapshot, its Original DD and one natural-language request",
+    "output": "One typed Case notion with at most one Case assignment per physical occurrence",
+    "unsupported": [
+      "general analytical filtering",
+      "attribute enrichment",
+      "downstream process analysis",
+      "multiple Case assignments for the same occurrence"
+    ]
+  },
+  "external_evaluation_companion": {
+    "configured_by": "NL2EVENTLOG_COMPANION_DIR",
+    "v4_descriptor_sha256": "27a280ea46c5bc0df6850b6edd4944b3b8122f4523226bf60e6b9580ad5fa2cd",
+    "required_for": [
+      "offline score-v4",
+      "M1 Compact EEG serialization"
+    ],
+    "approval_boundary": "Evaluation policies and reference assets remain separately governed."
+  }
+}

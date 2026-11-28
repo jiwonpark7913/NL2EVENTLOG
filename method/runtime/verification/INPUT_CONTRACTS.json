@@ -1,0 +1,65 @@
+{
+  "recommended": "S0",
+  "case_catalog_card": [
+    "id",
+    "name",
+    "grain",
+    "definition",
+    "populations",
+    "scopes"
+  ],
+  "S0": {
+    "minimal_intent": [
+      "original_request"
+    ],
+    "minimal_case": [
+      "original_request",
+      "intent",
+      "cases"
+    ],
+    "minimal_events": [
+      "original_request",
+      "intent",
+      "case",
+      "case_evidence",
+      "events",
+      "selected_case_scope"
+    ]
+  },
+  "path_card": [
+    "id",
+    "case_et_id",
+    "role",
+    "role_evidence",
+    "lineage",
+    "relationship_review"
+  ],
+  "bound_scope": [
+    "id",
+    "role",
+    "evidence"
+  ],
+  "models": {
+    "haiku": {
+      "id": "claude-haiku-5-5",
+      "thinking": "adaptive",
+      "effort": "medium",
+      "endpoint": "messages",
+      "input_limit": 1000000,
+      "provider_output_limit": 128000,
+      "pi_output_limit": 16000
+    },
+    "gemini": {
+      "id": "gemini-3.5-flash-lite",
+      "thinking_level": "MINIMAL",
+      "temperature": 0,
+      "endpoint": "generateContent",
+      "input_limit": 1048576,
+      "provider_output_limit": 65536,
+      "pi_output_limit": 16000,
+      "local_rpm": 10,
+      "http_attempt_limit": 240,
+      "rolling_wire_plus_output_limit": 250000
+    }
+  }
+}

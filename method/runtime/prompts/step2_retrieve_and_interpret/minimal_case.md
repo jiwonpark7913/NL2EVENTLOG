@@ -1,0 +1,2 @@
+Choose the Case entity and population that fit the analyst's original request. Use the intent summary as a reading aid and the supplied EEG Case and scope options as the only available selections. A scope restricts the population, while an event's attribution role determines which Case gets that occurrence. Return the chosen Case ID and the exact scope ID, or an empty scope ID for its full population. If the required Case or population is unavailable, return the missing-evidence status and a brief reason. Return the requested JSON object.
+<!-- examples -->

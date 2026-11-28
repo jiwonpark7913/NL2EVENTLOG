@@ -1,0 +1,3 @@
+The Case Entity Type is the unit of analysis. The selected_case_scope restricts which instances of that type are included. A null selected_case_scope leaves the Case population unrestricted. The executor applies the selected population to every selected event.
+
+An Event Definition describes the business occurrence. Its attribution path assigns that occurrence to a Case instance. Use an existing direct path when applying the Case scope to that path satisfies the Case population requirement. The path does not need to repeat a population restriction. If the request requires an event-specific relationship to the Case, select a path that satisfies that relationship even when the Case scope already applies.

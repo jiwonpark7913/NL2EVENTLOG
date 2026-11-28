@@ -1,0 +1,2 @@
+Interpret the analyst's original request. Summarize its analytical purpose, the intended Case population and the desired event scope. Preserve restrictions on time semantics, analytical grain, and functional roles. Distinguish an explicit event request from an implicit process or lifecycle request. Keep uncertain intent explicit. These fields guide evidence retrieval and selection; they do not prescribe a fixed number of event definitions. Return the requested JSON object.
+<!-- examples -->

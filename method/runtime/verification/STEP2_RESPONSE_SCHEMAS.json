@@ -1,0 +1,100 @@
+{
+  "S0": {
+    "minimal_intent": {
+      "type": "object",
+      "properties": {
+        "objective": {
+          "type": "string"
+        },
+        "case_intent": {
+          "type": "string"
+        },
+        "activity_intent": {
+          "type": "string"
+        },
+        "activity_mode": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "implicit"
+          ]
+        }
+      },
+      "required": [
+        "objective",
+        "case_intent",
+        "activity_intent",
+        "activity_mode"
+      ],
+      "additionalProperties": false
+    },
+    "minimal_case": {
+      "type": "object",
+      "properties": {
+        "selection_status": {
+          "type": "string",
+          "enum": [
+            "selected",
+            "insufficient_evidence"
+          ]
+        },
+        "case_et_id": {
+          "type": "string"
+        },
+        "case_scope_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "selection_status",
+        "case_et_id",
+        "case_scope_id",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "minimal_events": {
+      "type": "object",
+      "properties": {
+        "selection_status": {
+          "type": "string",
+          "enum": [
+            "selected",
+            "insufficient_evidence"
+          ]
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "event_definition_id": {
+                "type": "string"
+              },
+              "path_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "event_definition_id",
+              "path_id"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "selection_status",
+        "events",
+        "reason"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "source_experiment_plan": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/EXPERIMENT_PLAN.json",
+  "source_experiment_plan_sha256": "afba14867cd3f6a8059a33bf67548899c0a4e6d83c7281e9581d6d84e7a34713",
+  "binding_sha256": "6d984932c7c0ac38b12b7f9faa70cfd2d55b9614940d0574eec6090837ca01f1",
+  "conditions": 36,
+  "panels": {
+    "pilot": {
+      "database": "NL2EVENTLOG_v2_pi_comparison/results/verification-audit-20261128/inputs/variants/l20/input/database.sqlite",
+      "database_sha256": "dd22715c13632c60d67ff769556e1a66ed489dc0ecd5457d3f482629f8f88d41",
+      "dictionary": "NL2EVENTLOG_v2_pi_comparison/results/verification-audit-20261128/inputs/variants/l20/input/data_dictionary.json",
+      "dictionary_sha256": "7fa595291170895fd32604789c948fb5ef075d3a2572ab39977ed279d93d3cee",
+      "eeg_directory": "NL2EVENTLOG_v2_step2_redesign/results/cross-model-20261128/pilot/shared",
+      "snapshot_sha256": "53736537da5ae3ef269fe9615d837454e551e835528e3b3dd281dfd8514e62e8",
+      "eeg_sha256": "70c6ff00432912a9157d3bbeb983f6f9f5928053b03fbd2c5dacc3f42ffe633a",
+      "index_sha256": "f0740ee314efc6e0f1ec61d2b9393c7f8e2c70b295e3bddfa8e05de56e7effd6",
+      "conditions": [
+        {
+          "qid": "Q01",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q01/gemini/S0/receipt.json",
+          "receipt_sha256": "07cf310cde0d086f44bdcfe060935b8d8793cc7eae7c100512060f0a16e09293",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q01/gemini/S0/request.json",
+          "request_sha256": "3ef8055f9ae27af4f5832007695f0dc798becbd4e2fd4582bb0739b4ef63da10"
+        },
+        {
+          "qid": "Q01",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q01/haiku/S0/receipt.json",
+          "receipt_sha256": "a9551d8046fd7dd3179beab6ab8cbf03c0df49c04545eb6965508bd1d594efbe",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q01/haiku/S0/request.json",
+          "request_sha256": "3ef8055f9ae27af4f5832007695f0dc798becbd4e2fd4582bb0739b4ef63da10"
+        },
+        {
+          "qid": "Q02",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q02/gemini/S0/receipt.json",
+          "receipt_sha256": "bb630f2e957a850eb0d51e8eb44b6850f38e9836f603f9efc655b8d5da2643bf",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q02/gemini/S0/request.json",
+          "request_sha256": "c5e80667241fb3ddbc031c5a6fd74faf502c4c05c36d8100fbcfeac5c96ddbc5"
+        },
+        {
+          "qid": "Q02",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q02/haiku/S0/receipt.json",
+          "receipt_sha256": "c944892c7b8f52689bb9588bd8b157e922a2b9b668e030cc0e271b92c84deaaf",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q02/haiku/S0/request.json",
+          "request_sha256": "c5e80667241fb3ddbc031c5a6fd74faf502c4c05c36d8100fbcfeac5c96ddbc5"
+        },
+        {
+          "qid": "Q03",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q03/gemini/S0/receipt.json",
+          "receipt_sha256": "b10b10de68b03ad92106c72ceeb501a278d300798d34f8c448c2b1c49b43d26c",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q03/gemini/S0/request.json",
+          "request_sha256": "325ad17f63d8abe912ec91b0326a724be332543bb5f408348babca9d2e4acf3a"
+        },
+        {
+          "qid": "Q03",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q03/haiku/S0/receipt.json",
+          "receipt_sha256": "4e7ca2d512a70d5ee6601802cbce422255003a58a16d21f70afe08f8fb412aa0",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q03/haiku/S0/request.json",
+          "request_sha256": "325ad17f63d8abe912ec91b0326a724be332543bb5f408348babca9d2e4acf3a"
+        },
+        {
+          "qid": "Q04",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q04/gemini/S0/receipt.json",
+          "receipt_sha256": "9d64b777d0356c43b7b3dd27e290a2bd7474ec6db237278e3b1613c88657354e",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q04/gemini/S0/request.json",
+          "request_sha256": "4e61d51e6135db9704714ce2b4eaaa9cc9cf80146257138ad58edcbd243ed318"
+        },
+        {
+          "qid": "Q04",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q04/haiku/S0/receipt.json",
+          "receipt_sha256": "10bb150893d60acb20fd1e8b6724170e54aa35224e4de0200d59214b93b63f85",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q04/haiku/S0/request.json",
+          "request_sha256": "4e61d51e6135db9704714ce2b4eaaa9cc9cf80146257138ad58edcbd243ed318"
+        },
+        {
+          "qid": "Q05",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q05/gemini/S0/receipt.json",
+          "receipt_sha256": "cbe0484f64f5bc6305e143e32b1207cf06e4bf2bb26a7b7da7e5ffbfe51eae85",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q05/gemini/S0/request.json",
+          "request_sha256": "1d95d4e4edf75cea51c6fb3454c59930acdca3038cba4736d1388ea608335559"
+        },
+        {
+          "qid": "Q05",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q05/haiku/S0/receipt.json",
+          "receipt_sha256": "98899ffd9c1c48eabc22d67a2b3b0e2149759a29d803f11fb011c4ba0469bf55",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q05/haiku/S0/request.json",
+          "request_sha256": "1d95d4e4edf75cea51c6fb3454c59930acdca3038cba4736d1388ea608335559"
+        },
+        {
+          "qid": "Q06",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q06/gemini/S0/receipt.json",
+          "receipt_sha256": "018488a07bdc52376626198e222af15519222fb68f5375ef1be8518b42f9e4aa",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q06/gemini/S0/request.json",
+          "request_sha256": "d7568ab9d1b050fb315f1b32e0c499b0870015e830f716c943f9a76e6af7a119"
+        },
+        {
+          "qid": "Q06",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q06/haiku/S0/receipt.json",
+          "receipt_sha256": "28c181987797e16422a765067ee19f025ff329dea1b02ab9ed827babc4483e1f",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q06/haiku/S0/request.json",
+          "request_sha256": "d7568ab9d1b050fb315f1b32e0c499b0870015e830f716c943f9a76e6af7a119"
+        },
+        {
+          "qid": "Q07",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q07/gemini/S0/receipt.json",
+          "receipt_sha256": "622e98bdefec646e29750a223c3bb30f3c001b021c89cd934f51c93e6e18dda5",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q07/gemini/S0/request.json",
+          "request_sha256": "77a7f43684f37d68f917bcb714573e1b54cb0c22365c4b6164d28ef7946eb465"
+        },
+        {
+          "qid": "Q07",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q07/haiku/S0/receipt.json",
+          "receipt_sha256": "5e87eb9b573cf183dcd0267dd86ff57510576a587423bb369ac713f1c757d69f",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q07/haiku/S0/request.json",
+          "request_sha256": "77a7f43684f37d68f917bcb714573e1b54cb0c22365c4b6164d28ef7946eb465"
+        },
+        {
+          "qid": "Q08",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q08/gemini/S0/receipt.json",
+          "receipt_sha256": "298a844400eab1e9ecf8f2b4e83e30e638ab7394f3eae3fad3e7ba2c7fdbcb27",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q08/gemini/S0/request.json",
+          "request_sha256": "df6fdc03d710b0106d28ee5b8d3d88713cd49bb06a8e1da5dd26d7b22c45d1a1"
+        },
+        {
+          "qid": "Q08",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q08/haiku/S0/receipt.json",
+          "receipt_sha256": "b8f0c5a241698e180892b030202266b80ea7a02811412faef9997fa29108d7e1",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q08/haiku/S0/request.json",
+          "request_sha256": "df6fdc03d710b0106d28ee5b8d3d88713cd49bb06a8e1da5dd26d7b22c45d1a1"
+        },
+        {
+          "qid": "Q09",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q09/gemini/S0/receipt.json",
+          "receipt_sha256": "75f2418cb6c10f3fa779e30b5da46255820c3185f307d17bc951947f83d26569",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q09/gemini/S0/request.json",
+          "request_sha256": "19a2990ecab629261b903dd5469f91e6cc80bdbcf82011f08aaf489252f200de"
+        },
+        {
+          "qid": "Q09",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q09/haiku/S0/receipt.json",
+          "receipt_sha256": "785858578259ecf4ffd83cb196d685a43e625f4bf6936852800ab32cb8417f5e",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q09/haiku/S0/request.json",
+          "request_sha256": "19a2990ecab629261b903dd5469f91e6cc80bdbcf82011f08aaf489252f200de"
+        },
+        {
+          "qid": "Q10",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q10/gemini/S0/receipt.json",
+          "receipt_sha256": "18eb6bdf86f379b6e410c4cf509483022945032bad1a278842de0a6237e5a02c",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q10/gemini/S0/request.json",
+          "request_sha256": "072c567ae2c0ff2a397cd28be33e515e5e3c186591ee5d611b84b176943b8735"
+        },
+        {
+          "qid": "Q10",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q10/haiku/S0/receipt.json",
+          "receipt_sha256": "e37a6a2e60cdc57069204f18884e728f89266266a228ec03691ef55393d44f9f",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q10/haiku/S0/request.json",
+          "request_sha256": "072c567ae2c0ff2a397cd28be33e515e5e3c186591ee5d611b84b176943b8735"
+        },
+        {
+          "qid": "Q11",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q11/gemini/S0/receipt.json",
+          "receipt_sha256": "e44cb183fbc845bcc9d481ff046de9602d047ada4e95c33cca4f350e112c597b",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q11/gemini/S0/request.json",
+          "request_sha256": "eab4d8536d0115b1b4b23372b07f64df1757395be88b1dd38fb29bd836cea8dc"
+        },
+        {
+          "qid": "Q11",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q11/haiku/S0/receipt.json",
+          "receipt_sha256": "310e0d7d001ba9db02eb072a7a6b63d6d602f81d6bbd7d428a0e8f4ef0ce15db",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q11/haiku/S0/request.json",
+          "request_sha256": "eab4d8536d0115b1b4b23372b07f64df1757395be88b1dd38fb29bd836cea8dc"
+        },
+        {
+          "qid": "Q12",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q12/gemini/S0/receipt.json",
+          "receipt_sha256": "45dfd4cb7b83a14b4523f1d35b2c1d70245725fb4c4a0a599c93472aacc1f3c3",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q12/gemini/S0/request.json",
+          "request_sha256": "774411bb264c2dec634f2846b3080d2888d4c6433430ce57f6e70721dcabbd9c"
+        },
+        {
+          "qid": "Q12",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q12/haiku/S0/receipt.json",
+          "receipt_sha256": "56e6a97e22955f14d1de16d09c8f554906479e8a8ccfdfdde7e8d4d3c1b61eaa",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/pilot/Q12/haiku/S0/request.json",
+          "request_sha256": "774411bb264c2dec634f2846b3080d2888d4c6433430ce57f6e70721dcabbd9c"
+        }
+      ]
+    },
+    "healthcare": {
+      "database": "NL2EVENTLOG_v2_step2_redesign/development/cross_domain/healthcare/public/database.sqlite",
+      "database_sha256": "3f719178f23a193c185cadac5b2fb2eb71eebb4b8d2e02cf60e1f052cb31ec99",
+      "dictionary": "NL2EVENTLOG_v2_step2_redesign/development/cross_domain/healthcare/public/dictionary.json",
+      "dictionary_sha256": "7736bdeca601687e04ea724b4a4063f9aeb69acebf10ae9835af720102eb9078",
+      "eeg_directory": "NL2EVENTLOG_v2_step2_redesign/results/cross-model-20261128/healthcare/shared",
+      "snapshot_sha256": "44298b9aeea26ea91decbf61462fe1b00459ef1e431d3afac122cd6ea7ed1f76",
+      "eeg_sha256": "1974b9c39ab8ac186d29163e1e3a204a5c923810ffef75a65e94126fba0eb246",
+      "index_sha256": "1f8e78d641c5958301ff49216ac636b454e09d52361717c9f00f37b03f4ea2aa",
+      "conditions": [
+        {
+          "qid": "H01",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H01/gemini/S0/receipt.json",
+          "receipt_sha256": "ec5ed0a776281054619e4cd3fd2e42d4fd65b18c78b83b02bc47679f94db0739",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H01/gemini/S0/request.json",
+          "request_sha256": "b1f7e95cfaffe420ee24807cffd3eb8bf10bcd110e52371459e2289d8506d409"
+        },
+        {
+          "qid": "H01",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H01/haiku/S0/receipt.json",
+          "receipt_sha256": "1e4a71894b2238fdbf7116121c576e3e35d015f85895a4f60b205869535a096b",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H01/haiku/S0/request.json",
+          "request_sha256": "b1f7e95cfaffe420ee24807cffd3eb8bf10bcd110e52371459e2289d8506d409"
+        },
+        {
+          "qid": "H02",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H02/gemini/S0/receipt.json",
+          "receipt_sha256": "0eaa77beb77922200debb76ad893c14d6e6ec4dc7717f7f7ff8d531e4aeda1db",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H02/gemini/S0/request.json",
+          "request_sha256": "8581b5c0754c0ef8dce123c5fa24d6fb0dcb771a677406bb3805372b811d07f3"
+        },
+        {
+          "qid": "H02",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H02/haiku/S0/receipt.json",
+          "receipt_sha256": "041d4067152adc2a9b0291a7e90753cfb0e95f767dbc38f2888abafa87726c67",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H02/haiku/S0/request.json",
+          "request_sha256": "8581b5c0754c0ef8dce123c5fa24d6fb0dcb771a677406bb3805372b811d07f3"
+        },
+        {
+          "qid": "H03",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H03/gemini/S0/receipt.json",
+          "receipt_sha256": "eaab839bd2f2aeb61b2a14aecd1107194af7a05d620287b0666855b804cce018",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H03/gemini/S0/request.json",
+          "request_sha256": "4d8a5e213cf82a11f97b199c2f1bc948fe101412fce52d45de7cb090b1221748"
+        },
+        {
+          "qid": "H03",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H03/haiku/S0/receipt.json",
+          "receipt_sha256": "eb651259694de59444023961923c1d6862aa157278bfb5efb811b7a12497155f",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/healthcare/H03/haiku/S0/request.json",
+          "request_sha256": "4d8a5e213cf82a11f97b199c2f1bc948fe101412fce52d45de7cb090b1221748"
+        }
+      ]
+    },
+    "logistics": {
+      "database": "NL2EVENTLOG_v2_step2_redesign/development/cross_domain/logistics/public/database.sqlite",
+      "database_sha256": "0be1e335bd8add73511c3c3ef7c863c98a9399a57d5fcc002eaa5f95aad522fe",
+      "dictionary": "NL2EVENTLOG_v2_step2_redesign/development/cross_domain/logistics/public/dictionary.json",
+      "dictionary_sha256": "fb0c520059697ddfeeb99452d8f44ffb4f719c7662dbf53d03947b07b03353ab",
+      "eeg_directory": "NL2EVENTLOG_v2_step2_redesign/results/cross-model-20261128/logistics/shared",
+      "snapshot_sha256": "8ce52ebea71b3a9d9726e4d5752f462d6e33bacaf337ddb9183b9c9f68ae0af6",
+      "eeg_sha256": "058d09eb4f6eca25ce5e9d9e5596ce91a3b13f29ebf7f60b45dc253f47117f06",
+      "index_sha256": "ec312adf7855ebd92272311a9619c02d35158fe72859c0ccc67643b6b73bfa26",
+      "conditions": [
+        {
+          "qid": "G01",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G01/gemini/S0/receipt.json",
+          "receipt_sha256": "4a3329dc3bf69cea2a0aa3fc7a5e16420e0d292ed27b323887d3ccaafb0b0d6c",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G01/gemini/S0/request.json",
+          "request_sha256": "a5442ec3bb1162b5ee12826655e40538d65bd4ffbeac1c7ae1fe7748b082311d"
+        },
+        {
+          "qid": "G01",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G01/haiku/S0/receipt.json",
+          "receipt_sha256": "41db190fa7ec508aa846978834303499ed18b926c0ec3b73602fd66ce0f76b37",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G01/haiku/S0/request.json",
+          "request_sha256": "a5442ec3bb1162b5ee12826655e40538d65bd4ffbeac1c7ae1fe7748b082311d"
+        },
+        {
+          "qid": "G02",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G02/gemini/S0/receipt.json",
+          "receipt_sha256": "570ca13ec5a943220800d222b14f40fa6bb1c1482a6407a71946cb55e7a83a4a",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G02/gemini/S0/request.json",
+          "request_sha256": "2f51d6b10f8352bc2375d93e948811d21599379f270e3db36403418dce9c0eaf"
+        },
+        {
+          "qid": "G02",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G02/haiku/S0/receipt.json",
+          "receipt_sha256": "b3d248d75f35a592ae3c0c234ed49366c7ca5fa46665de2a3177038b48f67fc5",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G02/haiku/S0/request.json",
+          "request_sha256": "2f51d6b10f8352bc2375d93e948811d21599379f270e3db36403418dce9c0eaf"
+        },
+        {
+          "qid": "G03",
+          "model": "gemini",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G03/gemini/S0/receipt.json",
+          "receipt_sha256": "80737843ba90cb54d56b425ef681c46524d6b023c1ec7878e283b6c4f33b00b6",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G03/gemini/S0/request.json",
+          "request_sha256": "3333a26da3ae03a9dc3c59ddf9894d1b37c644d8ee6057f0e14cc326cb6585d6"
+        },
+        {
+          "qid": "G03",
+          "model": "haiku",
+          "receipt": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G03/haiku/S0/receipt.json",
+          "receipt_sha256": "8c6322ee8331222cb934362d45c86dcb3581146f1363d1f4161685ac3d0a75e9",
+          "request": "NL2EVENTLOG_v2_step2_redesign/results/s3-validation/native/logistics/G03/haiku/S0/request.json",
+          "request_sha256": "3333a26da3ae03a9dc3c59ddf9894d1b37c644d8ee6057f0e14cc326cb6585d6"
+        }
+      ]
+    }
+  },
+  "purpose": "Hashes of original public inputs and saved development S0 receipts. No receipt, Gold or private data is embedded."
+}

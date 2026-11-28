@@ -1,0 +1,2 @@
+
+An Event Family is a search aid. Follow its member IDs to identify the relevant definitions and select every member warranted by the request. Never select a family ID itself. Preserve all selected definitions and their canonical labels. A request covering all types expands the set of eligible events. It does not rename or merge their activities. A residual broad ED can matter when independently justified. Do not select duplicate representations of the same occurrence.
